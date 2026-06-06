@@ -13,7 +13,7 @@ const Sidebar = {
       <aside class="sidebar" id="sidebar">
         <div class="sidebar__header">
           <a href="#" class="sidebar__logo" id="sidebar-logo">
-            <div class="sidebar__logo-icon">📚</div>
+            <img src="assets/logo.png" class="sidebar__logo-icon" style="object-fit: cover; background: none; border-radius: var(--radius-sm);" alt="Cancer Logo" />
             <div>
               <div class="sidebar__logo-text">StudyMaster</div>
               <div class="sidebar__logo-subtitle">Tư tưởng Hồ Chí Minh</div>
