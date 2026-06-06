@@ -35,6 +35,13 @@ const App = {
 
     // Scroll spy for active nav
     this.initScrollSpy();
+
+    // Register Service Worker for PWA & Offline support
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered:', reg.scope))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    }
   },
 
   /** Render the full app */
