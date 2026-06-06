@@ -11,12 +11,12 @@ const Sidebar = {
 
     return `
       <aside class="sidebar" id="sidebar">
-        <div class="sidebar__header">
-          <a href="#" class="sidebar__logo" id="sidebar-logo">
-            <img src="assets/logo.png" class="sidebar__logo-icon" style="object-fit: cover; background: none; border-radius: var(--radius-sm);" alt="Cancer Logo" />
+        <div class="sidebar__header" style="padding: var(--sp-5) var(--sp-4) var(--sp-4); text-align: center;">
+          <a href="#" class="sidebar__logo" id="sidebar-logo" style="flex-direction: column; gap: var(--sp-3); justify-content: center; text-align: center; width: 100%;">
+            <img src="assets/logo.png" style="width: 80px; height: 80px; border-radius: 50%; border: 2.5px solid var(--color-primary); box-shadow: var(--shadow-md); object-fit: cover; transition: transform var(--transition-fast);" alt="Cancer Logo" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
             <div>
-              <div class="sidebar__logo-text">StudyMaster</div>
-              <div class="sidebar__logo-subtitle">Tư tưởng Hồ Chí Minh</div>
+              <div class="sidebar__logo-text" style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em;">StudyMaster</div>
+              <div class="sidebar__logo-subtitle" style="font-size: 11px; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Tư tưởng Hồ Chí Minh</div>
             </div>
           </a>
         </div>
