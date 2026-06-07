@@ -246,6 +246,213 @@ const chuongMoDau = {
         }
       ]
     }
-    /* Phần II và III sẽ được bổ sung khi có nội dung */
+    /* ============================
+       II. PHƯƠNG PHÁP NGHIÊN CỨU
+       ============================ */
+    {
+      id: "phuong-phap-nghien-cuu",
+      roman: "II",
+      title: "Phương pháp nghiên cứu",
+      subsections: [
+        /* ----------------------------
+           1. Cơ sở phương pháp luận
+           ---------------------------- */
+        {
+          id: "co-so-phuong-phap-luan",
+          number: "1",
+          title: "Cơ sở phương pháp luận",
+          parts: [
+            /* a/ Bảo đảm sự thống nhất nguyên tắc tính đảng và tính khoa học */
+            {
+              id: "co-so-pp-luan-a",
+              label: "a",
+              title: "Bảo đảm sự thống nhất nguyên tắc tính đảng và tính khoa học (khách quan)",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Nghiên cứu tư tưởng Hồ Chí Minh phải đứng trên lập trường, quan điểm, phương pháp chủ nghĩa Mác-Lênin và quan điểm, đường lối của ĐCSVN."
+                  ]
+                }
+              ]
+            },
+            /* b/ Quan điểm thực tiễn và nguyên tắc lý luận gắn liền với thực tiễn */
+            {
+              id: "co-so-pp-luan-b",
+              label: "b",
+              title: "Quan điểm thực tiễn và nguyên tắc lý luận gắn liền với thực tiễn",
+              content: [
+                {
+                  type: "label",
+                  text: "Học đi đôi với hành:"
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "CN Mác-Lênin cho rằng, thực tiễn là nguồn gốc, là động lực của nhận thức, là cơ sở và là tiêu chuẩn của chân lý",
+                    "HCM coi trọng việc kết hợp lý luận với thực tiễn, lời nói đi đôi với việc làm."
+                  ]
+                },
+                {
+                  type: "quote",
+                  text: "\"Thực tiễn không có lý luận hướng dẫn thì thành thực tiễn mù quáng, để mặc bệnh chủ quan; lý luận mà không liên hệ với thực tiễn là lý luận suông\"",
+                  source: "Hồ Chí Minh"
+                },
+                {
+                  type: "key-point",
+                  text: "→ Phải biết vận dụng những kiến thức đã học vào cuộc sống, thực tiễn, phục vụ cho sự nghiệp cách mạng của đất nước."
+                }
+              ]
+            },
+            /* c/ Quan điểm lịch sử cụ thể */
+            {
+              id: "co-so-pp-luan-c",
+              label: "c",
+              title: "Quan điểm lịch sử cụ thể",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Phải vận dụng CNDV biện chứng và CNDV lịch sử vào việc nghiên cứu TT HCM."
+                  ]
+                },
+                {
+                  type: "label",
+                  text: "Theo Lênin:"
+                },
+                {
+                  type: "sub-bullets",
+                  items: [
+                    "Phải xem xét một hiện tượng nhất định đã xuất hiện trong lịch sử như thế nào",
+                    "Đứng trên quan điểm của sự phát triển đó để xem xét hiện nay nó đã trở thành như thế nào?"
+                  ]
+                }
+              ]
+            },
+            /* d/ Quan điểm toàn diện và hệ thống */
+            {
+              id: "co-so-pp-luan-d",
+              label: "d",
+              title: "Quan điểm toàn diện và hệ thống",
+              content: [
+                {
+                  type: "quote",
+                  text: "\"Muốn thực sự hiểu được sự vật thì cần phải nhìn bao quát và nghiên cứu tất cả các mặt, tất cả các mối liên hệ và 'quan hệ gián tiếp' của sự vật đó\"",
+                  source: "V.I.Lênin"
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "Cần nắm vững và đầy đủ hệ thống các quan điểm của Người trong nghiên cứu TT HCM",
+                    "Tách rời 1 yếu tố → hiểu sai TT HCM",
+                    "Ví dụ: tách rời độc lập dân tộc với CNXH → xa rời TT HCM",
+                    "Quán triệt MQH qua lại giữa những yếu tố trong hệ thống tư tưởng."
+                  ]
+                }
+              ]
+            },
+            /* e/ Quan điểm kế thừa và phát triển */
+            {
+              id: "co-so-pp-luan-e",
+              label: "e",
+              title: "Quan điểm kế thừa và phát triển",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "HCM là một mẫu mực về sự vận dụng và phát triển sáng tạo chủ nghĩa Mác-Lênin.",
+                    "Nghiên cứu TT HCM không chỉ biết kế thừa, vận dụng mà còn phải biết phát triển sáng tạo tư tưởng của Người."
+                  ]
+                }
+              ]
+            },
+            /* g/ Kết hợp nghiên cứu các tác phẩm với thực tiễn chỉ đạo cách mạng của HCM */
+            {
+              id: "co-so-pp-luan-g",
+              label: "g",
+              title: "Kết hợp nghiên cứu các tác phẩm với thực tiễn chỉ đạo cách mạng của HCM",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Từ thực tiễn, Người tổng kết, bổ sung để hoàn chỉnh và phát triển lý luận → TT HCM mang tính cách mạng, luôn sáng tạo không lạc hậu, giáo điều.",
+                    "Không chỉ căn cứ vào các bài viết, bài nói, tác phẩm mà phải coi trọng hoạt động thực tiễn.",
+                    "Sự sáng tạo cách mạng của HCM là sự sáng tạo về tư duy lý luận, về chiến lược, về đường lối cách mạng."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        /* ----------------------------
+           2. Các phương pháp cụ thể
+           ---------------------------- */
+        {
+          id: "cac-phuong-phap-cu-the",
+          number: "2",
+          title: "Các phương pháp cụ thể",
+          parts: [
+            /* a/ Khái niệm và nguyên tắc áp dụng */
+            {
+              id: "pp-cu-the-a",
+              label: "a",
+              title: "Khái niệm và nguyên tắc áp dụng",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Là cách thức tiếp cận hiện thực, hệ thống các nguyên tắc điều chỉnh nhận thức và hoạt động thực tiễn dựa trên các quy luật khách quan.",
+                    "Nội dung và phương pháp có mối quan hệ mật thiết, chi phối lẫn nhau (\"nội dung nào phương pháp đấy\"). Phương pháp phải dựa trên sự vận động của bản thân nội dung."
+                  ]
+                }
+              ]
+            },
+            /* b/ Các phương pháp nghiên cứu cốt lõi */
+            {
+              id: "pp-cu-the-b",
+              label: "b",
+              title: "Các phương pháp nghiên cứu cốt lõi",
+              content: [
+                {
+                  type: "definition",
+                  text: "Phương pháp lịch sử: Nghiên cứu sự vật, hiện tượng theo đúng quá trình phát sinh, tồn tại và phát triển thực tế của nó."
+                },
+                {
+                  type: "definition",
+                  text: "Phương pháp lôgích: Nghiên cứu tổng quát nhằm tìm ra bản chất vốn có của sự vật, hiện tượng và khái quát thành lý luận."
+                },
+                {
+                  type: "definition",
+                  text: "Phương pháp liên ngành: Áp dụng tổng hợp các ngành khoa học xã hội - nhân văn và lý luận chính trị. Lý do là vì tư tưởng Hồ Chí Minh là một hệ thống toàn diện, bao quát nhiều lĩnh vực (triết học, kinh tế, chính trị, quân sự, văn hóa, giáo dục...)."
+                }
+              ]
+            },
+            /* c/ Các phương pháp cụ thể khác */
+            {
+              id: "pp-cu-the-c",
+              label: "c",
+              title: "Các phương pháp cụ thể khác",
+              content: [
+                {
+                  type: "label",
+                  text: "Các phương pháp hỗ trợ:"
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "Phân tích, tổng hợp, so sánh, đối chiếu, thống kê trắc lượng, văn bản học, điều tra điền dã, phỏng vấn nhân chứng lịch sử..."
+                  ]
+                },
+                {
+                  type: "key-point",
+                  text: "Yêu cầu khi vận dụng: Mỗi phương pháp có đặc điểm và yêu cầu riêng, việc kết hợp chúng phải hoàn toàn căn cứ vào nội dung nghiên cứu."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    /* Phần III sẽ được bổ sung khi có nội dung */
   ]
 };
