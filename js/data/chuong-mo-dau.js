@@ -452,7 +452,68 @@ const chuongMoDau = {
           ]
         }
       ]
+    },
+    /* ============================
+       III. Ý NGHĨA CỦA VIỆC HỌC TẬP MÔN HỌC ĐỐI VỚI SINH VIÊN
+       ============================ */
+    {
+      id: "y-nghia-hoc-tap",
+      roman: "III",
+      title: "Ý nghĩa của việc học tập môn học đối với sinh viên",
+      subsections: [
+        /* ----------------------------
+           1. Nâng cao năng lực tư duy lý luận và phương pháp công tác
+           ---------------------------- */
+        {
+          id: "nang-cao-tu-duy",
+          number: "1",
+          title: "Nâng cao năng lực tư duy lý luận và phương pháp công tác",
+          parts: [
+            {
+              id: "nang-cao-tu-duy-details",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Định hướng mục tiêu cao cả:</strong> Tư tưởng Hồ Chí Minh soi đường cho Đảng và nhân dân Việt Nam đạt được mục tiêu chiến lược: dân giàu, nước mạnh, dân chủ, công bằng, văn minh.",
+                    "<strong>Nâng cao nhận thức hệ thống:</strong> Việc làm rõ và truyền thụ hệ thống quan điểm lý luận của Người giúp sinh viên nhận thức sâu sắc vai trò, vị trí của tư tưởng này, biến nó thành kim chỉ nam chủ đạo trong đời sống tinh thần của thế hệ trẻ.",
+                    "<strong>Kiên định lập trường cách mạng:</strong> Học tập môn học giúp củng cố lập trường, giữ vững mục tiêu độc lập dân tộc gắn liền với chủ nghĩa xã hội. Đồng thời, trang bị cho sinh viên khả năng chủ động đấu tranh, phê phán các quan điểm sai trái để bảo vệ đường lối, pháp luật của Đảng và Nhà nước.",
+                    "<strong>Vận dụng vào thực tiễn cuộc sống:</strong> Không dừng lại ở lý thuyết, việc học tập giúp sinh viên rèn luyện phương pháp làm việc khoa học, biết cách đem lý luận áp dụng vào giải quyết các vấn đề thực tế nảy sinh trong cuộc sống hàng ngày."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        /* ----------------------------
+           2. Bồi dưỡng phẩm chất đạo đức cách mạng và rèn luyện bản lĩnh chính trị
+           ---------------------------- */
+        {
+          id: "boi-duong-pham-chat",
+          number: "2",
+          title: "Bồi dưỡng phẩm chất đạo đức cách mạng và rèn luyện bản lĩnh chính trị",
+          parts: [
+            {
+              id: "boi-duong-pham-chat-details",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Giáo dục đạo đức và lối sống:</strong> Tư tưởng Hồ Chí Minh giáo dục đạo đức, tư cách, phẩm chất cách mạng cho cán bộ, đảng viên và toàn dân, hướng con người biết sống hợp đạo lý, yêu cái tốt, cái thiện, ghét cái ác, cái xấu.",
+                    "<strong>Nâng cao lòng tự hào và tinh thần tự nguyện:</strong> Việc học tập giúp nâng cao lòng tự hào về Lãnh tụ, về Đảng Cộng sản, về Tổ quốc Việt Nam; từ đó thôi thúc thế hệ trẻ tự nguyện \"Sống, chiến đấu, lao động và học tập theo gương Bác Hồ vĩ đại\".",
+                    "<strong>Vận dụng và tu dưỡng bản thân:</strong> Dựa trên kiến thức đã học, sinh viên biết vận dụng vào thực tế cuộc sống để tự tu dưỡng, rèn luyện bản thân và hoàn thành tốt chức trách, nhiệm vụ của mình.",
+                    "<strong>Đóng góp thiết thực cho đất nước:</strong> Giúp sinh viên có những đóng góp thiết thực, hiệu quả cho sự nghiệp cách mạng theo con đường mà Chủ tịch Hồ Chí Minh và Đảng ta đã lựa chọn."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-    /* Phần III sẽ được bổ sung khi có nội dung */
   ]
 };

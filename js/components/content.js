@@ -59,16 +59,18 @@ const ContentRenderer = {
     `;
   },
 
-  /** Render a part (a/, b/...) */
   renderPart(part) {
     const contentBlocks = part.content.map(block => this.renderContentBlock(block)).join('');
+    const hasHeading = part.label || part.title;
 
     return `
       <div class="part" id="content-${part.id}">
-        <div class="part__heading">
-          <span class="part__label">${part.label}/</span>
-          <span>${part.title}</span>
-        </div>
+        ${hasHeading ? `
+          <div class="part__heading">
+            ${part.label ? `<span class="part__label">${part.label}/</span>` : ''}
+            <span>${part.title || ''}</span>
+          </div>
+        ` : ''}
         ${contentBlocks}
       </div>
     `;

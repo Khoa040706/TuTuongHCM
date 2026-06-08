@@ -1,4 +1,4 @@
-const CACHE_NAME = 'studymaster-v3';
+const CACHE_NAME = 'studymaster-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const ASSETS = [
   './js/components/sidebar.js',
   './js/components/content.js',
   './js/data/chuong-mo-dau.js',
+  './js/data/chuong-1.js',
   './assets/logo.png',
   './assets/icon-192.png',
   './assets/icon-512.png'

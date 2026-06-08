@@ -9,7 +9,7 @@ const App = {
   /** Initialize the application */
   init() {
     // Register chapters
-    this.chapters = [chuongMoDau];
+    this.chapters = [chuongMoDau, chuong1];
 
     // Render the app
     this.render();

@@ -125,7 +125,6 @@ const Sidebar = {
     }
   },
 
-  /** Set active state on a nav link */
   setActive(subsectionId) {
     // Remove all active states
     document.querySelectorAll('.nav-item__link--active').forEach(el => {
@@ -143,6 +142,17 @@ const Sidebar = {
 
       if (chapterId) this.expandGroup(chapterId);
       if (sectionId) this.expandGroup(sectionId);
+
+      // Update breadcrumb dynamically
+      if (chapterId && typeof App !== 'undefined' && App.chapters) {
+        const chapter = App.chapters.find(c => c.id === chapterId);
+        if (chapter) {
+          const breadcrumbCurrent = document.querySelector('.header__breadcrumb-current');
+          if (breadcrumbCurrent) {
+            breadcrumbCurrent.textContent = chapter.title;
+          }
+        }
+      }
     }
   },
 
