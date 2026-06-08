@@ -813,6 +813,39 @@ body {
   transition: color var(--transition-base);
 }
 
+/* --- Conclusion Box (Red border — Section Conclusion) --- */
+.conclusion-box {
+  border: 2px solid var(--definition-border);
+  background: var(--definition-bg);
+  padding: var(--sp-5);
+  border-radius: var(--radius-md);
+  margin: var(--sp-5) 0;
+  position: relative;
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+.conclusion-box::before {
+  content: '🎯 Kết luận chung';
+  position: absolute;
+  top: -12px;
+  left: var(--sp-4);
+  padding: 2px var(--sp-3);
+  background: var(--color-secondary);
+  color: white;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-bold);
+  border-radius: var(--sp-1);
+  letter-spacing: 0.03em;
+}
+
+.conclusion-box__content {
+  font-size: var(--fs-body-lg);
+  line-height: 1.9;
+  color: var(--text-primary);
+  font-weight: var(--fw-medium);
+  transition: color var(--transition-base);
+}
+
 /* --- Info Box --- */
 .info-box {
   border-left: 4px solid var(--info-border);

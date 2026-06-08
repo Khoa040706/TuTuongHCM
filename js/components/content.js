@@ -93,6 +93,8 @@ const ContentRenderer = {
         return this.renderQuote(block);
       case 'definition':
         return this.renderDefinition(block);
+      case 'conclusion':
+        return this.renderConclusion(block);
       case 'numbered-group':
         return this.renderNumberedGroup(block);
       case 'key-point':
@@ -149,6 +151,24 @@ const ContentRenderer = {
     return `
       <div class="definition-box">
         <div class="definition-box__content">${block.text}</div>
+      </div>
+    `;
+  },
+
+  /** Render conclusion box (red border) */
+  renderConclusion(block) {
+    const title = block.title ? `<div class="content-block__label" style="font-size: 16px; margin-bottom: var(--sp-3); font-weight: 700; color: var(--color-secondary);">${block.title}</div>` : '';
+    const bullets = block.items
+      ? block.items.map(item => `<li class="bullet-list__item">${item}</li>`).join('')
+      : '';
+    const bulletList = bullets ? `<ul class="bullet-list">${bullets}</ul>` : '';
+    const textContent = block.text ? `<div class="conclusion-box__content">${block.text}</div>` : '';
+
+    return `
+      <div class="conclusion-box">
+        ${title}
+        ${textContent}
+        ${bulletList}
       </div>
     `;
   },
