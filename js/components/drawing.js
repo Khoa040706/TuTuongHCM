@@ -58,8 +58,20 @@ const HighlightManager = {
 
     // Lắng nghe sự kiện xóa highlight khi ở chế độ Eraser
     contentArea.addEventListener('click', (e) => {
-      const hlSpan = e.target.closest('.user-highlight');
-      if (hlSpan && this.activeTool === 'eraser') {
+      if (this.activeTool !== 'eraser') return;
+
+      let target = e.target;
+
+      // Nếu click trúng canvas, tìm phần tử bên dưới nó
+      if (target && target.id === 'drawing-canvas') {
+        const canvas = target;
+        canvas.style.pointerEvents = 'none';
+        target = document.elementFromPoint(e.clientX, e.clientY);
+        canvas.style.pointerEvents = 'auto';
+      }
+
+      const hlSpan = target ? target.closest('.user-highlight') : null;
+      if (hlSpan) {
         const id = hlSpan.getAttribute('data-hl-id');
         this.deleteHighlight(id);
       }
