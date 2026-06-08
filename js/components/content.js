@@ -7,7 +7,7 @@ const ContentRenderer = {
   /** Render full chapter content */
   renderChapter(chapter) {
     const header = this.renderChapterHeader(chapter);
-    const sections = chapter.sections.map(s => this.renderSection(s)).join('');
+    const sections = chapter.sections.map(s => this.renderSection(s, chapter.id)).join('');
 
     return `
       ${header}
@@ -30,8 +30,8 @@ const ContentRenderer = {
   },
 
   /** Render a section (I, II, III...) */
-  renderSection(section) {
-    const subsections = section.subsections.map(sub => this.renderSubsection(sub)).join('');
+  renderSection(section, chapterId) {
+    const subsections = section.subsections.map(sub => this.renderSubsection(sub, chapterId, section.id)).join('');
 
     return `
       <div class="section" id="section-${section.id}">
@@ -45,8 +45,8 @@ const ContentRenderer = {
   },
 
   /** Render a subsection (1, 2, 3...) */
-  renderSubsection(sub) {
-    const parts = sub.parts.map(part => this.renderPart(part)).join('');
+  renderSubsection(sub, chapterId, sectionId) {
+    const parts = sub.parts.map(part => this.renderPart(part, chapterId, sectionId, sub.id)).join('');
 
     return `
       <div class="subsection" id="content-${sub.id}">
@@ -59,8 +59,11 @@ const ContentRenderer = {
     `;
   },
 
-  renderPart(part) {
-    const contentBlocks = part.content.map(block => this.renderContentBlock(block)).join('');
+  /** Render a part (a/, b/...) */
+  renderPart(part, chapterId, sectionId, subId) {
+    const contentBlocks = part.content.map((block, idx) => 
+      this.renderContentBlock(block, `${chapterId}-${sectionId}-${subId}-${part.id}-${idx}`)
+    ).join('');
     const hasHeading = part.label || part.title;
 
     return `
@@ -77,69 +80,69 @@ const ContentRenderer = {
   },
 
   /** Render a single content block based on its type */
-  renderContentBlock(block) {
+  renderContentBlock(block, path) {
     switch (block.type) {
       case 'label':
-        return this.renderLabel(block);
+        return this.renderLabel(block, path);
       case 'paragraph':
-        return this.renderParagraph(block);
+        return this.renderParagraph(block, path);
       case 'bullets':
-        return this.renderBullets(block);
+        return this.renderBullets(block, path);
       case 'sub-bullets':
-        return this.renderSubBullets(block);
+        return this.renderSubBullets(block, path);
       case 'highlight':
-        return this.renderHighlight(block);
+        return this.renderHighlight(block, path);
       case 'quote':
-        return this.renderQuote(block);
+        return this.renderQuote(block, path);
       case 'definition':
-        return this.renderDefinition(block);
+        return this.renderDefinition(block, path);
       case 'conclusion':
-        return this.renderConclusion(block);
+        return this.renderConclusion(block, path);
       case 'numbered-group':
-        return this.renderNumberedGroup(block);
+        return this.renderNumberedGroup(block, path);
       case 'key-point':
-        return this.renderKeyPoint(block);
+        return this.renderKeyPoint(block, path);
       default:
-        return `<p class="text-paragraph">${block.text || ''}</p>`;
+        return `<p class="text-paragraph" data-hl-path="${path}">${block.text || ''}</p>`;
     }
   },
 
   /** Render a label (e.g., "Tư tưởng:") */
-  renderLabel(block) {
-    return `<div class="content-block__label">${block.text}</div>`;
+  renderLabel(block, path) {
+    return `<div class="content-block__label" data-hl-path="${path}">${block.text}</div>`;
   },
 
   /** Render a paragraph */
-  renderParagraph(block) {
-    return `<p class="text-paragraph">${block.text}</p>`;
+  renderParagraph(block, path) {
+    return `<p class="text-paragraph" data-hl-path="${path}">${block.text}</p>`;
   },
 
   /** Render bullet list */
-  renderBullets(block) {
-    const items = block.items.map(item => `<li class="bullet-list__item">${item}</li>`).join('');
+  renderBullets(block, path) {
+    const items = block.items.map((item, idx) => `<li class="bullet-list__item" data-hl-path="${path}-${idx}">${item}</li>`).join('');
     return `<ul class="bullet-list">${items}</ul>`;
   },
 
   /** Render sub-bullet list (indented, hollow circles) */
-  renderSubBullets(block) {
-    const items = block.items.map(item => `<li class="bullet-list__item">${item}</li>`).join('');
+  renderSubBullets(block, path) {
+    const items = block.items.map((item, idx) => `<li class="bullet-list__item" data-hl-path="${path}-${idx}">${item}</li>`).join('');
     return `<ul class="bullet-list bullet-list--sub">${items}</ul>`;
   },
 
   /** Render highlight box */
-  renderHighlight(block) {
+  renderHighlight(block, path) {
     return `
-      <div class="highlight-box">
+      <div class="highlight-box" data-hl-path="${path}">
         <div class="highlight-box__content">${block.text}</div>
       </div>
     `;
   },
 
   /** Render quote block */
-  renderQuote(block) {
+  renderQuote(block, path) {
     const source = block.source ? `<div class="quote-block__source">— ${block.source}</div>` : '';
     return `
-      <div class="quote-block">
+      <div class="quote-block" data-hl-path="${path}">
         <div class="quote-block__content">${block.text}</div>
         ${source}
       </div>
@@ -147,25 +150,25 @@ const ContentRenderer = {
   },
 
   /** Render definition box (red border — important) */
-  renderDefinition(block) {
+  renderDefinition(block, path) {
     return `
-      <div class="definition-box">
+      <div class="definition-box" data-hl-path="${path}">
         <div class="definition-box__content">${block.text}</div>
       </div>
     `;
   },
 
   /** Render conclusion box (red border) */
-  renderConclusion(block) {
+  renderConclusion(block, path) {
     const title = block.title ? `<div class="content-block__label" style="font-size: 16px; margin-bottom: var(--sp-3); font-weight: 700; color: var(--color-secondary);">${block.title}</div>` : '';
     const bullets = block.items
-      ? block.items.map(item => `<li class="bullet-list__item">${item}</li>`).join('')
+      ? block.items.map((item, idx) => `<li class="bullet-list__item" data-hl-path="${path}-${idx}">${item}</li>`).join('')
       : '';
     const bulletList = bullets ? `<ul class="bullet-list">${bullets}</ul>` : '';
     const textContent = block.text ? `<div class="conclusion-box__content">${block.text}</div>` : '';
 
     return `
-      <div class="conclusion-box">
+      <div class="conclusion-box" data-hl-path="${path}">
         ${title}
         ${textContent}
         ${bulletList}
@@ -174,16 +177,16 @@ const ContentRenderer = {
   },
 
   /** Render numbered group with sub-bullets */
-  renderNumberedGroup(block) {
-    const items = block.items.map(item => {
+  renderNumberedGroup(block, path) {
+    const items = block.items.map((item, itemIdx) => {
       const bullets = item.bullets
-        ? item.bullets.map(b => `<li class="bullet-list__item">${b}</li>`).join('')
+        ? item.bullets.map((b, bulletIdx) => `<li class="bullet-list__item" data-hl-path="${path}-${itemIdx}-${bulletIdx}">${b}</li>`).join('')
         : '';
       const bulletList = bullets ? `<ul class="bullet-list bullet-list--sub">${bullets}</ul>` : '';
 
       return `
         <div class="content-block" style="margin-bottom: var(--sp-4);">
-          <div class="content-block__label" style="display: flex; gap: var(--sp-2); align-items: baseline;">
+          <div class="content-block__label" style="display: flex; gap: var(--sp-2); align-items: baseline;" data-hl-path="${path}-${itemIdx}-title">
             <span style="color: var(--color-primary); font-weight: 700; min-width: 20px;">${item.number}.</span>
             <span>${item.title}</span>
           </div>
@@ -196,9 +199,9 @@ const ContentRenderer = {
   },
 
   /** Render key point (with arrow) */
-  renderKeyPoint(block) {
+  renderKeyPoint(block, path) {
     return `
-      <div class="key-point">
+      <div class="key-point" data-hl-path="${path}">
         <span class="key-point__arrow">→</span>
         <span class="key-point__text">${block.text}</span>
       </div>

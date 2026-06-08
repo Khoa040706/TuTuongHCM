@@ -1175,6 +1175,190 @@ body {
    11. PRINT STYLES
    ============================================================ */
 
+
+/* ============================================================
+   12. NOTES & GHI CHÚ (HIGHLIGHTER & FREEHAND DRAWING)
+   ============================================================ */
+
+/* Container relative setup */
+#content-area {
+  position: relative;
+}
+
+/* Lớp Canvas vẽ đè */
+.drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; /* Nằm dưới header, nổi trên content */
+  pointer-events: none; /* Mặc định cho click đi qua */
+}
+
+body.mode-pen .drawing-canvas,
+body.mode-eraser .drawing-canvas {
+  pointer-events: auto; /* Cho phép vẽ/xóa */
+  cursor: crosshair;
+}
+
+/* Highlight style */
+.user-highlight {
+  border-radius: 2px;
+  padding: 1px 0;
+  box-shadow: 0 0 0 1px rgba(254, 240, 138, 0.2);
+  transition: background-color var(--transition-fast);
+}
+
+body.mode-eraser .user-highlight {
+  cursor: cell;
+}
+
+body.mode-eraser .user-highlight:hover {
+  background-color: rgba(239, 68, 68, 0.4) !important;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+/* Floating Toolbar */
+.floating-toolbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  transition: all var(--transition-base);
+}
+
+[data-theme="dark"] .floating-toolbar {
+  background: rgba(41, 37, 36, 0.85);
+}
+
+.floating-toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+.floating-toolbar__divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-strong);
+  margin: 0 var(--sp-1);
+}
+
+.floating-toolbar__btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.floating-toolbar__btn:hover {
+  background: var(--surface-hover);
+}
+
+.floating-toolbar__btn--active {
+  background: var(--color-primary);
+  color: white !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.floating-toolbar__btn[data-color]::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Color palettes button dot colors */
+.floating-toolbar__btn--red { color: #EF4444 !important; }
+.floating-toolbar__btn--yellow { color: #EAB308 !important; }
+.floating-toolbar__btn--green { color: #22C55E !important; }
+.floating-toolbar__btn--pink { color: #EC4899 !important; }
+
+/* Collapse state for toolbar */
+.floating-toolbar--collapsed {
+  transform: translate(-50%, 80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Toggle Toolbar Button */
+.toolbar-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 80px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  font-size: 18px;
+  transition: all var(--transition-base);
+}
+
+.toolbar-toggle-btn:hover {
+  background: var(--surface-hover);
+  transform: scale(1.05);
+}
+
+.toolbar-toggle-btn--active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .floating-toolbar {
+    bottom: 16px;
+    padding: var(--sp-1) var(--sp-2);
+  }
+  .floating-toolbar__btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .toolbar-toggle-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  /* Offset scroll top button on mobile when toolbar is visible */
+  .scroll-top--visible {
+    bottom: 80px !important;
+  }
+}
+
 @media print {
   .sidebar,
   .header,
