@@ -15,7 +15,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "StudyMaster — Tư Tưởng Hồ Chí Minh",
+  title: "StudyMaster",
   description: "StudyMaster — Ứng dụng học tập môn Tư tưởng Hồ Chí Minh. Tổng hợp kiến thức, ghi chép và ôn tập hiệu quả.",
   keywords: "Tư tưởng Hồ Chí Minh, học tập, ghi chép, StudyMaster",
   manifest: "/manifest.json",
