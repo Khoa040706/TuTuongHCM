@@ -831,7 +831,7 @@ export default function Page() {
     } else {
       showAlert({
         title: "Đăng nhập thất bại",
-        message: "Thông tin đăng nhập không chính xác! Thử lại hoặc dùng tài khoản admin (admin/admin)",
+        message: "Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng thử lại!",
         type: "warning"
       });
     }
