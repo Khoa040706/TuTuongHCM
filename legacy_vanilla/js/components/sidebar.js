@@ -21,6 +21,15 @@ const Sidebar = {
           </a>
         </div>
         <nav class="sidebar__nav" id="sidebar-nav">
+          <div class="sidebar__section-label">Công cụ ôn tập</div>
+          <ul class="nav-list" style="margin-bottom: var(--sp-4);">
+            <li class="nav-item">
+              <button class="nav-item__link" id="nav-btn-quiz" data-action="quiz-mode" style="font-weight: 700;">
+                <span class="nav-item__icon">📝</span>
+                <span>Bài kiểm tra trắc nghiệm</span>
+              </button>
+            </li>
+          </ul>
           <div class="sidebar__section-label">Nội dung môn học</div>
           <ul class="nav-list">
             ${navItems}
@@ -180,6 +189,18 @@ const Sidebar = {
 
       const action = link.getAttribute('data-action');
 
+      // Check if user is in middle of a quiz before navigating away
+      if ((action === 'navigate' || action === 'quiz-mode') && typeof QuizComponent !== 'undefined' && QuizComponent.isInProgress()) {
+        if (!confirm('Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn thoát? Kết quả chưa nộp sẽ bị mất.')) {
+          return;
+        }
+        // If they confirm, unmount the quiz first
+        QuizComponent.unmount();
+        if (typeof App !== 'undefined' && App.exitQuizMode) {
+          App.exitQuizMode(true); // silent exit
+        }
+      }
+
       if (action === 'toggle') {
         const chapterId = link.getAttribute('data-chapter');
         this.toggleGroup(chapterId);
@@ -197,6 +218,11 @@ const Sidebar = {
         }
 
         // Close sidebar on mobile
+        this.close();
+      } else if (action === 'quiz-mode') {
+        if (typeof App !== 'undefined') {
+          App.enterQuizMode();
+        }
         this.close();
       }
     });
@@ -218,6 +244,17 @@ const Sidebar = {
     if (logo) {
       logo.addEventListener('click', (e) => {
         e.preventDefault();
+        
+        if (typeof QuizComponent !== 'undefined' && QuizComponent.isInProgress()) {
+          if (!confirm('Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn thoát?')) {
+            return;
+          }
+          QuizComponent.unmount();
+          if (typeof App !== 'undefined' && App.exitQuizMode) {
+            App.exitQuizMode(true);
+          }
+        }
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }

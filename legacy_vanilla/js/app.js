@@ -6,10 +6,24 @@ const App = {
   /** All loaded chapters */
   chapters: [],
 
+  /** Firebase Firestore Instance */
+  db: null,
+
   /** Initialize the application */
   init() {
     // Register chapters
     this.chapters = [chuongMoDau, chuong1];
+
+    // Initialize Firebase
+    if (typeof enableFirebase !== 'undefined' && enableFirebase && firebaseConfig.apiKey) {
+      try {
+        firebase.initializeApp(firebaseConfig);
+        this.db = firebase.firestore();
+        console.log('Firebase initialized successfully!');
+      } catch (e) {
+        console.error('Firebase initialization failed:', e);
+      }
+    }
 
     // Render the app
     this.render();
@@ -96,6 +110,7 @@ const App = {
         <div class="content" id="content-area">
           ${contentHTML}
         </div>
+        <div class="content" id="quiz-area" style="display: none;"></div>
       </main>
       <button class="scroll-top" id="scroll-top" aria-label="Về đầu trang">↑</button>
     `;
@@ -148,6 +163,73 @@ const App = {
     });
 
     subsections.forEach(el => observer.observe(el));
+  },
+
+  /** Enter Quiz Mode */
+  enterQuizMode() {
+    const contentArea = document.getElementById('content-area');
+    const quizArea = document.getElementById('quiz-area');
+    
+    if (contentArea && quizArea) {
+      contentArea.style.display = 'none';
+      quizArea.style.display = 'block';
+      
+      // Update breadcrumb
+      const breadcrumbCurrent = document.querySelector('.header__breadcrumb-current');
+      if (breadcrumbCurrent) {
+        breadcrumbCurrent.textContent = 'Bài kiểm tra trắc nghiệm';
+      }
+      
+      // Clear active states in sidebar
+      document.querySelectorAll('.nav-item__link--active').forEach(el => {
+        el.classList.remove('nav-item__link--active');
+      });
+      
+      // Mark quiz nav item as active
+      const quizNavBtn = document.getElementById('nav-btn-quiz');
+      if (quizNavBtn) {
+        quizNavBtn.classList.add('nav-item__link--active');
+      }
+      
+      // Mount QuizComponent
+      if (typeof QuizComponent !== 'undefined') {
+        QuizComponent.mount(quizArea);
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  },
+
+  /** Exit Quiz Mode */
+  exitQuizMode(silent = false) {
+    const contentArea = document.getElementById('content-area');
+    const quizArea = document.getElementById('quiz-area');
+    
+    if (contentArea && quizArea) {
+      quizArea.style.display = 'none';
+      contentArea.style.display = 'block';
+      
+      // Update breadcrumb back to first chapter title
+      const breadcrumbCurrent = document.querySelector('.header__breadcrumb-current');
+      if (breadcrumbCurrent && this.chapters.length > 0) {
+        breadcrumbCurrent.textContent = this.chapters[0].title;
+      }
+      
+      // Clear active quiz nav item
+      const quizNavBtn = document.getElementById('nav-btn-quiz');
+      if (quizNavBtn) {
+        quizNavBtn.classList.remove('nav-item__link--active');
+      }
+      
+      // Restore sidebar active on first subsection
+      if (this.chapters.length > 0 && this.chapters[0].sections.length > 0 && this.chapters[0].sections[0].subsections.length > 0) {
+        Sidebar.setActive(this.chapters[0].sections[0].subsections[0].id);
+      }
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 };
 
