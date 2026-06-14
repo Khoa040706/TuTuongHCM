@@ -1670,14 +1670,13 @@ export default function Page() {
           <div className="w-full max-w-5xl space-y-8 py-10 z-30 relative">
             <div className="select-subject-header text-center">
               <span className="text-[10px] md:text-xs font-extrabold uppercase tracking-widest text-accent flex items-center justify-center gap-1.5 select-none mb-1">
-                <span className="cancer-zodiac-pulse text-base text-accent">♋</span>
                 Chào mừng, {currentUser} 🌟
               </span>
               <h1 className="text-2xl md:text-4xl font-extrabold font-playfair tracking-tight mt-1 uppercase tracking-wider text-stone-900">
                 Chọn môn học của bạn
               </h1>
               <p className="text-xs mt-2 max-w-md mx-auto font-sans leading-relaxed text-stone-600">
-                Cổng học thuật cung Cự Giải — Quản lý cá nhân hóa môn học đại cương và chuyên ngành.
+                Quản lý cá nhân hóa môn học đại cương và chuyên ngành.
               </p>
             </div>
 
