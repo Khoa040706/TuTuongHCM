@@ -89,6 +89,10 @@ function ChapterHeader({ title, subtitle, chapterId }) {
     const ctx = canvas.getContext("2d");
     let animationFrameId;
 
+    const accentColor = typeof window !== "undefined"
+      ? getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#d97706"
+      : "#d97706";
+
     // Resize canvas
     const resizeCanvas = () => {
       canvas.width = banner.offsetWidth;
@@ -118,7 +122,7 @@ function ChapterHeader({ title, subtitle, chapterId }) {
         this.vy = isBurst ? Math.sin(angle) * speed : randomRange(-0.2, 0.2);
         
         this.size = isBurst ? randomRange(1.2, 3) : randomRange(0.8, 2.2);
-        this.color = Math.random() > 0.4 ? "#fbbf24" : "#d97706"; // Gold and Amber
+        this.color = Math.random() > 0.4 ? accentColor : "#ffffff";
         this.alpha = isBurst ? 1 : randomRange(0.15, 0.65);
         this.decay = isBurst ? randomRange(0.015, 0.035) : 0;
       }

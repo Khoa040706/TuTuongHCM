@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BookOpen, Award, ChevronDown, ChevronRight, Menu, X, Settings, MousePointer, Edit2, Highlighter, Eraser, Trash2 } from "lucide-react";
+import { BookOpen, Award, ChevronDown, ChevronRight, Menu, X, Settings, MousePointer, Edit2, Highlighter, Eraser, Trash2, Lock } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -27,7 +27,8 @@ export default function Sidebar({
   activeColor,
   setActiveColor,
   onClearAll,
-  onBackToHero
+  onBackToHero,
+  hasQuiz = false
 }) {
   const [expandedGroups, setExpandedGroups] = useState({});
   const [mounted, setMounted] = useState(false);
@@ -350,15 +351,21 @@ export default function Sidebar({
             <ul className="space-y-1">
               <li>
                 <button
+                  disabled={!hasQuiz}
                   onClick={handleQuizClick}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                    isQuizMode
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                    !hasQuiz
+                      ? "opacity-50 cursor-not-allowed text-stone-400 bg-stone-100/30"
+                      : isQuizMode
                       ? "sidebar-active-item bg-accent text-white shadow-md shadow-accent/25"
-                      : "text-stone-700 hover:bg-stone-150 hover:text-stone-900"
+                      : "text-stone-700 hover:bg-stone-150 hover:text-stone-900 cursor-pointer"
                   }`}
                 >
-                  <Award size={18} />
-                  <span>Bài kiểm tra trắc nghiệm</span>
+                  <div className="flex items-center gap-3">
+                    <Award size={18} />
+                    <span>Bài kiểm tra trắc nghiệm</span>
+                  </div>
+                  {!hasQuiz && <Lock size={12} className="text-stone-400" />}
                 </button>
               </li>
             </ul>

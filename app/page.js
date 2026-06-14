@@ -179,6 +179,23 @@ export default function Page() {
   const [showAddSubjectModal, setShowAddSubjectModal] = useState(false);
   const [customNotes, setCustomNotes] = useState({});
 
+  // Inject active subject color theme into document root CSS variables
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const currentSub = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
+    if (currentSub && currentSub.themeColors) {
+      const colors = currentSub.themeColors;
+      document.documentElement.style.setProperty("--accent", colors.accent);
+      document.documentElement.style.setProperty("--secondary", colors.secondary);
+      document.documentElement.style.setProperty("--accent-rgb", colors.accentRgb);
+    } else {
+      // Default: Amber Gold theme (Tư tưởng HCM)
+      document.documentElement.style.setProperty("--accent", "#d97706");
+      document.documentElement.style.setProperty("--secondary", "#c2410c");
+      document.documentElement.style.setProperty("--accent-rgb", "217, 119, 6");
+    }
+  }, [selectedSubjectId, allSubjects]);
+
   // Add Subject Form inputs
   const [newSubTitle, setNewSubTitle] = useState("");
   const [newSubDesc, setNewSubDesc] = useState("");
@@ -256,10 +273,23 @@ export default function Page() {
 
   // Synchronize custom subjects into allSubjects list
   useEffect(() => {
+    const hexToRgb = (hex) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result
+        ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+        : "13, 148, 136";
+    };
+
     const merged = { ...subjects };
     customSubjects.forEach(subj => {
+      const rgb = hexToRgb(subj.themeColor || "#0d9488");
       merged[subj.id] = {
         ...subj,
+        themeColors: {
+          accent: subj.themeColor || "#0d9488",
+          secondary: subj.themeColor || "#0d9488",
+          accentRgb: rgb
+        },
         chapters: subj.chapters || [
           {
             id: `${subj.id}-ch1`,
@@ -1682,13 +1712,13 @@ export default function Page() {
 
             <div className="bento-grid-subject w-full">
               {Object.values(allSubjects).map((subj) => {
-                const isActive = subj.id === "tu-tuong-hcm" || subj.isCustom;
+                const isActive = subj.isActive !== false;
                 const isHCM = subj.id === "tu-tuong-hcm";
                 const cardColClass = isHCM ? "col-span-1 md:col-span-2" : "col-span-1";
                 const highScore = getSubjectHighScore(subj);
 
                 if (!isActive) {
-                  // Locked card (Lịch sử Đảng)
+                  // Locked card
                   return (
                     <div
                       key={subj.id}
@@ -1699,7 +1729,7 @@ export default function Page() {
                         <div>
                           <div className="flex justify-between items-start mb-4">
                             <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-stone-100 text-stone-500">
-                              ☭
+                              {subj.icon || "🔒"}
                             </span>
                             <span className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full border flex items-center gap-1 bg-stone-50 text-stone-600 border-stone-200">
                               <Lock size={9} />
@@ -1729,14 +1759,19 @@ export default function Page() {
                     onMouseMove={onCardMouseMove}
                     onMouseLeave={onCardMouseLeave}
                     className={`bento-subject-card group ${cardColClass} bg-white border border-stone-200 hover:border-accent text-stone-900 shadow-sm`}
+                    style={{
+                      '--accent': subj.themeColors?.accent || '#d97706',
+                      '--accent-rgb': subj.themeColors?.accentRgb || '217, 119, 6',
+                      '--secondary': subj.themeColors?.secondary || '#c2410c'
+                    }}
                   >
                     <div className="card-glow-reflection" />
                     
                     <div className="card-content-wrapper">
                       <div>
                         <div className="flex justify-between items-start mb-4 relative z-10">
-                          <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-accent/10 border border-accent/20" style={{ color: subj.themeColor || '#d97706' }}>
-                            {subj.isCustom ? "📘" : "📖"}
+                          <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-accent/10 border border-accent/20" style={{ color: subj.themeColors?.accent || '#d97706' }}>
+                            {subj.icon || (subj.isCustom ? "📘" : "📖")}
                           </span>
                           <div className="flex items-center gap-1.5">
                             {subj.isCustom && (
@@ -1997,6 +2032,7 @@ export default function Page() {
               setActiveColor={setActiveColor}
               onClearAll={handleClearAll}
               onBackToHero={() => setShowHero(true)}
+              hasQuiz={Object.keys(questionsMap).length > 0}
             />
 
             {/* Main Content Area */}
