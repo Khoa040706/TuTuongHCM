@@ -1,0 +1,5 @@
+- `[x]` Step 1: Thêm kiểu dáng biểu ngữ tràn viền chương `.chapter-banner-container` và `.chapter-banner-canvas` trong `app/globals.css`
+- `[x]` Step 2: Cài đặt component `ChapterHeader` (Canvas bụi vàng tương tác, Galaxy Swirl & Click Burst) trong `components/ContentRenderer.js`
+- `[x]` Step 3: Tích hợp hoạt cảnh cuộn GSAP (scale & stagger reveal) cho `ChapterHeader` trong `components/ContentRenderer.js`
+- `[x]` Step 4: Cấu trúc lại cách gọi tiêu đề chương học trong `ContentRenderer` để sử dụng `ChapterHeader` mới
+- `[x]` Step 5: Chạy biên dịch `npm run build` để kiểm tra lỗi và xác nhận hoạt động ổn định

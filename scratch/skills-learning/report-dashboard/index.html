@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Báo cáo Học tập UI/UX & GSAP - StudyMaster Academy</title>
+  
+  <!-- Google Fonts: Space Grotesk & Inter Tight -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- GSAP & Plugins from CDN (Chất lượng cao, phản hồi nhanh) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="bg-dark text-light overflow-x-hidden">
+
+  <!-- HỆ THỐNG BACKGROUND CHUYÊN NGHIỆP (Grid pattern & Ambient Orbs) -->
+  <div class="grid-overlay"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+    
+    <!-- HEADER (Cinematic Entrance) -->
+    <header class="header">
+      <div class="brand-badge-wrapper">
+        <span class="brand-badge">♋ STUDYMASTER ACADEMY</span>
+      </div>
+      <div class="title-mask">
+        <h1 class="main-title">BÁO CÁO NGHIÊN CỨU <br><span class="text-accent">UI/UX & GSAP PRO</span></h1>
+      </div>
+      <p class="subtitle">Thiết lập tiêu chuẩn thẩm mỹ cao cấp (Rich Aesthetics) và chuyển động vật lý mượt mà cho hệ thống học tập thế hệ mới.</p>
+    </header>
+
+    <!-- BENTO GRID SYSTEM (Variance: 8, Density: 4, Dynamic Layout) -->
+    <main class="bento-grid">
+      
+      <!-- Card 1: Bento Hero (Chiếm 3 cột rộng lớn) -->
+      <section class="bento-card col-span-3 row-span-1 hero-card" data-speed="0.05">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">01 / CONCEPT</span>
+          <h2>Triết Lý Thiết Kế Anti-Slop</h2>
+          <p>Mã nguồn giao diện do AI tạo ra thường mắc phải lỗi rập khuôn (slop) như: lạm dụng gradient tím-xanh nhân tạo, các khối card đối xứng buồn tẻ, nút bấm thiếu độ tương phản và khoảng trắng ngột ngạt. Báo cáo này định hình lại toàn bộ tư duy thiết kế, hướng tới sự bất đối xứng nghệ thuật, phối màu có chủ đích và tối ưu hóa trải nghiệm người dùng thực tế.</p>
+        </div>
+      </section>
+
+      <!-- Card 2: 3 Dials của Taste Skill (Dọc 2 hàng) -->
+      <section class="bento-card col-span-1 row-span-2 dial-card" data-speed="-0.03">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">02 / MEASUREMENTS</span>
+          <h2>Hệ Thống 3 Dials</h2>
+          <p class="text-muted">Taste Skill định vị giao diện bằng cách tinh chỉnh 3 tham số cốt lõi từ 1 đến 10:</p>
+          
+          <div class="dial-container">
+            <div class="dial-item">
+              <div class="dial-header">
+                <span class="dial-label">Variance (Độ biến thiên layout)</span>
+                <span class="dial-value">8/10</span>
+              </div>
+              <div class="dial-bar"><div class="dial-fill" style="width: 80%;"></div></div>
+            </div>
+            
+            <div class="dial-item">
+              <div class="dial-header">
+                <span class="dial-label">Motion (Độ sâu chuyển động)</span>
+                <span class="dial-value">6/10</span>
+              </div>
+              <div class="dial-bar"><div class="dial-fill" style="width: 60%;"></div></div>
+            </div>
+            
+            <div class="dial-item">
+              <div class="dial-header">
+                <span class="dial-label">Density (Mật độ thông tin)</span>
+                <span class="dial-value">4/10</span>
+              </div>
+              <div class="dial-bar"><div class="dial-fill" style="width: 40%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 3: Color & Typography -->
+      <section class="bento-card col-span-2 row-span-1 font-color-card" data-speed="0.02">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">03 / RULES</span>
+          <h2>Quy Chuẩn Màu Sắc & Kiểu Chữ</h2>
+          <div class="split-content">
+            <div>
+              <h3>Màu Sắc Nhất Quán</h3>
+              <p class="text-muted">Áp dụng nguyên lý khóa màu (Color Lock). Chọn tông màu hổ phách ấm áp làm màu nhấn duy nhất để đồng bộ với StudyMaster, loại bỏ hoàn toàn các màu sắc hỗn loạn.</p>
+            </div>
+            <div>
+              <h3>Bố Cục Typography</h3>
+              <p class="text-muted">Sử dụng font sans-serif hình học hiện đại <code>Space Grotesk</code> cho tiêu đề và <code>Inter Tight</code> cho nội dung để đảm bảo giao diện sắc nét và cực kỳ dễ đọc.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 4: Anti-Patterns Checklist -->
+      <section class="bento-card col-span-2 row-span-1 checklist-card" data-speed="0.04">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">04 / DISCIPLINE</span>
+          <h2>Các Lỗi Cần Tránh Khi Lập Trình UI</h2>
+          <ul class="checklist">
+            <li>
+              <span class="check-icon">✕</span>
+              <span><strong>AI Gradient Slop</strong>: Cấm sử dụng các dải màu tím-xanh phát sáng vô nghĩa.</span>
+            </li>
+            <li>
+              <span class="check-icon">✕</span>
+              <span><strong>Bọc Dòng CTA</strong>: Nút CTA ở desktop tuyệt đối không được tự động bọc chữ xuống 2 dòng.</span>
+            </li>
+            <li>
+              <span class="check-icon">✕</span>
+              <span><strong>Logo Wordmark Trơn</strong>: Khi làm social proof, phải dùng SVG chất lượng thay vì viết chữ thường.</span>
+            </li>
+            <li>
+              <span class="check-icon">✕</span>
+              <span><strong>Lặp Eyebrow</strong>: Giới hạn tối đa 1 nhãn uppercase nhỏ cho mỗi 3 section.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Card 5: GSAP & React -->
+      <section class="bento-card col-span-2 row-span-1 gsap-card" data-speed="-0.02">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">05 / ANIMATION</span>
+          <h2>Chuyển Động GSAP Trong React</h2>
+          <p>Tận dụng tối đa hook <code>useGSAP()</code> từ thư viện <code>@gsap/react</code> để tự động dọn dẹp các chuyển động khi unmount, ngăn ngừa rò rỉ bộ nhớ. Đảm bảo toàn bộ animation hoạt động mượt mà với <strong>Spring Physics</strong> và tôn trọng tùy chọn giảm chuyển động của người dùng (prefers-reduced-motion).</p>
+        </div>
+      </section>
+
+      <!-- Card 6: Sticky-Stack & Horizontal Scroll -->
+      <section class="bento-card col-span-1 row-span-1 scroll-card" data-speed="0.03">
+        <div class="card-glow"></div>
+        <div class="card-border-glow"></div>
+        <div class="card-content">
+          <span class="card-tag">06 / SCROLL</span>
+          <h2>Sticky-Stack & Pan</h2>
+          <div class="scroll-patterns">
+            <div class="pattern-item">
+              <strong>1. Sticky-Stack</strong>
+              <p class="text-muted">Các slide đè lên nhau khi cuộn trang bằng ghim pin ScrollTrigger.</p>
+            </div>
+            <div class="pattern-item">
+              <strong>2. Horizontal-Pan</strong>
+              <p class="text-muted">Chuyển hướng cuộn dọc thành cuộn ngang mượt mà.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- LIVE INTERACTIVE PLAYGROUND (Hiển thị vật lý tương tác GSAP) -->
+    <section class="demo-section">
+      <div class="demo-header">
+        <span class="card-tag">07 / PLAYGROUND</span>
+        <h2>Trải Nghiệm Tương Tác Vật Lý</h2>
+        <p class="text-muted">Bấm các phím điều khiển bên dưới để kiểm tra tính năng chuyển động phức tạp chạy bằng GSAP Timeline.</p>
+      </div>
+
+      <div class="demo-playground">
+        <div class="canvas-3d-glow"></div>
+        <!-- Hộp chuyển động được thiết kế như một lõi năng lượng phát sáng -->
+        <div class="demo-box" id="animate-box">
+          <div class="box-core">♋</div>
+          <div class="box-ring"></div>
+        </div>
+        
+        <div class="demo-controls">
+          <button class="btn btn-primary" id="play-btn">Kích hoạt Core Timeline</button>
+          <button class="btn btn-secondary" id="stagger-btn">Xáo Trộn Thẻ Card</button>
+          <button class="btn btn-outline" id="reset-btn">Đặt Lại Trạng Thái</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-line"></div>
+      <p>Báo cáo được dựng bằng HTML/CSS/JS thuần và GSAP v3 Engine.</p>
+      <p class="text-muted">© 2026 StudyMaster Academy. Thiết kế bởi Antigravity.</p>
+    </footer>
+  </div>
+
+</body>
+</html>

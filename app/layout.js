@@ -1,5 +1,4 @@
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Playfair_Display, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -8,9 +7,10 @@ const playfair = Playfair_Display({
   display: "swap"
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const beVietnam = Be_Vietnam_Pro({
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["vietnamese", "latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-be-vietnam",
   display: "swap"
 });
 
@@ -30,7 +30,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#f59e0b",
+  themeColor: "#d97706",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -42,12 +42,10 @@ export default function RootLayout({ children }) {
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`${playfair.variable} ${plusJakarta.variable} h-full antialiased`}
+      className={`${playfair.variable} ${beVietnam.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
-        </ThemeProvider>
+      <body className="min-h-full bg-[#faf8f4] text-[#2c2a26] font-sans">
+        {children}
       </body>
     </html>
   );

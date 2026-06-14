@@ -1,0 +1,576 @@
+/* ==========================================================================
+   PREMIUM DESIGN SYSTEM: StudyMaster Learning Dashboard
+   Aesthetic: Awwwards-grade Dark Tech, High-end Glassmorphism, Bento Grid
+   ========================================================================== */
+
+:root {
+  --bg-color: #050505;
+  --card-bg: rgba(13, 12, 10, 0.45);
+  --card-bg-hover: rgba(22, 20, 17, 0.75);
+  --border-color: rgba(255, 255, 255, 0.04);
+  --border-color-hover: rgba(245, 158, 11, 0.45);
+  --text-primary: #ffffff;
+  --text-secondary: #8e8d89;
+  --accent-color: #f59e0b; /* Amber Gold */
+  --accent-glow: rgba(245, 158, 11, 0.25);
+  --font-sans: 'Inter Tight', sans-serif;
+  --font-mono: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grid Overlay Background (Tạo chiều sâu không gian) */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Glowing Ambient Orbs (Quầng sáng chuyển động nền) */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.16;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.orb-1 {
+  top: -15%;
+  left: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-color) 0%, rgba(0,0,0,0) 70%);
+}
+
+.orb-2 {
+  top: 40%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #0d9488 0%, rgba(0,0,0,0) 70%);
+}
+
+.orb-3 {
+  bottom: -10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #ec4899 0%, rgba(0,0,0,0) 70%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+
+/* HEADER STYLE (Cinematic Layout) */
+.header {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand-badge-wrapper {
+  overflow: hidden;
+  padding: 2px;
+}
+
+.brand-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--accent-color);
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  display: inline-block;
+}
+
+.title-mask {
+  overflow: hidden;
+}
+
+.main-title {
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-family: var(--font-mono);
+}
+
+.text-accent {
+  color: var(--accent-color);
+  background: linear-gradient(to right, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 60ch;
+  line-height: 1.7;
+}
+
+/* BENTO GRID SYSTEM (Variance: 8) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(240px, auto);
+  gap: 1.5rem;
+}
+
+.col-span-3 { grid-column: span 3; }
+.col-span-2 { grid-column: span 2; }
+.col-span-1 { grid-column: span 1; }
+.row-span-2 { grid-row: span 2; }
+.row-span-1 { grid-row: span 1; }
+
+.bento-card {
+  position: relative;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: 
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1), 
+    border-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* Hiệu ứng viền phát sáng 3D khi Hover */
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  padding: 1.5px; /* Chiều rộng viền sáng */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent, rgba(245, 158, 11, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--border-color-hover);
+  background-color: var(--card-bg-hover);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.6), 
+    0 0 25px var(--accent-glow);
+}
+
+.bento-card:hover::before {
+  background: linear-gradient(135deg, var(--accent-color), transparent, #0d9488);
+}
+
+/* Card Glow Reflection Layer */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(350px circle at 50% 50%, rgba(245, 158, 11, 0), transparent 80%);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.bento-card h2 {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.bento-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Layout details */
+.hero-card h2 {
+  font-size: 2rem;
+}
+
+.split-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.split-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Dials component styling */
+.dial-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.dial-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dial-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.dial-bar {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.dial-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color) 0%, #d97706 100%);
+  border-radius: 100px;
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
+.dial-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* Anti-patterns Checklist */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.checklist li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.check-icon {
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 0.1rem;
+}
+
+.checklist strong {
+  color: var(--text-primary);
+}
+
+/* Scroll patterns styling */
+.scroll-patterns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: auto;
+}
+
+.pattern-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-left: 2px solid var(--accent-color);
+  padding-left: 1rem;
+}
+
+.pattern-item strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Interactive Playground Section */
+.demo-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 32px;
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent, rgba(245,158,11,0.15));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.demo-playground {
+  min-height: 320px;
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 1px dashed rgba(245, 158, 11, 0.15);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Quả cầu năng lượng tương tác */
+.demo-box {
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  background: rgba(13, 12, 10, 0.8);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.8),
+    inset 0 0 15px rgba(245, 158, 11, 0.15);
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+}
+
+.box-core {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  font-weight: 850;
+  text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+  z-index: 2;
+}
+
+.box-ring {
+  position: absolute;
+  inset: -10px;
+  border: 1.5px dashed var(--accent-color);
+  border-radius: 50%;
+  opacity: 0.35;
+  animation: spin-slow 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.canvas-3d-glow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(0,0,0,0) 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.demo-controls {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* PREMIUM BUTTONS */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #050505;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.btn-outline:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* Footer style */
+.footer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 50%, transparent);
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .col-span-3 { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .col-span-3, .col-span-2, .col-span-1 { grid-column: span 1; }
+  .row-span-2 { grid-row: span 1; }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .split-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .demo-section {
+    padding: 2.5rem 1.8rem;
+  }
+}

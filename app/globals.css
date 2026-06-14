@@ -1,101 +1,99 @@
 @import "tailwindcss";
 
+/* Force class-based dark mode (NOT media query).
+   Since we always remove the .dark class, no dark: classes will ever apply.
+   This fixes the Tailwind v4 default behavior of using prefers-color-scheme. */
 @custom-variant dark (&:where(.dark, .dark *));
+
 
 @theme {
   --font-playfair: var(--font-playfair), serif;
-  --font-sans: var(--font-plus-jakarta), sans-serif;
+  --font-sans: var(--font-be-vietnam), sans-serif;
   
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-support: var(--support);
+
+  --color-stone-50: #faf8f4;
+  --color-stone-100: #faf9f6;
+  --color-stone-150: #f5f2eb;
+  --color-stone-200: #eae6db;
+  --color-stone-250: #e3decb;
+  --color-stone-300: #d9d3c5;
+  --color-stone-400: #a89f8c;
+  --color-stone-500: #8c8370;
+  --color-stone-600: #6e6a5e;
+  --color-stone-700: #57544e;
+  --color-stone-800: #3b3934;
+  --color-stone-850: #2c2a26;
+  --color-stone-900: #1e1d1a;
+  --color-stone-950: #faf8f4;
 }
 
-:root, .light {
-  --primary: #1e1d1a; /* Dark Charcoal - Primary accent for Cream theme */
-  --secondary: #575653; /* Softer Charcoal */
-  --accent: #d97706; /* Favorable Amber Gold for 2006 (Mệnh Thổ) */
-  --support: #7d7c78; /* Muted Charcoal */
+:root {
+  --primary: #2c2a26; /* Dark Charcoal Earth */
+  --secondary: #c2410c; /* Terracotta Sun */
+  --accent: #d97706; /* Amber Gold (Mệnh Thổ) */
+  --accent-color: var(--accent);
+  --support: #6e6a5e; /* Clay Ochre */
   
-  --bg: #fcfbf9; /* Warm Cream background from color.png */
-  --surface: #ffffff;
-  --border: #e6e4df; /* Soft warm gray border */
-  --text-primary: #1e1d1a;
-  --text-secondary: #575653;
+  --bg: #faf8f4; /* Silk Ivory (Nền lụa ngà) */
+  --surface: #ffffff; /* Sand Alabaster (Thẻ trắng ngọc) */
+  --border: #eae6db; /* Sand border */
+  --text-primary: #2c2a26;
+  --text-secondary: #6e6a5e;
   
-  --surface-hover: #f7f6f1;
-  --border-strong: #d0ceca;
+  --surface-hover: #faf9f6;
+  --border-strong: #d9d3c5;
   
-  --highlight-bg: rgba(30, 29, 26, 0.06);
-  --highlight-border: #1e1d1a;
+  --highlight-bg: rgba(217, 119, 6, 0.08); /* Amber Gold glow */
+  --highlight-border: var(--accent);
   
-  --definition-bg: rgba(30, 29, 26, 0.02);
-  --definition-border: rgba(30, 29, 26, 0.18);
+  --definition-bg: rgba(255, 255, 255, 0.98);
+  --definition-border: #eae6db;
   
-  --info-bg: rgba(30, 29, 26, 0.04);
-  --info-border: #1e1d1a;
-}
-
-.dark {
-  --primary: #fcfbf9; /* Warm Cream - Primary accent for Dark theme */
-  --secondary: #dcdbda; /* Softer Cream */
-  --accent: #f59e0b; /* Glowing Amber Gold for 2006 (Mệnh Thổ) */
-  --support: #8a8985;
+  --info-bg: rgba(217, 119, 6, 0.04);
+  --info-border: var(--accent);
   
-  --bg: #1e1d1a; /* Dark Charcoal background from color.png */
-  --surface: #181714;
-  --border: #33322f;
-  --text-primary: #fcfbf9;
-  --text-secondary: #dcdbda;
-  
-  --surface-hover: #292824;
-  --border-strong: #4a4844;
-  
-  --highlight-bg: rgba(252, 251, 249, 0.08);
-  --highlight-border: #fcfbf9;
-  
-  --definition-bg: rgba(252, 251, 249, 0.03);
-  --definition-border: rgba(252, 251, 249, 0.25);
-  
-  --info-bg: rgba(252, 251, 249, 0.06);
-  --info-border: #fcfbf9;
+  --glow-color: rgba(217, 119, 6, 0.18);
+  --glow-color-strong: rgba(217, 119, 6, 0.35);
 }
 
 /* Base custom font rules & Scrollbar styling */
 html {
-  scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: var(--font-plus-jakarta), sans-serif;
-  transition: background-color 300ms ease, color 300ms ease;
+  font-family: var(--font-be-vietnam), sans-serif;
   overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 6px;
+  border: 3px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+  background: var(--support);
 }
 
 /* --- Scroll-driven reveal animations --- */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1), transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
@@ -104,29 +102,84 @@ body {
   transform: translateY(0);
 }
 
+/* --- Water ripple effect click --- */
+.water-ripple-effect {
+  position: fixed;
+  border: 1.5px solid var(--accent);
+  background: rgba(217, 119, 6, 0.04);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 1;
+  z-index: 9999;
+  animation: water-ripple 700ms cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes water-ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  100% {
+    width: 140px;
+    height: 140px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* --- Sparkle Bullet List upgrade --- */
+ul.bullet-list {
+  list-style: none !important;
+  padding-left: 0.5rem !important;
+}
+ul.bullet-list li {
+  position: relative;
+  padding-left: 1.75rem !important;
+  list-style-type: none !important;
+}
+ul.bullet-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.15rem;
+  color: var(--accent);
+  font-size: 0.85em;
+  transition: transform 400ms ease;
+}
+ul.bullet-list li:hover::before {
+  transform: rotate(45deg) scale(1.2);
+}
+
+ul.bullet-list.bullet-list--sub {
+  padding-left: 1.5rem !important;
+}
+ul.bullet-list.bullet-list--sub li::before {
+  content: "•";
+  color: var(--support);
+  font-size: 1.1em;
+}
+
 /* --- High-end Glassmorphism elements --- */
 .hero-glass-card {
   backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-}
-
-.light .hero-glass-card {
-  background: rgba(28, 25, 23, 0.02);
-  border: 1px solid rgba(28, 25, 23, 0.06);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 .definition-box {
-  border: 1px solid var(--definition-border);
-  background: var(--definition-bg);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(217, 119, 6, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
   backdrop-filter: blur(8px);
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 1.75rem;
   border-radius: 16px;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0;
   position: relative;
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .definition-box::before {
@@ -134,38 +187,40 @@ body {
   position: absolute;
   top: -12px;
   left: 1.25rem;
-  padding: 2px 8px;
-  background: var(--secondary);
-  color: #ffffff;
-  font-size: 11px;
+  padding: 2px 10px;
+  background: var(--primary);
+  color: var(--bg);
+  font-size: 10px;
   font-weight: 700;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .definition-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(185, 28, 28, 0.08);
-  border-color: rgba(185, 28, 28, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 35px rgba(217, 119, 6, 0.06), 0 2px 5px rgba(0, 0, 0, 0.02);
+  border-color: var(--accent);
 }
 
 .definition-box__content {
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.95;
   color: var(--text-primary);
   font-weight: 500;
 }
 
 .conclusion-box {
-  border: 1px solid var(--definition-border);
-  background: var(--definition-bg);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--secondary);
+  background: var(--surface);
   backdrop-filter: blur(8px);
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 1.75rem;
   border-radius: 16px;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0;
   position: relative;
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(194, 65, 12, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .conclusion-box::before {
@@ -173,51 +228,55 @@ body {
   position: absolute;
   top: -12px;
   left: 1.25rem;
-  padding: 2px 8px;
+  padding: 2px 10px;
   background: var(--secondary);
   color: #ffffff;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 8px rgba(194, 65, 12, 0.15);
 }
 
 .conclusion-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(185, 28, 28, 0.08);
-  border-color: rgba(185, 28, 28, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 35px rgba(194, 65, 12, 0.06), 0 2px 5px rgba(0, 0, 0, 0.02);
+  border-color: var(--secondary);
 }
 
 .highlight-box {
   border-left: 4px solid var(--highlight-border);
   background: var(--highlight-bg);
-  padding: 1rem 1.25rem;
+  padding: 1.15rem 1.4rem;
   border-radius: 0 16px 16px 0;
-  margin: 1.25rem 0;
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 1.5rem 0;
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.02);
 }
 
 .highlight-box:hover {
-  transform: translateX(3px);
-  background: rgba(202, 138, 4, 0.15);
+  transform: translateX(4px);
+  background: rgba(217, 119, 6, 0.13);
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.04);
 }
 
 .quote-block {
   border-left: 4px solid var(--border);
   background: var(--surface-hover);
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 0 16px 16px 0;
-  margin: 1.25rem 0;
+  margin: 1.5rem 0;
   font-style: italic;
-  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(4px);
+  position: relative;
 }
 
 .quote-block:hover {
-  transform: translateX(3px);
-  border-left-color: var(--primary);
+  transform: translateX(4px);
+  border-left-color: var(--accent);
+  background: var(--border);
 }
 
 /* Typing Cursor blink */
@@ -238,13 +297,13 @@ body {
 
 /* Animations helper */
 .animate-in {
-  animation: fadeIn 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -253,17 +312,8 @@ body {
 }
 
 /* --- Cancer (Cung Cự Giải) Cosmic & minimal Custom Styling --- */
-:root, .light {
-  --glow-color: rgba(217, 119, 6, 0.2);
-  --glow-color-strong: rgba(217, 119, 6, 0.4);
-}
-.dark {
-  --glow-color: rgba(245, 158, 11, 0.25);
-  --glow-color-strong: rgba(245, 158, 11, 0.45);
-}
-
 .cancer-zodiac-pulse {
-  animation: pulse-zodiac 3s ease-in-out infinite;
+  animation: pulse-zodiac 4s ease-in-out infinite;
 }
 
 @keyframes pulse-zodiac {
@@ -426,9 +476,6 @@ body {
   pointer-events: none;
 }
 
-.dark .blur-active {
-  filter: blur(12px) brightness(0.5);
-}
 
 .auth-overlay-container {
   transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -464,6 +511,393 @@ body {
 }
 .text-static-accent {
   color: #d97706 !important;
+}
+
+/* ==========================================================================
+   BENTO GRID & DYNAMIC UI UPGRADES (StudyMaster Premium Upgrade)
+   ========================================================================== */
+
+/* Lớp phủ nền đen tuyệt đối cho Storytelling Lựa chọn B */
+.intro-black-bg {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.intro-black-bg .header, .intro-black-bg .main-title {
+  color: #ffffff !important;
+}
+
+/* Hệ lưới Bento Grid */
+.bento-grid-subject {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .bento-grid-subject {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bento-subject-card {
+  position: relative;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 2.2rem;
+  transition: 
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1), 
+    border-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.bento-subject-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent, rgba(245, 158, 11, 0.15));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 450ms ease;
+}
+
+.bento-subject-card:hover {
+  transform: translateY(-5px) scale(1.012);
+  border-color: var(--accent);
+  background-color: var(--surface-hover);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.25), 
+    0 0 20px var(--glow-color);
+}
+
+.bento-subject-card:hover::before {
+  background: linear-gradient(135deg, var(--accent), transparent, #0d9488);
+}
+
+.bento-subject-card .card-glow-reflection {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(300px circle at 50% 50%, rgba(245, 158, 11, 0), transparent 80%);
+}
+
+.bento-subject-card .card-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Highlight Indicator cho Sidebar */
+.sidebar-indicator {
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 24px;
+  background-color: var(--accent);
+  border-radius: 0 4px 4px 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Đóng mở Sidebar Subsections mượt */
+.sidebar-sub-wrapper {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+}
+
+/* --- Cinematic CSS 3D Utility Classes --- */
+.perspective-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 3D Book Layout */
+.book-wrap {
+  width: 100%;
+  max-width: 800px;
+  height: 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.book-3d {
+  width: 640px;
+  height: 480px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(15deg) rotateY(-10deg);
+  will-change: transform;
+}
+
+/* Front Cover (Hinges at left: 50%) */
+.book-cover-3d {
+  position: absolute;
+  width: 320px;
+  height: 480px;
+  left: 50%;
+  top: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  z-index: 10;
+  will-change: transform;
+}
+
+/* Cover front and back sides */
+.book-cover-front,
+.book-cover-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px 18px 18px 6px;
+}
+
+.book-cover-front {
+  background: #2c2a26;
+  border: 1px solid #3d3a35;
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+
+.book-cover-back {
+  background: #faf8f4;
+  border: 1px solid #eae6db;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Inside Pages */
+.book-page-right {
+  position: absolute;
+  width: 312px;
+  height: 464px;
+  left: 50%;
+  top: 8px;
+  background: #faf8f4;
+  border: 1px solid #eae6db;
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.06);
+  z-index: 5;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+
+/* Spine */
+.book-spine-3d {
+  position: absolute;
+  width: 20px;
+  height: 480px;
+  left: 50%;
+  top: 0;
+  background: #1e1d1a;
+  transform: translateX(-50%) rotateY(90deg);
+  transform-style: preserve-3d;
+  z-index: 8;
+}
+
+/* Page Stack Effect (Subtle pages underneath) */
+.book-page-under {
+  position: absolute;
+  width: 312px;
+  height: 464px;
+  left: 50%;
+  top: 8px;
+  background: #faf8f4;
+  border: 1px solid #eae6db;
+  border-radius: 0 12px 12px 0;
+  z-index: 4;
+}
+.book-page-under-2 {
+  position: absolute;
+  width: 312px;
+  height: 464px;
+  left: 50%;
+  top: 8px;
+  background: #eae6db;
+  border: 1px solid #d4cfc3;
+  border-radius: 0 12px 12px 0;
+  z-index: 3;
+}
+
+/* Media Queries for 3D Book Mobile Scaling */
+@media (max-width: 768px) {
+  .book-3d {
+    transform: rotateX(15deg) rotateY(-10deg) scale(0.7) !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .book-3d {
+    transform: rotateX(15deg) rotateY(-10deg) scale(0.5) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .book-3d {
+    transform: rotateX(15deg) rotateY(-10deg) scale(0.42) !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .book-3d {
+    transform: rotateX(15deg) rotateY(-10deg) scale(0.38) !important;
+  }
+}
+
+/* Premium Glassmorphism Ivory Study Cards (Hero Cards) */
+.premium-study-card {
+  position: relative;
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(234, 230, 219, 0.7);
+  border-radius: 24px;
+  padding: 2rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 
+    0 10px 40px rgba(217, 119, 6, 0.015),
+    0 2px 10px rgba(0, 0, 0, 0.01);
+  transition: 
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.premium-study-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(234, 230, 219, 0.3); /* Let spotlight border glow shine */
+  background: rgba(250, 248, 244, 0.96);
+  box-shadow: 
+    0 22px 55px rgba(217, 119, 6, 0.07),
+    0 4px 15px rgba(217, 119, 6, 0.02);
+}
+
+/* Spotlight background aura inside the card */
+.card-spotlight-radial {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    280px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(217, 119, 6, 0.065),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.premium-study-card:hover .card-spotlight-radial {
+  opacity: 1;
+}
+
+/* Spotlight Border Glow using mask exclusion */
+.premium-study-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(217, 119, 6, 0.35),
+    transparent 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  z-index: 1;
+}
+
+.premium-study-card:hover::after {
+  opacity: 1;
+}
+
+/* Bookmark tag for study cards */
+.card-bookmark-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: linear-gradient(135deg, #d97706, #b45309);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 8px 8px 8px 0;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+  margin-bottom: 1.25rem;
+  transform: translateZ(10px);
+}
+
+/* Cinematic Full-width Chapter Banner */
+.chapter-banner-container {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  width: calc(100% + 2rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+}
+
+@media (min-width: 768px) {
+  .chapter-banner-container {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    width: calc(100% + 3rem);
+    border-radius: 24px;
+  }
+}
+
+.chapter-banner-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 

@@ -2,6 +2,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Award, Clock, ArrowLeft, RotateCcw, CheckCircle, AlertTriangle, BookOpen, User, BookOpenText } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { db } from "../lib/firebase";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { questionsMap, chapters } from "../data/index";
@@ -23,6 +25,9 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
   const [latestScore, setLatestScore] = useState(0);
 
   const timerRef = useRef(null);
+  const questionCardRef = useRef(null);
+  const [slideDirection, setSlideDirection] = useState(1);
+  const [displayedScore, setDisplayedScore] = useState(0);
 
   // Load username & check for saved state on mount
   useEffect(() => {
@@ -43,6 +48,54 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
       }
     }
   }, []);
+
+  // GSAP animations for question sliding
+  useGSAP(() => {
+    if (step === "quiz-run" && questionCardRef.current) {
+      gsap.fromTo(questionCardRef.current,
+        { opacity: 0, x: slideDirection * 40 },
+        { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [currentIndex, step] });
+
+  // GSAP score counter & diagnostic bars animation
+  useGSAP(() => {
+    if (step === "results") {
+      setDisplayedScore(0);
+      const scoreObj = { val: 0 };
+      gsap.to(scoreObj, {
+        val: latestScore,
+        roundProps: "val",
+        ease: "power2.out",
+        duration: 1.4,
+        onUpdate: () => {
+          setDisplayedScore(scoreObj.val);
+        }
+      });
+
+      // Animate progress bars
+      gsap.fromTo(".diagnostic-bar-progress",
+        { width: "0%" },
+        {
+          width: (i, el) => el.getAttribute("data-target-width"),
+          duration: 1.2,
+          ease: "power2.out",
+          stagger: 0.1
+        }
+      );
+    }
+  }, { dependencies: [step, latestScore] });
+
+  // GSAP stagger leaderboard rows
+  useGSAP(() => {
+    if (step === "results" && !loadingRankings) {
+      gsap.fromTo(".leaderboard-row",
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, stagger: 0.05, duration: 0.6, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [step, loadingRankings] });
 
   // Save current quiz progress
   const saveQuizState = (time) => {
@@ -202,7 +255,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
       setMode(savedState.mode);
       setSelectedChapterId(savedState.currentChapterId);
       setQuestions(savedState.questions);
-      setCurrentIndex(savedState.currentIndex);
+      
+      const restoredIdx = typeof savedState.currentIndex === "number" && savedState.currentIndex >= 0 && savedState.currentIndex < savedState.questions.length
+        ? savedState.currentIndex
+        : 0;
+      setCurrentIndex(restoredIdx);
+      
       setAnswers(savedState.answers);
       setElapsedTime(savedState.elapsedTime);
       setStep("quiz-run");
@@ -219,6 +277,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
   const handleNavigateQuestion = (direction) => {
     const nextIdx = currentIndex + direction;
     if (nextIdx >= 0 && nextIdx < questions.length) {
+      setSlideDirection(direction);
       setCurrentIndex(nextIdx);
     } else if (nextIdx === questions.length) {
       confirmSubmit();
@@ -360,6 +419,27 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
 
     return diag;
   };
+
+  const currentQuestion = questions[currentIndex];
+
+  // Safeguard: If somehow step is quiz-run but currentQuestion or questions array is empty/invalid
+  if (step === "quiz-run" && (!currentQuestion || !currentQuestion.options)) {
+    return (
+      <div className="w-full max-w-xl mx-auto my-8 p-6 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-850 rounded-2xl shadow-xl text-center space-y-4">
+        <p className="text-red-500 font-semibold">Đã xảy ra sự cố khi tải câu hỏi trắc nghiệm.</p>
+        <p className="text-xs text-stone-550 dark:text-stone-400">Không tìm thấy câu hỏi tương ứng với chỉ số hiện tại.</p>
+        <button
+          onClick={() => {
+            clearQuizState();
+            setStep("chapter-select");
+          }}
+          className="px-5 py-2.5 rounded-lg bg-accent text-white dark:text-stone-950 font-bold text-xs uppercase tracking-wider transition-colors shadow-md hover:bg-accent/90"
+        >
+          Quay lại chọn chương học
+        </button>
+      </div>
+    );
+  }
 
   // Render content according to the step
   return (
@@ -606,7 +686,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
         <div className="quiz-layout flex flex-col md:flex-row gap-6 items-start">
           {/* Main Quiz Section */}
           <div className="flex-1 w-full space-y-4">
-            <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-850 p-6 shadow-xl relative">
+            <div ref={questionCardRef} className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-850 p-6 shadow-xl relative">
               {/* Header inside Quiz */}
               <div className="flex justify-between items-center border-b border-stone-200 dark:border-stone-850 pb-4 mb-4">
                 <span className="font-bold text-stone-800 dark:text-stone-200 text-sm md:text-base">
@@ -628,15 +708,15 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
 
               {/* Question Text */}
               <div className="text-stone-900 dark:text-stone-100 font-semibold text-base md:text-lg mb-6 leading-relaxed">
-                {questions[currentIndex].question}
+                {currentQuestion.question}
               </div>
 
               {/* Options */}
               <div className="space-y-3">
-                {questions[currentIndex].options.map((opt, oIdx) => {
+                {currentQuestion.options.map((opt, oIdx) => {
                   const prefix = String.fromCharCode(65 + oIdx);
                   const isUserSelection = answers[currentIndex] === oIdx;
-                  const isCorrectAns = questions[currentIndex].answer === oIdx;
+                  const isCorrectAns = currentQuestion.answer === oIdx;
 
                   let optClass = "border-stone-200 dark:border-stone-850 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-950/60";
                   let disabled = false;
@@ -677,24 +757,24 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
               {/* Immediate Mode Explanation */}
               {mode === "immediate" && answers[currentIndex] !== -1 && (
                 <div className={`mt-6 p-4 rounded-xl text-xs md:text-sm border transition-all duration-300 ${
-                  answers[currentIndex] === questions[currentIndex].answer
+                  answers[currentIndex] === currentQuestion.answer
                     ? "bg-green-500/5 border-green-500/20 text-green-800 dark:text-green-400"
                     : "bg-red-500/5 border-red-500/20 text-red-800 dark:text-red-450"
                 }`}>
                   <div className="flex justify-between items-center flex-wrap gap-2 font-bold mb-2">
                     <span>
-                      {answers[currentIndex] === questions[currentIndex].answer
+                      {answers[currentIndex] === currentQuestion.answer
                         ? "🟢 Chính xác!"
-                        : `🔴 Chưa chính xác (Đáp án đúng là ${String.fromCharCode(65 + questions[currentIndex].answer)})`}
+                        : `🔴 Chưa chính xác (Đáp án đúng là ${String.fromCharCode(65 + currentQuestion.answer)})`}
                     </span>
                     <span className="text-[10px] text-stone-500 font-medium">
-                      {questions[currentIndex].isOutside
+                      {currentQuestion.isOutside
                         ? "Kiến thức ngoài giáo trình"
-                        : getSectionTitle(questions[currentIndex].sectionId, questions[currentIndex].subsectionId)}
+                        : getSectionTitle(currentQuestion.sectionId, currentQuestion.subsectionId)}
                     </span>
                   </div>
                   <div className="leading-relaxed mt-2 pl-2 border-l-2 border-accent/40">
-                    <strong>Giải thích:</strong> {questions[currentIndex].explanation || "Không có giải thích chi tiết."}
+                    <strong>Giải thích:</strong> {currentQuestion.explanation || "Không có giải thích chi tiết."}
                   </div>
                 </div>
               )}
@@ -769,9 +849,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
           </div>
         </div>
       )}
-
-      {/* Step 5: Quiz Results */}
-      {step === "results" && (
+            {step === "results" && (
         <div className="space-y-6">
           <div className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-850 p-6 md:p-8 shadow-xl text-center">
             <h2 className="text-2xl md:text-3xl font-bold font-playfair text-stone-900 dark:text-stone-100 mb-2">
@@ -783,7 +861,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
 
             {/* Score Circle */}
             <div className="w-36 h-36 rounded-full border-4 border-accent flex flex-col justify-center items-center mx-auto mb-6 bg-accent/5">
-              <span className="text-3xl font-extrabold text-stone-900 dark:text-stone-100">{latestScore}/40</span>
+              <span className="text-3xl font-extrabold text-stone-900 dark:text-stone-100">{displayedScore}/{questions.length}</span>
               <span className="text-[10px] text-stone-500 font-bold uppercase mt-1">Điểm số</span>
             </div>
 
@@ -797,7 +875,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
               </div>
               <div>
                 <div className="text-lg font-bold text-stone-900 dark:text-stone-100 font-mono">
-                  {Math.round((latestScore / 40) * 100)}%
+                  {Math.round((displayedScore / (questions.length || 1)) * 100)}%
                 </div>
                 <div className="text-xs text-stone-500 mt-1">Tỷ lệ đúng</div>
               </div>
@@ -833,7 +911,11 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
                       </span>
                     </div>
                     <div className="w-full bg-stone-100 dark:bg-stone-950 h-2 rounded-full overflow-hidden">
-                      <div className={`h-full ${barColor}`} style={{ width: `${percent}%` }} />
+                      <div
+                        className={`diagnostic-bar-progress h-full ${barColor}`}
+                        style={{ width: "0%" }}
+                        data-target-width={`${percent}%`}
+                      />
                     </div>
                     <div className="text-[10px] text-stone-500 leading-normal">{feedback}</div>
                   </div>
@@ -877,7 +959,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
                         return (
                           <tr
                             key={rIdx}
-                            className={`hover:bg-stone-50/50 dark:hover:bg-stone-950/50 transition-colors ${
+                            className={`leaderboard-row hover:bg-stone-50/50 dark:hover:bg-stone-950/50 transition-colors ${
                               isCurrent ? "bg-accent/10 font-semibold text-accent" : ""
                             }`}
                           >

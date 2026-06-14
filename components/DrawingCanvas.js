@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
@@ -8,8 +7,9 @@ export default function DrawingCanvas({
   containerRef,
   onClearRef
 }) {
-  const canvasRef = useRef(null);
+  const svgRef = useRef(null);
   const [paths, setPaths] = useState([]);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const isDrawingRef = useRef(false);
   const isErasingRef = useRef(false);
   const eraserRadius = 18;
@@ -26,74 +26,47 @@ export default function DrawingCanvas({
     }
   }, []);
 
-  // Save drawings when paths change
+  // Save drawings to localStorage
   const saveDrawings = (updatedPaths) => {
     localStorage.setItem("studymaster-drawings", JSON.stringify(updatedPaths));
   };
 
-  // Expose clear functionality
+  // Expose clear functionality to parent
   useEffect(() => {
     if (onClearRef) {
       onClearRef.current = () => {
-        setPaths([]);
+        updatePaths([]);
         localStorage.removeItem("studymaster-drawings");
       };
     }
   }, [onClearRef]);
 
+  // Keep a ref to paths for synchronous reading in event handlers
   const pathsRef = useRef(paths);
-  useEffect(() => {
-    pathsRef.current = paths;
-  }, [paths]);
 
-  const drawPaths = (canvas, drawPathsList) => {
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-
-    drawPathsList.forEach((path) => {
-      if (path.points.length === 0) return;
-
-      ctx.beginPath();
-      ctx.strokeStyle = path.color;
-      ctx.lineWidth = path.width || 3.5;
-
-      const startX = path.points[0].x * canvas.width;
-      const startY = path.points[0].y * canvas.height;
-      ctx.moveTo(startX, startY);
-
-      for (let i = 1; i < path.points.length; i++) {
-        const px = path.points[i].x * canvas.width;
-        const py = path.points[i].y * canvas.height;
-        ctx.lineTo(px, py);
-      }
-
-      ctx.stroke();
+  // Helper to update state and ref synchronously
+  const updatePaths = (nextVal) => {
+    setPaths((prev) => {
+      const next = typeof nextVal === "function" ? nextVal(prev) : nextVal;
+      pathsRef.current = next;
+      return next;
     });
   };
 
-  // Handle resizing of canvas
+  // Track container dimensions using ResizeObserver
   useEffect(() => {
     const handleResize = () => {
-      const canvas = canvasRef.current;
       const container = containerRef?.current;
-      if (!canvas || !container) return;
-
-      canvas.width = container.clientWidth;
-      canvas.height = container.scrollHeight;
-
-      drawPaths(canvas, pathsRef.current);
+      if (!container) return;
+      setDimensions({
+        width: container.clientWidth,
+        height: container.scrollHeight
+      });
     };
 
-    // Initial sizing and add event listener
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Create a ResizeObserver to watch for element size changes inside the container
-    // (e.g. window resize, text flow reflows) which will require resizing the canvas
     const observer = new ResizeObserver(handleResize);
     if (containerRef?.current) {
       observer.observe(containerRef.current);
@@ -105,31 +78,24 @@ export default function DrawingCanvas({
     };
   }, [containerRef]);
 
-  // Redraw when paths state changes
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      drawPaths(canvas, paths);
-    }
-  }, [paths]);
-
-  const getCoords = (e, canvas) => {
-    const rect = canvas.getBoundingClientRect();
+  // Convert mouse/touch event coordinates relative to the SVG element
+  const getCoords = (e, svgElement) => {
+    const rect = svgElement.getBoundingClientRect();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
     return {
       x: clientX - rect.left,
-      y: clientY - rect.top + window.scrollY - (rect.top + window.scrollY - canvas.offsetTop)
+      y: clientY - rect.top
     };
   };
 
   const startDraw = (e) => {
     if (activeTool !== "pen" && activeTool !== "eraser") return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const svgElement = svgRef.current;
+    if (!svgElement || dimensions.width === 0 || dimensions.height === 0) return;
 
-    const coords = getCoords(e, canvas);
+    const coords = getCoords(e, svgElement);
 
     if (activeTool === "pen") {
       isDrawingRef.current = true;
@@ -138,41 +104,46 @@ export default function DrawingCanvas({
         width: 3.5,
         points: [
           {
-            x: coords.x / canvas.width,
-            y: coords.y / canvas.height
+            x: coords.x / dimensions.width,
+            y: coords.y / dimensions.height
           }
         ]
       };
-
-      const updated = [...paths, newPath];
-      setPaths(updated);
-      drawPaths(canvas, updated);
+      updatePaths((prev) => [...prev, newPath]);
     } else if (activeTool === "eraser") {
       isErasingRef.current = true;
-      eraseAt(coords.x, coords.y, canvas);
+      eraseAt(coords.x, coords.y);
     }
   };
 
   const draw = (e) => {
     if (!isDrawingRef.current && !isErasingRef.current) return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const svgElement = svgRef.current;
+    if (!svgElement || dimensions.width === 0 || dimensions.height === 0) return;
 
-    const coords = getCoords(e, canvas);
+    const coords = getCoords(e, svgElement);
 
     if (isDrawingRef.current) {
-      const updated = [...paths];
-      if (updated.length > 0) {
-        const currentPath = updated[updated.length - 1];
-        currentPath.points.push({
-          x: coords.x / canvas.width,
-          y: coords.y / canvas.height
-        });
-        setPaths(updated);
-        drawPaths(canvas, updated);
-      }
+      updatePaths((prevPaths) => {
+        if (prevPaths.length === 0) return prevPaths;
+        const updated = [...prevPaths];
+        const lastPath = updated[updated.length - 1];
+        
+        const updatedLastPath = {
+          ...lastPath,
+          points: [
+            ...lastPath.points,
+            {
+              x: coords.x / dimensions.width,
+              y: coords.y / dimensions.height
+            }
+          ]
+        };
+        updated[updated.length - 1] = updatedLastPath;
+        return updated;
+      });
     } else if (isErasingRef.current) {
-      eraseAt(coords.x, coords.y, canvas);
+      eraseAt(coords.x, coords.y);
     }
   };
 
@@ -180,45 +151,49 @@ export default function DrawingCanvas({
     if (isDrawingRef.current || isErasingRef.current) {
       isDrawingRef.current = false;
       isErasingRef.current = false;
-      saveDrawings(paths);
+      saveDrawings(pathsRef.current);
     }
   };
 
-  const eraseAt = (ex, ey, canvas) => {
-    let pathRemoved = false;
-    const updated = [...paths];
+  const eraseAt = (ex, ey) => {
+    const { width, height } = dimensions;
+    if (width === 0 || height === 0) return;
 
-    // Scan backwards from the newest stroke
-    for (let i = updated.length - 1; i >= 0; i--) {
-      const path = updated[i];
+    updatePaths((prevPaths) => {
+      let pathRemoved = false;
+      const updated = [...prevPaths];
 
-      for (let j = 0; j < path.points.length; j++) {
-        const px = path.points[j].x * canvas.width;
-        const py = path.points[j].y * canvas.height;
+      // Scan backwards from the newest stroke
+      for (let i = updated.length - 1; i >= 0; i--) {
+        const path = updated[i];
 
-        const dist = Math.sqrt((px - ex) ** 2 + (py - ey) ** 2);
-        if (dist <= eraserRadius) {
-          // Erase the entire stroke (Stroke Eraser)
-          updated.splice(i, 1);
-          pathRemoved = true;
-          break;
+        for (let j = 0; j < path.points.length; j++) {
+          const px = path.points[j].x * width;
+          const py = path.points[j].y * height;
+
+          const dist = Math.sqrt((px - ex) ** 2 + (py - ey) ** 2);
+          if (dist <= eraserRadius) {
+            // Erase the entire stroke (Stroke Eraser)
+            updated.splice(i, 1);
+            pathRemoved = true;
+            break;
+          }
         }
+        if (pathRemoved) break;
       }
-      if (pathRemoved) break;
-    }
 
-    if (pathRemoved) {
-      setPaths(updated);
-      drawPaths(canvas, updated);
-      saveDrawings(updated);
-    }
+      if (pathRemoved) {
+        return updated;
+      }
+      return prevPaths;
+    });
   };
 
   const isInteractive = activeTool === "pen" || activeTool === "eraser";
 
   return (
-    <canvas
-      ref={canvasRef}
+    <svg
+      ref={svgRef}
       onMouseDown={startDraw}
       onMouseMove={draw}
       onMouseUp={stopDraw}
@@ -229,6 +204,39 @@ export default function DrawingCanvas({
       className={`absolute top-0 left-0 w-full h-full z-20 ${
         isInteractive ? "pointer-events-auto cursor-crosshair" : "pointer-events-none"
       }`}
-    />
+      style={{
+        pointerEvents: isInteractive ? "auto" : "none",
+        minHeight: "100%",
+        background: "transparent"
+      }}
+    >
+      {dimensions.width > 0 && dimensions.height > 0 && paths.map((path, idx) => {
+        if (path.points.length === 0) return null;
+
+        // Construct SVG Path definition (d attribute)
+        let d = "";
+        path.points.forEach((pt, pIdx) => {
+          const px = pt.x * dimensions.width;
+          const py = pt.y * dimensions.height;
+          if (pIdx === 0) {
+            d += `M ${px} ${py}`;
+          } else {
+            d += ` L ${px} ${py}`;
+          }
+        });
+
+        return (
+          <path
+            key={idx}
+            d={d}
+            stroke={path.color}
+            strokeWidth={path.width || 3.5}
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        );
+      })}
+    </svg>
   );
 }

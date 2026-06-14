@@ -2,12 +2,19 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Sidebar from "../components/Sidebar";
-import { useTheme } from "next-themes";
 import ContentRenderer from "../components/ContentRenderer";
 import Quiz from "../components/Quiz";
+import ErrorBoundary from "../components/ErrorBoundary";
 import DrawingCanvas from "../components/DrawingCanvas";
-import NoteToolbar from "../components/NoteToolbar";
+
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
 
@@ -34,15 +41,18 @@ const GoogleIcon = ({ size = 18, className = "" }) => (
 );
 
 export default function Page() {
-  const { theme } = useTheme();
+  const theme = "light";
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
   // App routing flow steps: "login", "register", "forgot-password", "subject-select", "study"
-  const [appStep, setAppStep] = useState("login");
+  const [appStep, setAppStepRaw] = useState("login");
   const [showAuthOverlay, setShowAuthOverlay] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
   const [selectedSubjectId, setSelectedSubjectId] = useState("tu-tuong-hcm");
@@ -53,12 +63,12 @@ export default function Page() {
   
   // Navigation & Study states
   const [activeSubsectionId, setActiveSubsectionId] = useState("");
-  const [isQuizMode, setIsQuizMode] = useState(false);
+  const [isQuizMode, setIsQuizModeRaw] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Note-taking tool states
   const [activeTool, setActiveTool] = useState("cursor");
-  const [activeColor, setActiveColor] = useState("rgba(254, 240, 138, 0.45)");
+  const [activeColor, setActiveColor] = useState("rgba(217, 119, 6, 0.2)");
   const [highlights, setHighlights] = useState([]);
   const [reRenderKey, setReRenderKey] = useState(0);
 
@@ -67,7 +77,8 @@ export default function Page() {
   // Scroll and Storytelling states
   const [scrollY, setScrollY] = useState(0);
   const [windowHeight, setWindowHeight] = useState(700);
-  const [scrolledPastHero, setScrolledPastHero] = useState(false);
+  const [showHero, setShowHero] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [typedText, setTypedText] = useState("");
 
   // Custom Toast State
@@ -75,6 +86,24 @@ export default function Page() {
   
   // Custom Confirm Modal State
   const [confirmConfig, setConfirmConfig] = useState(null);
+
+  const setIsQuizMode = (val) => {
+    if (val === true) {
+      if (contentContainerRef.current) {
+        clearDomHighlights(contentContainerRef.current);
+      }
+    }
+    setIsQuizModeRaw(val);
+  };
+
+  const setAppStep = (newStep) => {
+    if (appStep === "study" && newStep !== "study") {
+      if (contentContainerRef.current) {
+        clearDomHighlights(contentContainerRef.current);
+      }
+    }
+    setAppStepRaw(newStep);
+  };
 
   const showToast = (message, type = "info") => {
     const id = Date.now();
@@ -125,6 +154,9 @@ export default function Page() {
   const isManualScrollingRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
   const particlesCanvasRef = useRef(null);
+  const landingContainerRef = useRef(null);
+  const subjectGridRef = useRef(null);
+  const touchStartYRef = useRef(0);
 
   // Login & Register Form inputs
   const [loginUser, setLoginUser] = useState("");
@@ -167,6 +199,9 @@ export default function Page() {
   };
 
   const fullQuote = getSubjectQuote(selectedSubjectId);
+  const currentSubject = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
+  const chapters = currentSubject.chapters || [];
+  const questionsMap = currentSubject.questionsMap || {};
 
   // Check login session & load custom data on mount
   useEffect(() => {
@@ -333,38 +368,132 @@ export default function Page() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       setScrollY(currentScroll);
-      if (currentScroll > window.innerHeight * 0.7) {
-        setScrolledPastHero(true);
-      } else {
-        setScrolledPastHero(false);
+
+      // If scrolled to the very top, auto-activate the first subsection
+      if (currentScroll < 50 && !isManualScrollingRef.current) {
+        const firstCh = chapters[0];
+        if (firstCh && firstCh.sections[0]?.subsections[0]) {
+          const firstSubId = firstCh.sections[0].subsections[0].id;
+          setActiveSubsectionId(firstSubId);
+        }
       }
+    };
+
+    const handleGlobalClick = (e) => {
+      const ripple = document.createElement("span");
+      ripple.className = "water-ripple-effect";
+      ripple.style.left = `${e.clientX}px`;
+      ripple.style.top = `${e.clientY}px`;
+      document.body.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 700);
     };
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("click", handleGlobalClick);
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleGlobalClick);
     };
-  }, [appStep]);
+  }, [appStep, chapters]);
 
-  // Typing effect for the quote (only in study view)
-  useEffect(() => {
-    if (appStep !== "study") return;
-    setTypedText("");
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index < fullQuote.length) {
-        const char = fullQuote[index];
-        setTypedText((prev) => prev + char);
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 90);
-    return () => clearInterval(interval);
-  }, [appStep]);
+  // GSAP animation for 3D Book on mount/reset
+  useGSAP(() => {
+    if (showHero && appStep === "study") {
+      // Return and closing transition
+      gsap.fromTo(".book-3d",
+        { scale: 2.8, z: 600, opacity: 0, rotationX: 45, rotationY: -90 },
+        { scale: 1, z: 0, opacity: 1, rotationX: 15, rotationY: -10, duration: 1.2, ease: "power2.out" }
+      );
+      gsap.fromTo(".book-cover-3d",
+        { rotationY: -180 },
+        { rotationY: 0, duration: 1.4, ease: "power2.out" }
+      );
+      gsap.fromTo(".storytelling-hero",
+        { opacity: 0 },
+        { opacity: 1, duration: 1.0, ease: "power2.out" }
+      );
+      // Reset quote chars to hidden
+      gsap.set(".quote-char", { opacity: 0, filter: "blur(5px)", y: 5 });
+      gsap.set(".quote-cursor", { display: "inline-block" });
+    }
+  }, { dependencies: [showHero, appStep, selectedSubjectId] });
+
+  // GSAP Entrance Animations for Login/Register Screens
+  useGSAP(() => {
+    if (appStep === "login" || appStep === "register" || appStep === "forgot-password") {
+      const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 } });
+      
+      // Mascot & celestial rings reveal
+      tl.fromTo(".mascot-wrapper", 
+        { scale: 0.3, opacity: 0, rotation: -45 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 1.6 }
+      );
+      
+      // Orbit rings rotation intro
+      tl.fromTo("svg.animate-spin-slow",
+        { rotate: -180 },
+        { rotate: 0, duration: 2 },
+        "<"
+      );
+      
+      // Login button entrance
+      tl.fromTo(".landing-login-btn",
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 },
+        "-=0.9"
+      );
+      
+      // Footer elements fade-in
+      tl.fromTo(".landing-footer",
+        { opacity: 0 },
+        { opacity: 0.8, duration: 1 },
+        "-=0.6"
+      );
+    }
+  }, { dependencies: [appStep], scope: landingContainerRef });
+
+  // GSAP Modal overlay animations
+  useGSAP(() => {
+    if (showAuthOverlay && (appStep === "login" || appStep === "register" || appStep === "forgot-password")) {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.6 } });
+      
+      // Modal card entrance
+      tl.fromTo(".auth-modal-card",
+        { scale: 0.9, y: 30, opacity: 0 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.5 }
+      );
+      
+      // Stagger elements in the modal
+      tl.fromTo(".auth-modal-card form > div, .auth-modal-card h2, .auth-modal-card p, .auth-modal-card button",
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.05 },
+        "-=0.2"
+      );
+    }
+  }, { dependencies: [showAuthOverlay, appStep], scope: landingContainerRef });
+
+  // GSAP Subject Select grid entrance
+  useGSAP(() => {
+    if (appStep === "subject-select" && subjectGridRef.current) {
+      // Bento cards reveal
+      gsap.fromTo(".bento-subject-card, .add-subject-card",
+        { y: 40, opacity: 0, scale: 0.95 },
+        { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
+      );
+      
+      // Header title reveal
+      gsap.fromTo(".select-subject-header > *",
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
+      );
+    }
+  }, { dependencies: [appStep], scope: subjectGridRef });
 
   // Ambient floating particles, Cancer constellation, and Water ripples canvas animation
   useEffect(() => {
@@ -442,27 +571,48 @@ export default function Page() {
     };
 
     class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.4;
-        this.speedX = Math.random() * 0.14 - 0.07;
-        this.speedY = Math.random() * -0.22 - 0.06; // water bubbles floating up slowly
-        this.opacity = Math.random() * 0.25 + 0.15;
+      constructor(x, y, isExplosion = false) {
+        this.x = x !== undefined ? x : Math.random() * canvas.width;
+        this.y = y !== undefined ? y : Math.random() * canvas.height;
+        this.size = isExplosion ? Math.random() * 3 + 1.2 : Math.random() * 2 + 0.4;
+        
+        if (isExplosion) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 5 + 2.5; // High velocity
+          this.speedX = Math.cos(angle) * speed;
+          this.speedY = Math.sin(angle) * speed;
+          this.opacity = Math.random() * 0.6 + 0.4;
+          this.decay = Math.random() * 0.015 + 0.008;
+        } else {
+          this.speedX = Math.random() * 0.14 - 0.07;
+          this.speedY = Math.random() * -0.22 - 0.06; // water bubbles floating up slowly
+          this.opacity = Math.random() * 0.25 + 0.15;
+          this.decay = 0;
+        }
+        
         this.isPrimary = Math.random() > 0.5;
+        this.isExplosion = isExplosion;
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        if (this.y < 0) {
-          this.y = canvas.height;
-          this.x = Math.random() * canvas.width;
-        }
-        if (this.x < 0 || this.x > canvas.width) {
-          this.speedX = -this.speedX;
+        
+        if (this.isExplosion) {
+          this.opacity -= this.decay;
+          this.speedX *= 0.98; // friction
+          this.speedY *= 0.98;
+        } else {
+          if (this.y < 0) {
+            this.y = canvas.height;
+            this.x = Math.random() * canvas.width;
+          }
+          if (this.x < 0 || this.x > canvas.width) {
+            this.speedX = -this.speedX;
+          }
         }
       }
       draw() {
+        if (this.opacity <= 0) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         const { accent, support } = getThemeColors();
@@ -477,8 +627,19 @@ export default function Page() {
       particles.push(new Particle());
     }
 
+    const handleExplode = () => {
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      for (let i = 0; i < 150; i++) {
+        particles.push(new Particle(centerX, centerY, true));
+      }
+    };
+    window.addEventListener("particles-explode", handleExplode);
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles = particles.filter(p => !p.isExplosion || p.opacity > 0);
       
       particles.forEach((p) => {
         p.update();
@@ -510,6 +671,7 @@ export default function Page() {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("click", handleMouseClick);
+      window.removeEventListener("particles-explode", handleExplode);
     };
   }, [appStep]);
 
@@ -538,26 +700,135 @@ export default function Page() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when Hero is active in study mode
+  useEffect(() => {
+    if (appStep === "study" && showHero) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showHero, appStep]);
+
+  // Refresh ScrollTrigger after Hero is hidden and DOM updates
+  useEffect(() => {
+    if (!showHero && appStep === "study") {
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [showHero, appStep]);
+
+  // Scroll to an element accounting for sticky header and GSAP pin spacer
+  const HEADER_OFFSET = 72; // sticky header height in px (py-4 + content ≈ 56px) + breathing room
+
+  const scrollToElementWithOffset = (el, behavior = "smooth") => {
+    if (!el) return;
+    // getBoundingClientRect gives position relative to viewport.
+    // Adding window.scrollY gives absolute position in the document
+    // (including GSAP pin spacer that has already been inserted into the DOM).
+    const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: Math.max(0, absoluteTop - HEADER_OFFSET),
+      behavior,
+    });
+  };
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleStartJourney = () => {
-    window.scrollTo({ top: windowHeight * 0.8, behavior: "smooth" });
+  const startTransition = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    
+    // Create cinematic transition timeline
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setShowHero(false);
+        setIsTransitioning(false);
+        if (typeof window !== "undefined") {
+          window.scrollTo({ top: 0, behavior: "instant" });
+        }
+      }
+    });
+
+    // 1. Open the 3D book cover
+    tl.to(".book-cover-3d", {
+      rotationY: -180,
+      duration: 1.2,
+      ease: "power2.inOut"
+    });
+
+    // 2. Type out the quote characters inside the right page
+    const chars = gsap.utils.toArray(".quote-char");
+    if (chars.length > 0) {
+      tl.fromTo(chars,
+        { opacity: 0, filter: "blur(5px)", y: 5 },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          y: 0,
+          stagger: 0.02,
+          duration: 0.4,
+          ease: "power1.out",
+          onComplete: () => {
+            gsap.to(".quote-cursor", { display: "none", duration: 0.1 });
+          }
+        },
+        "-=0.6" // Start typing while the cover is still opening
+      );
+    }
+
+    // 3. Trigger Canvas background explosion particles
+    tl.add(() => {
+      if (typeof window !== "undefined") {
+        const event = new CustomEvent("particles-explode");
+        window.dispatchEvent(event);
+      }
+    }, "-=0.2");
+
+    // 4. Zoom the 3D book into the camera (scale and move depth)
+    tl.to(".book-3d", {
+      scale: 2.8,
+      z: 600,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.in"
+    }, "+=0.2"); // short pause to see typing finished
+
+    // 5. Fade out Hero section background and elements
+    tl.to(".storytelling-hero", {
+      opacity: 0,
+      duration: 1.0,
+      ease: "power2.inOut"
+    }, "-=1.0");
   };
 
-  const handleNavigate = (subId) => {
-    const targetEl = document.getElementById(`content-${subId}`);
-    if (targetEl) {
+  const handleStartJourney = () => {
+    startTransition();
+  };
+
+  const handleNavigate = (elementId) => {
+    // Resolve the element ID: sidebar passes raw subId, chapter-xxx, or section-xxx
+    const el =
+      document.getElementById(elementId) ||
+      document.getElementById(`content-${elementId}`) ||
+      document.getElementById(`chapter-${elementId}`) ||
+      document.getElementById(`section-${elementId}`);
+    if (el) {
       isManualScrollingRef.current = true;
-      targetEl.scrollIntoView({ behavior: "smooth" });
-      
+      scrollToElementWithOffset(el, "smooth");
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = setTimeout(() => {
         isManualScrollingRef.current = false;
-      }, 1000);
+      }, 1200);
     }
   };
+
 
   const handleClearAll = () => {
     showConfirm({
@@ -696,6 +967,21 @@ export default function Page() {
     });
   };
 
+  const clearDomHighlights = (container) => {
+    if (!container) return;
+    const highlightSpans = container.querySelectorAll("span.user-highlight");
+    highlightSpans.forEach(span => {
+      const parent = span.parentNode;
+      if (parent) {
+        while (span.firstChild) {
+          parent.insertBefore(span.firstChild, span);
+        }
+        parent.removeChild(span);
+      }
+    });
+    container.normalize();
+  };
+
   // Re-apply highlights on scroll, navigation or highlight updates
   useEffect(() => {
     if (appStep !== "study" || isQuizMode) return;
@@ -739,11 +1025,11 @@ export default function Page() {
     return () => {
       observer.disconnect();
     };
-  }, [isQuizMode, appStep]);
+  }, [isQuizMode, appStep, reRenderKey, chapters]);
 
   // Scroll Reveal elements IntersectionObserver (Cinematic reveals)
   useEffect(() => {
-    if (appStep !== "study" || isQuizMode || !scrolledPastHero) return;
+    if (appStep !== "study" || isQuizMode || showHero) return;
 
     const elements = document.querySelectorAll(".scroll-reveal");
     const revealObserver = new IntersectionObserver(
@@ -762,7 +1048,7 @@ export default function Page() {
 
     elements.forEach((el) => revealObserver.observe(el));
     return () => revealObserver.disconnect();
-  }, [isQuizMode, scrolledPastHero, reRenderKey, appStep]);
+  }, [isQuizMode, showHero, reRenderKey, appStep]);
 
   // Password requirements validator helper
   const getPasswordValidation = (password) => {
@@ -893,7 +1179,13 @@ export default function Page() {
   const handleSubjectSelect = (subjId) => {
     setSelectedSubjectId(subjId);
     setScrollY(0);
-    setScrolledPastHero(false);
+    setShowHero(true);
+    setIsTransitioning(false);
+    
+    // Reset scroll to top BEFORE rendering study view
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
     
     const chaptersList = allSubjects[subjId]?.chapters || [];
     if (chaptersList.length > 0 && chaptersList[0].sections.length > 0 && chaptersList[0].sections[0].subsections.length > 0) {
@@ -903,18 +1195,87 @@ export default function Page() {
     setAppStep("study");
   };
 
+
   // Rendering parameters
-  const currentSubject = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
-  const chapters = currentSubject.chapters || [];
-  const questionsMap = currentSubject.questionsMap || {};
 
   const scrolledOpacity = Math.max(0, 1 - scrollY / (windowHeight * 0.7));
   const scrolledTranslate = -scrollY * 0.15;
 
   const regPassVal = getPasswordValidation(regPass);
 
+  const getSubjectHighScore = (subj) => {
+    if (typeof window === "undefined") return null;
+    let maxScoreInfo = null;
+    try {
+      const chaptersList = subj.chapters || [];
+      let bestPercent = -1;
+      chaptersList.forEach((ch) => {
+        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+        if (stored) {
+          const rankings = JSON.parse(stored);
+          rankings.forEach((r) => {
+            const percent = r.total > 0 ? (r.score / r.total) : 0;
+            if (percent > bestPercent) {
+              bestPercent = percent;
+              maxScoreInfo = { score: r.score, total: r.total, percent: Math.round(percent * 100) };
+            }
+          });
+        }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    return maxScoreInfo;
+  };
+
+  const onCardMouseMove = (e) => {
+    const cardEl = e.currentTarget;
+    const rect = cardEl.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const width = rect.width;
+    const height = rect.height;
+    const rotateX = ((y - height / 2) / height) * -8;
+    const rotateY = ((x - width / 2) / width) * 8;
+    
+    gsap.to(cardEl, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      transformPerspective: 800,
+      ease: "power1.out",
+      duration: 0.2
+    });
+    
+    const glowEl = cardEl.querySelector(".card-glow-reflection");
+    if (glowEl) {
+      gsap.to(glowEl, {
+        background: `radial-gradient(300px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.15), transparent 80%)`,
+        duration: 0.1
+      });
+    }
+  };
+
+  const onCardMouseLeave = (e) => {
+    const cardEl = e.currentTarget;
+    gsap.to(cardEl, {
+      rotateX: 0,
+      rotateY: 0,
+      ease: "power2.out",
+      duration: 0.4
+    });
+    
+    const glowEl = cardEl.querySelector(".card-glow-reflection");
+    if (glowEl) {
+      gsap.to(glowEl, {
+        background: `radial-gradient(300px circle at 50% 50%, rgba(245, 158, 11, 0), transparent 80%)`,
+        duration: 0.4
+      });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col relative">
+    <div className="min-h-screen bg-[#faf8f4] flex flex-col relative">
       {/* Background Particles Canvas (Only active in Login, Register, Forgot Password, Subject Select, or Study View) */}
       {(appStep === "login" || appStep === "register" || appStep === "forgot-password" || appStep === "subject-select" || appStep === "study") && (
         <canvas
@@ -927,6 +1288,7 @@ export default function Page() {
       {/* 1, 2, 3. VIEW: UNIFIED CINEMATIC LANDING & OVERLAY AUTH VIEW */}
       {(appStep === "login" || appStep === "register" || appStep === "forgot-password") && (
         <div
+          ref={landingContainerRef}
           className="min-h-screen flex flex-col justify-center items-center z-10 relative bg-cover bg-center bg-[#07090e] w-full overflow-hidden text-stone-100 transition-colors duration-500"
           style={{ backgroundImage: "url('/assets/login.png')" }}
         >
@@ -937,7 +1299,7 @@ export default function Page() {
               className="absolute top-[25%] left-1/2 flex items-center justify-center"
               style={{ transform: 'translate(calc(-50% - 6px), -50%)' }}
             >
-              <div className="float-slow relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
+              <div className="mascot-wrapper float-slow relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
                 {/* Nested Celestial Gyroscopic Rings SVG */}
                 <svg className="absolute w-full h-full animate-spin-slow opacity-65 text-accent/80" viewBox="0 0 200 200" fill="none">
                   {/* Orbit ring 1 */}
@@ -976,7 +1338,7 @@ export default function Page() {
             >
               <button
                 onClick={() => setShowAuthOverlay(true)}
-                className="px-10 py-2.5 rounded-full border border-accent/60 text-accent bg-[#12110f]/30 hover:bg-accent hover:text-stone-950 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.15)] cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] active:scale-95 duration-300 hover:border-accent"
+                className="landing-login-btn px-10 py-2.5 rounded-full border border-accent/60 text-accent bg-[#12110f]/30 hover:bg-accent hover:text-stone-950 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.15)] cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] active:scale-95 duration-300 hover:border-accent"
                 style={{ minWidth: "180px" }}
               >
                 Đăng nhập
@@ -985,7 +1347,7 @@ export default function Page() {
           </div>
 
           {/* Minimalist Footer positioned absolute bottom to prevent pushing content layout */}
-          <div className={`absolute bottom-2 py-2 text-[10px] text-stone-400/80 flex justify-between items-center w-full max-w-5xl px-6 z-30 blur-transition ${showAuthOverlay ? "blur-active" : ""}`}>
+          <div className={`landing-footer absolute bottom-2 py-2 text-[10px] text-stone-400/80 flex justify-between items-center w-full max-w-5xl px-6 z-30 blur-transition ${showAuthOverlay ? "blur-active" : ""}`}>
             <span>© 2026 StudyMaster. Thấu hiểu & Phát triển.</span>
             <span className="flex items-center gap-1.5">
               <span>Độc quyền chiêm tinh học</span>
@@ -1000,7 +1362,7 @@ export default function Page() {
             }`}
           >
             <div
-              className={`w-full max-w-md p-6 md:p-8 rounded-3xl border border-accent/20 bg-[#0e1015]/95 backdrop-blur-2xl shadow-[0_0_40px_rgba(245,158,11,0.15)] relative text-stone-100 transition-transform duration-500 ${
+              className={`auth-modal-card w-full max-w-md p-6 md:p-8 rounded-3xl border border-accent/20 bg-[#0e1015]/95 backdrop-blur-2xl shadow-[0_0_40px_rgba(245,158,11,0.15)] relative text-stone-100 transition-transform duration-500 ${
                 showAuthOverlay ? "translate-y-0 scale-100" : "translate-y-4 scale-95"
               }`}
             >
@@ -1299,169 +1661,156 @@ export default function Page() {
       {/* 4. VIEW: SUBJECT SELECTION VIEW */}
       {appStep === "subject-select" && (
         <div
-          className={`min-h-screen flex flex-col items-center justify-center p-6 z-10 relative bg-cover bg-center w-full overflow-hidden transition-colors duration-500 ${
-            mounted && theme === "dark" ? "bg-[#07090e]" : "bg-[#fcfbf9]"
-          }`}
-          style={mounted && theme === "dark" ? { backgroundImage: "url('/assets/login.png')" } : {}}
+          ref={subjectGridRef}
+          className="min-h-screen flex flex-col items-center justify-center p-6 z-10 relative w-full overflow-hidden bg-[#faf8f4]"
         >
-          {/* Backdrop Blur Overlay - reduced opacity slightly to make background show but keep contrast high */}
-          <div className={`absolute inset-0 z-20 pointer-events-none transition-colors duration-500 ${
-            mounted && theme === "dark" ? "bg-black/60 backdrop-blur-md" : "bg-transparent"
-          }`} />
+          {/* Subtle grain texture overlay */}
+          <div className="absolute inset-0 z-20 pointer-events-none bg-transparent" />
 
-          <div className="w-full max-w-5xl animate-in space-y-8 py-10 z-30 relative">
-            <div className={`text-center transition-colors duration-500 ${mounted && theme === 'dark' ? 'text-stone-100' : 'text-stone-900'}`}>
+          <div className="w-full max-w-5xl space-y-8 py-10 z-30 relative">
+            <div className="select-subject-header text-center">
               <span className="text-[10px] md:text-xs font-extrabold uppercase tracking-widest text-accent flex items-center justify-center gap-1.5 select-none mb-1">
                 <span className="cancer-zodiac-pulse text-base text-accent">♋</span>
                 Chào mừng, {currentUser} 🌟
               </span>
-              <h1 className={`text-2xl md:text-4xl font-extrabold font-playfair tracking-tight mt-1 uppercase tracking-wider transition-colors duration-500 ${
-                mounted && theme === 'dark' ? 'text-white drop-shadow-md' : 'text-stone-900'
-              }`}>
+              <h1 className="text-2xl md:text-4xl font-extrabold font-playfair tracking-tight mt-1 uppercase tracking-wider text-stone-900">
                 Chọn môn học của bạn
               </h1>
-              <p className={`text-xs mt-2 max-w-md mx-auto font-sans leading-relaxed transition-colors duration-300 ${
-                mounted && theme === 'dark' ? 'text-stone-300' : 'text-stone-600'
-              }`}>
+              <p className="text-xs mt-2 max-w-md mx-auto font-sans leading-relaxed text-stone-600">
                 Cổng học thuật cung Cự Giải — Quản lý cá nhân hóa môn học đại cương và chuyên ngành.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            <div className="bento-grid-subject w-full">
               {Object.values(allSubjects).map((subj) => {
                 const isActive = subj.id === "tu-tuong-hcm" || subj.isCustom;
+                const isHCM = subj.id === "tu-tuong-hcm";
+                const cardColClass = isHCM ? "col-span-1 md:col-span-2" : "col-span-1";
+                const highScore = getSubjectHighScore(subj);
+
                 if (!isActive) {
-                  // Locked card (Lịch sử Đảng) - higher opacity for readability, lighter texts
+                  // Locked card (Lịch sử Đảng)
                   return (
                     <div
                       key={subj.id}
-                      className={`group p-6 rounded-3xl opacity-60 cursor-not-allowed flex flex-col justify-between h-64 text-left transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] ${
-                        mounted && theme === 'dark' 
-                          ? 'dark-glass-card border border-white/5 text-stone-300' 
-                          : 'bg-white border border-stone-200 text-stone-500 shadow-sm'
-                      }`}
+                      className={`bento-subject-card group ${cardColClass} opacity-60 cursor-not-allowed bg-white border border-stone-200 text-stone-600 shadow-sm`}
                     >
-                      <div>
-                        <div className="flex justify-between items-start mb-4">
-                          <span className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl ${
-                            mounted && theme === 'dark' ? 'bg-white/5 text-stone-400' : 'bg-stone-100 text-stone-500'
-                          }`}>
-                            ☭
-                          </span>
-                          <span className={`text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${
-                            mounted && theme === 'dark' 
-                              ? 'bg-white/5 text-stone-300 border-white/10' 
-                              : 'bg-stone-50 text-stone-600 border-stone-200'
-                          }`}>
-                            <Lock size={9} />
-                            Sắp ra mắt
-                          </span>
+                      <div className="card-glow-reflection" />
+                      <div className="card-content-wrapper">
+                        <div>
+                          <div className="flex justify-between items-start mb-4">
+                            <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-stone-100 text-stone-500">
+                              ☭
+                            </span>
+                            <span className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full border flex items-center gap-1 bg-stone-50 text-stone-600 border-stone-200">
+                              <Lock size={9} />
+                              Sắp ra mắt
+                            </span>
+                          </div>
+                          <h3 className="text-lg font-bold font-playfair mb-1 text-stone-700">
+                            {subj.title}
+                          </h3>
+                          <p className="text-xs leading-relaxed line-clamp-3 font-sans text-stone-500">
+                            {subj.description}
+                          </p>
                         </div>
-                        <h3 className={`text-lg font-bold font-playfair mb-1 ${mounted && theme === 'dark' ? 'text-stone-300' : 'text-stone-700'}`}>
-                          {subj.title}
-                        </h3>
-                        <p className={`text-xs leading-relaxed line-clamp-3 font-sans ${mounted && theme === 'dark' ? 'text-stone-350' : 'text-stone-500'}`}>
-                          {subj.description}
-                        </p>
-                      </div>
-                      <div className="text-[10px] font-semibold text-stone-400">
-                        Chưa khả dụng
+                        <div className="text-[10px] font-semibold text-stone-400">
+                          Chưa khả dụng
+                        </div>
                       </div>
                     </div>
                   );
                 }
 
-                // Active card (Tư tưởng Hồ Chí Minh or custom subjects) - highly readable & premium
+                // Active card (Tư tưởng Hồ Chí Minh or custom subjects)
                 return (
                   <div
                     key={subj.id}
                     onClick={() => handleSubjectSelect(subj.id)}
-                    className={`group p-6 rounded-3xl transition-all duration-300 cursor-pointer flex flex-col justify-between h-64 text-left relative overflow-hidden ${
-                      mounted && theme === 'dark'
-                        ? 'dark-glass-card border border-accent/30 hover:!border-accent hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] text-stone-100'
-                        : 'bg-white border border-stone-200 hover:border-accent hover:shadow-[0_8px_30px_rgba(217,119,6,0.15)] text-stone-900 shadow-sm'
-                    }`}
+                    onMouseMove={onCardMouseMove}
+                    onMouseLeave={onCardMouseLeave}
+                    className={`bento-subject-card group ${cardColClass} bg-white border border-stone-200 hover:border-accent text-stone-900 shadow-sm`}
                   >
-                    {/* Tiny glow indicator for Cancer theme */}
-                    <div 
-                      className="absolute top-0 right-0 w-24 h-24 rounded-full filter blur-2xl opacity-10 transition-opacity group-hover:opacity-25"
-                      style={{ background: subj.themeColor || '#1e1d1a' }}
-                    />
+                    <div className="card-glow-reflection" />
                     
-                    <div>
-                      <div className="flex justify-between items-start mb-4 relative z-10">
-                        <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-accent/10 border border-accent/20" style={{ color: subj.themeColor || '#d97706' }}>
-                          {subj.isCustom ? "📘" : "📖"}
-                        </span>
-                        <div className="flex items-center gap-1.5">
-                          {subj.isCustom && (
-                            <button
-                              onClick={(e) => handleDeleteSubject(subj.id, e)}
-                              className="text-stone-400 hover:text-red-500 dark:hover:text-red-400 p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
-                              title="Xóa môn học này"
-                            >
-                              <X size={12} />
-                            </button>
-                          )}
-                          <span className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 shadow-[0_0_10px_rgba(217,119,6,0.1)]">
-                            {subj.isCustom ? subj.category : "Môn chính thức 🟢"}
+                    <div className="card-content-wrapper">
+                      <div>
+                        <div className="flex justify-between items-start mb-4 relative z-10">
+                          <span className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-accent/10 border border-accent/20" style={{ color: subj.themeColor || '#d97706' }}>
+                            {subj.isCustom ? "📘" : "📖"}
                           </span>
+                          <div className="flex items-center gap-1.5">
+                            {subj.isCustom && (
+                              <button
+                                onClick={(e) => handleDeleteSubject(subj.id, e)}
+                                className="text-stone-400 hover:text-red-500 p-1 rounded hover:bg-stone-100 transition-colors cursor-pointer z-20 relative"
+                                title="Xóa môn học này"
+                              >
+                                <X size={12} />
+                              </button>
+                            )}
+                            <span className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 shadow-[0_0_10px_rgba(217,119,6,0.1)]">
+                              {subj.isCustom ? subj.category : "Môn chính thức 🟢"}
+                            </span>
+                          </div>
+                        </div>
+                        <h3 className="text-lg font-bold font-playfair mb-1 group-hover:text-accent transition-colors relative z-10 text-stone-900">
+                          {subj.title}
+                        </h3>
+                        
+                        {/* Quote of the subject */}
+                        <p className="italic text-[10px] md:text-xs text-accent/80 font-playfair mb-3 leading-relaxed relative z-10">
+                          {getSubjectQuote(subj.id)}
+                        </p>
+                        
+                        <p className="text-xs leading-relaxed line-clamp-3 relative z-10 font-sans text-stone-600">
+                          {subj.description}
+                        </p>
+                      </div>
+                      
+                      <div className="flex justify-between items-center mt-3 pt-2 border-t border-stone-200/60 relative z-10">
+                        {highScore ? (
+                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-[9px] font-bold border border-emerald-500/20">
+                            🏆 Cao nhất: {highScore.score}/{highScore.total} ({highScore.percent}%)
+                          </div>
+                        ) : (
+                          <span className="text-[9px] text-stone-400 italic font-medium">Chưa thi trắc nghiệm</span>
+                        )}
+                        <div className="text-[10px] font-bold text-accent flex items-center gap-0.5 group-hover:translate-x-1 transition-transform duration-300">
+                          <span>Vào học →</span>
                         </div>
                       </div>
-                      <h3 className={`text-lg font-bold font-playfair mb-1 group-hover:text-accent transition-colors relative z-10 ${
-                        mounted && theme === 'dark' ? 'text-white' : 'text-stone-900'
-                      }`}>
-                        {subj.title}
-                      </h3>
-                      <p className={`text-xs leading-relaxed line-clamp-3 relative z-10 font-sans transition-colors duration-300 ${
-                        mounted && theme === 'dark' ? 'text-stone-300' : 'text-stone-600'
-                      }`}>
-                        {subj.description}
-                      </p>
-                    </div>
-                    
-                    <div className="text-[10px] font-bold text-accent flex items-center gap-0.5 mt-2 relative z-10 group-hover:translate-x-1 transition-transform duration-300">
-                      <span>Vào học tập →</span>
                     </div>
                   </div>
                 );
               })}
 
-              {/* Card +: Thêm môn học mới - cleaner border and lighter typography */}
+              {/* Card +: Thêm môn học mới */}
               <div
                 onClick={() => setShowAddSubjectModal(true)}
-                className={`group p-6 rounded-3xl border border-dashed transition-all duration-300 cursor-pointer flex flex-col items-center justify-center h-64 text-center ${
-                  mounted && theme === 'dark'
-                    ? 'border-stone-600 hover:border-accent bg-white/5 hover:bg-white/10 text-stone-300'
-                    : 'border-stone-300 hover:border-accent bg-transparent hover:bg-stone-50 text-stone-600 hover:text-stone-900'
-                }`}
+                onMouseMove={onCardMouseMove}
+                onMouseLeave={onCardMouseLeave}
+                className="add-subject-card bento-subject-card group col-span-1 border border-dashed border-stone-300 hover:border-accent bg-transparent hover:bg-stone-50 text-stone-600 hover:text-stone-900 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center h-64 text-center"
               >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xl mb-3 transition-all group-hover:scale-110 ${
-                  mounted && theme === 'dark'
-                    ? 'bg-white/10 group-hover:bg-accent/20 border border-white/10 group-hover:border-accent/30 text-stone-300 group-hover:text-accent'
-                    : 'bg-stone-100 group-hover:bg-accent/10 border border-stone-200 group-hover:border-accent/20 text-stone-550 group-hover:text-accent'
-                }`}>
-                  ＋
+                <div className="card-glow-reflection" />
+                <div className="card-content-wrapper flex flex-col items-center justify-center">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-xl mb-3 transition-all group-hover:scale-110 bg-stone-100 group-hover:bg-accent/10 border border-stone-200 group-hover:border-accent/20 text-stone-500 group-hover:text-accent">
+                    ＋
+                  </div>
+                  <h3 className="text-sm font-bold font-playfair mb-1 group-hover:text-accent transition-colors">
+                    Thêm môn học mới
+                  </h3>
+                  <p className="text-[10px] leading-relaxed max-w-[200px] font-sans text-stone-500">
+                    Tự thêm các môn chuyên ngành hoặc tự chọn của riêng bạn.
+                  </p>
                 </div>
-                <h3 className="text-sm font-bold font-playfair mb-1 group-hover:text-accent transition-colors">
-                  Thêm môn học mới
-                </h3>
-                <p className={`text-[10px] leading-relaxed max-w-[200px] font-sans transition-colors duration-300 ${
-                  mounted && theme === 'dark' ? 'text-stone-350' : 'text-stone-500'
-                }`}>
-                  Tự thêm các môn chuyên ngành hoặc tự chọn của riêng bạn.
-                </p>
               </div>
             </div>
 
             <div className="text-center pt-4">
               <button
                 onClick={handleLogout}
-                className={`px-6 py-2.5 rounded-full border transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-xs font-bold uppercase tracking-widest ${
-                  mounted && theme === "dark"
-                    ? "border-accent/40 bg-[#12110f]/60 hover:bg-accent text-accent hover:text-stone-950 shadow-[0_0_15px_rgba(217,119,6,0.1)] hover:shadow-[0_0_20px_rgba(217,119,6,0.25)]"
-                    : "border-stone-300 bg-white hover:bg-stone-900 text-stone-700 hover:text-white shadow-sm hover:border-stone-900"
-                }`}
+                className="px-6 py-2.5 rounded-full border border-stone-300 bg-white hover:bg-stone-900 text-stone-700 hover:text-white shadow-sm hover:border-stone-900 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-xs font-bold uppercase tracking-widest"
                 style={{ minWidth: "140px" }}
               >
                 Đăng xuất
@@ -1475,62 +1824,157 @@ export default function Page() {
       {appStep === "study" && (
         <>
           {/* Storytelling Hero Section */}
-          <section
-            className={`w-full flex flex-col items-center justify-center relative px-6 z-10 transition-colors duration-300 bg-cover bg-center overflow-hidden ${
-              mounted && theme === 'dark' ? 'bg-[#07090e]' : 'bg-[#fcfbf9]'
-            }`}
-            style={{
-              height: `${windowHeight}px`,
-              opacity: scrolledOpacity,
-              transform: `translateY(${scrolledTranslate}px)`,
-              backgroundImage: mounted && theme === 'dark' ? "url('/assets/login.png')" : "none"
-            }}
-          >
-            {/* Dark blur overlay to match landing and subject-select screens */}
-            <div className={`absolute inset-0 z-0 pointer-events-none transition-colors duration-500 ${
-              mounted && theme === 'dark' ? 'bg-black/60 backdrop-blur-md' : 'bg-transparent'
-            }`} />
+          {showHero && (
+            <section
+              onWheel={(e) => {
+                if (e.deltaY > 10) {
+                  startTransition();
+                }
+              }}
+              onTouchStart={(e) => {
+                touchStartYRef.current = e.touches[0].clientY;
+              }}
+              onTouchMove={(e) => {
+                const touchEndY = e.touches[0].clientY;
+                const diff = touchStartYRef.current - touchEndY;
+                if (diff > 50) {
+                  startTransition();
+                }
+              }}
+              className="storytelling-hero w-full flex flex-col items-center justify-center relative px-6 z-40 overflow-hidden bg-[#faf8f4] perspective-3d"
+              style={{
+                height: `${windowHeight}px`,
+              }}
+            >
+              {/* Decorative glow orbs */}
+              <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(217,119,6,0.08) 0%, transparent 70%)", filter: "blur(40px)" }}
+              />
+              <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(194,65,12,0.05) 0%, transparent 70%)", filter: "blur(60px)" }}
+              />
+              {/* Subtle grid background pattern */}
+              <div className="absolute inset-0 pointer-events-none opacity-[0.025]"
+                style={{ backgroundImage: "repeating-linear-gradient(0deg, #2c2a26 0px, #2c2a26 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #2c2a26 0px, #2c2a26 1px, transparent 1px, transparent 60px)" }}
+              />
 
-            <div className={`max-w-2xl w-full text-center p-8 md:p-12 rounded-3xl relative z-10 transition-all duration-300 ${
-              mounted && theme === 'dark' 
-                ? 'hero-glass-card border border-stone-800/80 text-stone-100' 
-                : 'bg-white border border-stone-200 text-stone-900 shadow-xl'
-            }`}>
-              <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-accent mb-6 font-sans">
-                — {currentSubject.title} —
+              {/* 3D Book Container */}
+              <div className="book-wrap my-8 relative z-20">
+                <div className="book-3d select-none">
+                  {/* Spine */}
+                  <div className="book-spine-3d" />
+
+                  {/* Underlay Pages to give thickness */}
+                  <div className="book-page-under-2" />
+                  <div className="book-page-under" />
+
+                  {/* Inside Right Page (Contains the quote that types out) */}
+                  <div className="book-page-right px-4 py-4 flex flex-col justify-between text-stone-800">
+                    <div className="relative h-full flex flex-col justify-between">
+                      {/* Quote mark decoration */}
+                      <div className="text-3xl text-accent/15 font-playfair select-none leading-none">&ldquo;</div>
+                      
+                      <div className="flex-grow flex items-center justify-center min-h-[100px] px-1">
+                        <h2 className="text-xs sm:text-xs md:text-sm font-playfair font-bold italic leading-relaxed text-stone-900 text-center">
+                          {fullQuote.split(" ").map((word, wordIdx) => {
+                            const wordsArray = fullQuote.split(" ");
+                            return (
+                              <span key={wordIdx} className="inline-block whitespace-nowrap">
+                                {word.split("").map((char, charIdx) => (
+                                  <span key={charIdx} className="quote-char opacity-0 inline-block">
+                                    {char}
+                                  </span>
+                                ))}
+                                {/* Space character between words */}
+                                {wordIdx < wordsArray.length - 1 && (
+                                  <span className="quote-char opacity-0 inline-block">&nbsp;</span>
+                                )}
+                              </span>
+                            );
+                          })}
+                          <span className="quote-cursor inline-block w-[2px] h-[1.1em] bg-accent ml-0.5 align-middle animate-pulse" />
+                        </h2>
+                      </div>
+                      
+                      <div className="text-3xl text-accent/15 font-playfair select-none leading-none text-right rotate-180">&ldquo;</div>
+
+                      <div className="text-center mt-2">
+                        <button
+                          onClick={handleStartJourney}
+                          className="px-4 py-1.5 rounded-full bg-[#2c2a26] text-[#faf8f4] hover:bg-accent hover:text-white font-bold text-[9px] uppercase tracking-wider transition-all duration-300 hover:scale-105 cursor-pointer border-none shadow-md shadow-stone-900/10"
+                        >
+                          Vào bài học →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cover 3D (Xoay lật mở sang trái) */}
+                  <div className="book-cover-3d">
+                    {/* Cover Front (Nâu trầm với họa tiết nhũ vàng) */}
+                    <div className="book-cover-front p-6 flex flex-col justify-between border-r-2 border-stone-800">
+                      {/* Top gold line ornament */}
+                      <div className="border-t border-accent/30 pt-2 text-center">
+                        <span className="text-[9px] font-bold tracking-[0.25em] text-accent uppercase font-sans">
+                          Tài Liệu Học Tập
+                        </span>
+                      </div>
+
+                      {/* Title engraved in Gold */}
+                      <div className="text-center my-auto">
+                        <h1 className="text-xs sm:text-sm md:text-base font-playfair font-bold text-[#faf8f4] leading-tight select-none">
+                          {currentSubject.title}
+                        </h1>
+                        <div className="w-8 h-[2px] bg-accent mx-auto my-3" />
+                        <p className="text-[9px] text-[#eaeae6] font-sans tracking-widest uppercase opacity-75">
+                          StudyMaster
+                        </p>
+                      </div>
+
+                      {/* Bottom gold line ornament */}
+                      <div className="border-b border-accent/30 pb-2 text-center" />
+                    </div>
+
+                    {/* Cover Back (Left page when opened) */}
+                    <div className="book-cover-back p-6 flex flex-col justify-between border-l-2 border-stone-200">
+                      <div className="border-t border-stone-200 pt-2 text-center">
+                        <span className="text-[8px] font-bold tracking-[0.2em] text-stone-400 uppercase font-sans">
+                          CHƯƠNG MỞ ĐẦU
+                        </span>
+                      </div>
+                      
+                      <div className="text-center my-auto">
+                        <div className="w-8 h-8 rounded-full border border-accent/20 flex items-center justify-center mx-auto mb-2">
+                          <span className="text-accent text-[8px] font-serif">★</span>
+                        </div>
+                        <p className="text-[9px] text-stone-600 font-sans leading-relaxed max-w-[120px] mx-auto italic">
+                          "Hành trình vạn dặm khởi đầu từ một bước chân."
+                        </p>
+                      </div>
+
+                      <div className="border-b border-stone-200 pb-2 text-center text-[7px] text-stone-400 uppercase font-sans tracking-wider">
+                        Mục lục & Giới thiệu
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-              <h2 className={`text-xl md:text-3xl font-playfair font-bold italic leading-relaxed min-h-[4rem] transition-colors duration-300 ${
-                mounted && theme === 'dark' ? 'text-stone-100' : 'text-stone-900'
-              }`}>
-                {typedText}
-                <span className="typing-cursor"></span>
-              </h2>
-              <p className={`text-xs md:text-sm mt-6 leading-relaxed max-w-md mx-auto transition-colors duration-300 ${
-                mounted && theme === 'dark' ? 'text-stone-400' : 'text-stone-500'
-              }`}>
-                Học tập qua dòng thời gian lịch sử kết hợp công cụ ghi chú tự do và bộ kiểm tra đánh giá chất lượng.
-              </p>
+
+              {/* Scroll down indicator */}
               <button
                 onClick={handleStartJourney}
-                className="mt-8 px-6 py-3 rounded-full bg-accent text-white dark:text-stone-950 hover:bg-accent/90 font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-lg shadow-accent/20 cursor-pointer z-20 relative"
+                className="scroll-indicator absolute bottom-8 flex flex-col items-center gap-2 animate-bounce text-xs font-semibold text-stone-400 cursor-pointer z-10"
               >
-                Bắt đầu hành trình
+                <span>Bấm nút hoặc cuộn chuột để lật sách</span>
+                <ChevronDown size={16} />
               </button>
-            </div>
+            </section>
+          )}
 
-            <button
-              onClick={handleStartJourney}
-              className={`absolute bottom-10 flex flex-col items-center gap-2 animate-bounce text-xs font-semibold cursor-pointer z-10 transition-colors duration-300 ${
-                mounted && theme === 'dark' ? 'text-stone-400' : 'text-stone-550'
-              }`}
-            >
-              <span>Cuộn chuột xuống</span>
-              <ChevronDown size={16} />
-            </button>
-          </section>
 
           {/* Layout wrapper for Sidebar and Content */}
-          <div className="flex-1 flex w-full relative z-10">
+          <div className="flex-1 flex w-full relative z-10 main-study-content">
             {/* Sidebar Navigation */}
             <Sidebar
               chapters={chapters}
@@ -1541,37 +1985,43 @@ export default function Page() {
               isOpen={isSidebarOpen}
               setIsOpen={setIsSidebarOpen}
               onNavigate={handleNavigate}
-              forceHide={!scrolledPastHero}
+              forceHide={showHero}
               onChangeSubject={() => setAppStep("subject-select")}
               onLogout={handleLogout}
               onOpenProfile={() => setShowProfileModal(true)}
               currentUserAvatar={currentUserAvatar}
               currentUser={currentUser}
               showConfirm={showConfirm}
+              activeTool={activeTool}
+              setActiveTool={setActiveTool}
+              activeColor={activeColor}
+              setActiveColor={setActiveColor}
+              onClearAll={handleClearAll}
+              onBackToHero={() => setShowHero(true)}
             />
 
             {/* Main Content Area */}
             <div
-              className="flex-grow flex flex-col min-h-screen md:pl-72"
+              className="flex-grow flex flex-col min-h-screen md:pl-[312px]"
             >
               {/* Header Bar */}
               <header
-                className={`sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-850 transition-all duration-500 ${
-                  scrolledPastHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+                className={`sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
+                  !showHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
                 }`}
               >
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => setIsSidebarOpen(true)}
-                    className="p-2 -ml-2 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 md:hidden"
+                    className="p-2 -ml-2 rounded-lg text-stone-600 hover:bg-stone-200 md:hidden"
                     aria-label="Mở menu"
                   >
                     <Menu size={20} />
                   </button>
-                  <div className="text-sm font-semibold flex items-center gap-2 text-stone-500 dark:text-stone-400">
+                  <div className="text-sm font-semibold flex items-center gap-2 text-stone-500">
                     <span>{currentSubject.title}</span>
-                    <span className="text-stone-300 dark:text-stone-800">/</span>
-                    <span className="text-stone-800 dark:text-stone-200 font-bold">
+                    <span className="text-stone-300">/</span>
+                    <span className="text-stone-800 font-bold">
                       {isQuizMode ? "Bài kiểm tra trắc nghiệm" : chapters[0]?.title}
                     </span>
                   </div>
@@ -1581,12 +2031,14 @@ export default function Page() {
               {/* Dynamic Content Panel */}
               <div
                 className={`flex-1 flex flex-col relative transition-opacity duration-700 ${
-                  scrolledPastHero ? "opacity-100" : "opacity-10"
+                  !showHero ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
                 {isQuizMode ? (
                   <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 animate-in">
-                    <Quiz onClose={() => setIsQuizMode(false)} showToast={showToast} showConfirm={showConfirm} showAlert={showAlert} />
+                    <ErrorBoundary>
+                      <Quiz onClose={() => setIsQuizMode(false)} showToast={showToast} showConfirm={showConfirm} showAlert={showAlert} />
+                    </ErrorBoundary>
                   </div>
                 ) : (
                   <div
@@ -1601,7 +2053,7 @@ export default function Page() {
 
                     {/* Custom Notebook Workspace for Custom Subjects */}
                     {currentSubject.isCustom && (
-                      <div className="mt-8 p-6 rounded-2xl border border-stone-200 dark:border-stone-850 bg-white/40 dark:bg-stone-900/40 backdrop-blur-md space-y-3 relative z-10">
+                      <div className="mt-8 p-6 rounded-2xl border border-stone-200 bg-white/60 backdrop-blur-md space-y-3 relative z-10">
                         <label className="block text-[10px] font-bold text-accent uppercase tracking-widest flex items-center gap-1.5 select-none">
                           <span>📝 Vở ghi chép tự học:</span>
                           <span className="text-[9px] text-stone-550 font-normal normal-case italic">(Tự động lưu vào trình duyệt)</span>
@@ -1611,7 +2063,7 @@ export default function Page() {
                           value={customNotes[selectedSubjectId] || ""}
                           onChange={(e) => handleSaveNotes(selectedSubjectId, e.target.value)}
                           placeholder="Nhập lý thuyết, bài giảng chuyên ngành hoặc ý tưởng học tập của bạn tại đây... Sau đó bạn có thể dùng bút highlight tô sáng văn bản hoặc vẽ sơ đồ trực tiếp đè lên khung ghi chú này!"
-                          className="w-full h-80 p-4 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-950/50 text-sm text-stone-800 dark:text-stone-100 focus:outline-none focus:border-accent transition-colors resize-y relative z-10 notebook-input font-sans"
+                          className="w-full h-80 p-4 rounded-xl border border-stone-200 bg-stone-50/80 text-sm text-stone-800 focus:outline-none focus:border-accent transition-colors resize-y relative z-10 notebook-input font-sans"
                         />
                       </div>
                     )}
@@ -1629,22 +2081,13 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Floating Toolbar */}
-          {!isQuizMode && scrolledPastHero && (
-            <NoteToolbar
-              activeTool={activeTool}
-              setActiveTool={setActiveTool}
-              activeColor={activeColor}
-              setActiveColor={setActiveColor}
-              onClearAll={handleClearAll}
-            />
-          )}
+
 
           {/* Scroll to Top Button */}
-          {showScrollTop && scrolledPastHero && (
+          {showScrollTop && !showHero && (
             <button
               onClick={handleScrollToTop}
-              className="fixed bottom-6 left-6 md:left-[310px] z-50 p-3 rounded-full bg-accent text-white dark:text-stone-950 hover:bg-accent/90 border border-accent/20 shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="fixed bottom-6 left-6 md:left-[336px] z-50 p-3 rounded-full bg-accent text-white hover:bg-accent/90 border border-accent/20 shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer"
               aria-label="Về đầu trang"
             >
               <ArrowUp size={20} />
