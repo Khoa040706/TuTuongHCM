@@ -4,7 +4,7 @@
 
 export const basicItData = {
   id: "basic-it",
-  title: "Những định nghĩa và thuật toán cơ bản của CNTT",
+  title: "Kiến thức cơ bản CNTT",
   subtitle: "Nền tảng khoa học máy tính: Hệ nhị phân, logic Boolean, cấu trúc máy tính và mạng cơ bản.",
   sections: [
     {

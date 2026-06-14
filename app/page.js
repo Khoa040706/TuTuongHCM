@@ -1713,8 +1713,7 @@ export default function Page() {
             <div className="bento-grid-subject w-full">
               {Object.values(allSubjects).map((subj) => {
                 const isActive = subj.isActive !== false;
-                const isHCM = subj.id === "tu-tuong-hcm";
-                const cardColClass = isHCM ? "col-span-1 md:col-span-2" : "col-span-1";
+                const cardColClass = "col-span-1";
                 const highScore = getSubjectHighScore(subj);
 
                 if (!isActive) {
@@ -1783,8 +1782,15 @@ export default function Page() {
                                 <X size={12} />
                               </button>
                             )}
-                            <span className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/30 shadow-[0_0_10px_rgba(217,119,6,0.1)]">
-                              {subj.isCustom ? subj.category : "Môn chính thức 🟢"}
+                            <span
+                              className="text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full border transition-all duration-300"
+                              style={{
+                                color: 'var(--accent)',
+                                borderColor: 'rgba(var(--accent-rgb), 0.3)',
+                                backgroundColor: 'rgba(var(--accent-rgb), 0.1)'
+                              }}
+                            >
+                              {subj.category || "Môn học"}
                             </span>
                           </div>
                         </div>
