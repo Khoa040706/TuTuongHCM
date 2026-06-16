@@ -1,69 +1,99 @@
-# Kế hoạch Triển khai Chi tiết: Biểu ngữ Chương Điện ảnh Tràn viền & Bụi vàng Tương tác
+# Kế hoạch bổ sung 5 môn học mới với Giao diện chuyển đổi Màu sắc động (Dynamic Themes)
 
-Dựa trên lựa chọn của bạn và kinh nghiệm thiết kế giao diện cao cấp, tôi đề xuất bản kế hoạch chi tiết kết hợp tối ưu:
-- **Bố cục (2B)**: Biểu ngữ Tràn viền Điện ảnh (`Cinematic Full-width`), chiếm trọn chiều rộng vùng đọc chính, tạo điểm nhấn phân tách chương hoành tráng.
-- **Trang trí (3A)**: Thuần chữ nghệ thuật (`Pure Typography`) tinh tế, chìm sâu số chương lớn (`CHƯƠNG I`) ở nền, chữ chính sử dụng màu vàng gold gradient sang trọng.
-- **Tương tác (1A + 1C kết hợp)**: 
-  - Trạng thái tự do: Bụi vàng lững lờ trôi như tàn lửa hổ phách.
-  - Rê chuột (Hover): Bụi vàng tự động xoáy tụ lại xung quanh con trỏ chuột tạo hiệu ứng dải ngân hà lấp lánh (Galaxy Swirl).
-  - Nhấp chuột (Click): Phát nổ ra chùm tia bụi sáng hổ phách nhỏ từ tâm điểm click (Click Burst).
+Kế hoạch này tích hợp thêm 5 môn học chuyên ngành và cơ bản vào hệ thống **StudyMaster**, đồng thời bổ sung cơ chế **Dynamic Theme Injection** bằng Javascript giúp toàn bộ giao diện (Sidebar, thẻ bài viết, hiệu ứng spotlight, bóng mờ, bút highlight, các hạt bụi vàng trên banner) tự động đổi màu theo tông màu riêng biệt của môn học đang chọn.
 
 ---
 
-## Chi tiết Các Thay Đổi Mã Nguồn
+## Chi tiết Phản hồi từ Người dùng & Quyết định thiết kế
 
-### 1. Thay đổi cấu trúc trong `components/ContentRenderer.js`
+1. **Bộ màu sắc thống nhất**:
+   * **Tư tưởng HCM**: Accent `#d97706` (Hổ phách), Secondary `#c2410c` (Đất nung), RGB `217, 119, 6` (Màu mặc định).
+   * **OOP**: Accent `#2563eb` (Xanh Sapphire), Secondary `#1d4ed8` (Xanh Coban), RGB `37, 99, 235` (Mã màu Blue).
+   * **Phân tích thiết kế**: Accent `#059669` (Xanh Ngọc lục bảo), Secondary `#047857` (Xanh lá rừng), RGB `5, 150, 105` (Mã màu Green).
+   * **Cấu trúc dữ liệu và giải thuật**: Accent `#7c3aed` (Tím Thạch anh), Secondary `#6d28d9` (Tím đậm), RGB `124, 92, 237` (Mã màu Purple).
+   * **Hệ cơ sở dữ liệu**: Accent `#ea580c` (Cam đất), Secondary `#c2410c` (Đỏ gạch), RGB `234, 88, 12` (Mã màu Orange).
+   * **Định nghĩa & Thuật toán CNTT**: Accent `#4f46e5` (Chàm Indigo), Secondary `#4338ca` (Xanh chàm tối), RGB `79, 70, 229` (Mã màu Indigo).
+   * **Lịch sử Đảng**: Accent `#b91c1c` (Đỏ Crimson), Secondary `#7f1d1d` (Đỏ đô), RGB `185, 28, 28` (Mở khóa và áp dụng mã màu Red).
 
-#### [MODIFY] [components/ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js)
+2. **Hiệu ứng trên Trang chủ (Bento Hover)**:
+   * Khi rê chuột vào thẻ môn học ở trang chủ, bóng mờ phát sáng (`--glow-color`) và đường viền spotlight (`::after`) của thẻ sẽ đổi màu theo đúng tông màu của môn học đó.
 
-- **Tạo component `ChapterHeader` chuyên biệt**:
-  - Nhận vào props `title` (Tên chương), `subtitle` (Phụ đề), và `chapterId` (Số chương).
-  - **Mẫu mã (HTML/JSX)**:
-    ```javascript
-    <div className="chapter-banner-container w-full relative mb-14 overflow-hidden select-none">
-      <canvas className="chapter-banner-canvas absolute inset-0 pointer-events-none z-0" />
-      
-      {/* Background Huge Text Overlay */}
-      <div className="absolute right-10 bottom-2 text-[9rem] md:text-[12rem] font-black font-playfair text-white/[0.03] tracking-widest leading-none pointer-events-none z-0">
-        CHƯƠNG {chapterId}
-      </div>
+3. **Phạm vi đổi màu của giao diện (Study Mode)**:
+   * Khi vào một môn học, toàn bộ các thành phần (Sidebar active link, Sidebar indicator, nút "Đổi môn", nút "Đăng xuất", các nút chỉnh sửa/lưu bản vẽ, nút quay đầu trang) sẽ đồng loạt đổi màu theo biến CSS `--accent` và `--secondary` tương ứng của môn học đó.
 
-      <div className="chapter-banner-content relative z-10 w-full h-[280px] md:h-[320px] bg-gradient-to-br from-[#1e1d1a] to-[#141312] border-b border-[#2c2a26] flex flex-col justify-center px-8 md:px-16">
-        <div className="chapter-banner-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-xs font-bold uppercase tracking-wider mb-4 w-fit">
-          <span>📚</span>
-          <span>Chương {chapterId}</span>
-        </div>
-        <h1 className="chapter-banner-title text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-500 to-amber-700 font-playfair tracking-tight mb-4 leading-tight">
-          {title}
-        </h1>
-        <p className="chapter-banner-subtitle text-[#eae6db] text-sm md:text-base leading-relaxed opacity-70 max-w-3xl font-sans">
-          {subtitle}
-        </p>
-      </div>
-    </div>
-    ```
+4. **Hạt bụi sáng Canvas (Chapter Banner)**:
+   * Các hạt bụi sáng lơ lửng và hiệu ứng nổ pháo hoa khi bấm chuột vào banner đầu chương học sẽ đổi màu đồng bộ theo môn học hiện tại (được cập nhật động từ biến CSS `--accent`).
 
-  - **Hệ thống hạt Bụi vàng Canvas (Particle System)**:
-    - Dùng `useRef` và `useEffect` khởi tạo Canvas 2D.
-    - Vẽ 60 hạt bụi với kích thước ngẫu nhiên (`0.8px - 2.5px`), tốc độ trôi nhẹ.
-    - Sự kiện `mousemove` thu hút bụi vàng: Gia tốc hạt hướng về tọa độ chuột với lực cản nhẹ để bụi quay quanh chuột.
-    - Sự kiện `click` phát nổ: Tạo thêm 20 hạt bụi sáng bay tốc độ cao từ điểm click rồi mờ dần đi nhanh chóng.
+5. **Khóa tính năng Trắc nghiệm (Quiz Lock)**:
+   * Đối với các môn học chưa có dữ liệu câu hỏi ôn tập (OOP, Phân tích thiết kế, Cấu trúc dữ liệu, Hệ cơ sở dữ liệu, Định nghĩa & Thuật toán CNTT, Lịch sử Đảng), tuỳ chọn **"Bài kiểm tra trắc nghiệm"** trong Sidebar sẽ bị khóa (thêm biểu tượng ổ khóa, làm mờ độ đục về 50%, vô hiệu hóa click chuột và hiển thị con trỏ `cursor-not-allowed`).
 
-  - **Hoạt cảnh GSAP Entrance**:
-    - Khi cuộn tới, banner sẽ chạy hiệu ứng scale nhẹ từ `0.98` lên `1` kết hợp fade in để tạo chiều sâu chuyển động.
-    - Các thành phần Badge, Title, Subtitle stagger trồi lên từ dưới (`y: 20 -> 0`, `opacity: 0 -> 1`).
+6. **Mở khóa môn Lịch sử Đảng**:
+   * Mở khóa hoàn toàn môn Lịch sử Đảng và thêm dữ liệu demo dạng bài đọc, sử dụng bộ màu Đỏ đặc trưng của môn học.
 
 ---
 
-### 2. Cập nhật CSS trong `app/globals.css`
+## Các thay đổi đề xuất
 
-#### [MODIFY] [app/globals.css](file:///d:/TT%20HCM/app/globals.css)
-- Thiết lập các lớp CSS cho `.chapter-banner-container` và `.chapter-banner-canvas` để tràn viền hoàn toàn so với vùng đệm đọc (bỏ padding của cha ở phần đầu chương học).
+### 1. Tạo mới các file dữ liệu môn học (`data/`)
+
+* Tạo mới 5 file dữ liệu môn học riêng biệt:
+  * [oop.js](file:///d:/TT%20HCM/data/oop.js) (Icon: `💻`, Chương mẫu: *Lập trình hướng đối tượng*)
+  * [analysis-design.js](file:///d:/TT%20HCM/data/analysis-design.js) (Icon: `📐`, Chương mẫu: *Phân tích yêu cầu và UML*)
+  * [dsa.js](file:///d:/TT%20HCM/data/dsa.js) (Icon: `📊`, Chương mẫu: *Cấu trúc dữ liệu & Thuật toán*)
+  * [database.js](file:///d:/TT%20HCM/data/database.js) (Icon: `🗄️`, Chương mẫu: *Hệ cơ sở dữ liệu & SQL*)
+  * [basic-it.js](file:///d:/TT%20HCM/data/basic-it.js) (Icon: `💡`, Chương mẫu: *Định nghĩa & Thuật toán CNTT*)
+* Cập nhật [data/index.js](file:///d:/TT%20HCM/data/index.js):
+  * Import dữ liệu và đăng ký 5 môn học mới vào object `subjects`.
+  * Khai báo bộ màu `themeColors` (`accent`, `secondary`, `accentRgb`) trực tiếp trong cấu hình của từng môn học.
 
 ---
 
-## Kế hoạch Biên dịch & Xác minh
+### 2. Thiết lập Biến màu sắc động trong CSS (`app/globals.css`)
 
-- Chạy `npm run build` kiểm tra cú pháp và biên dịch Turbopack.
-- Kiểm tra thủ công hiệu ứng lướt qua tiêu đề chương mới tràn viền điện ảnh sang trọng.
-- Rê chuột và Click chuột lên banner tối để kiểm chứng ma thuật bụi vàng phát nổ và xoáy tụ.
+#### [MODIFY] [globals.css](file:///d:/TT%20HCM/app/globals.css)
+* Thay thế các mã màu RGB và Hex cứng liên quan đến màu hổ phách vàng (`217, 119, 6` và `#d97706`) bằng các biến CSS tương ứng:
+  * Thay `#d97706` bằng `var(--accent)`.
+  * Thay `rgba(217, 119, 6, ...)` bằng `rgba(var(--accent-rgb, 217, 119, 6), ...)`.
+  * Cập nhật màu nền của thẻ bookmark `.card-bookmark-tag` thành dải chuyển màu đẹp mắt từ `var(--accent)` sang `var(--secondary)`.
+  * Cập nhật `.text-static-accent` thành `color: var(--accent) !important`.
+
+---
+
+### 3. Logic điều khiển màu sắc (`app/page.js` & `components/`)
+
+#### [MODIFY] [page.js](file:///d:/TT%20HCM/app/page.js)
+* Thêm một `useEffect` theo dõi `selectedSubjectId`.
+* Khi đổi môn, ghi đè các thuộc tính CSS vào gốc `:root` (`document.documentElement.style`):
+  * `--accent` -> `currentSubject.themeColors.accent`
+  * `--secondary` -> `currentSubject.themeColors.secondary`
+  * `--accent-rgb` -> `currentSubject.themeColors.accentRgb`
+* Cập nhật hàm `onCardMouseMove` để thiết lập biến cục bộ cho từng thẻ bento dựa trên màu sắc môn học đó khi người dùng hover trên trang chủ.
+* Render biểu tượng động: Thay đổi từ biểu tượng cứng sang hiển thị `subj.icon || (subj.isCustom ? "📘" : "📖")`.
+* Truyền thuộc tính `hasQuiz` cho `<Sidebar>`: `hasQuiz={Object.keys(questionsMap).length > 0}`.
+* Thay đổi điều kiện `isActive` tại bento grid:
+  ```javascript
+  const isActive = subj.isActive !== false;
+  ```
+  (Tất cả các môn học mặc định đều Active, cho phép vào học ngay).
+
+#### [MODIFY] [Sidebar.js](file:///d:/TT%20HCM/components/Sidebar.js)
+* Tiếp nhận prop `hasQuiz`.
+* Cấu hình nút **"Bài kiểm tra trắc nghiệm"**:
+  * Nếu `hasQuiz` bằng `false`, thiết lập thuộc tính `disabled`, áp dụng CSS làm mờ (`opacity-50`), vô hiệu hóa click (`cursor-not-allowed`) và hiển thị thêm icon `Lock` (ổ khóa) nhỏ ở góc phải để người dùng biết tính năng này đang khóa.
+
+#### [MODIFY] [ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js)
+* Cập nhật hệ thống hạt bụi sáng Canvas (`ChapterHeader`):
+  * Đọc biến `--accent` từ style thực tế của document để hiển thị hạt bụi và hiệu ứng nổ pháo hoa theo đúng màu sắc riêng của môn đó.
+
+---
+
+## Kế hoạch kiểm thử & Xác minh
+
+### Kiểm thử tự động
+* Khởi chạy dự án bằng lệnh `npm run build` để kiểm tra lỗi cú pháp, kiểu dữ liệu và đảm bảo build tĩnh Next.js thành công.
+
+### Kiểm thử thủ công
+1. Vào trang chủ và kiểm tra sự xuất hiện của 7 thẻ môn học (bao gồm Lịch sử Đảng và 5 môn CNTT mới).
+2. Hover vào từng thẻ môn học ở trang chủ và kiểm tra xem bóng mờ phát sáng cùng đường viền tỏa sáng có chuyển màu khớp với môn học đó không.
+3. Click vào từng môn học mới để kiểm tra xem thanh Sidebar, tiêu đề Chương học và các hạt stardust có chuyển đổi màu đồng loạt theo tông màu riêng của môn học đó không.
+4. Kiểm tra xem tùy chọn **"Bài kiểm tra trắc nghiệm"** trong Sidebar có bị khóa và hiển thị ổ khóa đối với các môn học mới không.

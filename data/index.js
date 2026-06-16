@@ -6,7 +6,8 @@ import { oopData } from "./oop";
 import { analysisDesignData } from "./analysis-design";
 import { dsaData } from "./dsa";
 import { databaseData } from "./database";
-import { basicItData } from "./basic-it";
+import { basicAlgorithmsData } from "./basic-algorithms";
+import { basicConceptsData } from "./basic-concepts";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -39,7 +40,8 @@ export const subjects = {
     },
     icon: "☭",
     chapters: [lichSuDangData],
-    questionsMap: {}
+    questionsMap: {},
+    isActive: false
   },
   "oop": {
     id: "oop",
@@ -54,7 +56,8 @@ export const subjects = {
     },
     icon: "💻",
     chapters: [oopData],
-    questionsMap: {}
+    questionsMap: {},
+    isActive: false
   },
   "analysis-design": {
     id: "analysis-design",
@@ -69,7 +72,8 @@ export const subjects = {
     },
     icon: "📐",
     chapters: [analysisDesignData],
-    questionsMap: {}
+    questionsMap: {},
+    isActive: false
   },
   "dsa": {
     id: "dsa",
@@ -84,7 +88,8 @@ export const subjects = {
     },
     icon: "📊",
     chapters: [dsaData],
-    questionsMap: {}
+    questionsMap: {},
+    isActive: false
   },
   "database": {
     id: "database",
@@ -99,21 +104,38 @@ export const subjects = {
     },
     icon: "🗄️",
     chapters: [databaseData],
-    questionsMap: {}
+    questionsMap: {},
+    isActive: false
   },
-  "basic-it": {
-    id: "basic-it",
-    title: "Kiến thức cơ bản CNTT",
-    description: "Tổng quan về hệ nhị phân, bit/byte, logic Boolean, mạng máy tính cơ bản, hệ điều hành và các khái niệm cốt lõi của CS.",
+  "basic-concepts": {
+    id: "basic-concepts",
+    title: "Định Nghĩa & Khái Niệm Cơ Bản CNTT",
+    description: "Các định nghĩa nền tảng về phần cứng, hệ điều hành, mạng máy tính và cơ sở dữ liệu.",
     category: "Kiến thức cơ bản",
     quote: "“Mọi hệ thống phức tạp đều được xây dựng từ những nguyên lý cơ bản nhất.”",
+    themeColors: {
+      accent: "#0d9488",
+      secondary: "#0f766e",
+      accentRgb: "13, 148, 136"
+    },
+    icon: "💡",
+    chapters: [basicConceptsData],
+    questionsMap: {},
+    isActive: true
+  },
+  "basic-algorithms": {
+    id: "basic-algorithms",
+    title: "Thuật Toán & Giải Thuật Kinh Điển",
+    description: "Các giải thuật sắp xếp, tìm kiếm và đường đi kinh điển kèm mã giả và code Java minh họa.",
+    category: "Môn chuyên ngành",
+    quote: "“Thuật toán là nền tảng, tư duy là chìa khóa của khoa học máy tính.”",
     themeColors: {
       accent: "#4f46e5",
       secondary: "#4338ca",
       accentRgb: "79, 70, 229"
     },
-    icon: "💡",
-    chapters: [basicItData],
+    icon: "🧮",
+    chapters: [basicAlgorithmsData],
     questionsMap: {}
   }
 };

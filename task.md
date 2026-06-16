@@ -1,5 +1,14 @@
-- `[x]` Step 1: Thêm kiểu dáng biểu ngữ tràn viền chương `.chapter-banner-container` và `.chapter-banner-canvas` trong `app/globals.css`
-- `[x]` Step 2: Cài đặt component `ChapterHeader` (Canvas bụi vàng tương tác, Galaxy Swirl & Click Burst) trong `components/ContentRenderer.js`
-- `[x]` Step 3: Tích hợp hoạt cảnh cuộn GSAP (scale & stagger reveal) cho `ChapterHeader` trong `components/ContentRenderer.js`
-- `[x]` Step 4: Cấu trúc lại cách gọi tiêu đề chương học trong `ContentRenderer` để sử dụng `ChapterHeader` mới
-- `[x]` Step 5: Chạy biên dịch `npm run build` để kiểm tra lỗi và xác nhận hoạt động ổn định
+- [x] Create data files for new subjects:
+  - [x] `data/oop.js`
+  - [x] `data/analysis-design.js`
+  - [x] `data/dsa.js`
+  - [x] `data/database.js`
+  - [x] `data/basic-it.js`
+- [x] Update `data/lich-su-dang.js`
+- [x] Update `data/index.js`
+- [x] Modify `app/globals.css`
+- [x] Modify `app/page.js`
+- [x] Modify `components/Sidebar.js`
+- [x] Modify `components/ContentRenderer.js`
+- [x] Verify build with `npm run build`
+- [x] Push changes to GitHub

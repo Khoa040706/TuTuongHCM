@@ -750,7 +750,7 @@ export default function Page() {
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [showHero, appStep]);
+  }, [showHero, appStep, activeSubsectionId, selectedSubjectId]);
 
   // Scroll to an element accounting for sticky header and GSAP pin spacer
   const HEADER_OFFSET = 72; // sticky header height in px (py-4 + content ≈ 56px) + breathing room
@@ -2087,7 +2087,7 @@ export default function Page() {
                     onMouseUp={handleTextSelection}
                     onTouchEnd={handleTextSelection}
                     onClick={handleContentClick}
-                    className="relative flex-1 w-full max-w-3xl mx-auto px-6 py-12 md:px-12 animate-in"
+                    className="relative flex-1 w-full max-w-5xl mx-auto px-6 pt-12 pb-44 md:px-12 animate-in"
                   >
                     {/* Content text */}
                     <ContentRenderer key={reRenderKey} chapters={chapters} />
