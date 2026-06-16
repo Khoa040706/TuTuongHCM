@@ -57,7 +57,7 @@ export const subjects = {
     icon: "💻",
     chapters: [oopData],
     questionsMap: {},
-    isActive: false
+    isActive: true
   },
   "analysis-design": {
     id: "analysis-design",
@@ -89,7 +89,7 @@ export const subjects = {
     icon: "📊",
     chapters: [dsaData],
     questionsMap: {},
-    isActive: false
+    isActive: true
   },
   "database": {
     id: "database",

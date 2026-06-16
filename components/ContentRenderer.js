@@ -8,6 +8,11 @@ import QuickSortVisualizer from "./QuickSortVisualizer";
 import QuickSortFlowchart from "./QuickSortFlowchart";
 import MemoryVisualizer from "./MemoryVisualizer";
 import ConceptQuiz from "./ConceptQuiz";
+import JavaRunCycleVisualizer from "./JavaRunCycleVisualizer";
+import CastingPlayground from "./CastingPlayground";
+import PrintfFormatter from "./PrintfFormatter";
+import ComplexVisualizer from "./ComplexVisualizer";
+import FractionVisualizer from "./FractionVisualizer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -731,6 +736,31 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "pass-by-value-ref-quiz":
       return (
         <ConceptQuiz key={path} />
+      );
+
+    case "java-run-cycle-visualizer":
+      return (
+        <JavaRunCycleVisualizer key={path} />
+      );
+
+    case "java-casting-playground":
+      return (
+        <CastingPlayground key={path} />
+      );
+
+    case "java-printf-formatter":
+      return (
+        <PrintfFormatter key={path} />
+      );
+
+    case "dsa-complex-visualizer":
+      return (
+        <ComplexVisualizer key={path} />
+      );
+
+    case "dsa-fraction-visualizer":
+      return (
+        <FractionVisualizer key={path} />
       );
 
     default:
