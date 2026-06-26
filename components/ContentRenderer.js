@@ -18,6 +18,11 @@ import HcmValuesExplorer from "./HcmValuesExplorer";
 import HcmWorldDevelopment from "./HcmWorldDevelopment";
 import LsdHistoryTimeline from "./LsdHistoryTimeline";
 import LsdObjectExplorer from "./LsdObjectExplorer";
+import LsdFunctionsExplorer from "./LsdFunctionsExplorer";
+import LsdTasksExplorer from "./LsdTasksExplorer";
+import LsdMethodologyExplorer from "./LsdMethodologyExplorer";
+import LsdSpecificMethodsExplorer from "./LsdSpecificMethodsExplorer";
+import LsdRequirementsGoalsExplorer from "./LsdRequirementsGoalsExplorer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -357,14 +362,18 @@ export default function ContentRenderer({ chapters }) {
                   id={`content-${sub.id}`}
                   className="subsection mb-10 scroll-mt-20"
                 >
-                  <div className="subsection__heading flex items-baseline gap-2 mb-6 pl-2">
-                    <span className="subsection__number text-lg font-bold text-accent font-sans">
-                      {sub.number}.
-                    </span>
-                    <h3 className="subsection__title text-base md:text-lg font-bold text-stone-850 font-sans leading-snug">
-                      {sub.title}
-                    </h3>
-                  </div>
+                  {(sub.number || sub.title) && (
+                    <div className="subsection__heading flex items-baseline gap-2 mb-6 pl-2">
+                      {sub.number && (
+                        <span className="subsection__number text-lg font-bold text-accent font-sans">
+                          {sub.number}.
+                        </span>
+                      )}
+                      <h3 className="subsection__title text-base md:text-lg font-bold text-stone-850 font-sans leading-snug">
+                        {sub.title}
+                      </h3>
+                    </div>
+                  )}
 
                   {/* Parts (Rendered as premium study cards with 3D animation) */}
                   {sub.parts.map((part, partIdx) => {
@@ -793,6 +802,31 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "lsd-object-explorer":
       return (
         <LsdObjectExplorer key={path} />
+      );
+
+    case "lsd-functions-explorer":
+      return (
+        <LsdFunctionsExplorer key={path} />
+      );
+
+    case "lsd-tasks-explorer":
+      return (
+        <LsdTasksExplorer key={path} />
+      );
+
+    case "lsd-methodology-explorer":
+      return (
+        <LsdMethodologyExplorer key={path} />
+      );
+
+    case "lsd-specific-methods-explorer":
+      return (
+        <LsdSpecificMethodsExplorer key={path} />
+      );
+
+    case "lsd-requirements-goals-explorer":
+      return (
+        <LsdRequirementsGoalsExplorer key={path} />
       );
 
     default:

@@ -124,20 +124,116 @@ export const lichSuDangMoDau = {
       subsections: [
         {
           id: "lsd-mo-dau-sub-1-1",
-          number: "1",
-          title: "Đối tượng nghiên cứu cốt lõi",
+          number: "",
+          title: "",
           parts: [
             {
               id: "lsd-mo-dau-part-1-1-1",
-              label: "a",
-              title: "Khái niệm chung",
+              label: "",
+              title: "",
               content: [
                 {
                   type: "paragraph",
-                  text: "Đối tượng nghiên cứu cốt lõi của khoa học Lịch sử Đảng là sự ra đời, phát triển và hoạt động lãnh đạo của Đảng qua các thời kỳ lịch sử. Nội dung này được cụ thể hóa qua 4 yếu tố trọng tâm sau:"
+                  text: "<strong>Khái niệm chung:</strong> Đối tượng nghiên cứu cốt lõi của khoa học Lịch sử Đảng là sự ra đời, phát triển và hoạt động lãnh đạo của Đảng qua các thời kỳ lịch sử. Nội dung này được cụ thể hóa qua 4 yếu tố trọng tâm sau:"
                 },
                 {
                   type: "lsd-object-explorer"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "lsd-mo-dau-sec-2",
+      roman: "II",
+      title: "Chức năng, nhiệm vụ của môn học Lịch sử Đảng Cộng sản Việt Nam",
+      subsections: [
+        {
+          id: "lsd-mo-dau-sub-2-1",
+          number: "1",
+          title: "Chức năng của khoa học Lịch sử Đảng",
+          parts: [
+            {
+              id: "lsd-mo-dau-part-2-1-1",
+              label: "",
+              title: "Ba chức năng cốt lõi",
+              content: [
+                {
+                  type: "lsd-functions-explorer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "lsd-mo-dau-sub-2-2",
+          number: "2",
+          title: "Nhiệm vụ của khoa học Lịch sử Đảng",
+          parts: [
+            {
+              id: "lsd-mo-dau-part-2-2-1",
+              label: "",
+              title: "Bốn nhiệm vụ chủ yếu",
+              content: [
+                {
+                  type: "lsd-tasks-explorer"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "lsd-mo-dau-sec-3",
+      roman: "III",
+      title: "Phương pháp nghiên cứu, học tập môn học Lịch sử Đảng Cộng sản Việt Nam",
+      subsections: [
+        {
+          id: "lsd-mo-dau-sub-3-1",
+          number: "1",
+          title: "Phương pháp luận nghiên cứu và học tập Lịch sử Đảng",
+          parts: [
+            {
+              id: "lsd-mo-dau-part-3-1-1",
+              label: "",
+              title: "Nguyên tắc phương pháp luận",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Để nghiên cứu và học tập môn học này một cách đúng đắn, chúng ta cần quán triệt các nguyên tắc phương pháp luận khoa học sau:"
+                },
+                {
+                  type: "lsd-methodology-explorer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "lsd-mo-dau-sub-3-2",
+          number: "2",
+          title: "Các phương pháp cụ thể trong học tập Lịch sử Đảng",
+          parts: [
+            {
+              id: "lsd-mo-dau-part-3-2-1",
+              label: "",
+              title: "Bốn nhóm phương pháp cụ thể",
+              content: [
+                {
+                  type: "lsd-specific-methods-explorer"
+                }
+              ]
+            },
+            {
+              id: "lsd-mo-dau-part-3-2-2",
+              label: "",
+              title: "Yêu cầu nội dung và mục tiêu học tập Lịch sử Đảng",
+              content: [
+                {
+                  type: "lsd-requirements-goals-explorer"
                 }
               ]
             }

@@ -416,24 +416,26 @@ export default function Sidebar({
                               className="pl-3 space-y-0.5 mt-0.5 sidebar-sub-wrapper"
                               data-group-id={sec.id}
                             >
-                              {sec.subsections.map((sub) => {
-                                const isActive = activeSubsectionId === sub.id && !isQuizMode;
-                                return (
-                                  <li key={sub.id}>
-                                    <button
-                                      onClick={() => handleSubsectionClick(sub.id)}
-                                      className={`w-full flex items-baseline gap-2 px-3 py-1 rounded text-[11px] text-left transition-all duration-200 cursor-pointer ${
-                                        isActive
-                                          ? "sidebar-active-item bg-accent/10 text-accent font-bold"
-                                          : "text-stone-500 hover:text-stone-900 hover:bg-stone-150"
-                                      }`}
-                                    >
-                                      <span className="text-stone-450 font-semibold">{sub.number}.</span>
-                                      <span className="leading-tight">{sub.title}</span>
-                                    </button>
-                                  </li>
-                                );
-                              })}
+                              {sec.subsections
+                                .filter((sub) => sub.number || sub.title)
+                                .map((sub) => {
+                                  const isActive = activeSubsectionId === sub.id && !isQuizMode;
+                                  return (
+                                    <li key={sub.id}>
+                                      <button
+                                        onClick={() => handleSubsectionClick(sub.id)}
+                                        className={`w-full flex items-baseline gap-2 px-3 py-1 rounded text-[11px] text-left transition-all duration-200 cursor-pointer ${
+                                          isActive
+                                            ? "sidebar-active-item bg-accent/10 text-accent font-bold"
+                                            : "text-stone-500 hover:text-stone-900 hover:bg-stone-150"
+                                        }`}
+                                      >
+                                        <span className="text-stone-450 font-semibold">{sub.number}.</span>
+                                        <span className="leading-tight">{sub.title}</span>
+                                      </button>
+                                    </li>
+                                  );
+                                })}
                             </ul>
                           </li>
                         );
