@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
@@ -31,16 +32,6 @@ export default function DrawingCanvas({
     localStorage.setItem("studymaster-drawings", JSON.stringify(updatedPaths));
   };
 
-  // Expose clear functionality to parent
-  useEffect(() => {
-    if (onClearRef) {
-      onClearRef.current = () => {
-        updatePaths([]);
-        localStorage.removeItem("studymaster-drawings");
-      };
-    }
-  }, [onClearRef]);
-
   // Keep a ref to paths for synchronous reading in event handlers
   const pathsRef = useRef(paths);
 
@@ -52,6 +43,16 @@ export default function DrawingCanvas({
       return next;
     });
   };
+
+  // Expose clear functionality to parent
+  useEffect(() => {
+    if (onClearRef) {
+      onClearRef.current = () => {
+        updatePaths([]);
+        localStorage.removeItem("studymaster-drawings");
+      };
+    }
+  }, [onClearRef]);
 
   // Track container dimensions using ResizeObserver
   useEffect(() => {

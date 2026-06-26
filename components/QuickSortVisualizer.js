@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Play, Pause, ChevronRight, ChevronLeft, RotateCcw } from "lucide-react";

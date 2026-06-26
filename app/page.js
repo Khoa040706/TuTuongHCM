@@ -1,10 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps, @next/next/no-img-element */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle } from "lucide-react";
+import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle, Trash2, Search, Download, Plus, BarChart3, Users, KeyRound, Unlock } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window === "undefined") {
+  global.localStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {},
+    key: () => null,
+    length: 0
+  };
+  global.sessionStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {},
+    key: () => null,
+    length: 0
+  };
+}
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -173,6 +192,1136 @@ export default function Page() {
   const [forgotEmail, setForgotEmail] = useState("");
   const [showGooglePopup, setShowGooglePopup] = useState(false);
 
+  // Admin Dashboard States
+  const [adminTab, setAdminTab] = useState("overview");
+  const [adminSearchQuery, setAdminSearchQuery] = useState("");
+  const [adminUsers, setAdminUsers] = useState([]);
+  const [adminNewUser, setAdminNewUser] = useState("");
+  const [adminNewEmail, setAdminNewEmail] = useState("");
+  const [adminNewPass, setAdminNewPass] = useState("");
+  const [adminNewConfirmPass, setAdminNewConfirmPass] = useState("");
+  const [adminSelectedUser, setAdminSelectedUser] = useState(null);
+  const [adminShowAddUserModal, setAdminShowAddUserModal] = useState(false);
+  const [adminShowChangePassModal, setAdminShowChangePassModal] = useState(false);
+  const [adminChangePassUser, setAdminChangePassUser] = useState(null);
+  const [adminChangeNewPass, setAdminChangeNewPass] = useState("");
+  const [adminChangeConfirmPass, setAdminChangeConfirmPass] = useState("");
+  const [adminLogs, setAdminLogs] = useState([]);
+  const [showDrawerDetail, setShowDrawerDetail] = useState(false);
+
+  const loadAdminData = () => {
+    if (typeof window === "undefined") return;
+    
+    let storedUsers = [];
+    try {
+      storedUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+    } catch (e) {
+      storedUsers = [];
+    }
+    
+    if (storedUsers.length === 0) {
+      storedUsers = [
+        { username: "hocsinh1", email: "student1@gmail.com", password: "Student@123", createdAt: Date.now() - 5 * 24 * 3600 * 1000 },
+        { username: "nguyenvana", email: "vana@gmail.com", password: "Student@123", createdAt: Date.now() - 3 * 24 * 3600 * 1000 },
+        { username: "tranthib", email: "thib@gmail.com", password: "Student@123", createdAt: Date.now() - 1 * 24 * 3600 * 1000 }
+      ];
+      localStorage.setItem("studymaster_users", JSON.stringify(storedUsers));
+    }
+    
+    setAdminUsers(storedUsers);
+    
+    let logs = [];
+    try {
+      logs = JSON.parse(localStorage.getItem("studymaster_admin_logs") || "[]");
+    } catch (e) {
+      logs = [];
+    }
+    
+    if (logs.length === 0) {
+      logs = [
+        { id: 1, user: "nguyenvana", action: "Hoàn thành bài thi môn Lịch sử Đảng", time: "5 phút trước", score: 36, total: 40 },
+        { id: 2, user: "tranthib", action: "Đạt điểm 40/40 môn Tư tưởng HCM", time: "2 giờ trước", score: 40, total: 40 },
+        { id: 3, user: "hocsinh1", action: "Hoàn thành bài thi môn Tư tưởng HCM", time: "1 ngày trước", score: 28, total: 40 }
+      ];
+      localStorage.setItem("studymaster_admin_logs", JSON.stringify(logs));
+    }
+    setAdminLogs(logs);
+  };
+
+  useEffect(() => {
+    if (appStep === "admin-dashboard") {
+      loadAdminData();
+    }
+  }, [appStep]);
+
+  const writeAdminLog = (actionUser, actionDescription) => {
+    let currentLogs = [];
+    try {
+      currentLogs = JSON.parse(localStorage.getItem("studymaster_admin_logs") || "[]");
+    } catch (e) {
+      currentLogs = [];
+    }
+    const newLog = {
+      id: Date.now(),
+      user: actionUser,
+      action: actionDescription,
+      time: "Vừa xong"
+    };
+    const updatedLogs = [newLog, ...currentLogs].slice(0, 50);
+    localStorage.setItem("studymaster_admin_logs", JSON.stringify(updatedLogs));
+    setAdminLogs(updatedLogs);
+  };
+
+  const handleAdminCreateUser = (e) => {
+    e.preventDefault();
+    if (!adminNewUser.trim() || !adminNewEmail.trim() || !adminNewPass.trim()) {
+      showToast("Vui lòng nhập đầy đủ thông tin!", "warning");
+      return;
+    }
+    if (adminNewPass !== adminNewConfirmPass) {
+      showToast("Mật khẩu xác nhận không khớp!", "warning");
+      return;
+    }
+    const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+    if (users.some(u => u.username === adminNewUser || u.email === adminNewEmail)) {
+      showToast("Tên đăng nhập hoặc email đã tồn tại!", "error");
+      return;
+    }
+    const newUser = {
+      username: adminNewUser.trim(),
+      email: adminNewEmail.trim(),
+      password: adminNewPass,
+      createdAt: Date.now(),
+      locked: false
+    };
+    const updatedUsers = [...users, newUser];
+    localStorage.setItem("studymaster_users", JSON.stringify(updatedUsers));
+    setAdminUsers(updatedUsers);
+    writeAdminLog("admin", `Tạo mới học viên ${adminNewUser}`);
+    showToast(`Đã tạo học viên ${adminNewUser} thành công!`, "success");
+    
+    setAdminNewUser("");
+    setAdminNewEmail("");
+    setAdminNewPass("");
+    setAdminNewConfirmPass("");
+    setAdminShowAddUserModal(false);
+  };
+
+  const handleAdminDeleteUser = (username) => {
+    showConfirm({
+      title: "Xác nhận xóa học viên",
+      message: `Bạn có chắc chắn muốn xóa vĩnh viễn tài khoản của học viên ${username}? Thao tác này không thể hoàn tác.`,
+      type: "warning",
+      confirmText: "Xóa học viên",
+      cancelText: "Hủy",
+      onConfirm: () => {
+        const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+        const updatedUsers = users.filter(u => u.username !== username);
+        localStorage.setItem("studymaster_users", JSON.stringify(updatedUsers));
+        setAdminUsers(updatedUsers);
+        
+        localStorage.removeItem(`studymaster_unlocked_subjects_${username}`);
+        
+        writeAdminLog("admin", `Xóa tài khoản của học viên ${username}`);
+        showToast(`Đã xóa học viên ${username} thành công.`, "success");
+        if (adminSelectedUser && adminSelectedUser.username === username) {
+          setAdminSelectedUser(null);
+          setShowDrawerDetail(false);
+        }
+      }
+    });
+  };
+
+  const handleAdminToggleLockUser = (username) => {
+    const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+    const updatedUsers = users.map(u => {
+      if (u.username === username) {
+        const nextLockState = !u.locked;
+        writeAdminLog("admin", `${nextLockState ? "Khóa" : "Mở khóa"} tài khoản của ${username}`);
+        showToast(`Đã ${nextLockState ? "khóa" : "mở khóa"} tài khoản ${username}`, "success");
+        const updatedUser = { ...u, locked: nextLockState };
+        if (adminSelectedUser && adminSelectedUser.username === username) {
+          setAdminSelectedUser(updatedUser);
+        }
+        return updatedUser;
+      }
+      return u;
+    });
+    localStorage.setItem("studymaster_users", JSON.stringify(updatedUsers));
+    setAdminUsers(updatedUsers);
+  };
+
+  const handleAdminChangePassword = (e) => {
+    e.preventDefault();
+    if (!adminChangeNewPass.trim()) {
+      showToast("Mật khẩu mới không được để trống!", "warning");
+      return;
+    }
+    if (adminChangeNewPass !== adminChangeConfirmPass) {
+      showToast("Mật khẩu xác nhận không khớp!", "warning");
+      return;
+    }
+    const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+    const updatedUsers = users.map(u => {
+      if (u.username === adminChangePassUser.username) {
+        return { ...u, password: adminChangeNewPass };
+      }
+      return u;
+    });
+    localStorage.setItem("studymaster_users", JSON.stringify(updatedUsers));
+    setAdminUsers(updatedUsers);
+    writeAdminLog("admin", `Đặt lại mật khẩu cho học viên ${adminChangePassUser.username}`);
+    showToast(`Đã thay đổi mật khẩu cho ${adminChangePassUser.username} thành công!`, "success");
+    
+    setAdminChangeNewPass("");
+    setAdminChangeConfirmPass("");
+    setAdminShowChangePassModal(false);
+    setAdminChangePassUser(null);
+  };
+
+  const handleAdminToggleSubjectLock = (username, subjectId) => {
+    const key = `studymaster_unlocked_subjects_${username}`;
+    let unlocked = [];
+    try {
+      unlocked = JSON.parse(localStorage.getItem(key) || "[]");
+    } catch (e) {
+      unlocked = [];
+    }
+    
+    if (unlocked.includes(subjectId)) {
+      unlocked = unlocked.filter(id => id !== subjectId);
+      showToast(`Đã khóa môn học ${allSubjects[subjectId]?.title || subjectId} đối với ${username}`, "info");
+    } else {
+      unlocked.push(subjectId);
+      showToast(`Đã mở khóa môn học ${allSubjects[subjectId]?.title || subjectId} đối với ${username}`, "success");
+    }
+    
+    localStorage.setItem(key, JSON.stringify(unlocked));
+    if (adminSelectedUser && adminSelectedUser.username === username) {
+      setAdminSelectedUser({ ...adminSelectedUser });
+    }
+  };
+
+  const handleAdminUnlockAllSubjects = (username) => {
+    const key = `studymaster_unlocked_subjects_${username}`;
+    const allIds = Object.keys(allSubjects);
+    localStorage.setItem(key, JSON.stringify(allIds));
+    showToast(`Đã mở khóa tất cả các môn học cho ${username}!`, "success");
+    if (adminSelectedUser && adminSelectedUser.username === username) {
+      setAdminSelectedUser({ ...adminSelectedUser });
+    }
+  };
+
+  const handleAdminLockAllSubjects = (username) => {
+    const key = `studymaster_unlocked_subjects_${username}`;
+    localStorage.setItem(key, JSON.stringify([]));
+    showToast(`Đã khóa toàn bộ các môn học tự chọn cho ${username}!`, "info");
+    if (adminSelectedUser && adminSelectedUser.username === username) {
+      setAdminSelectedUser({ ...adminSelectedUser });
+    }
+  };
+
+  const getStats = () => {
+    const totalUsers = adminUsers.length;
+    const totalSubjects = Object.keys(allSubjects).length;
+    
+    let totalAttempts = 0;
+    let totalScorePercent = 0;
+    
+    Object.values(allSubjects).forEach((subj) => {
+      const chaptersList = subj.chapters || [];
+      chaptersList.forEach((ch) => {
+        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+        if (stored) {
+          try {
+            const rankings = JSON.parse(stored);
+            totalAttempts += rankings.length;
+            rankings.forEach((r) => {
+              totalScorePercent += r.total > 0 ? (r.score / r.total) * 100 : 0;
+            });
+          } catch (e) {}
+        }
+      });
+    });
+    
+    const avgScore = totalAttempts > 0 ? Math.round(totalScorePercent / totalAttempts) : 0;
+    
+    return {
+      totalUsers,
+      totalSubjects,
+      totalAttempts,
+      avgScore
+    };
+  };
+
+  const getDailyAttempts = () => {
+    const attempts = {};
+    const today = new Date();
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      const dateStr = d.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit" });
+      attempts[dateStr] = 0;
+    }
+
+    Object.values(allSubjects).forEach((subj) => {
+      const chaptersList = subj.chapters || [];
+      chaptersList.forEach((ch) => {
+        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+        if (stored) {
+          try {
+            const rankings = JSON.parse(stored);
+            rankings.forEach((r) => {
+              if (r.date) {
+                const rDate = new Date(r.date);
+                const dateStr = rDate.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit" });
+                if (attempts[dateStr] !== undefined) {
+                  attempts[dateStr]++;
+                }
+              }
+            });
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      });
+    });
+
+    return Object.entries(attempts).map(([date, count]) => ({ date, count }));
+  };
+
+  const getSubjectDistribution = () => {
+    const dist = {};
+    let totalAttempts = 0;
+    Object.values(allSubjects).forEach((subj) => {
+      let count = 0;
+      const chaptersList = subj.chapters || [];
+      chaptersList.forEach((ch) => {
+        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+        if (stored) {
+          try {
+            const rankings = JSON.parse(stored);
+            count += rankings.length;
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      });
+      if (count > 0) {
+        dist[subj.title] = count;
+        totalAttempts += count;
+      }
+    });
+
+    if (totalAttempts === 0) {
+      return Object.values(allSubjects).slice(0, 3).map((subj, idx) => ({
+        name: subj.title,
+        count: 0,
+        percent: idx === 0 ? 100 : 0,
+        color: subj.themeColors?.accent || "#4f46e5"
+      }));
+    }
+
+    return Object.entries(dist).map(([name, count]) => {
+      const percent = Math.round((count / totalAttempts) * 100);
+      const matchedSub = Object.values(allSubjects).find((s) => s.title === name);
+      return {
+        name,
+        count,
+        percent,
+        color: matchedSub?.themeColors?.accent || "#4f46e5"
+      };
+    });
+  };
+
+  const getStudentSubjectScore = (username, subjId) => {
+    const subj = allSubjects[subjId];
+    if (!subj) return 0;
+    const chaptersList = subj.chapters || [];
+    let bestPercent = 0;
+    chaptersList.forEach((ch) => {
+      const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+      if (stored) {
+        try {
+          const rankings = JSON.parse(stored);
+          const userRecords = rankings.filter(r => r.name === username);
+          userRecords.forEach((r) => {
+            const percent = r.total > 0 ? (r.score / r.total) * 100 : 0;
+            if (percent > bestPercent) {
+              bestPercent = percent;
+            }
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    });
+    return bestPercent;
+  };
+
+  const getRadarPoints = (username) => {
+    const cx = 150;
+    const cy = 150;
+    const maxR = 90;
+    const subjectKeys = [
+      "tu-tuong-hcm",
+      "lich-su-dang",
+      "oop",
+      "analysis-design",
+      "dsa",
+      "database",
+      "basic-concepts",
+      "basic-algorithms"
+    ];
+    const points = [];
+    subjectKeys.forEach((key, index) => {
+      const p = getStudentSubjectScore(username, key);
+      const angle = index * ((2 * Math.PI) / subjectKeys.length);
+      const x = cx + maxR * (p / 100) * Math.cos(angle - Math.PI / 2);
+      const y = cy + maxR * (p / 100) * Math.sin(angle - Math.PI / 2);
+      points.push(`${x},${y}`);
+    });
+    return points.join(" ");
+  };
+
+  const exportExcel = () => {
+    let csvContent = "\uFEFF";
+    csvContent += "Học viên,Email,Lượt ôn tập,Điểm trung bình,Trạng thái\n";
+    
+    adminUsers.forEach((user) => {
+      let totalAttempts = 0;
+      let totalPercent = 0;
+      Object.values(allSubjects).forEach((subj) => {
+        const chaptersList = subj.chapters || [];
+        chaptersList.forEach((ch) => {
+          const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+          if (stored) {
+            try {
+              const rankings = JSON.parse(stored);
+              const userRecords = rankings.filter(r => r.name === user.username);
+              totalAttempts += userRecords.length;
+              userRecords.forEach((r) => {
+                totalPercent += r.total > 0 ? (r.score / r.total) * 100 : 0;
+              });
+            } catch (e) {}
+          }
+        });
+      });
+      const avgScore = totalAttempts > 0 ? Math.round(totalPercent / totalAttempts) : 0;
+      const statusStr = user.locked ? "Bị khóa" : "Hoạt động";
+      csvContent += `${user.username},${user.email},${totalAttempts},${avgScore}%,${statusStr}\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "Danh_sach_hoc_vien.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("Đã tải về danh sách học viên dạng Excel (CSV) thành công!", "success");
+  };
+
+  const exportPDF = () => {
+    const element = document.getElementById("admin-pdf-report-template");
+    if (!element) return;
+    
+    element.style.display = "block";
+    
+    import("html2canvas").then((html2canvasModule) => {
+      const html2canvas = html2canvasModule.default;
+      import("jspdf").then((jspdfModule) => {
+        const { jsPDF } = jspdfModule;
+        
+        html2canvas(element, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#ffffff"
+        }).then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+          const pdf = new jsPDF("p", "mm", "a4");
+          const imgWidth = 210;
+          const pageHeight = 295;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          let heightLeft = imgHeight;
+          let position = 0;
+          
+          pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+          }
+          
+          pdf.save("Bao_cao_quan_tri.pdf");
+          element.style.display = "none";
+          showToast("Đã xuất báo cáo PDF thành công!", "success");
+        }).catch((err) => {
+          console.error(err);
+          element.style.display = "none";
+          showToast("Lỗi khi tạo hình ảnh PDF.", "error");
+        });
+      });
+    }).catch((err) => {
+      console.error(err);
+      element.style.display = "none";
+      showToast("Lỗi khi tải module.", "error");
+    });
+  };
+
+  const renderDonutChart = () => {
+    const data = getSubjectDistribution();
+    let accumulatedPercent = 0;
+    const r = 50;
+    const circumference = 2 * Math.PI * r;
+    
+    return (
+      <svg width="220" height="220" viewBox="0 0 160 160" className="mx-auto">
+        <circle cx="80" cy="80" r={r} fill="transparent" stroke="#f1f5f9" strokeWidth="20" />
+        {data.map((item, idx) => {
+          const strokeLength = (item.percent / 100) * circumference;
+          const strokeOffset = circumference - ((accumulatedPercent / 100) * circumference);
+          accumulatedPercent += item.percent;
+          return (
+            <circle
+              key={idx}
+              cx="80"
+              cy="80"
+              r={r}
+              fill="transparent"
+              stroke={item.color}
+              strokeWidth="20"
+              strokeDasharray={`${strokeLength} ${circumference - strokeLength}`}
+              strokeDashoffset={strokeOffset}
+              transform="rotate(-90 80 80)"
+              className="transition-all duration-500 hover:stroke-[24px] cursor-pointer"
+              title={`${item.name}: ${item.percent}%`}
+            />
+          );
+        })}
+        <text x="80" y="80" textAnchor="middle" dominantBaseline="middle" className="font-bold text-xs fill-slate-800">
+          Môn học
+        </text>
+        <text x="80" y="93" textAnchor="middle" dominantBaseline="middle" className="text-[9px] fill-slate-400 font-medium">
+          Phân bố ôn tập
+        </text>
+      </svg>
+    );
+  };
+
+  const renderOverviewTab = () => {
+    const stats = getStats();
+    const dailyData = getDailyAttempts();
+    const maxAttempt = Math.max(...dailyData.map(d => d.count), 4);
+    
+    const svgWidth = 540;
+    const svgHeight = 180;
+    const paddingX = 40;
+    const paddingY = 20;
+    const linePoints = dailyData.map((d, i) => {
+      const x = paddingX + i * (svgWidth - 2 * paddingX) / 6;
+      const y = svgHeight - paddingY - (d.count / maxAttempt) * (svgHeight - 2 * paddingY);
+      return { x, y, date: d.date, count: d.count };
+    });
+    
+    const pathD = linePoints.length > 0 
+      ? `M ${linePoints[0].x} ${linePoints[0].y} ` + linePoints.slice(1).map(p => `L ${p.x} ${p.y}`).join(" ")
+      : "";
+      
+    const fillD = linePoints.length > 0
+      ? `${pathD} L ${linePoints[linePoints.length - 1].x} ${svgHeight - paddingY} L ${linePoints[0].x} ${svgHeight - paddingY} Z`
+      : "";
+
+    return (
+      <div className="space-y-8 animate-in fade-in duration-300">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {[
+            { label: "Học viên đăng ký", value: stats.totalUsers, desc: "Người dùng hoạt động", icon: "👨‍🎓", color: "text-indigo-650 bg-indigo-50" },
+            { label: "Môn học hỗ trợ", value: stats.totalSubjects, desc: "Đại cương & Chuyên ngành", icon: "📚", color: "text-teal-650 bg-teal-50" },
+            { label: "Lượt làm trắc nghiệm", value: stats.totalAttempts, desc: "Bài thi ôn tập hoàn thành", icon: "📝", color: "text-amber-650 bg-amber-50" },
+            { label: "Điểm số trung bình", value: `${stats.avgScore}%`, desc: "Tỉ lệ câu trả lời đúng", icon: "🏆", color: "text-emerald-650 bg-emerald-50" }
+          ].map((card, idx) => (
+            <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex items-center justify-between hover:shadow-md transition-shadow duration-300">
+              <div className="space-y-1">
+                <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wider block">
+                  {card.label}
+                </span>
+                <span className="text-2xl font-black text-slate-900 block">{card.value}</span>
+                <span className="text-[10px] text-slate-500 font-medium block">{card.desc}</span>
+              </div>
+              <span className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl ${card.color}`}>
+                {card.icon}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm lg:col-span-2 flex flex-col justify-between space-y-4">
+            <div>
+              <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider">
+                Tần suất thi thử (7 ngày qua)
+              </h3>
+              <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
+                Thống kê số lượng lượt ôn tập trắc nghiệm hàng ngày của học sinh.
+              </p>
+            </div>
+            
+            <div className="relative w-full overflow-hidden flex justify-center items-center py-2 bg-slate-50/50 border border-slate-100 rounded-xl">
+              <svg width="100%" height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="max-w-full">
+                {[0, 0.25, 0.5, 0.75, 1].map((ratio, idx) => {
+                  const y = paddingY + ratio * (svgHeight - 2 * paddingY);
+                  return (
+                    <line key={idx} x1={paddingX} y1={y} x2={svgWidth - paddingX} y2={y} stroke="#f1f5f9" strokeWidth="1" strokeDasharray="3,3" />
+                  );
+                })}
+                
+                {fillD && (
+                  <path d={fillD} fill="rgba(79, 70, 229, 0.05)" />
+                )}
+                
+                {pathD && (
+                  <path d={pathD} fill="none" stroke="#4f46e5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                )}
+                
+                {linePoints.map((p, i) => (
+                  <g key={i}>
+                    <circle cx={p.x} cy={p.y} r="5" fill="#ffffff" stroke="#4f46e5" strokeWidth="2.5" className="transition-all hover:r-7 cursor-pointer" />
+                    <text x={p.x} y={p.y - 10} textAnchor="middle" className="text-[10px] font-bold fill-indigo-700">
+                      {p.count}
+                    </text>
+                    <text x={p.x} y={svgHeight - 5} textAnchor="middle" className="text-[9px] font-semibold fill-slate-400">
+                      {p.date}
+                    </text>
+                  </g>
+                ))}
+              </svg>
+            </div>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between space-y-4">
+            <div>
+              <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider">
+                Tỉ lệ môn ôn tập
+              </h3>
+              <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
+                Phần trăm các lượt thi thử chia theo từng môn học.
+              </p>
+            </div>
+            
+            <div className="flex-grow flex items-center justify-center">
+              {renderDonutChart()}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wider">
+                Nhật ký hoạt động (Live Activity Feed)
+              </h3>
+              <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
+                Lịch sử làm bài trắc nghiệm và hoạt động quản trị của học viên hệ thống.
+              </p>
+            </div>
+            
+            <button
+              onClick={() => {
+                localStorage.setItem("studymaster_admin_logs", "[]");
+                setAdminLogs([]);
+                showToast("Đã xóa trắng nhật ký hoạt động!", "info");
+              }}
+              className="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-[10px] font-bold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer bg-white"
+            >
+              Xóa lịch sử nhật ký
+            </button>
+          </div>
+
+          <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
+            {adminLogs.length === 0 ? (
+              <p className="text-xs text-slate-400 italic text-center py-6">
+                Chưa có nhật ký hoạt động nào được ghi nhận.
+              </p>
+            ) : (
+              adminLogs.map((log) => (
+                <div key={log.id} className="flex justify-between items-start p-3 bg-slate-50 border border-slate-100 rounded-xl hover:border-slate-200 transition-all text-xs">
+                  <div className="flex gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-xs">
+                      🎓
+                    </span>
+                    <div>
+                      <span className="font-bold text-slate-900">{log.user}</span>
+                      <span className="text-slate-600 ml-1.5 font-medium">{log.action}</span>
+                      {log.score !== undefined && (
+                        <span className="ml-2 px-1.5 py-0.5 rounded bg-indigo-100/50 text-indigo-700 font-bold text-[10px]">
+                          {log.score}/{log.total} điểm
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-semibold whitespace-nowrap">{log.time}</span>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderUsersTab = () => {
+    const filteredUsers = adminUsers.filter(u => {
+      const q = adminSearchQuery.toLowerCase().trim();
+      return u.username.toLowerCase().includes(q) || u.email.toLowerCase().includes(q);
+    });
+
+    return (
+      <div className="space-y-6 animate-in fade-in duration-300">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-2.5 text-slate-400" size={16} />
+            <input
+              type="text"
+              placeholder="Tìm kiếm học viên theo tên, email..."
+              value={adminSearchQuery}
+              onChange={(e) => setAdminSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+            />
+          </div>
+
+          <button
+            onClick={() => setAdminShowAddUserModal(true)}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition-all duration-200 cursor-pointer shadow-sm shadow-indigo-150 active:scale-95 border-none"
+          >
+            <Plus size={15} />
+            <span>Thêm học viên mới</span>
+          </button>
+        </div>
+
+        <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left text-xs">
+              <thead className="bg-slate-50/75 border-b border-slate-200 text-slate-400 font-extrabold uppercase tracking-wider select-none">
+                <tr>
+                  <th className="px-6 py-4">Học viên</th>
+                  <th className="px-6 py-4">Email</th>
+                  <th className="px-6 py-4 text-center">Số bài ôn</th>
+                  <th className="px-6 py-4 text-center">Điểm số TB</th>
+                  <th className="px-6 py-4 text-center">Trạng thái</th>
+                  <th className="px-6 py-4 text-right">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-800">
+                {filteredUsers.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" className="px-6 py-12 text-center text-slate-400 italic bg-white">
+                      Không tìm thấy học sinh nào khớp với từ khóa tìm kiếm.
+                    </td>
+                  </tr>
+                ) : (
+                  filteredUsers.map((user) => {
+                    let totalAttempts = 0;
+                    let totalPercent = 0;
+                    Object.values(allSubjects).forEach((subj) => {
+                      const chaptersList = subj.chapters || [];
+                      chaptersList.forEach((ch) => {
+                        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+                        if (stored) {
+                          try {
+                            const rankings = JSON.parse(stored);
+                            const userRecords = rankings.filter(r => r.name === user.username);
+                            totalAttempts += userRecords.length;
+                            userRecords.forEach((r) => {
+                              totalPercent += r.total > 0 ? (r.score / r.total) * 100 : 0;
+                            });
+                          } catch (e) {}
+                        }
+                      });
+                    });
+                    const avgScore = totalAttempts > 0 ? Math.round(totalPercent / totalAttempts) : 0;
+
+                    return (
+                      <tr
+                        key={user.username}
+                        onClick={() => {
+                          setAdminSelectedUser(user);
+                          setShowDrawerDetail(true);
+                        }}
+                        className="hover:bg-slate-50/50 transition-colors cursor-pointer group"
+                      >
+                        <td className="px-6 py-4 font-bold text-slate-900 flex items-center gap-3">
+                          <span className="w-8 h-8 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-sm group-hover:scale-105 transition-transform">
+                            👨‍🎓
+                          </span>
+                          <span className="group-hover:text-indigo-600 transition-colors">{user.username}</span>
+                        </td>
+                        <td className="px-6 py-4 font-medium text-slate-500">{user.email}</td>
+                        <td className="px-6 py-4 text-center font-extrabold text-slate-900">{totalAttempts}</td>
+                        <td className="px-6 py-4 text-center font-extrabold">
+                          <span className={avgScore >= 80 ? "text-emerald-600" : avgScore >= 50 ? "text-amber-600" : "text-slate-400"}>
+                            {totalAttempts > 0 ? `${avgScore}%` : "—"}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <span className={`inline-flex px-2 py-0.5 rounded-full text-[9px] font-bold ${
+                            user.locked
+                              ? "bg-red-50 text-red-700 border border-red-200"
+                              : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                          }`}>
+                            {user.locked ? "Đã khóa" : "Hoạt động"}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 text-right" onClick={(e) => e.stopPropagation()}>
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={() => {
+                                setAdminChangePassUser(user);
+                                setAdminShowChangePassModal(true);
+                              }}
+                              className="p-1.5 rounded-lg border border-slate-200 hover:border-slate-350 bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer bg-transparent"
+                              title="Đổi mật khẩu"
+                            >
+                              <KeyRound size={13} />
+                            </button>
+                            <button
+                              onClick={() => handleAdminToggleLockUser(user.username)}
+                              className={`p-1.5 rounded-lg border transition-colors cursor-pointer bg-transparent ${
+                                user.locked
+                                  ? "border-red-200 bg-red-50/50 hover:bg-red-50 text-red-650 hover:text-red-700"
+                                  : "border-slate-200 hover:border-slate-350 bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800"
+                              }`}
+                              title={user.locked ? "Mở khóa tài khoản" : "Khóa tài khoản"}
+                            >
+                              {user.locked ? <Unlock size={13} /> : <Lock size={13} />}
+                            </button>
+                            <button
+                              onClick={() => handleAdminDeleteUser(user.username)}
+                              className="p-1.5 rounded-lg border border-slate-200 hover:border-red-200 bg-white hover:bg-red-50 text-slate-500 hover:text-red-600 transition-colors cursor-pointer bg-transparent"
+                              title="Xóa tài khoản"
+                            >
+                              <Trash2 size={13} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {renderDetailDrawer()}
+      </div>
+    );
+  };
+
+  const renderDetailDrawer = () => {
+    if (!adminSelectedUser) return null;
+    const username = adminSelectedUser.username;
+    
+    const key = `studymaster_unlocked_subjects_${username}`;
+    let unlockedList = [];
+    if (typeof window !== "undefined") {
+      try {
+        unlockedList = JSON.parse(localStorage.getItem(key) || "[]");
+      } catch (e) {
+        unlockedList = [];
+      }
+    }
+
+    const history = [];
+    Object.values(allSubjects).forEach((subj) => {
+      const chaptersList = subj.chapters || [];
+      chaptersList.forEach((ch) => {
+        const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+        if (stored) {
+          try {
+            const rankings = JSON.parse(stored);
+            const userRecords = rankings.filter(r => r.name === username);
+            userRecords.forEach((r) => {
+              history.push({
+                subject: subj.title,
+                chapter: ch.title,
+                score: r.score,
+                total: r.total,
+                date: r.date ? new Date(r.date).toLocaleDateString("vi-VN") : "—",
+                time: r.time ? `${Math.round(r.time)} giây` : "—",
+                timestamp: r.date ? new Date(r.date).getTime() : 0
+              });
+            });
+          } catch (e) {}
+        }
+      });
+    });
+    history.sort((a, b) => b.timestamp - a.timestamp);
+
+    const points = getRadarPoints(username);
+    const radarAxes = [
+      "TuTuong",
+      "LichSuDang",
+      "OOP",
+      "PhanTichTK",
+      "DSA",
+      "CoSoDuLieu",
+      "KNCoban",
+      "ThuatToan"
+    ];
+    const radarCenter = 150;
+    const radarRadius = 90;
+    const angleStep = (2 * Math.PI) / radarAxes.length;
+
+    return (
+      <>
+        {showDrawerDetail && (
+          <div
+            onClick={() => setShowDrawerDetail(false)}
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
+          />
+        )}
+        <div 
+          className={`fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] bg-white border-l border-slate-200 shadow-2xl flex flex-col justify-between transform transition-transform duration-300 ease-out ${
+            showDrawerDetail ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="p-6 border-b border-slate-200 flex justify-between items-center">
+            <div className="flex items-center gap-3 select-none">
+              <span className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-sm">
+                👨‍🎓
+              </span>
+              <div>
+                <h3 className="font-extrabold text-slate-900 text-sm leading-none">{username}</h3>
+                <span className="text-[10px] text-slate-400 font-semibold block mt-1.5">{adminSelectedUser.email}</span>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setShowDrawerDetail(false)}
+              className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-500 hover:text-slate-700 transition-all cursor-pointer bg-white"
+            >
+              <X size={15} />
+            </button>
+          </div>
+
+          <div className="flex-grow p-6 overflow-y-auto space-y-8">
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider select-none">
+                  Biểu đồ năng lực môn học
+                </h4>
+                <p className="text-[10px] text-slate-400 font-semibold mt-0.5 select-none">
+                  Điểm số cao nhất của sinh viên quy đổi theo phần trăm (%) từng môn học.
+                </p>
+              </div>
+              
+              <div className="flex justify-center bg-slate-50 border border-slate-100 rounded-2xl py-4 relative select-none">
+                <svg width="300" height="300" viewBox="0 0 300 300">
+                  {[0.2, 0.4, 0.6, 0.8, 1.0].map((scale, gridIdx) => {
+                    const r = radarRadius * scale;
+                    const pathPoints = radarAxes.map((_, i) => {
+                      const angle = i * angleStep;
+                      const x = radarCenter + r * Math.cos(angle - Math.PI / 2);
+                      const y = radarCenter + r * Math.sin(angle - Math.PI / 2);
+                      return `${x},${y}`;
+                    }).join(" ");
+                    return (
+                      <polygon
+                        key={gridIdx}
+                        points={pathPoints}
+                        fill="transparent"
+                        stroke="#e2e8f0"
+                        strokeWidth="1"
+                      />
+                    );
+                  })}
+
+                  {radarAxes.map((axis, i) => {
+                    const angle = i * angleStep;
+                    const x = radarCenter + radarRadius * Math.cos(angle - Math.PI / 2);
+                    const y = radarCenter + radarRadius * Math.sin(angle - Math.PI / 2);
+                    
+                    const labelX = radarCenter + (radarRadius + 18) * Math.cos(angle - Math.PI / 2);
+                    const labelY = radarCenter + (radarRadius + 12) * Math.sin(angle - Math.PI / 2);
+                    
+                    return (
+                      <g key={i}>
+                        <line
+                          x1={radarCenter}
+                          y1={radarCenter}
+                          x2={x}
+                          y2={y}
+                          stroke="#e2e8f0"
+                          strokeWidth="1.2"
+                        />
+                        <text
+                          x={labelX}
+                          y={labelY}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          className="text-[8px] font-bold fill-slate-400 tracking-tight"
+                        >
+                          {axis}
+                        </text>
+                      </g>
+                    );
+                  })}
+
+                  {points && (
+                    <polygon
+                      points={points}
+                      fill="rgba(79, 70, 229, 0.18)"
+                      stroke="#4f46e5"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  )}
+                </svg>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider select-none">
+                  Trạng thái khóa/mở khóa môn học
+                </h4>
+                <p className="text-[10px] text-slate-400 font-semibold mt-0.5 select-none">
+                  Quản lý quyền học và làm bài tập trắc nghiệm từng môn của sinh viên.
+                </p>
+              </div>
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleAdminUnlockAllSubjects(username)}
+                  className="flex-1 py-1.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold text-[10px] transition-colors cursor-pointer text-center"
+                >
+                  Mở khóa tất cả
+                </button>
+                <button
+                  onClick={() => handleAdminLockAllSubjects(username)}
+                  className="flex-1 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-650 hover:bg-slate-100 font-bold text-[10px] transition-colors cursor-pointer text-center"
+                >
+                  Khóa tất cả tự chọn
+                </button>
+              </div>
+
+              <div className="divide-y divide-slate-100 border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50 p-2 space-y-1">
+                {Object.values(allSubjects).map((subj) => {
+                  const isUnlocked = subj.isActive !== false || unlockedList.includes(subj.id);
+                  const isDefault = subj.isActive !== false;
+                  
+                  return (
+                    <div key={subj.id} className="flex justify-between items-center py-2.5 px-3 rounded-lg hover:bg-white transition-all text-xs">
+                      <span className="font-semibold text-slate-700 flex items-center gap-2">
+                        <span className="text-sm">{subj.icon || "📖"}</span>
+                        {subj.title}
+                        {isDefault && (
+                          <span className="text-[8px] bg-slate-200 text-slate-500 font-extrabold uppercase px-1 py-0.2 rounded border border-slate-250 select-none scale-90">
+                            Mặc định
+                          </span>
+                        )}
+                      </span>
+                      
+                      <label className="relative inline-flex items-center cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          disabled={isDefault}
+                          checked={isUnlocked}
+                          onChange={() => handleAdminToggleSubjectLock(username, subj.id)}
+                          className="sr-only peer"
+                        />
+                        <div className={`w-8 h-4 rounded-full transition-colors relative ${
+                          isDefault 
+                            ? "bg-indigo-350 opacity-60 cursor-not-allowed" 
+                            : isUnlocked 
+                              ? "bg-indigo-650" 
+                              : "bg-slate-350"
+                        } after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all ${
+                          isUnlocked ? "after:translate-x-4" : ""
+                        }`} />
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider select-none">
+                  Lịch sử thi thử
+                </h4>
+                <p className="text-[10px] text-slate-400 font-semibold mt-0.5 select-none">
+                  Danh sách kết quả làm bài trắc nghiệm gần đây của sinh viên.
+                </p>
+              </div>
+
+              <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white">
+                <table className="w-full text-left text-[11px] border-collapse">
+                  <thead className="bg-slate-50 border-b border-slate-200 text-slate-400 font-bold select-none">
+                    <tr>
+                      <th className="px-4 py-2.5">Môn học</th>
+                      <th className="px-4 py-2.5 text-center">Điểm số</th>
+                      <th className="px-4 py-2.5 text-center">Thời gian</th>
+                      <th className="px-4 py-2.5 text-right">Ngày làm</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 text-slate-700">
+                    {history.length === 0 ? (
+                      <tr>
+                        <td colSpan="4" className="px-4 py-6 text-center text-slate-400 italic">
+                          Chưa có lịch sử làm bài nào.
+                        </td>
+                      </tr>
+                    ) : (
+                      history.map((h, index) => (
+                        <tr key={index} className="hover:bg-slate-50/50 transition-colors">
+                          <td className="px-4 py-2.5 font-semibold text-slate-800 leading-snug">{h.subject}</td>
+                          <td className="px-4 py-2.5 text-center font-extrabold text-indigo-700">
+                            {h.score}/{h.total}
+                          </td>
+                          <td className="px-4 py-2.5 text-center text-slate-400">{h.time}</td>
+                          <td className="px-4 py-2.5 text-right text-slate-400 font-medium">{h.date}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 border-t border-slate-200 bg-slate-50/70 flex gap-3">
+            <button
+              onClick={() => handleAdminToggleLockUser(username)}
+              className={`flex-grow py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm cursor-pointer border-none ${
+                adminSelectedUser.locked
+                  ? "bg-emerald-600 hover:bg-emerald-700 text-white"
+                  : "bg-slate-650 hover:bg-slate-700 text-white"
+              }`}
+            >
+              {adminSelectedUser.locked ? "Mở khóa học viên" : "Tạm khóa học viên"}
+            </button>
+            <button
+              onClick={() => handleAdminDeleteUser(username)}
+              className="flex-grow py-2.5 rounded-xl bg-red-650 hover:bg-red-700 text-white text-xs font-bold transition-all shadow-sm cursor-pointer border-none"
+            >
+              Xóa vĩnh viễn
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+
   // Custom multi-subject integration states
   const [allSubjects, setAllSubjects] = useState(subjects);
   const [customSubjects, setCustomSubjects] = useState([]);
@@ -182,7 +1331,9 @@ export default function Page() {
   // Inject active subject color theme into document root CSS variables
   useEffect(() => {
     if (typeof document === "undefined") return;
-    const currentSub = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
+    // Only apply subject-specific colors when in the study view
+    const isViewingSubject = appStep === "study";
+    const currentSub = isViewingSubject ? (allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"]) : allSubjects["tu-tuong-hcm"];
     if (currentSub && currentSub.themeColors) {
       const colors = currentSub.themeColors;
       document.documentElement.style.setProperty("--accent", colors.accent);
@@ -194,7 +1345,7 @@ export default function Page() {
       document.documentElement.style.setProperty("--secondary", "#c2410c");
       document.documentElement.style.setProperty("--accent-rgb", "217, 119, 6");
     }
-  }, [selectedSubjectId, allSubjects]);
+  }, [selectedSubjectId, allSubjects, appStep]);
 
   // Add Subject Form inputs
   const [newSubTitle, setNewSubTitle] = useState("");
@@ -1137,12 +2288,19 @@ export default function Page() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Default account check or check local storage users
     const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
     const foundUser = users.find(u => (u.username === loginUser || u.email === loginUser) && u.password === loginPass);
     
-    if (foundUser || (loginUser === "admin" && (loginPass === "admin" || loginPass === "Admin@123"))) {
-      const displayName = foundUser ? foundUser.username : "Admin";
+    if (foundUser || (loginUser === "admin" && loginPass === "admin")) {
+      const displayName = foundUser ? foundUser.username : "admin";
+      if (foundUser && foundUser.locked) {
+        showAlert({
+          title: "Tài khoản bị khóa",
+          message: "Tài khoản của bạn đã bị Admin khóa. Vui lòng liên hệ Admin để được mở khóa!",
+          type: "warning"
+        });
+        return;
+      }
       loginSuccess(displayName);
     } else {
       showAlert({
@@ -1174,16 +2332,19 @@ export default function Page() {
     setCurrentUser(username);
     localStorage.setItem("studymaster_user_name", username);
     if (rememberMe) {
-      // Remember Me: persist across browser restarts via localStorage
       localStorage.setItem("studymaster_session_user", username);
       localStorage.setItem("studymaster_remember_me", "true");
     } else {
-      // No Remember Me: only persist for current browser session (survives reload, cleared when browser closes)
       sessionStorage.setItem("studymaster_session_user", username);
       localStorage.removeItem("studymaster_session_user");
       localStorage.removeItem("studymaster_remember_me");
     }
-    setAppStep("subject-select");
+    
+    if (username.toLowerCase() === "admin") {
+      setAppStep("admin-dashboard");
+    } else {
+      setAppStep("subject-select");
+    }
   };
 
   const handleLogout = () => {
@@ -1279,8 +2440,9 @@ export default function Page() {
     
     const glowEl = cardEl.querySelector(".card-glow-reflection");
     if (glowEl) {
+      const accentRgb = cardEl.style.getPropertyValue('--accent-rgb') || '217, 119, 6';
       gsap.to(glowEl, {
-        background: `radial-gradient(300px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.15), transparent 80%)`,
+        background: `radial-gradient(300px circle at ${x}px ${y}px, rgba(${accentRgb.trim()}, 0.15), transparent 80%)`,
         duration: 0.1
       });
     }
@@ -1297,8 +2459,9 @@ export default function Page() {
     
     const glowEl = cardEl.querySelector(".card-glow-reflection");
     if (glowEl) {
+      const accentRgb = cardEl.style.getPropertyValue('--accent-rgb') || '217, 119, 6';
       gsap.to(glowEl, {
-        background: `radial-gradient(300px circle at 50% 50%, rgba(245, 158, 11, 0), transparent 80%)`,
+        background: `radial-gradient(300px circle at 50% 50%, rgba(${accentRgb.trim()}, 0), transparent 80%)`,
         duration: 0.4
       });
     }
@@ -1712,7 +2875,8 @@ export default function Page() {
 
             <div className="bento-grid-subject w-full">
               {Object.values(allSubjects).map((subj) => {
-                const isActive = subj.isActive !== false;
+                const userUnlockedList = typeof window !== "undefined" ? JSON.parse(localStorage.getItem(`studymaster_unlocked_subjects_${currentUser}`) || "[]") : [];
+                const isActive = subj.isActive !== false || userUnlockedList.includes(subj.id);
                 const cardColClass = "col-span-1";
                 const highScore = getSubjectHighScore(subj);
 
@@ -1722,6 +2886,11 @@ export default function Page() {
                     <div
                       key={subj.id}
                       className={`bento-subject-card group ${cardColClass} opacity-60 cursor-not-allowed bg-white border border-stone-200 text-stone-600 shadow-sm`}
+                      style={{
+                        '--accent': '#e3decb',
+                        '--accent-rgb': '227, 222, 203',
+                        '--secondary': '#d9d3c5'
+                      }}
                     >
                       <div className="card-glow-reflection" />
                       <div className="card-content-wrapper">
@@ -1831,6 +3000,11 @@ export default function Page() {
                 onMouseMove={onCardMouseMove}
                 onMouseLeave={onCardMouseLeave}
                 className="add-subject-card bento-subject-card group col-span-1 border border-dashed border-stone-300 hover:border-accent bg-transparent hover:bg-stone-50 text-stone-600 hover:text-stone-900 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center h-64 text-center"
+                style={{
+                  '--accent': '#d97706',
+                  '--accent-rgb': '217, 119, 6',
+                  '--secondary': '#c2410c'
+                }}
               >
                 <div className="card-glow-reflection" />
                 <div className="card-content-wrapper flex flex-col items-center justify-center">
@@ -1847,7 +3021,16 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="text-center pt-4">
+            <div className="text-center pt-4 flex flex-col sm:flex-row justify-center items-center gap-3">
+              {currentUser === "admin" && (
+                <button
+                  onClick={() => setAppStep("admin-dashboard")}
+                  className="px-6 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer text-xs font-bold uppercase tracking-widest border-none"
+                  style={{ minWidth: "140px" }}
+                >
+                  💼 Quản trị Admin
+                </button>
+              )}
               <button
                 onClick={handleLogout}
                 className="px-6 py-2.5 rounded-full border border-stone-300 bg-white hover:bg-stone-900 text-stone-700 hover:text-white shadow-sm hover:border-stone-900 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer text-xs font-bold uppercase tracking-widest"
@@ -1988,7 +3171,7 @@ export default function Page() {
                           <span className="text-accent text-[8px] font-serif">★</span>
                         </div>
                         <p className="text-[9px] text-stone-600 font-sans leading-relaxed max-w-[120px] mx-auto italic">
-                          "Hành trình vạn dặm khởi đầu từ một bước chân."
+                          &quot;Hành trình vạn dặm khởi đầu từ một bước chân.&quot;
                         </p>
                       </div>
 
@@ -2039,6 +3222,7 @@ export default function Page() {
               onClearAll={handleClearAll}
               onBackToHero={() => setShowHero(true)}
               hasQuiz={Object.keys(questionsMap).length > 0}
+              onBackToAdmin={() => setAppStep("admin-dashboard")}
             />
 
             {/* Main Content Area */}
@@ -2136,6 +3320,373 @@ export default function Page() {
           )}
         </>
       )}
+
+      {appStep === "admin-dashboard" && (
+        <div className="min-h-screen bg-slate-50 flex font-sans text-slate-800 animate-in fade-in duration-300">
+          {/* Left Sidebar Navigation */}
+          <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 h-screen sticky top-0 z-40">
+            <div>
+              {/* Logo / Brand Header */}
+              <div className="p-6 border-b border-slate-100 flex items-center gap-3 select-none">
+                <span className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white text-lg font-bold shadow-sm shadow-indigo-200">
+                  SM
+                </span>
+                <div>
+                  <h2 className="text-sm font-extrabold text-slate-900 leading-none">StudyMaster</h2>
+                  <span className="text-[10px] text-slate-400 font-bold tracking-wider uppercase mt-1.5 block">
+                    Hệ thống Quản trị
+                  </span>
+                </div>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="p-4 space-y-1">
+                <button
+                  onClick={() => setAdminTab("overview")}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border-none text-left ${
+                    adminTab === "overview"
+                      ? "bg-indigo-50 text-indigo-750"
+                      : "text-slate-500 hover:bg-slate-550 hover:text-slate-850"
+                  }`}
+                >
+                  <BarChart3 size={16} />
+                  <span>Tổng quan</span>
+                </button>
+
+                <button
+                  onClick={() => setAdminTab("users")}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border-none text-left ${
+                    adminTab === "users"
+                      ? "bg-indigo-50 text-indigo-750"
+                      : "text-slate-500 hover:bg-slate-550 hover:text-slate-850"
+                  }`}
+                >
+                  <Users size={16} />
+                  <span>Quản lý học viên</span>
+                </button>
+              </nav>
+            </div>
+
+            {/* Bottom Actions inside Sidebar */}
+            <div className="p-4 border-t border-slate-100 space-y-1 bg-slate-50/50">
+              <button
+                onClick={() => setAppStep("subject-select")}
+                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all duration-200 cursor-pointer border-none bg-transparent"
+              >
+                <ArrowLeft size={15} />
+                <span>Quay lại học tập</span>
+              </button>
+
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 hover:text-red-700 transition-all duration-200 cursor-pointer border-none bg-transparent"
+              >
+                <X size={15} />
+                <span>Đăng xuất admin</span>
+              </button>
+            </div>
+          </aside>
+
+          {/* Main Dashboard Content */}
+          <main className="flex-grow p-8 overflow-y-auto max-w-7xl mx-auto w-full space-y-8">
+            {/* Header bar inside Main */}
+            <div className="flex items-center justify-between pb-6 border-b border-slate-200">
+              <div>
+                <h1 className="text-xl font-black text-slate-900 uppercase tracking-tight select-none">
+                  {adminTab === "overview" ? "Bảng Điều Khiển Tổng Quan" : "Danh Sách Học Viên Đăng Ký"}
+                </h1>
+                <p className="text-xs text-slate-500 font-medium mt-1 select-none">
+                  Chào mừng trở lại, Admin. Báo cáo cập nhật trực quan thời gian thực.
+                </p>
+              </div>
+
+              {/* Action buttons (Export PDF, Excel) */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={exportExcel}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm text-xs font-bold transition-all duration-200 cursor-pointer active:scale-95"
+                >
+                  <Download size={14} className="text-slate-500" />
+                  <span>Xuất Excel</span>
+                </button>
+                <button
+                  onClick={exportPDF}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm text-xs font-bold transition-all duration-200 cursor-pointer active:scale-95"
+                >
+                  <Download size={14} className="text-slate-500" />
+                  <span>Xuất PDF</span>
+                </button>
+              </div>
+            </div>
+
+            {/* TAB CONTENT: OVERVIEW */}
+            {adminTab === "overview" && renderOverviewTab()}
+
+            {/* TAB CONTENT: USERS */}
+            {adminTab === "users" && renderUsersTab()}
+          </main>
+        </div>
+      )}
+
+      {/* CREATE NEW USER MODAL */}
+      {adminShowAddUserModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl space-y-5 text-left">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="font-extrabold text-sm text-slate-850 uppercase tracking-wider flex items-center gap-2">
+                <span>👤</span>
+                Thêm học sinh mới
+              </h3>
+              <button
+                onClick={() => setAdminShowAddUserModal(false)}
+                className="text-slate-400 hover:text-slate-650 cursor-pointer border-none bg-transparent"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <form onSubmit={handleAdminCreateUser} className="space-y-4">
+              <div>
+                <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Tên đăng nhập</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ví dụ: hocsinh2..."
+                  value={adminNewUser}
+                  onChange={(e) => setAdminNewUser(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Địa chỉ Email</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="hocsinh2@gmail.com"
+                  value={adminNewEmail}
+                  onChange={(e) => setAdminNewEmail(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Mật khẩu</label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="••••••••"
+                    value={adminNewPass}
+                    onChange={(e) => setAdminNewPass(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Nhập lại</label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="••••••••"
+                    value={adminNewConfirmPass}
+                    onChange={(e) => setAdminNewConfirmPass(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setAdminShowAddUserModal(false)}
+                  className="flex-grow py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs transition-colors cursor-pointer text-center bg-transparent"
+                >
+                  Hủy bỏ
+                </button>
+                <button
+                  type="submit"
+                  className="flex-grow py-2 rounded-xl bg-indigo-650 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md cursor-pointer border-none"
+                >
+                  Tạo học viên
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* CHANGE PASSWORD MODAL */}
+      {adminShowChangePassModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl space-y-5 text-left">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="font-extrabold text-sm text-slate-850 uppercase tracking-wider flex items-center gap-2">
+                <span>🔑</span>
+                Đặt lại mật khẩu
+              </h3>
+              <button
+                onClick={() => {
+                  setAdminShowChangePassModal(false);
+                  setAdminChangePassUser(null);
+                }}
+                className="text-slate-400 hover:text-slate-650 cursor-pointer border-none bg-transparent"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <p className="text-xs text-slate-500">
+              Đặt lại mật khẩu mới cho tài khoản của học viên <strong className="text-slate-900">{adminChangePassUser?.username}</strong>.
+            </p>
+
+            <form onSubmit={handleAdminChangePassword} className="space-y-4">
+              <div>
+                <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Mật khẩu mới</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={adminChangeNewPass}
+                  onChange={(e) => setAdminChangeNewPass(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-extrabold text-slate-400 uppercase mb-1">Xác nhận mật khẩu</label>
+                <input
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={adminChangeConfirmPass}
+                  onChange={(e) => setAdminChangeConfirmPass(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-indigo-500 focus:bg-white transition-colors"
+                />
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAdminShowChangePassModal(false);
+                    setAdminChangePassUser(null);
+                  }}
+                  className="flex-grow py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs transition-colors cursor-pointer text-center bg-transparent"
+                >
+                  Hủy bỏ
+                </button>
+                <button
+                  type="submit"
+                  className="flex-grow py-2 rounded-xl bg-indigo-650 hover:bg-indigo-700 text-white font-bold text-xs transition-all shadow-md cursor-pointer border-none"
+                >
+                  Cập nhật mật khẩu
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Hidden print template for PDF reports */}
+      <div
+        id="admin-pdf-report-template"
+        className="bg-white p-12 text-slate-800 font-sans space-y-8"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: 0,
+          width: "800px",
+          display: "none"
+        }}
+      >
+        {/* Report Header */}
+        <div className="flex justify-between items-center border-b-2 border-indigo-600 pb-6">
+          <div>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight">STUDYMASTER ACADEMY</h1>
+            <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Báo cáo tình hình học tập học viên</p>
+          </div>
+          <div className="text-right">
+            <span className="text-xs font-extrabold text-indigo-650 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-wider">
+              Admin Report
+            </span>
+            <p className="text-[10px] text-slate-450 mt-1.5 font-medium">Xuất lúc: {new Date().toLocaleString("vi-VN")}</p>
+          </div>
+        </div>
+
+        {/* Overview Stats Block */}
+        <div className="grid grid-cols-3 gap-6">
+          {[
+            { label: "Tổng số học viên", value: adminUsers.length },
+            { label: "Môn học hỗ trợ", value: Object.keys(allSubjects).length },
+            { label: "Lượt làm trắc nghiệm", value: getStats().totalAttempts }
+          ].map((stat, idx) => (
+            <div key={idx} className="border border-slate-150 rounded-2xl p-4 bg-slate-50/50 space-y-1">
+              <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wider block">{stat.label}</span>
+              <span className="text-xl font-black text-slate-800 block">{stat.value}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Detailed User Table List */}
+        <div className="space-y-3">
+          <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">Danh sách học viên chi tiết</h3>
+          <table className="w-full border-collapse border border-slate-150 text-[10px] text-left">
+            <thead>
+              <tr className="bg-slate-50 border-b border-slate-150 text-slate-500 font-bold">
+                <th className="px-4 py-2 border-r border-slate-150">Tên học viên</th>
+                <th className="px-4 py-2 border-r border-slate-150">Email đăng ký</th>
+                <th className="px-4 py-2 text-center border-r border-slate-150">Bài đã làm</th>
+                <th className="px-4 py-2 text-center border-r border-slate-150">Điểm trung bình</th>
+                <th className="px-4 py-2 text-center">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              {adminUsers.map((user) => {
+                let attempts = 0;
+                let percentSum = 0;
+                Object.values(allSubjects).forEach((subj) => {
+                  const chaptersList = subj.chapters || [];
+                  chaptersList.forEach((ch) => {
+                    const stored = localStorage.getItem(`studymaster_quiz_rankings_${ch.id}`);
+                    if (stored) {
+                      try {
+                        const rankings = JSON.parse(stored);
+                        const userRecords = rankings.filter(r => r.name === user.username);
+                        attempts += userRecords.length;
+                        userRecords.forEach((r) => {
+                          percentSum += r.total > 0 ? (r.score / r.total) * 100 : 0;
+                        });
+                      } catch (e) {}
+                    }
+                  });
+                });
+                const avgScore = attempts > 0 ? Math.round(percentSum / attempts) : 0;
+                return (
+                  <tr key={user.username} className="border-b border-slate-150 hover:bg-slate-50/20">
+                    <td className="px-4 py-2 font-bold border-r border-slate-150 text-slate-900">{user.username}</td>
+                    <td className="px-4 py-2 border-r border-slate-150 text-slate-550">{user.email}</td>
+                    <td className="px-4 py-2 text-center border-r border-slate-150 font-bold text-slate-800">{attempts}</td>
+                    <td className="px-4 py-2 text-center border-r border-slate-150 font-bold text-indigo-700">
+                      {attempts > 0 ? `${avgScore}%` : "—"}
+                    </td>
+                    <td className="px-4 py-2 text-center font-bold">
+                      <span className={user.locked ? "text-red-600" : "text-emerald-650"}>
+                        {user.locked ? "Đã khóa" : "Hoạt động"}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-slate-150 pt-4 flex justify-between items-center text-[9px] text-slate-400 font-semibold">
+          <span>Báo cáo bảo mật được tạo bởi StudyMaster Dashboard</span>
+          <span>Trang 1 / 1</span>
+        </div>
+      </div>
 
       {/* GOOGLE ACCOUNTS CHOOSER MODAL POP-UP */}
       {showGooglePopup && (

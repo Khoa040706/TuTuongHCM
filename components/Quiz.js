@@ -385,9 +385,9 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
 
     const sub = section.subsections.find((su) => su.id === subsectionId);
     if (sub) {
-      return `Phần ${section.roman} › Mục ${sub.number}`;
+      return section.roman ? `Phần ${section.roman} › Mục ${sub.number}` : `Mục ${sub.number}`;
     }
-    return `Phần ${section.roman}`;
+    return section.roman ? `Phần ${section.roman}` : `Phần mở đầu`;
   };
 
   // Diagnostics calculations
@@ -397,7 +397,11 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
 
     if (chapter) {
       chapter.sections.forEach((sec) => {
-        diag[sec.id] = { title: `${sec.title} (Phần ${sec.roman})`, correct: 0, total: 0 };
+        diag[sec.id] = { 
+          title: sec.roman ? `${sec.title} (Phần ${sec.roman})` : sec.title, 
+          correct: 0, 
+          total: 0 
+        };
       });
     } else {
       diag["doi-tuong-nghien-cuu"] = { title: "Đối tượng nghiên cứu", correct: 0, total: 0 };

@@ -587,7 +587,7 @@ ul.bullet-list.bullet-list--sub li::before {
 }
 
 .bento-subject-card:hover::before {
-  background: linear-gradient(135deg, var(--accent), transparent, #0d9488);
+  background: linear-gradient(135deg, var(--accent), transparent, var(--secondary));
 }
 
 .bento-subject-card .card-glow-reflection {

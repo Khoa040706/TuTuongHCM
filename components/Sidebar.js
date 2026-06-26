@@ -28,7 +28,8 @@ export default function Sidebar({
   setActiveColor,
   onClearAll,
   onBackToHero,
-  hasQuiz = false
+  hasQuiz = false,
+  onBackToAdmin
 }) {
   const [expandedGroups, setExpandedGroups] = useState({});
   const [mounted, setMounted] = useState(false);
@@ -405,7 +406,7 @@ export default function Sidebar({
                               className="w-full flex items-center justify-between px-3 py-1.5 rounded-md text-xs font-semibold text-stone-700 hover:bg-stone-150 transition-colors duration-200 text-left cursor-pointer"
                             >
                               <span className="truncate max-w-[150px]">
-                                <span className="text-accent mr-1">{sec.roman}.</span>
+                                {sec.roman && <span className="text-accent mr-1">{sec.roman}.</span>}
                                 {sec.title}
                               </span>
                               {isSecExpanded ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
@@ -473,6 +474,15 @@ export default function Sidebar({
               </div>
               <Settings size={14} className="text-stone-400 group-hover:text-accent group-hover:rotate-45 transition-all duration-300 flex-shrink-0" />
             </div>
+          )}
+
+          {currentUser === "admin" && onBackToAdmin && (
+            <button
+              onClick={onBackToAdmin}
+              className="w-full py-2 px-3 rounded-xl bg-accent hover:bg-accent/95 text-white dark:text-stone-950 text-center text-xs font-bold transition-all duration-200 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+            >
+              💼 Trang quản trị Admin
+            </button>
           )}
 
           <div className="flex gap-2">

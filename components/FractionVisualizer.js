@@ -238,7 +238,7 @@ export default function FractionVisualizer() {
               {implMode === "traditional" ? (
                 <div>
                   <span className="text-purple-400">class</span> <span className="text-amber-400">Fraction</span> <span className="text-purple-400">implements</span> FractionI &#123;
-                  <div className="pl-4 text-stone-450">// Lưu trực tiếp 2 biến độc lập</div>
+                  <div className="pl-4 text-stone-450">{"// Lưu trực tiếp 2 biến độc lập"}</div>
                   <div className="pl-4"><span className="text-purple-400">private int</span> numer = <span className="text-amber-400">{displayNumer}</span>;</div>
                   <div className="pl-4"><span className="text-purple-400">private int</span> denom = <span className="text-amber-400">{displayDenom}</span>;</div>
                   &#125;
@@ -246,10 +246,10 @@ export default function FractionVisualizer() {
               ) : (
                 <div>
                   <span className="text-purple-400">class</span> <span className="text-amber-400">FractionArr</span> <span className="text-purple-400">implements</span> FractionI &#123;
-                  <div className="pl-4 text-stone-450">// Gói dữ liệu vào 1 mảng số nguyên</div>
+                  <div className="pl-4 text-stone-450">{"// Gói dữ liệu vào 1 mảng số nguyên"}</div>
                   <div className="pl-4"><span className="text-purple-400">private int[]</span> members = <span className="text-amber-400">&#123; {displayNumer}, {displayDenom} &#125;</span>;</div>
-                  <div className="pl-4 text-stone-450">// members[0] = Tử số ({displayNumer})</div>
-                  <div className="pl-4 text-stone-450">// members[1] = Mẫu số ({displayDenom})</div>
+                  <div className="pl-4 text-stone-450">{"// members[0] = Tử số (" + displayNumer + ")"}</div>
+                  <div className="pl-4 text-stone-450">{"// members[1] = Mẫu số (" + displayDenom + ")"}</div>
                   &#125;
                 </div>
               )}
@@ -261,7 +261,7 @@ export default function FractionVisualizer() {
               <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                 <div>getNumer() = <span className="text-amber-400 font-bold">{displayNumer}</span></div>
                 <div>getDenom() = <span className="text-amber-400 font-bold">{displayDenom}</span></div>
-                <div>toString() = <span className="text-purple-300 font-bold">"{displayNumer}/{displayDenom}"</span></div>
+                <div>toString() = <span className="text-purple-300 font-bold">&quot;{displayNumer}/{displayDenom}&quot;</span></div>
                 <div>doubleValue() = <span className="text-emerald-400 font-bold">{(displayNumer / displayDenom).toFixed(4)}</span></div>
               </div>
             </div>

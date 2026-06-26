@@ -13,6 +13,11 @@ import CastingPlayground from "./CastingPlayground";
 import PrintfFormatter from "./PrintfFormatter";
 import ComplexVisualizer from "./ComplexVisualizer";
 import FractionVisualizer from "./FractionVisualizer";
+import HcmTimeline1945to1969 from "./HcmTimeline1945to1969";
+import HcmValuesExplorer from "./HcmValuesExplorer";
+import HcmWorldDevelopment from "./HcmWorldDevelopment";
+import LsdHistoryTimeline from "./LsdHistoryTimeline";
+import LsdObjectExplorer from "./LsdObjectExplorer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -335,9 +340,11 @@ export default function ContentRenderer({ chapters }) {
           {ch.sections.map((sec) => (
             <div key={sec.id} id={`section-${sec.id}`} className="section mb-10 scroll-mt-20">
               <div className="section__heading flex items-baseline gap-3 mb-6 pb-3 border-b-2 border-stone-200">
-                <span className="section__roman text-xl md:text-2xl font-extrabold text-accent font-playfair leading-none">
-                  {sec.roman}.
-                </span>
+                {sec.roman && (
+                  <span className="section__roman text-xl md:text-2xl font-extrabold text-accent font-playfair leading-none">
+                    {sec.roman}.
+                  </span>
+                )}
                 <h2 className="section__title text-lg md:text-xl font-bold text-stone-900 font-playfair leading-tight">
                   {sec.title}
                 </h2>
@@ -761,6 +768,31 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "dsa-fraction-visualizer":
       return (
         <FractionVisualizer key={path} />
+      );
+
+    case "hcm-timeline-1945-1969":
+      return (
+        <HcmTimeline1945to1969 key={path} />
+      );
+
+    case "hcm-values-explorer":
+      return (
+        <HcmValuesExplorer key={path} />
+      );
+
+    case "hcm-world-development":
+      return (
+        <HcmWorldDevelopment key={path} />
+      );
+
+    case "lsd-history-timeline":
+      return (
+        <LsdHistoryTimeline key={path} />
+      );
+
+    case "lsd-object-explorer":
+      return (
+        <LsdObjectExplorer key={path} />
       );
 
     default:

@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { X, User, Mail, Shield, ShieldAlert, Key, Upload, Trash2, KeyRound, Check, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { db } from "../lib/firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function ProfileModal({
   isOpen,
@@ -15,7 +17,7 @@ export default function ProfileModal({
   showConfirm,
   showAlert
 }) {
-  const [activeTab, setActiveTab] = useState("profile"); // "profile", "security", "admin"
+  const [activeTab, setActiveTab] = useState("profile"); // "profile", "security"
   const { theme } = useTheme();
   const [email, setEmail] = useState("");
   
@@ -35,13 +37,6 @@ export default function ProfileModal({
       special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
     };
   };
-  
-  // Admin Tab States
-  const [users, setUsers] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [newAdminUser, setNewAdminUser] = useState("");
-  const [newAdminEmail, setNewAdminEmail] = useState("");
-  const [newAdminPass, setNewAdminPass] = useState("");
 
   // Statistics States
   const [stats, setStats] = useState({
@@ -54,16 +49,22 @@ export default function ProfileModal({
   useEffect(() => {
     if (!isOpen) return;
 
-    // Load user list and current user details
-    const allUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-    setUsers(allUsers);
-
-    const matchedUser = allUsers.find(u => u.username === currentUser);
-    if (matchedUser) {
-      setEmail(matchedUser.email);
-    } else if (currentUser === "admin") {
-      setEmail("admin@studymaster.edu");
-    }
+    const fetchUserDetails = async () => {
+      if (currentUser === "admin") {
+        setEmail("admin@studymaster.edu");
+        return;
+      }
+      try {
+        const userDocRef = doc(db, "users", currentUser);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          setEmail(userDoc.data().email || "");
+        }
+      } catch (e) {
+        console.error("Lỗi khi tải thông tin email từ Firestore:", e);
+      }
+    };
+    fetchUserDetails();
 
     // Load stats
     let totalAttempts = 0;
@@ -128,7 +129,7 @@ export default function ProfileModal({
     setCurrentUserAvatar(avatarPath);
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = async (e) => {
     e.preventDefault();
 
     const val = getPasswordValidation(newPassword);
@@ -149,8 +150,6 @@ export default function ProfileModal({
       return;
     }
 
-    const allUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-    
     // Check if it's admin changing default credentials
     if (currentUser === "admin") {
       showAlert({
@@ -161,121 +160,42 @@ export default function ProfileModal({
       return;
     }
 
-    const userIndex = allUsers.findIndex(u => u.username === currentUser);
-    if (userIndex === -1) {
-      showAlert({
-        title: "Lỗi tài khoản",
-        message: "Không tìm thấy thông tin tài khoản!",
-        type: "warning"
-      });
-      return;
-    }
-
-    if (allUsers[userIndex].password !== oldPassword) {
-      showAlert({
-        title: "Xác thực lỗi",
-        message: "Mật khẩu cũ nhập vào không chính xác!",
-        type: "warning"
-      });
-      return;
-    }
-
-    // Update password
-    allUsers[userIndex].password = newPassword;
-    localStorage.setItem("studymaster_users", JSON.stringify(allUsers));
-    
-    showToast("Đổi mật khẩu thành công!", "success");
-    setOldPassword("");
-    setNewPassword("");
-    setConfirmPassword("");
-  };
-
-  // Admin Actions
-  const handleRegisterUser = (e) => {
-    e.preventDefault();
-    if (!newAdminUser.trim() || !newAdminEmail.trim() || !newAdminPass.trim()) return;
-
-    const validation = getPasswordValidation(newAdminPass);
-    if (!validation.length || !validation.uppercase || !validation.number || !validation.special) {
-      showAlert({
-        title: "Thêm tài khoản lỗi",
-        message: "Mật khẩu chưa đạt yêu cầu bảo mật (tối thiểu 8 ký tự, gồm chữ hoa, chữ số và ký tự đặc biệt)!",
-        type: "warning"
-      });
-      return;
-    }
-
-    const allUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-
-    if (allUsers.some(u => u.username === newAdminUser || u.email === newAdminEmail) || newAdminUser === "admin") {
-      showAlert({
-        title: "Tên đăng ký đã tồn tại",
-        message: "Tên tài khoản hoặc email đã tồn tại!",
-        type: "warning"
-      });
-      return;
-    }
-
-    allUsers.push({
-      username: newAdminUser.trim(),
-      email: newAdminEmail.trim(),
-      password: newAdminPass
-    });
-
-    localStorage.setItem("studymaster_users", JSON.stringify(allUsers));
-    setUsers(allUsers);
-    
-    showToast(`Đã thêm thành công tài khoản: ${newAdminUser}`, "success");
-    setNewAdminUser("");
-    setNewAdminEmail("");
-    setNewAdminPass("");
-  };
-
-  const handleResetPassword = (username) => {
-    const defaultResetPass = "12345678aA@";
-    showConfirm({
-      title: "Đặt lại mật khẩu",
-      message: `Bạn có chắc chắn muốn đặt lại mật khẩu của tài khoản "${username}" về mặc định ("${defaultResetPass}") không?`,
-      type: "confirm",
-      confirmText: "Đặt lại",
-      cancelText: "Hủy",
-      onConfirm: () => {
-        const allUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-        const userIdx = allUsers.findIndex(u => u.username === username);
-        if (userIdx !== -1) {
-          allUsers[userIdx].password = defaultResetPass;
-          localStorage.setItem("studymaster_users", JSON.stringify(allUsers));
-          setUsers(allUsers);
-          showToast(`Đặt lại mật khẩu thành công cho tài khoản "${username}"!`, "success");
-        }
+    try {
+      showToast("Đang xác thực và cập nhật...", "info");
+      const userDocRef = doc(db, "users", currentUser);
+      const userDoc = await getDoc(userDocRef);
+      
+      if (!userDoc.exists()) {
+        showAlert({
+          title: "Lỗi tài khoản",
+          message: "Không tìm thấy thông tin tài khoản trên hệ thống!",
+          type: "warning"
+        });
+        return;
       }
-    });
-  };
 
-  const handleDeleteUser = (username) => {
-    showConfirm({
-      title: "Xóa tài khoản",
-      message: `Xóa tài khoản "${username}" là hành động không thể khôi phục. Bạn có chắc chắn muốn xóa không?`,
-      type: "warning",
-      confirmText: "Xóa luôn",
-      cancelText: "Hủy",
-      onConfirm: () => {
-        const allUsers = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-        const filtered = allUsers.filter(u => u.username !== username);
-        localStorage.setItem("studymaster_users", JSON.stringify(filtered));
-        setUsers(filtered);
-        
-        // Clean avatar and notes
-        localStorage.removeItem(`studymaster_avatar_${username}`);
-        showToast(`Đã xóa tài khoản "${username}" thành công.`, "success");
+      const userData = userDoc.data();
+      if (userData.password !== oldPassword) {
+        showAlert({
+          title: "Xác thực lỗi",
+          message: "Mật khẩu cũ nhập vào không chính xác!",
+          type: "warning"
+        });
+        return;
       }
-    });
-  };
 
-  const filteredUsers = users.filter(u => 
-    u.username.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    u.email.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      // Update password on Firestore
+      await updateDoc(userDocRef, { password: newPassword });
+      
+      showToast("Đổi mật khẩu thành công!", "success");
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.error("Lỗi đổi mật khẩu:", error);
+      showToast("Gặp sự cố khi kết nối dữ liệu. Vui lòng thử lại sau!", "error");
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -316,19 +236,6 @@ export default function ProfileModal({
               }`}
             >
               Bảo mật
-            </button>
-          )}
-          {currentUser === "admin" && (
-            <button
-              onClick={() => setActiveTab("admin")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                activeTab === "admin" 
-                  ? "bg-accent text-white dark:text-stone-950 shadow-md shadow-accent/25" 
-                  : "text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800/40"
-              }`}
-            >
-              <Shield size={13} />
-              Quản trị tài khoản
             </button>
           )}
         </div>
@@ -576,123 +483,6 @@ export default function ProfileModal({
             );
           })()}
 
-          {/* ADMIN TAB */}
-          {activeTab === "admin" && currentUser === "admin" && (
-            <div className="space-y-6">
-              
-              {/* Add New User Widget */}
-              <div className="bg-stone-50 dark:bg-stone-950/40 border border-stone-200 dark:border-stone-850/60 p-5 rounded-2xl space-y-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-accent flex items-center gap-1.5">
-                  <User size={12} />
-                  Đăng ký tài khoản sinh viên mới
-                </h4>
-                <form onSubmit={handleRegisterUser} className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-end">
-                  <div>
-                    <label className="block text-[9px] text-stone-550 dark:text-stone-400 uppercase mb-1">Tên tài khoản</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Username..."
-                      value={newAdminUser}
-                      onChange={(e) => setNewAdminUser(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/60 text-[11px] text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-accent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[9px] text-stone-550 dark:text-stone-400 uppercase mb-1">Email</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="Email..."
-                      value={newAdminEmail}
-                      onChange={(e) => setNewAdminEmail(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/60 text-[11px] text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-accent"
-                    />
-                  </div>
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <label className="block text-[9px] text-stone-550 dark:text-stone-400 uppercase mb-1">Mật khẩu</label>
-                      <input
-                        type="password"
-                        required
-                        placeholder="Mật khẩu..."
-                        value={newAdminPass}
-                        onChange={(e) => setNewAdminPass(e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900/60 text-[11px] text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:border-accent"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="px-4 py-2 rounded-lg bg-accent text-white dark:text-stone-950 font-bold text-[11px] hover:bg-accent/90 transition-colors cursor-pointer"
-                    >
-                      Thêm
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              {/* User Management List */}
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-4">
-                  <h4 className="text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                    Danh sách tài khoản ({users.length})
-                  </h4>
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm tài khoản..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-48 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950/40 text-[11px] text-stone-900 dark:text-stone-100 focus:outline-none focus:border-accent placeholder-stone-450 dark:placeholder-stone-500"
-                  />
-                </div>
-
-                <div className="border border-stone-200 dark:border-stone-850 rounded-2xl overflow-hidden bg-stone-50/50 dark:bg-stone-950/20 max-h-60 overflow-y-auto">
-                  <table className="w-full text-left text-xs border-collapse">
-                    <thead>
-                      <tr className="bg-stone-100 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-850 text-stone-600 dark:text-stone-400 font-bold uppercase text-[9px]">
-                        <th className="p-3">Học viên</th>
-                        <th className="p-3">Email</th>
-                        <th className="p-3 text-right">Thao tác quản lý</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredUsers.length === 0 ? (
-                        <tr>
-                          <td colSpan="3" className="p-4 text-center text-stone-400 dark:text-stone-500 italic">
-                            Không tìm thấy tài khoản nào khớp.
-                          </td>
-                        </tr>
-                      ) : (
-                        filteredUsers.map((user) => (
-                           <tr key={user.username} className="border-b border-stone-150 dark:border-stone-900 hover:bg-stone-50 dark:hover:bg-stone-900/25">
-                            <td className="p-3 font-semibold text-stone-800 dark:text-stone-200">{user.username}</td>
-                            <td className="p-3 text-stone-600 dark:text-stone-300 truncate max-w-[150px]">{user.email}</td>
-                            <td className="p-3 text-right flex justify-end gap-1.5">
-                              <button
-                                onClick={() => handleResetPassword(user.username)}
-                                className="px-2.5 py-1 rounded bg-stone-100 dark:bg-stone-800 hover:bg-accent hover:text-white dark:hover:text-stone-950 text-[10px] text-accent font-semibold transition-all cursor-pointer"
-                                title="Reset mật khẩu về mặc định"
-                              >
-                                Reset Pass
-                              </button>
-                              <button
-                                onClick={() => handleDeleteUser(user.username)}
-                                className="p-1 rounded bg-stone-100 dark:bg-stone-800 hover:bg-red-500/25 text-stone-400 hover:text-red-400 transition-all cursor-pointer"
-                                title="Xóa tài khoản"
-                              >
-                                <Trash2 size={13} />
-                              </button>
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-          )}
 
         </div>
 

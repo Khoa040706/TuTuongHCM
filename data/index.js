@@ -1,13 +1,14 @@
 import { chuongMoDau } from "./chuong-mo-dau";
 import { chuong1 } from "./chuong-1";
 import { questionsMoDau } from "./questions-mo-dau";
-import { lichSuDangData } from "./lich-su-dang";
+import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { oopData } from "./oop";
 import { analysisDesignData } from "./analysis-design";
 import { dsaData } from "./dsa";
 import { databaseData } from "./database";
 import { basicAlgorithmsData } from "./basic-algorithms";
 import { basicConceptsData } from "./basic-concepts";
+import { basicGeneralData } from "./basic-general";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -39,9 +40,25 @@ export const subjects = {
       accentRgb: "185, 28, 28"
     },
     icon: "☭",
-    chapters: [lichSuDangData],
+    chapters: [lichSuDangMoDau],
     questionsMap: {},
-    isActive: false
+    isActive: true
+  },
+  "basic-general": {
+    id: "basic-general",
+    title: "Kiến thức cơ bản môn Đại cương",
+    description: "Tìm hiểu lịch sử các kỳ Đại hội Đảng Cộng sản Việt Nam và các kiến thức đại cương nền tảng.",
+    category: "Môn đại cương",
+    quote: "“Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.”",
+    themeColors: {
+      accent: "#db2777",
+      secondary: "#be185d",
+      accentRgb: "219, 39, 119"
+    },
+    icon: "📚",
+    chapters: [basicGeneralData],
+    questionsMap: {},
+    isActive: true
   },
   "oop": {
     id: "oop",
