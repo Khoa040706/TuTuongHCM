@@ -23,6 +23,29 @@ import LsdTasksExplorer from "./LsdTasksExplorer";
 import LsdMethodologyExplorer from "./LsdMethodologyExplorer";
 import LsdSpecificMethodsExplorer from "./LsdSpecificMethodsExplorer";
 import LsdRequirementsGoalsExplorer from "./LsdRequirementsGoalsExplorer";
+import LsdChapter1GoalsExplorer from "./LsdChapter1GoalsExplorer";
+import LsdCapitalismBelongings from "./LsdCapitalismBelongings";
+import LsdOctoberRevolution from "./LsdOctoberRevolution";
+import LsdColonialVietnam from "./LsdColonialVietnam";
+import LsdPatrioticMovements from "./LsdPatrioticMovements";
+import LsdSearchForWay from "./LsdSearchForWay";
+import LsdInternationalActivities from "./LsdInternationalActivities";
+import LsdRevolutionPreparations from "./LsdRevolutionPreparations";
+import LsdCommunistOrganizations from "./LsdCommunistOrganizations";
+import LsdPartyFoundingConference from "./LsdPartyFoundingConference";
+import LsdConferenceResolutions from "./LsdConferenceResolutions";
+import LsdHistorySignificance from "./LsdHistorySignificance";
+import LsdMovement19301931 from "./LsdMovement19301931";
+import LsdPoliticalThesis1930 from "./LsdPoliticalThesis1930";
+import LsdRecoveryAndCongress1935 from "./LsdRecoveryAndCongress1935";
+import LsdDemocracyContext from "./LsdDemocracyContext";
+import LsdDemocracyMovement from "./LsdDemocracyMovement";
+import LsdDemocracySignificance from "./LsdDemocracySignificance";
+import LsdNationalLiberationStrategy from "./LsdNationalLiberationStrategy";
+import LsdLiberationPreparation from "./LsdLiberationPreparation";
+import LsdAntiJapaneseMovement from "./LsdAntiJapaneseMovement";
+import LsdAugustRevolution from "./LsdAugustRevolution";
+import LsdRevolutionSignificance from "./LsdRevolutionSignificance";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -827,6 +850,121 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "lsd-requirements-goals-explorer":
       return (
         <LsdRequirementsGoalsExplorer key={path} />
+      );
+
+    case "lsd-chapter1-goals-explorer":
+      return (
+        <LsdChapter1GoalsExplorer key={path} />
+      );
+
+    case "lsd-capitalism-belongings":
+      return (
+        <LsdCapitalismBelongings key={path} />
+      );
+
+    case "lsd-october-revolution":
+      return (
+        <LsdOctoberRevolution key={path} />
+      );
+
+    case "lsd-colonial-vietnam":
+      return (
+        <LsdColonialVietnam key={path} />
+      );
+
+    case "lsd-patriotic-movements":
+      return (
+        <LsdPatrioticMovements key={path} />
+      );
+
+    case "lsd-search-for-way":
+      return (
+        <LsdSearchForWay key={path} />
+      );
+
+    case "lsd-international-activities":
+      return (
+        <LsdInternationalActivities key={path} />
+      );
+
+    case "lsd-revolution-preparations":
+      return (
+        <LsdRevolutionPreparations key={path} />
+      );
+
+    case "lsd-communist-organizations":
+      return (
+        <LsdCommunistOrganizations key={path} />
+      );
+
+    case "lsd-party-founding-conference":
+      return (
+        <LsdPartyFoundingConference key={path} />
+      );
+
+    case "lsd-conference-resolutions":
+      return (
+        <LsdConferenceResolutions key={path} />
+      );
+
+    case "lsd-history-significance":
+      return (
+        <LsdHistorySignificance key={path} />
+      );
+
+    case "lsd-movement-1930-1931":
+      return (
+        <LsdMovement19301931 key={path} />
+      );
+
+    case "lsd-political-thesis-1930":
+      return (
+        <LsdPoliticalThesis1930 key={path} />
+      );
+
+    case "lsd-recovery-congress-1935":
+      return (
+        <LsdRecoveryAndCongress1935 key={path} />
+      );
+
+    case "lsd-democracy-context":
+      return (
+        <LsdDemocracyContext key={path} />
+      );
+
+    case "lsd-democracy-movement":
+      return (
+        <LsdDemocracyMovement key={path} />
+      );
+
+    case "lsd-democracy-significance":
+      return (
+        <LsdDemocracySignificance key={path} />
+      );
+
+    case "lsd-national-liberation-strategy":
+      return (
+        <LsdNationalLiberationStrategy key={path} />
+      );
+
+    case "lsd-liberation-preparation":
+      return (
+        <LsdLiberationPreparation key={path} />
+      );
+
+    case "lsd-anti-japanese-movement":
+      return (
+        <LsdAntiJapaneseMovement key={path} />
+      );
+
+    case "lsd-august-revolution":
+      return (
+        <LsdAugustRevolution key={path} />
+      );
+
+    case "lsd-revolution-significance":
+      return (
+        <LsdRevolutionSignificance key={path} />
       );
 
     default:
