@@ -3609,7 +3609,7 @@ export default function Page() {
             <span className="text-xs font-extrabold text-indigo-650 bg-indigo-50 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-wider">
               Admin Report
             </span>
-            <p className="text-[10px] text-slate-450 mt-1.5 font-medium">Xuất lúc: {new Date().toLocaleString("vi-VN")}</p>
+            <p className="text-[10px] text-slate-450 mt-1.5 font-medium">Xuất lúc: {mounted ? new Date().toLocaleString("vi-VN") : ""}</p>
           </div>
         </div>
 

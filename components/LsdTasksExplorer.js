@@ -77,10 +77,10 @@ export default function LsdTasksExplorer() {
           return (
             <div
               key={t.id}
-              className={`task-card group relative bg-white border border-stone-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all duration-300 border-t-4 border-t-stone-300 hover:border-t-red-750 overflow-hidden ${t.accentBorder}`}
+              className={`task-card group relative bg-white border border-stone-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all duration-300 border-t-4 border-t-stone-300 hover:border-t-red-800 overflow-hidden ${t.accentBorder}`}
             >
               {/* Watermark Number */}
-              <span className="absolute top-2 right-4 text-4xl md:text-5xl font-black text-red-500/5 select-none transition-colors group-hover:text-red-750/10">
+              <span className="absolute top-2 right-4 text-4xl md:text-5xl font-black text-red-500/5 select-none transition-colors group-hover:text-red-800/10">
                 {t.num}
               </span>
 

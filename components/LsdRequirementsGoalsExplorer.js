@@ -52,7 +52,7 @@ export default function LsdRequirementsGoalsExplorer() {
               onClick={() => setActiveSubTab(idx)}
               className={`flex items-center gap-2 px-3 py-2 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 cursor-pointer border-none outline-none ${
                 isActive 
-                  ? "bg-red-750 text-white shadow-md shadow-red-700/10" 
+                  ? "bg-red-800 text-white shadow-md shadow-red-700/10" 
                   : "bg-stone-100 hover:bg-stone-200/60 text-stone-600 hover:text-stone-900"
               }`}
             >

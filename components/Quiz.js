@@ -1044,7 +1044,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
                       </div>
 
                       <div className="space-y-2 text-xs">
-                        <div className={`p-2.5 rounded border ${isCorrect ? "bg-green-500/5 border-green-500/20 text-green-700 dark:text-green-400" : "bg-red-500/5 border-red-500/20 text-red-750 dark:text-red-400"}`}>
+                        <div className={`p-2.5 rounded border ${isCorrect ? "bg-green-500/5 border-green-500/20 text-green-700 dark:text-green-400" : "bg-red-500/5 border-red-500/20 text-red-800 dark:text-red-400"}`}>
                           <strong>Câu trả lời của bạn:</strong> {answers[idx] !== -1 ? q.options[answers[idx]] : "Chưa chọn"}
                         </div>
                         {!isCorrect && (
