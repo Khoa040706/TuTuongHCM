@@ -10,12 +10,16 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { db } from "../lib/firebase";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
-import { questionsMap, chapters } from "../data/index";
+import { subjects } from "../data/index";
 import confetti from "canvas-confetti";
 
 const STATE_STORAGE_KEY = "studymaster_active_quiz_state";
 
-export default function Quiz({ onClose, showToast, showConfirm, showAlert }) {
+export default function Quiz({ onClose, showToast, showConfirm, showAlert, subjectId = "tu-tuong-hcm" }) {
+  const currentSubject = subjects[subjectId] || subjects["tu-tuong-hcm"];
+  const chapters = currentSubject.chapters;
+  const questionsMap = currentSubject.questionsMap;
+
   const [step, setStep] = useState("chapter-select"); // "chapter-select", "resume-confirm", "quiz-setup", "quiz-run", "results", "all-questions"
   const [setupStep, setSetupStep] = useState(1); // 1: Chapter, 2: Name, 3: Mode Selection
   const [name, setName] = useState("");
