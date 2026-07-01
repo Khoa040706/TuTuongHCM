@@ -998,8 +998,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                         <span>🔥</span>
                         <span>CHẾ ĐỘ THỬ THÁCH ĐỀ BẪY CHUYÊN SÂU</span>
                       </div>
-                      <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed font-medium">
-                        Bạn có tự tin vượt qua **50 câu hỏi bẫy đặc biệt** trong **60 phút**? Hệ thống sẽ kích hoạt giao diện cảnh báo đỏ đặc biệt, thử thách giới hạn tư duy lý luận của bạn.
+                      <p className="text-xs text-stone-650 dark:text-stone-400 leading-relaxed font-medium">
+                        Bạn có tự tin vượt qua <strong>50 câu hỏi bẫy đặc biệt</strong> trong <strong>60 phút</strong>? Hệ thống sẽ kích hoạt giao diện cảnh báo đỏ đặc biệt, thử thách giới hạn tư duy lý luận của bạn.
                       </p>
                     </div>
                     <button

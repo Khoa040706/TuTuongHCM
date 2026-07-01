@@ -158,7 +158,7 @@ export default function LsdNationalLiberationStrategy() {
                     <strong>Kinh tế chỉ huy</strong>: Thực dân Pháp ra sức vơ vét sức người, sức của phục vụ chiến tranh đế quốc và thẳng tay đàn áp phong trào cách mạng.
                   </li>
                   <li>
-                    <strong>Nhật xâm lược (9/1940)</strong>: Phát xít Nhật vào Đông Dương. Thực dân Pháp nhanh chóng đầu hàng và cấu kết với Nhật để cùng bóc lột nhân dân ta rơi vào cảnh ngộ cực khổ **&ldquo;một cổ hai tròng&rdquo;**.
+                    <strong>Nhật xâm lược (9/1940)</strong>: Phát xít Nhật vào Đông Dương. Thực dân Pháp nhanh chóng đầu hàng và cấu kết với Nhật để cùng bóc lột nhân dân ta rơi vào cảnh ngộ cực khổ <strong>&ldquo;một cổ hai tròng&rdquo;</strong>.
                   </li>
                 </ul>
               </div>

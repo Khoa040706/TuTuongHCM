@@ -114,7 +114,7 @@ export default function LsdAugustRevolution() {
                   🌟 Thời cơ &ldquo;ngàn năm có một&rdquo;
                 </span>
                 <p className="text-xs md:text-sm text-stone-800 leading-relaxed text-justify">
-                  Giữa tháng 8/1945, phát xít Nhật tuyên bố đầu hàng Đồng minh vô điều kiện, quân Nhật ở Đông Dương mất tinh thần chiến đấu, chính quyền tay sai hoang mang cực độ. **Thời cơ chỉ tồn tại trong khoảng nửa cuối tháng 8/1945** (kể từ khi Nhật đầu hàng đến trước khi quân Đồng minh đặt chân vào Đông Dương).
+                  Giữa tháng 8/1945, phát xít Nhật tuyên bố đầu hàng Đồng minh vô điều kiện, quân Nhật ở Đông Dương mất tinh thần chiến đấu, chính quyền tay sai hoang mang cực độ. <strong>Thời cơ chỉ tồn tại trong khoảng nửa cuối tháng 8/1945</strong> (kể từ khi Nhật đầu hàng đến trước khi quân Đồng minh đặt chân vào Đông Dương).
                 </p>
               </div>
 
@@ -292,13 +292,13 @@ export default function LsdAugustRevolution() {
                   <div className="flex gap-3">
                     <ChevronRight className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                     <p>
-                      Chủ tịch Hồ Chí Minh thay mặt Chính phủ lâm thời đọc bản **Tuyên ngôn Độc lập**, trịnh trọng tuyên bố trước toàn thể thế giới sự khai sinh của nước **Việt Nam Dân chủ Cộng hòa**.
+                      Chủ tịch Hồ Chí Minh thay mặt Chính phủ lâm thời đọc bản <strong>Tuyên ngôn Độc lập</strong>, trịnh trọng tuyên bố trước toàn thể thế giới sự khai sinh của nước <strong>Việt Nam Dân chủ Cộng hòa</strong>.
                     </p>
                   </div>
                   <div className="flex gap-3 border-t border-red-850/60 pt-3">
                     <ChevronRight className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                     <p>
-                      Bản Tuyên ngôn khẳng định quyền tự do, bình đẳng thiêng liêng của mọi dân tộc, thể hiện ý chí quyết tâm sắt đá: **&ldquo;Toàn thể dân tộc Việt Nam quyết đem tất cả tinh thần và lực lượng, tính mạng và của cải để giữ vững quyền tự do, độc lập ấy.&rdquo;**
+                      Bản Tuyên ngôn khẳng định quyền tự do, bình đẳng thiêng liêng của mọi dân tộc, thể hiện ý chí quyết tâm sắt đá: <strong>&ldquo;Toàn thể dân tộc Việt Nam quyết đem tất cả tinh thần và lực lượng, tính mạng và của cải để giữ vững quyền tự do, độc lập ấy.&rdquo;</strong>
                     </p>
                   </div>
                 </div>

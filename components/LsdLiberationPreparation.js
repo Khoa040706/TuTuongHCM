@@ -117,7 +117,7 @@ export default function LsdLiberationPreparation() {
 
         {/* Uprisings significance */}
         <div className="p-4 rounded-xl bg-amber-50/50 border border-amber-200 text-xs text-stone-750 text-justify mt-4">
-          📌 <strong>Ý nghĩa lịch sử</strong>: Tuy các cuộc khởi nghĩa đều thất bại hoặc chịu nhiều tổn thất nặng nề, song chúng là **&ldquo;những tiếng súng báo hiệu&rdquo;** đanh thép cho cuộc tổng khởi nghĩa cách mạng vũ trang giành độc lập trên phạm vi toàn quốc.
+          📌 <strong>Ý nghĩa lịch sử</strong>: Tuy các cuộc khởi nghĩa đều thất bại hoặc chịu nhiều tổn thất nặng nề, song chúng là <strong>&ldquo;những tiếng súng báo hiệu&rdquo;</strong> đanh thép cho cuộc tổng khởi nghĩa cách mạng vũ trang giành độc lập trên phạm vi toàn quốc.
         </div>
       </div>
 

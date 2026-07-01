@@ -122,7 +122,7 @@ export default function LsdAntiJapaneseMovement() {
             <div className="bg-red-950/60 border border-red-800/50 p-4 rounded-xl space-y-2">
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">🎯 Xác định kẻ thù</span>
               <p className="text-xs text-red-100 leading-relaxed text-justify">
-                Chỉ thị xác định rõ **kẻ thù cụ thể, trước mắt và duy nhất** của nhân dân các dân tộc Đông Dương lúc này là **phát xít Nhật**.
+                Chỉ thị xác định rõ <strong>kẻ thù cụ thể, trước mắt và duy nhất</strong> của nhân dân các dân tộc Đông Dương lúc này là <strong>phát xít Nhật</strong>.
               </p>
             </div>
 
@@ -130,7 +130,7 @@ export default function LsdAntiJapaneseMovement() {
             <div className="bg-red-950/60 border border-red-800/50 p-4 rounded-xl space-y-2">
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">🗣️ Thay đổi khẩu hiệu</span>
               <p className="text-xs text-red-100 leading-relaxed text-justify">
-                Thay khẩu hiệu &ldquo;đánh đuổi phát xít Nhật - Pháp&rdquo; bằng **&ldquo;đánh đuổi phát xít Nhật&rdquo;**, đồng thời nêu khẩu hiệu thành lập chính quyền cách mạng.
+                Thay khẩu hiệu &ldquo;đánh đuổi phát xít Nhật - Pháp&rdquo; bằng <strong>&ldquo;đánh đuổi phát xít Nhật&rdquo;</strong>, đồng thời nêu khẩu hiệu thành lập chính quyền cách mạng.
               </p>
             </div>
 
@@ -138,7 +138,7 @@ export default function LsdAntiJapaneseMovement() {
             <div className="bg-red-950/60 border border-red-800/50 p-4 rounded-xl space-y-2">
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">🗺️ Phát động cao trào</span>
               <p className="text-xs text-red-100 leading-relaxed text-justify">
-                Quyết định phát động một **cao trào kháng Nhật cứu nước** mạnh mẽ, sục sôi làm tiền đề trực tiếp cho cuộc tổng khởi nghĩa toàn quốc.
+                Quyết định phát động một <strong>cao trào kháng Nhật cứu nước</strong> mạnh mẽ, sục sôi làm tiền đề trực tiếp cho cuộc tổng khởi nghĩa toàn quốc.
               </p>
             </div>
 

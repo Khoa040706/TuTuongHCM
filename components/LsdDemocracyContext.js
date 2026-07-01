@@ -216,7 +216,7 @@ export default function LsdDemocracyContext() {
                   </div>
 
                   <p className="text-xs text-stone-650 leading-relaxed text-justify">
-                    Sự chuyển hướng này đã **bước đầu khắc phục được những hạn chế tả khuynh** của Luận cương chính trị (10/1930), quay trở lại với nhận thức đúng đắn, phù hợp với Cương lĩnh chính trị đầu tiên (2/1930) do Nguyễn Ái Quốc soạn thảo.
+                    Sự chuyển hướng này đã <strong>bước đầu khắc phục được những hạn chế tả khuynh</strong> của Luận cương chính trị (10/1930), quay trở lại với nhận thức đúng đắn, phù hợp với Cương lĩnh chính trị đầu tiên (2/1930) do Nguyễn Ái Quốc soạn thảo.
                   </p>
                 </div>
 

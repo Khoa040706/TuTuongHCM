@@ -130,7 +130,7 @@ export default function LsdDemocracySignificance() {
               </h5>
               
               <p className="text-xs md:text-sm text-stone-655 leading-relaxed text-justify">
-                Phong trào dân chủ 1936-1939 đã thành công trong việc mở rộng trận địa cách mạng sâu rộng ở cả nông thôn lẫn thành thị, đóng vai trò là **bước chuẩn bị trực tiếp** cực kỳ quan trọng cho thắng lợi vẻ vang của Cách mạng Tháng Tám năm 1945.
+                Phong trào dân chủ 1936-1939 đã thành công trong việc mở rộng trận địa cách mạng sâu rộng ở cả nông thôn lẫn thành thị, đóng vai trò là <strong>bước chuẩn bị trực tiếp</strong> cực kỳ quan trọng cho thắng lợi vẻ vang của Cách mạng Tháng Tám năm 1945.
               </p>
             </div>
           </div>
