@@ -2830,5 +2830,760 @@ export const questionsLsdChuong1 = {
       isOutside: true,
       explanation: "[Kiến thức ngoài giáo trình] Hội nghị Quân sự Cách mạng Bắc Kỳ họp từ ngày 15 đến 20-4-1945 tại làng Vân Xuyên, tổng Hoàng Vân, huyện Hiệp Hòa, tỉnh Bắc Giang để thống nhất quân đội cách mạng dưới sự chỉ đạo trực tiếp của Trung ương."
     }
+  ],
+
+  // 50 câu hỏi trắc nghiệm bẫy (tricks) đặc biệt phục vụ Đề Bẫy Chương I
+  tricks: [
+    {
+      id: "lsd-c1-trick-001",
+      question: "Tác phẩm 'Đường Kách mệnh' của Nguyễn Ái Quốc (xuất bản năm 1927) được tổ chức nào ấn hành lần đầu tiên?",
+      options: [
+        "Bộ Tuyên truyền của Hội Liên hiệp các dân tộc bị áp bức ở Á Đông tại Quảng Châu",
+        "Ban Chấp hành Trung ương lâm thời Đảng Cộng sản Việt Nam tại Hương Cảng",
+        "Ban Tuyên huấn Quốc tế Cộng sản tại Mát-xcơ-va",
+        "Tổng bộ Hội Việt Nam Cách mạng Thanh niên tại Hải Phòng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nhà xuất bản: Đường Kách mệnh tập hợp các bài giảng của Nguyễn Ái Quốc tại các lớp huấn luyện ở Quảng Châu, được Bộ Tuyên truyền của Hội Liên hiệp các dân tộc bị áp bức ở Á Đông ấn hành lần đầu tiên năm 1927."
+    },
+    {
+      id: "lsd-c1-trick-002",
+      question: "Thành phần đại biểu chính thức tham dự Hội nghị hợp nhất thành lập Đảng tại Hương Cảng (Trung Quốc) đầu năm 1930 gồm những ai?",
+      options: [
+        "Nguyễn Ái Quốc (đại diện Quốc tế Cộng sản), 2 đại biểu Đông Dương Cộng sản Đảng, 2 đại biểu An Nam Cộng sản Đảng",
+        "Nguyễn Ái Quốc, 2 đại biểu Đông Dương Cộng sản Đảng, 2 đại biểu An Nam Cộng sản Đảng, 2 đại biểu Đông Dương Cộng sản Liên đoàn",
+        "Trần Phú, Nguyễn Ái Quốc, 2 đại biểu Đông Dương Cộng sản Đảng, 2 đại biểu An Nam Cộng sản Đảng",
+        "Nguyễn Ái Quốc (đại diện Quốc tế Cộng sản), 2 đại biểu Đông Dương Cộng sản Đảng, 2 đại biểu Đông Dương Cộng sản Liên đoàn"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy thành phần đại biểu: Tại Hội nghị hợp nhất chính thức (6-1 đến 7-2-1930), Đông Dương Cộng sản Liên đoàn chưa kịp cử đại biểu tham dự trực tiếp (họ gia nhập sau vào ngày 24-2-1930). Trần Phú lúc này chưa về nước tham dự hội nghị."
+    },
+    {
+      id: "lsd-c1-trick-003",
+      question: "Quyết định đổi tên Đảng Cộng sản Việt Nam thành Đảng Cộng sản Đông Dương tại Hội nghị lần thứ nhất Ban Chấp hành Trung ương (tháng 10-1930) xuất phát từ nguyên nhân cốt lõi nào?",
+      options: [
+        "Chấp hành chỉ thị của Quốc tế Cộng sản về việc thành lập một Đảng Cộng sản duy nhất cho cả ba nước Đông Dương",
+        "Yêu cầu thực tiễn muốn xóa bỏ ngay lập tức biên giới quốc gia giữa ba nước Việt Nam, Lào, Campuchia",
+        "Sự phản đối của các đại biểu An Nam Cộng sản Đảng đối với tên gọi cũ",
+        "Do Nguyễn Ái Quốc trực tiếp đề xuất từ nước ngoài để mở rộng địa bàn hoạt động"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nguyên nhân đổi tên: Quốc tế Cộng sản chỉ thị phong trào cách mạng ở Đông Dương phải đặt dưới sự lãnh đạo của một Đảng Cộng sản duy nhất; tên gọi 'Đảng Cộng sản Việt Nam' bị phê phán là mang tính dân tộc hẹp hòi."
+    },
+    {
+      id: "lsd-c1-trick-004",
+      question: "Trong Cương lĩnh chính trị đầu tiên của Đảng (tháng 2-1930), Nguyễn Ái Quốc xác định lực lượng cách mạng bao gồm các giai cấp nào?",
+      options: [
+        "Công nhân, nông dân, tiểu tư sản, trí thức; còn trung nông, địa chủ vừa và nhỏ, tư sản dân tộc thì lôi kéo hoặc trung lập",
+        "Chỉ có giai cấp công nhân và giai cấp nông dân là động lực duy nhất của cách mạng",
+        "Toàn thể nhân dân Việt Nam, bao gồm cả địa chủ phong kiến đại tư sản và các quan lại phong kiến yêu nước",
+        "Công nhân, nông dân, tư sản dân tộc và toàn bộ giai cấp địa chủ yêu nước kháng Pháp"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy phân bổ lực lượng cách mạng: Cương lĩnh đầu tiên có cái nhìn rộng mở, lôi kéo các tầng lớp trung nông, phú nông, tiểu địa chủ và tư sản dân tộc yêu nước; khác với Luận cương tháng 10 chỉ công nhận công nông."
+    },
+    {
+      id: "lsd-c1-trick-005",
+      question: "Hội nghị lần thứ nhất Ban Chấp hành Trung ương Đảng (tháng 10-1930) đã thông qua văn kiện lịch sử quan trọng nào?",
+      options: [
+        "Luận cương chính trị của Đảng Cộng sản Đông Dương do Trần Phú soạn thảo",
+        "Chính cương vắn tắt và Sách lược vắn tắt do Nguyễn Ái Quốc soạn thảo",
+        "Đề cương văn hóa Việt Nam do Trường Chinh soạn thảo",
+        "Chỉ thị Nhật - Pháp bắn nhau và hành động của chúng ta"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy văn kiện Trung ương: Hội nghị tháng 10-1930 thông qua Luận cương chính trị của Trần Phú. Các tài liệu vắn tắt được thông qua trước đó vào tháng 2-1930 tại Hội nghị thành lập Đảng."
+    },
+    {
+      id: "lsd-c1-trick-006",
+      question: "Hạn chế lịch sử lớn nhất của Luận cương chính trị do Trần Phú soạn thảo (tháng 10-1930) so với Cương lĩnh đầu tiên của Đảng là gì?",
+      options: [
+        "Không đặt nhiệm vụ giải phóng dân tộc lên hàng đầu mà nặng về đấu tranh giai cấp, và đánh giá không đúng khả năng cách mạng của các tầng lớp phi vô sản yêu nước",
+        "Đề ra chủ trương liên minh quân sự quá sớm với các lực lượng tư bản thân Pháp ở Đông Dương",
+        "Phủ nhận hoàn toàn vai trò lãnh đạo tuyệt đối của giai cấp công nhân đối với cách mạng",
+        "Không xác định cách mạng Việt Nam là một bộ phận khăng khít của cách mạng thế giới"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy hạn chế Luận cương: Luận cương tháng 10 có hạn chế là đặt nặng vấn đề ruộng đất đấu tranh giai cấp, không đặt giải phóng dân tộc lên trên hết, và cô lập các tầng lớp tiểu tư sản, tư sản dân tộc yêu nước."
+    },
+    {
+      id: "lsd-c1-trick-007",
+      question: "Hội nghị hợp nhất các tổ chức cộng sản Việt Nam đầu năm 1930 diễn ra tại địa điểm cụ thể nào ở Hương Cảng?",
+      options: [
+        "Bán đảo Cửu Long (Kowloon)",
+        "Quảng Đông",
+        "Thượng Hải",
+        "Ma Cao"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy địa lý lịch sử: Hội nghị thành lập Đảng diễn ra bí mật tại bán đảo Cửu Long (Kowloon) thuộc Hương Cảng (Hong Kong) dưới sự chủ trì của Nguyễn Ái Quốc."
+    },
+    {
+      id: "lsd-c1-trick-008",
+      question: "Hội nghị hợp nhất thành lập Đảng Cộng sản Việt Nam đầu năm 1930 kéo dài trong khoảng thời gian nào?",
+      options: [
+        "Từ ngày 6-1 đến ngày 7-2-1930",
+        "Từ ngày 3-2 đến ngày 3-3-1930",
+        "Chỉ diễn ra trong duy nhất ngày 3-2-1930",
+        "Từ ngày 1-5 đến ngày 15-5-1930"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy thời gian hội nghị: Hội nghị thực tế kéo dài hơn một tháng, bắt đầu từ ngày 6-1 đến ngày 7-2-1930. Ngày 3-2 được chọn làm ngày kỷ niệm thành lập Đảng sau này."
+    },
+    {
+      id: "lsd-c1-trick-009",
+      question: "Tờ báo lý luận chính trị đầu tiên do An Nam Cộng sản Đảng xuất bản trước khi hợp nhất là tờ báo nào?",
+      options: [
+        "Tạp chí Đỏ",
+        "Báo Thanh Niên",
+        "Báo Búa Liềm",
+        "Báo Nhành Lúa"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy cơ quan báo chí: An Nam Cộng sản Đảng xuất bản Tạp chí Đỏ. Báo Thanh Niên của Hội Việt Nam Cách mạng Thanh niên; báo Búa Liềm của Đông Dương Cộng sản Đảng."
+    },
+    {
+      id: "lsd-c1-trick-010",
+      question: "Đông Dương Cộng sản Liên đoàn - tổ chức cộng sản thứ ba ở Việt Nam - được cải tổ trực tiếp từ tổ chức tiền thân nào?",
+      options: [
+        "Tân Việt Cách mạng Đảng",
+        "Hội Việt Nam Cách mạng Thanh niên",
+        "Việt Nam Quốc dân Đảng",
+        "Hội Phục Việt"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tổ chức tiền thân: Đông Dương Cộng sản Liên đoàn ra đời từ sự phân hóa và cải tổ của Tân Việt Cách mạng Đảng vào cuối năm 1929."
+    },
+    {
+      id: "lsd-c1-trick-011",
+      question: "Điểm tương đồng nổi bật về con đường cứu nước của ba tổ chức cộng sản ở Việt Nam năm 1929 trước khi hợp nhất là gì?",
+      options: [
+        "Đều lấy chủ nghĩa Mác-Lênin làm kim chỉ nam và đi theo con đường cách mạng vô sản",
+        "Đều chịu sự chỉ đạo hành chính trực tiếp của Ban Phương Đông Quốc tế Cộng sản",
+        "Đều nhất trí tuyệt đối với Cương lĩnh chính trị của Nguyễn Ái Quốc soạn thảo",
+        "Đều hoạt động công khai hợp pháp dưới sự kiểm soát của chính quyền bảo hộ Pháp"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy điểm tương đồng: Dù tranh giành ảnh hưởng và hoạt động riêng rẽ, cả ba tổ chức đều thừa nhận hệ tư tưởng Mác-Lênin và con đường cách mạng vô sản giải phóng dân tộc."
+    },
+    {
+      id: "lsd-c1-trick-012",
+      question: "Vì sao Cương lĩnh chính trị đầu tiên của Đảng (tháng 2-1930) được đánh giá là một cương lĩnh giải phóng dân tộc ĐÚNG ĐẮN VÀ SÁNG TẠO?",
+      options: [
+        "Vì cương lĩnh đã vận dụng nhuần nhuyễn chủ nghĩa Mác-Lênin kết hợp với thực tiễn thuộc địa Việt Nam, đặt giải phóng dân tộc làm nhiệm vụ hàng đầu",
+        "Vì cương lĩnh kêu gọi giai cấp công nhân liên minh vô điều kiện với giới tư sản Pháp để đòi quyền tự do kinh doanh",
+        "Vì cương lĩnh đã lược bỏ hoàn toàn mục tiêu đi lên chủ nghĩa xã hội để tập trung vào mục tiêu độc lập dân tộc trước mắt",
+        "Vì cương lĩnh được thông qua dưới sự giám sát trực tiếp của đại diện Chính phủ lâm thời nước Cộng hòa Pháp"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tính sáng tạo của Cương lĩnh: Sáng tạo ở chỗ Nguyễn Ái Quốc không rập khuôn máy móc lý thuyết đấu tranh giai cấp của châu Âu mà đặt giải phóng dân tộc lên trên hết, đoàn kết mọi lực lượng yêu nước."
+    },
+    {
+      id: "lsd-c1-trick-013",
+      question: "Ban Chấp hành Trung ương chính thức đầu tiên của Đảng được bầu ra tại hội nghị nào và ai làm Tổng Bí thư?",
+      options: [
+        "Hội nghị lần thứ nhất Ban Chấp hành Trung ương (tháng 10-1930); Trần Phú làm Tổng Bí thư",
+        "Hội nghị hợp nhất thành lập Đảng (tháng 2-1930); Nguyễn Ái Quốc làm Tổng Bí thư",
+        "Đại hội lần thứ nhất của Đảng tại Ma Cao (tháng 3-1935); Lê Hồng Phong làm Tổng Bí thư",
+        "Hội nghị Ban Chấp hành Trung ương lần thứ 8 (tháng 5-1941); Trường Chinh làm Tổng Bí thư"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy hội nghị bầu BCH: Tại Hội nghị thành lập Đảng (tháng 2-1930) chỉ bầu Ban Trung ương lâm thời (Trịnh Đình Cửu đứng đầu). BCH Trung ương chính thức đầu tiên được bầu vào tháng 10-1930 và Trần Phú được bầu làm Tổng Bí thư đầu tiên."
+    },
+    {
+      id: "lsd-c1-trick-014",
+      question: "Văn kiện nào của Đảng lần đầu tiên đưa ra khái niệm 'liên minh công nông' làm nền tảng sức mạnh cách mạng?",
+      options: [
+        "Chính cương vắn tắt và Sách lược vắn tắt (tháng 2-1930)",
+        "Đề cương văn hóa Việt Nam (năm 1943)",
+        "Luận cương chính trị (tháng 10-1930)",
+        "Tác phẩm Tự chỉ trích của Nguyễn Văn Cừ (năm 1939)"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy văn kiện đầu tiên: Cương lĩnh đầu tiên (tháng 2-1930) của Nguyễn Ái Quốc đã chỉ rõ công nông là gốc cách mạng, đặt nền tảng lý luận cho khối liên minh công nông."
+    },
+    {
+      id: "lsd-c1-trick-015",
+      question: "Tổ chức cách mạng nào được thành lập tại Quảng Châu vào tháng 6-1925, đóng vai trò chuẩn bị trực tiếp về tổ chức cho sự ra đời của Đảng?",
+      options: [
+        "Hội Việt Nam Cách mạng Thanh niên",
+        "Cộng sản Đoàn",
+        "Hội Liên hiệp các dân tộc bị áp bức ở Á Đông",
+        "Đông Dương Cộng sản Đảng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy phân biệt tổ chức: Hội Việt Nam Cách mạng Thanh niên (6-1925) chuẩn bị về tổ chức; Cộng sản Đoàn là hạt nhân của Hội cách mạng này; Hội liên hiệp dân tộc bị áp bức là tổ chức quốc tế rộng hơn."
+    },
+    {
+      id: "lsd-c1-trick-016",
+      question: "Trong phong trào Xô viết Nghệ Tĩnh (1930-1931), tổ chức nào thực tế đứng ra quản lý đời sống xã hội ở nông thôn và thực hiện chức năng chính quyền cách mạng?",
+      options: [
+        "Ban chấp hành Nông hội đỏ (các Ủy ban tự quản kiểu Xô viết)",
+        "Chính phủ lâm thời Cộng hòa miền Nam Việt Nam",
+        "Ủy ban Khởi nghĩa toàn quốc",
+        "Hội cứu quốc quân Nghệ Tĩnh"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy chính quyền Xô viết Nghệ Tĩnh: Ở nông thôn Nghệ - Tĩnh, chính quyền thực dân sụp đổ, các Ban chấp hành Nông hội đỏ (Ủy ban Xô viết) đứng ra điều hành sản xuất, giữ an ninh, chia lại ruộng đất."
+    },
+    {
+      id: "lsd-c1-trick-017",
+      question: "Đại hội đại biểu toàn quốc lần thứ I của Đảng (tháng 3-1935) diễn ra tại địa điểm nào và có ý nghĩa lịch sử gì quan trọng?",
+      options: [
+        "Diễn ra tại Ma Cao (Trung Quốc); đánh dấu sự khôi phục hệ thống tổ chức Đảng từ Trung ương đến địa phương sau thời kỳ bị khủng bố tàn khốc",
+        "Diễn ra tại Tân Trào (Tuyên Quang); thông qua quyết định phát động Tổng khởi nghĩa giành chính quyền",
+        "Diễn ra tại Hương Cảng; quyết định đổi tên Đảng thành Đảng Lao động Việt Nam",
+        "Diễn ra tại Hà Nội; bầu Nguyễn Ái Quốc làm Chủ tịch chính thức đầu tiên của Đảng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy Đại hội I: Đại hội I họp tại Ma Cao (Trung Quốc) năm 1935 khi các cơ quan lãnh đạo trong nước bị thực dân Pháp phá vỡ gần hết. Ý nghĩa lớn nhất của Đại hội là khôi phục hệ thống tổ chức Đảng."
+    },
+    {
+      id: "lsd-c1-trick-018",
+      question: "Đại hội đại biểu toàn quốc lần thứ I của Đảng (1935) đã bầu ai làm Tổng Bí thư chính thức?",
+      options: [
+        "Lê Hồng Phong",
+        "Hà Huy Tập",
+        "Nguyễn Văn Cừ",
+        "Trần Phú"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nhân sự Đại hội I: Đại hội I bầu Lê Hồng Phong làm Tổng Bí thư. Hà Huy Tập kế nhiệm làm Tổng Bí thư từ năm 1936; Nguyễn Văn Cừ làm Tổng Bí thư từ năm 1938."
+    },
+    {
+      id: "lsd-c1-trick-019",
+      question: "Trong phong trào dân chủ 1936-1939, chủ trương điều chỉnh chiến lược cách mạng nào của Đảng được coi là linh hoạt và sát thực tiễn nhất?",
+      options: [
+        "Tạm gác khẩu hiệu cách mạng ruộng đất và độc lập dân tộc để tập trung đấu tranh đòi tự do, dân chủ, cơm áo, hòa bình",
+        "Phát động chiến tranh du kích cục bộ để giải phóng các đô thị lớn tại Nam Kỳ",
+        "Quyết định thành lập ngay chính phủ công nông binh toàn Đông Dương",
+        "Chuyển toàn bộ hệ thống tổ chức đảng sang hoạt động công khai hợp pháp trước pháp luật thực dân"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy chuyển hướng 1936-1939: Giai đoạn này do nguy cơ phát-xít, Đảng tạm gác khẩu hiệu độc lập dân tộc và ruộng đất, chuyển sang đấu tranh dân sinh dân chủ, tận dụng các hình thức công khai và bán công khai."
+    },
+    {
+      id: "lsd-c1-trick-020",
+      question: "Hội nghị Ban Chấp hành Trung ương lần thứ 6 (tháng 11-1939) họp tại Bà Điểm (Hóc Môn) đã đánh dấu bước chuyển hướng chiến lược cách mạng như thế nào?",
+      options: [
+        "Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, quyết định thành lập Mặt trận Thống nhất Dân tộc Phản đế Đông Dương thay thế Mặt trận Dân chủ",
+        "Phát động cuộc kháng chiến toàn quốc chống đế quốc Pháp xâm lược lần thứ hai",
+        "Quyết định đưa toàn bộ lực lượng cách mạng Việt Nam gia nhập Mặt trận Đồng minh chống phát-xít",
+        "Thống nhất các lực lượng vũ trang cách mạng Đông Dương thành Việt Nam Giải phóng quân"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy chuyển hướng Hội nghị 6: Trực tiếp do Nguyễn Văn Cừ chủ trì tại Hóc Môn. Hội nghị đưa nhiệm vụ giải phóng dân tộc lên trên hết, thành lập Mặt trận phản đế thay cho Mặt trận dân chủ."
+    },
+    {
+      id: "lsd-c1-trick-021",
+      question: "Hội nghị Ban Chấp hành Trung ương lần thứ 8 (tháng 5-1941) do Nguyễn Ái Quốc chủ trì tại Pác Bó đã hoàn chỉnh tiến trình chuyển hướng chiến lược cách mạng bằng quyết sách then chốt nào?",
+      options: [
+        "Giải quyết nhiệm vụ dân tộc trong khuôn khổ từng nước Đông Dương, thành lập Việt Nam Độc lập Đồng minh (Việt Minh)",
+        "Quyết định phát động ngay cuộc Tổng khởi nghĩa giành chính quyền trên phạm vi toàn quốc",
+        "Sáp nhập Mặt trận Thống nhất Dân tộc Phản đế vào liên minh quân sự Đông Dương",
+        "Bắt đầu chuyển hướng từ đấu tranh vũ trang sang đấu tranh ngoại giao thương lượng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy Hội nghị 8: Hội nghị hoàn chỉnh chuyển hướng bằng cách giải quyết nhiệm vụ giải phóng dân tộc trong khuôn khổ từng nước Việt Nam, Lào, Campuchia và thành lập mặt trận riêng của Việt Nam là mặt trận Việt Minh."
+    },
+    {
+      id: "lsd-c1-trick-022",
+      question: "Mặt trận Việt Minh (thành lập ngày 19-5-1941) có tên gọi đầy đủ là gì?",
+      options: [
+        "Việt Nam Độc lập Đồng minh",
+        "Mặt trận Thống nhất Dân tộc Phản đế Việt Nam",
+        "Mặt trận Liên Việt",
+        "Mặt trận Dân chủ Việt Nam"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tên gọi Mặt trận: Việt Minh là viết tắt của cụm từ 'Việt Nam Độc lập Đồng minh', thành lập tại Hội nghị Trung ương 8."
+    },
+    {
+      id: "lsd-c1-trick-023",
+      question: "Đội Việt Nam Tuyên truyền Giải phóng quân (thành lập ngày 22-12-1944) do ai làm chỉ huy trưởng quân sự và gồm bao nhiêu chiến sĩ ban đầu?",
+      options: [
+        "Võ Nguyên Giáp chỉ huy; gồm 34 chiến sĩ",
+        "Trường Chinh chỉ huy; gồm 36 chiến sĩ",
+        "Chu Văn Tấn chỉ huy; gồm 34 chiến sĩ",
+        "Phùng Chí Kiên chỉ huy; gồm 50 chiến sĩ"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy chỉ huy và quân số: Đội Việt Nam Tuyên truyền Giải phóng quân thành lập ngày 22-12-1944 tại Cao Bằng, do đồng chí Võ Nguyên Giáp trực tiếp chỉ huy quân sự, ban đầu gồm 34 chiến sĩ."
+    },
+    {
+      id: "lsd-c1-trick-024",
+      question: "Sau cuộc đảo chính Nhật đảo chính Pháp ngày 9-3-1945, Đảng ta đã kịp thời ban hành văn kiện chiến lược hướng dẫn hành động nào?",
+      options: [
+        "Chỉ thị 'Nhật - Pháp bắn nhau và hành động của chúng ta' (ngày 12-3-1945)",
+        "Đề cương về Cách mạng Việt Nam và con đường giải phóng",
+        "Quyết nghị phát động Tổng khởi nghĩa giành chính quyền toàn quốc",
+        "Lời kêu gọi toàn quốc chống phát-xít Nhật giành độc lập dân tộc"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy văn kiện sau đảo chính: Ngay sau khi Nhật đảo chính Pháp, Thường vụ Trung ương ban hành Chỉ thị lịch sử 'Nhật - Pháp bắn nhau và hành động của chúng ta' vào ngày 12-3-1945."
+    },
+    {
+      id: "lsd-c1-trick-025",
+      question: "Trong giai đoạn tiền khởi nghĩa (từ tháng 3-1945), khẩu hiệu đấu tranh nào được Đảng đề ra nhằm giải quyết nạn đói và lôi kéo đông đảo quần chúng tham gia chuẩn bị khởi nghĩa?",
+      options: [
+        "“Phá kho thóc của Nhật, giải quyết nạn đói”",
+        "“Tịch thu ruộng đất của địa chủ phong kiến chia cho dân nghèo”",
+        "“Đòi giảm tô thuế, cải thiện dân sinh”",
+        "“Không nộp sưu thuế cho phát-xít Pháp - Nhật”"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy khẩu hiệu kinh tế chính trị: Khẩu hiệu 'Phá kho thóc của Nhật, giải quyết nạn đói' đáp ứng đúng nhu cầu khẩn thiết lúc bấy giờ, thổi bùng ngọn lửa cách mạng chuẩn bị Tổng khởi nghĩa."
+    },
+    {
+      id: "lsd-c1-trick-026",
+      question: "Hội nghị toàn quốc của Đảng (họp từ ngày 13 đến 15-8-1945 tại Tân Trào) đã đưa ra quyết định lịch sử nào?",
+      options: [
+        "Phát động cuộc Tổng khởi nghĩa giành chính quyền trong cả nước từ tay phát-xít Nhật trước khi quân Đồng minh vào",
+        "Thông qua 10 chính sách lớn của Việt Minh và bầu Ủy ban Dân tộc Giải phóng Việt Nam",
+        "Bầu đồng chí Hồ Chí Minh làm Chủ tịch Chính phủ Lâm thời chính thức",
+        "Quyết định ký Hiệp ước sơ bộ để đuổi nhanh quân Tưởng Giới Thạch về nước"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy quyết định Tân Trào: Hội nghị toàn quốc của Đảng quyết định phát động Tổng khởi nghĩa. (Đại hội Quốc dân Tân Trào sau đó họp ngày 16, 17-8 mới thông qua 10 chính sách lớn và bầu Ủy ban giải phóng)."
+    },
+    {
+      id: "lsd-c1-trick-027",
+      question: "Ủy ban Dân tộc Giải phóng Việt Nam được Đại hội Quốc dân Tân Trào bầu ra vào tháng 8-1945 do ai làm Chủ tịch?",
+      options: [
+        "Hồ Chí Minh",
+        "Trường Chinh",
+        "Võ Nguyên Giáp",
+        "Huỳnh Thúc Kháng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy Chủ tịch Ủy ban giải phóng: Đại hội Quốc dân Tân Trào bầu Ủy ban Dân tộc Giải phóng Việt Nam (chính là tiền thân của Chính phủ lâm thời) do Hồ Chí Minh làm Chủ tịch."
+    },
+    {
+      id: "lsd-c1-trick-028",
+      question: "Sự kiện lịch sử nào đánh dấu sự sụp đổ hoàn toàn của chế độ phong kiến Việt Nam tồn tại hàng ngàn năm?",
+      options: [
+        "Vua Bảo Đại tuyên bố thoái vị và trao ấn kiếm cho phái đoàn Chính phủ lâm thời tại Huế (30-8-1945)",
+        "Cuộc khởi nghĩa giành chính quyền thắng lợi rực rỡ tại Hà Nội (19-8-1945)",
+        "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập khai sinh nước VNDCCH (2-9-1945)",
+        "Đại hội Quốc dân Tân Trào thông qua quyết nghị lật đổ triều đình nhà Nguyễn"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy kết thúc chế độ phong kiến: Lễ thoái vị của vua Bảo Đại ngày 30-8-1945 đánh dấu chế độ phong kiến chính thức chấm dứt về mặt pháp lý và thực tế tại Việt Nam."
+    },
+    {
+      id: "lsd-c1-trick-029",
+      question: "Bốn tỉnh lỵ giành được chính quyền cách mạng sớm nhất trong cả nước vào tháng 8-1945 là những tỉnh nào?",
+      options: [
+        "Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam",
+        "Hà Nội, Huế, Sài Gòn, Hải Phòng",
+        "Cao Bằng, Lạng Sơn, Thái Nguyên, Tuyên Quang",
+        "Mỹ Tho, Cần Thơ, Khánh Hòa, Nghệ An"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tỉnh giành chính quyền sớm nhất: Ngày 18-8-1945, bốn tỉnh giành được chính quyền sớm nhất là Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam."
+    },
+    {
+      id: "lsd-c1-trick-030",
+      question: "Tên gọi chính thức đầu tiên của Mặt trận thống nhất nhân dân được Đảng thành lập trong phong trào cách mạng 1936-1939 là gì?",
+      options: [
+        "Mặt trận Nhân dân Phản đế Đông Dương",
+        "Mặt trận Thống nhất Dân tộc Phản đế Đông Dương",
+        "Mặt trận Dân chủ Đông Dương",
+        "Mặt trận Việt Minh"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tên gọi Mặt trận 36-39: Ban đầu (1936), thành lập Mặt trận Nhân dân Phản đế Đông Dương. Đến năm 1938 mới đổi tên thành Mặt trận Dân chủ Đông Dương."
+    },
+    {
+      id: "lsd-c1-trick-031",
+      question: "Thứ tự thời gian bùng nổ các cuộc khởi nghĩa/binh biến cách mạng trong giai đoạn 1940-1941 diễn ra như thế nào?",
+      options: [
+        "Khởi nghĩa Bắc Sơn (9-1940), Khởi nghĩa Nam Kỳ (11-1940), Binh biến Đô Lương (1-1941)",
+        "Khởi nghĩa Nam Kỳ, Khởi nghĩa Bắc Sơn, Binh biến Đô Lương",
+        "Binh biến Đô Lương, Khởi nghĩa Bắc Sơn, Khởi nghĩa Nam Kỳ",
+        "Khởi nghĩa Bắc Sơn, Binh biến Đô Lương, Khởi nghĩa Nam Kỳ"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy trình tự thời gian: Khởi nghĩa Bắc Sơn nổ ra ngày 27-9-1940; khởi nghĩa Nam Kỳ nổ ra đêm 22 rạng sáng 23-11-1940; binh biến Đô Lương nổ ra ngày 13-1-1941."
+    },
+    {
+      id: "lsd-c1-trick-032",
+      question: "Khu giải phóng Tân Trào (thành lập tháng 6-1945) được coi là hình ảnh thu nhỏ của nước Việt Nam mới, bao gồm các tỉnh nào?",
+      options: [
+        "Cao Bằng, Bắc Kạn, Lạng Sơn, Hà Giang, Tuyên Quang, Thái Nguyên",
+        "Cao Bằng, Bắc Kạn, Yên Bái, Lào Cai, Sơn La, Tuyên Quang",
+        "Thái Nguyên, Tuyên Quang, Quảng Ninh, Phú Thọ, Hòa Bình, Hà Giang",
+        "Lạng Sơn, Cao Bằng, Hà Giang, Sơn La, Điện Biên, Lai Châu"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy địa giới Khu giải phóng: Khu giải phóng Việt Bắc gồm 6 tỉnh viết tắt là: Cao - Bắc - Lạng - Hà - Tuyên - Thái."
+    },
+    {
+      id: "lsd-c1-trick-033",
+      question: "Ai là người chủ trì Hội nghị Ban Chấp hành Trung ương lần thứ 7 (tháng 11-1940) tại Đình Bảng (Bắc Ninh)?",
+      options: [
+        "Đồng chí Trường Chinh",
+        "Đồng chí Nguyễn Văn Cừ",
+        "Chủ tịch Hồ Chí Minh",
+        "Đồng chí Lê Hồng Phong"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy người chủ trì Hội nghị 7: Do Nguyễn Văn Cừ đã bị bắt (1-1940), hội nghị Trung ương 7 do đồng chí Trường Chinh chủ trì, thống nhất duy trì lực lượng du kích Bắc Sơn và hoãn cuộc khởi nghĩa Nam Kỳ (nhưng lệnh hoãn vào trễ)."
+    },
+    {
+      id: "lsd-c1-trick-034",
+      question: "Văn kiện 'Tự chỉ trích' do Tổng Bí thư Nguyễn Văn Cừ xuất bản vào tháng 7-1939 nhằm giải quyết vấn đề cốt lõi nào của Đảng?",
+      options: [
+        "Tổng kết rút kinh nghiệm, phê bình các sai lầm tả khuynh và hữu khuynh trong công tác vận động tranh cử dân biểu, củng cố kỷ luật nội bộ",
+        "Đề ra phương hướng tác chiến chi tiết chuẩn bị lực lượng du kích chuẩn bị khởi nghĩa",
+        "Xin lỗi Quốc tế Cộng sản về việc đổi tên Đảng thành Đảng Cộng sản Đông Dương",
+        "Kêu gọi các lực lượng yêu nước Đông Dương đứng lên khởi nghĩa vũ trang lật đổ phát-xít"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nội dung Tự chỉ trích: Tác phẩm phân tích bài học về cuộc bầu cử hội đồng quản hạt Nam Kỳ, hướng tới tự phê bình nghiêm túc trong Đảng để sửa đổi thói dân chủ hình thức và giữ kỷ luật sắt."
+    },
+    {
+      id: "lsd-c1-trick-035",
+      question: "Đại diện của Đảng Cộng sản Đông Dương tham dự và đọc tham luận tại Đại hội lần thứ VII của Quốc tế Cộng sản tại Mát-xcơ-va (năm 1935) do ai dẫn đầu?",
+      options: [
+        "Đồng chí Lê Hồng Phong",
+        "Đồng chí Nguyễn Ái Quốc",
+        "Đồng chí Hà Huy Tập",
+        "Đồng chí Trần Phú"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy trưởng đoàn đại biểu: Đoàn đại biểu Đảng Cộng sản Đông Dương do Lê Hồng Phong làm trưởng đoàn tham dự Đại hội VII Quốc tế Cộng sản (Nguyễn Ái Quốc tham dự với tư cách đại biểu Ban Phương Đông)."
+    },
+    {
+      id: "lsd-c1-trick-036",
+      question: "Văn kiện nào sau đây đánh dấu sự quay trở lại hoàn toàn với tư tưởng độc lập dân tộc đúng đắn của Cương lĩnh chính trị đầu tiên?",
+      options: [
+        "Nghị quyết Hội nghị Trung ương lần thứ 8 (tháng 5-1941)",
+        "Nghị quyết Đại hội đại biểu toàn quốc lần thứ I (tháng 3-1935)",
+        "Luận cương chính trị tháng 10-1930 của Trần Phú",
+        "Bản Đề cương văn hóa Việt Nam (năm 1943)"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tiến trình lý luận: Hội nghị Trung ương 8 (1941) hoàn thành chuyển hướng chiến lược, đặt giải phóng dân tộc lên trên hết, sửa đổi triệt để các hạn chế của Luận cương tháng 10-1930, quay lại tư tưởng Hồ Chí Minh."
+    },
+    {
+      id: "lsd-c1-trick-037",
+      question: "Nét đặc sắc nổi bật nhất về phương pháp giành chính quyền trong Cách mạng tháng Tám năm 1945 ở Việt Nam là gì?",
+      options: [
+        "Kết hợp đấu tranh chính trị của quần chúng với đấu tranh vũ trang, đi từ khởi nghĩa từng phần tiến lên tổng khởi nghĩa",
+        "Sử dụng đấu tranh quân sự đánh chiếm các đô thị làm bàn đạp giải phóng nông thôn",
+        "Dựa hoàn toàn vào sự giúp đỡ quân sự và vũ khí công nghệ cao của lực lượng Đồng minh",
+        "Tiến hành đàm phán ngoại giao hòa bình thương lượng tay ba giữa Nhật - Pháp - Việt Nam"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nghệ thuật khởi nghĩa: Nghệ thuật giành chính quyền là kết hợp chặt chẽ lực lượng chính trị và lực lượng vũ trang, đi từ khởi nghĩa từng phần ở nông thôn (giành chính quyền bộ phận) tiến lên tổng khởi nghĩa."
+    },
+    {
+      id: "lsd-c1-trick-038",
+      question: "Vì sao Đảng ta quyết định phát động cuộc Tổng khởi nghĩa tháng 8-1945 trong khoảng thời gian từ sau ngày 15-8 đến trước ngày quân Đồng minh vào?",
+      options: [
+        "Vì đây là thời cơ 'ngàn năm có một' khi phát-xít Nhật đã đầu hàng, chính quyền tay sai tê liệt; và ta cần giành chính quyền để đón tiếp Đồng minh với tư cách chủ nhà",
+        "Vì đây là thời điểm quân Đồng minh cam kết cung cấp vũ khí đạn dược đầy đủ cho ta",
+        "Vì đây là thời gian lực lượng thực dân Pháp cam kết rút hoàn toàn khỏi Đông Dương không nổ súng",
+        "Vì đây là khoảng thời gian thuận lợi về thời tiết trước mùa bão lũ tràn vào miền Bắc"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy thời cơ cách mạng: Nếu khởi nghĩa trước 15-8 thì quân Nhật còn mạnh sẽ chống trả; nếu để sau khi quân Anh, quân Tưởng vào Đông Dương thì họ sẽ dựng chính quyền tay sai phản cách mạng. Ta phải tự giành độc lập trước."
+    },
+    {
+      id: "lsd-c1-trick-039",
+      question: "Đảng Cộng sản Đông Dương được Quốc tế Cộng sản công nhận là chi bộ chính thức vào thời gian nào?",
+      options: [
+        "Tháng 4 năm 1931",
+        "Tháng 2 năm 1930",
+        "Tháng 10 năm 1930",
+        "Tháng 3 năm 1935"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy mốc thời gian pháp lý: Đại hội Quốc tế Cộng sản quyết định công nhận Đảng Cộng sản Đông Dương là chi bộ chính thức vào tháng 4-1931."
+    },
+    {
+      id: "lsd-c1-trick-040",
+      question: "Sau khi Nguyễn Ái Quốc về nước (năm 1941), cơ quan báo chí nào được Người sáng lập làm cơ quan tuyên truyền của Tỉnh bộ Việt Minh Cao Bằng?",
+      options: [
+        "Báo Việt Nam Độc lập",
+        "Báo Thanh Niên",
+        "Báo Nhân Dân",
+        "Báo Cờ Giải phóng"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy lịch sử báo chí: Bác Hồ sáng lập báo Việt Nam Độc lập (thường gọi tắt là báo Việt Lập) tại Cao Bằng năm 1941 nhằm tuyên truyền sâu rộng chương trình Việt Minh."
+    },
+    {
+      id: "lsd-c1-trick-041",
+      question: "Trong Hội nghị họp nhất thành lập Đảng đầu năm 1930, Nguyễn Ái Quốc đóng vai trò chính trị gì?",
+      options: [
+        "Đại diện chính thức của Quốc tế Cộng sản, chủ trì hội nghị và hòa giải các tổ chức cộng sản",
+        "Người được bầu làm Tổng Bí thư chính thức đầu tiên của Đảng",
+        "Đại biểu chính thức dẫn đầu đoàn đại biểu của Đông Dương Cộng sản Đảng",
+        "Đại sứ hòa bình thân thiện của phong trào vô sản cánh tả Pháp"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy vai trò Bác Hồ: Nguyễn Ái Quốc chủ trì hội nghị hợp nhất với tư cách là phái viên đại diện của Quốc tế Cộng sản có thẩm quyền chỉ đạo việc thành lập Đảng."
+    },
+    {
+      id: "lsd-c1-trick-042",
+      question: "Chiến dịch quân sự cách mạng lớn nào được coi là cuộc tổng diễn tập lần thứ hai chuẩn bị cho cuộc Cách mạng tháng Tám năm 1945?",
+      options: [
+        "Cao trào kháng Nhật cứu nước (năm 1945)",
+        "Phong trào dân chủ 1936 - 1939",
+        "Phong trào cách mạng 1930 - 1931 và Xô viết Nghệ Tĩnh",
+        "Cuộc khởi nghĩa vũ trang Nam Kỳ năm 1940"
+      ],
+      answer: 1,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy các cuộc diễn tập: Cuộc diễn tập lần 1 là phong trào 30-31; cuộc diễn tập lần 2 là phong trào dân chủ 36-39; giai đoạn chuẩn bị trực tiếp là cao trào kháng Nhật 45."
+    },
+    {
+      id: "lsd-c1-trick-043",
+      question: "Lãnh tụ Nguyễn Ái Quốc trở về nước trực tiếp chỉ đạo cách mạng Việt Nam tại cột mốc số mấy và vào ngày tháng năm nào?",
+      options: [
+        "Cột mốc 108 tại Pác Bó (Cao Bằng) ngày 28-1-1941",
+        "Cột mốc 110 tại Lạng Sơn ngày 3-2-1940",
+        "Cột mốc 92 tại Hà Giang ngày 19-5-1941",
+        "Cửa khẩu Hữu Nghị tại Lạng Sơn ngày 2-9-1945"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy mốc biên giới thời gian: Ngày 28-1-1941, Người vượt qua cột mốc 108 biên giới Việt - Trung tại Pác Bó (Trường Hà, Hà Quảng, Cao Bằng) trở về nước."
+    },
+    {
+      id: "lsd-c1-trick-044",
+      question: "Quốc tế Cộng sản (Quốc tế III) ra quyết định tự giải tán vào năm nào trong thời kỳ chiến tranh thế giới thứ hai?",
+      options: [
+        "Năm 1943",
+        "Năm 1941",
+        "Năm 1945",
+        "Năm 1939"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy mốc lịch sử quốc tế: Quốc tế Cộng sản tự giải tán vào tháng 5-1943 do tình hình thế chiến đòi hỏi các Đảng Cộng sản tự chủ hoạt động linh hoạt theo hoàn cảnh riêng nước mình."
+    },
+    {
+      id: "lsd-c1-trick-045",
+      question: "Bản Đề cương văn hóa Việt Nam (năm 1943) xác định ba nguyên tắc vận động xây dựng nền văn hóa cách mạng bao gồm:",
+      options: [
+        "Dân tộc hóa, khoa học hóa, đại chúng hóa",
+        "Hiện đại hóa, dân tộc hóa, quốc tế hóa",
+        "Dân chủ hóa, khoa học hóa, đại chúng hóa",
+        "Xã hội hóa, đại chúng hóa, hiện đại hóa"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy nguyên tắc văn hóa: Ba nguyên tắc chiến lược do Tổng Bí thư Trường Chinh đề ra là: Dân tộc hóa, Khoa học hóa và Đại chúng hóa."
+    },
+    {
+      id: "lsd-c1-trick-046",
+      question: "Tổ chức vũ trang cách mạng nào được thành lập sớm hơn cả trong tiến trình lịch sử kháng chiến Đông Dương?",
+      options: [
+        "Đội du kích Bắc Sơn (thành lập cuối năm 1940)",
+        "Đội Cứu quốc quân I (thành lập đầu năm 1941)",
+        "Đội Việt Nam Tuyên truyền Giải phóng quân (thành lập cuối năm 1944)",
+        "Việt Nam Giải phóng quân (thành lập năm 1945)"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy trình tự tổ chức quân sự: Du kích Bắc Sơn ra đời phục vụ khởi nghĩa Bắc Sơn (9-1940); sau này mới cải tổ thành Cứu quốc quân (1941); Việt Nam Tuyên truyền giải phóng quân thành lập năm 1944; năm 1945 thống nhất các lực lượng thành Việt Nam Giải phóng quân."
+    },
+    {
+      id: "lsd-c1-trick-047",
+      question: "Ý nghĩa lịch sử quan trọng nhất của Cách mạng tháng Tám năm 1945 đối với vị thế quốc tế của dân tộc Việt Nam là gì?",
+      options: [
+        "Đưa nước ta từ một nước thuộc địa nửa phong kiến trở thành một nước độc lập tự chủ, đưa nhân dân từ nô lệ thành chủ nhân đất nước",
+        "Được toàn bộ các quốc gia đế quốc phương Tây công nhận ngoại giao lập tức",
+        "Xây dựng thành công cơ sở hạ tầng kinh tế công nghiệp hiện đại hóa",
+        "Giúp Việt Nam thiết lập khối liên minh quân sự chính thức với các nước Đông Âu"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy ý nghĩa lịch sử lớn nhất: Cách mạng tháng Tám đổi đời số phận dân tộc Việt Nam, mở ra kỷ nguyên độc lập tự do, biến nước thuộc địa thành nước tự chủ, biến người dân nô lệ thành người làm chủ."
+    },
+    {
+      id: "lsd-c1-trick-048",
+      question: "Cơ quan ngôn luận chính thức của Đảng Cộng sản Đông Dương trong giai đoạn hoạt động bí mật chuẩn bị khởi nghĩa 1943-1945 là tờ báo nào?",
+      options: [
+        "Báo Cờ Giải phóng",
+        "Báo Nhân Dân",
+        "Báo Tiền Phong",
+        "Báo Sự Thật"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy cơ quan ngôn luận Trung ương: Báo Cờ Giải phóng là cơ quan tuyên truyền chính luận trung ương của Đảng từ năm 1942 đến 1945 do Trường Chinh trực tiếp chỉ đạo."
+    },
+    {
+      id: "lsd-c1-trick-049",
+      question: "Văn kiện lý luận chính trị nào của Đảng đã phê phán chủ trương cô độc tả khuynh, quá nhấn mạnh đấu tranh giai cấp trong giai đoạn 1930-1931?",
+      options: [
+        "Bức thư của Ban Chấp hành Trung ương gửi các cấp bộ Đảng (cuối năm 1932 và giai đoạn chuẩn bị khôi phục)",
+        "Luận cương chính trị tháng 10-1930 của Trần Phú",
+        "Đường Kách mệnh xuất bản năm 1927 của Nguyễn Ái Quốc",
+        "Báo cáo chính trị tại Đại hội lần thứ I (Ma Cao 1935)"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy phê bình nội bộ: Trong thư gửi các cấp bộ đảng cuối năm 1932, Trung ương chỉ rõ việc thực hiện tả khuynh, cô lập tiểu tư sản và địa chủ yêu nước thời kỳ 30-31 đã làm hẹp khối đại đoàn kết cách mạng."
+    },
+    {
+      id: "lsd-c1-trick-050",
+      question: "Nguyễn Ái Quốc đã triệu tập và chủ trì Hội nghị hợp nhất thành lập Đảng năm 1930 với tư cách chính thức nào?",
+      options: [
+        "Phái viên đại diện của Quốc tế Cộng sản có đầy đủ quyền năng ra quyết định",
+        "Tổng Bí thư chính thức của Đảng Cộng sản Đông Dương",
+        "Đại biểu độc lập do Đông Dương Cộng sản Liên đoàn ủy quyền",
+        "Chủ tịch Chính phủ lâm thời nước Cộng hòa xã hội chủ nghĩa Việt Nam"
+      ],
+      answer: 0,
+      difficulty: "hard",
+      sectionId: "lsd-c1-trick",
+      subsectionId: "",
+      explanation: "Bẫy tư cách chính trị: Nguyễn Ái Quốc là ủy viên Bộ Phương Đông Quốc tế Cộng sản, được phái xuống Đông Nam Á thành lập Đảng với tư cách phái viên chính thức của Quốc tế Cộng sản."
+    }
   ]
 };
+

@@ -68,18 +68,26 @@ export default function LsdNationalLiberationStrategy() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".strategy-panel-box",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
-    );
-  }, [activeTab]);
+    if (!containerRef.current) return;
+    const panels = containerRef.current.querySelectorAll(".strategy-panel-box");
+    if (panels.length > 0) {
+      gsap.fromTo(panels,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
+      );
+    }
+  }, { dependencies: [activeTab], scope: containerRef });
 
   useGSAP(() => {
-    gsap.fromTo(".pillar-desc-box",
-      { opacity: 0, scale: 0.98 },
-      { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
-    );
-  }, [activePillar]);
+    if (!containerRef.current) return;
+    const box = containerRef.current.querySelector(".pillar-desc-box");
+    if (box) {
+      gsap.fromTo(box,
+        { opacity: 0, scale: 0.98 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [activePillar], scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full py-4 select-text font-sans">

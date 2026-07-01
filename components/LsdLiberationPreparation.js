@@ -47,11 +47,15 @@ export default function LsdLiberationPreparation() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".uprising-desc-box",
-      { opacity: 0, scale: 0.98 },
-      { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" }
-    );
-  }, [activeUprising]);
+    if (!containerRef.current) return;
+    const box = containerRef.current.querySelector(".uprising-desc-box");
+    if (box) {
+      gsap.fromTo(box,
+        { opacity: 0, scale: 0.98 },
+        { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [activeUprising], scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full py-4 select-text font-sans space-y-8">

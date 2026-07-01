@@ -4,6 +4,7 @@ import { questionsMoDau } from "./questions-mo-dau";
 import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { lichSuDangChuong1 } from "./lich-su-dang";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
+import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
 import { oopData } from "./oop";
 import { analysisDesignData } from "./analysis-design";
 import { dsaData } from "./dsa";
@@ -44,6 +45,7 @@ export const subjects = {
     icon: "☭",
     chapters: [lichSuDangMoDau, lichSuDangChuong1],
     questionsMap: {
+      "lich-su-dang-mo-dau": questionsLsdMoDau,
       "lich-su-dang-chuong-1": questionsLsdChuong1
     },
     isActive: true

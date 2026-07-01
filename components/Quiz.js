@@ -30,6 +30,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
   const [currentIndex, setCurrentIndex] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [timeLeft, setTimeLeft] = useState(2700); // 45 minutes countdown
+  const [isTrickMode, setIsTrickMode] = useState(false);
+  const [selectedSet, setSelectedSet] = useState("auto");
   const [bookmarks, setBookmarks] = useState(new Set());
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showMobileGrid, setShowMobileGrid] = useState(false);
@@ -211,6 +213,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       answers,
       elapsedTime: time,
       timeLeft: remTime,
+      isTrickMode,
+      selectedSet,
       bookmarks: Array.from(currentBookmarks || new Set())
     };
     localStorage.setItem(STATE_STORAGE_KEY, JSON.stringify(state));
@@ -232,7 +236,9 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
               clearInterval(timerRef.current);
               showAlert({
                 title: "Hết giờ làm bài!",
-                message: "Thời gian làm bài thi thử (45 phút) đã hết. Hệ thống sẽ tự động nộp bài làm của bạn.",
+                message: isTrickMode 
+                  ? "Thời gian làm bài thi thử Đề Bẫy (60 phút) đã hết. Hệ thống sẽ tự động nộp bài làm của bạn." 
+                  : "Thời gian làm bài thi thử (45 phút) đã hết. Hệ thống sẽ tự động nộp bài làm của bạn.",
                 type: "warning"
               });
               submitQuiz();
@@ -289,10 +295,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const insidePool = questionData.inside || [];
     const outsidePool = questionData.outside || [];
 
-    // 1. Draw 3 random outside questions
-    const sampledOutside = getRandomSample(outsidePool, 3);
+    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, 3 for others)
+    const outsideCount = chapterId === "lich-su-dang-mo-dau" ? 4 : 3;
+    const sampledOutside = getRandomSample(outsidePool, outsideCount);
 
-    // 2. Draw 37 inside questions
+    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, 37 for others)
+    const insideCount = chapterId === "lich-su-dang-mo-dau" ? 36 : 37;
     let sampledInside = [];
 
     if (chapterId === "chuong-mo-dau") {
@@ -330,8 +338,55 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       ];
 
       sampledInside = [...sampledP1, ...sampledP2, ...sampledP3];
-    } else if (chapterId === "chuong-1") {
-      // Chapter I specific sampling rules
+    } else if (chapterId === "lich-su-dang-mo-dau") {
+      // 36 inside questions:
+      // Phần mở đầu (lsd-mo-dau-sec-intro): 10 questions (3 Easy, 5 Medium, 2 Hard)
+      const introPool = insidePool.filter((q) => q.sectionId === "lsd-mo-dau-sec-intro");
+      const introEasy = introPool.filter((q) => q.difficulty === "easy");
+      const introMedium = introPool.filter((q) => q.difficulty === "medium");
+      const introHard = introPool.filter((q) => q.difficulty === "hard");
+      const sampledIntro = [
+        ...getRandomSample(introEasy, 3),
+        ...getRandomSample(introMedium, 5),
+        ...getRandomSample(introHard, 2)
+      ];
+
+      // Mục I (lsd-mo-dau-sec-1): 8 questions (2 Easy, 4 Medium, 2 Hard)
+      const sec1Pool = insidePool.filter((q) => q.sectionId === "lsd-mo-dau-sec-1");
+      const sec1Easy = sec1Pool.filter((q) => q.difficulty === "easy");
+      const sec1Medium = sec1Pool.filter((q) => q.difficulty === "medium");
+      const sec1Hard = sec1Pool.filter((q) => q.difficulty === "hard");
+      const sampledSec1 = [
+        ...getRandomSample(sec1Easy, 2),
+        ...getRandomSample(sec1Medium, 4),
+        ...getRandomSample(sec1Hard, 2)
+      ];
+
+      // Mục II (lsd-mo-dau-sec-2): 8 questions (2 Easy, 4 Medium, 2 Hard)
+      const sec2Pool = insidePool.filter((q) => q.sectionId === "lsd-mo-dau-sec-2");
+      const sec2Easy = sec2Pool.filter((q) => q.difficulty === "easy");
+      const sec2Medium = sec2Pool.filter((q) => q.difficulty === "medium");
+      const sec2Hard = sec2Pool.filter((q) => q.difficulty === "hard");
+      const sampledSec2 = [
+        ...getRandomSample(sec2Easy, 2),
+        ...getRandomSample(sec2Medium, 4),
+        ...getRandomSample(sec2Hard, 2)
+      ];
+
+      // Mục III (lsd-mo-dau-sec-3): 10 questions (3 Easy, 5 Medium, 2 Hard)
+      const sec3Pool = insidePool.filter((q) => q.sectionId === "lsd-mo-dau-sec-3");
+      const sec3Easy = sec3Pool.filter((q) => q.difficulty === "easy");
+      const sec3Medium = sec3Pool.filter((q) => q.difficulty === "medium");
+      const sec3Hard = sec3Pool.filter((q) => q.difficulty === "hard");
+      const sampledSec3 = [
+        ...getRandomSample(sec3Easy, 3),
+        ...getRandomSample(sec3Medium, 5),
+        ...getRandomSample(sec3Hard, 2)
+      ];
+
+      sampledInside = [...sampledIntro, ...sampledSec1, ...sampledSec2, ...sampledSec3];
+    } else if (chapterId === "lich-su-dang-chuong-1") {
+      // Chapter I specific sampling rules (fixed from "chuong-1")
       // Draw 37 inside questions:
       // Section I (Mục I): 18 questions (5 Easy, 9 Medium, 4 Hard)
       const sec1Pool = insidePool.filter((q) => q.sectionId === "lsd-section-1");
@@ -371,8 +426,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
       sampledInside = [...sampledSec1, ...sampledSec2, ...sampledEssay];
     } else {
-      // Fallback: Draw 37 random questions from inside pool
-      sampledInside = getRandomSample(insidePool, 37);
+      // Fallback: Draw random questions from inside pool
+      sampledInside = getRandomSample(insidePool, insideCount);
     }
 
     // Combine
@@ -390,8 +445,79 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     return shuffleArray(finalPool);
   };
 
-  const startNewQuiz = () => {
-    const sampled = sampleQuestions(selectedChapterId);
+  const getFixedSetQuestions = (chapterId, setNum) => {
+    const questionData = questionsMap[chapterId];
+    if (!questionData) return [];
+
+    const insidePool = questionData.inside || [];
+    const outsidePool = questionData.outside || [];
+    const N = insidePool.length;
+    const M = outsidePool.length;
+
+    const insideCount = chapterId === "lich-su-dang-mo-dau" ? 36 : 37;
+    const outsideCount = chapterId === "lich-su-dang-mo-dau" ? 4 : 3;
+
+    const K = Math.max(1, Math.ceil(N / insideCount));
+    const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
+
+    // Calculate offsets
+    const offsetInside = K > 1 ? Math.round(setIndex * (N - insideCount) / (K - 1)) : 0;
+    const offsetOutside = K > 1 ? Math.round(setIndex * (M - outsideCount) / (K - 1)) : 0;
+
+    // Slice consecutive questions
+    const slicedInside = insidePool.slice(offsetInside, offsetInside + insideCount);
+    const slicedOutside = outsidePool.slice(offsetOutside, offsetOutside + outsideCount);
+
+    const combined = [...slicedOutside, ...slicedInside];
+
+    // Deep copy and shuffle options
+    const finalPool = combined.map((q) => {
+      const qCopy = JSON.parse(JSON.stringify(q));
+      const originalCorrectText = qCopy.options[qCopy.answer];
+      qCopy.options = shuffleArray(qCopy.options);
+      qCopy.answer = qCopy.options.indexOf(originalCorrectText);
+      return qCopy;
+    });
+
+    return finalPool; // Fixed sets preserve question order for consistent retaking
+  };
+
+  const startNewQuiz = (forceTrickMode = false) => {
+    let sampled = [];
+    if (forceTrickMode) {
+      const questionData = questionsMap[selectedChapterId];
+      const trickPool = questionData?.tricks || [];
+      if (trickPool.length === 0) {
+        showAlert({
+          title: "Không tìm thấy câu hỏi bẫy",
+          message: `Không tìm thấy dữ liệu câu hỏi bẫy cho chương: ${selectedChapterId}`,
+          type: "warning"
+        });
+        return;
+      }
+
+      // Shuffle the 50 trick questions and shuffle their options
+      sampled = shuffleArray(trickPool).map((q) => {
+        const qCopy = JSON.parse(JSON.stringify(q));
+        const originalCorrectText = qCopy.options[qCopy.answer];
+        qCopy.options = shuffleArray(qCopy.options);
+        qCopy.answer = qCopy.options.indexOf(originalCorrectText);
+        return qCopy;
+      });
+
+      setIsTrickMode(true);
+      setTimeLeft(3600); // 60 minutes countdown
+    } else {
+      if (selectedSet === "auto") {
+        sampled = sampleQuestions(selectedChapterId);
+      } else {
+        const setNum = parseInt(selectedSet.replace("de-", ""));
+        sampled = getFixedSetQuestions(selectedChapterId, setNum);
+      }
+      setIsTrickMode(false);
+      setTimeLeft(2700); // 45 minutes countdown
+    }
+
     if (sampled.length === 0) {
       showAlert({
         title: "Không tìm thấy câu hỏi",
@@ -406,7 +532,6 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     setBookmarks(new Set());
     setCurrentIndex(0);
     setElapsedTime(0);
-    setTimeLeft(2700);
     setStep("quiz-run");
     localStorage.setItem("studymaster_user_name", name);
   };
@@ -426,6 +551,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       setAnswers(savedState.answers);
       setElapsedTime(savedState.elapsedTime || 0);
       setTimeLeft(typeof savedState.timeLeft === "number" ? savedState.timeLeft : 2700);
+      setIsTrickMode(!!savedState.isTrickMode);
+      setSelectedSet(savedState.selectedSet || "auto");
       setBookmarks(new Set(savedState.bookmarks || []));
       setStep("quiz-run");
     }
@@ -508,7 +635,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       total: questions.length,
       time: elapsedTime,
       date: new Date().toISOString(),
-      chapterId: selectedChapterId
+      chapterId: selectedChapterId,
+      examSetId: isTrickMode ? "trick" : selectedSet
     };
 
     // Save to LocalStorage history
@@ -601,6 +729,13 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     }
 
     diag["outside"] = { title: "Kiến thức mở rộng (Ngoài giáo trình)", correct: 0, total: 0 };
+    if (isTrickMode) {
+      if (selectedChapterId === "lich-su-dang-mo-dau") {
+        diag["lsd-mo-dau-trick"] = { title: "Câu hỏi bẫy lý luận chính trị", correct: 0, total: 0 };
+      } else if (selectedChapterId === "lich-su-dang-chuong-1") {
+        diag["lsd-c1-trick"] = { title: "Câu hỏi bẫy lịch sử giành độc lập", correct: 0, total: 0 };
+      }
+    }
 
     questions.forEach((q, idx) => {
       const key = q.isOutside ? "outside" : q.sectionId;
@@ -640,6 +775,13 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         }
         .animate-glow-success {
           animation: glow-success 1.6s infinite;
+        }
+        @keyframes glow-trick {
+          0%, 100% { box-shadow: 0 0 4px rgba(185, 28, 28, 0.25); border-color: rgba(185, 28, 28, 0.3); }
+          50% { box-shadow: 0 0 16px rgba(185, 28, 28, 0.6); border-color: rgba(185, 28, 28, 0.7); }
+        }
+        .animate-glow-trick {
+          animation: glow-trick 2s infinite;
         }
       `}</style>
 
@@ -849,6 +991,73 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   </button>
                 </div>
 
+                {questionsMap[selectedChapterId]?.tricks?.length > 0 && (
+                  <div className="bg-red-50/50 dark:bg-red-950/10 border border-red-200 dark:border-red-900/50 rounded-2xl p-5 mt-4 flex flex-col md:flex-row items-center justify-between gap-4 animate-glow-trick">
+                    <div className="text-left flex-1">
+                      <div className="font-black text-sm text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1">
+                        <span>🔥</span>
+                        <span>CHẾ ĐỘ THỬ THÁCH ĐỀ BẪY CHUYÊN SÂU</span>
+                      </div>
+                      <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed font-medium">
+                        Bạn có tự tin vượt qua **50 câu hỏi bẫy đặc biệt** trong **60 phút**? Hệ thống sẽ kích hoạt giao diện cảnh báo đỏ đặc biệt, thử thách giới hạn tư duy lý luận của bạn.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => startNewQuiz(true)}
+                      className="w-full md:w-auto px-5 py-3 rounded-xl bg-red-700 hover:bg-red-800 text-white font-black text-xs md:text-sm shadow-md transition-all duration-300 transform hover:scale-[1.02] cursor-pointer border-none uppercase tracking-wider"
+                    >
+                      Bắt đầu thi đề bẫy ⚡
+                    </button>
+                  </div>
+                )}
+                {/* SELECT EXAM SET SECTION */}
+                {(() => {
+                  const questionData = questionsMap[selectedChapterId];
+                  if (!questionData) return null;
+                  const insidePool = questionData.inside || [];
+                  const N = insidePool.length;
+                  const insideCount = selectedChapterId === "lich-su-dang-mo-dau" ? 36 : 37;
+                  const K = Math.max(1, Math.ceil(N / insideCount));
+
+                  return (
+                    <div className="space-y-3 pt-4 border-t border-stone-150 dark:border-stone-850">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-black text-stone-700 dark:text-stone-350 uppercase tracking-wider">
+                          📦 CHỌN BỘ ĐỀ ÔN TẬP
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedSet("auto")}
+                          className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer text-center ${
+                            selectedSet === "auto"
+                              ? "bg-accent/5 border-accent text-accent shadow-sm font-extrabold"
+                              : "bg-stone-50 dark:bg-stone-955 border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100"
+                          }`}
+                        >
+                          🎲 Đề ngẫu nhiên
+                        </button>
+                        {Array.from({ length: K }).map((_, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setSelectedSet(`de-${idx + 1}`)}
+                            className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer text-center ${
+                              selectedSet === `de-${idx + 1}`
+                                ? "bg-accent/5 border-accent text-accent shadow-sm font-extrabold"
+                                : "bg-stone-50 dark:bg-stone-955 border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100"
+                            }`}
+                          >
+                            📄 Đề {idx + 1}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 <div className="flex gap-3 pt-4 flex-wrap">
                   <button
                     type="button"
@@ -866,7 +1075,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   </button>
                   <button
                     type="button"
-                    onClick={startNewQuiz}
+                    onClick={() => startNewQuiz(false)}
                     className="flex-1 min-w-[180px] py-2.5 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer flex items-center justify-center gap-1"
                   >
                     🚀 Bắt đầu làm bài (40 câu)
@@ -965,7 +1174,15 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
           
           {/* Main Question Panel */}
           <div className="flex-1 w-full space-y-4">
-            <div ref={questionCardRef} className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-850 p-6 shadow-xl relative">
+            {isTrickMode && (
+              <div className="bg-red-700 text-white text-[10px] font-black uppercase tracking-widest text-center py-1.5 px-4 rounded-xl animate-pulse flex items-center justify-center gap-1.5">
+                <span>⚠️</span>
+                <span>Cảnh báo: Bạn đang trong Chế độ Đề Bẫy Chuyên sâu (50 câu - 60 phút)</span>
+                <span>⚠️</span>
+              </div>
+            )}
+
+            <div ref={questionCardRef} className={`bg-white dark:bg-stone-900 rounded-2xl border p-6 shadow-xl relative transition-all duration-500 ${isTrickMode ? "border-red-600 dark:border-red-900 shadow-red-900/5 animate-glow-trick" : "border-stone-200 dark:border-stone-850"}`}>
               
               {/* Header block info */}
               <div className="flex justify-between items-center border-b border-stone-150 dark:border-stone-850 pb-4 mb-4">
@@ -983,6 +1200,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                     <Star 
                       size={18} 
                       className={bookmarks.has(currentQuestion.id) ? "fill-amber-400 text-amber-500 scale-110" : "text-stone-400"} 
+                      style={{ animationDuration: isTrickMode ? "1.5s" : "3s" }}
                     />
                   </button>
                 </div>
@@ -996,8 +1214,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                     {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
                   </button>
 
-                  <span className="font-bold text-xs bg-stone-100 dark:bg-stone-955 text-stone-700 dark:text-stone-400 px-3 py-1 rounded-full flex items-center gap-1.5 border border-stone-200/60 dark:border-stone-800">
-                    <Clock size={13} className="text-accent animate-pulse" />
+                  <span className={`font-bold text-xs px-3 py-1 rounded-full flex items-center gap-1.5 border transition-all ${isTrickMode ? "bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 border-red-200 dark:border-red-900/30 animate-pulse" : "bg-stone-100 dark:bg-stone-955 text-stone-700 dark:text-stone-400 border-stone-200/60 dark:border-stone-800"}`}>
+                    <Clock size={13} className={isTrickMode ? "text-red-600 animate-pulse" : "text-accent animate-pulse"} />
                     <span className="font-mono text-stone-800 dark:text-stone-250">
                       {mode === "end" ? formatTime(timeLeft) : formatTime(elapsedTime)}
                     </span>
@@ -1008,7 +1226,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
               {/* Progress bar visual indicator */}
               <div className="w-full bg-stone-100 dark:bg-stone-955 h-2 rounded-full overflow-hidden mb-6">
                 <div
-                  className="bg-red-800 h-full transition-all duration-300"
+                  className={`h-full transition-all duration-300 ${isTrickMode ? "bg-gradient-to-r from-red-600 to-rose-600" : "bg-red-800"}`}
                   style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
                 />
               </div>

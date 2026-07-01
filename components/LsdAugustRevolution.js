@@ -52,18 +52,26 @@ export default function LsdAugustRevolution() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".rev-panel-box",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
-    );
-  }, [activeTab]);
+    if (!containerRef.current) return;
+    const panels = containerRef.current.querySelectorAll(".rev-panel-box");
+    if (panels.length > 0) {
+      gsap.fromTo(panels,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
+      );
+    }
+  }, { dependencies: [activeTab], scope: containerRef });
 
   useGSAP(() => {
-    gsap.fromTo(".city-desc-box",
-      { opacity: 0, x: -15 },
-      { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }
-    );
-  }, [activeCity]);
+    if (!containerRef.current) return;
+    const box = containerRef.current.querySelector(".city-desc-box");
+    if (box) {
+      gsap.fromTo(box,
+        { opacity: 0, x: -15 },
+        { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [activeCity], scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full py-4 select-text font-sans">

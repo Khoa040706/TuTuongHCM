@@ -71,20 +71,27 @@ export default function LsdMovement19301931() {
       badge: "Hình thức chính quyền cách mạng kiểu mới"
     }
   ];
+  useGSAP(() => {
+    if (!containerRef.current) return;
+    const panels = containerRef.current.querySelectorAll(".movement-panel-box");
+    if (panels.length > 0) {
+      gsap.fromTo(panels,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
+      );
+    }
+  }, { dependencies: [activeTab], scope: containerRef });
 
   useGSAP(() => {
-    gsap.fromTo(".movement-panel-box",
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
-    );
-  }, [activeTab]);
-
-  useGSAP(() => {
-    gsap.fromTo(".timeline-desc-box",
-      { opacity: 0, x: -15 },
-      { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
-    );
-  }, [timelineStep]);
+    if (!containerRef.current) return;
+    const box = containerRef.current.querySelector(".timeline-desc-box");
+    if (box) {
+      gsap.fromTo(box,
+        { opacity: 0, x: -15 },
+        { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
+      );
+    }
+  }, { dependencies: [timelineStep], scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full py-4 select-text font-sans">
