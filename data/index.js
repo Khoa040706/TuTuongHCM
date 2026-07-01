@@ -3,6 +3,7 @@ import { chuong1 } from "./chuong-1";
 import { questionsMoDau } from "./questions-mo-dau";
 import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { lichSuDangChuong1 } from "./lich-su-dang";
+import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
 import { oopData } from "./oop";
 import { analysisDesignData } from "./analysis-design";
 import { dsaData } from "./dsa";
@@ -42,7 +43,9 @@ export const subjects = {
     },
     icon: "☭",
     chapters: [lichSuDangMoDau, lichSuDangChuong1],
-    questionsMap: {},
+    questionsMap: {
+      "lich-su-dang-chuong-1": questionsLsdChuong1
+    },
     isActive: true
   },
   "basic-general": {
