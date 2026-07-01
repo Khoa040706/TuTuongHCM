@@ -205,10 +205,16 @@ ul.bullet-list.bullet-list--sub li::before {
 }
 
 .definition-box__content {
-  font-size: 16px;
+  font-size: 0.9375rem;
   line-height: 1.95;
   color: var(--text-primary);
   font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .definition-box__content {
+    font-size: 1rem;
+  }
 }
 
 .conclusion-box {
@@ -777,6 +783,12 @@ ul.bullet-list.bullet-list--sub li::before {
 @media (max-width: 320px) {
   .book-3d {
     transform: rotateX(15deg) rotateY(-10deg) scale(0.38) !important;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .book-3d {
+    transform: rotateX(15deg) rotateY(-10deg) scale(0.45) !important;
   }
 }
 

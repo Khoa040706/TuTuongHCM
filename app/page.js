@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps, @next/next/no-img-element */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle, Trash2, Search, Download, Plus, BarChart3, Users, KeyRound, Unlock } from "lucide-react";
+import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle, Trash2, Search, Download, Plus, BarChart3, Users, KeyRound, Unlock, MousePointer, Edit2, Highlighter, Eraser } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -105,6 +105,21 @@ export default function Page() {
   
   // Custom Confirm Modal State
   const [confirmConfig, setConfirmConfig] = useState(null);
+
+  const [isMobileToolbarOpen, setIsMobileToolbarOpen] = useState(false);
+  const [isAdminSidebarOpen, setIsAdminSidebarOpen] = useState(false);
+
+  const penColors = [
+    { value: "#EF4444", label: "🔴" },
+    { value: "#EAB308", label: "🟡" },
+    { value: "#22C55E", label: "🟢" }
+  ];
+
+  const hlColors = [
+    { value: "rgba(217, 119, 6, 0.2)", label: "🟡", preview: "#d97706" },
+    { value: "rgba(244, 63, 94, 0.22)", label: "💗", preview: "#f43f5e" },
+    { value: "rgba(34, 197, 94, 0.22)", label: "🟢", preview: "#22c55e" }
+  ];
 
   const setIsQuizMode = (val) => {
     if (val === true) {
@@ -3323,8 +3338,18 @@ export default function Page() {
 
       {appStep === "admin-dashboard" && (
         <div className="min-h-screen bg-slate-50 flex font-sans text-slate-800 animate-in fade-in duration-300">
+          {/* Admin Mobile Sidebar Backdrop Overlay */}
+          {isAdminSidebarOpen && (
+            <div 
+              className="fixed inset-0 bg-slate-900/40 z-35 md:hidden backdrop-blur-xs transition-opacity duration-300"
+              onClick={() => setIsAdminSidebarOpen(false)}
+            />
+          )}
+
           {/* Left Sidebar Navigation */}
-          <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 h-screen sticky top-0 z-40">
+          <aside className={`w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 h-screen fixed md:sticky top-0 z-40 transition-transform duration-300 ${
+            isAdminSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          }`}>
             <div>
               {/* Logo / Brand Header */}
               <div className="p-6 border-b border-slate-100 flex items-center gap-3 select-none">
@@ -3342,7 +3367,10 @@ export default function Page() {
               {/* Navigation Links */}
               <nav className="p-4 space-y-1">
                 <button
-                  onClick={() => setAdminTab("overview")}
+                  onClick={() => {
+                    setAdminTab("overview");
+                    setIsAdminSidebarOpen(false); // Close sidebar on mobile select
+                  }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border-none text-left ${
                     adminTab === "overview"
                       ? "bg-indigo-50 text-indigo-750"
@@ -3354,7 +3382,10 @@ export default function Page() {
                 </button>
 
                 <button
-                  onClick={() => setAdminTab("users")}
+                  onClick={() => {
+                    setAdminTab("users");
+                    setIsAdminSidebarOpen(false); // Close sidebar on mobile select
+                  }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer border-none text-left ${
                     adminTab === "users"
                       ? "bg-indigo-50 text-indigo-750"
@@ -3388,16 +3419,25 @@ export default function Page() {
           </aside>
 
           {/* Main Dashboard Content */}
-          <main className="flex-grow p-8 overflow-y-auto max-w-7xl mx-auto w-full space-y-8">
+          <main className="flex-grow p-4 md:p-8 overflow-y-auto max-w-7xl mx-auto w-full space-y-8">
             {/* Header bar inside Main */}
-            <div className="flex items-center justify-between pb-6 border-b border-slate-200">
-              <div>
-                <h1 className="text-xl font-black text-slate-900 uppercase tracking-tight select-none">
-                  {adminTab === "overview" ? "Bảng Điều Khiển Tổng Quan" : "Danh Sách Học Viên Đăng Ký"}
-                </h1>
-                <p className="text-xs text-slate-500 font-medium mt-1 select-none">
-                  Chào mừng trở lại, Admin. Báo cáo cập nhật trực quan thời gian thực.
-                </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setIsAdminSidebarOpen(true)}
+                  className="p-2 -ml-2 rounded-xl text-slate-650 hover:bg-slate-100 md:hidden block cursor-pointer shrink-0"
+                  aria-label="Mở menu admin"
+                >
+                  <Menu size={20} />
+                </button>
+                <div>
+                  <h1 className="text-xl font-black text-slate-900 uppercase tracking-tight select-none">
+                    {adminTab === "overview" ? "Bảng Điều Khiển Tổng Quan" : "Danh Sách Học Viên Đăng Ký"}
+                  </h1>
+                  <p className="text-xs text-slate-500 font-medium mt-1 select-none">
+                    Chào mừng trở lại, Admin. Báo cáo cập nhật trực quan thời gian thực.
+                  </p>
+                </div>
               </div>
 
               {/* Action buttons (Export PDF, Excel) */}
@@ -3952,6 +3992,148 @@ export default function Page() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Floating mobile drawing toolbar FAB */}
+      {appStep === "study" && !isQuizMode && !showHero && (
+        <div className="md:hidden fixed bottom-6 right-6 z-45 flex flex-col items-end gap-3 select-none">
+          {isMobileToolbarOpen && (
+            <div className="bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border border-stone-200 dark:border-stone-800 rounded-2xl p-1.5 shadow-2xl flex items-center gap-2 animate-in slide-in-from-bottom-4 fade-in duration-200">
+              
+              {/* Cursor / Scroll Mode */}
+              <button
+                onClick={() => setActiveTool("cursor")}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer ${
+                  activeTool === "cursor"
+                    ? "bg-accent text-white font-bold shadow-md shadow-accent/25"
+                    : "text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
+                }`}
+                title="Con trỏ đọc"
+              >
+                <MousePointer size={15} />
+              </button>
+
+              {/* Pen Tool */}
+              <div className="relative flex justify-center">
+                <button
+                  onClick={() => {
+                    setActiveTool("pen");
+                    if (!penColors.some(c => c.value === activeColor)) {
+                      setActiveColor(penColors[0].value);
+                    }
+                  }}
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer ${
+                    activeTool === "pen"
+                      ? "bg-accent text-white font-bold shadow-md shadow-accent/25"
+                      : "text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
+                  }`}
+                  title="Bút vẽ"
+                >
+                  <Edit2 size={15} />
+                  {activeTool === "pen" && (
+                    <div 
+                      className="absolute bottom-1 right-1 w-1.5 h-1.5 rounded-full border border-stone-950"
+                      style={{ backgroundColor: activeColor }}
+                    />
+                  )}
+                </button>
+                
+                {/* Pen Color selector */}
+                {activeTool === "pen" && (
+                  <div className="absolute bottom-12 right-0 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-1 rounded-full flex gap-1 shadow-lg animate-in slide-in-from-bottom-2 duration-150">
+                    {penColors.map(c => (
+                      <button
+                        key={c.value}
+                        onClick={() => setActiveColor(c.value)}
+                        className={`w-4.5 h-4.5 rounded-full border hover:scale-125 transition-transform cursor-pointer ${
+                          activeColor === c.value ? "border-accent scale-110 shadow-sm" : "border-transparent"
+                        }`}
+                        style={{ backgroundColor: c.value }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Highlighter Tool */}
+              <div className="relative flex justify-center">
+                <button
+                  onClick={() => {
+                    setActiveTool("highlighter");
+                    if (!hlColors.some(c => c.value === activeColor)) {
+                      setActiveColor(hlColors[0].value);
+                    }
+                  }}
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer ${
+                    activeTool === "highlighter"
+                      ? "bg-accent text-white font-bold shadow-md shadow-accent/25"
+                      : "text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
+                  }`}
+                  title="Bút tô sáng"
+                >
+                  <Highlighter size={15} />
+                  {activeTool === "highlighter" && (
+                    <div 
+                      className="absolute bottom-1 right-1 w-1.5 h-1.5 rounded-full border border-stone-950"
+                      style={{ backgroundColor: hlColors.find(c => c.value === activeColor)?.preview || activeColor }}
+                    />
+                  )}
+                </button>
+                
+                {/* Highlighter Color selector */}
+                {activeTool === "highlighter" && (
+                  <div className="absolute bottom-12 right-0 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-1 rounded-full flex gap-1 shadow-lg animate-in slide-in-from-bottom-2 duration-150">
+                    {hlColors.map(c => (
+                      <button
+                        key={c.value}
+                        onClick={() => setActiveColor(c.value)}
+                        className={`w-4.5 h-4.5 rounded-full border hover:scale-125 transition-transform cursor-pointer ${
+                          activeColor === c.value ? "border-accent scale-110 shadow-sm" : "border-transparent"
+                        }`}
+                        style={{ backgroundColor: c.preview }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Eraser Tool */}
+              <button
+                onClick={() => setActiveTool("eraser")}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all cursor-pointer ${
+                  activeTool === "eraser"
+                    ? "bg-accent text-white font-bold shadow-md shadow-accent/25"
+                    : "text-stone-400 hover:text-stone-700 dark:hover:text-stone-300"
+                }`}
+                title="Cục tẩy"
+              >
+                <Eraser size={15} />
+              </button>
+
+              {/* Clear All Tool */}
+              <button
+                onClick={handleClearAll}
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-red-500 hover:bg-red-500/10 cursor-pointer"
+                title="Xóa hết"
+              >
+                <Trash2 size={15} />
+              </button>
+
+            </div>
+          )}
+
+          {/* Primary Toggle FAB Button */}
+          <button
+            onClick={() => setIsMobileToolbarOpen(!isMobileToolbarOpen)}
+            className={`w-12 h-12 rounded-full border border-stone-250 dark:border-stone-800 flex items-center justify-center shadow-xl transition-all duration-300 active:scale-95 cursor-pointer ${
+              isMobileToolbarOpen
+                ? "bg-stone-900 dark:bg-white text-white dark:text-stone-900 rotate-45"
+                : "bg-accent text-white hover:scale-105 shadow-accent/20"
+            }`}
+          >
+            {isMobileToolbarOpen ? <X size={20} /> : <Edit2 size={20} />}
+          </button>
         </div>
       )}
     </div>
