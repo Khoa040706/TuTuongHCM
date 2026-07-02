@@ -479,7 +479,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       return qCopy;
     });
 
-    return finalPool; // Fixed sets preserve question order for consistent retaking
+    return shuffleArray(finalPool); // Shuffle question order for the fixed set
   };
 
   const startNewQuiz = (forceTrickMode = false) => {
@@ -1621,9 +1621,9 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
                 return (
                   <div key={key} className="space-y-1 bg-stone-50/50 dark:bg-stone-955/20 p-3 rounded-xl border border-stone-200/50 dark:border-stone-850/50">
-                    <div className="flex justify-between text-xs font-bold text-stone-700 dark:text-stone-300">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 text-xs font-bold text-stone-700 dark:text-stone-300">
                       <span>{data.title}</span>
-                      <span>
+                      <span className="shrink-0">
                         {data.correct} / {data.total} câu ({percent}%)
                       </span>
                     </div>
@@ -1646,8 +1646,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                 <span>🏅 Bảng xếp hạng lượt làm bài</span>
               </h3>
               
-              <div className="overflow-hidden rounded-xl border border-stone-200 dark:border-stone-800">
-                <table className="w-full text-sm text-stone-600 dark:text-stone-400 text-left border-collapse">
+              <div className="overflow-x-auto rounded-xl border border-stone-200 dark:border-stone-800 w-full">
+                <table className="w-full text-sm text-stone-600 dark:text-stone-400 text-left border-collapse min-w-[550px] md:min-w-0">
                   <thead className="bg-stone-50 dark:bg-stone-955 text-xs font-bold text-stone-500 uppercase">
                     <tr>
                       <th className="px-4 py-3 text-center w-16">Hạng</th>
@@ -1704,10 +1704,10 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
             </div>
 
             {/* Actions button strip */}
-            <div className="flex justify-center gap-3 flex-wrap pt-4 border-t border-stone-100 dark:border-stone-850">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4 border-t border-stone-100 dark:border-stone-850 w-full">
               <button
                 onClick={onClose}
-                className="px-5 py-3 rounded-xl border border-stone-300 dark:border-stone-850 text-stone-600 dark:text-stone-455 text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-850 transition-colors"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl border border-stone-300 dark:border-stone-850 text-stone-600 dark:text-stone-455 text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-850 transition-colors flex items-center justify-center"
               >
                 📖 Quay lại đọc bài
               </button>
@@ -1717,7 +1717,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   setSetupStep(1);
                   setRankings([]);
                 }}
-                className="px-5 py-3 rounded-xl border border-stone-300 dark:border-stone-850 text-stone-600 dark:text-stone-455 text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-850 transition-colors"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl border border-stone-300 dark:border-stone-850 text-stone-600 dark:text-stone-455 text-sm font-semibold hover:bg-stone-100 dark:hover:bg-stone-850 transition-colors flex items-center justify-center"
               >
                 📚 Chọn chương khác
               </button>
@@ -1727,7 +1727,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   setSetupStep(3); // Go straight to start quiz configuration
                   setRankings([]);
                 }}
-                className="px-6 py-3 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer flex items-center justify-center"
               >
                 🔄 Làm lại chương này
               </button>
