@@ -3,8 +3,8 @@
    Đối tượng, phương pháp nghiên cứu và ý nghĩa học tập môn TTHCM
    ============================================================ */
 
-export const questionsMoDau = {
-  chapterId: "chuong-mo-dau",
+const questionsChuong1 = {
+  chapterId: "chuong-1",
   
   /* ============================
      90 CÂU TRONG GIÁO TRÌNH
@@ -1474,8 +1474,6 @@ export const questionsMoDau = {
   outside: [
     {
       id: "cmd-out-01",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Tên gọi đầu tiên của Chủ tịch Hồ Chí Minh khi sinh ra là gì?",
       options: [
         "Nguyễn Tất Thành",
@@ -1490,8 +1488,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-02",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Địa danh lịch sử nào là nơi Nguyễn Tất Thành đã xuống tàu ra đi tìm đường cứu nước vào ngày 5 tháng 6 năm 1911?",
       options: [
         "Bến cảng Hải Phòng",
@@ -1506,8 +1502,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-03",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Tác phẩm thơ nổi tiếng nào được Hồ Chí Minh viết trong thời gian bị chính quyền Tưởng Giới Thạch giam giữ tại Trung Quốc (1942-1943)?",
       options: [
         "Bản án chế độ thực dân Pháp",
@@ -1522,8 +1516,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-04",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Bản yêu sách 8 điểm của nhân An Nam do Nguyễn Ái Quốc gửi tới Hội nghị nào năm 1919 đòi quyền tự do, dân chủ cho dân tộc Việt Nam?",
       options: [
         "Hội nghị Giơ-ne-vơ",
@@ -1538,8 +1530,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-05",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Tờ báo \"Người cùng khổ\" (Le Paria) do Nguyễn Ái Quốc làm đồng sáng lập và viết bài chính được xuất bản lần đầu tiên tại quốc gia nào?",
       options: [
         "Nước Anh",
@@ -1554,8 +1544,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-06",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Cuốn sách tập hợp bài giảng của Nguyễn Ái Quốc tại Quảng Châu dùng huấn luyện cán bộ cách mạng, xuất bản năm 1927, có tên là gì?",
       options: [
         "Bản án chế độ thực dân Pháp",
@@ -1570,8 +1558,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-07",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Nguyễn Ái Quốc đã tham gia sáng lập Đảng Cộng sản Pháp tại Đại hội Tua (Tours) vào thời gian nào?",
       options: [
         "Tháng 10 năm 1917",
@@ -1586,8 +1572,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-08",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Khi trở về nước trực tiếp chỉ đạo cách mạng Việt Nam vào đầu năm 1941, địa điểm đầu tiên Nguyễn Ái Quốc đặt chân tới Tổ quốc là nơi nào?",
       options: [
         "Chiến khu Tân Trào (Tuyên Quang)",
@@ -1602,8 +1586,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-09",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Sự kiện lịch sử nào đánh dấu bước ngoặt quyết định chuyển đổi từ lập trường yêu nước truyền thống sang lập trường cộng sản của Nguyễn Ái Quốc năm 1920?",
       options: [
         "Gửi bản Yêu sách của nhân dân An Nam tới Hội nghị Hòa bình Véc-xây (1919)",
@@ -1618,8 +1600,6 @@ export const questionsMoDau = {
     },
     {
       id: "cmd-out-10",
-      sectionId: "outside",
-      subsectionId: "outside",
       question: "Trong tác phẩm Đường Kách mệnh (1927), Nguyễn Ái Quốc chỉ ra cuộc cách mạng nào trên thế giới là \"cách mệnh đến nơi\" và giải thích lý do tại sao?",
       options: [
         "Cách mạng Pháp 1789, vì nó lật đổ chế độ quân chủ chuyên chế phong kiến",

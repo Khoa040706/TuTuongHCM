@@ -1,6 +1,7 @@
-import { chuongMoDau } from "./chuong-mo-dau";
 import { chuong1 } from "./chuong-1";
-import { questionsMoDau } from "./questions-mo-dau";
+import { chuong2 } from "./chuong-2";
+import { chuong3 } from "./chuong-3";
+import { questionsChuong1 } from "./questions-chuong-1";
 import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { lichSuDangChuong1 } from "./lich-su-dang";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
@@ -26,9 +27,9 @@ export const subjects = {
       accentRgb: "217, 119, 6"
     },
     icon: "📖",
-    chapters: [chuongMoDau, chuong1],
+    chapters: [chuong1, chuong2, chuong3],
     questionsMap: {
-      "chuong-mo-dau": questionsMoDau
+      "chuong-1": questionsChuong1
     }
   },
   "lich-su-dang": {

@@ -12,7 +12,7 @@ const App = {
   /** Initialize the application */
   init() {
     // Register chapters
-    this.chapters = [chuongMoDau, chuong1];
+    this.chapters = [chuong1, chuong2];
 
     // Initialize Firebase
     if (typeof enableFirebase !== 'undefined' && enableFirebase && firebaseConfig.apiKey) {

@@ -16,6 +16,7 @@ import FractionVisualizer from "./FractionVisualizer";
 import HcmTimeline1945to1969 from "./HcmTimeline1945to1969";
 import HcmValuesExplorer from "./HcmValuesExplorer";
 import HcmWorldDevelopment from "./HcmWorldDevelopment";
+import HcmChapter3GoalsExplorer from "./HcmChapter3GoalsExplorer";
 import LsdHistoryTimeline from "./LsdHistoryTimeline";
 import LsdObjectExplorer from "./LsdObjectExplorer";
 import LsdFunctionsExplorer from "./LsdFunctionsExplorer";
@@ -815,6 +816,11 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "hcm-world-development":
       return (
         <HcmWorldDevelopment key={path} />
+      );
+
+    case "hcm-chapter3-goals-explorer":
+      return (
+        <HcmChapter3GoalsExplorer key={path} />
       );
 
     case "lsd-history-timeline":

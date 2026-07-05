@@ -303,7 +303,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const insideCount = chapterId === "lich-su-dang-mo-dau" ? 36 : 37;
     let sampledInside = [];
 
-    if (chapterId === "chuong-mo-dau") {
+    if (chapterId === "chuong-1") {
       // Part I: 16 questions (4 Easy, 8 Medium, 4 Hard)
       const p1Easy = insidePool.filter((q) => q.sectionId === "doi-tuong-nghien-cuu" && q.difficulty === "easy");
       const p1Medium = insidePool.filter((q) => q.sectionId === "doi-tuong-nghien-cuu" && q.difficulty === "medium");

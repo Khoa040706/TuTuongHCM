@@ -10,8 +10,8 @@ const ASSETS = [
   './js/components/content.js',
   './js/components/drawing.js',
   './js/components/toolbar.js',
-  './js/data/chuong-mo-dau.js',
   './js/data/chuong-1.js',
+  './js/data/chuong-2.js',
   './assets/logo.png',
   './assets/icon-192.png',
   './assets/icon-512.png'

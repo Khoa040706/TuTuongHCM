@@ -3177,7 +3177,7 @@ export default function Page() {
                     <div className="book-cover-back p-6 flex flex-col justify-between border-l-2 border-stone-200">
                       <div className="border-t border-stone-200 pt-2 text-center">
                         <span className="text-[8px] font-bold tracking-[0.2em] text-stone-400 uppercase font-sans">
-                          CHƯƠNG MỞ ĐẦU
+                          {(currentSubject.chapters[0]?.title || "CHƯƠNG MỞ ĐẦU").toUpperCase()}
                         </span>
                       </div>
                       
@@ -3628,17 +3628,18 @@ export default function Page() {
       )}
 
       {/* Hidden print template for PDF reports */}
-      <div
-        id="admin-pdf-report-template"
-        className="bg-white p-12 text-slate-800 font-sans space-y-8"
-        style={{
-          position: "absolute",
-          left: "-9999px",
-          top: 0,
-          width: "800px",
-          display: "none"
-        }}
-      >
+      {mounted && (
+        <div
+          id="admin-pdf-report-template"
+          className="bg-white p-12 text-slate-800 font-sans space-y-8"
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            top: 0,
+            width: "800px",
+            display: "none"
+          }}
+        >
         {/* Report Header */}
         <div className="flex justify-between items-center border-b-2 border-indigo-600 pb-6">
           <div>
@@ -3727,6 +3728,7 @@ export default function Page() {
           <span>Trang 1 / 1</span>
         </div>
       </div>
+      )}
 
       {/* GOOGLE ACCOUNTS CHOOSER MODAL POP-UP */}
       {showGooglePopup && (

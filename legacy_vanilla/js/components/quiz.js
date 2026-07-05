@@ -14,10 +14,9 @@ const QuizComponent = {
   timerInterval: null,
   isSubmitted: false,
   currentChapterId: '',
-  STORAGE_KEY: 'studymaster_quiz_rankings_chuong-mo-dau',
+  STORAGE_KEY: 'studymaster_quiz_rankings_chuong-1',
   STATE_STORAGE_KEY: 'studymaster_active_quiz_state',
   chapterQuestionsMap: {
-    'chuong-mo-dau': 'questionsMoDau',
     'chuong-1': 'questionsChuong1',
     'chuong-2': 'questionsChuong2',
     'chuong-3': 'questionsChuong3',
@@ -30,9 +29,6 @@ const QuizComponent = {
   checkQuestionsExist(qVarName) {
     if (!qVarName) return false;
     try {
-      if (qVarName === 'questionsMoDau') {
-        return typeof questionsMoDau !== 'undefined';
-      }
       if (qVarName === 'questionsChuong1') {
         return typeof questionsChuong1 !== 'undefined';
       }
@@ -46,9 +42,6 @@ const QuizComponent = {
   getQuestionData(qVarName) {
     if (!qVarName) return null;
     try {
-      if (qVarName === 'questionsMoDau') {
-        return typeof questionsMoDau !== 'undefined' ? questionsMoDau : null;
-      }
       if (qVarName === 'questionsChuong1') {
         return typeof questionsChuong1 !== 'undefined' ? questionsChuong1 : null;
       }
@@ -508,7 +501,7 @@ const QuizComponent = {
     // 2. Draw 37 inside questions proportionally
     let sampledInside = [];
 
-    if (this.currentChapterId === 'chuong-mo-dau') {
+    if (this.currentChapterId === 'chuong-1') {
       // Part I (Đối tượng): Lấy 16 câu (4 Dễ, 8 Trung bình, 4 Khó)
       const p1Easy = insidePool.filter(q => q.sectionId === 'doi-tuong-nghien-cuu' && q.difficulty === 'easy');
       const p1Medium = insidePool.filter(q => q.sectionId === 'doi-tuong-nghien-cuu' && q.difficulty === 'medium');
