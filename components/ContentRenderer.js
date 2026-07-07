@@ -17,6 +17,15 @@ import HcmTimeline1945to1969 from "./HcmTimeline1945to1969";
 import HcmValuesExplorer from "./HcmValuesExplorer";
 import HcmWorldDevelopment from "./HcmWorldDevelopment";
 import HcmChapter3GoalsExplorer from "./HcmChapter3GoalsExplorer";
+import HcmIndependenceFreedom from "./HcmIndependenceFreedom";
+import HcmIndependenceHappiness from "./HcmIndependenceHappiness";
+import HcmIndependenceThorough from "./HcmIndependenceThorough";
+import HcmIndependenceUnity from "./HcmIndependenceUnity";
+import HcmProletarianRevolution from "./HcmProletarianRevolution";
+import HcmPartyLeadership from "./HcmPartyLeadership";
+import HcmNationalUnity from "./HcmNationalUnity";
+import HcmActiveCreativity from "./HcmActiveCreativity";
+import HcmRevolutionaryViolence from "./HcmRevolutionaryViolence";
 import LsdHistoryTimeline from "./LsdHistoryTimeline";
 import LsdObjectExplorer from "./LsdObjectExplorer";
 import LsdFunctionsExplorer from "./LsdFunctionsExplorer";
@@ -821,6 +830,51 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "hcm-chapter3-goals-explorer":
       return (
         <HcmChapter3GoalsExplorer key={path} />
+      );
+
+    case "hcm-independence-freedom":
+      return (
+        <HcmIndependenceFreedom key={path} />
+      );
+
+    case "hcm-independence-happiness":
+      return (
+        <HcmIndependenceHappiness key={path} />
+      );
+
+    case "hcm-independence-thorough":
+      return (
+        <HcmIndependenceThorough key={path} />
+      );
+
+    case "hcm-independence-unity":
+      return (
+        <HcmIndependenceUnity key={path} />
+      );
+
+    case "hcm-proletarian-revolution":
+      return (
+        <HcmProletarianRevolution key={path} />
+      );
+
+    case "hcm-party-leadership":
+      return (
+        <HcmPartyLeadership key={path} />
+      );
+
+    case "hcm-national-unity":
+      return (
+        <HcmNationalUnity key={path} />
+      );
+
+    case "hcm-active-creativity":
+      return (
+        <HcmActiveCreativity key={path} />
+      );
+
+    case "hcm-revolutionary-violence":
+      return (
+        <HcmRevolutionaryViolence key={path} />
       );
 
     case "lsd-history-timeline":
