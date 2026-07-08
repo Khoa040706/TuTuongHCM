@@ -231,7 +231,7 @@ export default function HcmValuesExplorer() {
             </div>
             <button
               onClick={initGame}
-              className="px-5 py-2.5 rounded-xl bg-amber-650 text-white font-bold text-xs uppercase tracking-wider hover:bg-amber-700 shadow-md hover:shadow-amber-500/10 cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="px-5 py-2.5 rounded-xl bg-accent text-white font-bold text-xs uppercase tracking-wider hover:bg-accent/90 shadow-md hover:shadow-accent/10 cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               Chơi ghép cặp 🧩
             </button>

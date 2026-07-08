@@ -148,7 +148,7 @@ export default function HcmIndependenceUnity() {
                 {activeStep < splitSteps.length - 1 && (
                   <button
                     onClick={() => setActiveStep(prev => prev + 1)}
-                    className="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold hover:bg-amber-700 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
+                    className="px-3 py-1.5 rounded-lg bg-accent text-white font-bold hover:bg-accent/90 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
                   >
                     Tiếp theo <ArrowRight className="w-3.5 h-3.5" />
                   </button>

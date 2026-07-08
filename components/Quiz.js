@@ -295,12 +295,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const insidePool = questionData.inside || [];
     const outsidePool = questionData.outside || [];
 
-    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau and chuong-2, 3 for others)
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2") ? 4 : 3;
+    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, chuong-2, and chuong-3; 3 for others)
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 4 : 3;
     const sampledOutside = getRandomSample(outsidePool, outsideCount);
 
-    // 2. Draw inside questions (36 for lich-su-dang-mo-dau and chuong-2, 3 for others)
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2") ? 36 : 37;
+    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, and chuong-3; 3 for others)
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 36 : 37;
     let sampledInside = [];
 
     if (chapterId === "chuong-1") {
@@ -338,6 +338,52 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       ];
 
       sampledInside = [...sampledP1, ...sampledP2, ...sampledP3];
+    } else if (chapterId === "chuong-3") {
+      // Mục I: Vấn đề độc lập dân tộc (11 câu: 3 Dễ, 5 Trung bình, 3 Khó)
+      const p1Easy = insidePool.filter((q) => q.sectionId === "van-de-doc-lap-dan-toc-sec" && q.difficulty === "easy");
+      const p1Medium = insidePool.filter((q) => q.sectionId === "van-de-doc-lap-dan-toc-sec" && q.difficulty === "medium");
+      const p1Hard = insidePool.filter((q) => q.sectionId === "van-de-doc-lap-dan-toc-sec" && q.difficulty === "hard");
+
+      const sampledP1 = [
+        ...getRandomSample(p1Easy, 3),
+        ...getRandomSample(p1Medium, 5),
+        ...getRandomSample(p1Hard, 3)
+      ];
+
+      // Mục II: Tư tưởng HCM về chủ nghĩa xã hội (11 câu: 3 Dễ, 5 Trung bình, 3 Khó)
+      const p2Easy = insidePool.filter((q) => q.sectionId === "hcm-c3-socialism-sec" && q.difficulty === "easy");
+      const p2Medium = insidePool.filter((q) => q.sectionId === "hcm-c3-socialism-sec" && q.difficulty === "medium");
+      const p2Hard = insidePool.filter((q) => q.sectionId === "hcm-c3-socialism-sec" && q.difficulty === "hard");
+
+      const sampledP2 = [
+        ...getRandomSample(p2Easy, 3),
+        ...getRandomSample(p2Medium, 5),
+        ...getRandomSample(p2Hard, 3)
+      ];
+
+      // Mục III: Quan hệ độc lập dân tộc và CNXH (7 câu: 2 Dễ, 3 Trung bình, 2 Khó)
+      const p3Easy = insidePool.filter((q) => q.sectionId === "hcm-c3-relation-sec" && q.difficulty === "easy");
+      const p3Medium = insidePool.filter((q) => q.sectionId === "hcm-c3-relation-sec" && q.difficulty === "medium");
+      const p3Hard = insidePool.filter((q) => q.sectionId === "hcm-c3-relation-sec" && q.difficulty === "hard");
+
+      const sampledP3 = [
+        ...getRandomSample(p3Easy, 2),
+        ...getRandomSample(p3Medium, 3),
+        ...getRandomSample(p3Hard, 2)
+      ];
+
+      // Mục IV: Vận dụng tư tưởng HCM (7 câu: 2 Dễ, 3 Trung bình, 2 Khó)
+      const p4Easy = insidePool.filter((q) => q.sectionId === "hcm-c3-application-sec" && q.difficulty === "easy");
+      const p4Medium = insidePool.filter((q) => q.sectionId === "hcm-c3-application-sec" && q.difficulty === "medium");
+      const p4Hard = insidePool.filter((q) => q.sectionId === "hcm-c3-application-sec" && q.difficulty === "hard");
+
+      const sampledP4 = [
+        ...getRandomSample(p4Easy, 2),
+        ...getRandomSample(p4Medium, 3),
+        ...getRandomSample(p4Hard, 2)
+      ];
+
+      sampledInside = [...sampledP1, ...sampledP2, ...sampledP3, ...sampledP4];
     } else if (chapterId === "chuong-2") {
       // Part I: 14 questions (4 Easy, 6 Medium, 4 Hard)
       const p1Easy = insidePool.filter((q) => q.sectionId === "co-so-hinh-thanh" && q.difficulty === "easy");
@@ -489,8 +535,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const N = insidePool.length;
     const M = outsidePool.length;
 
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2") ? 36 : 37;
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2") ? 4 : 3;
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 36 : 37;
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 4 : 3;
 
     const K = Math.max(1, Math.ceil(N / insideCount));
     const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
@@ -791,6 +837,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         diag["lsd-c1-trick"] = { title: "Câu hỏi bẫy lịch sử giành độc lập", correct: 0, total: 0 };
       } else if (selectedChapterId === "chuong-2") {
         diag["c2-trick"] = { title: "Câu hỏi bẫy giáo trình chương 2", correct: 0, total: 0 };
+      } else if (selectedChapterId === "chuong-3") {
+        diag["c3-trick"] = { title: "Câu hỏi bẫy giáo trình chương 3", correct: 0, total: 0 };
       }
     }
 
@@ -1098,7 +1146,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   if (!questionData) return null;
                   const insidePool = questionData.inside || [];
                   const N = insidePool.length;
-                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2") ? 36 : 37;
+                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3") ? 36 : 37;
                   const K = Math.max(1, Math.ceil(N / insideCount));
 
                   return (

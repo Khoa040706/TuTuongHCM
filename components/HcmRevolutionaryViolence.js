@@ -109,13 +109,13 @@ export default function HcmRevolutionaryViolence() {
                 onClick={() => setActiveTheory(t.id)}
                 className={`p-4 rounded-xl border transition-all duration-300 cursor-pointer select-none text-left flex flex-col justify-between gap-2 ${
                   isActive 
-                    ? "bg-amber-700 border-amber-700 text-white shadow-md scale-[1.02]" 
+                    ? "bg-accent border-accent text-white shadow-md scale-[1.02]" 
                     : "bg-stone-50 border-stone-250 text-stone-600 hover:bg-stone-100/50 hover:border-amber-400/40"
                 }`}
               >
                 <div>
                   <span className={`text-[9px] font-black uppercase tracking-wider ${
-                    isActive ? "text-amber-250" : "text-amber-700"
+                    isActive ? "text-amber-250" : "text-accent"
                   }`}>
                     {t.book}
                   </span>

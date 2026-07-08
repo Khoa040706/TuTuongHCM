@@ -82,9 +82,9 @@ export default function HcmIndependenceHappiness() {
       id: "education",
       title: "Làm cho dân có học hành",
       icon: GraduationCap,
-      bg: "bg-amber-700/5 hover:bg-amber-700/10",
-      border: "border-amber-700/20 hover:border-amber-700/40",
-      iconColor: "text-amber-700 bg-amber-50",
+      bg: "bg-accent/5 hover:bg-accent/10",
+      border: "border-accent/20 hover:border-accent/40",
+      iconColor: "text-accent bg-accent/10",
       desc: "Tiêu diệt giặc dốt. Ngày 8-9-1945, Bác ký sắc lệnh thành lập Nha Bình dân học vụ để mở các lớp học chữ Quốc ngữ ban đêm cho mọi tầng lớp nhân dân, xóa mù chữ diện rộng."
     }
   ];
@@ -112,7 +112,7 @@ export default function HcmIndependenceHappiness() {
                 onClick={() => setActiveTab(idx)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 cursor-pointer border-none outline-none ${
                   isActive 
-                    ? "bg-amber-700 text-white shadow-md shadow-amber-700/10" 
+                    ? "bg-accent text-white shadow-md shadow-accent/10" 
                     : "bg-stone-100 hover:bg-stone-200/60 text-stone-600 hover:text-stone-900"
                 }`}
               >

@@ -142,6 +142,237 @@ export const chuong3 = {
           ]
         }
       ]
+    },
+    {
+      id: "hcm-c3-socialism-sec",
+      roman: "II",
+      title: "Tư tưởng Hồ Chí Minh về chủ nghĩa xã hội và xây dựng chủ nghĩa xã hội ở Việt Nam",
+      subsections: [
+        {
+          id: "hcm-c3-socialism-sub",
+          number: "1",
+          title: "Tư tưởng Hồ Chí Minh về chủ nghĩa xã hội",
+          parts: [
+            {
+              id: "hcm-socialism-concept-part",
+              label: "a",
+              title: "Quan niệm của Hồ Chí Minh về chủ nghĩa xã hội",
+              content: [
+                {
+                  type: "hcm-socialism-concept"
+                }
+              ]
+            },
+            {
+              id: "hcm-socialism-necessity-part",
+              label: "b",
+              title: "Tiến lên chủ nghĩa xã hội là một tất yếu khách quan",
+              content: [
+                {
+                  type: "hcm-socialism-necessity"
+                }
+              ]
+            },
+            {
+              id: "hcm-socialism-features-part",
+              label: "c",
+              title: "Một số đặc trưng cơ bản của xã hội xã hội chủ nghĩa",
+              content: [
+                {
+                  type: "hcm-socialism-features"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-socialism-construction-sub",
+          number: "2",
+          title: "Tư tưởng Hồ Chí Minh về xây dựng chủ nghĩa xã hội ở Việt Nam",
+          parts: [
+            {
+              id: "hcm-socialism-goals-part",
+              label: "a",
+              title: "Mục tiêu chủ nghĩa xã hội ở Việt Nam",
+              content: [
+                {
+                  type: "hcm-socialism-goals"
+                }
+              ]
+            },
+            {
+              id: "hcm-socialism-dynamics-part",
+              label: "b",
+              title: "Động lực của chủ nghĩa xã hội ở Việt Nam",
+              content: [
+                {
+                  type: "hcm-socialism-dynamics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-transition-sub",
+          number: "3",
+          title: "Tư tưởng Hồ Chí Minh về thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam",
+          parts: [
+            {
+              id: "hcm-transition-nature-part",
+              label: "a",
+              title: "Tính chất, đặc điểm và nhiệm vụ của thời kỳ quá độ",
+              content: [
+                {
+                  type: "hcm-transition-nature"
+                }
+              ]
+            },
+            {
+              id: "hcm-transition-principles-part",
+              label: "b",
+              title: "Một số nguyên tắc xây dựng chủ nghĩa xã hội trong thời kỳ quá độ",
+              content: [
+                {
+                  type: "hcm-transition-principles"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "hcm-c3-relation-sec",
+      roman: "III",
+      title: "Tư tưởng Hồ Chí Minh về mối quan hệ giữa độc lập dân tộc và chủ nghĩa xã hội",
+      subsections: [
+        {
+          id: "hcm-c3-relation-precondition-sub",
+          number: "1",
+          title: "Độc lập dân tộc là cơ sở, tiền đề để tiến lên chủ nghĩa xã hội",
+          parts: [
+            {
+              id: "hcm-relation-precondition-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-relation-precondition"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-relation-guarantee-sub",
+          number: "2",
+          title: "Chủ nghĩa xã hội là điều kiện để bảo đảm nền độc lập dân tộc vững chắc",
+          parts: [
+            {
+              id: "hcm-relation-guarantee-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-relation-guarantee"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-relation-conditions-sub",
+          number: "3",
+          title: "Điều kiện để bảo đảm độc lập dân tộc gắn liền với chủ nghĩa xã hội",
+          parts: [
+            {
+              id: "hcm-relation-conditions-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-relation-conditions"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "hcm-c3-application-sec",
+      roman: "IV",
+      title: "Vận dụng tư tưởng Hồ Chí Minh về độc lập dân tộc gắn liền với chủ nghĩa xã hội trong sự nghiệp cách mạng Việt Nam giai đoạn hiện nay",
+      subsections: [
+        {
+          id: "hcm-c3-app-steadfast-sub",
+          number: "1",
+          title: "Kiên định mục tiêu và con đường cách mạng mà Hồ Chí Minh đã xác định",
+          parts: [
+            {
+              id: "hcm-app-steadfast-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-app-steadfast"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-app-democracy-sub",
+          number: "2",
+          title: "Phát huy sức mạnh dân chủ xã hội chủ nghĩa",
+          parts: [
+            {
+              id: "hcm-app-democracy-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-app-democracy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-app-system-sub",
+          number: "3",
+          title: "Củng cố, kiện toàn, phát huy sức mạnh và hiệu quả hoạt động của toàn bộ hệ thống chính trị",
+          parts: [
+            {
+              id: "hcm-app-system-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-app-system"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "hcm-c3-app-combating-sub",
+          number: "4",
+          title: "Đấu tranh chống những biểu hiện suy thoái về tư tưởng chính trị, đạo đức, lối sống và \"tự diễn biến\", \"tự chuyển hóa\" trong nội bộ",
+          parts: [
+            {
+              id: "hcm-app-combating-part",
+              label: "",
+              title: "",
+              content: [
+                {
+                  type: "hcm-app-combating"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 };

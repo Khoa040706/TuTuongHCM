@@ -266,13 +266,13 @@ export default function HcmIndependenceFreedom() {
                   onClick={() => handleTimelineClick(ms.id)}
                   className={`flex-1 flex flex-row md:flex-col items-center gap-3 p-3 rounded-xl border transition-all duration-300 cursor-pointer select-none ${
                     isActive 
-                      ? "bg-amber-700 border-amber-700 text-white shadow-md shadow-amber-600/15 scale-[1.02]" 
+                      ? "bg-accent border-accent text-white shadow-md shadow-accent/15 scale-[1.02]" 
                       : "bg-white border-stone-200 text-stone-700 hover:bg-stone-50 hover:border-amber-400/40"
                   }`}
                 >
                   {/* Icon Node */}
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm ${
-                    isActive ? "bg-white text-amber-700" : "bg-amber-50 text-amber-700"
+                    isActive ? "bg-white text-accent" : "bg-accent/10 text-accent"
                   }`}>
                     <Icon className="w-5 h-5" />
                   </div>
@@ -280,7 +280,7 @@ export default function HcmIndependenceFreedom() {
                   {/* Info Node */}
                   <div className="text-left md:text-center space-y-1">
                     <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                      isActive ? "text-amber-100" : "text-amber-700"
+                      isActive ? "text-amber-100" : "text-accent"
                     }`}>
                       {ms.year}
                     </span>
@@ -408,7 +408,7 @@ export default function HcmIndependenceFreedom() {
                 {activeMilestone < milestones.length - 1 && (
                   <button
                     onClick={() => setActiveMilestone(prev => Math.min(milestones.length - 1, prev + 1))}
-                    className="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold hover:bg-amber-700 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
+                    className="px-3 py-1.5 rounded-lg bg-accent text-white font-bold hover:bg-accent/90 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
                   >
                     Tiếp theo <ArrowRight className="w-3.5 h-3.5" />
                   </button>

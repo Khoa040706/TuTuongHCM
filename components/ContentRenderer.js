@@ -26,6 +26,20 @@ import HcmPartyLeadership from "./HcmPartyLeadership";
 import HcmNationalUnity from "./HcmNationalUnity";
 import HcmActiveCreativity from "./HcmActiveCreativity";
 import HcmRevolutionaryViolence from "./HcmRevolutionaryViolence";
+import HcmSocialismConcept from "./HcmSocialismConcept";
+import HcmSocialismNecessity from "./HcmSocialismNecessity";
+import HcmSocialismFeatures from "./HcmSocialismFeatures";
+import HcmSocialismGoals from "./HcmSocialismGoals";
+import HcmSocialismDynamics from "./HcmSocialismDynamics";
+import HcmTransitionNature from "./HcmTransitionNature";
+import HcmTransitionPrinciples from "./HcmTransitionPrinciples";
+import HcmRelationPrecondition from "./HcmRelationPrecondition";
+import HcmRelationGuarantee from "./HcmRelationGuarantee";
+import HcmRelationConditions from "./HcmRelationConditions";
+import HcmAppSteadfast from "./HcmAppSteadfast";
+import HcmAppDemocracy from "./HcmAppDemocracy";
+import HcmAppSystem from "./HcmAppSystem";
+import HcmAppCombating from "./HcmAppCombating";
 import LsdHistoryTimeline from "./LsdHistoryTimeline";
 import LsdObjectExplorer from "./LsdObjectExplorer";
 import LsdFunctionsExplorer from "./LsdFunctionsExplorer";
@@ -875,6 +889,76 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "hcm-revolutionary-violence":
       return (
         <HcmRevolutionaryViolence key={path} />
+      );
+
+    case "hcm-socialism-concept":
+      return (
+        <HcmSocialismConcept key={path} />
+      );
+
+    case "hcm-socialism-necessity":
+      return (
+        <HcmSocialismNecessity key={path} />
+      );
+
+    case "hcm-socialism-features":
+      return (
+        <HcmSocialismFeatures key={path} />
+      );
+
+    case "hcm-socialism-goals":
+      return (
+        <HcmSocialismGoals key={path} />
+      );
+
+    case "hcm-socialism-dynamics":
+      return (
+        <HcmSocialismDynamics key={path} />
+      );
+
+    case "hcm-transition-nature":
+      return (
+        <HcmTransitionNature key={path} />
+      );
+
+    case "hcm-transition-principles":
+      return (
+        <HcmTransitionPrinciples key={path} />
+      );
+
+    case "hcm-relation-precondition":
+      return (
+        <HcmRelationPrecondition key={path} />
+      );
+
+    case "hcm-relation-guarantee":
+      return (
+        <HcmRelationGuarantee key={path} />
+      );
+
+    case "hcm-relation-conditions":
+      return (
+        <HcmRelationConditions key={path} />
+      );
+
+    case "hcm-app-steadfast":
+      return (
+        <HcmAppSteadfast key={path} />
+      );
+
+    case "hcm-app-democracy":
+      return (
+        <HcmAppDemocracy key={path} />
+      );
+
+    case "hcm-app-system":
+      return (
+        <HcmAppSystem key={path} />
+      );
+
+    case "hcm-app-combating":
+      return (
+        <HcmAppCombating key={path} />
       );
 
     case "lsd-history-timeline":

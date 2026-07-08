@@ -172,7 +172,7 @@ export default function HcmNationalUnity() {
                     onClick={() => setActiveTier(tier.id)}
                     className={`h-14 mx-auto rounded-xl border flex items-center justify-center text-center font-extrabold text-xs md:text-sm transition-all duration-300 cursor-pointer select-none ${widthClass} ${
                       isActive 
-                        ? "bg-amber-700 border-amber-700 text-white shadow-md scale-[1.03]" 
+                        ? "bg-accent border-accent text-white shadow-md scale-[1.03]" 
                         : "bg-stone-50 border-stone-250 text-stone-600 hover:border-amber-400 hover:bg-stone-100/50"
                     }`}
                   >

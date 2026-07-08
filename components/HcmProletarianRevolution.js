@@ -169,19 +169,19 @@ export default function HcmProletarianRevolution() {
                   onClick={() => setActiveStep(step.id)}
                   className={`flex-1 flex flex-row md:flex-col items-center gap-3.5 p-3 rounded-xl border transition-all duration-300 cursor-pointer select-none ${
                     isActive 
-                      ? "bg-amber-700 border-amber-700 text-white shadow-md shadow-amber-600/15 scale-[1.02]" 
+                      ? "bg-accent border-accent text-white shadow-md shadow-accent/15 scale-[1.02]" 
                       : "bg-white border-stone-200 text-stone-600 hover:bg-stone-50 hover:border-amber-400/40"
                   }`}
                 >
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 shadow-sm font-extrabold text-xs md:text-sm ${
-                    isActive ? "bg-white text-amber-700" : "bg-amber-50 text-amber-700"
+                    isActive ? "bg-white text-accent" : "bg-accent/10 text-accent"
                   }`}>
                     {step.year.replace("Trước ", "")}
                   </div>
                   
                   <div className="text-left md:text-center space-y-0.5">
                     <span className={`text-[10px] font-bold uppercase tracking-wider block ${
-                      isActive ? "text-amber-100" : "text-amber-700"
+                      isActive ? "text-amber-100" : "text-accent"
                     }`}>
                       {step.year}
                     </span>
@@ -213,7 +213,7 @@ export default function HcmProletarianRevolution() {
             {activeStep < journeySteps.length - 1 && (
               <button
                 onClick={() => setActiveStep(prev => prev + 1)}
-                className="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold hover:bg-amber-700 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
+                 className="px-3 py-1.5 rounded-lg bg-accent text-white font-bold hover:bg-accent/90 cursor-pointer select-none flex items-center gap-1 border-none shadow-sm"
               >
                 Chặng tiếp <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -225,7 +225,7 @@ export default function HcmProletarianRevolution() {
       {/* SECTION 2: COMPARISON OF LIBERATION SEQUENCE */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600">
+          <span className="p-1.5 rounded-lg bg-accent/10 text-accent">
             <ArrowRightLeft className="w-4 h-4" />
           </span>
           <h4 className="text-sm font-extrabold text-stone-850 uppercase tracking-wider">
@@ -267,13 +267,13 @@ export default function HcmProletarianRevolution() {
           </div>
 
           {/* Ho Chi Minh flow */}
-          <div className="bg-gradient-to-br from-amber-500/5 to-amber-600/5 border border-amber-500/25 rounded-2xl p-5 md:p-6 space-y-4 flex flex-col justify-between shadow-sm relative overflow-hidden">
+          <div className="bg-gradient-to-br from-accent/5 to-accent/5 border border-accent/25 rounded-2xl p-5 md:p-6 space-y-4 flex flex-col justify-between shadow-sm relative overflow-hidden">
             <div className="absolute top-0 right-0 p-3 opacity-5 pointer-events-none">
-              <Sparkles className="w-20 h-20 text-amber-600" />
+              <Sparkles className="w-20 h-20 text-accent" />
             </div>
             
             <div className="relative z-10 space-y-2">
-              <span className="text-[10px] font-black text-amber-700 uppercase tracking-widest block">
+              <span className="text-[10px] font-black text-accent uppercase tracking-widest block">
                 Tư tưởng Hồ Chí Minh (Thuộc địa Đông Dương)
               </span>
               <h5 className="font-extrabold text-stone-850 text-sm md:text-base leading-snug">
@@ -292,7 +292,7 @@ export default function HcmProletarianRevolution() {
                   <div key={idx} className="flex items-center gap-2">
                     <div className={`px-3.5 py-2 rounded-xl text-xs font-bold w-full flex justify-between items-center shadow-xs ${
                       isSpecial 
-                        ? "bg-amber-600 text-white border border-amber-600 shadow-sm" 
+                        ? "bg-accent text-white border border-accent shadow-sm" 
                         : "bg-white border border-stone-250 text-stone-700"
                     }`}>
                       <span>{idx + 1}. {item}</span>
@@ -307,7 +307,7 @@ export default function HcmProletarianRevolution() {
         </div>
 
         <div className="bg-amber-500/5 p-4 rounded-xl border border-amber-500/10 flex items-start gap-2.5">
-          <span className="text-amber-600 font-bold mt-0.5">➔</span>
+          <span className="text-accent font-bold mt-0.5">➔</span>
           <p className="text-stone-850 text-xs md:text-sm font-semibold italic">
             Người chỉ rõ: Giải phóng dân tộc gắn liền với giải phóng giai cấp, trong đó giải phóng dân tộc là trước hết, trên hết. Đồng thời, độc lập dân tộc phải gắn liền với chủ nghĩa xã hội.
           </p>

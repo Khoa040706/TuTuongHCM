@@ -150,19 +150,19 @@ export default function HcmActiveCreativity() {
                 onClick={() => setActiveMetaphor(item.id)}
                 className={`p-4.5 rounded-xl border transition-all duration-300 cursor-pointer select-none text-left flex flex-col justify-between gap-2.5 ${
                   isActive 
-                    ? "bg-amber-700 border-amber-700 text-white shadow-md shadow-amber-600/10 scale-[1.01]" 
+                    ? "bg-accent border-accent text-white shadow-md shadow-amber-600/10 scale-[1.01]" 
                     : "bg-stone-50 border-stone-250 text-stone-600 hover:border-amber-400 hover:bg-stone-100/50"
                 }`}
               >
                 <div className="space-y-1">
                   <span className={`text-[9px] font-black uppercase tracking-wider ${
-                    isActive ? "text-amber-200" : "text-amber-700"
+                    isActive ? "text-amber-200" : "text-accent"
                   }`}>
                     {item.source}
                   </span>
                   <h5 className="font-extrabold text-xs md:text-sm leading-snug" dangerouslySetInnerHTML={{ __html: item.title }} />
                 </div>
-                <div className={`text-[10px] font-bold ${isActive ? "text-white" : "text-amber-750"} flex items-center gap-1.5`}>
+                <div className={`text-[10px] font-bold ${isActive ? "text-white" : "text-accent"} flex items-center gap-1.5`}>
                   Xem ý nghĩa thực tiễn <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
