@@ -1,0 +1,51 @@
+---
+id: "concepts-sub-vi-du-code-ngon-ngu"
+number: "4"
+title: "Ví dụ Code minh họa"
+parts:
+  - id: "concepts-part-code-o1"
+    label: "a"
+    title: "1. Minh họa độ phức tạp O(1) - Truy cập chỉ số"
+  - id: "concepts-part-code-on"
+    label: "b"
+    title: "2. Minh họa độ phức tạp O(n) - Tìm kiếm tuyến tính"
+  - id: "concepts-part-code-ologn"
+    label: "c"
+    title: "3. Minh họa độ phức tạp O(log n) - Tìm kiếm nhị phân"
+  - id: "concepts-part-code-on2"
+    label: "d"
+    title: "4. Minh họa độ phức tạp O(n²) - Sắp xếp nổi bọt"
+---
+
+<Part id="concepts-part-code-o1">
+
+Thao tác lấy ra phần tử đầu tiên của một mảng. Dù mảng có kích thước nhỏ hay cực kỳ khổng lồ, CPU cũng chỉ thực hiện đúng 1 lệnh truy xuất địa chỉ trực tiếp.
+
+<BigOCodeTabs />
+
+</Part>
+
+<Part id="concepts-part-code-on">
+
+Duyệt qua từng phần tử của mảng từ đầu đến cuối để tìm kiếm giá trị mục tiêu. Trường hợp xấu nhất (Worst-case) xảy ra khi phần tử đó nằm ở cuối mảng hoặc hoàn toàn không tồn tại, thuật toán phải chạy đủ $n$ lần lặp.
+
+<BigOCodeTabs />
+
+</Part>
+
+<Part id="concepts-part-code-ologn">
+
+Tìm kiếm trên một mảng <b>đã được sắp xếp</b> trước. Tại mỗi bước lặp, thuật toán so sánh giá trị mục tiêu với phần tử ở chính giữa và loại bỏ ngay lập tức một nửa số lượng phần tử không khả thi.
+
+<BigOCodeTabs />
+
+</Part>
+
+<Part id="concepts-part-code-on2">
+
+Thuật toán Bubble Sort sử dụng hai vòng lặp lồng nhau để so sánh các cặp phần tử cạnh nhau và hoán đổi vị trí nếu chúng bị ngược thứ tự. Vòng lặp ngoài chạy $n$ lần, vòng lặp trong chạy tối đa $n-1$ lần.
+
+<BigOCodeTabs />
+
+</Part>
+

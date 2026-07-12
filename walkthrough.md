@@ -1,67 +1,45 @@
-# Kết quả Nghiệm thu: Bổ sung Mục I, II.1, II.2 & III.1, III.2 Chương nhập môn Lịch sử Đảng
+# Nghiệm thu Chuyển đổi sang MDX & Bảo mật Trắc nghiệm 2 tầng
 
-Chúng ta đã thiết kế, tích hợp và tối ưu hóa thành công toàn bộ các mục học thuật của Chương nhập môn Lịch sử Đảng Cộng sản Việt Nam với các thành phần tương tác cao cấp.
-
----
-
-## 🛠️ Các thay đổi đã thực hiện
-
-### 1. Ẩn tiêu đề phụ cho các phần không có cấp con
-* **Đường dẫn**: [Sidebar.js](file:///D:/TT%20HCM/components/Sidebar.js)
-  * Cập nhật danh sách lặp subsections ở thanh bên: Chỉ render các subsection có tiêu đề hoặc số thứ tự rỗng (`number || title`). Nếu cả hai đều rỗng, phần đó sẽ không hiện làm một nút con trong sidebar, tránh lỗi hiển thị dư thừa cấp mục lục.
-* **Đường dẫn**: [ContentRenderer.js](file:///D:/TT%20HCM/components/ContentRenderer.js)
-  * Cập nhật thẻ render tiêu đề subsection: Chỉ hiển thị vùng tiêu đề `subsection__heading` nếu tồn tại ít nhất `sub.number` hoặc `sub.title`.
-
-### 2. Thiết lập cấu trúc dữ liệu chính xác 100%
-* **Đường dẫn**: [lich-su-dang-mo-dau.js](file:///D:/TT%20HCM/data/lich-su-dang-mo-dau.js)
-  * Cấu trúc hoàn thiện toàn bộ Chương nhập môn gồm **Mục I**, **Mục II.1, II.2** và **Mục III.1, III.2**.
-  * Cập nhật toàn bộ các chuỗi văn bản khái niệm và đoạn định nghĩa chính xác theo từng chữ của tài liệu gốc.
-
-### 3. Tối ưu hóa Component `LsdObjectExplorer` (Mục I)
-* **Đường dẫn**: [LsdObjectExplorer.js](file:///D:/TT%20HCM/components/LsdObjectExplorer.js)
-  * Thiết kế lại giao diện dạng **Interactive Grid Cards** 2x2.
-  * Tích hợp 4 biểu tượng trực quan: `CalendarRange`, `ScrollText`, `Compass`, `ShieldCheck`.
-  * Nhập chính xác 100% nội dung chữ của 4 điểm cốt lõi từ ảnh tài liệu mới, không tóm tắt hay rút gọn.
-  * Tích hợp hiệu ứng trượt nhẹ GSAP khi tải trang.
-
-### 4. Phát triển Component `LsdFunctionsExplorer` (Mục II.1)
-* **Đường dẫn**: [LsdFunctionsExplorer.js](file:///D:/TT%20HCM/components/LsdFunctionsExplorer.js)
-  * Thiết kế giao diện **Interactive Tabbed Dashboard** chuyển đổi mượt mà giữa 3 chức năng chính: *Nhận thức*, *Giáo dục*, *Dự báo & Phê phán*.
-  * Tích hợp hiệu ứng trượt và mờ dần GSAP (`stagger`) cho các thẻ con.
-
-### 5. Phát triển Component `LsdTasksExplorer` (Mục II.2)
-* **Đường dẫn**: [LsdTasksExplorer.js](file:///D:/TT%20HCM/components/LsdTasksExplorer.js)
-  * Thiết kế giao diện dạng **Lưới thẻ có số thứ tự nước chìm cực lớn** (`01` đến `04`) tương ứng với 4 nhiệm vụ cốt lõi.
-  * Tích hợp 4 biểu tượng trực quan: `FileText`, `History`, `TrendingUp`, `Users`.
-  * Nhập chính xác 100% nội dung của 4 nhiệm vụ chủ yếu từ ảnh tài liệu, đi kèm hiệu ứng trượt nhẹ GSAP khi tải trang.
-
-### 6. Phát triển Component `LsdMethodologyExplorer` (Mục III.1)
-* **Đường dẫn**: [LsdMethodologyExplorer.js](file:///D:/TT%20HCM/components/LsdMethodologyExplorer.js)
-  * Thiết kế giao diện **Bố cục 3 cột hiện đại** tương ứng với 3 nguyên tắc phương pháp luận chính.
-  * Mỗi cột mang tông màu nhấn riêng (Đỏ Crimson, Cam đất, Xanh lá cây) đi kèm các icon chuyên biệt (`Atom`, `Hammer`, `Compass`) và các icon chi tiết cho từng điểm phân tích con.
-  * Nhập chính xác 100% nội dung lý thuyết từ tài liệu, kết hợp hiệu ứng trượt nhẹ GSAP khi tải trang.
-
-### 7. Phát triển Component `LsdSpecificMethodsExplorer` (Mục III.2 - Phần 1)
-* **Đường dẫn**: [LsdSpecificMethodsExplorer.js](file:///D:/TT%20HCM/components/LsdSpecificMethodsExplorer.js)
-  * Thiết kế giao diện Tab chuyển đổi nhanh giữa 4 nhóm phương pháp cụ thể.
-  * Trình chiếu rõ ràng Định nghĩa, Bản chất và Lưu ý cho từng phương pháp.
-
-### 8. Phát triển Component `LsdRequirementsGoalsExplorer` (Mục III.2 - Phần 2)
-* **Đường dẫn**: [LsdRequirementsGoalsExplorer.js](file:///D:/TT%20HCM/components/LsdRequirementsGoalsExplorer.js)
-  * Thiết kế giao diện **Sub-Dashboard tích hợp 4 Tab**:
-    1. *Cấu trúc chương trình*: Bảng so sánh Hệ 2 tín chỉ và Hệ 3 tín chỉ.
-    2. *Tiến trình trọng tâm*: Sơ đồ đường lộ trình (Roadmap) timeline nằm ngang của 3 thời kỳ lịch sử.
-    3. *Nghiên cứu chuyên sâu*: Lưới 3 thẻ Spotlight chứa các nội dung lý luận kinh điển, cương lĩnh và xây dựng Đảng cầm quyền.
-    4. *Mục tiêu & Ý nghĩa*: Khối thẻ đôi nổi bật về bản chất khoa học và giáo dục tư tưởng.
+Chúng ta đã thực thi thành công toàn bộ kế hoạch di trú và nâng cấp hệ thống trắc nghiệm. Dưới đây là tóm tắt những thay đổi đã hoàn thành và kết quả xác minh.
 
 ---
 
-## 🔬 Kết quả Xác minh & Kiểm thử
+## 🛠️ Các Thay đổi & Tính năng đã Triển khai
 
-### 1. Kiểm tra Lỗi cú pháp (Linter Check)
-* Đã chạy lệnh `npm run lint` sau khi tích hợp.
-* **Kết quả**: Vượt qua bài kiểm tra thành công, **không phát hiện bất kỳ lỗi cú pháp nào** (`0 errors`).
+### 1. Cấu hình Render MDX Động ở Server & Client
+* **Server Action dynamic parser**: Thiết lập tệp [app/actions/content.js](file:///d:/TT%20HCM/app/actions/content.js) sử dụng `gray-matter` và `next-mdx-remote/serialize` để nạp, phân tích Frontmatter và biên dịch nội dung MDX trực tiếp từ đĩa cứng.
+* **Component Mapping**: Cập nhật [components/ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js) tích hợp `<MDXRemote>` hỗ trợ:
+  * Khối Directive tùy biến: `:::summary` (SummaryBox), `:::mnemonic` (MnemonicBox), `:::quote` (QuoteBox), `:::highlight` (HighlightBox), `:::definition` (DefinitionBox).
+  * Đăng ký toàn bộ các Explorer và Visualizer tương tác của các môn học để chèn trực tiếp bằng thẻ JSX trong MDX.
 
-### 2. Biên dịch & Đóng gói sản phẩm (Production Build)
-* Đã chạy lệnh `npm run build` để kiểm tra độ tương thích với quy trình tối ưu hóa mã nguồn của Next.js.
-* **Kết quả**: Biên dịch thành công trọn vẹn 100%, không bị lỗi prerender hay lỗi Hydration.
+### 2. Di trú Tự động 9 Môn học
+* **Migration Script**: Viết và chạy script [scripts/convert-to-mdx.js](file:///d:/TT%20HCM/scripts/convert-to-mdx.mjs) chuyển toàn bộ nội dung giáo trình của 9 môn học từ file JS cũ sang file MDX tĩnh với cấu trúc cây thư mục chuẩn:
+  `content/[subjectId]/[chapterId]/[sectionId]/[subsectionId].mdx`
+* **Metadata Tinh gọn**: Tạo tệp [scripts/generate-metadata.mjs](file:///d:/TT%20HCM/scripts/generate-metadata.mjs) giúp tự động trích xuất cấu trúc danh mục, loại bỏ các khối văn bản nặng khỏi [data/index.js](file:///d:/TT%20HCM/data/index.js) để tối ưu dung lượng tải trang ban đầu.
+* **Sao lưu dữ liệu cũ**: Di chuyển tất cả dữ liệu gốc sang thư mục `legacy_data/` để làm phương án backup.
+
+### 3. Đồng bộ hóa Canvas Vẽ Ghi chú (Bug Fix)
+* Thêm prop `drawingKey` động dựa trên cặp `subjectId` và `activeSubsectionId` vào component [DrawingCanvas.js](file:///d:/TT%20HCM/components/DrawingCanvas.js).
+* Khắc phục triệt để lỗi nét vẽ bị lem sang các bài học khác khi chuyển trang. Giờ đây, mỗi bài học có một lớp vẽ ghi chép độc lập trong `localStorage`.
+
+### 4. Nâng cấp Bảo mật Trắc nghiệm 2 tầng
+* **Luyện tập (Tầng 1)**: Giữ ngân hàng câu hỏi ôn tập tĩnh ở Client để phản hồi lời giải thích ngay lập tức.
+* **Thi xếp hạng (Tầng 2)**:
+  * Khi vào chế độ thi, Client tải bộ câu hỏi đã bị **xóa hoàn toàn** trường `answer` và `explanation` từ Server thông qua `getExamQuestions` Server Action.
+  * Việc chấm điểm được thực hiện trên Server tại Server Action `submitExamScore` ở [app/actions/quiz.js](file:///d:/TT%20HCM/app/actions/quiz.js) bằng cách so khớp lựa chọn của học sinh với đáp án gốc.
+  * Kết quả điểm thi được ghi trực tiếp vào Firestore `rankings` collection từ Server và chỉ trả về đáp án/lời giải thích cho Client hiển thị sau khi đã nộp bài thành công.
+
+---
+
+## 🧪 Kết quả Xác minh & Kiểm thử
+
+### 1. Biên dịch Next.js (Build check)
+* Chạy `npm run build` thành công, biên dịch dự án Next.js 16 + React 19 mượt mà, không gặp bất kỳ lỗi hydration hoặc parse tĩnh nào.
+* Bundle size ban đầu giảm mạnh do toàn bộ nội dung text của 9 môn học đã được chuyển sang chế độ Lazy-loading qua Server Actions.
+
+### 2. Kiểm thử luồng học tập & ghi chú
+* Truy cập bài học mẫu hiển thị chính xác các định dạng tiêu đề, danh sách, và hộp thông báo màu sắc.
+* Canvas vẽ tay hoạt động độc lập, không bị chồng chéo dữ liệu vẽ giữa các bài học hoặc các môn học khác nhau.
+
+### 3. Kiểm thử bảo mật thi cử
+* Đề thi xếp hạng khi tải về chỉ chứa câu hỏi và các phương án chọn lựa, không chứa đáp án trong payload mạng. Chấm điểm server-side hoạt động chính xác và ghi điểm xếp hạng thành công vào Leaderboard.

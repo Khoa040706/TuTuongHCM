@@ -1,0 +1,206 @@
+---
+id: "dsa-sub-adt-java-interface"
+number: "3"
+title: "Java Interface (Giao diện trong Java)"
+parts:
+  - id: "dsa-part-adt-interface-characteristics"
+    label: "a"
+    title: "Đặc trưng kỹ thuật của Java Interface"
+  - id: "dsa-part-adt-interface-complex-code"
+    label: "b"
+    title: "Mã nguồn toàn diện hiện thực Complex ADT qua Giao diện"
+---
+
+<Part id="dsa-part-adt-interface-characteristics">
+
+Java Interface là một công cụ ngôn ngữ lập trình hoàn hảo để định nghĩa bản đặc tả kỹ thuật của một ADT. Nó cho phép nâng cao tính trừu tượng hóa và tổng quát hóa mã nguồn.
+
+* Sử dụng từ khóa <code>interface</code> thay vì từ khóa <code>class</code>.
+* Là một tập hợp các phương thức liên quan nhưng có thân hàm rỗng (empty bodies) - áp dụng từ Java 7 trở về trước. Từ Java 8, interface cho phép khai báo thêm <b>"default methods"</b> có sẵn code mặc định, cho phép các lớp hiện thực ghi đè (override) tùy chọn.
+* Có thể chứa các định nghĩa hằng số (các thuộc tính này mặc nhiên được hiểu là <code>public static final</code>).
+* Một lớp cụ thể muốn sử dụng giao diện phải dùng từ khóa <code>implements</code> và bắt buộc phải lập trình mã xử lý chi tiết cho <b>TẤT CẢ</b> các phương thức đã khai báo trong giao diện đó.
+* Mỗi giao diện sau khi biên dịch sẽ tạo ra một file bytecode cụ thể độc lập (đuôi <code>.class</code>).
+* Không thể dùng từ khóa <code>new</code> để tạo thực thể trực tiếp từ interface, nhưng hoàn toàn có thể dùng tên interface làm kiểu dữ liệu cho biến, tạo điều kiện cho cơ chế Ép kiểu (Casting) và Đa hình (Polymorphism).
+
+</Part>
+
+<Part id="dsa-part-adt-interface-complex-code">
+
+Dưới đây là mã nguồn phân tích chi tiết quy trình xây dựng hệ thống mã nguồn đa hình cho Số phức:
+
+<b>Mã nguồn 1: Khai báo Giao diện chung (Complex.java)</b>
+
+```java
+public interface Complex {
+    public double realpart(); // Lấy phần thực
+    public double imagpart(); // Lấy phần ảo
+    public double angle();    // Lấy góc độ (độ lệch pha)
+    public double mag();      // Lấy độ dài (mô-đun)
+    public void add(Complex c); // Biến đổi: this = this + c
+    public void minus(Complex c); // Biến đổi: this = this - c
+    public void times(Complex c); // Biến đổi: this = this * c
+}
+```
+
+<b>Mã nguồn 2: Hiện thực theo tọa độ Đề-các (ComplexCart.java)</b>
+
+:::highlight
+<b>Lưu ý giải thuật trong phương thức angle():</b> Khi tính toán góc dựa trên hàm vô hướng <code>Math.atan(imag/real)</code>, chúng ta phải xử lý các điều kiện biên của hệ trục tọa độ 2D. Nếu phần thực âm (nằm ở góc phần tư số II và III), ta phải cộng thêm hằng số $\pi$ (<code>Math.PI</code>) để điều chỉnh hướng vectơ chính xác. Nếu phần thực bằng 0, tùy thuộc vào phần ảo dương hay âm mà góc trả về sẽ là $\pi/2$ hoặc $-\pi/2$.
+:::
+
+```java
+class ComplexCart implements Complex {
+    private double real;
+    private double imag;
+
+    // Hàm khởi tạo (Constructor)
+    public ComplexCart(double r, double i) {
+        this.real = r;
+        this.imag = i;
+    }
+
+    // Nhóm hàm truy vấn (Accessors)
+    public double realpart() { return this.real; }
+    public double imagpart() { return this.imag; }
+    public double mag() { return Math.sqrt(real * real + imag * imag); }
+
+    public double angle() {
+        if (real != 0) {
+            if (real < 0) return (Math.PI + Math.atan(imag / real));
+            else return Math.atan(imag / real);
+        }
+        else if (imag == 0) return 0;
+        else if (imag > 0) return Math.PI / 2;
+        else return -Math.PI / 2;
+    }
+
+    // Nhóm hàm biến đổi trạng thái (Mutators)
+    public void add(Complex c) {
+        this.real += c.realpart();
+        this.imag += c.imagpart();
+    }
+
+    public void minus(Complex c) {
+        this.real -= c.realpart();
+        this.imag -= c.imagpart();
+    }
+
+    public void times(Complex c) {
+        // Phải dùng biến tạm để tránh việc sử dụng giá trị phần thực mới thay đổi để tính phần ảo
+        double tempReal = real * c.realpart() - imag * c.imagpart();
+        imag = real * c.imagpart() + imag * c.realpart();
+        real = tempReal;
+    }
+
+    // Ghi đè phương thức hiển thị chuỗi ký tự
+    public String toString() {
+        if (imag == 0) return (real + "");
+        else if (imag < 0) return (real + "" + imag + "i");
+        else return (real + "+" + imag + "i");
+    }
+}
+```
+
+<b>Giải đáp câu hỏi thảo luận trên slide:</b> Tại sao tại hàm <code>toString()</code> không thể viết trực tiếp câu lệnh <code>if (imag == 0) return (real);</code>? Bởi vì biến <code>real</code> được khai báo là kiểu dữ liệu số thực nguyên thủy <code>double</code>, trong khi kiểu trả về yêu cầu của hàm <code>toString()</code> bắt buộc phải là một chuỗi ký tự đối tượng <code>String</code>. Việc nối thêm chuỗi rỗng <code>+ ""</code> là thủ thuật ép kiểu tự động (string concatenation coercion) phổ biến trong Java.
+
+<b>Mã nguồn 3: Hiện thực theo tọa độ Cực (ComplexPolar.java)</b>
+
+```java
+class ComplexPolar implements Complex {
+    private double mag; // Mô-đun (độ lớn)
+    private double ang; // Góc định hướng (Argand)
+
+    public ComplexPolar(double m, double a) {
+        this.mag = m;
+        this.ang = a;
+    }
+
+    public double realpart() { return mag * Math.cos(ang); }
+    public double imagpart() { return mag * Math.sin(ang); }
+    public double mag() { return this.mag; }
+    public double angle() { return this.ang; }
+
+    public void add(Complex c) {
+        // Phải chuyển đổi tạm thời sang hệ tọa độ Đề các để thực hiện phép toán cộng đại số
+        double real = this.realpart() + c.realpart();
+        double imag = this.imagpart() + c.imagpart();
+        mag = Math.sqrt(real * real + imag * imag);
+        if (real != 0) {
+            if (real < 0) ang = (Math.PI + Math.atan(imag / real));
+            else ang = Math.atan(imag / real);
+        }
+        else if (imag == 0) ang = 0;
+        else if (imag > 0) ang = Math.PI / 2;
+        else ang = -Math.PI / 2;
+    }
+
+    public void minus(Complex c) {
+        double real = this.realpart() - c.realpart();
+        double imag = this.imagpart() - c.imagpart();
+        mag = Math.sqrt(real * real + imag * imag);
+        if (real != 0) {
+            if (real < 0) ang = (Math.PI + Math.atan(imag / real));
+            else ang = Math.atan(imag / real);
+        }
+        else if (imag == 0) ang = 0;
+        else if (imag > 0) ang = Math.PI / 2;
+        else ang = -Math.PI / 2;
+    }
+
+    public void times(Complex c) {
+        // Trong hệ cực, phép nhân tối ưu hóa cực cao về mặt hiệu năng tính toán
+        mag *= c.mag();
+        ang += c.angle();
+    }
+
+    public String toString() {
+        if (imagpart() == 0) return (realpart() + "");
+        else if (imagpart() < 0) return (realpart() + "" + imagpart() + "i");
+        else return (realpart() + "+" + imagpart() + "i");
+    }
+}
+```
+
+<b>Mã nguồn 4: Chương trình kiểm thử đa hình kết hợp dữ liệu (TestComplex.java)</b>
+
+```java
+public class TestComplex {
+    public static void main(String[] args) {
+        // Thử nghiệm các thao tác trên cấu trúc tọa độ Đề các
+        Complex a = new ComplexCart(10.0, 12.0);
+        Complex b = new ComplexCart(1.0, 2.0);
+        System.out.println("Testing ComplexCart:");
+        a.add(b);
+        System.out.println("a=a+b is " + a); // Output mong đợi: 11.0+14.0i
+        a.minus(b);
+        System.out.println("a-b (gốc) is " + a); // Output mong đợi: 10.0+12.0i
+
+        // Thử nghiệm trên cấu trúc tọa độ Cực
+        Complex c = new ComplexPolar(10.0, Math.PI / 6.0);
+        Complex d = new ComplexPolar(1.0, Math.PI / 3.0);
+        System.out.println("\nTesting ComplexPolar:");
+        c.add(d);
+        System.out.println("c=c+d is " + c);
+    }
+}
+```
+
+<b>Phương thức Equals xử lý an toàn toán học đối với số thực dấu phẩy động:</b>
+
+Do máy tính lưu trữ số thực dấu phẩy động có thể phát sinh sai số làm tròn nhỏ, việc so sánh bằng toán tử <code>==</code> trực tiếp giữa hai số thực là vô cùng nguy hiểm. Giải pháp kỹ thuật chuẩn mực là sử dụng một độ lệch cực nhỏ gọi là hằng số hằng số <code>EPSILON</code>.
+
+```java
+public static final double EPSILON = 0.0000001;
+
+public boolean equals(Object cl) {
+    if (cl instanceof Complex) {
+        Complex temp = (Complex) cl; // Thao tác Ép kiểu (Casting) an toàn sau khi kiểm tra loại thực thể
+        return (Math.abs(realpart() - temp.realpart()) < EPSILON
+            && Math.abs(imagpart() - temp.imagpart()) < EPSILON);
+    }
+    return false;
+}
+```
+
+</Part>
+

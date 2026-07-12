@@ -1,0 +1,118 @@
+---
+id: "algo-sub-bubble-sort"
+number: "A"
+title: "Sắp xếp nổi bọt (Bubble Sort)"
+parts:
+  - id: "it-part-bubble-sort"
+---
+
+<Part id="it-part-bubble-sort">
+
+**Mô tả bài toán**
+
+Cho một danh sách hoặc một mảng gồm n phần tử chưa được sắp xếp. Bài toán yêu cầu sắp xếp các phần tử này theo một thứ tự xác định—thường là tăng dần hoặc giảm dần—bằng cách thay đổi trực tiếp vị trí của chúng ngay trên mảng hiện tại mà không sử dụng mảng phụ.
+
+**Ý tưởng**
+
+Thuật toán Bubble Sort hoạt động dựa trên nguyên lý so sánh liên tiếp các cặp phần tử kế nhau. Nếu hai phần tử đứng sai thứ tự mong muốn, thuật toán sẽ thực hiện hoán đổi vị trí của chúng. Qua mỗi lượt duyệt đầy đủ từ đầu đến cuối mảng, phần tử lớn nhất chưa được sắp xếp sẽ dần dần "nổi" về phía cuối mảng giống như các bọt khí nổi lên mặt nước.
+
+**Thuật toán**
+
+Các bước thực hiện chi tiết của thuật toán Bubble Sort (phiên bản đã tối ưu):
+
+1. Bắt đầu từ đầu mảng, so sánh phần tử hiện tại <code>A[i]</code> với phần tử kế tiếp <code>A[i + 1]</code>.
+2. Nếu <code>A[i] &gt; A[i + 1]</code>, thực hiện hoán đổi hai phần tử này và đánh dấu bằng cờ hiệu rằng đã có hoán đổi xảy ra trong lượt duyệt này.
+3. Di chuyển sang cặp tiếp theo và lặp lại bước so sánh cho đến cuối phạm vi chưa sắp xếp. Khi kết thúc lượt duyệt, phần tử lớn nhất sẽ được cố định ở cuối mảng.
+4. Thu hẹp phạm vi duyệt cho lượt tiếp theo bằng cách bỏ qua phần tử vừa được cố định.
+5. Nếu hoàn thành một lượt duyệt đầy đủ mà không phát sinh bất kỳ phép hoán đổi nào, điều đó có nghĩa là mảng đã hoàn toàn ổn định và được sắp xếp. Thuật toán sẽ dừng lại ngay lập tức.
+
+**Minh họa từng bước**
+
+Sắp xếp mảng sau theo thứ tự tăng dần: [5, 1, 4, 2, 8].
+
+<BubbleSortVisualizer />
+
+* <b>Lượt duyệt 1:</b><br/>• So sánh 5 và 1: 5 &gt; 1 → Hoán đổi → [1, 5, 4, 2, 8]<br/>• So sánh 5 và 4: 5 &gt; 4 → Hoán đổi → [1, 4, 5, 2, 8]<br/>• So sánh 5 và 2: 5 &gt; 2 → Hoán đổi → [1, 4, 2, 5, 8]<br/>• So sánh 5 và 8: 5 &lt; 8 → Giữ nguyên → [1, 4, 2, 5, 8]<br/><i>(Kết thúc lượt 1, số 8 là phần tử lớn nhất đã nằm đúng vị trí cuối cùng).</i>
+* <b>Lượt duyệt 2:</b> (Chỉ duyệt trong phạm vi chưa sắp xếp [1, 4, 2, 5])<br/>• So sánh 1 và 4: 1 &lt; 4 → Giữ nguyên → [1, 4, 2, 5, 8]<br/>• So sánh 4 và 2: 4 &gt; 2 → Hoán đổi → [1, 2, 4, 5, 8]<br/>• So sánh 4 và 5: 4 &lt; 5 → Giữ nguyên → [1, 2, 4, 5, 8]<br/><i>(Kết thúc lượt 2, số 5 đã nằm đúng vị trí kế cuối).</i>
+* <b>Lượt duyệt 3:</b> (Chỉ duyệt trong phạm vi chưa sắp xếp [1, 2, 4])<br/>• So sánh 1 và 2: 1 &lt; 2 → Giữ nguyên → [1, 2, 4, 5, 8]<br/>• So sánh 2 và 4: 2 &lt; 4 → Giữ nguyên → [1, 2, 4, 5, 8]<br/><i>(Mảng đã được sắp xếp nhưng thuật toán cần chạy lượt 4 để xác nhận không còn hoán đổi).</i>
+* <b>Lượt duyệt 4:</b><br/>• Duyệt qua mảng, không phát sinh bất kỳ phép hoán đổi nào → Thuật toán kết thúc.
+
+**Pseudocode**
+
+Mã giả của thuật toán Bubble Sort tích hợp cờ hiệu dừng sớm:
+
+```pseudocode
+procedure bubbleSort(A : list of sortable items)
+    n := length(A)
+    repeat
+        swapped := false
+        for i := 1 to n - 1 inclusive do
+            if A[i - 1] > A[i] then
+                swap(A[i - 1], A[i])
+                swapped := true
+            end if
+        end for
+        n := n - 1
+    until not swapped
+end procedure
+```
+
+**Code Java**
+
+Triển khai thuật toán Bubble Sort tối ưu bằng Java:
+
+```java
+public class BubbleSort {
+    public static void sort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            // Vòng lặp trong chỉ chạy qua các phần tử chưa được sắp xếp cố định
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Hoán đổi hai phần tử kế nhau
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                } 
+            }
+            // Nếu không có hoán đổi nào xảy ra ở lượt duyệt này, dừng thuật toán sớm
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+}
+```
+
+**Độ phức tạp Big O**
+
+| Trường hợp | Độ phức tạp | Ghi chú |
+| --- | --- | --- |
+| Tốt nhất | O(n) | Mảng đã được sắp xếp hoàn hảo từ trước. |
+| Trung bình | O(n²) | Các phần tử phân bố ngẫu nhiên. |
+| Xấu nhất | O(n²) | Mảng bị sắp xếp ngược hoàn toàn so với mục tiêu. |
+| Bộ nhớ phụ | O(1) | Sắp xếp trực tiếp trên mảng hiện tại (in-place). |
+
+
+**Các lỗi thường gặp**
+
+1. **Bỏ quên cờ hiệu tối ưu hóa (`swapped`)**
+   * Nếu bỏ qua việc kiểm tra xem có phát sinh hoán đổi hay không, thuật toán sẽ luôn chạy đủ n-1 lượt duyệt bất kể mảng đã được sắp xếp xong từ trước, làm mất đi hiệu năng tối ưu O(n) trong trường hợp tốt nhất.
+
+2. **Lỗi vượt quá chỉ số mảng (`ArrayIndexOutOfBoundsException`)**
+   * Lỗi này thường xảy ra khi viết vòng lặp trong chạy đến <code>j &lt; n</code> nhưng lại thực hiện phép so sánh <code>arr[j] &gt; arr[j + 1]</code>. Chỉ số <code>j + 1</code> ở cuối mảng sẽ vượt qua ranh giới cho phép.
+   * Vòng lặp trong cần được giới hạn chính xác là <code>j &lt; n - i - 1</code>.
+
+3. **Lỗi làm mất tính ổn định (Stability)**
+   * Khi thực hiện so sánh, nếu sử dụng toán tử <code>&gt;=</code> (lớn hơn hoặc bằng) thay vì <code>&gt;</code> (lớn hơn), thuật toán sẽ tráo đổi vị trí của cả hai phần tử có giá trị bằng nhau. Điều này phá vỡ tính ổn định của giải thuật.
+
+4. **Bỏ qua hiệu ứng "Rùa" (Turtles)**
+   * Các phần tử có giá trị nhỏ nằm ở cuối mảng (được gọi là "rùa") di chuyển về đầu mảng cực kỳ chậm, mỗi lượt duyệt chỉ dịch chuyển sang trái được đúng 1 vị trí.
+   * Sự tồn tại của dù chỉ một phần tử "rùa" sẽ kéo lùi hiệu năng thực tế của thuật toán về mức O(n²).
+
+
+</Part>
+

@@ -1,0 +1,31 @@
+---
+id: "db-sub-1"
+number: "1"
+title: "Thiết kế lược đồ quan hệ và chuẩn hóa"
+parts:
+  - id: "db-part-1"
+    label: "a"
+    title: "Thực thể và liên kết (ERD)"
+  - id: "db-part-2"
+    label: "b"
+    title: "Các dạng chuẩn hóa dữ liệu (1NF, 2NF, 3NF)"
+---
+
+<Part id="db-part-1">
+
+Sơ đồ thực thể liên kết (Entity-Relationship Diagram - ERD) mô tả cấu trúc logic của cơ sở dữ liệu thông qua các thực thể, thuộc tính và mối quan hệ (1-1, 1-N, N-N).
+
+:::definition
+Khóa chính (Primary Key) xác định duy nhất một bản ghi trong bảng. Khóa ngoại (Foreign Key) dùng để liên kết dữ liệu giữa hai bảng khác nhau và đảm bảo tính toàn vẹn tham chiếu.
+:::
+
+</Part>
+
+<Part id="db-part-2">
+
+Chuẩn hóa cơ sở dữ liệu là quá trình tổ chức cấu trúc bảng nhằm giảm thiểu tối đa sự dư thừa dữ liệu và loại bỏ các dị thường (Insert/Update/Delete anomalies).
+
+→ *Dạng chuẩn 1 (1NF) yêu cầu mọi thuộc tính phải là nguyên tố (atomic). Dạng chuẩn 2 (2NF) yêu cầu không có phụ thuộc hàm bộ phận vào khóa chính. Dạng chuẩn 3 (3NF) loại bỏ các phụ thuộc bắc cầu.*
+
+</Part>
+

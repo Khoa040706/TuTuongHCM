@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import { MDXRemote } from "next-mdx-remote";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -380,8 +381,131 @@ function ChapterHeader({ title, subtitle, chapterId }) {
   );
 }
 
-export default function ContentRenderer({ chapters }) {
+export default function ContentRenderer({ chapters, mdxSource }) {
   const [activeLang, setActiveLang] = useState("java");
+
+  const mdxComponents = {
+    SummaryBox: ({ children }) => (
+      <div className="summary-box p-5 rounded-xl bg-green-500/5 border-l-4 border-green-600 my-5 font-sans">
+        <div className="summary-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-850">
+          {children}
+        </div>
+      </div>
+    ),
+    MnemonicBox: ({ children }) => (
+      <div className="mnemonic-box p-5 rounded-xl bg-amber-500/5 border-l-4 border-amber-500 my-5 font-sans">
+        <div className="mnemonic-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-850">
+          {children}
+        </div>
+      </div>
+    ),
+    QuoteBox: ({ children }) => (
+      <div className="quote-block my-5 italic">
+        <div className="quote-block__content text-stone-800 leading-[1.85] text-sm md:text-base font-playfair">
+          {children}
+        </div>
+      </div>
+    ),
+    HighlightBox: ({ children }) => (
+      <div className="highlight-box mb-4">
+        <div className="highlight-box__content text-stone-800 leading-[1.85] text-sm md:text-base font-sans">
+          {children}
+        </div>
+      </div>
+    ),
+    DefinitionBox: ({ children }) => (
+      <div className="definition-box p-5 rounded-xl bg-red-500/5 border-l-4 border-red-650 my-5 font-sans">
+        <div className="definition-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-800">
+          {children}
+        </div>
+      </div>
+    ),
+    Part: ({ id, children }) => (
+      <CinematicScrollWrapper className="mb-8">
+        <SpotlightCardWrapper id={`content-${id}`}>
+          <div className="card-content-blocks font-sans relative z-10">
+            {children}
+          </div>
+        </SpotlightCardWrapper>
+      </CinematicScrollWrapper>
+    ),
+    BubbleSortVisualizer,
+    QuickSortVisualizer,
+    QuickSortFlowchart,
+    MemoryVisualizer,
+    ConceptQuiz,
+    JavaRunCycleVisualizer,
+    CastingPlayground,
+    PrintfFormatter,
+    ComplexVisualizer,
+    FractionVisualizer,
+    HcmTimeline1945to1969,
+    HcmValuesExplorer,
+    HcmWorldDevelopment,
+    HcmChapter3GoalsExplorer,
+    HcmIndependenceFreedom,
+    HcmIndependenceHappiness,
+    HcmIndependenceThorough,
+    HcmIndependenceUnity,
+    HcmProletarianRevolution,
+    HcmPartyLeadership,
+    HcmNationalUnity,
+    HcmActiveCreativity,
+    HcmRevolutionaryViolence,
+    HcmSocialismConcept,
+    HcmSocialismNecessity,
+    HcmSocialismFeatures,
+    HcmSocialismGoals,
+    HcmSocialismDynamics,
+    HcmTransitionNature,
+    HcmTransitionPrinciples,
+    HcmRelationPrecondition,
+    HcmRelationGuarantee,
+    HcmRelationConditions,
+    HcmAppSteadfast,
+    HcmAppDemocracy,
+    HcmAppSystem,
+    HcmAppCombating,
+    LsdHistoryTimeline,
+    LsdObjectExplorer,
+    LsdFunctionsExplorer,
+    LsdTasksExplorer,
+    LsdMethodologyExplorer,
+    LsdSpecificMethodsExplorer,
+    LsdRequirementsGoalsExplorer,
+    LsdChapter1GoalsExplorer,
+    LsdCapitalismBelongings,
+    LsdOctoberRevolution,
+    LsdColonialVietnam,
+    LsdPatrioticMovements,
+    LsdSearchForWay,
+    LsdInternationalActivities,
+    LsdRevolutionPreparations,
+    LsdCommunistOrganizations,
+    LsdPartyFoundingConference,
+    LsdConferenceResolutions,
+    LsdHistorySignificance,
+    LsdMovement19301931,
+    LsdPoliticalThesis1930,
+    LsdRecoveryAndCongress1935,
+    LsdDemocracyContext,
+    LsdDemocracyMovement,
+    LsdDemocracySignificance,
+    LsdNationalLiberationStrategy,
+    LsdLiberationPreparation,
+    LsdAntiJapaneseMovement,
+    LsdAugustRevolution,
+    LsdRevolutionSignificance,
+  };
+
+  if (mdxSource) {
+    return (
+      <div className="content-area font-sans premium-mdx-content p-2 md:p-4">
+        <MDXRemote {...mdxSource} components={mdxComponents} />
+      </div>
+    );
+  }
+
   return (
     <div className="content-area font-sans">
       {chapters.map((ch) => (

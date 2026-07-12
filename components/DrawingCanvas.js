@@ -6,7 +6,8 @@ export default function DrawingCanvas({
   activeTool,
   activeColor,
   containerRef,
-  onClearRef
+  onClearRef,
+  drawingKey = "studymaster-drawings"
 }) {
   const svgRef = useRef(null);
   const [paths, setPaths] = useState([]);
@@ -15,21 +16,24 @@ export default function DrawingCanvas({
   const isErasingRef = useRef(false);
   const eraserRadius = 18;
 
-  // Load drawings from localStorage on mount
+  // Load drawings from localStorage on mount or key change
   useEffect(() => {
-    const saved = localStorage.getItem("studymaster-drawings");
+    const saved = localStorage.getItem(drawingKey);
     if (saved) {
       try {
         setPaths(JSON.parse(saved));
       } catch (e) {
         console.error("Lỗi khi tải drawings:", e);
+        setPaths([]);
       }
+    } else {
+      setPaths([]);
     }
-  }, []);
+  }, [drawingKey]);
 
   // Save drawings to localStorage
   const saveDrawings = (updatedPaths) => {
-    localStorage.setItem("studymaster-drawings", JSON.stringify(updatedPaths));
+    localStorage.setItem(drawingKey, JSON.stringify(updatedPaths));
   };
 
   // Keep a ref to paths for synchronous reading in event handlers
@@ -49,10 +53,10 @@ export default function DrawingCanvas({
     if (onClearRef) {
       onClearRef.current = () => {
         updatePaths([]);
-        localStorage.removeItem("studymaster-drawings");
+        localStorage.removeItem(drawingKey);
       };
     }
-  }, [onClearRef]);
+  }, [onClearRef, drawingKey]);
 
   // Track container dimensions using ResizeObserver
   useEffect(() => {

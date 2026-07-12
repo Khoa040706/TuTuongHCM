@@ -1,0 +1,40 @@
+---
+id: "oop-sub-intro-control"
+number: "6"
+title: "Câu lệnh Điều khiển và Kiểu dữ liệu Boolean (Control Statements & Boolean)"
+parts:
+  - id: "oop-part-boolean-logic"
+    label: "a"
+    title: "Kiểu dữ liệu boolean và toán tử logic"
+  - id: "oop-part-selection-statements"
+    label: "b"
+    title: "Cấu trúc rẽ nhánh (Selection Statements)"
+  - id: "oop-part-repetition-statements"
+    label: "c"
+    title: "Cấu trúc vòng lặp (Repetition Statements)"
+---
+
+<Part id="oop-part-boolean-logic">
+
+Khác biệt cốt lõi với ngôn ngữ ANSI C (quy ước số 0 là false, số khác 0 là true), Java tích hợp sẵn kiểu dữ liệu <b>boolean</b> nguyên bản. Kiểu dữ liệu này chỉ nhận hai từ khóa giá trị duy nhất là <code>true</code> hoặc <code>false</code>.
+
+* <b>Toán tử quan hệ (Relational Operators):</b> Dùng để so sánh trực tiếp các biểu thức số, bao gồm: <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>.
+* <b>Toán tử logic (Logical Operators):</b> Dùng để liên kết nhiều biểu thức điều kiện, toán hạng bắt buộc là giá trị boolean: <code>&&</code> (Phép VÀ logic), <code>||</code> (Phép HOẶC logic), <code>!</code> (Phép PHỦ ĐỊNH), <code>^</code> (Phép XOR tuyển loại - trả về true nếu hai toán hạng có giá trị trái ngược nhau).
+
+</Part>
+
+<Part id="oop-part-selection-statements">
+
+* <b>if-else:</b> Điều kiện nằm trong khối <code>if()</code> bắt buộc phải trả về kiểu dữ liệu boolean. Ví dụ biểu thức viết kiểu C như <code>if(x % 3)</code> là hoàn toàn bất hợp lệ trong Java; bắt buộc phải viết tường minh: <code>if(x % 3 != 0)</code>.
+* <b>switch-case:</b> Biểu thức truyền vào khối lệnh lựa chọn <code>switch()</code> chỉ được phép trả về các kiểu dữ liệu cụ thể: <code>char</code>, <code>byte</code>, <code>short</code>, <code>int</code> (hoặc <code>String</code>, <code>enum</code> ở các phiên bản Java mới). Sử dụng từ khóa <code>break</code> để ngăn chặn hiện tượng lọt rẽ nhánh (fall-through execution) sang các case phía dưới và dùng <code>default</code> để xử lý các trường hợp ngoại lệ không khớp.
+
+</Part>
+
+<Part id="oop-part-repetition-statements">
+
+* <b>Vòng lặp while:</b> Đánh giá điều kiện boolean trước khi thực thi thân vòng lặp.
+* <b>Vòng lặp do-while:</b> Luôn thực thi thân vòng lặp ít nhất một lần trước khi đánh giá điều kiện kiểm tra ở cuối.
+* <b>Vòng lặp for(A; B; C):</b> Tuân theo trật tự: Khởi tạo giá trị (A) -&gt; Kiểm tra điều kiện lặp dạng boolean (B) -&gt; Thực thi thân vòng lặp -&gt; Cập nhật chỉ số (C) -&gt; Kiểm tra lại điều kiện (B). Các thành phần A, B, C đều có thể để trống.
+
+</Part>
+

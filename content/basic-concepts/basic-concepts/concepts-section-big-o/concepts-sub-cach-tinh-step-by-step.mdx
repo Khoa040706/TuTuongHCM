@@ -1,0 +1,102 @@
+---
+id: "concepts-sub-cach-tinh-step-by-step"
+number: "3"
+title: "Cách tính Big O - Từng bước"
+parts:
+  - id: "concepts-part-big-o-rules"
+    label: "a"
+    title: "Hai quy tắc đơn giản hóa toán học"
+  - id: "concepts-part-big-o-structures"
+    label: "b"
+    title: "Mối liên hệ giữa Cấu trúc Code và Big O"
+  - id: "concepts-part-big-o-example-step"
+    label: "c"
+    title: "Ví dụ phân tích từng bước (Step-by-step)"
+  - id: "concepts-part-big-o-simulator"
+    label: "d"
+    title: "Giả lập trực quan: So sánh số phép tính theo n"
+---
+
+<Part id="concepts-part-big-o-rules">
+
+Khi tính toán Big O cho một chương trình thực tế, chúng ta áp dụng hai nguyên lý rút gọn sau:
+
+1. **Bỏ qua các hằng số số học**
+   * Thuật toán thực thi $5n$ bước có độ phức tạp là $O(n)$ thay vì $O(5n)$.
+   * Thuật toán chỉ thực thi $3$ lệnh gán tĩnh có độ phức tạp là $O(1)$.
+   * Thuật toán thực thi $7n^2$ bước có độ phức tạp là $O(n^2)$.
+
+2. **Chỉ giữ lại hạng tử có bậc lớn nhất**
+   * Độ phức tạp $O(n^2 + n + 1)$ được rút gọn thành $O(n^2)$.
+   * Độ phức tạp $O(n log n + n)$ được rút gọn thành $O(n log n)$.
+
+
+:::highlight
+Lý do khoa học: Khi kích thước dữ liệu $n$ tiến đến vô cực ($n \to \infty$), ảnh hưởng của hằng số và các số hạng bậc thấp trở nên vô cùng nhỏ bé, không còn tác động đến xu hướng tăng trưởng tổng thể.
+:::
+
+</Part>
+
+<Part id="concepts-part-big-o-structures">
+
+| Cấu trúc mã nguồn | Big O tương ứng | Giải thích cơ chế |
+| --- | --- | --- |
+| Các lệnh tuần tự đơn (gán, so sánh, cộng trừ) | $O(1)$ | Thực thi trong thời gian cố định, không phụ thuộc vào n. |
+| Một vòng lặp đơn chạy từ $1$ đến $n$ | $O(n)$ | Số phép tính tỉ lệ thuận tuyến tính với số vòng lặp n. |
+| Hai vòng lặp lồng nhau (mỗi vòng chạy n lần) | $O(n^2)$ | Vòng ngoài chạy n lần, vòng trong chạy n lần $\to n \times n = n^2$. |
+| Ba vòng lặp lồng nhau (mỗi vòng chạy n lần) | $O(n^3)$ | Thực hiện phép tính nhân ma trận $\to n \times n \times n = n^3$. |
+| Chia đôi kích thước dữ liệu ở mỗi bước lặp | $O(log n)$ | Kích thước bài toán giảm một nửa sau mỗi bước (như Binary Search). |
+| Chia để trị kết hợp duyệt qua các tầng | $O(n log n)$ | Chia đôi mảng đệ quy ($log n$ tầng) và trộn dữ liệu từng tầng ($n$ bước). |
+| Hai vòng lặp chạy độc lập kế tiếp nhau | $O(n)$ | Chi phí là $O(n) + O(n) = O(2n)$, rút gọn hằng số ta được $O(n)$. |
+
+
+</Part>
+
+<Part id="concepts-part-big-o-example-step">
+
+Hãy cùng phân tích độ phức tạp thời gian của đoạn mã nguồn sau:
+
+```python
+n = len(arr)
+total = 0
+
+# Vòng lặp đơn thứ nhất
+for x in arr:
+    total += x
+
+# Vòng lặp lồng nhau thứ hai
+for i in range(n):
+    for j in range(n):
+        if arr[i] == arr[j]:
+            print(arr[i])
+```
+
+* <b>Bước 1: Tính toán chi phí từng phần:</b><br/>• Hai lệnh khởi tạo <code>n = len(arr)</code> và <code>total = 0</code> tốn chi phí $O(1) + O(1) = O(1)$.<br/>• Vòng lặp đơn duyệt qua mảng <code>arr</code> chạy $n$ lần, tốn chi phí $O(n)$.<br/>• Vòng lặp lồng nhau hai tầng duyệt <code>i</code> từ $0$ đến $n-1$ và <code>j</code> từ $0$ đến $n-1$ tốn chi phí $n \times n = O(n^2)$.
+* <b>Bước 2: Cộng tổng chi phí:</b><br/>Tổng chi phí thực tế là: $T(n) = O(1) + O(n) + O(n^2)$.
+* <b>Bước 3: Áp dụng quy tắc rút gọn:</b><br/>Chỉ giữ lại hạng tử có bậc lớn nhất là $n^2$, bỏ qua các phần tử nhỏ hơn.<br/>Kết luận: Độ phức tạp của đoạn mã nguồn trên là $O(n^2)$.
+
+</Part>
+
+<Part id="concepts-part-big-o-simulator">
+
+Để thấy rõ sự phân hóa khủng khiếp giữa các độ phức tạp, bạn hãy tương tác kéo thử thanh trượt điều chỉnh số phần tử $N$ bên dưới để xem sự biến đổi số phép tính mô phỏng tương ứng:
+
+<BigOSimulator />
+
+<b>Bảng so sánh tĩnh chi tiết (Khi N tăng trưởng):</b>
+
+| Kích thước N | Mức O(1) | Mức O(log n) | Mức O(n) | Mức O(n log n) | Mức O(n²) |
+| --- | --- | --- | --- | --- | --- |
+| $10$ phần tử | 1 phép tính | ~3 phép tính | 10 phép tính | ~33 phép tính | 100 phép tính |
+| $100$ phần tử | 1 phép tính | ~7 phép tính | 100 phép tính | ~700 phép tính | 10.000 phép tính |
+| $1.000$ phần tử | 1 phép tính | ~10 phép tính | 1.000 phép tính | ~10.000 phép tính | 1.000.000 phép tính |
+| $10.000$ phần tử | 1 phép tính | ~13 phép tính | 10.000 phép tính | ~130.000 phép tính | 100.000.000 phép tính |
+| $1.000.000$ phần tử (1 Triệu) | 1 phép tính | ~20 phép tính | 1.000.000 phép tính | ~20.000.000 phép tính | 1.000.000.000.000 phép tính ($10^{12}$) |
+
+
+:::highlight
+Mẹo nhớ thực tế: Khi dữ liệu $n = 1\text{ triệu}$ dòng: Thuật toán $O(1)$ chỉ mất đúng 1 bước tính (tức thời), thuật toán $O(log n)$ chỉ mất khoảng 20 bước tính (tức thời), thuật toán $O(n)$ mất 1 triệu bước (dưới 1 giây). Tuy nhiên, thuật toán $O(n^2)$ cần tới $10^{12}$ bước! Nếu máy tính thực hiện 1 triệu phép tính trong 1 mili-giây, thuật toán $O(n^2)$ sẽ chạy ròng rã trong hơn 11 ngày liên tục! Máy tính sẽ lập tức báo lỗi đơ chương trình.
+:::
+
+</Part>
+

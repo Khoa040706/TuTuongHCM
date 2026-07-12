@@ -1,0 +1,21 @@
+---
+id: "concepts-sub-cac-hieu-lam"
+number: "5"
+title: "Các lỗi hiểu sai thường gặp"
+parts:
+  - id: "concepts-part-misunderstandings"
+    label: "a"
+    title: "Danh sách các quan niệm sai lầm phổ biến"
+---
+
+<Part id="concepts-part-misunderstandings">
+
+Dưới đây là những ngộ nhận kinh điển của sinh viên khi tự nghiên cứu về Big O Notation:
+
+* ❌ <b>Nhầm lẫn #1: "Big O chỉ biểu diễn cho trường hợp xấu nhất".</b><br/><i>Thực tế:</i> Big O là một công cụ toán học đo tốc độ tăng trưởng của hàm số. Ta hoàn toàn có thể phân tích Big O của trường hợp tốt nhất (Best-case) hoặc trung bình (Average-case). Tuy nhiên trong kỹ nghệ phần mềm, lập trình viên thường chú tâm vào trường hợp xấu nhất để đảm bảo hệ thống không bị đổ vỡ khi tải cao.
+* ❌ <b>Nhầm lẫn #2: "Thuật toán O(n) luôn luôn chạy nhanh hơn thuật toán O(n²)".</b><br/><i>Thực tế:</i> Nhận định này chỉ đúng khi dữ liệu đầu vào $n$ vượt quá một ngưỡng nhất định. Ví dụ, một thuật toán $O(n)$ có chi phí thực tế là $1000n$ phép tính, trong khi thuật toán $O(n^2)$ chỉ có chi phí $n^2$. Với $n = 5$ phần tử, thuật toán $O(n^2)$ chỉ tốn 25 phép tính, nhanh hơn rất nhiều so với 5.000 phép tính của thuật toán $O(n)$.
+* ❌ <b>Nhầm lẫn #3: "Big O đo trực tiếp thời gian chạy bằng giây hoặc mili-giây".</b><br/><i>Thực tế:</i> Big O đo xu hướng tăng số lượng phép tính cơ bản độc lập với tốc độ phần cứng. Một chiếc máy chủ siêu máy tính chạy thuật toán $O(n^2)$ trên 1 triệu phần tử có thể tốn vài chục phút, chậm hơn nhiều so với một chiếc máy tính xách tay văn phòng bình thường chạy thuật toán $O(n)$ trên cùng tập dữ liệu.
+* ❌ <b>Nhầm lẫn #4: "Thuật toán có Big O tốt hơn thì luôn luôn nên dùng trong mọi trường hợp".</b><br/><i>Thực tế:</i> Đôi khi thuật toán tối ưu Big O ($O(n log n)$ so với $O(n^2)$) lại cực kỳ phức tạp để lập trình, khó bảo trì, hoặc tốn quá nhiều bộ nhớ đệm phụ. Nếu kích thước dữ liệu thực tế luôn rất nhỏ ($n < 20$), ta nên chọn thuật toán có dòng mã nguồn trực quan, đơn giản, dễ đọc.
+
+</Part>
+

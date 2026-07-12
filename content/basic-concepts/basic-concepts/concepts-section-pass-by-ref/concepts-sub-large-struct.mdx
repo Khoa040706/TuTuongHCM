@@ -1,0 +1,40 @@
+---
+id: "concepts-sub-large-struct"
+number: "5"
+title: "Tầm quan trọng: Tại sao Pass by Reference quan trọng?"
+parts:
+  - id: "concepts-part-large-struct-desc"
+    label: "a"
+    title: "Hiệu năng khi truyền dữ liệu cấu trúc lớn (Struct/Object)"
+---
+
+<Part id="concepts-part-large-struct-desc">
+
+Khi chúng ta truyền một Struct hoặc một Class có kích thước lớn vào hàm bằng <b>Pass by Value</b>, chương trình bắt buộc phải sao chép toàn bộ các bytes dữ liệu đó sang Stack Frame mới. Điều này gây tốn kém thời gian chạy và dung lượng bộ nhớ ($O(n)$ với $n$ là kích thước đối tượng).
+
+```c
+// Giả sử cấu trúc Student chứa thông tin lớn
+struct Student {
+    char name[1000]; // 1000 bytes
+    int scores[500]; // 2000 bytes
+    // Tổng cộng ~3000 bytes mỗi đối tượng Student
+};
+
+// ❌ TỒI: Pass by Value - copy toàn bộ 3000 bytes mỗi lần gọi hàm!
+void printInfo_slow(Student s) {
+    // ... đọc dữ liệu
+}
+
+// ✔ TỐT: Pass by Reference (C++) - chỉ truyền địa chỉ/bí danh (tốn 8 bytes)
+// const đảm bảo an toàn, hàm không được phép chỉnh sửa struct gốc ngoài ý muốn
+void printInfo_fast(const Student& s) {
+    // ... đọc dữ liệu
+}
+```
+
+:::highlight
+<b>Phân tích hiệu năng:</b> Nếu cần xử lý danh sách $10.000$ sinh viên, hàm <code>printInfo_slow</code> sẽ phải nhân bản tổng cộng $30\text{MB}$ dữ liệu thừa trong bộ nhớ. Trong khi đó, <code>printInfo_fast</code> dùng tham chiếu chỉ tốn khoảng $80\text{KB}$ địa chỉ ô nhớ và tốc độ thực thi nhanh hơn hàng ngàn lần!
+:::
+
+</Part>
+

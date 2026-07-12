@@ -1,0 +1,43 @@
+---
+id: "oop-sub-intro-functions"
+number: "8"
+title: "API Lớp Math và Hàm tự định nghĩa (API & User-defined Functions)"
+parts:
+  - id: "oop-part-math-api"
+    label: "a"
+    title: "Sử dụng lớp Math (java.lang.Math)"
+  - id: "oop-part-user-defined-functions"
+    label: "b"
+    title: "Hàm do người dùng tự định nghĩa (User-defined Functions)"
+---
+
+<Part id="oop-part-math-api">
+
+Lớp Math cung cấp một loạt các phương thức toán học static cực kỳ tiện lợi bao gồm:
+
+* <code>abs()</code>: Lấy giá trị tuyệt đối.
+* <code>ceil()</code>: Làm tròn lên số nguyên gần nhất.
+* <code>floor()</code>: Làm tròn xuống số nguyên gần nhất.
+* <code>max() / min()</code>: Tìm giá trị lớn nhất / nhỏ nhất giữa hai số.
+* <code>pow(cơ_số, số_mũ)</code>: Tính lũy thừa.
+* <code>sqrt()</code>: Tính căn bậc hai.
+* <code>random()</code>: Sinh số ngẫu nhiên dạng double lớn hơn hoặc bằng 0.0 và nhỏ hơn 1.0 ($[0.0, 1.0)$).
+
+Ngoài ra, lớp Math quản lý hai hằng số tĩnh rất quan trọng là <code>Math.E</code> và <code>Math.PI</code>.
+
+</Part>
+
+<Part id="oop-part-user-defined-functions">
+
+Trong Java, khái niệm hàm độc lập của mô hình lập trình thủ tục (như trong C) được chuyển đổi thành <b>static/class method (phương thức tĩnh/phương thức lớp)</b>. Các phương thức này luôn được khai báo kèm từ khóa <code>static</code> đặt trước kiểu dữ liệu trả về của hàm.
+
+:::definition
+<b>Cơ chế truyền tham số vào hàm (Method Parameter Passing):</b> Java áp dụng cơ chế <b>truyền theo giá trị (pass by value)</b> cho toàn bộ các tham số. Khi phương thức được kích hoạt, một bản sao dữ liệu của đối số thực tế sẽ được nhân bản và gán vào tham số của hàm. Vì hai vùng nhớ của biến gốc và tham số hàm là hoàn toàn độc lập với nhau, nên mọi sự thay đổi giá trị của tham số bên trong hàm không gây bất kỳ tác động nào tới giá trị của biến gốc bên ngoài. Để cho phép hàm chỉnh sửa trực tiếp giá trị biến gốc, lập trình viên bắt buộc phải sử dụng kiểu dữ liệu tham chiếu đối tượng (object reference data type).
+:::
+
+:::highlight
+<b>Xem thêm:</b> Để hiểu sâu hơn về sự khác biệt giữa truyền tham trị và truyền tham chiếu trong bộ nhớ RAM, hãy tham khảo lại bài học chi tiết tại mục <a href='#content-pass-by-value-ref-visualizer' class='font-bold text-accent hover:underline'>Truyền Tham Trị & Truyền Tham Chiếu (Pass by Value vs Reference)</a> trong chương Cơ bản.
+:::
+
+</Part>
+

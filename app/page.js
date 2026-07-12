@@ -29,6 +29,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 import Sidebar from "../components/Sidebar";
+import { getSubsectionMdx } from "./actions/content";
 import ContentRenderer from "../components/ContentRenderer";
 import Quiz from "../components/Quiz";
 import ErrorBoundary from "../components/ErrorBoundary";
@@ -82,6 +83,8 @@ export default function Page() {
   
   // Navigation & Study states
   const [activeSubsectionId, setActiveSubsectionId] = useState("");
+  const [activeMdxSource, setActiveMdxSource] = useState(null);
+  const [loadingMdx, setLoadingMdx] = useState(false);
   const [isQuizMode, setIsQuizModeRaw] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
@@ -1361,6 +1364,61 @@ export default function Page() {
       document.documentElement.style.setProperty("--accent-rgb", "217, 119, 6");
     }
   }, [selectedSubjectId, allSubjects, appStep]);
+
+  // Load MDX file dynamically when activeSubsectionId changes
+  useEffect(() => {
+    if (!activeSubsectionId || appStep !== "study") {
+      setActiveMdxSource(null);
+      return;
+    }
+
+    const currentSub = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
+    if (!currentSub) return;
+
+    if (currentSub.isCustom) {
+      setActiveMdxSource(null);
+      return;
+    }
+
+    if (!currentSub.chapters) return;
+
+    // Find the chapterId and sectionId containing activeSubsectionId
+    let foundChapterId = null;
+    let foundSectionId = null;
+
+    for (const ch of currentSub.chapters) {
+      for (const sec of ch.sections) {
+        if (sec.subsections) {
+          const match = sec.subsections.find((sub) => sub.id === activeSubsectionId);
+          if (match) {
+            foundChapterId = ch.id;
+            foundSectionId = sec.id;
+            break;
+          }
+        }
+      }
+      if (foundChapterId) break;
+    }
+
+    if (foundChapterId && foundSectionId) {
+      setLoadingMdx(true);
+      getSubsectionMdx(selectedSubjectId, foundChapterId, foundSectionId, activeSubsectionId)
+        .then((res) => {
+          if (res) {
+            setActiveMdxSource(res.mdxSource);
+          } else {
+            setActiveMdxSource(null);
+          }
+        })
+        .catch((err) => {
+          console.error("Error loading MDX:", err);
+          setActiveMdxSource(null);
+        })
+        .finally(() => {
+          setLoadingMdx(false);
+        });
+    }
+  }, [activeSubsectionId, selectedSubjectId, allSubjects, appStep]);
 
   // Add Subject Form inputs
   const [newSubTitle, setNewSubTitle] = useState("");
@@ -3289,7 +3347,14 @@ export default function Page() {
                     className="relative flex-1 w-full max-w-5xl mx-auto px-6 pt-12 pb-44 md:px-12 animate-in"
                   >
                     {/* Content text */}
-                    <ContentRenderer key={reRenderKey} chapters={chapters} />
+                    {loadingMdx ? (
+                      <div className="flex flex-col items-center justify-center py-24 space-y-4">
+                        <div className="w-10 h-10 border-4 border-stone-200 border-t-accent rounded-full animate-spin" />
+                        <span className="text-xs font-bold text-stone-400 tracking-widest uppercase animate-pulse select-none">Đang tải bài học...</span>
+                      </div>
+                    ) : (
+                      <ContentRenderer key={reRenderKey} chapters={chapters} mdxSource={activeMdxSource} />
+                    )}
 
                     {/* Custom Notebook Workspace for Custom Subjects */}
                     {currentSubject.isCustom && (
@@ -3314,6 +3379,7 @@ export default function Page() {
                       activeColor={activeColor}
                       containerRef={contentContainerRef}
                       onClearRef={onClearRef}
+                      drawingKey={`studymaster-drawings-${selectedSubjectId}-${activeSubsectionId}`}
                     />
                   </div>
                 )}

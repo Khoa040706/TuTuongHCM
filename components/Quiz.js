@@ -12,6 +12,7 @@ import { db } from "../lib/firebase";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { subjects } from "../data/index";
 import confetti from "canvas-confetti";
+import { submitExamScore } from "../app/actions/quiz";
 
 const STATE_STORAGE_KEY = "studymaster_active_quiz_state";
 
@@ -623,7 +624,18 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       return;
     }
 
-    setQuestions(sampled);
+    if (mode === "end") {
+      // Strip answers and explanations for exam security
+      const secureQuestions = sampled.map(q => {
+        const qCopy = { ...q };
+        delete qCopy.answer;
+        delete qCopy.explanation;
+        return qCopy;
+      });
+      setQuestions(secureQuestions);
+    } else {
+      setQuestions(sampled);
+    }
     setAnswers(new Array(sampled.length).fill(-1));
     setBookmarks(new Set());
     setCurrentIndex(0);
@@ -715,6 +727,62 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
   const submitQuiz = async () => {
     clearQuizState();
+
+    if (mode === "end") {
+      try {
+        setLoadingRankings(true);
+        const res = await submitExamScore({
+          name,
+          subjectId,
+          chapterId: selectedChapterId,
+          examSetId: selectedSet,
+          isTrickMode,
+          questionsState: questions,
+          clientAnswers: answers,
+          elapsedTime
+        });
+
+        setLatestScore(res.score);
+
+        // Re-inject correct answers and explanations back to the questions state for the review screen
+        const updatedQuestions = questions.map((q, idx) => {
+          const graded = res.gradedResults[idx];
+          return {
+            ...q,
+            answer: graded.correctOptionIndex,
+            explanation: graded.explanation
+          };
+        });
+        setQuestions(updatedQuestions);
+
+        const record = {
+          name,
+          score: res.score,
+          total: questions.length,
+          time: elapsedTime,
+          date: new Date().toISOString(),
+          chapterId: selectedChapterId,
+          examSetId: isTrickMode ? "trick" : selectedSet
+        };
+
+        // Save to LocalStorage history
+        const existing = getRankingsFromLocalStorage(selectedChapterId);
+        existing.push(record);
+        localStorage.setItem(`studymaster_quiz_rankings_${selectedChapterId}`, JSON.stringify(existing));
+
+        setStep("results");
+        if (res.score / (questions.length || 40) >= 0.8) {
+          triggerConfetti();
+        }
+        await loadAndRenderLeaderboard(res.score, record);
+      } catch (err) {
+        console.error("Lỗi khi nộp điểm thi lên server:", err);
+        if (showToast) showToast("Lỗi khi nộp điểm: " + err.message, "error");
+      } finally {
+        setLoadingRankings(false);
+      }
+      return;
+    }
 
     let correct = 0;
     questions.forEach((q, idx) => {

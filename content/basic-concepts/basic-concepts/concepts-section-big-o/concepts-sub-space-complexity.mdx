@@ -1,0 +1,24 @@
+---
+id: "concepts-sub-space-complexity"
+number: "6"
+title: "Space Complexity - Big O cho bộ nhớ"
+parts:
+  - id: "concepts-part-space-def"
+    label: "a"
+    title: "Khái niệm Độ phức tạp Không gian"
+---
+
+<Part id="concepts-part-space-def">
+
+Bên cạnh thời gian chạy, bộ nhớ RAM tiêu thụ cũng là một tài nguyên giới hạn. <b>Space Complexity</b> đo lượng bộ nhớ bổ sung (Memory Allocation) mà thuật toán yêu cầu cấp phát trong suốt quá trình chạy khi kích thước dữ liệu $n$ biến đổi.
+
+| Tên thuật toán | Độ phức tạp bộ nhớ | Nguyên lý giải thích chi tiết |
+| --- | --- | --- |
+| Tìm kiếm tuyến tính / Nhị phân | $O(1)$ | Chỉ khởi tạo một số ít biến điều khiển tĩnh (như <code>left</code>, <code>right</code>, <code>mid</code>). Không tạo thêm mảng phụ nhân bản dữ liệu đầu vào. |
+| Thuật toán sắp xếp Merge Sort | $O(n)$ | Bắt buộc phải tạo ra một vùng nhớ đệm phụ có kích thước tuyến tính tương ứng với $n$ phần tử để thực hiện việc gộp (Merge) các mảng con. |
+| Tìm kiếm nhị phân bằng Đệ quy | $O(log n)$ | Mỗi lời gọi đệ quy tự động đẩy một bản ghi hoạt động (Call Stack Frame) chứa thông tin đối số vào bộ nhớ Stack của hệ thống. Độ sâu stack tối đa là $log n$. |
+| Fibonacci Đệ quy ngây thơ | $O(n)$ | Hệ thống phải duy trì cây đệ quy và lưu giữ Call Stack với độ sâu tuyến tính tối đa chạm ngưỡng $n$ trước khi bắt đầu quay lui (Backtrack). |
+
+
+</Part>
+

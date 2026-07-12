@@ -1,0 +1,51 @@
+---
+id: "oop-sub-intro-structure"
+number: "3"
+title: "Cấu trúc Chương trình Cơ bản (Basic Structure)"
+parts:
+  - id: "oop-part-c-vs-java"
+    label: "a"
+    title: "So sánh cấu trúc mã nguồn in chuỗi chữ giữa C và Java"
+  - id: "oop-part-package-class"
+    label: "b"
+    title: "Các quan sát kỹ thuật quan trọng về Package và Class"
+---
+
+<Part id="oop-part-c-vs-java">
+
+Hãy quan sát sự khác biệt về cú pháp khai báo chương trình đơn giản nhất giữa hai ngôn ngữ:
+
+```c
+// Cấu trúc của ngôn ngữ C (HelloWorld.c)
+#include <stdio.h>
+int main(void) {
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+```java
+// Cấu trúc của ngôn ngữ Java (HelloWorld.java)
+import java.lang.*; // Dòng này có thể lược bỏ
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+```
+
+:::highlight
+<b>Sai lầm kinh điển của người mới học (Beginners' common mistake):</b> Tên của lớp công khai (<code>public class</code>) bắt buộc phải trùng khớp hoàn toàn (kể cả chữ hoa chữ thường) với tên file chứa mã nguồn (ví dụ file phải đặt tên chính xác là <code>HelloWorld.java</code>).
+:::
+
+</Part>
+
+<Part id="oop-part-package-class">
+
+* <b>Package (Gói thư viện):</b> Thư viện trong Java được gọi là package, tổ chức theo mô hình phân cấp thư mục hình cây để tránh xung đột tên gọi. Câu lệnh <code>System.out.println()</code> nằm trong cấu trúc <code>java.lang.System</code>, nghĩa là <code>lang</code> (language) là một package con nằm trong package cha <code>java</code>, và <code>System</code> là một class nằm trong package <code>lang</code>.
+* <b>Cú pháp Import:</b> Sử dụng từ khóa <code>import XXXXXX;</code> để nhúng thư viện bên ngoài. Ký tự đại diện dấu sao <code>*</code> (wildcard) được dùng để import toàn bộ các class thuộc cùng một gói. Riêng gói <code>java.lang</code> được hệ thống tự động import mặc định nên dòng lệnh đầu tiên ví dụ trên là tùy chọn (optional).
+* <b>Phương thức main():</b> Hàm <code>main()</code> đóng vai trò là điểm xuất phát khởi đầu (execution starting point) duy nhất của chương trình. Trong Java, hàm này bắt buộc phải được bao bọc hoàn toàn bên trong một khối lớp (class).
+* <b>Biên dịch Class:</b> Mỗi lớp đơn lẻ bên trong file mã nguồn sau khi biên dịch sẽ tự động tách thành một file <code>.class</code> độc lập mang tên của chính lớp đó.
+
+</Part>
+
