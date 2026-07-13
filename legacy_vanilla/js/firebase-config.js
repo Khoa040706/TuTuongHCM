@@ -9,7 +9,7 @@
  * 2. Điền các thông số cấu hình dự án Firebase của bạn dưới đây.
  */
 const firebaseConfig = {
-  apiKey: "AIzaSyAihe2T4ukk4_hBRTpYGpLEgTbTc_miijg",
+  apiKey: "AIzaSyAIhe2T4ukk4_hBRTpYGplEgTbTc_miijg",
   authDomain: "studymaster-tutuonghcm.firebaseapp.com",
   projectId: "studymaster-tutuonghcm",
   storageBucket: "studymaster-tutuonghcm.firebasestorage.app",
