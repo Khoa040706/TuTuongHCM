@@ -547,7 +547,7 @@ export default function ContentRenderer({ chapters, mdxSource }) {
                   )}
 
                   {/* Parts (Rendered as premium study cards with 3D animation) */}
-                  {sub.parts.map((part, partIdx) => {
+                  {sub.parts && sub.parts.map((part, partIdx) => {
                     const hasHeading = part.label || part.title;
                     const basePath = `${ch.id}-${sec.id}-${sub.id}-${part.id}`;
 
@@ -563,7 +563,7 @@ export default function ContentRenderer({ chapters, mdxSource }) {
 
                           {/* Content Blocks */}
                           <div className="card-content-blocks font-sans relative z-10">
-                            {part.content.map((block, idx) => (
+                            {part.content && part.content.map((block, idx) => (
                               <ContentBlock
                                 key={idx}
                                 block={block}

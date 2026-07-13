@@ -913,5 +913,35 @@ ul.bullet-list.bullet-list--sub li::before {
   z-index: 1;
 }
 
+/* Responsive login page background */
+.login-bg-container {
+  background-image: url('/assets/login_mobile.png');
+}
+
+@media (min-width: 768px) {
+  .login-bg-container {
+    background-image: url('/assets/login.png');
+  }
+}
+
+/* Alignments for mascot and login button */
+.mascot-align {
+  transform: translate(-50%, -50%);
+}
+@media (min-width: 768px) {
+  .mascot-align {
+    transform: translate(calc(-50% - 6px), -50%) !important;
+  }
+}
+
+.btn-align {
+  transform: translate(-50%, -50%);
+}
+@media (min-width: 768px) {
+  .btn-align {
+    transform: translate(calc(-50% - 7px), -50%) !important;
+  }
+}
+
 
 

@@ -37,6 +37,8 @@ import DrawingCanvas from "../components/DrawingCanvas";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../lib/firebase";
 
 // Custom premium Google SVG icon
 const GoogleIcon = ({ size = 18, className = "" }) => (
@@ -111,6 +113,14 @@ export default function Page() {
 
   const [isMobileToolbarOpen, setIsMobileToolbarOpen] = useState(false);
   const [isAdminSidebarOpen, setIsAdminSidebarOpen] = useState(false);
+
+  // Google Authentication first-time setup state variables
+  const [showGoogleRegisterModal, setShowGoogleRegisterModal] = useState(false);
+  const [googleUserTemp, setGoogleUserTemp] = useState(null);
+  const [googleUsername, setGoogleUsername] = useState("");
+  const [googlePassword, setGooglePassword] = useState("");
+  const [googleConfirmPassword, setGoogleConfirmPassword] = useState("");
+  const [showGooglePassword, setShowGooglePassword] = useState(false);
 
   const penColors = [
     { value: "#EF4444", label: "🔴" },
@@ -2395,10 +2405,117 @@ export default function Page() {
     setAppStep("login");
   };
 
-  const handleGoogleLogin = (gmail) => {
-    setShowGooglePopup(false);
-    const displayName = gmail.split("@")[0];
-    loginSuccess(displayName);
+  const handleRealGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      
+      if (!user || !user.email) {
+        showToast("Không thể lấy thông tin email từ Google.", "error");
+        return;
+      }
+      
+      const email = user.email;
+      const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+      const foundUser = users.find(u => u.email === email);
+      
+      if (foundUser) {
+        if (foundUser.locked) {
+          showAlert({
+            title: "Tài khoản bị khóa",
+            message: "Tài khoản của bạn đã bị Admin khóa. Vui lòng liên hệ Admin để được mở khóa!",
+            type: "warning"
+          });
+          return;
+        }
+        showToast(`Chào mừng quay trở lại, ${foundUser.username}!`, "success");
+        loginSuccess(foundUser.username);
+      } else {
+        // First-time login: store user info in temporary state and show register popup
+        setGoogleUserTemp({
+          email: email,
+          displayName: user.displayName || ""
+        });
+        // Pre-fill username with email prefix
+        const emailPrefix = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, "");
+        setGoogleUsername(emailPrefix);
+        setGooglePassword("");
+        setGoogleConfirmPassword("");
+        setShowGoogleRegisterModal(true);
+      }
+    } catch (error) {
+      console.error("Google Auth Error:", error);
+      if (error.code !== "auth/popup-closed-by-user") {
+        showToast(`Lỗi đăng nhập Google: ${error.message}`, "error");
+      }
+    }
+  };
+
+  const handleGoogleRegisterSubmit = (e) => {
+    e.preventDefault();
+    if (!googleUserTemp) return;
+    
+    const usernameTrimmed = googleUsername.trim();
+    if (!usernameTrimmed) {
+      showToast("Tên đăng nhập không được để trống.", "error");
+      return;
+    }
+    
+    // Check if username already exists in local database
+    const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
+    const usernameExists = users.some(u => u.username.toLowerCase() === usernameTrimmed.toLowerCase());
+    
+    if (usernameExists) {
+      showToast("Tên đăng nhập này đã được sử dụng. Vui lòng chọn tên khác.", "error");
+      return;
+    }
+    
+    // Password validation: 4-factors
+    const password = googlePassword;
+    const confirmPassword = googleConfirmPassword;
+    
+    if (password !== confirmPassword) {
+      showToast("Mật khẩu xác nhận không khớp.", "error");
+      return;
+    }
+    
+    const validation = getPasswordValidation(password);
+    if (!validation.length || !validation.uppercase || !validation.number || !validation.special) {
+      showToast("Mật khẩu không đáp ứng đầy đủ yêu cầu bảo mật.", "error");
+      return;
+    }
+    
+    // Create new student user
+    const newUser = {
+      username: usernameTrimmed,
+      email: googleUserTemp.email,
+      password: password,
+      role: "student",
+      locked: false,
+      createdAt: Date.now()
+    };
+    
+    users.push(newUser);
+    localStorage.setItem("studymaster_users", JSON.stringify(users));
+    
+    // Log registration activity
+    const systemLogs = JSON.parse(localStorage.getItem("studymaster_logs") || "[]");
+    systemLogs.push({
+      id: Date.now(),
+      user: usernameTrimmed,
+      action: `Đăng ký học viên mới bằng Google (Email: ${googleUserTemp.email})`,
+      timestamp: new Date().toLocaleString("vi-VN"),
+      type: "register"
+    });
+    localStorage.setItem("studymaster_logs", JSON.stringify(systemLogs));
+    
+    showToast("Đăng ký thông tin học viên thành công!", "success");
+    setShowGoogleRegisterModal(false);
+    setGoogleUserTemp(null);
+    
+    // Log the user in
+    loginSuccess(usernameTrimmed);
   };
 
   const loginSuccess = (username) => {
@@ -2555,15 +2672,13 @@ export default function Page() {
       {(appStep === "login" || appStep === "register" || appStep === "forgot-password") && (
         <div
           ref={landingContainerRef}
-          className="min-h-screen flex flex-col justify-center items-center z-10 relative bg-cover bg-center bg-[#07090e] w-full overflow-hidden text-stone-100 transition-colors duration-500"
-          style={{ backgroundImage: "url('/assets/login.png')" }}
+          className="login-bg-container min-h-screen flex flex-col justify-center items-center z-10 relative bg-cover bg-center bg-[#07090e] w-full overflow-hidden text-stone-100 transition-colors duration-500"
         >
           {/* Main Cinematic Landing Page Content (blurs when overlay is open) */}
           <div className={`flex-grow w-full z-30 blur-transition relative ${showAuthOverlay ? "blur-active" : ""}`}>
-            {/* Mascot & Astrology Wheel (positioned absolutely at y = 25% from top) */}
+            {/* Mascot & Astrology Wheel (positioned absolutely at y = 28% on mobile / 25% on desktop) */}
             <div 
-              className="absolute top-[25%] left-1/2 flex items-center justify-center"
-              style={{ transform: 'translate(calc(-50% - 6px), -50%)' }}
+              className="mascot-align absolute top-[28%] md:top-[25%] left-1/2 flex items-center justify-center"
             >
               <div className="mascot-wrapper float-slow relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
                 {/* Nested Celestial Gyroscopic Rings SVG */}
@@ -2597,15 +2712,13 @@ export default function Page() {
             <h1 className="sr-only">StudyMaster</h1>
             <p className="sr-only">♋</p>
             
-            {/* Animated Login Button (positioned absolutely at y = 66% from top) */}
+            {/* Animated Login Button (positioned absolutely at y = 53.5% on mobile / 68% on desktop) */}
             <div 
-              className="absolute top-[66%] left-1/2"
-              style={{ transform: 'translate(calc(-50% - 7px), -50%)' }}
+              className="btn-align absolute top-[53.5%] md:top-[68%] left-1/2"
             >
               <button
                 onClick={() => setShowAuthOverlay(true)}
-                className="landing-login-btn px-10 py-2.5 rounded-full border border-accent/60 text-accent bg-[#12110f]/30 hover:bg-accent hover:text-stone-950 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.15)] cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] active:scale-95 duration-300 hover:border-accent"
-                style={{ minWidth: "180px" }}
+                className="landing-login-btn px-6 py-1.5 md:px-10 md:py-2.5 rounded-full border border-accent/60 text-accent bg-[#12110f]/30 hover:bg-accent hover:text-stone-950 text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.15)] cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] active:scale-95 duration-300 hover:border-accent w-[135px] md:w-[180px]"
               >
                 Đăng nhập
               </button>
@@ -2727,7 +2840,7 @@ export default function Page() {
                   </div>
 
                   <button
-                    onClick={() => setShowGooglePopup(true)}
+                    onClick={handleRealGoogleLogin}
                     className="w-full py-2 rounded-xl border border-stone-800 hover:border-accent/40 bg-transparent text-static-stone-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <GoogleIcon size={16} />
@@ -3796,52 +3909,134 @@ export default function Page() {
       </div>
       )}
 
-      {/* GOOGLE ACCOUNTS CHOOSER MODAL POP-UP */}
-      {showGooglePopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in">
-          <div className="w-full max-w-sm bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-6 shadow-2xl space-y-6 text-left">
-            <div className="flex items-center justify-between border-b border-stone-150 dark:border-stone-800 pb-3">
-              <div className="flex items-center gap-2">
+      {/* GOOGLE FIRST-TIME REGISTER MODAL */}
+      {showGoogleRegisterModal && googleUserTemp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-in">
+          <div className="w-full max-w-md bg-[#0e1118]/90 border border-stone-800/80 rounded-3xl p-6 shadow-[0_0_50px_rgba(0,0,0,0.8)] space-y-5 text-left hero-glass-card text-stone-200">
+            <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+              <div className="flex items-center gap-2.5">
                 <GoogleIcon size={20} />
-                <span className="font-bold text-sm text-stone-800 dark:text-stone-200">Đăng nhập bằng Google</span>
+                <span className="font-bold text-sm text-accent tracking-wider uppercase">Đăng nhập lần đầu</span>
               </div>
               <button
-                onClick={() => setShowGooglePopup(false)}
-                className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
+                onClick={() => {
+                  setShowGoogleRegisterModal(false);
+                  setGoogleUserTemp(null);
+                }}
+                className="text-stone-400 hover:text-white transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
             </div>
 
-            <p className="text-xs text-stone-500 leading-relaxed">
-              Chọn một tài khoản Google mẫu để tiếp tục kết nối với StudyMaster:
-            </p>
-
-            <div className="space-y-2.5">
-              {[
-                { name: "Khoa Hồ Chí Minh", email: "khoa040706@gmail.com", avatar: "👨‍🎓" },
-                { name: "Nguyễn Văn Học", email: "hocsinhgioi@gmail.com", avatar: "📚" },
-                { name: "Khách viếng thăm", email: "studymaster.guest@gmail.com", avatar: "✈️" }
-              ].map((account, idx) => (
-                <button
-                   key={idx}
-                   onClick={() => handleGoogleLogin(account.email)}
-                   className="w-full flex items-center gap-3 p-3 rounded-xl border border-stone-150 dark:border-stone-800 hover:bg-stone-50 dark:hover:bg-stone-850 transition-colors text-left cursor-pointer"
-                >
-                  <span className="w-9 h-9 rounded-full bg-teal-500/10 flex items-center justify-center text-lg">
-                    {account.avatar}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-bold text-stone-800 dark:text-stone-150 truncate">{account.name}</div>
-                    <div className="text-[10px] text-stone-400 truncate">{account.email}</div>
-                  </div>
-                </button>
-              ))}
+            <div>
+              <h3 className="text-base font-bold text-white mb-1">Hoàn thiện thông tin</h3>
+              <p className="text-[11px] text-stone-400 leading-relaxed">
+                Tài khoản Google **{googleUserTemp.email}** chưa được liên kết. Vui lòng tạo tên đăng nhập và mật khẩu để hoàn tất đăng ký học viên.
+              </p>
             </div>
 
-            <p className="text-[10px] text-stone-400 text-center">
-              Dữ liệu được giả lập bảo mật trên hệ thống StudyMaster client.
-            </p>
+            <form onSubmit={handleGoogleRegisterSubmit} className="space-y-4">
+              {/* Read-only Email Field */}
+              <div className="space-y-1">
+                <label className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider select-none">Email Google</label>
+                <input
+                  type="text"
+                  value={googleUserTemp.email}
+                  disabled
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-800 bg-stone-900/60 text-xs text-stone-500 font-sans cursor-not-allowed"
+                />
+              </div>
+
+              {/* Username Field */}
+              <div className="space-y-1">
+                <label className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider select-none">Tên đăng nhập mới *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Nhập tên đăng nhập của bạn (viết liền không dấu)"
+                  value={googleUsername}
+                  onChange={(e) => setGoogleUsername(e.target.value.replace(/[^a-zA-Z0-9]/g, ""))}
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-800 bg-[#161a24] text-xs text-white focus:outline-none focus:border-accent transition-colors font-sans"
+                />
+              </div>
+
+              {/* Password Field */}
+              <div className="space-y-1 relative">
+                <label className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider select-none">Mật khẩu *</label>
+                <div className="relative">
+                  <input
+                    type={showGooglePassword ? "text" : "password"}
+                    required
+                    placeholder="Nhập mật khẩu an toàn của bạn"
+                    value={googlePassword}
+                    onChange={(e) => setGooglePassword(e.target.value)}
+                    className="w-full px-4 py-2.5 pr-10 rounded-xl border border-stone-800 bg-[#161a24] text-xs text-white focus:outline-none focus:border-accent transition-colors font-sans"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowGooglePassword(!showGooglePassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-white"
+                  >
+                    {showGooglePassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Confirm Password Field */}
+              <div className="space-y-1">
+                <label className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider select-none">Xác nhận mật khẩu *</label>
+                <input
+                  type={showGooglePassword ? "text" : "password"}
+                  required
+                  placeholder="Nhập lại mật khẩu phía trên"
+                  value={googleConfirmPassword}
+                  onChange={(e) => setGoogleConfirmPassword(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-800 bg-[#161a24] text-xs text-white focus:outline-none focus:border-accent transition-colors font-sans"
+                />
+              </div>
+
+              {/* Password Strength Checklist (4 factors) */}
+              <div className="p-3.5 rounded-xl bg-stone-900/50 border border-stone-800/60 space-y-2">
+                <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider select-none mb-1">Yêu cầu bảo mật mật khẩu:</div>
+                
+                {[
+                  { label: "Độ dài tối thiểu 8 ký tự", ok: getPasswordValidation(googlePassword).length },
+                  { label: "Chứa ít nhất 1 chữ hoa (A-Z)", ok: getPasswordValidation(googlePassword).uppercase },
+                  { label: "Chứa ít nhất 1 chữ số (0-9)", ok: getPasswordValidation(googlePassword).number },
+                  { label: "Chứa ít nhất 1 ký tự đặc biệt (!@#...)", ok: getPasswordValidation(googlePassword).special }
+                ].map((req, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-[10px] font-sans">
+                    <span className={`w-3.5 h-3.5 rounded-full flex items-center justify-center text-[8px] font-bold ${
+                      req.ok ? "bg-emerald-500/25 text-emerald-400" : "bg-stone-800 text-stone-550"
+                    }`}>
+                      {req.ok ? "✓" : "○"}
+                    </span>
+                    <span className={req.ok ? "text-stone-300" : "text-stone-500"}>{req.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowGoogleRegisterModal(false);
+                    setGoogleUserTemp(null);
+                  }}
+                  className="px-5 py-2 rounded-xl text-stone-400 hover:text-white text-xs font-bold transition-colors cursor-pointer"
+                >
+                  Hủy bỏ
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-xl bg-accent text-stone-950 hover:bg-accent/90 font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg cursor-pointer"
+                >
+                  Hoàn tất & Vào học
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
