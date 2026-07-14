@@ -146,14 +146,27 @@ export default function Sidebar({
 
       if (chToExpand && secToExpand) {
         setExpandedGroups((prev) => {
-          if (prev[chToExpand] && prev[secToExpand]) {
-            return prev; // No change, return same reference to avoid re-rendering
+          const nextExpanded = { ...prev };
+          let changed = false;
+
+          if (!nextExpanded[chToExpand]) {
+            nextExpanded[chToExpand] = true;
+            changed = true;
           }
-          return {
-            ...prev,
-            [chToExpand]: true,
-            [secToExpand]: true
-          };
+          if (!nextExpanded[secToExpand]) {
+            nextExpanded[secToExpand] = true;
+            changed = true;
+          }
+
+          // Collapse other chapters
+          chapters.forEach((c) => {
+            if (c.id !== chToExpand && nextExpanded[c.id]) {
+              nextExpanded[c.id] = false;
+              changed = true;
+            }
+          });
+
+          return changed ? nextExpanded : prev;
         });
       }
     }
@@ -189,7 +202,31 @@ export default function Sidebar({
   };
 
   const handleChapterClick = (chId) => {
-    toggleGroup(chId);
+    const isChExpanded = expandedGroups[chId];
+    if (isChExpanded) {
+      setExpandedGroups((prev) => ({
+        ...prev,
+        [chId]: false
+      }));
+      if (isQuizMode) {
+        showConfirm({
+          title: "Xác nhận thoát",
+          message: "Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn thoát? Kết quả chưa nộp sẽ bị mất.",
+          confirmText: "Thoát",
+          cancelText: "Ở lại",
+          type: "warning",
+          onConfirm: () => {
+            setIsQuizMode(false);
+            onNavigate(`chapter-${chId}`);
+            setIsOpen(false);
+          }
+        });
+        return;
+      }
+      onNavigate(`chapter-${chId}`);
+      return;
+    }
+
     if (isQuizMode) {
       showConfirm({
         title: "Xác nhận thoát",
@@ -306,13 +343,13 @@ export default function Sidebar({
     <>
       {/* Sidebar element */}
       <aside
-        className={`fixed z-40 w-72 bg-[#fcfbf9]/95 text-stone-900 flex flex-col transition-all duration-300 ease-in-out
+        className={`fixed z-40 w-72 shrink-0 bg-[#fcfbf9]/95 text-stone-900 flex flex-col transition-all duration-300 ease-in-out
           inset-y-0 left-0 border-r border-stone-200
-          md:top-4 md:left-4 md:bottom-4 md:inset-y-auto md:h-[calc(100vh-2rem)] md:rounded-3xl md:border md:border-stone-200/80 md:shadow-[0_10px_35px_rgba(0,0,0,0.05)] md:backdrop-blur-md
+          md:sticky md:top-4 md:h-[calc(100vh-2rem)] md:z-30 md:rounded-3xl md:border md:border-stone-200/80 md:shadow-[0_10px_35px_rgba(0,0,0,0.05)] md:backdrop-blur-md md:shrink-0
           ${
             forceHide
-              ? "-translate-x-full md:-translate-x-[calc(100%+2rem)]"
-              : "md:translate-x-0 " + (isOpen ? "translate-x-0" : "-translate-x-full")
+              ? "-translate-x-full md:hidden"
+              : (isOpen ? "translate-x-0" : "-translate-x-full") + " md:translate-x-0"
           }`}
       >
         {/* Header Logo */}
@@ -384,13 +421,17 @@ export default function Sidebar({
                   <li key={ch.id} className="space-y-1">
                     <button
                       onClick={() => handleChapterClick(ch.id)}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-bold text-stone-850 hover:bg-stone-150 transition-colors duration-200 text-left cursor-pointer"
+                      className="w-full flex items-start justify-between px-3 py-2 rounded-lg text-sm font-bold text-stone-850 hover:bg-stone-150 transition-colors duration-200 text-left cursor-pointer"
                     >
-                      <div className="flex items-center gap-2">
-                        <BookOpen size={16} className="text-accent" />
-                        <span className="truncate max-w-[170px]">{ch.title}</span>
+                      <div className="flex items-start gap-2">
+                        <BookOpen size={16} className="text-accent mt-0.5 shrink-0" />
+                        <span className="text-stone-850 font-bold leading-tight pr-2">
+                          {ch.title.startsWith("Bài")
+                            ? `${ch.title.replace(/Bài\s+/g, "").replace(/\s*&\s*/g, "-")}. ${ch.subtitle || ""}`
+                            : ch.title}
+                        </span>
                       </div>
-                      {isChExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                      {isChExpanded ? <ChevronDown size={14} className="mt-0.5 shrink-0" /> : <ChevronRight size={14} className="mt-0.5 shrink-0" />}
                     </button>
 
                     <ul 

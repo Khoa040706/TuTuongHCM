@@ -116,7 +116,7 @@ export default function HcmAppSystem() {
         {activeTab === "structure" && (
           <div className="space-y-6">
             <p className="text-stone-650 text-xs md:text-sm leading-relaxed">
-              Các tổ chức trong hệ thống chính trị tuy có tính chất, vai trò, chức năng và phương thức hoạt động khác nhau nhưng luôn **gắn bó mật thiết với nhau**, tạo nên một chỉnh thể thống nhất (Click từng chủ thể để xem chi tiết):
+              Các tổ chức trong hệ thống chính trị tuy có tính chất, vai trò, chức năng và phương thức hoạt động khác nhau nhưng luôn <strong>gắn bó mật thiết với nhau</strong>, tạo nên một chỉnh thể thống nhất (Click từng chủ thể để xem chi tiết):
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -157,7 +157,7 @@ export default function HcmAppSystem() {
                 <Workflow className="w-5 h-5" />
               </span>
               <p className="text-stone-700 text-xs md:text-sm leading-relaxed">
-                Mục tiêu chung của việc củng cố cơ cấu là nhằm **phát huy sức mạnh xây dựng và bảo vệ Tổ quốc XHCN**, đảm bảo dân chủ thực sự được thực hiện chất lượng trên tất cả các lĩnh vực.
+                Mục tiêu chung của việc củng cố cơ cấu là nhằm <strong>phát huy sức mạnh xây dựng và bảo vệ Tổ quốc XHCN</strong>, đảm bảo dân chủ thực sự được thực hiện chất lượng trên tất cả các lĩnh vực.
               </p>
             </div>
           </div>
@@ -167,7 +167,7 @@ export default function HcmAppSystem() {
         {activeTab === "unity" && (
           <div className="space-y-6">
             <p className="text-stone-650 text-xs md:text-sm leading-relaxed">
-              Hệ thống chính trị ở Việt Nam mang đặc trưng sâu sắc bởi **tính nhất nguyên và tính thống nhất**, được phân tích qua 3 phương diện:
+              Hệ thống chính trị ở Việt Nam mang đặc trưng sâu sắc bởi <strong>tính nhất nguyên và tính thống nhất</strong>, được phân tích qua 3 phương diện:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

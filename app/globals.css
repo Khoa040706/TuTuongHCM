@@ -7,6 +7,7 @@
 
 
 @theme {
+  --font-serif: var(--font-playfair), serif;
   --font-playfair: var(--font-playfair), serif;
   --font-sans: var(--font-be-vietnam), sans-serif;
   
@@ -71,6 +72,10 @@ body {
   color: var(--text-primary);
   font-family: var(--font-be-vietnam), sans-serif;
   overflow-x: hidden;
+}
+
+body.scroll-locked {
+  overflow: hidden !important;
 }
 
 /* Custom Scrollbar */

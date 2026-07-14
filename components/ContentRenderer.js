@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { MDXRemote } from "next-mdx-remote";
+import { findSubsectionContent, lessonsData } from "../data/lessons";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -11,6 +11,30 @@ import MemoryVisualizer from "./MemoryVisualizer";
 import ConceptQuiz from "./ConceptQuiz";
 import JavaRunCycleVisualizer from "./JavaRunCycleVisualizer";
 import CastingPlayground from "./CastingPlayground";
+import ScannerVisualizer from "./ScannerVisualizer";
+import MathPlayground from "./MathPlayground";
+import PassByValueVisualizer from "./PassByValueVisualizer";
+import RecursionVisualizer from "./RecursionVisualizer";
+import ArrayPlayground from "./ArrayPlayground";
+import StringPoolVisualizer from "./StringPoolVisualizer";
+import StringMethodsSandbox from "./StringMethodsSandbox";
+import NameParserPlayground from "./NameParserPlayground";
+import StringMethodsExplorer from "./StringMethodsExplorer";
+import ChapterSummaryDashboard from "./ChapterSummaryDashboard";
+import JavaCompileWorkflow from "./JavaCompileWorkflow";
+import ScannerPlayground from "./ScannerPlayground";
+import StringComparisonMini from "./StringComparisonMini";
+import MathSandbox from "./MathSandbox";
+import MethodInvocationSimulator from "./MethodInvocationSimulator";
+import ConstructorMemoryVisualizer from "./ConstructorMemoryVisualizer";
+import OverloadingDispatchSandbox from "./OverloadingDispatchSandbox";
+import DecimalFormatPlayground from "./DecimalFormatPlayground";
+import RandomRangeVisualizer from "./RandomRangeVisualizer";
+import WrapperBoxingVisualizer from "./WrapperBoxingVisualizer";
+import PointGridSandbox from "./PointGridSandbox";
+import ApiBlackBoxSimulator from "./ApiBlackBoxSimulator";
+import UserToDesignerTimeline from "./UserToDesignerTimeline";
+import ExamGotchasFlashcards from "./ExamGotchasFlashcards";
 import PrintfFormatter from "./PrintfFormatter";
 import ComplexVisualizer from "./ComplexVisualizer";
 import FractionVisualizer from "./FractionVisualizer";
@@ -381,208 +405,187 @@ function ChapterHeader({ title, subtitle, chapterId }) {
   );
 }
 
-export default function ContentRenderer({ chapters, mdxSource }) {
+export default function ContentRenderer({ chapters, selectedSubjectId, activeSubsectionId, setActiveSubsectionId }) {
   const [activeLang, setActiveLang] = useState("java");
 
-  const mdxComponents = {
-    SummaryBox: ({ children }) => (
-      <div className="summary-box p-5 rounded-xl bg-green-500/5 border-l-4 border-green-600 my-5 font-sans">
-        <div className="summary-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-850">
-          {children}
-        </div>
-      </div>
-    ),
-    MnemonicBox: ({ children }) => (
-      <div className="mnemonic-box p-5 rounded-xl bg-amber-500/5 border-l-4 border-amber-500 my-5 font-sans">
-        <div className="mnemonic-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-850">
-          {children}
-        </div>
-      </div>
-    ),
-    QuoteBox: ({ children }) => (
-      <div className="quote-block my-5 italic">
-        <div className="quote-block__content text-stone-800 leading-[1.85] text-sm md:text-base font-playfair">
-          {children}
-        </div>
-      </div>
-    ),
-    HighlightBox: ({ children }) => (
-      <div className="highlight-box mb-4">
-        <div className="highlight-box__content text-stone-800 leading-[1.85] text-sm md:text-base font-sans">
-          {children}
-        </div>
-      </div>
-    ),
-    DefinitionBox: ({ children }) => (
-      <div className="definition-box p-5 rounded-xl bg-red-500/5 border-l-4 border-red-650 my-5 font-sans">
-        <div className="definition-box__content leading-[1.9] text-sm md:text-base font-medium text-stone-800">
-          {children}
-        </div>
-      </div>
-    ),
-    Part: ({ id, children }) => (
-      <CinematicScrollWrapper className="mb-8">
-        <SpotlightCardWrapper id={`content-${id}`}>
-          <div className="card-content-blocks font-sans relative z-10">
-            {children}
-          </div>
-        </SpotlightCardWrapper>
-      </CinematicScrollWrapper>
-    ),
-    BubbleSortVisualizer,
-    QuickSortVisualizer,
-    QuickSortFlowchart,
-    MemoryVisualizer,
-    ConceptQuiz,
-    JavaRunCycleVisualizer,
-    CastingPlayground,
-    PrintfFormatter,
-    ComplexVisualizer,
-    FractionVisualizer,
-    HcmTimeline1945to1969,
-    HcmValuesExplorer,
-    HcmWorldDevelopment,
-    HcmChapter3GoalsExplorer,
-    HcmIndependenceFreedom,
-    HcmIndependenceHappiness,
-    HcmIndependenceThorough,
-    HcmIndependenceUnity,
-    HcmProletarianRevolution,
-    HcmPartyLeadership,
-    HcmNationalUnity,
-    HcmActiveCreativity,
-    HcmRevolutionaryViolence,
-    HcmSocialismConcept,
-    HcmSocialismNecessity,
-    HcmSocialismFeatures,
-    HcmSocialismGoals,
-    HcmSocialismDynamics,
-    HcmTransitionNature,
-    HcmTransitionPrinciples,
-    HcmRelationPrecondition,
-    HcmRelationGuarantee,
-    HcmRelationConditions,
-    HcmAppSteadfast,
-    HcmAppDemocracy,
-    HcmAppSystem,
-    HcmAppCombating,
-    LsdHistoryTimeline,
-    LsdObjectExplorer,
-    LsdFunctionsExplorer,
-    LsdTasksExplorer,
-    LsdMethodologyExplorer,
-    LsdSpecificMethodsExplorer,
-    LsdRequirementsGoalsExplorer,
-    LsdChapter1GoalsExplorer,
-    LsdCapitalismBelongings,
-    LsdOctoberRevolution,
-    LsdColonialVietnam,
-    LsdPatrioticMovements,
-    LsdSearchForWay,
-    LsdInternationalActivities,
-    LsdRevolutionPreparations,
-    LsdCommunistOrganizations,
-    LsdPartyFoundingConference,
-    LsdConferenceResolutions,
-    LsdHistorySignificance,
-    LsdMovement19301931,
-    LsdPoliticalThesis1930,
-    LsdRecoveryAndCongress1935,
-    LsdDemocracyContext,
-    LsdDemocracyMovement,
-    LsdDemocracySignificance,
-    LsdNationalLiberationStrategy,
-    LsdLiberationPreparation,
-    LsdAntiJapaneseMovement,
-    LsdAugustRevolution,
-    LsdRevolutionSignificance,
-  };
+  // Refresh ScrollTrigger after static content renders and layout stabilizes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [selectedSubjectId, activeSubsectionId]);
 
-  if (mdxSource) {
+  const currentSubject = lessonsData[selectedSubjectId];
+  if (!currentSubject) {
     return (
-      <div className="content-area font-sans premium-mdx-content p-2 md:p-4">
-        <MDXRemote {...mdxSource} components={mdxComponents} />
+      <div className="flex flex-col items-center justify-center py-24 space-y-4">
+        <div className="w-10 h-10 border-4 border-stone-200 border-t-accent rounded-full animate-spin" />
+        <span className="text-xs font-bold text-stone-400 tracking-widest uppercase animate-pulse select-none">Đang tải bài học...</span>
       </div>
     );
   }
 
-  return (
-    <div className="content-area font-sans">
-      {chapters.map((ch) => (
-        <div key={ch.id} id={`chapter-${ch.id}`} className="chapter-block mb-16 scroll-mt-20">
-          <ChapterHeader title={ch.title} subtitle={ch.subtitle} chapterId={ch.id} />
+  let activeChapter = null;
+  let isChapterBased = false;
 
-          {/* Sections */}
-          {ch.sections.map((sec) => (
-            <div key={sec.id} id={`section-${sec.id}`} className="section mb-10 scroll-mt-20">
-              <div className="section__heading flex items-baseline gap-3 mb-6 pb-3 border-b-2 border-stone-200">
-                {sec.roman && (
-                  <span className="section__roman text-xl md:text-2xl font-extrabold text-accent font-playfair leading-none">
-                    {sec.roman}.
-                  </span>
-                )}
-                <h2 className="section__title text-lg md:text-xl font-bold text-stone-900 font-playfair leading-tight">
-                  {sec.title}
-                </h2>
-              </div>
+  if (currentSubject.chapters && currentSubject.chapters.length > 0) {
+    isChapterBased = true;
+    for (const ch of currentSubject.chapters) {
+      const hasSub = ch.sections.some(sec => 
+        sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+      );
+      if (hasSub) {
+        activeChapter = ch;
+        break;
+      }
+    }
+    // Fallback to first chapter
+    if (!activeChapter) {
+      activeChapter = currentSubject.chapters[0];
+    }
+  }
 
-              {/* Subsections */}
-              {sec.subsections.map((sub) => (
-                <div
-                  key={sub.id}
-                  id={`content-${sub.id}`}
-                  className="subsection mb-10 scroll-mt-20"
-                >
-                  {(sub.number || sub.title) && (
-                    <div className="subsection__heading flex items-baseline gap-2 mb-6 pl-2">
-                      {sub.number && (
-                        <span className="subsection__number text-lg font-bold text-accent font-sans">
-                          {sub.number}.
-                        </span>
-                      )}
-                      <h3 className="subsection__title text-base md:text-lg font-bold text-stone-850 font-sans leading-snug">
-                        {sub.title}
-                      </h3>
-                    </div>
+  // Find next chapter if available
+  let nextChapter = null;
+  if (isChapterBased && activeChapter) {
+    const activeIdx = currentSubject.chapters.findIndex(ch => ch.id === activeChapter.id);
+    if (activeIdx !== -1 && activeIdx < currentSubject.chapters.length - 1) {
+      nextChapter = currentSubject.chapters[activeIdx + 1];
+    }
+  }
+
+  const handleNextChapterClick = () => {
+    if (nextChapter && setActiveSubsectionId) {
+      // Find the first subsection of the next chapter
+      let firstSubId = null;
+      if (nextChapter.sections) {
+        for (const sec of nextChapter.sections) {
+          if (sec.subsections && sec.subsections.length > 0) {
+            firstSubId = sec.subsections[0].id;
+            break;
+          }
+        }
+      }
+      if (firstSubId) {
+        setActiveSubsectionId(firstSubId);
+        // Scroll back to top smoothly
+        if (typeof window !== "undefined") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  // Helper to render sections and subsections list
+  const renderSections = (sections) => {
+    let globalPartIdx = 0;
+    return sections.map((sec, secIdx) => (
+      <div key={sec.id || secIdx} className="space-y-6">
+        {/* Section Header */}
+        {sec.title && (
+          <div className="section-title-wrapper mt-10 mb-4 px-4 py-2 bg-stone-100/60 rounded-xl border-l-4 border-accent/80 backdrop-blur-xs select-none">
+            <h2 className="text-sm md:text-base font-bold text-stone-850 flex items-center gap-2">
+              {sec.roman && <span className="font-mono text-accent">{sec.roman}.</span>}
+              <span>{sec.title}</span>
+            </h2>
+          </div>
+        )}
+
+        {/* Subsections of this section */}
+        {sec.subsections && sec.subsections.map((sub, subIdx) => {
+          return (
+            <div 
+              key={sub.id || subIdx} 
+              id={`content-${sub.id}`} 
+              className="scroll-mt-24 space-y-6"
+            >
+              {/* Subsection title header bar inside page stream */}
+              {sub.title && (
+                <div className="subsection-header-badge mt-6 px-4 flex items-center gap-2 select-none">
+                  {sub.number && (
+                    <span className="w-5 h-5 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-[10px] font-black text-accent font-mono">
+                      {sub.number}
+                    </span>
                   )}
-
-                  {/* Parts (Rendered as premium study cards with 3D animation) */}
-                  {sub.parts && sub.parts.map((part, partIdx) => {
-                    const hasHeading = part.label || part.title;
-                    const basePath = `${ch.id}-${sec.id}-${sub.id}-${part.id}`;
-
-                    return (
-                      <CinematicScrollWrapper key={part.id} index={partIdx} className="mb-8">
-                        <SpotlightCardWrapper id={`content-${part.id}`}>
-                          {hasHeading && (
-                            <div className="card-bookmark-tag">
-                              {part.label && <span className="mr-1">{part.label} /</span>}
-                              <span>{part.title}</span>
-                            </div>
-                          )}
-
-                          {/* Content Blocks */}
-                          <div className="card-content-blocks font-sans relative z-10">
-                            {part.content && part.content.map((block, idx) => (
-                              <ContentBlock
-                                key={idx}
-                                block={block}
-                                path={`${basePath}-${idx}`}
-                                activeLang={activeLang}
-                                setActiveLang={setActiveLang}
-                              />
-                            ))}
-                          </div>
-                        </SpotlightCardWrapper>
-                      </CinematicScrollWrapper>
-                    );
-                  })}
+                  <h3 className="text-xs md:text-sm font-bold text-stone-750 uppercase tracking-wider">
+                    {sub.title}
+                  </h3>
                 </div>
-              ))}
+              )}
+
+              {/* Parts / Bento cards of this subsection */}
+              {sub.parts && sub.parts.map((part) => {
+                const currentPartIdx = globalPartIdx++;
+                return (
+                  <CinematicScrollWrapper key={part.id} index={currentPartIdx} className="mb-8">
+                    <SpotlightCardWrapper id={`part-${part.id}`}>
+                      <div className="card-content-blocks font-sans relative z-10 space-y-4">
+                        {(part.label || part.title) && (
+                          <div className="card-bookmark-tag mb-4 border-b border-stone-200/50 pb-2 flex items-center gap-1 text-sm font-bold text-stone-850">
+                            {part.label && (
+                              <span className="text-accent font-mono mr-1">{part.label} /</span>
+                            )}
+                            <span>{part.title}</span>
+                          </div>
+                        )}
+                        {part.content && part.content.map((block, idx) => (
+                          <ContentBlock
+                            key={idx}
+                            block={block}
+                            path={`${part.id}-${idx}`}
+                            activeLang={activeLang}
+                            setActiveLang={setActiveLang}
+                          />
+                        ))}
+                      </div>
+                    </SpotlightCardWrapper>
+                  </CinematicScrollWrapper>
+                );
+              })}
             </div>
-          ))}
+          );
+        })}
+      </div>
+    ));
+  };
+
+  return (
+    <div className="content-area font-sans p-2 md:p-4 space-y-8 animate-in">
+      {isChapterBased && activeChapter && (
+        <>
+          <ChapterHeader
+            title={activeChapter.title}
+            subtitle={activeChapter.subtitle}
+            chapterId={activeChapter.title.replace(/Chương/i, "").trim().toUpperCase()}
+          />
+          {renderSections(activeChapter.sections)}
+        </>
+      )}
+
+      {!isChapterBased && currentSubject.sections && (
+        renderSections(currentSubject.sections)
+      )}
+
+      {/* Next Chapter navigation panel */}
+      {nextChapter && (
+        <div className="mt-16 p-8 rounded-3xl border border-stone-200 bg-white/40 backdrop-blur-md flex flex-col md:flex-row justify-between items-center gap-4 transition-all duration-300 hover:bg-white/60 select-none">
+          <div className="space-y-1 text-center md:text-left">
+            <span className="text-[9px] font-black text-stone-400 tracking-widest uppercase">Bạn đã học xong chương này</span>
+            <h4 className="text-sm md:text-base font-black text-stone-900 font-playfair leading-tight">
+              {activeChapter.title}: {activeChapter.subtitle}
+            </h4>
+          </div>
+          
+          <button
+            onClick={handleNextChapterClick}
+            className="px-6 py-3 rounded-full bg-accent hover:bg-accent/90 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/30 transition-all duration-300 hover:scale-[1.03] cursor-pointer border-none"
+          >
+            <span>Tiếp tục học: {nextChapter.title}</span>
+            <span className="text-sm">➔</span>
+          </button>
         </div>
-      ))}
+      )}
     </div>
   );
 }
@@ -766,25 +769,40 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
 
     case "numbered-group":
       return (
-        <div className="numbered-group space-y-5 my-5">
+        <div className="numbered-group space-y-6 my-6 relative pl-3">
+          {/* Vertical timeline line */}
+          <div className="absolute left-[28px] top-6 bottom-6 w-0.5 bg-stone-200/80 pointer-events-none" />
+
           {block.items.map((item, itemIdx) => (
-            <div key={itemIdx} className="content-block pl-4 border-l-2 border-stone-200">
-              <div className="content-block__label flex gap-2 items-baseline font-bold text-stone-800 mb-2.5 text-sm md:text-base font-sans" data-hl-path={`${path}-${itemIdx}-title`}>
-                <span className="text-accent font-extrabold min-w-[20px]">{item.number}.</span>
-                <span dangerouslySetInnerHTML={{ __html: formatMathText(item.title) }} />
+            <div key={itemIdx} className="flex gap-5 items-start group relative">
+              {/* Step Number Circle */}
+              <div className="w-8 h-8 rounded-full bg-[#fcfbf9] border-2 border-accent text-accent flex items-center justify-center text-xs font-black font-mono shrink-0 shadow-sm relative z-10 group-hover:scale-110 transition-transform duration-300">
+                {item.number}
               </div>
-              {item.bullets && (
-                <ul className="bullet-list list-[circle] list-inside pl-4 space-y-2">
-                  {item.bullets.map((b, bulletIdx) => (
-                    <li
-                      key={bulletIdx}
-                      className="bullet-list__item text-stone-600 leading-[1.85] text-sm md:text-base font-sans"
-                      data-hl-path={`${path}-${itemIdx}-${bulletIdx}`}
-                      dangerouslySetInnerHTML={{ __html: formatMathText(b) }}
-                    />
-                  ))}
-                </ul>
-              )}
+
+              {/* Step Content Card */}
+              <div 
+                className="flex-1 p-5 rounded-2xl border border-stone-200 bg-stone-50/40 hover:bg-white transition-all duration-300 hover:shadow-md hover:border-stone-300"
+                data-hl-path={`${path}-${itemIdx}-title`}
+              >
+                <h4 
+                  className="text-stone-850 font-extrabold text-sm md:text-base font-sans leading-snug"
+                  dangerouslySetInnerHTML={{ __html: formatMathText(item.title) }} 
+                />
+                
+                {item.bullets && item.bullets.length > 0 && (
+                  <ul className="bullet-list list-[circle] list-inside pl-1 mt-3 space-y-2 text-xs md:text-sm text-stone-600 font-sans leading-relaxed">
+                    {item.bullets.map((b, bulletIdx) => (
+                      <li
+                        key={bulletIdx}
+                        className="bullet-list__item"
+                        data-hl-path={`${path}-${itemIdx}-${bulletIdx}`}
+                        dangerouslySetInnerHTML={{ __html: formatMathText(b) }}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -930,6 +948,11 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
         <JavaRunCycleVisualizer key={path} />
       );
 
+    case "java-scanner-visualizer":
+      return (
+        <ScannerVisualizer key={path} />
+      );
+
     case "java-casting-playground":
       return (
         <CastingPlayground key={path} />
@@ -938,6 +961,121 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "java-printf-formatter":
       return (
         <PrintfFormatter key={path} />
+      );
+
+    case "java-math-playground":
+      return (
+        <MathPlayground key={path} />
+      );
+
+    case "java-pass-by-value-visualizer":
+      return (
+        <PassByValueVisualizer key={path} />
+      );
+
+    case "java-recursion-visualizer":
+      return (
+        <RecursionVisualizer key={path} />
+      );
+
+    case "java-array-playground":
+      return (
+        <ArrayPlayground key={path} />
+      );
+
+    case "java-string-pool-visualizer":
+      return (
+        <StringPoolVisualizer key={path} />
+      );
+
+    case "java-string-methods-sandbox":
+      return (
+        <StringMethodsSandbox key={path} />
+      );
+
+    case "java-name-parser-playground":
+      return (
+        <NameParserPlayground key={path} />
+      );
+
+    case "java-string-methods-explorer":
+      return (
+        <StringMethodsExplorer key={path} />
+      );
+
+    case "java-chapter3-summary-dashboard":
+      return (
+        <ChapterSummaryDashboard key={path} />
+      );
+
+    case "java-compile-workflow":
+      return (
+        <JavaCompileWorkflow key={path} />
+      );
+
+    case "java-scanner-playground":
+      return (
+        <ScannerPlayground key={path} />
+      );
+
+    case "java-string-comparison-mini":
+      return (
+        <StringComparisonMini key={path} />
+      );
+
+    case "java-math-sandbox":
+      return (
+        <MathSandbox key={path} />
+      );
+
+    case "java-method-invocation-simulator":
+      return (
+        <MethodInvocationSimulator key={path} />
+      );
+
+    case "java-constructor-memory-visualizer":
+      return (
+        <ConstructorMemoryVisualizer key={path} />
+      );
+
+    case "java-overloading-dispatch-sandbox":
+      return (
+        <OverloadingDispatchSandbox key={path} />
+      );
+
+    case "java-decimal-format-playground":
+      return (
+        <DecimalFormatPlayground key={path} />
+      );
+
+    case "java-random-range-visualizer":
+      return (
+        <RandomRangeVisualizer key={path} />
+      );
+
+    case "java-wrapper-boxing-visualizer":
+      return (
+        <WrapperBoxingVisualizer key={path} />
+      );
+
+    case "java-point-grid-sandbox":
+      return (
+        <PointGridSandbox key={path} />
+      );
+
+    case "java-api-black-box-simulator":
+      return (
+        <ApiBlackBoxSimulator key={path} />
+      );
+
+    case "java-user-to-designer-timeline":
+      return (
+        <UserToDesignerTimeline key={path} />
+      );
+
+    case "java-exam-gotchas-flashcards":
+      return (
+        <ExamGotchasFlashcards key={path} />
       );
 
     case "dsa-complex-visualizer":

@@ -542,210 +542,636 @@ export const subjects = {
     },
     icon: "💻",
     chapters: [
-  {
-    "id": "oop",
-    "title": "Lập trình hướng đối tượng (OOP)",
-    "subtitle": "Khóa học cốt lõi về 13 nguyên lý và kỹ thuật hướng đối tượng trong Java.",
-    "sections": [
       {
-        "id": "oop-section-intro",
-        "roman": "I",
-        "title": "Giới thiệu về Java (Intro to Java)",
-        "subsections": [
+        "id": "oop-intro-to-java",
+        "title": "Bài 1 & 2",
+        "subtitle": "Intro to Java",
+        "sections": [
           {
-            "id": "oop-sub-intro-history",
-            "number": "1",
-            "title": "Lịch sử và Bối cảnh Lịch sử (Java: Brief History & Background)"
+            "id": "oop-intro-history",
+            "roman": "I",
+            "title": "Lịch sử & Bối cảnh Java",
+            "subsections": [
+              {
+                "id": "oop-sub-history",
+                "number": "",
+                "title": "Lịch sử & Bối cảnh Java"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-runcycle",
-            "number": "2",
-            "title": "Chu trình Chạy Chương trình (Run Cycle)"
+            "id": "oop-intro-runcycle",
+            "roman": "II",
+            "title": "Chu trình chạy chương trình",
+            "subsections": [
+              {
+                "id": "oop-sub-runcycle-general",
+                "number": "1",
+                "title": "Quy trình chung & Các loại lỗi"
+              },
+              {
+                "id": "oop-sub-runcycle-c",
+                "number": "2",
+                "title": "Chu trình với chương trình C (ôn lại)"
+              },
+              {
+                "id": "oop-sub-runcycle-anywhere",
+                "number": "3",
+                "title": "Java: \"Compile Once, Run Anywhere\""
+              },
+              {
+                "id": "oop-sub-runcycle-java",
+                "number": "4",
+                "title": "Chu trình chạy chương trình Java"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-structure",
-            "number": "3",
-            "title": "Cấu trúc Chương trình Cơ bản (Basic Structure)"
+            "id": "oop-intro-structure",
+            "roman": "III",
+            "title": "Cấu trúc cơ bản",
+            "subsections": [
+              {
+                "id": "oop-sub-structure-compare",
+                "number": "1",
+                "title": "So sánh Hello World: C vs Java"
+              },
+              {
+                "id": "oop-sub-structure-key",
+                "number": "2",
+                "title": "Nhận xét quan trọng (Key Observations)"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-variables",
-            "number": "4",
-            "title": "Định danh, Biến và Hằng số (Identifier, Variable, Constant)"
+            "id": "oop-intro-expressions",
+            "roman": "IV",
+            "title": "Biểu thức số học",
+            "subsections": [
+              {
+                "id": "oop-sub-expressions-defs",
+                "number": "1",
+                "title": "Định danh, Biến, Hằng số"
+              },
+              {
+                "id": "oop-sub-expressions-naming",
+                "number": "2",
+                "title": "Quy tắc đặt tên (Naming Convention)"
+              },
+              {
+                "id": "oop-sub-expressions-datatypes",
+                "number": "3",
+                "title": "Các kiểu dữ liệu số (Numeric Data Types)"
+              },
+              {
+                "id": "oop-sub-expressions-operators",
+                "number": "4",
+                "title": "Toán tử số học & Thứ tự ưu tiên"
+              },
+              {
+                "id": "oop-sub-expressions-conversion",
+                "number": "5",
+                "title": "Chuyển đổi kiểu dữ liệu (Data Type Conversion)"
+              },
+              {
+                "id": "oop-sub-expressions-example",
+                "number": "6",
+                "title": "Bài tập ví dụ: Đổi Fahrenheit sang Celsius"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-types-operators",
-            "number": "5",
-            "title": "Kiểu Dữ liệu Số và Toán tử (Numeric Data Types & Operators)"
+            "id": "oop-intro-control",
+            "roman": "V",
+            "title": "Câu lệnh điều khiển",
+            "subsections": [
+              {
+                "id": "oop-sub-control-boolean",
+                "number": "1",
+                "title": "Kiểu dữ liệu Boolean"
+              },
+              {
+                "id": "oop-sub-control-operators",
+                "number": "2",
+                "title": "Toán tử Boolean"
+              },
+              {
+                "id": "oop-sub-control-compare-c",
+                "number": "3",
+                "title": "So sánh với C"
+              },
+              {
+                "id": "oop-sub-control-selection",
+                "number": "4",
+                "title": "Câu lệnh rẽ nhánh (Selection Statements)"
+              },
+              {
+                "id": "oop-sub-control-repetition",
+                "number": "5",
+                "title": "Câu lệnh lặp (Repetition Statements)"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-control",
-            "number": "6",
-            "title": "Câu lệnh Điều khiển và Kiểu dữ liệu Boolean (Control Statements & Boolean)"
+            "id": "oop-intro-io",
+            "roman": "VI",
+            "title": "Nhập/Xuất cơ bản",
+            "subsections": [
+              {
+                "id": "oop-sub-io-scanner",
+                "number": "1",
+                "title": "Đọc dữ liệu nhập: Lớp Scanner"
+              },
+              {
+                "id": "oop-sub-io-pitfalls",
+                "number": "2",
+                "title": "Điểm cần lưu ý khi đọc dữ liệu nhập"
+              },
+              {
+                "id": "oop-sub-io-output",
+                "number": "3",
+                "title": "Xuất dữ liệu: Standard Output"
+              },
+              {
+                "id": "oop-sub-io-printf",
+                "number": "4",
+                "title": "Xuất dữ liệu: printf()"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-io",
-            "number": "7",
-            "title": "Nhập/Xuất Dữ liệu Cơ bản (Basic Input/Output)"
+            "id": "oop-intro-api",
+            "roman": "VII",
+            "title": "API (Application Programming Interface)",
+            "subsections": [
+              {
+                "id": "oop-sub-api-concept",
+                "number": "",
+                "title": "Khái niệm API & JavaDocs"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-functions",
-            "number": "8",
-            "title": "API Lớp Math và Hàm tự định nghĩa (API & User-defined Functions)"
+            "id": "oop-intro-math",
+            "roman": "VIII",
+            "title": "Lớp Math & Thuộc tính lớp",
+            "subsections": [
+              {
+                "id": "oop-sub-math-methods",
+                "number": "1",
+                "title": "Các phương thức hữu ích của lớp Math"
+              },
+              {
+                "id": "oop-sub-math-attributes",
+                "number": "2",
+                "title": "Thuộc tính lớp (Class Attributes)"
+              },
+              {
+                "id": "oop-sub-math-example",
+                "number": "3",
+                "title": "Ví dụ minh họa: TestMath.java"
+              }
+            ]
           },
           {
-            "id": "oop-sub-intro-summary",
-            "number": "9",
-            "title": "Tổng kết (Summary)"
+            "id": "oop-intro-methods",
+            "roman": "IX",
+            "title": "Hàm do người dùng định nghĩa",
+            "subsections": [
+              {
+                "id": "oop-sub-methods-concept",
+                "number": "1",
+                "title": "Khái niệm & Ví dụ Factorial.java"
+              },
+              {
+                "id": "oop-sub-methods-passing",
+                "number": "2",
+                "title": "Cơ chế truyền tham trị (Pass-by-Value)"
+              }
+            ]
+          },
+          {
+            "id": "oop-intro-summary",
+            "roman": "X",
+            "title": "Tổng kết",
+            "subsections": [
+              {
+                "id": "oop-sub-summary-all",
+                "number": "",
+                "title": "Tổng hợp kiến thức & Trọng tâm ôn thi"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-array-string",
-        "roman": "II",
-        "title": "Mảng và Chuỗi (Array & String)",
-        "subsections": [
+        "id": "oop-array-string",
+        "title": "Bài 3",
+        "subtitle": "Array & String",
+        "sections": [
           {
-            "id": "oop-sub-array-string",
-            "number": "1",
-            "title": "Xử lý cấu trúc mảng và chuỗi ký tự"
+            "id": "oop-array-sec",
+            "roman": "I",
+            "title": "Mảng (Array)",
+            "subsections": [
+              {
+                "id": "oop-sub-array-overview",
+                "number": "1",
+                "title": "Khái quát nội dung phần Array"
+              },
+              {
+                "id": "oop-sub-array-create",
+                "number": "2",
+                "title": "Tạo mảng (Create Arrays)"
+              },
+              {
+                "id": "oop-sub-array-process",
+                "number": "3",
+                "title": "Xử lý mảng (Process Arrays)"
+              },
+              {
+                "id": "oop-sub-array-foreach",
+                "number": "4",
+                "title": "Vòng lặp Foreach (Foreach Loops)"
+              },
+              {
+                "id": "oop-sub-array-passing",
+                "number": "5",
+                "title": "Truyền mảng vào phương thức"
+              },
+              {
+                "id": "oop-sub-array-return",
+                "number": "6",
+                "title": "Trả về mảng từ phương thức"
+              }
+            ]
+          },
+          {
+            "id": "oop-string-sec",
+            "roman": "II",
+            "title": "Chuỗi (String)",
+            "subsections": [
+              {
+                "id": "oop-sub-string-overview",
+                "number": "1",
+                "title": "Khái quát nội dung phần String"
+              },
+              {
+                "id": "oop-sub-string-concept",
+                "number": "2",
+                "title": "Khái niệm Java String"
+              },
+              {
+                "id": "oop-sub-string-charsequence",
+                "number": "3",
+                "title": "Interface CharSequence"
+              },
+              {
+                "id": "oop-sub-string-create",
+                "number": "4",
+                "title": "Tạo chuỗi (Create String)"
+              },
+              {
+                "id": "oop-sub-string-methods",
+                "number": "5",
+                "title": "Các phương thức của String"
+              }
+            ]
+          },
+          {
+            "id": "oop-summary-sec",
+            "roman": "III",
+            "title": "Tổng kết chương 3",
+            "subsections": [
+              {
+                "id": "oop-sub-summary-chapter3",
+                "number": "",
+                "title": "Trọng tâm ôn tập & Ghi nhớ toàn chương"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-string-buffers",
-        "roman": "III",
-        "title": "StringBuffer & StringBuilder",
-        "subsections": [
+        "id": "oop-stringbuffer-stringbuilder",
+        "title": "Bài 3",
+        "subtitle": "StringBuffer & StringBuilder",
+        "sections": [
           {
-            "id": "oop-sub-string-buffers",
-            "number": "1",
-            "title": "Tối ưu hóa chuỗi khả biến trong Java"
+            "id": "oop-stringbuffer-stringbuilder-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-stringbuffer-stringbuilder",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-class-objects",
-        "roman": "IV",
-        "title": "Đối tượng, Lớp, Constructor & Overload",
-        "subsections": [
+        "id": "oop-object-class-constructor-overload",
+        "title": "Bài 4",
+        "subtitle": "Object, Class, Constructor & Overload",
+        "sections": [
           {
-            "id": "oop-sub-class-objects",
-            "number": "1",
-            "title": "Thiết lập lớp, hàm khởi tạo và nạp chồng phương thức"
+            "id": "oop-object-class-constructor-overload-recap-sec",
+            "roman": "I",
+            "title": "Ôn tập (Recapitulation)",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-recap",
+                "number": "",
+                "title": "Ôn lại quy trình chạy Java"
+              }
+            ]
+          },
+          {
+            "id": "oop-object-class-constructor-overload-api-sec",
+            "roman": "II",
+            "title": "API (Application Programming Interface)",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-api-concept",
+                "number": "2.0",
+                "title": "Khái niệm API"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-api-scanner",
+                "number": "2.1",
+                "title": "Lớp Scanner (Scanner class)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-api-string",
+                "number": "2.2",
+                "title": "Lớp String (String class)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-api-math",
+                "number": "2.3",
+                "title": "Lớp Math (Math class)"
+              }
+            ]
+          },
+          {
+            "id": "oop-object-class-constructor-overload-concepts-sec",
+            "roman": "III",
+            "title": "Các khái niệm OOP cơ bản (OOP concepts)",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-concepts-modifiers",
+                "number": "3.1",
+                "title": "Từ khóa bổ nghĩa (Modifiers)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-concepts-methods",
+                "number": "3.2",
+                "title": "Class method vs Instance method"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-concepts-constructors",
+                "number": "3.3",
+                "title": "Hàm khởi tạo (Constructors)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-concepts-overloading",
+                "number": "3.4",
+                "title": "Nạp chồng phương thức (Overloading)"
+              }
+            ]
+          },
+          {
+            "id": "oop-object-class-constructor-overload-more-classes-sec",
+            "roman": "IV",
+            "title": "Các lớp khác trong API (More Classes)",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-more-classes-decimalformat",
+                "number": "4.1",
+                "title": "Lớp DecimalFormat (Định dạng số)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-more-classes-random",
+                "number": "4.2",
+                "title": "Lớp Random (Sinh số ngẫu nhiên)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-more-classes-wrapper",
+                "number": "4.3",
+                "title": "Lớp Wrapper (Lớp bọc)"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-more-classes-point",
+                "number": "4.4",
+                "title": "Lớp Point (Điểm tọa độ)"
+              }
+            ]
+          },
+          {
+            "id": "oop-object-class-constructor-overload-abstraction-sec",
+            "roman": "V",
+            "title": "Trừu tượng hóa & Che giấu thông tin",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-abstraction-concept",
+                "number": "5.1",
+                "title": "Khái niệm Abstraction & Information Hiding"
+              }
+            ]
+          },
+          {
+            "id": "oop-object-class-constructor-overload-summary-sec",
+            "roman": "VI",
+            "title": "Tổng kết & Bí kíp ôn thi",
+            "subsections": [
+              {
+                "id": "oop-sub-object-class-constructor-overload-summary-recap",
+                "number": "6.1",
+                "title": "Tổng kết chương & Lộ trình tuần sau"
+              },
+              {
+                "id": "oop-sub-object-class-constructor-overload-summary-gotchas",
+                "number": "6.2",
+                "title": "10 Cạm bẫy thi cử cần chống"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-encapsulation",
-        "roman": "V",
-        "title": "Tính đóng gói & Phạm vi truy cập (Encapsulation)",
-        "subsections": [
+        "id": "oop-encapsulation-modifier",
+        "title": "Bài 5",
+        "subtitle": "Encapsulation & Access Modifiers",
+        "sections": [
           {
-            "id": "oop-sub-encapsulation",
-            "number": "1",
-            "title": "Che giấu thông tin chi tiết và phạm vi hoạt động của biến"
+            "id": "oop-encapsulation-modifier-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-encapsulation-modifier",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-inheritance",
-        "roman": "VI",
-        "title": "Tính kế thừa (Inheritance)",
-        "subsections": [
+        "id": "oop-inheritance",
+        "title": "Bài 6 & 7",
+        "subtitle": "Inheritance",
+        "sections": [
           {
-            "id": "oop-sub-inheritance",
-            "number": "1",
-            "title": "Tái sử dụng mã nguồn và thiết lập mối quan hệ giữa các lớp"
+            "id": "oop-inheritance-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-inheritance",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-abstract",
-        "roman": "VII",
-        "title": "Lớp trừu tượng (Abstract Class)",
-        "subsections": [
+        "id": "oop-abstract-class",
+        "title": "Bài 8",
+        "subtitle": "Abstract Class",
+        "sections": [
           {
-            "id": "oop-sub-abstract",
-            "number": "1",
-            "title": "Định nghĩa lớp trừu tượng và phương thức trừu tượng"
+            "id": "oop-abstract-class-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-abstract-class",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-interface",
-        "roman": "VIII",
-        "title": "Giao diện (Interface)",
-        "subsections": [
+        "id": "oop-interface",
+        "title": "Bài 9",
+        "subtitle": "Interface",
+        "sections": [
           {
-            "id": "oop-sub-interface",
-            "number": "1",
-            "title": "Thiết lập bộ khung giao tiếp đa kế thừa trong Java"
+            "id": "oop-interface-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-interface",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-collections",
-        "roman": "IX",
-        "title": "Cấu trúc lưu trữ dữ liệu (Collections Framework)",
-        "subsections": [
+        "id": "oop-collection-of-data",
+        "title": "Bài 10",
+        "subtitle": "Collection of Data",
+        "sections": [
           {
-            "id": "oop-sub-collections",
-            "number": "1",
-            "title": "Lưu trữ dữ liệu động với List, Set, Map trong Java"
+            "id": "oop-collection-of-data-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-collection-of-data",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-exceptions",
-        "roman": "X",
-        "title": "Xử lý ngoại lệ (Exceptions)",
-        "subsections": [
+        "id": "oop-exceptions",
+        "title": "Bài 11",
+        "subtitle": "Exceptions",
+        "sections": [
           {
-            "id": "oop-sub-exceptions",
-            "number": "1",
-            "title": "Kiểm soát và xử lý các lỗi runtime bằng try-catch-finally"
+            "id": "oop-exceptions-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-exceptions",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-files",
-        "roman": "XI",
-        "title": "Thao tác tệp tin (File I/O)",
-        "subsections": [
+        "id": "oop-file",
+        "title": "Bài 12",
+        "subtitle": "File I/O",
+        "sections": [
           {
-            "id": "oop-sub-files",
-            "number": "1",
-            "title": "Đọc và ghi dữ liệu ra tệp tin trong Java"
+            "id": "oop-file-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-file",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-nested",
-        "roman": "XII",
-        "title": "Lớp lồng nhau (Nested Class)",
-        "subsections": [
+        "id": "oop-nested-class",
+        "title": "Bài 13",
+        "subtitle": "Nested Class",
+        "sections": [
           {
-            "id": "oop-sub-nested",
-            "number": "1",
-            "title": "Khai báo Inner Class, Static Nested Class và Anonymous Class"
+            "id": "oop-nested-class-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-nested-class",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "oop-section-patterns",
-        "roman": "XIII",
-        "title": "Mẫu thiết kế hướng đối tượng (Design Patterns)",
-        "subsections": [
+        "id": "oop-design-pattern",
+        "title": "Bài 14 & 15",
+        "subtitle": "Design Patterns",
+        "sections": [
           {
-            "id": "oop-sub-patterns",
-            "number": "1",
-            "title": "Các mẫu thiết kế kinh điển: Creational, Structural, Behavioral"
+            "id": "oop-design-pattern-sec",
+            "roman": "",
+            "title": "Nội dung bài học",
+            "subsections": [
+              {
+                "id": "oop-sub-design-pattern",
+                "number": "",
+                "title": "Bài giảng chi tiết"
+              }
+            ]
           }
         ]
       }
-    ]
-  }
-],
+    ],
     questionsMap: {},
     isActive: true
   },

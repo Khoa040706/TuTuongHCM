@@ -6,66 +6,126 @@ export default function JavaRunCycleVisualizer() {
   const [lang, setLang] = useState("java"); // "c" or "java"
   const [os, setOs] = useState("windows"); // "windows", "macos", "linux"
   const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0); // 0 to 4 steps
   const [consoleMsg, setConsoleMsg] = useState("Sẵn sàng chạy mô phỏng. Hãy nhấn 'Chạy mô phỏng'.");
 
-  const runSimulation = () => {
-    if (isRunning) return;
-    setIsRunning(true);
-    setProgress(0);
-    setConsoleMsg("Bắt đầu: Đọc file mã nguồn...");
+  const timerRef = React.useRef(null);
+  const currentStepRef = React.useRef(0);
 
-    const steps = [
+  const getStepData = (stepIndex) => {
+    const data = [
       {
+        progress: 0,
+        msg: "Bắt đầu: Đọc file mã nguồn...",
+        delay: 1500
+      },
+      {
+        progress: 1,
         msg: lang === "c" 
           ? "Bước 1: Trình biên dịch GCC biên dịch trực tiếp welcome.c sang mã máy nhị phân." 
           : "Bước 1: Trình biên dịch javac dịch HelloWorld.java sang file Bytecode trung gian (.class).",
-        delay: 1000
+        delay: 2000
       },
       {
+        progress: 2,
         msg: lang === "c" 
           ? "Bước 2: Tạo ra file thực thi a.out chứa mã máy nhị phân gốc (Native Binary)." 
           : "Bước 2: Tạo ra file HelloWorld.class độc lập nền tảng, chứa các mã bytecode tiêu chuẩn.",
         delay: 2000
       },
       {
+        progress: 3,
         msg: lang === "c"
           ? `Bước 3: Nạp file a.out (được biên dịch giả định trên Linux) vào hệ điều hành ${os.toUpperCase()}...`
           : `Bước 3: Nạp HelloWorld.class vào Máy ảo Java (JVM) được cài đặt riêng trên ${os.toUpperCase()}...`,
-        delay: 3000
+        delay: 2500
       },
       {
-        msg: "Đang hoàn tất xử lý...",
-        delay: 4000
+        progress: 4,
+        msg: lang === "c"
+          ? (os === "linux"
+              ? "✔ Kết quả: CHẠY THÀNH CÔNG! CPU Linux thực thi trực tiếp file a.out vì mã máy nhị phân khớp 100% với tập lệnh nhân Linux."
+              : `❌ Kết quả: THẤT BẠI! Hệ điều hành ${os.toUpperCase()} không thể thực thi file a.out vì định dạng nhị phân ELF và tập lệnh máy không tương thích hệ thống này.`)
+          : `✔ Kết quả: CHẠY THÀNH CÔNG! Máy ảo JVM trên ${os.toUpperCase()} đọc hiểu mã Bytecode trong file .class và thông dịch trực tiếp thành các lệnh máy tương thích với hệ điều hành ${os.toUpperCase()}.`,
+        delay: 0
       }
     ];
+    return data[stepIndex];
+  };
 
-    steps.forEach((s, idx) => {
-      setTimeout(() => {
-        setProgress(idx + 1);
-        setConsoleMsg(s.msg);
-        
-        if (idx === 3) {
-          setIsRunning(false);
-          // Final result
-          if (lang === "c") {
-            if (os === "linux") {
-              setConsoleMsg("✔ Kết quả: CHẠY THÀNH CÔNG! CPU Linux thực thi trực tiếp file a.out vì mã máy nhị phân khớp 100% với tập lệnh nhân Linux.");
-            } else {
-              setConsoleMsg(`❌ Kết quả: THẤT BẠI! Hệ điều hành ${os.toUpperCase()} không thể thực thi file a.out vì định dạng nhị phân ELF và tập lệnh máy không tương thích hệ thống này.`);
-            }
-          } else {
-            setConsoleMsg(`✔ Kết quả: CHẠY THÀNH CÔNG! Máy ảo JVM trên ${os.toUpperCase()} đọc hiểu mã Bytecode trong file .class và thông dịch trực tiếp thành các lệnh máy tương thích với hệ điều hành ${os.toUpperCase()}.`);
-          }
-        }
-      }, s.delay);
-    });
+  const runNextStep = () => {
+    const nextIdx = currentStepRef.current + 1;
+    if (nextIdx >= 5) {
+      setIsRunning(false);
+      return;
+    }
+
+    const stepInfo = getStepData(nextIdx);
+    currentStepRef.current = nextIdx;
+    setProgress(stepInfo.progress);
+    setConsoleMsg(stepInfo.msg);
+
+    if (nextIdx === 4) {
+      setIsRunning(false);
+      return;
+    }
+
+    // Queue next step
+    timerRef.current = setTimeout(() => {
+      runNextStep();
+    }, stepInfo.delay);
+  };
+
+  const startSimulation = () => {
+    setIsRunning(true);
+    setIsPaused(false);
+    setProgress(0);
+    setConsoleMsg("Bắt đầu: Đọc file mã nguồn...");
+    currentStepRef.current = 0;
+
+    if (timerRef.current) clearTimeout(timerRef.current);
+
+    timerRef.current = setTimeout(() => {
+      runNextStep();
+    }, 1500);
+  };
+
+  const pauseSimulation = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setIsPaused(true);
+    setConsoleMsg((prev) => prev + " <span class='text-amber-500 font-bold'>(ĐANG TẠM DỪNG - Nhấn 'Tiếp tục' để chạy tiếp)</span>");
+  };
+
+  const resumeSimulation = () => {
+    setIsPaused(false);
+    // Strip the pause message
+    setConsoleMsg((prev) => prev.replace(/\s*<span class='text-amber-500 font-bold'>\(ĐANG TẠM DỪNG - Nhấn 'Tiếp tục' để chạy tiếp\)<\/span>/g, ""));
+    runNextStep();
+  };
+
+  const resetSimulation = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setIsRunning(false);
+    setIsPaused(false);
+    setProgress(0);
+    setConsoleMsg("Sẵn sàng chạy mô phỏng. Hãy nhấn 'Chạy mô phỏng'.");
   };
 
   useEffect(() => {
     setProgress(0);
+    setIsRunning(false);
+    setIsPaused(false);
+    if (timerRef.current) clearTimeout(timerRef.current);
     setConsoleMsg(`Đã đổi cấu hình sang: ${lang.toUpperCase()} chạy trên ${os.toUpperCase()}. Nhấn 'Chạy mô phỏng' để kiểm tra.`);
   }, [lang, os]);
+
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-2xl p-4 md:p-6 my-6 shadow-sm font-sans">
@@ -212,22 +272,38 @@ export default function JavaRunCycleVisualizer() {
 
       {/* Simulator Controls */}
       <div className="flex justify-end gap-3 mt-4">
-        <button
-          onClick={runSimulation}
-          disabled={isRunning}
-          className="px-5 py-2.5 bg-accent hover:bg-accent/90 disabled:opacity-40 disabled:hover:bg-accent text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm flex items-center gap-2"
-        >
-          {isRunning ? (
-            <>
-              <span className="w-3.5 h-3.5 rounded-full border border-stone-300 border-t-transparent animate-spin" />
-              Đang mô phỏng...
-            </>
-          ) : (
-            <>
-              <span>⚡</span> Chạy mô phỏng
-            </>
-          )}
-        </button>
+        {isRunning ? (
+          <>
+            <button
+              onClick={resetSimulation}
+              className="px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+            >
+              <span>⏹</span> Đặt lại
+            </button>
+            {isPaused ? (
+              <button
+                onClick={resumeSimulation}
+                className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+              >
+                <span>▶</span> Tiếp tục
+              </button>
+            ) : (
+              <button
+                onClick={pauseSimulation}
+                className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+              >
+                <span>⏸</span> Tạm dừng
+              </button>
+            )}
+          </>
+        ) : (
+          <button
+            onClick={startSimulation}
+            className="px-5 py-2.5 bg-accent hover:bg-accent/90 text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm flex items-center gap-1.5"
+          >
+            <span>⚡</span> Chạy mô phỏng
+          </button>
+        )}
       </div>
     </div>
   );

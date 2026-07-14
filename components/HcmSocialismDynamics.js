@@ -246,7 +246,7 @@ export default function HcmSocialismDynamics() {
             </div>
 
             <p className="text-stone-650 text-xs md:text-sm leading-relaxed">
-              Để xây dựng con người mới, Hồ Chí Minh khái quát phương châm biện chứng **&quot;Xây đi đôi với Chống&quot;** (tương tác so sánh phẩm chất tốt và loại bỏ thói xấu):
+              Để xây dựng con người mới, Hồ Chí Minh khái quát phương châm biện chứng <strong>&quot;Xây đi đôi với Chống&quot;</strong> (tương tác so sánh phẩm chất tốt và loại bỏ thói xấu):
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

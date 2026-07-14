@@ -34,7 +34,7 @@ export default function MemoryVisualizer() {
       },
       {
         title: "Bước 2: Gọi hàm tangLen(a)",
-        desc: "Khi gọi hàm <code>tangLen(a)</code>, CPU tạo một **Stack Frame mới** cho hàm này. Vì là <b>Pass by Value (Truyền tham trị)</b>, hệ thống cấp phát một ô nhớ hoàn toàn độc lập <code>0x200</code> cho đối số <code>x</code> và <b>copy giá trị 10</b> từ <code>a</code> sang <code>x</code>.",
+        desc: "Khi gọi hàm <code>tangLen(a)</code>, CPU tạo một <b>Stack Frame mới</b> cho hàm này. Vì là <b>Pass by Value (Truyền tham trị)</b>, hệ thống cấp phát một ô nhớ hoàn toàn độc lập <code>0x200</code> cho đối số <code>x</code> và <b>copy giá trị 10</b> từ <code>a</code> sang <code>x</code>.",
         stack: [
           { frame: "tangLen(int x)", vars: [{ name: "x", addr: "0x200", val: 10, isCopy: true, originAddr: "0x100" }] },
           { frame: "main()", vars: [{ name: "a", addr: "0x100", val: 10, isCopy: false }] }
@@ -42,7 +42,7 @@ export default function MemoryVisualizer() {
       },
       {
         title: "Bước 3: Thực thi x++ trong hàm",
-        desc: "Lệnh <code>x++</code> được thực thi bên trong hàm. CPU thay đổi giá trị tại ô nhớ của biến cục bộ <code>x</code> (địa chỉ <code>0x200</code>) từ 10 thành 11. Ô nhớ <code>0x100</code> của biến <code>a</code> ở hàm <code>main()</code> hoàn toàn **không bị ảnh hưởng**.",
+        desc: "Lệnh <code>x++</code> được thực thi bên trong hàm. CPU thay đổi giá trị tại ô nhớ của biến cục bộ <code>x</code> (địa chỉ <code>0x200</code>) từ 10 thành 11. Ô nhớ <code>0x100</code> của biến <code>a</code> ở hàm <code>main()</code> hoàn toàn <b>không bị ảnh hưởng</b>.",
         stack: [
           { frame: "tangLen(int x)", vars: [{ name: "x", addr: "0x200", val: 11, isCopy: true, originAddr: "0x100", modified: true }] },
           { frame: "main()", vars: [{ name: "a", addr: "0x100", val: 10, isCopy: false }] }
@@ -74,7 +74,7 @@ export default function MemoryVisualizer() {
       },
       {
         title: "Bước 3: Thực thi x++ trong hàm",
-        desc: "Lệnh <code>x++</code> được thực thi. Do <code>x</code> chỉ là bí danh trỏ đến <code>0x100</code>, CPU thay đổi giá trị trực tiếp tại ô nhớ <code>0x100</code> từ 10 thành 11. Do đó, biến gốc <code>a</code> trong <code>main()</code> bị **thay đổi trực tiếp**.",
+        desc: "Lệnh <code>x++</code> được thực thi. Do <code>x</code> chỉ là bí danh trỏ đến <code>0x100</code>, CPU thay đổi giá trị trực tiếp tại ô nhớ <code>0x100</code> từ 10 thành 11. Do đó, biến gốc <code>a</code> trong <code>main()</code> bị <b>thay đổi trực tiếp</b>.",
         stack: [
           { frame: "tangLen(int& x)", vars: [{ name: "x (alias)", addr: "0x100", val: 11, isAlias: true, modified: true }] },
           { frame: "main()", vars: [{ name: "a", addr: "0x100", val: 11, isCopy: false, modified: true }] }

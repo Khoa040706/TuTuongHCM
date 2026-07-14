@@ -152,7 +152,7 @@ export default function HcmAppSteadfast() {
                 <span className="text-[10px] font-black text-[var(--accent)] uppercase tracking-wider">Cương lĩnh 2011</span>
                 <h6 className="font-serif font-black text-stone-900 text-xs md:text-sm">Đặc trưng & Mối quan hệ cơ bản</h6>
                 <p className="text-stone-650 text-xs leading-relaxed font-sans">
-                  Cương lĩnh bổ sung phát triển xác định rõ **8 đặc trưng cơ bản** của xã hội XHCN mà nhân dân ta xây dựng và **8 mối quan hệ lớn** cần giải quyết trong giai đoạn hiện nay nhằm từng bước hiện thực hóa mục tiêu.
+                  Cương lĩnh bổ sung phát triển xác định rõ <strong>8 đặc trưng cơ bản</strong> của xã hội XHCN mà nhân dân ta xây dựng và <strong>8 mối quan hệ lớn</strong> cần giải quyết trong giai đoạn hiện nay nhằm từng bước hiện thực hóa mục tiêu.
                 </p>
               </div>
             )}

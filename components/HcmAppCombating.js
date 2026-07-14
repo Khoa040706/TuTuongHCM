@@ -87,7 +87,7 @@ export default function HcmAppCombating() {
           &quot;Nếu không ngăn chặn, đẩy lùi kịp thời tình trạng suy thoái này: chỉ là một bước ngắn, thậm chí rất ngắn, nguy hiểm khôn lường — là một nguy cơ trực tiếp đe dọa sự tồn vong của Đảng và chế độ.&quot;
         </p>
         <p className="text-stone-400 text-[11px] leading-relaxed border-t border-white/10 pt-3">
-          Mặc dù cách mạng Việt Nam đã đạt những thành tựu vĩ đại trong giải phóng dân tộc, bảo vệ Tổ quốc và đổi mới, nhưng sự suy thoái tư tưởng chính trị, đạo đức lối sống của một bộ phận cán bộ đảng viên là thách thức cực kỳ lớn. Do đó, **Xây dựng Đảng luôn là nhiệm vụ then chốt**.
+          Mặc dù cách mạng Việt Nam đã đạt những thành tựu vĩ đại trong giải phóng dân tộc, bảo vệ Tổ quốc và đổi mới, nhưng sự suy thoái tư tưởng chính trị, đạo đức lối sống của một bộ phận cán bộ đảng viên là thách thức cực kỳ lớn. Do đó, <strong>Xây dựng Đảng luôn là nhiệm vụ then chốt</strong>.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export default function HcmAppCombating() {
             </h5>
           </div>
           <p className="text-stone-600 text-xs leading-relaxed">
-            Người tuy chưa sử dụng các thuật ngữ hiện đại như &quot;suy thoái&quot;, &quot;tự diễn biến&quot;, &quot;tự chuyển hóa&quot;, nhưng đã sớm chỉ rõ các **biểu hiện bệnh lý nguy hiểm của chủ nghĩa cá nhân** và cảnh báo nghiêm khắc tác hại tàn độc của chúng đối với Đảng cầm quyền.
+            Người tuy chưa sử dụng các thuật ngữ hiện đại như &quot;suy thoái&quot;, &quot;tự diễn biến&quot;, &quot;tự chuyển hóa&quot;, nhưng đã sớm chỉ rõ các <strong>biểu hiện bệnh lý nguy hiểm của chủ nghĩa cá nhân</strong> và cảnh báo nghiêm khắc tác hại tàn độc của chúng đối với Đảng cầm quyền.
           </p>
         </div>
 

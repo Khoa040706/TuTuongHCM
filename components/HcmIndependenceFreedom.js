@@ -263,7 +263,7 @@ export default function HcmIndependenceFreedom() {
               return (
                 <div 
                   key={ms.id} 
-                  onClick={() => handleTimelineClick(ms.id)}
+                  onClick={() => setActiveMilestone(ms.id)}
                   className={`flex-1 flex flex-row md:flex-col items-center gap-3 p-3 rounded-xl border transition-all duration-300 cursor-pointer select-none ${
                     isActive 
                       ? "bg-accent border-accent text-white shadow-md shadow-accent/15 scale-[1.02]" 

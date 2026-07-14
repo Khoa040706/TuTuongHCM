@@ -42,9 +42,9 @@ export default function RootLayout({ children }) {
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`${playfair.variable} ${beVietnam.variable} h-full antialiased`}
+      className={`${playfair.variable} ${beVietnam.variable} antialiased`}
     >
-      <body className="min-h-full bg-[#faf8f4] text-[#2c2a26] font-sans">
+      <body className="min-h-screen bg-[#faf8f4] text-[#2c2a26] font-sans">
         {children}
       </body>
     </html>

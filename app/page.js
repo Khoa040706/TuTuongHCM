@@ -29,7 +29,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 import Sidebar from "../components/Sidebar";
-import { getSubsectionMdx } from "./actions/content";
 import ContentRenderer from "../components/ContentRenderer";
 import Quiz from "../components/Quiz";
 import ErrorBoundary from "../components/ErrorBoundary";
@@ -1375,60 +1374,7 @@ export default function Page() {
     }
   }, [selectedSubjectId, allSubjects, appStep]);
 
-  // Load MDX file dynamically when activeSubsectionId changes
-  useEffect(() => {
-    if (!activeSubsectionId || appStep !== "study") {
-      setActiveMdxSource(null);
-      return;
-    }
 
-    const currentSub = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
-    if (!currentSub) return;
-
-    if (currentSub.isCustom) {
-      setActiveMdxSource(null);
-      return;
-    }
-
-    if (!currentSub.chapters) return;
-
-    // Find the chapterId and sectionId containing activeSubsectionId
-    let foundChapterId = null;
-    let foundSectionId = null;
-
-    for (const ch of currentSub.chapters) {
-      for (const sec of ch.sections) {
-        if (sec.subsections) {
-          const match = sec.subsections.find((sub) => sub.id === activeSubsectionId);
-          if (match) {
-            foundChapterId = ch.id;
-            foundSectionId = sec.id;
-            break;
-          }
-        }
-      }
-      if (foundChapterId) break;
-    }
-
-    if (foundChapterId && foundSectionId) {
-      setLoadingMdx(true);
-      getSubsectionMdx(selectedSubjectId, foundChapterId, foundSectionId, activeSubsectionId)
-        .then((res) => {
-          if (res) {
-            setActiveMdxSource(res.mdxSource);
-          } else {
-            setActiveMdxSource(null);
-          }
-        })
-        .catch((err) => {
-          console.error("Error loading MDX:", err);
-          setActiveMdxSource(null);
-        })
-        .finally(() => {
-          setLoadingMdx(false);
-        });
-    }
-  }, [activeSubsectionId, selectedSubjectId, allSubjects, appStep]);
 
   // Add Subject Form inputs
   const [newSubTitle, setNewSubTitle] = useState("");
@@ -1632,14 +1578,12 @@ export default function Page() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       setScrollY(currentScroll);
-
-      // If scrolled to the very top, auto-activate the first subsection
-      if (currentScroll < 50 && !isManualScrollingRef.current) {
-        const firstCh = chapters[0];
-        if (firstCh && firstCh.sections[0]?.subsections[0]) {
-          const firstSubId = firstCh.sections[0].subsections[0].id;
-          setActiveSubsectionId(firstSubId);
-        }
+      
+      // Tối ưu gộp: Cập nhật trạng thái hiển thị nút Scroll-to-Top
+      if (currentScroll > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
       }
     };
 
@@ -1951,28 +1895,17 @@ export default function Page() {
     };
   }, [activeTool]);
 
-  // Show/Hide Scroll-to-Top Button
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
 
   // Lock body scroll when Hero is active in study mode
   useEffect(() => {
     if (appStep === "study" && showHero) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("scroll-locked");
     } else {
-      document.body.style.overflow = "";
+      document.body.classList.remove("scroll-locked");
     }
     return () => {
-      document.body.style.overflow = "";
+      document.body.classList.remove("scroll-locked");
     };
   }, [showHero, appStep]);
 
@@ -1985,6 +1918,71 @@ export default function Page() {
       return () => clearTimeout(timer);
     }
   }, [showHero, appStep, activeSubsectionId, selectedSubjectId]);
+
+  // Auto update active subsection based on scroll position (Scroll Sync)
+  useEffect(() => {
+    if (appStep !== "study" || showHero || isQuizMode) return;
+
+    const handleScrollActiveSub = () => {
+      if (isManualScrollingRef.current) return;
+
+      const currentSub = allSubjects[selectedSubjectId];
+      if (!currentSub || !currentSub.chapters) return;
+
+      // Find active chapter
+      let activeCh = null;
+      for (const ch of currentSub.chapters) {
+        const hasSub = ch.sections.some(sec => 
+          sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+        );
+        if (hasSub) {
+          activeCh = ch;
+          break;
+        }
+      }
+      if (!activeCh && currentSub.chapters.length > 0) {
+        activeCh = currentSub.chapters[0];
+      }
+      if (!activeCh) return;
+
+      // Gather all subsections in current chapter
+      const subsInChapter = [];
+      for (const sec of activeCh.sections) {
+        if (sec.subsections) {
+          subsInChapter.push(...sec.subsections);
+        }
+      }
+
+      // Check vertical position of each content block
+      let bestSubId = null;
+      let minDistance = Infinity;
+      const HEADER_HEIGHT = 90;
+
+      for (const sub of subsInChapter) {
+        const el = document.getElementById(`content-${sub.id}`);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // If the element is within viewport upper section
+          if (rect.top < window.innerHeight * 0.45 && rect.bottom > HEADER_HEIGHT) {
+            bestSubId = sub.id;
+            break;
+          }
+          const distance = Math.abs(rect.top - HEADER_HEIGHT);
+          if (distance < minDistance) {
+            minDistance = distance;
+            bestSubId = sub.id;
+          }
+        }
+      }
+
+      if (bestSubId && bestSubId !== activeSubsectionId) {
+        setActiveSubsectionId(bestSubId);
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollActiveSub, { passive: true });
+    return () => window.removeEventListener("scroll", handleScrollActiveSub);
+  }, [appStep, showHero, isQuizMode, selectedSubjectId, activeSubsectionId, allSubjects]);
 
   // Scroll to an element accounting for sticky header and GSAP pin spacer
   const HEADER_OFFSET = 72; // sticky header height in px (py-4 + content ≈ 56px) + breathing room
@@ -2656,6 +2654,44 @@ export default function Page() {
       });
     }
   };
+
+  // Get active chapter and subsection title for header breadcrumbs
+  let currentChapterTitle = "";
+  let currentSubTitle = "";
+  let currentSectionRoman = "";
+
+  if (appStep === "study") {
+    const currentSub = allSubjects[selectedSubjectId] || allSubjects["tu-tuong-hcm"];
+    if (currentSub && currentSub.chapters) {
+      // Find active chapter containing activeSubsectionId
+      let activeCh = null;
+      for (const ch of currentSub.chapters) {
+        const hasSub = ch.sections.some(sec => 
+          sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+        );
+        if (hasSub) {
+          activeCh = ch;
+          break;
+        }
+      }
+      if (!activeCh && currentSub.chapters.length > 0) {
+        activeCh = currentSub.chapters[0];
+      }
+      if (activeCh) {
+        currentChapterTitle = activeCh.title;
+        for (const sec of activeCh.sections) {
+          if (sec.subsections) {
+            const found = sec.subsections.find(sub => sub.id === activeSubsectionId);
+            if (found) {
+              currentSubTitle = `${found.number ? found.number + ". " : ""}${found.title}`;
+              currentSectionRoman = sec.roman || "";
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#faf8f4] flex flex-col relative">
@@ -3383,7 +3419,7 @@ export default function Page() {
 
 
           {/* Layout wrapper for Sidebar and Content */}
-          <div className="flex-1 flex w-full relative z-10 main-study-content">
+          <div className="flex flex-col md:flex-row w-full min-h-screen gap-6 px-4 md:px-6 py-4 relative z-10 main-study-content">
             {/* Sidebar Navigation */}
             <Sidebar
               chapters={chapters}
@@ -3413,35 +3449,55 @@ export default function Page() {
 
             {/* Main Content Area */}
             <div
-              className="flex-grow flex flex-col min-h-screen md:pl-[312px]"
+              className="flex-grow flex flex-col min-w-0 bg-[#faf8f4]"
             >
               {/* Header Bar */}
               <header
-                className={`sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
+                className={`sticky top-0 z-30 flex items-center px-4 md:px-12 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
                   !showHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={() => setIsSidebarOpen(true)}
-                    className="p-2 -ml-2 rounded-lg text-stone-600 hover:bg-stone-200 md:hidden"
-                    aria-label="Mở menu"
-                  >
-                    <Menu size={20} />
-                  </button>
-                  <div className="text-sm font-semibold flex items-center gap-2 text-stone-500">
-                    <span>{currentSubject.title}</span>
-                    <span className="text-stone-300">/</span>
-                    <span className="text-stone-800 font-bold">
-                      {isQuizMode ? "Bài kiểm tra trắc nghiệm" : chapters[0]?.title}
-                    </span>
+                <div className="w-full flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={() => setIsSidebarOpen(true)}
+                      className="p-2 -ml-2 rounded-lg text-stone-600 hover:bg-stone-200 md:hidden"
+                      aria-label="Mở menu"
+                    >
+                      <Menu size={20} />
+                    </button>
+                    <div className="text-sm font-semibold flex items-center gap-2 text-stone-500 select-none">
+                      <span>{currentSubject.title}</span>
+                      <span className="text-stone-300">/</span>
+                      <span>{currentChapterTitle || (chapters[0] ? chapters[0].title : "")}</span>
+                      {currentSectionRoman && !isQuizMode && (
+                        <>
+                          <span className="text-stone-300">/</span>
+                          <span className="text-stone-700 font-semibold font-mono">{currentSectionRoman}</span>
+                        </>
+                      )}
+                      {currentSubTitle && !isQuizMode && (
+                        <>
+                          <span className="text-stone-300">/</span>
+                          <span className="text-stone-850 font-bold max-w-[200px] md:max-w-[450px] truncate" title={currentSubTitle}>
+                            {currentSubTitle}
+                          </span>
+                        </>
+                      )}
+                      {isQuizMode && (
+                        <>
+                          <span className="text-stone-300">/</span>
+                          <span className="text-stone-850 font-bold">Bài kiểm tra trắc nghiệm</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </header>
 
               {/* Dynamic Content Panel */}
               <div
-                className={`flex-1 flex flex-col relative transition-opacity duration-700 ${
+                className={`flex flex-col relative transition-opacity duration-700 ${
                   !showHero ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
@@ -3457,17 +3513,16 @@ export default function Page() {
                     onMouseUp={handleTextSelection}
                     onTouchEnd={handleTextSelection}
                     onClick={handleContentClick}
-                    className="relative flex-1 w-full max-w-5xl mx-auto px-6 pt-12 pb-44 md:px-12 animate-in"
+                    className="relative w-full max-w-[1400px] mx-auto px-4 pt-12 pb-44 md:px-12 animate-in"
                   >
                     {/* Content text */}
-                    {loadingMdx ? (
-                      <div className="flex flex-col items-center justify-center py-24 space-y-4">
-                        <div className="w-10 h-10 border-4 border-stone-200 border-t-accent rounded-full animate-spin" />
-                        <span className="text-xs font-bold text-stone-400 tracking-widest uppercase animate-pulse select-none">Đang tải bài học...</span>
-                      </div>
-                    ) : (
-                      <ContentRenderer key={reRenderKey} chapters={chapters} mdxSource={activeMdxSource} />
-                    )}
+                    <ContentRenderer
+                      key={reRenderKey}
+                      chapters={chapters}
+                      selectedSubjectId={selectedSubjectId}
+                      activeSubsectionId={activeSubsectionId}
+                      setActiveSubsectionId={setActiveSubsectionId}
+                    />
 
                     {/* Custom Notebook Workspace for Custom Subjects */}
                     {currentSubject.isCustom && (

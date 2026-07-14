@@ -146,7 +146,7 @@ export default function HcmRelationConditions() {
             Tính gắn kết hữu cơ, không thể tách rời
           </h5>
           <p className="text-stone-300 text-xs md:text-sm leading-relaxed">
-            Hồ Chí Minh đặc biệt nhấn mạnh: **Ba điều kiện trên phải được bảo đảm và gắn bó chặt chẽ với nhau**. 
+            Hồ Chí Minh đặc biệt nhấn mạnh: <strong>Ba điều kiện trên phải được bảo đảm và gắn bó chặt chẽ với nhau</strong>. 
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 relative z-10">

@@ -110,7 +110,7 @@ export default function HcmRelationPrecondition() {
           </span>
         </div>
         <p className="text-stone-300 text-xs leading-relaxed">
-          Ngay từ khi thành lập Đảng, Hồ Chí Minh đã khẳng định giải phóng dân tộc chỉ là **chặng đường đầu tiên**, tạo tiền đề và sức mạnh mở đường cho chặng đường tiếp theo tiến thẳng lên chủ nghĩa xã hội và cộng sản chủ nghĩa.
+          Ngay từ khi thành lập Đảng, Hồ Chí Minh đã khẳng định giải phóng dân tộc chỉ là <strong>chặng đường đầu tiên</strong>, tạo tiền đề và sức mạnh mở đường cho chặng đường tiếp theo tiến thẳng lên chủ nghĩa xã hội và cộng sản chủ nghĩa.
         </p>
       </div>
 
