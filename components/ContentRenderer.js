@@ -630,34 +630,47 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
               )}
 
               {/* Parts / Bento cards of this subsection */}
-              {sub.parts && sub.parts.map((part, partIdx) => {
-                const currentPartIdx = globalPartIdx++;
-                return (
-                  <CinematicScrollWrapper key={`part-${part.id || currentPartIdx}`} index={currentPartIdx} className="mb-8">
-                    <SpotlightCardWrapper id={`part-${part.id}`}>
-                      <div className="card-content-blocks font-sans relative z-10 space-y-4">
-                        {(part.label || part.title) && (
-                          <div className="card-bookmark-tag mb-4 border-b border-stone-200/50 pb-2 flex items-center gap-1 text-sm font-bold text-stone-850">
-                            {part.label && (
-                              <span className="text-accent font-mono mr-1">{part.label} /</span>
-                            )}
-                            <span>{part.title}</span>
-                          </div>
-                        )}
-                        {part.content && part.content.map((block, idx) => (
-                          <ContentBlock
-                            key={idx}
-                            block={block}
-                            path={`${part.id}-${idx}`}
-                            activeLang={activeLang}
-                            setActiveLang={setActiveLang}
-                          />
-                        ))}
-                      </div>
-                    </SpotlightCardWrapper>
-                  </CinematicScrollWrapper>
-                );
-              })}
+              {(() => {
+                if (!sub.parts) return null;
+                const isDirectBlocks = sub.parts.length > 0 && sub.parts[0].type;
+                const actualParts = isDirectBlocks
+                  ? [{
+                      id: `${sub.id}-part-merged`,
+                      label: "",
+                      title: "",
+                      content: sub.parts
+                    }]
+                  : sub.parts;
+
+                return actualParts.map((part, partIdx) => {
+                  const currentPartIdx = globalPartIdx++;
+                  return (
+                    <CinematicScrollWrapper key={`part-${part.id || currentPartIdx}`} index={currentPartIdx} className="mb-8">
+                      <SpotlightCardWrapper id={`part-${part.id}`}>
+                        <div className="card-content-blocks font-sans relative z-10 space-y-4">
+                          {(part.label || part.title) && (
+                            <div className="card-bookmark-tag mb-4 border-b border-stone-200/50 pb-2 flex items-center gap-1 text-sm font-bold text-stone-850">
+                              {part.label && (
+                                <span className="text-accent font-mono mr-1">{part.label} /</span>
+                              )}
+                              <span>{part.title}</span>
+                            </div>
+                          )}
+                          {part.content && part.content.map((block, idx) => (
+                            <ContentBlock
+                              key={idx}
+                              block={block}
+                              path={`${part.id}-${idx}`}
+                              activeLang={activeLang}
+                              setActiveLang={setActiveLang}
+                            />
+                          ))}
+                        </div>
+                      </SpotlightCardWrapper>
+                    </CinematicScrollWrapper>
+                  );
+                });
+              })()}
             </div>
           );
         })}
