@@ -725,7 +725,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     });
   };
 
-  const submitQuiz = async () => {
+  async function submitQuiz() {
     clearQuizState();
 
     if (mode === "end") {
@@ -757,6 +757,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
         const record = {
           name,
+          subjectId,
           score: res.score,
           total: questions.length,
           time: elapsedTime,
@@ -838,7 +839,11 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
     // Load from Firestore
     try {
-      const q = query(collection(db, "rankings"), where("chapterId", "==", selectedChapterId));
+      const q = query(
+        collection(db, "rankings"),
+        where("subjectId", "==", subjectId),
+        where("chapterId", "==", selectedChapterId)
+      );
       const snapshot = await getDocs(q);
       snapshot.forEach((doc) => {
         list.push(doc.data());

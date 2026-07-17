@@ -1741,23 +1741,531 @@ public class HelloWorld {
       subtitle: "StringBuffer & StringBuilder",
       sections: [
         {
-          id: "oop-stringbuffer-stringbuilder-sec",
-          roman: "",
-          title: "Nội dung bài học",
+          id: "oop-stringbuffer-stringbuilder-sec-i",
+          roman: "I",
+          title: "Nội dung chính (Outline)",
           subsections: [
             {
-              id: "oop-sub-stringbuffer-stringbuilder",
+              id: "oop-sub-stringbuffer-stringbuilder-outline",
               number: "",
-              title: "Bài giảng chi tiết",
+              title: "Mục tiêu & Đề cương bài học",
               parts: [
                 {
-                  id: "oop-part-stringbuffer-stringbuilder",
+                  id: "oop-part-stringbuffer-stringbuilder-outline",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Nội dung học tập chính",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Để làm chủ được lập trình chuỗi nâng cao và quản lý vùng nhớ đệm hiệu quả trong Java, chúng ta sẽ lần lượt nghiên cứu các phần cốt lõi sau:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. StringBuffer:</strong> Lớp chuỗi động có thể chỉnh sửa trực tiếp (mutable) và an toàn đa luồng (thread-safe).",
+                        "<strong>2. StringBuilder:</strong> Lớp chuỗi động có thể chỉnh sửa trực tiếp (mutable), tốc độ nhanh hơn nhưng không an toàn đa luồng (non-thread-safe).",
+                        "<strong>3. So sánh String và StringBuffer:</strong> Sự khác biệt giữa bất biến (Immutable) và khả biến (Mutable) trong bộ nhớ Heap.",
+                        "<strong>4. So sánh StringBuffer và StringBuilder:</strong> Đánh giá hiệu năng và tính an toàn luồng (Thread-safety).",
+                        "<strong>5. StringTokenizer:</strong> Công cụ tách nhỏ chuỗi ký tự theo các ký tự phân cách (delimiters)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-ii",
+          roman: "II",
+          title: "StringBuffer",
+          subsections: [
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-concept",
+              number: "1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-concept",
+                  label: "",
+                  title: "Khái niệm StringBuffer",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>StringBuffer</strong> là lớp (<code>class</code>) trong Java dùng để tạo ra các chuỗi ký tự có khả năng thay đổi nội dung (<strong>mutable</strong>).",
+                        "<strong>Khác biệt với String:</strong> Đối với String thông thường, mọi hành vi ghép hay chỉnh sửa chuỗi đều âm thầm tạo ra các đối tượng String mới trên Heap. Đối với StringBuffer, các sửa đổi được thực hiện <strong>trực tiếp tại chỗ (in-place)</strong> trên cùng vùng nhớ đệm, giúp tối ưu hóa dung lượng RAM và giảm công việc cho Garbage Collector.",
+                        "<strong>Đặc điểm quan trọng:</strong> StringBuffer là lớp <strong>thread-safe</strong> (an toàn luồng). Nhiều tiến trình/luồng (thread) khác nhau không thể can thiệp dữ liệu cùng một lúc nhờ các phương thức cốt lõi được định nghĩa từ khóa <strong><code>synchronized</code></strong>."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Ghi nhớ cốt lõi:</strong><br/>• <code>String</code> ➔ <strong>Immutable</strong> (bất biến, không thể sửa đổi).<br/>• <code>StringBuffer</code> ➔ <strong>Mutable</strong> (khả biến, có thể sửa đổi) + <strong>Thread-safe</strong> (đồng bộ hóa bằng từ khóa <code>synchronized</code>)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-constructor",
+              number: "2",
+              title: "Constructor (Hàm khởi tạo)",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-constructor",
+                  label: "",
+                  title: "Cách tạo đối tượng StringBuffer & Dung lượng đệm",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "StringBuffer cung cấp 3 hàm khởi tạo chính giúp thiết lập vùng đệm lưu trữ ban đầu:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Hàm khởi tạo (Constructor)", "Mô tả ý nghĩa & Dung lượng đệm (Capacity)"],
+                      rows: [
+                        ["<code>StringBuffer()</code>", "Tạo một bộ đệm rỗng. Dung lượng chứa mặc định ban đầu là <strong>16</strong> ký tự."],
+                        ["<code>StringBuffer(String str)</code>", "Tạo bộ đệm chứa chuỗi <code>str</code>. Dung lượng được đặt bằng <strong>độ dài chuỗi <code>str</code> + 16</strong> ký tự đệm trống."],
+                        ["<code>StringBuffer(int capacity)</code>", "Tạo một bộ đệm rỗng với dung lượng tối đa tự định nghĩa bằng số nguyên truyền vào."]
+                      ]
+                    },
+                    {
+                      type: "key-point",
+                      text: "<strong>Capacity (Dung lượng đệm):</strong> Là tổng số ký tự mà mảng nội bộ <code>char[]</code> của StringBuffer có thể chứa trước khi hệ thống bắt buộc phải tự động cấp phát lại một mảng mới có kích thước lớn hơn trong bộ nhớ RAM."
+                    },
+                    {
+                      type: "java-stringbuffer-memory-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-methods",
+              number: "3",
+              title: "Các phương thức (methods) quan trọng",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-methods",
+                  label: "",
+                  title: "Bảng tổng hợp các thao tác đệm chuỗi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Các phương thức chính của lớp StringBuffer giúp thực hiện việc chỉnh sửa, chèn, xóa và đọc vùng đệm ký tự một cách an toàn:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Tên phương thức", "Công dụng cụ thể"],
+                      rows: [
+                        ["<code>append(String s)</code>", "Ghép (nối thêm) chuỗi <code>s</code> vào cuối bộ đệm hiện tại."],
+                        ["<code>insert(int offset, String s)</code>", "Chèn chuỗi <code>s</code> vào vị trí chỉ số <code>offset</code> đã chỉ định."],
+                        ["<code>replace(int start, int end, String str)</code>", "Thay thế đoạn ký tự từ chỉ số <code>start</code> đến trước <code>end</code> bằng chuỗi <code>str</code> mới."],
+                        ["<code>delete(int start, int end)</code>", "Xóa các ký tự từ chỉ số <code>start</code> đến trước <code>end</code> khỏi bộ đệm."],
+                        ["<code>reverse()</code>", "Đảo ngược thứ tự toàn bộ các ký tự trong chuỗi đệm."],
+                        ["<code>capacity()</code>", "Trả về dung lượng đệm tổng cộng hiện tại của đối tượng."],
+                        ["<code>charAt(int index)</code>", "Trả về ký tự nằm tại vị trí chỉ số <code>index</code>."],
+                        ["<code>length()</code>", "Trả về số lượng ký tự thực tế đang chứa bên trong bộ đệm."],
+                        ["<code>substring(int beginIndex, int endIndex)</code>", "Trích xuất và trả về một chuỗi con mới."]
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>🔥 Điểm thi cực kỳ quan trọng:</strong><br/>Mọi phương thức biến đổi nội dung của StringBuffer đều được đánh dấu bằng từ khóa <strong><code>public synchronized</code></strong>. Từ khóa này đảm bảo chỉ có duy nhất một tiến trình được chạy phương thức tại một thời điểm, giúp StringBuffer đạt được tính chất <strong>Thread-safe</strong> (an toàn luồng) nhưng bù lại sẽ chịu hao phí tài nguyên xử lý lớn hơn."
+                    },
+                    {
+                      type: "java-stringbuffer-thread-lock-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-examples",
+              number: "4",
+              title: "Ví dụ minh họa & Thực hành",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-examples",
+                  label: "",
+                  title: "Mẫu code hoạt động và Thực hành hộp cát",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là các ví dụ code Java chính thức minh họa cho các hàm xử lý đệm chuỗi. Hãy nhấp chọn từng tab để xem mã nguồn và cách dịch chuyển ký tự tương ứng:"
+                    },
+                    {
+                      type: "java-stringbuffer-examples-tabs"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Không gian thử nghiệm (Sandbox workspace):</strong><br/>Hãy tự tay thực thi các câu lệnh thay đổi chuỗi đệm và xem trực tiếp sự thay đổi chỉ số của mảng đệm trong bộ nhớ RAM bên dưới:"
+                    },
+                    {
+                      type: "java-stringbuffer-sandbox"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-iii",
+          roman: "III",
+          title: "StringBuilder",
+          subsections: [
+            {
+              id: "oop-sub-stringbuilder-concept",
+              number: "1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "oop-part-stringbuilder-concept",
+                  label: "",
+                  title: "Khái niệm StringBuilder",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>StringBuilder</strong> là một lớp (<code>class</code>) trong Java cung cấp khả năng lưu trữ và chỉnh sửa chuỗi ký tự khả biến (<strong>mutable</strong>), tương tự như <code>StringBuffer</code>.",
+                        "<strong>Thời điểm ra đời:</strong> Được giới thiệu từ phiên bản <strong>Java 5 (JDK 1.5)</strong> để thay thế cho <code>StringBuffer</code> trong các tác vụ đơn luồng nhằm nâng cao tốc độ xử lý.",
+                        "<strong>Sự khác biệt cốt lõi:</strong> StringBuilder <strong>không an toàn đa luồng (non-thread-safe)</strong> do các phương thức của nó không sử dụng từ khóa <code>synchronized</code>. Điều này giúp loại bỏ hao phí kiểm tra khóa luồng, giúp nó chạy nhanh hơn StringBuffer."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Ghi nhớ cốt lõi:</strong><br/>• <code>StringBuilder</code> ➔ <strong>Mutable</strong> (khả biến, có thể sửa đổi) + <strong>Non-thread-safe</strong> (phi đồng bộ, không đồng bộ hóa).<br/>• <code>StringBuffer</code> ➔ <strong>Mutable</strong> (khả biến) + <strong>Thread-safe</strong> (đồng bộ hóa)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringbuilder-constructor",
+              number: "2",
+              title: "Constructor (Hàm khởi tạo)",
+              parts: [
+                {
+                  id: "oop-part-stringbuilder-constructor",
+                  label: "",
+                  title: "Cách tạo đối tượng StringBuilder & Dung lượng đệm",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "StringBuilder cung cấp 3 hàm khởi tạo tương tự hoàn toàn với StringBuffer:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Hàm khởi tạo (Constructor)", "Mô tả ý nghĩa & Dung lượng đệm (Capacity)"],
+                      rows: [
+                        ["<code>StringBuilder()</code>", "Tạo một bộ đệm rỗng. Dung lượng chứa mặc định ban đầu là <strong>16</strong> ký tự."],
+                        ["<code>StringBuilder(String str)</code>", "Tạo bộ đệm chứa chuỗi <code>str</code>. Dung lượng được đặt bằng <strong>độ dài chuỗi <code>str</code> + 16</strong> ký tự đệm trống."],
+                        ["<code>StringBuilder(int capacity)</code>", "Tạo một bộ đệm rỗng với dung lượng tối đa tự định nghĩa bằng số nguyên truyền vào."]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringbuilder-methods",
+              number: "3",
+              title: "Các phương thức quan trọng",
+              parts: [
+                {
+                  id: "oop-part-stringbuilder-methods",
+                  label: "",
+                  title: "Các phương thức xử lý chuỗi đệm",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "StringBuilder hỗ trợ đầy đủ các phương thức thay đổi chuỗi tương tự như StringBuffer:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Tên phương thức", "Công dụng cụ thể"],
+                      rows: [
+                        ["<code>append(String s)</code>", "Ghép (nối thêm) chuỗi <code>s</code> vào cuối bộ đệm hiện tại."],
+                        ["<code>insert(int offset, String s)</code>", "Chèn chuỗi <code>s</code> vào vị trí chỉ số <code>offset</code> đã chỉ định."],
+                        ["<code>replace(int start, int end, String str)</code>", "Thay thế đoạn ký tự từ chỉ số <code>start</code> đến trước <code>end</code> bằng chuỗi <code>str</code> mới."],
+                        ["<code>delete(int start, int end)</code>", "Xóa các ký tự từ chỉ số <code>start</code> đến trước <code>end</code> khỏi bộ đệm."],
+                        ["<code>reverse()</code>", "Đảo ngược thứ tự toàn bộ các ký tự trong chuỗi đệm."],
+                        ["<code>capacity()</code>", "Trả về dung lượng đệm tổng cộng hiện tại của đối tượng."],
+                        ["<code>charAt(int index)</code>", "Trả về ký tự nằm tại vị trí chỉ số <code>index</code>."],
+                        ["<code>length()</code>", "Trả về số lượng ký tự thực tế đang chứa bên trong bộ đệm."],
+                        ["<code>substring(int beginIndex, int endIndex)</code>", "Trích xuất và trả về một chuỗi con mới."]
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>💡 Chú ý thực hành:</strong> Tất cả các đoạn mã nguồn và logic hoạt động khi sử dụng append, insert, replace, reverse đối với StringBuilder đều giống hệt StringBuffer. Sự khác biệt duy nhất nằm ở tốc độ thực thi trong máy ảo JVM."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-iv",
+          roman: "IV",
+          title: "So sánh String & StringBuffer",
+          subsections: [
+            {
+              id: "oop-sub-compare-string-stringbuffer",
+              number: "1",
+              title: "Khác biệt cốt lõi",
+              parts: [
+                {
+                  id: "oop-part-compare-string-stringbuffer-matrix",
+                  label: "",
+                  title: "So sánh toàn diện tính chất của String và StringBuffer",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Sự khác biệt lớn nhất giữa <code>String</code> và <code>StringBuffer</code> xoay quanh tính khả biến (Mutability) và cách hệ thống cấp phát vùng nhớ trong RAM Heap:"
+                    },
+                    {
+                      type: "java-string-compare-matrix"
+                    },
+                    {
+                      type: "key-point",
+                      text: "<strong>Mẹo thi cử phòng máy:</strong> Khi đề thi yêu cầu so sánh nội dung hai StringBuffer bằng <code>equals()</code>, hãy cẩn thận chuyển đổi chúng về chuỗi String bằng <code>.toString()</code> trước. Nếu so sánh trực tiếp <code>sb1.equals(sb2)</code>, kết quả sẽ luôn trả về <code>false</code> dù nội dung giống hệt nhau (do lớp StringBuffer kế thừa <code>equals()</code> mặc định từ lớp <code>Object</code>, chỉ so sánh địa chỉ tham chiếu)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-v",
+          roman: "V",
+          title: "So sánh StringBuffer & StringBuilder",
+          subsections: [
+            {
+              id: "oop-sub-compare-buffer-builder",
+              number: "1",
+              title: "Hiệu năng & Đồng bộ hóa",
+              parts: [
+                {
+                  id: "oop-part-compare-buffer-builder-safety",
+                  label: "",
+                  title: "An toàn đa luồng vs Bứt tốc hiệu năng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Bảng tổng hợp tiêu chí khác biệt cơ bản giữa hai lớp chuỗi khả biến:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Tiêu chí", "StringBuffer", "StringBuilder"],
+                      rows: [
+                        ["<strong>An toàn luồng</strong>", "Đồng bộ hóa (Synchronized) ➔ An toàn đa luồng (Thread-safe).", "Không đồng bộ (Non-synchronized) ➔ Không an toàn đa luồng."],
+                        ["<strong>Tốc độ thực thi</strong>", "Chậm hơn do phải chịu hao phí kiểm soát khóa luồng (synchronized lock overhead).", "Nhanh nhất do không phải chịu hao phí quản lý khóa."],
+                        ["<strong>Thời điểm giới thiệu</strong>", "Từ phiên bản đầu tiên của Java (JDK 1.0).", "Từ phiên bản Java 5 (JDK 1.5)."]
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>🔥 Mẹo nhớ nhanh trong phòng thi:</strong><br/>• <strong>B</strong>uffer = <strong>B</strong>ảo mật (Thread-safe, an toàn đa luồng).<br/>• <strong>B</strong>uilder = <strong>B</strong>ứt tốc (Fastest, hiệu năng cao nhất)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mô phỏng đa luồng (Thread-safety Simulation):</strong><br/>Hãy chạy thử nghiệm mô phỏng dưới đây để xem cách các luồng xử lý đồng thời ghi đè dữ liệu trong StringBuilder và xếp hàng chờ khóa trong StringBuffer:"
+                    },
+                    {
+                      type: "java-stringbuilder-thread-safety-visualizer"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đo lường hiệu năng thực tế (Performance Benchmark):</strong><br/>Chọn số vòng lặp và nhấn chạy thử nghiệm để chứng kiến sự khác biệt rõ rệt về thời gian thực thi và số lượng đối tượng rác sinh ra trên Heap:"
+                    },
+                    {
+                      type: "java-string-performance-benchmark"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-vi",
+          roman: "VI",
+          title: "StringTokenizer",
+          subsections: [
+            {
+              id: "oop-sub-stringtokenizer-concept",
+              number: "1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "oop-part-stringtokenizer-concept",
+                  label: "",
+                  title: "Khái niệm StringTokenizer",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Lớp <strong><code>java.util.StringTokenizer</code></strong> trong Java được dùng để <strong>tách một chuỗi thành các token (mảnh nhỏ)</strong> dựa trên các ký tự phân cách (delimiters).",
+                        "Đây là công cụ đơn giản và gọn nhẹ để chia nhỏ các chuỗi văn bản phổ biến (ví dụ: tách từ theo khoảng trắng, dấu phẩy, dấu chấm phẩy, v.v.)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringtokenizer-constructor",
+              number: "2",
+              title: "Constructor (Hàm khởi tạo)",
+              parts: [
+                {
+                  id: "oop-part-stringtokenizer-constructor",
+                  label: "",
+                  title: "Các hàm khởi tạo của StringTokenizer",
+                  content: [
+                    {
+                      type: "table",
+                      headers: ["Hàm khởi tạo (Constructor)", "Mô tả ý nghĩa hoạt động"],
+                      rows: [
+                        ["<code>StringTokenizer(String str)</code>", "Tạo đối tượng tách chuỗi <code>str</code>. Ký tự phân cách mặc định ban đầu là các khoảng trắng (space, tab, xuống dòng <code>\\t\\n\\r\\f</code>)."],
+                        ["<code>StringTokenizer(String str, String delim)</code>", "Tách chuỗi <code>str</code> theo danh sách ký tự phân cách <code>delim</code> do người dùng tự định nghĩa."],
+                        ["<code>StringTokenizer(String str, String delim, boolean returnVal)</code>", "Nếu <code>returnVal = true</code>, các ký tự phân cách (delimiters) cũng được coi là các token hợp lệ và được trả về khi cắt chuỗi."]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringtokenizer-methods",
+              number: "3",
+              title: "Phương thức quan trọng",
+              parts: [
+                {
+                  id: "oop-part-stringtokenizer-methods",
+                  label: "",
+                  title: "Bảng tổng hợp phương thức điều hướng",
+                  content: [
+                    {
+                      type: "table",
+                      headers: ["Phương thức", "Công dụng cụ thể"],
+                      rows: [
+                        ["<code>hasMoreTokens()</code>", "Kiểm tra xem đối tượng có còn token nào tiếp theo để lấy hay không (trả về kiểu dữ liệu <code>boolean</code>)."],
+                        ["<code>nextToken()</code>", "Trả về chuỗi token tiếp theo trong danh sách và dịch chuyển con trỏ lên phía trước."],
+                        ["<code>countTokens()</code>", "Trả về tổng số lượng token còn lại chưa được đọc trong bộ đệm."],
+                        ["<code>nextToken(String delim)</code>", "Đổi ký tự phân cách thành <code>delim</code> tức thời và trả về token tiếp theo."]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-stringtokenizer-examples",
+              number: "4",
+              title: "Ví dụ minh họa",
+              parts: [
+                {
+                  id: "oop-part-stringtokenizer-examples-tabs",
+                  label: "",
+                  title: "Mẫu mã nguồn Java và Hộp cát Trực quan",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là hai ví dụ mã nguồn minh họa cách hoạt động cơ bản và hoán đổi delimiter của StringTokenizer:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Ví dụ a (Tách theo khoảng trắng):</strong> Khởi tạo mặc định, dùng vòng lặp <code>while (st.hasMoreTokens())</code> để duyệt toàn bộ.",
+                        "<strong>Ví dụ b (Tách theo dấu phẩy):</strong> Sử dụng <code>st.nextToken(\",\")</code> để chỉ định phân cách là dấu phẩy ngay khi gọi để lấy token đầu tiên."
+                      ]
+                    },
+                    {
+                      type: "java-string-tokenizer-sandbox"
+                    },
+                    {
+                      type: "key-point",
+                      text: "<strong>💡 Tổng kết phòng thi cần ghi nhớ:</strong><br/>• Phân cách mặc định của StringTokenizer là <strong>khoảng trắng, tab, xuống dòng</strong>.<br/>• Dễ nhầm lẫn: <code>nextToken()</code> không đối số sử dụng delim đã báo ở constructor; <code>nextToken(delim)</code> cho phép đổi phân cách <strong>ngay lúc gọi</strong>."
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Ghi nhớ nhanh:</strong><br/>• <strong>Khái niệm:</strong> Tách 1 chuỗi thành nhiều phần nhỏ (token) dựa trên các ký tự ngăn cách.<br/>• <strong>Mục đích:</strong> Xử lý dữ liệu dạng liệt kê (CSV, danh sách...) mà không cần dùng hàm <code>split()</code>.<br/>• <strong>Điểm dễ thi:</strong> Phân biệt 3 phương thức: <code>hasMoreTokens()</code>, <code>nextToken()</code>, và <code>countTokens()</code>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-vii",
+          roman: "VII",
+          title: "Bài tập (Exercises)",
+          subsections: [
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-exercises",
+              number: "1",
+              title: "Bài tập Xử lý & Chuẩn hóa họ tên tiếng Việt",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-exercises-desc",
+                  label: "",
+                  title: "Yêu cầu thực hành",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đề bài:</strong> Cho một họ tên tiếng Việt viết thô (ví dụ: <code>\"Nguyen Van Teo\"</code>). Hãy sử dụng các lớp đã học bao gồm <code>StringBuffer</code>, <code>StringBuilder</code> hoặc <code>StringTokenizer</code> để thực hiện các phương thức xử lý sau:"
+                    },
+                    {
+                      type: "numbered-list",
+                      items: [
+                        "Đếm số từ (words) trong tên.",
+                        "Trả về <strong>tên (first name)</strong>.",
+                        "Trả về <strong>họ (last name)</strong>.",
+                        "Trả về <strong>tên đệm (middle name)</strong>.",
+                        "Viết hoa ký tự đầu của mỗi từ trong tên.",
+                        "<strong>Chuẩn hóa (formalize)</strong> tên: Xóa khoảng trắng thừa ở đầu và cuối chuỗi, chỉ để lại đúng 1 khoảng trắng giữa các từ."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>⚡ Mẹo phòng máy:</strong> Dạng bài tập này <strong>rất hay xuất hiện trong các bài kiểm tra/thi thực hành</strong>. Hãy luyện tập kỹ cách kết hợp <code>StringTokenizer</code> (dùng để tách các từ thô ra) và <code>StringBuilder</code> / <code>StringBuffer</code> (để ghép lại chuỗi đã chuẩn hóa một cách tối ưu bộ nhớ Heap)."
+                    },
+                    {
+                      type: "java-vietnamese-name-normalizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stringbuffer-stringbuilder-sec-viii",
+          roman: "VIII",
+          title: "Tổng kết nhanh toàn bài",
+          subsections: [
+            {
+              id: "oop-sub-stringbuffer-stringbuilder-summary",
+              number: "1",
+              title: "Tóm tắt & Đối chiếu kiến thức",
+              parts: [
+                {
+                  id: "oop-part-stringbuffer-stringbuilder-summary-dash",
+                  label: "",
+                  title: "Bảng tổng hợp đặc tính các lớp xử lý chuỗi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để kết thúc bài học, hãy đối chiếu các đặc tính quan trọng nhất giữa 4 lớp xử lý chuỗi cơ bản trong Java để chuẩn bị tốt cho các câu hỏi trắc nghiệm lý thuyết:"
+                    },
+                    {
+                      type: "java-string-summary-dashboard"
                     }
                   ]
                 }
@@ -2624,23 +3132,905 @@ public class HelloWorld {
       subtitle: "Encapsulation & Access Modifiers",
       sections: [
         {
-          id: "oop-encapsulation-modifier-sec",
-          roman: "",
-          title: "Nội dung bài học",
+          id: "oop-encapsulation-modifier-intro-sec",
+          roman: "I",
+          title: "Mở đầu",
           subsections: [
             {
-              id: "oop-sub-encapsulation-modifier",
-              number: "",
-              title: "Bài giảng chi tiết",
+              id: "oop-sub-encapsulation-modifier-intro",
+              number: "1.0",
+              title: "Chế độ người thiết kế & UML",
               parts: [
                 {
-                  id: "oop-part-encapsulation-modifier",
+                  id: "oop-part-encapsulation-modifier-intro-content",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Giới thiệu chủ đề & mục tiêu bài học",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Chủ đề học tập:</strong> Lập trình hướng đối tượng (OOP) - Phần 2: Chế độ người thiết kế (<strong>Designer Mode</strong>) - Tự tạo lớp (class) của riêng mình.",
+                        "<strong>Mục tiêu chính:</strong>",
+                        "1. Hiểu sâu sắc mô hình lập trình (programming model) và tư duy OOP.",
+                        "2. Sử dụng mô hình hóa hướng đối tượng (object-oriented modeling) để xây dựng giải pháp.",
+                        "3. Tự học thiết kế lớp (class).",
+                        "4. Xác định rõ ràng các dịch vụ, chức năng (services) cần cung cấp cho một class.",
+                        "5. Làm quen với ngôn ngữ mô hình hóa thống nhất <strong>UML (Unified Modeling Language)</strong> để biểu diễn đồ họa trực quan cho các thành phần OOP."
+                      ]
+                    },
+                    {
+                      type: "label",
+                      text: "Quy tắc chuyển dịch Sơ đồ UML thành Code Java:"
+                    },
+                    {
+                      type: "java-uml-to-code-sandbox"
+                    },
+                    {
+                      type: "label",
+                      text: "Thực hành nối ký hiệu UML:"
+                    },
+                    {
+                      type: "java-uml-symbol-matcher"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Ghi nhớ:</strong> Phần mở đầu mang tính giới thiệu, định hướng tư duy thiết kế hệ thống và giúp bạn ghi nhớ ký hiệu UML. Không chứa kiến thức thi trực tiếp nhưng là nền tảng tối quan trọng."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-encapsulation-modifier-recap-sec",
+          roman: "II",
+          title: "Ôn tập (Recapitulation)",
+          subsections: [
+            {
+              id: "oop-sub-encapsulation-modifier-recap",
+              number: "2.0",
+              title: "Người dùng vs Người thiết kế",
+              parts: [
+                {
+                  id: "oop-part-encapsulation-modifier-recap-content",
+                  label: "",
+                  title: "Ôn tập kiến thức tuần trước",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Kiến thức đã học:</strong> <code>Scanner</code>, <code>String</code>, <code>Math</code>, <code>DecimalFormat</code>, <code>Random</code>, <code>Wrapper classes</code>, <code>Point</code>.",
+                        "<strong>Các khái niệm cơ bản:</strong> <code>Modifiers</code> (từ khóa bổ nghĩa), <code>Class method</code> vs <code>Instance method</code>, <code>Constructor</code> (hàm khởi tạo), <code>Overloading</code> (nạp chồng phương thức).",
+                        "<strong>Sự thay đổi về vai trò tư duy lập trình:</strong>"
+                      ]
+                    },
+                    {
+                      type: "java-user-vs-designer-switcher"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Trọng tâm ôn tập:</strong><br/>• Tuần trước: Đóng vai <strong>Người dùng (User)</strong> - gọi sử dụng các lớp JDK API có sẵn.<br/>• Tuần này: Đóng vai <strong>Người thiết kế (Designer)</strong> - tự thiết kế, khai báo thuộc tính và xây dựng các phương thức cho class của chính bạn."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-encapsulation-modifier-paradigm-sec",
+          roman: "III",
+          title: "Programming Model và OOP",
+          subsections: [
+            {
+              id: "oop-sub-encapsulation-modifier-paradigm-model",
+              number: "3.1",
+              title: "Mô hình lập trình (Programming Model)",
+              parts: [
+                {
+                  id: "oop-part-encapsulation-modifier-paradigm-model-content",
+                  label: "",
+                  title: "Khái niệm Programming Model",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Mỗi ngôn ngữ lập trình (C, C++, Java...) đều được phát triển dựa trên một <strong>programming model (mô hình lập trình)</strong> hay <strong>programming paradigm (hệ tư tưởng/mẫu hình lập trình)</strong> nhất định.",
+                        "Programming model quyết định <strong>thế giới quan (worldview)</strong> của ngôn ngữ đó, định hình cách nhà lập trình tổ chức thông tin, tổ chức bộ nhớ RAM và thiết kế giải thuật xử lý bài toán.",
+                        "Một số hệ tư tưởng (paradigm) phổ biến thế giới:",
+                        "• <strong>Procedural/Imperative (Lập trình thủ tục/mệnh lệnh):</strong> C, Pascal - xem chương trình là chuỗi các câu lệnh tuần tự tác động lên dữ liệu.",
+                        "• <strong>Object Oriented (Lập trình hướng đối tượng):</strong> Java, C++ - xem chương trình là tập hợp các đối tượng tương tác với nhau.",
+                        "• <strong>Functional (Lập trình hàm):</strong> Scheme, LISP - giải quyết bài toán thông qua việc đánh giá các biểu thức toán học và hạn chế biến đổi trạng thái dữ liệu.",
+                        "• <strong>Logic programming (Lập trình logic):</strong> PROLOG - khai báo các luật và sự kiện để máy tự suy diễn tìm kết quả."
+                      ]
+                    },
+                    {
+                      type: "label",
+                      text: "Minh họa so sánh cú pháp Hello World đa mô hình:"
+                    },
+                    {
+                      type: "java-multi-paradigm-syntax-viewer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-encapsulation-modifier-paradigm-compare",
+              number: "3.2",
+              title: "So sánh Procedural vs OOP",
+              parts: [
+                {
+                  id: "oop-part-encapsulation-modifier-paradigm-compare-content",
+                  label: "",
+                  title: "Đối chiếu đặc tính lập trình thủ tục và hướng đối tượng",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Lập trình thủ tục (Procedural) và Lập trình hướng đối tượng (OOP) đại diện cho hai trường phái tư duy lập trình đối lập. Dưới đây là bảng đối chiếu chi tiết theo từng khía cạnh kỹ thuật chính:"
+                    },
+                    {
+                      type: "java-procedural-vs-oop-interactive-grid"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-encapsulation-modifier-paradigm-pillars",
+              number: "3.3",
+              title: "4 Khái niệm nền tảng",
+              parts: [
+                {
+                  id: "oop-part-encapsulation-modifier-paradigm-pillars-content",
+                  label: "",
+                  title: "4 Trụ cột cốt lõi của OOP",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để làm chủ lập trình hướng đối tượng, học sinh bắt buộc phải ghi nhớ nằm lòng 4 trụ cột cơ bản sau (thường xuất hiện trực tiếp trong đề thi lý thuyết dưới cả tên tiếng Anh và tiếng Việt):"
+                    },
+                    {
+                      type: "java-oop-pillars-dashboard"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-encapsulation-modifier-paradigm-bankaccount",
+              number: "3.4",
+              title: "Minh họa: Lớp BankAccount",
+              parts: [
+                {
+                  id: "oop-part-encapsulation-modifier-paradigm-bankaccount-content",
+                  label: "",
+                  title: "Ví dụ thực tế Bank Account (Tài khoản ngân hàng)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Hãy cùng phân tích một ví dụ thực tế: Cài đặt hệ thống quản lý tài khoản ngân hàng (gồm số tài khoản <code>acctNum</code> và số dư <code>balance</code>) theo hai kiểu lập trình để thấy rõ lỗ hổng bảo mật của lập trình thủ tục và cách tính Đóng gói (Encapsulation) của OOP giải quyết triệt để vấn đề này."
+                    },
+                    {
+                      type: "label",
+                      text: "Mã nguồn C cài đặt theo kiểu Thủ tục (Procedural):"
+                    },
+                    {
+                      type: "code",
+                      lang: "c",
+                      code: `typedef struct {\n    int acctNum;\n    double balance;\n} BankAcct;\n\nvoid initialize(BankAcct *baPtr, int anum) {\n    baPtr->acctNum = anum;\n    baPtr->balance = 0;\n}\n\nint withdraw(BankAcct *baPtr, double amount) {\n    if (baPtr->balance < amount) return 0; // Thất bại\n    baPtr->balance -= amount;\n    return 1; // Thành công\n}`
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Đặc trưng của Procedural C:</strong> Cấu trúc dữ liệu (struct) và hàm (function) tách rời hoàn toàn. Dữ liệu được truyền vào hàm dưới dạng con trỏ để xử lý.",
+                        "<strong>Lỗ hổng:</strong> Dữ liệu trong struct là <strong>công khai (public)</strong>. Bất kỳ ai ở ngoài cũng có thể viết lệnh sửa đổi trực tiếp (ví dụ <code>ba1.balance = 999999;</code>) mà không đi qua kiểm duyệt của hàm rút/gửi tiền."
+                      ]
+                    },
+                    {
+                      type: "label",
+                      text: "Mã nguồn Java cài đặt theo kiểu OOP (Encapsulation):"
+                    },
+                    {
+                      type: "code",
+                      lang: "java",
+                      code: `public class BankAccount {\n    private int acctNum;   // ẩn dữ liệu\n    private double balance;\n\n    public BankAccount(int acctNum, double balance) {\n        this.acctNum = acctNum;\n        this.balance = balance;\n    }\n\n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n\n    public boolean withdraw(double amount) {\n        if (balance >= amount) {\n            balance -= amount;\n            return true;\n        }\n        return false;\n    }\n}`
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Đặc trưng của OOP Java:</strong> Dữ liệu và phương thức bọc chung trong Class. Sử dụng access modifier <code>private</code> để khóa chặt thuộc tính, không cho truy cập từ bên ngoài.",
+                        "<strong>Tính an toàn:</strong> Mọi thao tác sửa đổi số dư bắt buộc phải thông qua phương thức public (<code>deposit</code>/<code>withdraw</code>), ngăn chặn tuyệt đối hacker chỉnh sửa RAM tùy tiện."
+                      ]
+                    },
+                    {
+                      type: "label",
+                      text: "Hộp thử nghiệm xâm nhập dữ liệu thực tế:"
+                    },
+                    {
+                      type: "java-bank-account-exploit-simulator"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>💡 Trọng tâm ôn thi:</strong> Phân biệt cách tổ chức dữ liệu của C (struct công khai, tách biệt hàm) và Java (class bảo mật private, đóng gói gắn liền hàm) thông qua ví dụ BankAccount. Trắc nghiệm lý thuyết cực kỳ hay hỏi điểm này!"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-design-sec",
+          roman: "IV",
+          title: "OOP Design - Thiết kế Class của riêng mình",
+          subsections: [
+        {
+          id: "oop-sub-design-concepts",
+          number: "4.1",
+          title: "Khái niệm & Cấu trúc cơ bản",
+          parts: [
+            {
+              id: "oop-part-design-concepts-intro",
+              label: "1",
+              title: "Khái niệm cơ bản",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Trước đây: Bạn đã sử dụng các <strong>class có sẵn</strong> từ Java API (như <code>Scanner</code>, <code>String</code>, <code>Math</code>, <code>Point</code>...). Đây là các <strong>service class (lớp dịch vụ)</strong>, mỗi class cung cấp một số chức năng/tiện ích thông qua các phương thức."
+                },
+                {
+                  type: "paragraph",
+                  text: "Chương trình sử dụng các service class này được gọi là <strong>client class</strong> hoặc <strong>driver class</strong>. Một client class bắt buộc phải có phương thức khởi chạy <code>public static void main(String[] args)</code>."
+                },
+                {
+                  type: "highlight",
+                  text: "• <strong>Trước đây (User Mode):</strong> Chúng ta đóng vai người sử dụng các lớp có sẵn.<br/>• <strong>Hiện tại (Designer Mode):</strong> Chúng ta đóng vai người thiết kế (designer) để tự tạo ra các <strong>service class</strong> mới cho người khác sử dụng."
+                }
+              ]
+            },
+            {
+              id: "oop-part-class-structure",
+              label: "2",
+              title: "Class gồm những gì?",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Mục đích của một <strong>service class</strong> là đóng vai trò như một <strong>template (khuôn mẫu)</strong> để từ đó hệ thống tạo ra các <strong>instance (đối tượng thực tế)</strong> trong bộ nhớ RAM."
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "Một Class thường bao gồm:",
+                    "• <strong>Attributes (Thuộc tính):</strong> Các biến lưu trữ dữ liệu của đối tượng (còn gọi là <em>Member Data</em> hoặc <em>Fields</em>).",
+                    "• <strong>Behaviours (Hành vi):</strong> Các phương thức xử lý và hoạt động của đối tượng (còn gọi là <em>Member Behaviours</em> hoặc <em>Methods</em>)."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "Mỗi <strong>instance (object)</strong> của cùng một class là các thực thể độc lập trong bộ nhớ RAM, nhưng chúng chia sẻ cùng một tập hợp thuộc tính và hành vi do class định nghĩa."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-sub-design-constructor",
+          number: "4.2",
+          title: "Hàm khởi tạo (Constructor)",
+          parts: [
+            {
+              id: "oop-part-design-constructor-rules",
+              label: "3",
+              title: "Constructor (Hàm khởi tạo)",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Mỗi class có một hoặc nhiều <strong>constructor</strong>. Constructor là hàm đặc biệt dùng để <strong>tạo instance</strong> của class."
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Default Constructor (Constructor mặc định):</strong>",
+                    "• Không có tham số truyền vào.",
+                    "• Được trình biên dịch tự động sinh ra nếu người thiết kế class không viết bất kỳ constructor nào.",
+                    "<strong>Non-default Constructor:</strong> Do người thiết kế tự viết thêm vào, thường nhận tham số đầu vào để gán giá trị khởi tạo cho thuộc tính.",
+                    "<strong>Constructor Overloading (Nạp chồng hàm khởi tạo):</strong> Một lớp có thể có nhiều constructor khác nhau về danh sách tham số (số lượng, kiểu dữ liệu, thứ tự tham số)."
+                  ]
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>⚠️ Quy tắc Constructor quan trọng:</strong><br/>1. Tên của Constructor phải trùng khớp hoàn toàn 100% với tên class.<br/>2. Constructor <strong>KHÔNG có kiểu trả về</strong> (không dùng cả từ khóa <code>void</code>).<br/>3. Có thể nạp chồng (overload) nhiều constructor."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-sub-design-access-modifiers",
+          number: "4.3",
+          title: "Mức độ truy cập & Quy tắc thiết kế",
+          parts: [
+            {
+              id: "oop-part-design-access-modifiers-table",
+              label: "4",
+              title: "Mức độ truy cập (Access Modifiers)",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Java cung cấp 4 mức độ truy cập để giới hạn phạm vi sử dụng của thuộc tính và phương thức từ bên ngoài:"
+                },
+                {
+                  type: "quote",
+                  text: "<table class='min-w-full border-collapse border border-stone-200 text-xs md:text-sm my-4'><thead class='bg-stone-100'><tr><th class='border border-stone-200 p-2 font-bold text-left'>Modifier</th><th class='border border-stone-200 p-2 font-bold text-left'>Phạm vi truy cập</th><th class='border border-stone-200 p-2 font-bold text-left'>Khuyến nghị dùng cho</th></tr></thead><tbody><tr><td class='border border-stone-200 p-2 font-mono font-bold text-emerald-600'>public</td><td class='border border-stone-200 p-2'>Bất kỳ lớp nào ở bất kỳ package nào cũng truy cập được.</td><td class='border border-stone-200 p-2'>Phương thức dịch vụ (method)</td></tr><tr><td class='border border-stone-200 p-2 font-mono font-bold text-rose-500'>private</td><td class='border border-stone-200 p-2'>Chỉ trong cùng class mới truy cập được. Lớp bên ngoài không thể xem hoặc sửa trực tiếp.</td><td class='border border-stone-200 p-2'>Tất cả thuộc tính (attribute)</td></tr><tr><td class='border border-stone-200 p-2 font-mono font-bold text-blue-600'>protected</td><td class='border border-stone-200 p-2'>Trong cùng class, cùng package, hoặc lớp con (child class) kế thừa từ nó.</td><td class='border border-stone-200 p-2'>Dữ liệu dùng chung trong gia đình kế thừa</td></tr><tr><td class='border border-stone-200 p-2 font-mono font-bold text-stone-500'>[None] (default)</td><td class='border border-stone-200 p-2'>Chỉ các class trong cùng package mới truy cập được (Package private).</td><td class='border border-stone-200 p-2'>-</td></tr></tbody></table>"
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>📌 Ghi nhớ:</strong> Thứ tự công khai giảm dần của các mức truy cập: <code>public</code> &gt; <code>protected</code> &gt; <code>[default]</code> &gt; <code>private</code>. Đây là câu hỏi trắc nghiệm lý thuyết cực kỳ quen thuộc!"
+                }
+              ]
+            },
+            {
+              id: "oop-part-design-guidelines",
+              label: "5",
+              title: "Quy tắc thiết kế chung (Guidelines)",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Thuộc tính (Attribute) thường là private:</strong> Để thực hiện nguyên lý <em>information hiding (ẩn thông tin)</em> - bảo vệ toàn vẹn dữ liệu bên trong đối tượng khỏi sự can thiệp trái phép từ bên ngoài.",
+                    "• Muốn thay đổi hoặc đọc thuộc tính private, bên ngoài bắt buộc phải gọi thông qua các phương thức public gián tiếp.",
+                    "• <em>Ngoại lệ duy nhất:</em> Lớp <code>Point</code> trong JDK có các thuộc tính <code>x</code>, <code>y</code> là public vì lý do lịch sử cũ (legacy code).",
+                    "<strong>Phương thức (Method) thường là public:</strong> Để làm cổng giao tiếp (interface) cho phép client class gọi sử dụng dịch vụ.",
+                    "• Nếu một method chỉ phục vụ nội bộ bên trong lớp (hàm trợ giúp), hãy khai báo nó là <code>private</code>."
+                  ]
+                },
+                {
+                  type: "quote",
+                  text: "<strong>💡 Giải thích thêm:</strong> 'Information hiding' và 'Encapsulation' có mối liên hệ mật thiết. <em>Information hiding</em> là mục tiêu (cần ẩn dữ liệu đi), còn <em>Encapsulation (tính đóng gói)</em> là kỹ thuật thực hiện mục tiêu đó bằng cách gộp chung dữ liệu + phương thức vào class và giới hạn truy cập bằng modifier private.",
+                  source: "Giáo trình OOP"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-sub-design-bankacct-case-study",
+          number: "4.4",
+          title: "Thực hành: Lớp BankAcct",
+          parts: [
+            {
+              id: "oop-part-design-bankacct-code",
+              label: "6",
+              title: "Ví dụ: Lớp BankAcct",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Hãy quan sát mã nguồn Java của lớp <code>BankAcct</code> (Lớp dịch vụ tài khoản ngân hàng) dưới đây để thấy cách khai báo thuộc tính private, constructor nạp chồng và các phương thức rút/gửi tiền:"
+                },
+                {
+                  type: "java-bankacct-compile-workflow"
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>🔍 Giải thích từng phần:</strong><br/>• <code>private int acctNum; private double balance;</code>: Khóa dữ liệu bằng <code>private</code>.<br/>• <code>public BankAcct() {}</code>: Default constructor khởi tạo số dư mặc định là 0.0.<br/>• <code>public BankAcct(int aNum, double bal) {}</code>: Overloaded constructor nhận tham số đầu vào để gán giá trị ban đầu tùy chỉnh."
+                }
+              ]
+            },
+            {
+              id: "oop-part-accessor-mutator",
+              label: "7",
+              title: "Accessor và Mutator (Getter & Setter)",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Vì thuộc tính bị khóa private, người thiết kế class sẽ cung cấp hai loại phương thức đặc biệt để đọc/ghi dữ liệu an toàn:",
+                    "• <strong>Accessor (Getter):</strong> Hàm lấy giá trị thuộc tính. Thường bắt đầu bằng từ khóa <code>get</code>, kiểu trả về trùng khớp với kiểu dữ liệu của thuộc tính (Ví dụ: <code>public int getAcctNum() { return acctNum; }</code>).",
+                    "• <strong>Mutator (Setter):</strong> Hàm sửa đổi giá trị thuộc tính. Thường bắt đầu bằng từ khóa <code>set</code>, kiểu trả về thường là <code>void</code> và nhận tham số đầu vào (Ví dụ: <code>public void setBalance(double b) { balance = b; }</code>)."
+                  ]
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>📌 Ghi nhớ nhanh:</strong><br/>• Accessor (Getter): lấy giá trị, kiểu trả về trùng thuộc tính, không tham số.<br/>• Mutator (Setter): sửa giá trị, thường trả về <code>void</code>, có tham số để cập nhật."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-sub-design-client-security",
+          number: "4.5",
+          title: "Khách hàng sử dụng & Bảo mật đóng gói",
+          parts: [
+            {
+              id: "oop-part-design-decisions",
+              label: "8",
+              title: "Quyết định của người thiết kế class",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Người thiết kế lớp (Designer) có toàn quyền quyết định cấu trúc nội bộ của lớp:",
+                    "• Quyết định thuộc tính nào cần có trong lớp.",
+                    "• Quyết định phương thức nào cung cấp cho người dùng thấy có ích (ví dụ: cung cấp thêm phương thức <code>transfer()</code> để chuyển tiền giữa 2 tài khoản)."
+                  ]
+                },
+                {
+                  type: "highlight",
+                  text: "Không có quy tắc cứng nhắc trong thiết kế lớp, bạn nên tham khảo cách thiết kế các lớp chuẩn trong <strong>API documentation</strong> của Java để tích lũy kinh nghiệm thiết kế tốt."
+                }
+              ]
+            },
+            {
+              id: "oop-part-client-class-concept",
+              label: "9",
+              title: "Viết Client Class (User Mode)",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Lớp dịch vụ <code>BankAcct</code> không chứa phương thức <code>main()</code> nên không thể tự chạy được. Để sử dụng nó, chúng ta viết một <strong>Client Class</strong> chứa hàm <code>main()</code> để khởi tạo và điều khiển đối tượng tài khoản."
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>⚠️ Khuyến nghị đóng gói:</strong> Có thể đặt cả hai lớp (service class và client class) trong cùng 1 file <code>.java</code> để test nhanh, nhưng chỉ được phép có tối đa <strong>1 lớp public</strong> (lớp trùng tên với file <code>.java</code>). Khuyến nghị tốt nhất là viết tách rời mỗi lớp thành 1 file <code>.java</code> riêng biệt để tránh nhầm lẫn."
+                }
+              ]
+            },
+            {
+              id: "oop-part-encapsulation-violations",
+              label: "11",
+              title: "Lỗi vi phạm Encapsulation",
+              content: [
+                {
+                  type: "paragraph",
+                  text: "Nếu một Client class cố tình truy cập trực tiếp vào thuộc tính private của lớp dịch vụ (ví dụ: gán trực tiếp <code>ba1.balance += 1000;</code>), hệ thống biên dịch Java sẽ phát hiện và báo lỗi ngay lập tức:"
+                },
+                {
+                  type: "java-encapsulation-solution-box"
+                }
+              ]
+            },
+            {
+              id: "oop-part-compiling-classes",
+              label: "12",
+              title: "Biên dịch & Chạy chương trình",
+              content: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Khi có nhiều tệp tin lớp liên quan, ta biên dịch độc lập từng lớp bằng lệnh:",
+                    "• Biên dịch: <code>javac BankAcct.java TestBankAcct.java</code>",
+                    "• Chạy lớp chứa hàm main: <code>java TestBankAcct</code> (Lưu ý: Không viết đuôi .class khi chạy).",
+                    "Một <strong>service class</strong> có thể được dùng chung bởi <strong>nhiều client class</strong> khác nhau (ví dụ: nhiều chương trình cùng sử dụng chung lớp <code>BankAcct</code> hoặc <code>Scanner</code>)."
+                  ]
+                },
+                {
+                  type: "highlight",
+                  text: "<strong>📌 Ghi nhớ phòng thi:</strong><br/>• Lớp chạy thử (client class) phải có hàm <code>main()</code> mới chạy được.<br/>• Biên dịch: <code>javac TênFile.java</code> (phải có .java).<br/>• Chạy chương trình: <code>java TênLớp</code> (không được có .class)."
+                }
+              ]
+            }
+          ]
+        }
+          ]
+        },
+        {
+          id: "oop-more-concepts-sec",
+          roman: "V",
+          title: "More OOP Concepts - Các khái niệm OOP nâng cao hơn",
+          subsections: [
+            {
+              id: "oop-sub-more-concepts-static",
+              number: "5.1",
+              title: "Class member vs Instance member (static)",
+              parts: [
+                {
+                  id: "oop-part-static-concepts",
+                  label: "1",
+                  title: "Khái niệm Class member và Instance member",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Một class trong Java luôn gồm hai thành phần cơ bản: <strong>attribute (thuộc tính - phần dữ liệu)</strong> và <strong>method (phương thức - phần hành vi)</strong>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Để phân loại phạm vi và hành vi sử dụng của chúng, Java sử dụng từ khóa <code>static</code> để chia thành <strong>class member (thành phần lớp)</strong> và <strong>instance member (thành phần thực thể)</strong>:"
+                    },
+                    {
+                      type: "java-class-vs-instance-comparison"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>⭐ Điểm cốt lõi thi trắc nghiệm:</strong><br/>• Các thuộc tính hoặc phương thức khai báo với từ khóa <code>static</code> là thuộc tính lớp / phương thức lớp, dùng chung duy nhất một ô nhớ cho cả Class.<br/>• Các thuộc tính/phương thức KHÔNG khai báo <code>static</code> là thuộc tính thực thể / phương thức thực thể, mỗi đối tượng được tạo ra bằng từ khóa <code>new</code> sẽ sở hữu một bản sao dữ liệu riêng."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-more-concepts-myball",
+              number: "5.2",
+              title: "Thực hành thiết kế Lớp MyBall",
+              parts: [
+                {
+                  id: "oop-part-design-myball-intro",
+                  label: "2",
+                  title: "Ý tưởng thiết kế lớp MyBall",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Giả sử chúng ta thiết kế lớp <code>MyBall</code> để tạo ra các đối tượng quả bóng cụ thể trong hệ thống. Lớp này cần quản lý:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Instance attributes (Thuộc tính thực thể):</strong> Mỗi quả bóng có màu sắc riêng (<code>colour</code> - kiểu <code>String</code>) và bán kính riêng (<code>radius</code> - kiểu <code>double</code>).",
+                        "<strong>Class attribute (Thuộc tính lớp - static):</strong> Chúng ta cần đếm tổng số đối tượng bóng đã được khởi tạo trong suốt quá trình chạy. Ta khai báo thuộc tính <code>quantity</code> (kiểu <code>int</code>) mang từ khóa <code>static</code> để làm biến đếm dùng chung cho toàn bộ Class.",
+                        "<strong> behaviours (Hành vi):</strong> Gồm các hàm khởi tạo (Constructor), hàm lấy giá trị (Accessor - Getter), và hàm thay đổi giá trị (Mutator - Setter)."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-myball-code",
+                  label: "3",
+                  title: "Mã nguồn lớp dịch vụ MyBall.java",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là mã nguồn hoàn chỉnh của lớp dịch vụ <code>MyBall.java</code>. Hãy lưu ý phương thức <code>getQuantity()</code> được khai báo là <code>static</code> để cho phép client class gọi trực tiếp thông qua tên lớp:"
+                    },
+                    {
+                      type: "code",
+                      lang: "java",
+                      code: "public class MyBall {\n    // 1. Data members\n    private static int quantity = 0; // Class attribute (static)\n    private String colour;           // Instance attribute\n    private double radius;           // Instance attribute\n\n    // 2. Constructors\n    // Default Constructor\n    public MyBall() {\n        setColour(\"yellow\");\n        setRadius(10.0);\n        quantity++;\n    }\n\n    // Overloaded Constructor\n    public MyBall(String newColour, double newRadius) {\n        setColour(newColour);\n        setRadius(newRadius);\n        quantity++;\n    }\n\n    // 3. Accessors (Getters)\n    public static int getQuantity() {\n        return quantity;\n    }\n\n    public String getColour() {\n        return colour;\n    }\n\n    public double getRadius() {\n        return radius;\n    }\n\n    // 4. Mutators (Setters)\n    public void setColour(String newColour) {\n        colour = newColour;\n    }\n\n    public void setRadius(double newRadius) {\n        radius = newRadius;\n    }\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy dùng trình giả lập dưới đây để cấp phát các đối tượng bóng vào RAM. Hãy chú ý sự phân bổ khác biệt giữa biến static <code>quantity</code> và các thuộc tính thực thể:"
+                    },
+                    {
+                      type: "java-static-memory-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-more-concepts-client",
+              number: "5.3",
+              title: "Chương trình chạy thử & Module hóa",
+              parts: [
+                {
+                  id: "oop-part-testball-v1",
+                  label: "4",
+                  title: "Chương trình kiểm thử TestBallV1",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để chạy thử lớp dịch vụ <code>MyBall</code>, ta xây dựng lớp client <code>TestBallV1.java</code> chứa hàm <code>main()</code> để đọc dữ liệu từ bàn phím bằng <code>Scanner</code>, tạo bóng, và in thông tin:"
+                    },
+                    {
+                      type: "code",
+                      lang: "java",
+                      code: "import java.util.Scanner;\n\npublic class TestBallV1 {\n    public static void main(String[] args) {\n        String inputColour;\n        double inputRadius;\n        Scanner sc = new Scanner(System.in);\n\n        // Đọc dữ liệu quả bóng 1\n        System.out.print(\"Enter colour: \");\n        inputColour = sc.next();\n        System.out.print(\"Enter radius: \");\n        inputRadius = sc.nextDouble();\n        MyBall myBall1 = new MyBall(inputColour, inputRadius);\n        System.out.println();\n\n        // Đọc dữ liệu quả bóng 2\n        System.out.print(\"Enter colour: \");\n        inputColour = sc.next();\n        System.out.print(\"Enter radius: \");\n        inputRadius = sc.nextDouble();\n        MyBall myBall2 = new MyBall(inputColour, inputRadius);\n        System.out.println();\n\n        // Hiển thị tổng quan\n        System.out.println(MyBall.getQuantity() + \" balls are created.\");\n        System.out.println(\"1st ball's colour and radius: \" \n            + myBall1.getColour() + \", \" + myBall1.getRadius());\n        System.out.println(\"2nd ball's colour and radius: \" \n            + myBall2.getColour() + \", \" + myBall2.getRadius());\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-testball-v2",
+                  label: "5",
+                  title: "Module hóa chương trình với TestBallV2",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Quan sát mã nguồn <code>TestBallV1.java</code> ta thấy đoạn code đọc dữ liệu và khởi tạo đối tượng <code>MyBall</code> bị lặp đi lặp lại (duplicated code)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Giải pháp:</strong> Ta tiến hành <strong>module hóa (modularise)</strong> bằng cách viết một phương thức trợ giúp <code>readBall(Scanner sc)</code> dùng chung. Phương thức này tự động quét dữ liệu từ bàn phím, khởi tạo quả bóng mới và trả về đối tượng vừa tạo:"
+                    },
+                    {
+                      type: "code",
+                      lang: "java",
+                      code: "import java.util.Scanner;\n\npublic class TestBallV2 {\n    // Helper method tự viết để module hóa code\n    public static MyBall readBall(Scanner sc) {\n        System.out.print(\"Enter colour: \");\n        String inputColour = sc.next();\n        System.out.print(\"Enter radius: \");\n        double inputRadius = sc.nextDouble();\n        return new MyBall(inputColour, inputRadius);\n    }\n\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n\n        // Gọi hàm dùng chung ngắn gọn\n        MyBall myBall1 = readBall(sc);\n        System.out.println();\n        MyBall myBall2 = readBall(sc);\n        System.out.println();\n\n        System.out.println(MyBall.getQuantity() + \" balls are created.\");\n        System.out.println(\"1st ball's colour and radius: \" \n            + myBall1.getColour() + \", \" + myBall1.getRadius());\n        System.out.println(\"2nd ball's colour and radius: \" \n            + myBall2.getColour() + \", \" + myBall2.getRadius());\n    }\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy dùng bảng giả lập chạy code dưới đây để theo dõi luồng thực thi và so sánh trực quan hiệu quả module hóa giữa phiên bản V1 và V2:"
+                    },
+                    {
+                      type: "java-test-ball-workflow"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>💡 Bài học rút ra:</strong> Việc thay đổi cách viết bên trong Client Program (TestBallV2) hoàn toàn <strong>không ảnh hưởng</strong> gì đến dịch vụ đã được định nghĩa bên trong Service Class (MyBall.java). Đây là một ưu thế lớn của tính Đóng gói và Phân tách vai trò trong Lập trình hướng đối tượng."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-more-concepts-this",
+              number: "5.4",
+              title: "Từ khóa \"this\" và Shadowing",
+              parts: [
+                {
+                  id: "oop-part-this-shadowing",
+                  label: "6",
+                  title: "Tham chiếu \"this\" & Giải quyết Trùng tên",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>a. Vấn đề trùng tên (Shadowing):</strong> Khi tham số truyền vào của phương thức (parameter) hoặc biến cục bộ trùng tên hoàn toàn với thuộc tính lớp (attribute), Java sẽ ưu tiên biến cục bộ có phạm vi gần hơn. Thuộc tính lớp lúc này bị che khuất (shadowed)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy quan sát ví dụ dưới đây để thấy tại sao phép gán trực tiếp không hoạt động, và cách từ khóa <code>this</code> được sử dụng làm tham chiếu giải quyết trùng tên:"
+                    },
+                    {
+                      type: "java-this-reference-visualizer"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>b. Bản chất của \"this\":</strong> <code>this</code> là một biến tham chiếu ẩn (implicit reference) trỏ trực tiếp đến <strong>đối tượng hiện hành</strong> đang gọi phương thức."
+                    },
+                    {
+                      type: "highlight",
+                      text: "• Khi gọi <code>b1.setColour(\"purple\")</code> ➔ <code>this</code> trỏ tới <code>b1</code> (vùng nhớ <code>0x301</code>).<br/>• Khi gọi <code>b2.setColour(\"brown\")</code> ➔ <code>this</code> trỏ tới <code>b2</code> (vùng nhớ <code>0x302</code>)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>c. Sử dụng \"this\" là tùy chọn:</strong> Nếu không có sự trùng tên giữa tham số và thuộc tính, việc sử dụng <code>this.</code> là tùy chọn (optional) và không bắt buộc. Ví dụ: <code>public String getColour() { return this.colour; }</code> hoạt động giống hệt <code>return colour;</code>."
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>🚨 LỖI BIÊN DỊCH CỰC KỲ DỄ GẶP:</strong><br/>Không được phép sử dụng từ khóa <code>this</code> bên trong phương thức tĩnh (<code>static method</code>).<br/>Ví dụ: Lệnh <code>public static int getQuantity() { return this.quantity; }</code> sẽ gây ra lỗi biên dịch vì phương thức static thuộc về lớp, không có đối tượng cụ thể nào để trỏ <code>this</code>!"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-naming-conventions",
+                  label: "7",
+                  title: "Quy ước đặt tên thuộc tính (Naming Convention)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Một số nhà phát triển đề xuất đặt tên thuộc tính kèm tiền tố <code>_</code> hoặc <code>m_</code> (Ví dụ: <code>private String _colour; private double _radius;</code>). Cách này giúp tránh trùng tên với tham số mà không cần dùng <code>this</code>.",
+                        "Một số khác đề xuất luôn viết <code>this.</code> kể cả khi không trùng tên để mã nguồn mạch lạc.",
+                        "<strong>Quy tắc quan trọng:</strong> Java không bắt buộc theo phong cách nào, điều quan trọng nhất là bạn phải duy trì sự **nhất quán (consistent)** trong toàn bộ dự án."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-more-concepts-reuse",
+              number: "5.5",
+              title: "Nạp chồng & Tái sử dụng Constructor",
+              parts: [
+                {
+                  id: "oop-part-code-reuse-setters",
+                  label: "8",
+                  title: "Tái sử dụng code qua Setter trong Constructor",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Khi viết constructor, chúng ta có hai cách thiết lập giá trị thuộc tính:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Cách 1 (Gán trực tiếp):</strong> <code>colour = newColour; radius = newRadius;</code>",
+                        "<strong>Cách 2 (Gọi setter):</strong> <code>setColour(newColour); setRadius(newRadius);</code> ➔ Đây là cách khuyến nghị hơn (ưu việt hơn) vì nó tuân thủ quy tắc <strong>code reuse (tái sử dụng code)</strong>. Nếu sau này setter bổ sung thêm logic kiểm tra dữ liệu hợp lệ, constructor gọi setter cũng sẽ tự động được bảo vệ."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-constructor-chaining",
+                  label: "9",
+                  title: "Gọi chéo Constructor bằng this(...)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Khi có nhiều constructor nạp chồng (overloaded) có logic tương đồng, ta có thể dùng cú pháp <code>this(...)</code> để gọi constructor này từ một constructor khác nhằm tái sử dụng mã nguồn và giảm lặp code."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy chạy trình giả lập dưới đây để quan sát luồng điều khiển nhảy chéo giữa các constructor khi khởi tạo một đối tượng <code>MyBall</code>:"
+                    },
+                    {
+                      type: "java-constructor-chaining-visualizer"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>⚠️ Quy tắc bắt buộc:</strong> Lệnh gọi <code>this(...)</code> phải là <strong>dòng lệnh đầu tiên</strong> trong thân hàm constructor. Nếu viết bất kỳ dòng lệnh nào khác lên trước, trình biên dịch Java sẽ báo lỗi ngay lập tức."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-more-concepts-overriding",
+              number: "5.6",
+              title: "Ghi đè phương thức: toString() và equals()",
+              parts: [
+                {
+                  id: "oop-part-object-methods-override",
+                  label: "10",
+                  title: "Ghi đè phương thức (Method Overriding)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Trong Java, mọi class đều ngầm định là lớp con (subclass) của lớp tối cao <strong><code>java.lang.Object</code></strong>. Lớp <code>Object</code> này cung cấp sẵn một số phương thức cơ bản mà mọi đối tượng đều thừa kế:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Phương thức toString():</strong> Dòng này dùng để chuyển đổi đối tượng thành dạng chuỗi văn bản. Nếu không ghi đè, lệnh <code>System.out.println(myBall)</code> sẽ in ra mã định danh đối tượng (OID) có dạng: <code>MyBall@10ef90c</code>.",
+                        "• Bằng cách ghi đè (override) <code>toString()</code> trong lớp <code>MyBall</code>, ta có thể in ra kết quả thân thiện: <code>[red, 6.2]</code>.",
+                        "<strong>Phương thức equals(Object obj):</strong> Dùng để so sánh nội dung dữ liệu giữa hai đối tượng xem có bằng nhau hay không.",
+                        "• Toán tử <code>==</code> chỉ so sánh **địa chỉ tham chiếu (ô nhớ)** của hai biến.",
+                        "• Phương thức <code>equals()</code> sau khi được ghi đè đúng cách sẽ so sánh **nội dung dữ liệu thuộc tính** bên trong."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy dùng bảng đối chiếu so sánh dưới đây để hiểu rõ cơ chế so sánh ô nhớ của <code>==</code> so với so sánh dữ liệu của <code>equals()</code>:"
+                    },
+                    {
+                      type: "java-object-equality-inspector"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-improved-code-tabs",
+                  label: "11",
+                  title: "Mã nguồn hoàn chỉnh lớp MyBall & Client Class",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là mã nguồn tổng hợp đầy đủ của lớp dịch vụ <code>MyBall.java</code> (phiên bản cải tiến tích hợp đầy đủ <code>this</code>, nạp chồng constructor, ghi đè <code>toString()</code> và <code>equals()</code>) cùng lớp client chạy thử <code>TestBallV4.java</code>:"
+                    },
+                    {
+                      type: "java-improved-myball-tabs"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>💡 Tổng kết phòng thi:</strong> Đây là dạng bài tập lớn kinh điển trong các đề thi OOP lý thuyết và thực hành. Hãy nắm chắc cách viết hàm <code>equals()</code> (phải dùng <code>instanceof</code> để kiểm tra kiểu đối tượng trước khi ép kiểu và so sánh các thuộc tính màu sắc, bán kính) để đạt điểm tối đa!"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-uml-sec",
+      roman: "VI",
+      title: "Unified Modeling Language (UML)",
+      subsections: [
+            {
+              id: "oop-sub-uml-intro",
+              number: "6.1",
+              title: "Giới thiệu UML & Biểu tượng Class",
+              parts: [
+                {
+                  id: "oop-part-uml-intro",
+                  label: "1",
+                  title: "Giới thiệu chung về UML",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>UML (Unified Modeling Language - Ngôn ngữ mô hình hóa thống nhất):</strong> là một ngôn ngữ đồ họa (graphical language) giúp trực quan hóa, đặc tả, xây dựng và làm tài liệu cho các thành phần của hệ thống phần mềm hướng đối tượng."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Cung cấp một tập hợp các sơ đồ (diagrams) với cú pháp và quy ước biểu diễn riêng.",
+                        "Trong đặc tả UML 2.2, có tổng cộng **14 loại sơ đồ** khác nhau được chia thành hai nhóm chính: Sơ đồ cấu trúc (Structural Diagrams) và Sơ đồ hành vi (Behavioral Diagrams).",
+                        "Trong môn học này, chúng ta sẽ tập trung chủ yếu vào **Class Diagram (Sơ đồ lớp)** để mô tả cấu trúc tĩnh của hệ thống một cách linh hoạt."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-uml-class-icon",
+                  label: "2",
+                  title: "Biểu tượng Class trong UML (Class Icon)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Một biểu tượng lớp (Class Icon) chuẩn UML được chia làm 3 phần chữ nhật xếp chồng: <strong>Tên Class</strong> ở trên cùng, tiếp theo là danh sách <strong>Thuộc tính (Attributes)</strong>, và dưới cùng là danh sách <strong>Phương thức (Methods)</strong>."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Cú pháp biểu diễn thuộc tính:</strong> <code>[visibility] attributeName: data_type</code>",
+                        "<strong>Cú pháp biểu diễn phương thức:</strong> <code>[visibility] methodName(paramName: paramType): return_type</code>"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ký hiệu mức truy cập (Visibility):</strong> Hãy sử dụng các thẻ ký hiệu tương tác dưới đây để nắm vững quy ước ký hiệu mức truy cập:"
+                    },
+                    {
+                      type: "java-uml-visibility-cards"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ký hiệu thuộc tính/phương thức tĩnh (static):</strong> Chuẩn UML quy định bất kỳ thành phần static (Class member) nào cũng đều phải được <strong>gạch chân (underlined)</strong>. Các thành phần không gạch chân đại diện cho thực thể (Instance member)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-uml-diagrams",
+              number: "6.2",
+              title: "Sơ đồ lớp vs Sơ đồ đối tượng & Quan hệ phụ thuộc",
+              parts: [
+                {
+                  id: "oop-part-uml-class-vs-object",
+                  label: "3",
+                  title: "Biểu diễn Class, Object & Mối quan hệ trong UML",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Class:</strong> Được biểu diễn bằng tên lớp thông thường (Ví dụ: <code>MyBall</code>).",
+                        "<strong>Object:</strong> Được biểu diễn bằng tên đối tượng gạch chân kèm tên lớp theo cú pháp <code><u>objectName: ClassName</u></code> (Ví dụ: <code><u>myBall1: MyBall</u></code>). Sơ đồ đối tượng chỉ chứa giá trị thuộc tính cụ thể, không chứa phương thức.",
+                        "<strong>Đường nối liền (Solid line):</strong> Thể hiện quan hệ thực thể hóa (<code>instance-of</code>) liên kết đối tượng về với Lớp định nghĩa nó.",
+                        "<strong>Mũi tên nét đứt (Dotted arrow ---&gt;):</strong> Biểu diễn mối quan hệ phụ thuộc (Dependency Relationship) giữa các lớp. Class1 ---&gt; Class2 nghĩa là Class1 sử dụng dịch vụ của Class2 và phụ thuộc vào sự ổn định của Class2."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy tự mình trải nghiệm sơ đồ UML lớp và đối tượng tương tác dưới đây:"
+                    },
+                    {
+                      type: "java-uml-interactive-diagram"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy bấm các nút mô phỏng dưới đây để hiểu bản chất của mối quan hệ phụ thuộc dịch vụ:"
+                    },
+                    {
+                      type: "java-dependency-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-encapsulation-summary-sec",
+          roman: "VII",
+          title: "Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-summary",
+              number: "7.1",
+              title: "Điểm ôn tập phòng thi",
+              parts: [
+                {
+                  id: "oop-part-summary-recap",
+                  label: "★",
+                  title: "Tóm tắt Kiến thức Cốt lõi & Mẹo thi cử",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Chúc mừng bạn đã hoàn thành bài học <strong>Bài 5: Encapsulation & Access Modifiers</strong>! Hãy sử dụng bảng tổng kết tương tác dưới đây để tổng ôn toàn bộ kiến thức và chuẩn bị tốt nhất cho các kỳ thi:"
+                    },
+                    {
+                      type: "java-interactive-recap-panel"
                     }
                   ]
                 }
@@ -2656,23 +4046,327 @@ public class HelloWorld {
       subtitle: "Inheritance",
       sections: [
         {
-          id: "oop-inheritance-sec",
+          id: "oop-inheritance-outline-sec",
           roman: "",
-          title: "Nội dung bài học",
+          title: "Mục tiêu bài học (Objectives)",
           subsections: [
             {
-              id: "oop-sub-inheritance",
+              id: "oop-sub-inheritance-goals",
               number: "",
-              title: "Bài giảng chi tiết",
+              title: "Mục tiêu cần đạt",
               parts: [
                 {
-                  id: "oop-part-inheritance",
+                  id: "oop-part-inheritance-goals-desc",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Định hướng & Ghi nhớ học tập",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Chào mừng bạn đến với <strong>Bài 6 & 7: Tính kế thừa (Inheritance)</strong>! Dưới đây là những mục tiêu cốt lõi mà bạn cần nắm vững sau khi kết thúc bài học này:"
+                    },
+                    {
+                      type: "java-inheritance-goals-explorer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-overview-sec",
+          roman: "I",
+          title: "Tổng quan Object-Oriented Programming (OOP)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-overview-pillars",
+              number: "",
+              title: "4 khái niệm nền tảng của OOP",
+              parts: [
+                {
+                  id: "oop-part-inheritance-overview-pillars-visual",
+                  label: "",
+                  title: "Khái niệm cơ bản",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Lập trình hướng đối tượng (OOP) được xây dựng dựa trên <strong>4 khái niệm nền tảng</strong> (4 trụ cột cốt lõi). Hãy bấm chọn từng trụ cột bên dưới để khám phá định nghĩa tương ứng:"
+                    },
+                    {
+                      type: "java-inheritance-oop-overview"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-overriding-methods-sec",
+          roman: "II",
+          title: "Overriding Methods (Ôn lại)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-overriding",
+              number: "",
+              title: "Khái niệm Ghi đè phương thức",
+              parts: [
+                {
+                  id: "oop-part-inheritance-overriding-desc",
+                  label: "",
+                  title: "Bài tập thực hành tương tác",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ghi đè phương thức (Method Overriding) xảy ra khi lớp con định nghĩa lại một phương thức đã có ở lớp cha với cùng tên, cùng kiểu dữ liệu trả về và danh sách tham số. Hãy cùng ôn tập qua cấu phần bên dưới."
+                    },
+                    {
+                      type: "java-inheritance-overriding-review"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-creating-subclass-sec",
+          roman: "III",
+          title: "Creating a Subclass (Tạo lớp con)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-creating-subclass",
+              number: "",
+              title: "Cách xây dựng lớp con",
+              parts: [
+                {
+                  id: "oop-part-inheritance-creating-subclass-desc",
+                  label: "",
+                  title: "Hướng dẫn & Thực hành tương tác",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Kế thừa cho phép ta tạo lập một lớp con (subclass) từ lớp cha (superclass) sẵn có bằng cách sử dụng từ khóa <code>extends</code>. Hãy chuyển qua các tab bên dưới để tìm hiểu về cách hoạt động của từ khóa <code>extends</code>, <code>protected</code>, cách biểu diễn sơ đồ lớp UML, cách hàm khởi tạo hoạt động thông qua <code>super()</code>, và tương tác giả lập console chạy chương trình thử nghiệm."
+                    },
+                    {
+                      type: "java-inheritance-creating-subclass"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-substitutability-sec",
+          roman: "IV",
+          title: "Subclass Substitutability (Tính thay thế của lớp con)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-substitutability",
+              number: "",
+              title: "Tính thay thế trong kế thừa",
+              parts: [
+                {
+                  id: "oop-part-inheritance-substitutability-desc",
+                  label: "",
+                  title: "Khái niệm & Thực hành",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Một trong những lợi ích lớn nhất của kế thừa là <strong>Subclass Substitutability (Tính thay thế của lớp con)</strong>: ở bất kỳ đâu cần một đối tượng lớp cha, đối tượng lớp con đều có thể thay thế được. Hãy tương tác với cấu phần bên dưới để khám phá tính chất này."
+                    },
+                    {
+                      type: "java-inheritance-substitutability"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-object-sec",
+          roman: "V",
+          title: "Lớp Object (Lớp gốc trong Java)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-object",
+              number: "",
+              title: "Tổ tiên chung Object",
+              parts: [
+                {
+                  id: "oop-part-inheritance-object-desc",
+                  label: "",
+                  title: "Tìm hiểu lớp Object",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Trong Java, lớp <code>Object</code> là tổ tiên chung của tất cả các lớp. Mọi lớp đều thừa hưởng các hành vi cơ bản như <code>toString()</code> và <code>equals()</code>. Hãy cùng tìm hiểu cấu trúc cây kế thừa và cách ghi đè các phương thức này qua cấu phần bên dưới."
+                    },
+                    {
+                      type: "java-inheritance-object-class"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-isa-hasa-sec",
+          roman: "VI",
+          title: "\"is-a\" và \"has-a\"",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-isa-hasa",
+              number: "",
+              title: "Phân biệt mối quan hệ",
+              parts: [
+                {
+                  id: "oop-part-inheritance-isa-hasa-desc",
+                  label: "",
+                  title: "Quy tắc thiết kế hệ thống",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Việc lựa chọn thiết kế giữa kế thừa (is-a) và kết hợp (has-a) quyết định sự bền vững của kiến trúc phần mềm. Hãy xem bảng so sánh và các quy tắc để lựa chọn thiết kế phù hợp bên dưới."
+                    },
+                    {
+                      type: "java-inheritance-isa-hasa"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-final-sec",
+          roman: "VII",
+          title: "Ngăn chặn kế thừa bằng final",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-final",
+              number: "",
+              title: "Từ khóa final",
+              parts: [
+                {
+                  id: "oop-part-inheritance-final-desc",
+                  label: "",
+                  title: "Khái niệm & Cách dùng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Đôi khi ta muốn ngăn chặn kế thừa hoặc ghi đè để bảo vệ tính toàn vẹn của mã nguồn. Hãy tìm hiểu cách hoạt động của từ khóa <code>final</code> qua cấu phần tương tác dưới đây."
+                    },
+                    {
+                      type: "java-inheritance-final-keyword"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-limitations-sec",
+          roman: "VIII",
+          title: "Giới hạn của kế thừa trong Java",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-limitations",
+              number: "",
+              title: "Đơn kế thừa",
+              parts: [
+                {
+                  id: "oop-part-inheritance-limitations-desc",
+                  label: "",
+                  title: "Giới hạn thiết kế",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Java chỉ hỗ trợ đơn kế thừa giữa các lớp để tránh xung đột mã nguồn. Hãy tìm hiểu lý do tại sao và cách Java giải quyết bài toán đa kế thừa bằng <code>interface</code> dưới đây."
+                    },
+                    {
+                      type: "java-inheritance-limitations"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-quiz-chaining-sec",
+          roman: "IX",
+          title: "Quick Quiz (Kế thừa 3 tầng & Đa hình)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-quiz-chaining",
+              number: "1",
+              title: "Quiz 1 — Kế thừa 3 tầng (ClassA → B → C)",
+              parts: [
+                {
+                  id: "oop-part-inheritance-quiz-chaining-desc",
+                  label: "",
+                  title: "Bài tập trace code",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Hãy cùng giải bài tập trace code chuỗi kế thừa 3 tầng (ClassA → ClassB → ClassC) để kiểm tra kiến thức về constructor chaining và shadowing dưới đây."
+                    },
+                    {
+                      type: "java-inheritance-quiz-chaining"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-inheritance-quiz-compilerun",
+              number: "2",
+              title: "Quiz 2 — Ghi đè & Đa hình",
+              parts: [
+                {
+                  id: "oop-part-inheritance-quiz-compilerun-desc",
+                  label: "",
+                  title: "Đoạn code & Kết quả",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Hãy tự trả lời xem các đoạn mã nguồn dưới đây có gặp lỗi biên dịch không, và nếu không thì kết quả chạy là gì. Sau đó bấm lật từng đáp án để đối chiếu và xem giải thích chi tiết."
+                    },
+                    {
+                      type: "java-inheritance-quiz-compilerun"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-inheritance-summary-sec",
+          roman: "X",
+          title: "Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-inheritance-summary",
+              number: "",
+              title: "Ôn tập toàn bài",
+              parts: [
+                {
+                  id: "oop-part-inheritance-summary-desc",
+                  label: "",
+                  title: "Cheat Sheet & Flash Card",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ôn lại toàn bộ kiến thức bài Inheritance qua 4 trụ cột chính và 10 thẻ Cheat Sheet. Bấm vào từng thẻ để lật ra định nghĩa đầy đủ và kiểm tra bản thân!"
+                    },
+                    {
+                      type: "java-inheritance-summary"
                     }
                   ]
                 }
@@ -2689,22 +4383,356 @@ public class HelloWorld {
       sections: [
         {
           id: "oop-abstract-class-sec",
-          roman: "",
-          title: "Nội dung bài học",
+          roman: "I",
+          title: "Abstraction (Trừu tượng hóa)",
           subsections: [
             {
-              id: "oop-sub-abstract-class",
-              number: "",
-              title: "Bài giảng chi tiết",
+              id: "oop-sub-abstraction-concept",
+              number: "1",
+              title: "Khái niệm Abstraction",
               parts: [
                 {
-                  id: "oop-part-abstract-class",
-                  label: "",
-                  title: "Nội dung chi tiết",
+                  id: "oop-part-abstraction-concept",
+                  label: "a",
+                  title: "Khái niệm Abstraction",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a. Abstraction (Trừu tượng hóa):</strong> là quá trình <strong>ẩn đi chi tiết cài đặt (implementation)</strong>, chỉ hiển thị cho người dùng <strong>chức năng (functionality)</strong>.",
+                        "<strong>b. Nói cách khác:</strong> chỉ cho người dùng thấy <strong>những gì thiết yếu</strong>, ẩn đi các chi tiết bên trong.",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;• <em>VD:</em> khi gửi tin nhắn SMS, bạn chỉ gõ nội dung và bấm gửi – bạn <strong>không biết</strong> quá trình xử lý gửi tin nhắn diễn ra bên trong như thế nào.",
+                        "<strong>c. Abstraction giúp bạn tập trung vào:</strong> <strong>object làm được gì</strong>, thay vì <strong>nó làm như thế nào</strong>."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📦 Ghi nhớ nhanh</strong><br/>" +
+                            "• <strong>Khái niệm:</strong> <strong>Abstraction (Trừu tượng hóa)</strong> = ẩn chi tiết cài đặt, chỉ lộ ra chức năng cần dùng.<br/>" +
+                            "• <strong>Mục đích:</strong> cho phép người dùng sử dụng mà không cần hiểu cơ chế bên trong.<br/>" +
+                            "• <strong>Ví dụ thực tế:</strong> gửi SMS – chỉ cần gõ và gửi, không cần biết cơ chế truyền tin.<br/>" +
+                            "• <strong>Điểm dễ thi:</strong> Abstraction thuộc nhóm 4 tính chất OOP: <strong>Encapsulation (Đóng gói), Inheritance (Kế thừa), Polymorphism (Đa hình), Abstraction (Trừu tượng hóa)</strong>."
+                    },
+                    {
+                      type: "java-abstraction-concept-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-abstraction-methods",
+              number: "2",
+              title: "Hai cách đạt được Abstraction trong Java",
+              parts: [
+                {
+                  id: "oop-part-abstraction-methods",
+                  label: "a",
+                  title: "Hai cách đạt được Abstraction trong Java",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a. Abstract class (Lớp trừu tượng):</strong> đạt trừu tượng hóa ở mức <strong>0% đến 100%</strong> (có thể lẫn cả method đã cài đặt và chưa cài đặt).",
+                        "<strong>b. Interface (Giao diện):</strong> đạt trừu tượng hóa <strong>100%</strong> (toàn bộ method chưa có cài đặt – trước Java 8)."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>📌 Ghi nhớ</strong><br/>" +
+                            "• <strong>Rất hay ra thi:</strong> phân biệt tỉ lệ trừu tượng hóa – <strong>Abstract class: 0-100%</strong>, <strong>Interface: 100%</strong>.<br/>" +
+                            "• Đây là điểm khác biệt cốt lõi giữa 2 cách hiện thực Abstraction."
+                    },
+                    {
+                      type: "java-abstraction-level-compare"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-abstract-class-java-sec",
+          roman: "II",
+          title: "Abstract Class (Lớp trừu tượng) trong Java",
+          subsections: [
+            {
+              id: "oop-sub-abstract-class-definition",
+              number: "1",
+              title: "Định nghĩa & Đặc điểm",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-def",
+                  label: "a",
+                  title: "Định nghĩa Lớp trừu tượng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Lớp trừu tượng (Abstract Class):</strong> Là một lớp được khai báo với từ khóa <code>abstract</code>.",
+                        "<strong>Khả năng chứa phương thức:</strong> Lớp trừu tượng có thể chứa các phương thức trừu tượng (không có phần thân code) và cả các phương thức thông thường (có phần thân code đầy đủ).",
+                        "<strong>Ràng buộc khởi tạo:</strong> Lớp trừu tượng <strong>không thể khởi tạo đối tượng trực tiếp</strong> bằng toán tử <code>new</code>. Nó được thiết kế để làm lớp cha cho các lớp khác kế thừa và hiện thực hóa hành vi."
+                      ]
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong> Ghi nhớ nhanh:</strong><br/>" +
+                            "• Định nghĩa: Abstract Class = Lớp khai báo bằng từ khóa <code>abstract</code>.<br/>" +
+                            "• Đặc trưng: Có thể chứa <code>abstract method</code> (chỉ khai báo tên hàm, không có phần thân code).<br/>" +
+                            "• Ràng buộc: Không thể viết <code>new AbstractClass()</code>."
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-features",
+                  label: "b",
+                  title: "6 Đặc điểm của Abstract Class",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. Khai báo:</strong> Bắt buộc phải sử dụng từ khóa <code>abstract</code>.",
+                        "<strong>2. Phương thức trừu tượng:</strong> Có thể có hoặc không có phương thức trừu tượng.",
+                        "<strong>3. Khởi tạo:</strong> Không thể tạo thực thể (instantiated) trực tiếp.",
+                        "<strong>4. Constructor:</strong> Có thể chứa các phương thức khởi tạo (constructor) để lớp con gọi thông qua <code>super()</code>.",
+                        "<strong>5. Thành viên dữ liệu:</strong> Có thể chứa các thuộc tính (fields), biến tĩnh (static variables).",
+                        "<strong>6. Phương thức final:</strong> Có thể chứa các phương thức <code>final</code> để ngăn chặn lớp con ghi đè (override) hành vi đó."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-abstract-class-syntax",
+              number: "2",
+              title: "Cú pháp (Syntax)",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-syntax-def",
+                  label: "a",
+                  title: "Khai báo lớp và phương thức trừu tượng",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Cú pháp khai báo một lớp trừu tượng (Abstract Class):"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract class ClassName {\n  // Các biến thành viên (fields)\n  // Các phương thức khởi tạo (constructor)\n  // Các phương thức có phần thân\n  // Các phương thức trừu tượng (abstract methods)\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Cú pháp khai báo một phương thức trừu tượng (Abstract Method):"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract void methodName(); // Kết thúc bằng dấu chấm phẩy, không có cặp ngoặc nhọn {}"
+                    },
+                    {
+                      type: "highlight",
+                      text: "<strong>⚠️ Cảnh báo lỗi thi:</strong><br/>" +
+                            "• Phương thức trừu tượng <strong>không được phép</strong> có phần thân code (không có cặp dấu ngoặc nhọn <code>{}</code>).<br/>" +
+                            "• Nếu cố ý viết: <code>abstract void run() {}</code> -> Trình biên dịch sẽ báo lỗi cú pháp ngay lập tức."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-abstract-class-examples",
+              number: "3",
+              title: "Ví dụ minh họa",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-ex1",
+                  label: "a",
+                  title: "Ví dụ 1: Bike & Honda4",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ví dụ cơ bản về một lớp trừu tượng <code>Bike</code> có phương thức trừu tượng <code>run()</code> và lớp con <code>Honda4</code> kế thừa hiện thực hóa nó:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract class Bike {\n  abstract void run();\n}\n\nclass Honda4 extends Bike {\n  void run() {\n    System.out.println(\"running safely..\");\n  }\n\n  public static void main(String args[]) {\n    Bike obj = new Honda4();\n    obj.run();\n  }\n}"
+                    },
+                    {
+                      type: "java-abstract-bike-visualizer"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-ex2",
+                  label: "b",
+                  title: "Ví dụ 2: Shape, Rectangle & Circle",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Một ví dụ khác thể hiện tính đa hình và trừu tượng hóa thông qua lớp cha <code>Shape</code>, lớp con <code>Rectangle</code> và <code>Circle1</code>:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract class Shape {\n  abstract void draw();\n}\n\nclass Rectangle extends Shape {\n  void draw() { System.out.println(\"drawing rectangle\"); }\n}\n\nclass Circle1 extends Shape {\n  void draw() { System.out.println(\"drawing circle\"); }\n}\n\nclass TestAbstraction2 {\n  public static void main(String args[]) {\n    Shape s = new Rectangle();\n    s.draw();\n    s = new Circle1();\n    s.draw();\n  }\n}"
+                    },
+                    {
+                      type: "java-abstract-shape-visualizer"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-ex3",
+                  label: "c",
+                  title: "Ví dụ 3: Bank, SBI & PNB",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Mô phỏng đa hình lớp trừu tượng <code>Bank</code> có phương thức <code>getRateOfInterest()</code> trả về lãi suất thay đổi tùy theo ngân hàng con <code>SBI</code> (7%) và <code>PNB</code> (8%):"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract class Bank {\n  abstract int getRateOfInterest();\n}\n\nclass SBI extends Bank {\n  int getRateOfInterest() { return 7; }\n}\n\nclass PNB extends Bank {\n  int getRateOfInterest() { return 8; }\n}\n\nclass TestAbstraction3 {\n  public static void main(String args[]) {\n    Bank b = new SBI();\n    System.out.println(\"Rate of Interest is: \" + b.getRateOfInterest() + \" %\");\n    b = new PNB();\n    System.out.println(\"Rate of Interest is: \" + b.getRateOfInterest() + \" %\");\n  }\n}"
+                    },
+                    {
+                      type: "java-abstract-bank-visualizer"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-ex4",
+                  label: "d",
+                  title: "Ví dụ 4: Bike có Constructor, Data Member & Method có thân",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ví dụ nâng cao chứng minh lớp trừu tượng hoàn toàn có thể có phương thức khởi dựng (constructor), thuộc tính (field) và phương thức thông thường có phần thân hoàn chỉnh:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "abstract class Bike {\n  int gear;\n  Bike() { System.out.println(\"bike is created\"); }\n  abstract void run();\n  void changeGear() {\n    System.out.println(\"gear changed\");\n  }\n}\n\nclass Honda extends Bike {\n  void run() {\n    System.out.println(\"running safely..\");\n  }\n}\n\nclass TestAbstraction4 {\n  public static void main(String args[]) {\n    Bike obj = new Honda();\n    obj.run();\n    obj.changeGear();\n  }\n}"
+                    },
+                    {
+                      type: "java-abstract-bike-constructor-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-abstract-class-notations",
+              number: "4",
+              title: "Lưu ý quan trọng",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-notations-content",
+                  label: "a",
+                  title: "Các quy tắc cốt lõi khi ôn thi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Tìm hiểu 3 quy tắc bất thành văn cực kỳ hay xuất hiện trong các bài thi lý thuyết và trắc nghiệm thực hành về lớp trừu tượng:"
+                    },
+                    {
+                      type: "java-abstract-notations-flashcards"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-abstract-class-combined",
+              number: "5",
+              title: "Ví dụ kết hợp tổng hợp",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-combined-content",
+                  label: "a",
+                  title: "Mối liên kết giữa Interface, Abstract Class và Class cụ thể",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Xem xét ví dụ thực tế khi một lớp cụ thể <code>M</code> kế thừa từ lớp trừu tượng <code>B</code>, lớp <code>B</code> lại đang triển khai (implements) từ một <code>Interface A</code>:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "interface A {\n  void a();\n  void b();\n  void c();\n}\n\nabstract class B implements A {\n  public void c() {\n    System.out.println(\"I am c\");\n  }\n}\n\nclass M extends B {\n  public void a() { System.out.println(\"I am a\"); }\n  public void b() { System.out.println(\"I am b\"); }\n}\n\nclass TestAbstraction5 {\n  public static void main(String args[]) {\n    A a = new M();\n    a.a();\n    a.b();\n    a.c();\n  }\n}"
+                    },
+                    {
+                      type: "java-abstract-combined-hierarchy"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-abstract-class-summary-sec",
+          roman: "III",
+          title: "Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-abstract-class-summary",
+              number: "",
+              title: "Tổng kết & Ghi nhớ toàn bài",
+              parts: [
+                {
+                  id: "oop-part-abstract-class-summary-info",
+                  label: "a",
+                  title: "Tóm tắt 4 nội dung cốt lõi của bài học",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. Abstraction (Trừu tượng hóa):</strong> Là quá trình ẩn chi tiết cài đặt, chỉ hiển thị chức năng cho người dùng. Đạt được qua Abstract Class (0-100%) hoặc Interface (100%).",
+                        "<strong>2. Abstract Class:</strong> Khai báo bằng từ khóa <code>abstract</code>, có thể lẫn lộn phương thức trừu tượng và thông thường, chứa constructor/static/final method, nhưng <strong>không thể 'new' trực tiếp</strong>. Phải được kế thừa (extends) và override các abstract method.",
+                        "<strong>3. Ràng buộc kế thừa:</strong> Nếu lớp con không override hết các phương thức abstract kế thừa được ➔ lớp con đó <strong>cũng phải khai báo là abstract</strong>.",
+                        "<strong>4. Cài đặt một phần (Bridge):</strong> Abstract Class có thể cài đặt sẵn một phần của Interface giúp giảm tải công sức override cho các lớp con cụ thể phía sau."
+                      ]
+                    },
+                    {
+                      type: "java-abstract-summary-dashboard"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-spectrum",
+                  label: "b",
+                  title: "Trục phổ quang trừu tượng hóa (Abstraction Spectrum)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Sự phân cấp trừu tượng hóa tăng dần từ Class thông thường (0%) ➔ Lớp trừu tượng (0% - 100%) ➔ Giao diện Interface (100%):"
+                    },
+                    {
+                      type: "java-abstract-spectrum-visualizer"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-abstract-class-keywords",
+                  label: "c",
+                  title: "Ghi nhớ tổng thể & Các từ khóa Java quan trọng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Từ khóa quan trọng cần nhớ:</strong> <code>abstract</code>, <code>extends</code>, <code>implements</code>, <code>final</code>, <code>static</code>, <code>super</code>, <code>new</code>.",
+                        "<strong>Không thể khởi tạo:</strong> Tuyệt đối cấm sử dụng toán tử <code>new</code> trực tiếp với cả <code>abstract class</code> và <code>interface</code>.",
+                        "<strong>Constructor ngầm:</strong> Lớp trừu tượng vẫn chứa constructor và sẽ được gọi ngầm khi lớp con cụ thể được khởi tạo.",
+                        "<strong>Phân biệt rõ 3 loại phương thức:</strong> <code>abstract method</code> (bắt buộc override) vs <code>final method</code> (cấm override) vs <code>method thông thường</code> (có thể override tùy ý, không bắt buộc)."
+                      ]
+                    },
+                    {
+                      type: "java-abstract-keyword-cloud"
                     }
                   ]
                 }
@@ -2720,23 +4748,668 @@ public class HelloWorld {
       subtitle: "Interface",
       sections: [
         {
-          id: "oop-interface-sec",
-          roman: "",
-          title: "Nội dung bài học",
+          id: "oop-interface-software-engineering-sec",
+          roman: "I",
+          title: "Các vấn đề trong Kỹ thuật phần mềm (Động lực)",
           subsections: [
             {
-              id: "oop-sub-interface",
-              number: "",
-              title: "Bài giảng chi tiết",
+              id: "oop-sub-design-principles",
+              number: "1",
+              title: "Nguyên tắc thiết kế chương trình",
               parts: [
                 {
-                  id: "oop-part-interface",
+                  id: "oop-part-design-principles-intro",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "4 Nguyên tắc thiết kế chương trình cốt lõi",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Để phát triển một hệ thống phần mềm lớn, dễ bảo trì và mở rộng, các kỹ sư phần mềm tuân thủ 4 nguyên tắc thiết kế nền tảng sau:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Abstraction (Trừu tượng hóa):</strong> Chỉ tập trung vào <em>chương trình làm được gì</em>, ẩn đi hoàn toàn chi tiết <em>làm như thế nào</em>. Ví dụ: Dùng <code>Java Interface</code>.",
+                        "<strong>Coupling (Sự liên kết):</strong> Hạn chế tối đa các mối quan hệ phụ thuộc chéo lẫn nhau giữa các lớp. Hệ thống có Coupling càng thấp càng dễ cô lập để kiểm thử và nâng cấp.",
+                        "<strong>Cohesion (Tính gắn kết):</strong> Một lớp chỉ nên chịu trách nhiệm cho duy nhất một thực thể/logic nghiệp vụ cụ thể. Cohesion càng cao thì mã nguồn càng mạch lạc và dễ tái sử dụng.",
+                        "<strong>Information Hiding (Che giấu thông tin):</strong> Chỉ công khai những thông tin và giao tiếp tối thiểu cần thiết ra bên ngoài, che giấu các chi tiết biến động bên trong."
+                      ]
+                    },
+                    {
+                      type: "java-interface-design-principles"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ quan trọng</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• 4 nguyên tắc: <strong>Abstraction, Coupling, Cohesion, Information Hiding</strong>.<br/>• Mục tiêu vàng của thiết kế phần mềm: <strong>Coupling càng thấp (Loose), Cohesion càng cao (High)</strong> ➔ hệ thống thiết kế càng tốt.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-info-hiding",
+              number: "2",
+              title: "Information Hiding (Che giấu thông tin)",
+              parts: [
+                {
+                  id: "oop-part-info-hiding-concept",
+                  label: "",
+                  title: "Ẩn dụ bức tường vững chãi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Nguyên lý <strong>Information Hiding</strong> giống như việc xây dựng một <strong>bức tường (wall)</strong> kiên cố xung quanh mỗi lớp:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Bức tường ngăn cản các lớp khác dòm ngó và can thiệp vào chi tiết cách thức hoạt động bên trong của lớp.",
+                        "Nếu lớp Q phụ thuộc và sử dụng lớp T thông qua giao thức công khai, khi ta thay đổi cấu trúc dữ liệu hoặc thuật toán bên trong của T, lớp Q hoàn toàn <strong>không bị ảnh hưởng hay lỗi biên dịch</strong>.",
+                        "Tên cuốn giáo trình lập trình nổi tiếng <em>\"Walls & Mirrors\"</em> xuất phát từ ý tưởng bức tường bảo vệ này."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Lưu ý:</strong> Che giấu thông tin <strong>không đồng nghĩa</strong> với việc cô lập hoàn toàn các lớp. Các lớp vẫn tương tác với nhau theo nguyên tắc <strong>\"cần biết mới cho biết\" (need-to-know basis)</strong>:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Lớp Q chỉ cần biết <em>cách gọi</em> lớp T (method header) và T <em>sẽ trả về kết quả gì</em>, tuyệt đối không được biết T thực hiện nó ra sao.",
+                        "<strong>Ví dụ:</strong> Các lớp tiện ích như <code>Math</code> hay <code>Scanner</code> giấu kín mã nguồn thuật toán phức tạp bên trong, chỉ cung cấp đặc tả (specification) để sử dụng.",
+                        "Đầu vào và đầu ra của phương thức được quy định chặt chẽ bởi <strong>đặc tả (specification)</strong> của phương thức đó."
+                      ]
+                    },
+                    {
+                      type: "java-interface-information-hiding"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ phòng thi</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>Information Hiding</strong> không phải cô lập hoàn toàn các lớp.<br/>• Nguyên tắc: Chỉ tiết lộ đủ để <strong>sử dụng</strong>, che giấu hoàn toàn <strong>cách cài đặt</strong>.<br/>• <strong>Bẫy lý thuyết:</strong> Học sinh hay nghĩ che giấu thông tin là giấu đi toàn bộ mọi thứ. Thực chất, ta bắt buộc phải công khai phần <strong>giao diện sử dụng (public interface / method signatures)</strong> để các lớp khác tương tác.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-pre-post-conditions",
+              number: "3",
+              title: "Pre-conditions & Post-conditions",
+              parts: [
+                {
+                  id: "oop-part-pre-post-intro",
+                  label: "",
+                  title: "Hợp đồng thiết kế mã nguồn",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Pre-conditions và Post-conditions được dùng làm tài liệu kỹ thuật (documentation) để quy định rõ ràng trách nhiệm giữa người gọi hàm và người viết hàm:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Pre-conditions (Điều kiện trước):</strong> Là điều kiện bắt buộc phải <strong>đúng trước khi</strong> gọi phương thức. Ý nghĩa: <em>\"Đây là điều tôi mong đợi ở bạn\"</em>. Trách nhiệm đảm bảo điều kiện này thuộc về <strong>người gọi hàm (Caller)</strong>.",
+                        "<strong>Post-conditions (Điều kiện sau):</strong> Là điều kiện cam kết phải <strong>đúng sau khi</strong> phương thức hoàn tất xử lý thành công. Ý nghĩa: <em>\"Đây là điều tôi hứa sẽ làm cho bạn\"</em>. Trách nhiệm đảm bảo thuộc về <strong>người viết hàm (Method)</strong>."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "// Pre-cond: x >= 0\n// Post-cond: Return the square root of x\npublic static double squareRoot(double x) {\n    // Chi tiết xử lý...\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>public</code>: Từ khóa quy định quyền truy cập công khai từ bất kỳ đâu.",
+                        "<code>static</code>: Phương thức tĩnh thuộc về lớp, gọi trực tiếp được mà không cần tạo đối tượng.",
+                        "<code>double</code>: Kiểu dữ liệu trả về của kết quả.",
+                        "Các dòng comment <code>// Pre-cond</code> và <code>// Post-cond</code> là chuẩn mực ghi chú kỹ thuật bắt buộc."
+                      ]
+                    },
+                    {
+                      type: "java-interface-pre-post-conditions"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ cực kỳ quan trọng</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>Pre-condition:</strong> Điều kiện đầu vào (trách nhiệm của <strong>người gọi hàm - Caller</strong>).<br/>• <strong>Post-condition:</strong> Điều kiện đầu ra (trách nhiệm của <strong>người viết hàm - Method</strong>).<br/>• <strong>Điểm thi trắc nghiệm:</strong> Phân biệt rõ ai chịu trách nhiệm đảm bảo pre-condition và post-condition. Nếu Caller truyền tham số sai (vi phạm pre-condition), hàm có quyền trả về kết quả sai hoặc văng lỗi mà không vi phạm hợp đồng.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-data-abstraction-adt",
+              number: "4",
+              title: "Data Abstraction & ADT",
+              parts: [
+                {
+                  id: "oop-part-data-abstraction-intro",
+                  label: "",
+                  title: "Trừu tượng hóa dữ liệu & Kiểu dữ liệu trừu tượng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Nguyên lý che giấu thông tin không chỉ áp dụng cho phương thức hành vi mà còn áp dụng sâu sắc cho cấu trúc dữ liệu:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Data Abstraction (Trừu tượng hóa dữ liệu):</strong> Suy nghĩ về <em>những gì có thể thực hiện</em> trên một tập hợp dữ liệu, độc lập với <em>cách lưu trữ và cài đặt chi tiết</em> của nó.",
+                        "<strong>Data Structure (Cấu trúc dữ liệu):</strong> Là cách thức lưu trữ vật lý cụ thể được định nghĩa trong ngôn ngữ lập trình (như mảng tĩnh, danh sách liên kết) để chứa dữ liệu.",
+                        "<strong>Abstract Data Type - ADT (Kiểu dữ liệu trừu tượng):</strong> Là một <strong>tập hợp dữ liệu</strong> đi kèm với <strong>đặc tả (specification)</strong> về tập các phép toán trên dữ liệu đó. Đặc tả chỉ nói ADT <em>làm cái gì</em>, không bao giờ nói <em>cài đặt cụ thể ra sao</em>."
+                      ]
+                    },
+                    {
+                      type: "java-interface-data-abstraction-adt"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ khái niệm</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>ADT (Abstract Data Type)</strong> = Dữ liệu + Các phép toán trên dữ liệu (không quan tâm cách cài đặt).<br/>• <strong>Data Structure</strong> chỉ chịu trách nhiệm phần <strong>lưu trữ vật lý</strong> dữ liệu trong bộ nhớ RAM.</p></details>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-l-4 border-indigo-500 rounded-r-xl p-4 cursor-pointer select-none mt-3\"><summary class=\"text-xs font-bold text-indigo-400 font-mono uppercase tracking-wider\">🧠 Ghi nhớ nhanh & Ví dụ thực tế</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>Mục đích cốt lõi:</strong> Tách biệt phần sử dụng (\"dùng gì\") ra khỏi phần cài đặt (\"làm thế nào\"), giúp mã nguồn dễ dàng nâng cấp, thay đổi cấu trúc mà không phá vỡ ứng dụng khách.<br/>• <strong>Ví dụ thực tế:</strong> Kiểu số nguyên <code>int</code> trong Java là một ADT vì bạn sử dụng các phép toán <code>+</code>, <code>-</code>, <code>*</code> bình thường mà không cần biết CPU cấu tạo bảng ALU hay mạch cộng nhị phân bù 2 như thế nào.<br/>• <strong>Cú pháp Java:</strong> Ở phần này chưa học cú pháp riêng biệt cho ADT, cú pháp chuẩn để biểu diễn ADT trong Java chính là <code>interface</code> (sẽ học chi tiết ở phần sau).<br/>• <strong>Điểm thi:</strong> Phân biệt ranh giới giữa ADT (giao diện trừu tượng) và Data Structure (lưu trữ vật lý).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-interface-adt-sec",
+          roman: "II",
+          title: "Kiểu dữ liệu trừu tượng (Abstract Data Type - ADT)",
+          subsections: [
+            {
+              id: "oop-sub-adt-cohesion",
+              number: "1",
+              title: "Cohesion & Coupling trong Thiết kế Lớp",
+              parts: [
+                {
+                  id: "oop-part-adt-cohesion-detail",
+                  label: "",
+                  title: "Data Structure và cách thiết kế lớp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Data structure (Cấu trúc dữ liệu):</strong> Là cấu trúc được định nghĩa trong ngôn ngữ lập trình để lưu trữ vật lý một tập hợp dữ liệu (ví dụ: mảng <code>Arrays</code> trong Java)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Khi cần quản lý danh sách thông tin như tên và lương nhân viên, ta có 2 cách thiết kế chính:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Cách 1 (Kém):</strong> Dùng các mảng song song độc lập như <code>String[] names</code> và <code>double[] salaries</code>. Cách này dễ gây sai lệch chỉ số index khi thêm/xóa/sắp xếp nhân viên.",
+                        "<strong>Cách 2 (Khuyên dùng):</strong> Gộp các dữ liệu liên quan vào duy nhất 1 lớp <code>class Employee</code> và sử dụng mảng đối tượng <code>Employee[] workers</code>. Thiết kế này đảm bảo nguyên lý <strong>Cohesion</strong> cao."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class Employee {\n    static final int MAX_NUMBER = 500;\n    private String names;\n    private double salaries;\n}\n\nEmployee[] workers = new Employee[Employee.MAX_NUMBER];"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>static final int MAX_NUMBER</code>: <code>static</code> cho biết hằng số thuộc về lớp; <code>final</code> ngăn chặn sửa đổi giá trị sau khi gán.",
+                        "<code>private</code>: Từ khóa quy định chỉ truy cập được bên trong lớp để bảo vệ thuộc tính khỏi sự dòm ngó bên ngoài (Information Hiding)."
+                      ]
+                    },
+                    {
+                      type: "java-interface-employee-cohesion"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ Cohesion</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Cách thiết kế dùng nhiều mảng song song (<code>names[]</code>, <code>salaries[]</code>) rất dễ sai sót vì lập trình viên phải tự đồng bộ chỉ số index thủ công.<br/>• Gom các thuộc tính liên quan vào <code>class Employee</code> tốt hơn nhiều vì đảm bảo gom dữ liệu liên quan về một mối (đảm bảo tính <strong>Cohesion</strong> cao).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-adt-water-dispenser",
+              number: "2",
+              title: "Ví dụ thực tế: Máy lọc nước ADT",
+              parts: [
+                {
+                  id: "oop-part-adt-water-dispenser-detail",
+                  label: "",
+                  title: "Ý nghĩa của đặc tả ADT",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Kiểu dữ liệu trừu tượng (ADT)</strong> được định nghĩa bởi tập hợp dữ liệu cùng với <strong>đặc tả (specification)</strong> của tập phép toán trên dữ liệu đó (chỉ nói <em>làm gì</em>, không nói <em>cài đặt ra sao</em>):"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Data structure (Cấu trúc dữ liệu):</strong> Chỉ đóng vai trò là một phần trong chi tiết cài đặt (implementation) của ADT đó.",
+                        "Khi ngôn ngữ lập trình không hỗ trợ sẵn cấu trúc mong muốn, lập trình viên sẽ tự tạo ADT. Quy trình chuẩn là <strong>thiết kế đặc tả ADT trước</strong>, rồi mới cài đặt chi tiết sau."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ẩn dụ Máy làm nước (Water Dispenser) như một ADT:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Dữ liệu:</strong> Nước sạch.",
+                        "<strong>Phép toán công khai (Interface):</strong> <code>chill()</code> (làm lạnh), <code>crush()</code> (làm đá bào), <code>cube()</code> (làm đá viên), <code>isEmpty()</code> (kiểm tra rỗng).",
+                        "<strong>Cấu trúc bên trong (Data Structure):</strong> Hệ thống van, ống lọc, bình làm nóng đun sôi chứa bên trong máy và được che chắn bởi lớp vỏ bảo vệ vững chãi.",
+                        "Người dùng chỉ cần nhấn nút giao diện để lấy nước, hoàn toàn không cần biết máy làm đá bào hay nước lạnh bên trong bằng cách nào. Đây là tương tự như máy bán hàng tự động (vending machine)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Bức tường ngăn cách của ADT bảo vệ và cô lập cấu trúc dữ liệu khỏi chương trình khách sử dụng nó. Giao diện (Interface) là cánh cửa duy nhất cho phép chương trình tương tác với ADT. Nếu chương trình tìm cách truy cập trực tiếp vào các thuộc tính private bên trong mà bỏ qua giao diện ➔ vi phạm bức tường bảo vệ và phá vỡ nguyên lý Information Hiding."
+                    },
+                    {
+                      type: "java-interface-water-dispenser-adt"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ cốt lõi</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>Interface (Giao diện):</strong> Là tập hợp tất cả những gì một lớp/chương trình cần hiểu để sử dụng ADT mà không cần biết cách thức triển khai bên trong.<br/>• <strong>Bẫy phòng thi:</strong> Interface không phải là cấu trúc lưu trữ dữ liệu, mà là <strong>tập hợp các thao tác, hành vi được phép gọi sử dụng</strong>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-adt-spec-operations",
+              number: "3",
+              title: "Đặc tả ADT và Bảng phép toán",
+              parts: [
+                {
+                  id: "oop-part-adt-spec-operations-detail",
+                  label: "",
+                  title: "Phân loại các phép toán trên ADT",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Các kiểu dữ liệu nguyên thủy trong Java (như <code>int</code>, <code>boolean</code>, <code>double</code>...) thực chất cũng chính là các ADT được định nghĩa sẵn bởi ngôn ngữ. Chi tiết lưu trữ bit nhị phân được ẩn giấu hoàn toàn để đảm bảo tính khả chuyển (portability) của code giữa các dòng máy khác nhau."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Về mặt học thuật, toàn bộ các phép toán tương tác trên ADT được phân loại thành 3 nhóm cơ bản:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Constructors (Bộ khởi tạo):</strong> Dùng để tạo mới hoặc thêm dữ liệu vào ADT. Ví dụ: Khởi tạo mảng mới <code>int[] z = new int[4];</code>.",
+                        "<strong>Mutators (Bộ biến đổi):</strong> Dùng để thay đổi/sửa đổi nội dung dữ liệu bên trong ADT. Ví dụ: Gán giá trị mới <code>x[3] = 10;</code>.",
+                        "<strong>Accessors (Bộ truy xuất):</strong> Dùng để truy vấn, đọc giá trị hoặc lấy thông tin trạng thái hiện tại của ADT mà không làm thay đổi dữ liệu gốc. Ví dụ: Đọc và tính toán <code>int y = x[3] + x[2];</code>."
+                      ]
+                    },
+                    {
+                      type: "java-interface-adt-operations-table"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ thi cử</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• 3 nhóm thao tác: <strong>Constructor (tạo mới) ➔ Mutator (thay đổi) ➔ Accessor (truy xuất/chỉ đọc)</strong>.<br/>• Đề thi trắc nghiệm cực kỳ hay đưa ra một đoạn code Java ngắn và yêu cầu học sinh phân loại đoạn mã đó thuộc nhóm thao tác nào trong 3 nhóm trên.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-adt-complex-number",
+              number: "4",
+              title: "Biểu diễn Số phức dưới dạng ADT",
+              parts: [
+                {
+                  id: "oop-part-adt-complex-number-detail",
+                  label: "",
+                  title: "Thiết kế Số phức Complex ADT",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Một số phức (Complex Number) đại diện cho dạng toán học \( z = a + bi \), trong đó \( a \) là phần thực, \( b \) là phần ảo và \( i^2 = -1 \). Số phức được biểu diễn trực quan như một vector 2 chiều trên mặt phẳng phức."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Ta có thể tự thiết kế kiểu dữ liệu số phức (user-defined type) thành một ADT hoàn chỉnh như sau:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Constructor:</strong> Khởi tạo thực thể mới <code>Complex(r, i)</code>.",
+                        "<strong>Mutators:</strong> Các phép toán cộng, trừ, nhân thay đổi trực tiếp đối tượng: <code>add(c)</code>, <code>minus(c)</code>, <code>times(c)</code>.",
+                        "<strong>Accessors:</strong> Đọc giá trị phần thực và phần ảo: <code>realpart()</code>, <code>imagpart()</code>."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class Complex {\n    private double real;\n    private double imag;\n    \n    public Complex(double r, double i) { real = r; imag = i; }\n    public double realpart() { return real; }\n    public double imagpart() { return imag; }\n    \n    public void add(Complex c) {\n        real += c.realpart();\n        imag += c.imagpart();\n    }\n    // Các phép toán khác...\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Trong Java, từ khóa <code>private</code> giúp giấu dữ liệu phần thực/ảo bên trong lớp, chỉ cho phép truy cập nội bộ. Từ khóa <code>this</code> đại diện cho đối tượng hiện tại đang thực hiện phương thức gọi hàm."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Có hai cách phổ biến để cài đặt số phức trong bộ nhớ RAM:"
+                    },
+                    {
+                      type: "numbered-list",
+                      items: [
+                        "<strong>Cài đặt 1 - Cartesian (Toạ độ Đề-các):</strong> Lưu trữ trực tiếp biến <code>real</code> và <code>imag</code> đại diện cho trục thực/ảo.",
+                        "<strong>Cài đặt 2 - Polar (Toạ độ cực):</strong> Lưu trữ bằng góc xoay <code>ang (angle)</code> và độ lớn vector <code>mag (magnitude)</code>."
+                      ]
+                    },
+                    {
+                      type: "java-interface-complex-number-plane"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ triết lý ADT</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Cùng một ADT <strong>Complex</strong> có thể có nhiều cách cài đặt khác nhau (Cartesian vs Polar) tùy theo mục đích tối ưu phần cứng, nhưng bên ngoài đều sử dụng chung một giao thức (interface).<br/>• Ý nghĩa cốt lõi của ADT: <strong>Người sử dụng hoàn toàn độc lập và không cần biết/không cần quan tâm bên dưới đang cài đặt theo cách nào</strong>.</p></details>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-l-4 border-indigo-500 rounded-r-xl p-4 cursor-pointer select-none mt-3\"><summary class=\"text-xs font-bold text-indigo-400 font-mono uppercase tracking-wider\">💡 Định hướng bài học tiếp theo</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Đây là lý thuyết nền tảng dẫn trực tiếp tới Phần III (Java Interface).<br/>• Java cung cấp từ khóa <code>interface</code> như một công cụ tối thượng để hiện thực hóa ý tưởng tách rời hoàn toàn phần Đặc tả (Specification) ra khỏi phần Cài đặt (Implementation) này.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-interface-java-sec",
+          roman: "III",
+          title: "Java Interface",
+          subsections: [
+            {
+              id: "oop-sub-interface-concept",
+              number: "1",
+              title: "Khái niệm Interface & Comparable",
+              parts: [
+                {
+                  id: "oop-part-interface-concept-detail",
+                  label: "",
+                  title: "Định nghĩa Java Interface",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Java interface:</strong> Là cách đặc tả <strong>hành vi chung (common behaviour)</strong> cho một nhóm các lớp (có thể hoàn toàn không liên quan với nhau về mặt kế thừa)."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dùng từ khóa <code>interface</code> thay thế cho từ khóa <code>class</code> khi khai báo.",
+                        "Interface chỉ chứa <strong>đặc tả các phương thức cần được cài đặt (method signatures)</strong> chứ không chứa thân hàm rỗng (empty bodies).",
+                        "Interface có thể chứa các khai báo hằng số (constants), các hằng số này mặc định luôn là <code>public static final</code>.",
+                        "Một lớp được gọi là <strong>implement</strong> interface nếu nó cam kết và cung cấp cài đặt đầy đủ cho <strong>TẤT CẢ</strong> các phương thức được khai báo trong interface đó."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ví dụ về Comparable Interface:</strong> Interface <code>Comparable&lt;T&gt;</code> là một interface tích hợp sẵn trong gói <code>java.lang</code> của Java, sử dụng kiểu generic <code>&lt;T&gt;</code> để so sánh hai thực thể đối tượng bất kỳ."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public interface Comparable<T> {\n    int compareTo(T other);\n}\n\nclass Shape implements Comparable<Shape> {\n    static final double PI = 3.14;\n    double area() { /* ... */ }\n    \n    @Override\n    public int compareTo(Shape x) {\n        if (this.area() == x.area()) return 0;\n        else if (this.area() > x.area()) return 1;\n        else return -1;\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>implements</code>: Từ khóa Java bắt buộc lớp cam kết hoàn thành hợp đồng cài đặt.",
+                        "<code>compareTo(Shape x)</code>: Trả về quy ước: <code>0</code> nếu diện tích bằng nhau, <code>1</code> nếu lớn hơn, và <code>-1</code> nếu nhỏ hơn."
+                      ]
+                    },
+                    {
+                      type: "java-interface-shape-comparable"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ phòng thi</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <strong>Quy tắc bắt buộc:</strong> Bất kỳ lớp nào đã khai báo <code>implements TenInterface</code> đều bắt buộc phải ghi đè và viết code cài đặt cho <strong>đủ toàn bộ</strong> phương thức của interface đó. Nếu thiếu dù chỉ một phương thức, Java sẽ báo lỗi biên dịch lập tức.<br/>• <code>Comparable&lt;T&gt;</code> là interface rất hay gặp trong bài tập lập trình phục vụ thuật toán sắp xếp (Sort).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-interface-complex",
+              number: "2",
+              title: "Thiết kế Số phức Complex Interface",
+              parts: [
+                {
+                  id: "oop-part-interface-complex-detail",
+                  label: "",
+                  title: "Đặc tả giao diện Số phức Complex",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ta thiết kế một Interface <code>Complex</code> chung, dự tính trước rằng sẽ có ít nhất 2 lớp cài đặt nó theo các hệ tọa độ khác nhau là Đề-các (Cartesian) và Cực (Polar):"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public interface Complex {\n    public double realpart();\n    public double imagpart();\n    public double angle();\n    public double mag();\n    public void add(Complex c);\n    public void minus(Complex c);\n    public void times(Complex c);\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Trong Java 7 trở về trước:</strong> Các phương thức trong interface chỉ được phép khai báo signature (chữ ký hàm), cấm tuyệt đối viết thân hàm.",
+                        "<strong>Từ Java 8 trở đi:</strong> Hỗ trợ thêm tính năng <code>default methods</code> cho phép viết cài đặt mặc định bên trong interface bằng từ khóa <code>default</code>, giúp tăng tính linh hoạt khi cập nhật thư viện mà không làm hỏng code cũ."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là so sánh thuật toán xử lý của <code>ComplexCart</code> (Cartesian) và <code>ComplexPolar</code> (Polar) cùng thực thi Interface <code>Complex</code>:"
+                    },
+                    {
+                      type: "java-interface-complex-implementations"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ đặc biệt</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <code>ComplexCart</code> và <code>ComplexPolar</code> đều thực hiện <code>implements Complex</code> ➔ Dùng chung một bộ giao tiếp bên ngoài, khác biệt hoàn toàn về cấu trúc biến lưu trữ bên trong.<br/>• **Lợi ích tối thượng:** Các lớp khách sử dụng kiểu dữ liệu <code>Complex</code> có thể gọi tính toán bình thường mà không cần quan tâm/không cần biết hệ thống đang chạy bản cài đặt Cartesian hay Polar.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-interface-polymorphism",
+              number: "3",
+              title: "Lớp kiểm thử & Tính đa hình (JVM Memory)",
+              parts: [
+                {
+                  id: "oop-part-interface-polymorphism-detail",
+                  label: "",
+                  title: "Đa hình tham chiếu Interface",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để kiểm thử hoạt động của hai phiên bản số phức, ta xây dựng lớp chạy chương trình <code>TestComplex</code>:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestComplex {\n    public static void main(String[] args) {\n        Complex a = new ComplexCart(10.0, 12.0);\n        Complex b = new ComplexCart(1.0, 2.0);\n        \n        a.add(b);\n        a.minus(b);\n        a.times(b);\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dòng lệnh <code>Complex a = new ComplexCart(...)</code> khai báo một biến tham chiếu kiểu Interface <code>Complex</code>, gán giá trị bằng đối tượng cụ thể <code>ComplexCart</code>.",
+                        "Đây là ví dụ điển hình của tính **Đa hình (Polymorphism)** thông qua cơ chế giao tiếp Interface."
+                      ]
+                    },
+                    {
+                      type: "java-interface-jvm-memory-polymorphism"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ kỹ thuật</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Có thể khai báo biến bằng kiểu interface (<code>Complex a</code>) nhưng gán bằng đối tượng cụ thể (<code>new ComplexCart(...)</code>). Đây là kỹ thuật lập trình hướng đối tượng chuyên nghiệp, xuất hiện rất nhiều trong đề thi lý thuyết và thực hành Java.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-interface-precision",
+              number: "4",
+              title: "Ép kiểu & So sánh số thực (instanceof, equals)",
+              parts: [
+                {
+                  id: "oop-part-interface-precision-detail",
+                  label: "",
+                  title: "Toán tử instanceof và Ép kiểu an toàn",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Mỗi interface khi biên dịch sẽ sinh ra duy nhất một file bytecode <code>.class</code> riêng biệt y như lớp thông thường. Ta **không thể tạo thực thể** trực tiếp từ interface (cấm <code>new Complex()</code>), nhưng được dùng làm kiểu dữ liệu hoặc đích đến của ép kiểu (casting)."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public boolean equals(Object c1) {\n    if (c1 instanceof Complex) {\n        Complex temp = (Complex) c1; // Ép kiểu casting\n        return (Math.abs(realpart() - temp.realpart()) < EPSILON\n            && Math.abs(imagpart() - temp.imagpart()) < EPSILON);\n    }\n    return false;\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>instanceof</code>: Từ khóa kiểm tra xem đối tượng có tương thích với kiểu dữ liệu/giao diện chỉ định hay không.",
+                        "<code>(Complex) c1</code>: Thực hiện ép kiểu đối tượng Object về kiểu giao tiếp Complex.",
+                        "<code>equals()</code>: Ghi đè phương thức để so sánh hai đối tượng số phức có bằng nhau về mặt giá trị hay không."
+                      ]
+                    },
+                    {
+                      type: "java-interface-float-precision-playground"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ cốt lõi</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Cú pháp <code>new Interface()</code> là hoàn toàn sai và bị cấm.<br/>• **So sánh số thực:** Vì kiểu số thực <code>double</code> luôn có sai số biểu diễn nhị phân, tuyệt đối **không sử dụng toán tử ==** để so sánh bằng. Hãy khai báo một hằng số sai số nhỏ <code>EPSILON</code> (ví dụ: 1E-9) và so sánh trị tuyệt đối khoảng cách.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-interface-fraction-sec",
+          roman: "IV",
+          title: "Fraction là một ADT (Bài tập thực hành)",
+          subsections: [
+            {
+              id: "oop-sub-fraction-adt",
+              number: "1",
+              title: "Thực hành ADT Fraction",
+              parts: [
+                {
+                  id: "oop-part-fraction-adt-detail",
+                  label: "",
+                  title: "Phân tích đặc tả & Cài đặt Fraction",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Phân số (Fraction) dưới góc nhìn ADT:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Data members (Thuộc tính):</strong> Tử số (Numerator) và Mẫu số (Denominator).",
+                        "<strong>Behaviors (Hành vi):</strong> Cộng (Add), Trừ (Minus), Nhân (Times), Rút gọn (Simplify). Tạm thời bỏ qua phép chia (Divide)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Giao diện FractionI:</strong> Định nghĩa tập hợp các phương thức bắt buộc của Phân số:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public interface FractionI {\n    public int getNumer();\n    public int getDenom();\n    public void setNumer(int numer);\n    public void setDenom(int denom);\n    public FractionI add(FractionI f);\n    public FractionI minus(FractionI f);\n    public FractionI times(FractionI f);\n    public FractionI simplify();\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Khác với <code>Complex</code> ở Phần III, các phương thức của <code>FractionI</code> trả về một đối tượng <code>FractionI</code> **mới hoàn toàn** thay vị thay đổi trực tiếp thuộc tính của đối tượng hiện tại. Đây là biểu hiện của triết lý thiết kế **Bất biến (Immutable)**."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Chúng ta có 2 phương án cài đặt chính cho giao diện này:"
+                    },
+                    {
+                      type: "numbered-list",
+                      items: [
+                        "<strong>Fraction:</strong> Sử dụng 2 biến số nguyên <code>numer</code> và <code>denom</code> độc lập.",
+                        "<strong>FractionArr:</strong> Sử dụng mảng 1 chiều <code>int[] members = new int[2]</code> để lưu trữ."
+                      ]
+                    },
+                    {
+                      type: "java-interface-fraction-memory-ram"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Constructor Chaining & Sự khác biệt:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong <code>Fraction</code>, ta dùng cú pháp <code>this(1, 1);</code> để gọi constructor 2 tham số với giá trị mặc định (gọi là liên chuỗi constructor).",
+                        "Phép toán cộng phân số <code>f1.add(f2)</code> tạo ra thực thể đối tượng mới để lưu kết quả."
+                      ]
+                    },
+                    {
+                      type: "java-interface-fraction-immutable-flow"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Chương trình Sandbox & Đáp án tự điền code:</strong>"
+                    },
+                    {
+                      type: "java-interface-fraction-sandbox"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ lý thuyết</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <code>Fraction</code> và <code>FractionArr</code> là 2 phiên bản cài đặt của <strong>cùng một interface FractionI</strong>.<br/>• Cú pháp <code>this(1,1)</code> gọi constructor khác cùng lớp. Hãy cẩn thận tránh nhầm lẫn với từ khóa <code>super(...)</code> dùng để gọi constructor lớp cha.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-interface-summary-sec",
+          roman: "V",
+          title: "Tổng kết chương & Thử thách ôn thi",
+          subsections: [
+            {
+              id: "oop-sub-interface-summary",
+              number: "2",
+              title: "Tổng kết & Thử thách Flashcard ôn thi",
+              parts: [
+                {
+                  id: "oop-part-interface-summary-detail",
+                  label: "",
+                  title: "Tóm tắt toàn bộ bài học",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Bài học đã giúp chúng ta nắm vững các mảnh ghép quan trọng của thiết kế hướng đối tượng Java:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>ADT (Kiểu dữ liệu trừu tượng):</strong> Định nghĩa bởi dữ liệu + đặc tả các phép toán (không quan tâm cài đặt bên dưới).",
+                        "<strong>Java Interface:</strong> Công cụ tối thượng để hiện thực hóa ADT, chỉ chứa chữ ký phương thức rỗng (trừ default method từ Java 8).",
+                        "<strong>Đa hình (Polymorphism):</strong> Biến khai báo thuộc kiểu interface có thể trỏ tới bất kỳ đối tượng cụ thể nào thực thi interface đó.",
+                        "<strong>Không thể khởi tạo:</strong> Cấm sử dụng toán tử <code>new</code> trực tiếp với interface.",
+                        "<strong>So sánh số thực double:</strong> Bắt buộc dùng hiệu trị tuyệt đối nhỏ hơn hằng số sai số <code>EPSILON</code> để so sánh bằng."
+                      ]
+                    },
+                    {
+                      type: "java-interface-exam-trap-flashcards"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-l-4 border-indigo-500 rounded-r-xl p-4 cursor-pointer select-none mt-3\"><summary class=\"text-xs font-bold text-indigo-400 font-mono uppercase tracking-wider\">🎓 Lời kết từ giảng viên</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Ôn tập kỹ các câu hỏi flashcard trên trước khi bước vào phòng thi để tránh các cạm bẫy lý thuyết phổ biến.<br/>• Đây là nền tảng cốt lõi chuẩn bị cho bài học tiếp theo về Collection of Data trong môn học Lập trình hướng đối tượng.</p></details>"
                     }
                   ]
                 }
@@ -2752,23 +5425,660 @@ public class HelloWorld {
       subtitle: "Collection of Data",
       sections: [
         {
-          id: "oop-collection-of-data-sec",
-          roman: "",
-          title: "Nội dung bài học",
+          id: "oop-collection-array-sec",
+          roman: "I",
+          title: "Mảng (Array)",
           subsections: [
             {
-              id: "oop-sub-collection-of-data",
-              number: "",
-              title: "Bài giảng chi tiết",
+              id: "oop-sub-collection-intro-c",
+              number: "1",
+              title: "Giới thiệu & Mảng trong C",
               parts: [
                 {
-                  id: "oop-part-collection-of-data",
+                  id: "oop-part-collection-intro-c-detail",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Khái niệm chung và mảng trong ngôn ngữ C",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "<blockquote><strong>Khái niệm chung:</strong> Mảng (Array) là một tập hợp dữ liệu <strong>đồng nhất (homogeneous data)</strong>. Đây là cấu trúc dữ liệu cơ bản nhất dùng để chứa nhiều phần tử cùng kiểu dữ liệu.</blockquote>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đặc điểm chính của mảng:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Các phần tử được lưu trữ trong vùng nhớ **liên tiếp (contiguous memory)**.",
+                        "**Chỉ số (index)** của mảng bắt đầu từ **0**."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mảng trong ngôn ngữ C:</strong> Trong C, mảng không tự lưu trữ kích thước của nó. Do đó, khi truyền mảng vào hàm, ta bắt buộc phải truyền kèm biến độ dài <code>size</code> hoặc <code>max_size</code>."
+                    },
+                    {
+                      type: "code",
+                      language: "c",
+                      code: "#include <stdio.h>\n#define MAX 6\n\nint scanArray(double [], int);\nvoid printArray(double [], int);\ndouble sumArray(double [], int);\n\nint main(void) {\n    double list[MAX];\n    int size;\n    size = scanArray(list, MAX);\n    printArray(list, size);\n    printf(\"Sum = %f\\n\", sumArray(list, size));\n    return 0;\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>double []</code>, <code>int</code> trong khai báo prototype chỉ ra mảng và kích thước luôn song hành cùng nhau.",
+                        "<code>arr[i]</code> dùng để truy xuất trực tiếp phần tử thứ <code>i</code> của mảng thô trong RAM."
+                      ]
+                    },
+                    {
+                      type: "java-collection-array-c-vs-java"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ mảng C</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Rất dễ nhầm: Chỉ số mảng bắt đầu từ **0**, không phải 1.<br/>• Trong C, mảng không có metadata chiều dài ➔ bắt buộc luôn phải truyền kèm thêm tham số <code>size</code> vào hàm.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-java-loop",
+              number: "2",
+              title: "Mảng trong Java & Duyệt mảng",
+              parts: [
+                {
+                  id: "oop-part-collection-java-loop-detail",
+                  label: "",
+                  title: "Mảng trong Java",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mảng trong Java là đối tượng (Object):</strong> Khác biệt cốt lõi với C, mảng trong Java là một thực thể đối tượng thực thụ được khởi tạo bằng từ khóa <code>new</code> và được lưu trên vùng nhớ Heap, có thuộc tính công khai <code>length</code> để lưu trữ độ dài của mảng."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestArray1 {\n    public static void main(String[] args) {\n        int[] arr; // arr là một tham chiếu (reference)\n        arr = new int[3]; // tạo mới mảng số nguyên có 3 phần tử\n        System.out.println(\"Length = \" + arr.length);\n        \n        arr[0] = 100;\n        arr[1] = arr[0] - 37;\n        arr[2] = arr[1] / 2;\n        for (int i=0; i<arr.length; i++) {\n            System.out.println(\"arr[\" + i + \"] = \" + arr[i]);\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>int[] arr</code>: Khai báo biến tham chiếu mảng, chưa cấp phát vùng nhớ.",
+                        "<code>new int[3]</code>: Từ khóa <code>new</code> tạo đối tượng mảng thực sự gồm 3 phần tử trong Heap.",
+                        "<code>arr.length</code>: Thuộc tính độ dài mảng (không có dấu ngoặc <code>()</code>)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Duyệt mảng bằng Vòng lặp mở rộng (Enhanced for-loop):</strong> Dùng để duyệt nhanh không sử dụng biến đếm <code>i</code>:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "for (datatype e : array_name) {\n    // Biến e tự động sao chép giá trị từng phần tử của mảng\n}\n\n// Hoặc dùng Arrays.toString(arr) để in mảng nhanh\ndouble[] arr = { 35.1, 21.0, 57.7, 18.3 };\nSystem.out.println(Arrays.toString(arr));"
+                    },
+                    {
+                      type: "java-collection-array-for-loop-sim"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ cú pháp</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <code>arr.length</code> là <strong>thuộc tính (attribute)</strong> của đối tượng mảng, không có ngoặc tròn <code>()</code>.<br/>• Khác biệt hoàn toàn với <code>String.length()</code> là một <strong>phương thức (method)</strong> bắt buộc có ngoặc. Đây là bẫy thi trắc nghiệm vô cùng phổ biến!</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-reference-cli",
+              number: "3",
+              title: "Mảng làm tham số & Command-line Args",
+              parts: [
+                {
+                  id: "oop-part-collection-reference-cli-detail",
+                  label: "",
+                  title: "Truyền tham chiếu mảng và Tham số dòng lệnh",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mảng làm tham số (Array as a Parameter):</strong> Khi truyền mảng vào một phương thức, thực chất Java sẽ truyền **tham chiếu (reference)** tới mảng đó. Do đó, mọi thay đổi phần tử bên trong hàm sẽ **tác động trực tiếp lên mảng gốc** bên ngoài."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestArray3 {\n    public static void main(String[] args) {\n        int[] list = { 22, 55, 33 };\n        swap(list, 0, 2);\n        for (int element : list) System.out.print(element + \" \");\n    }\n    \n    public static void swap(int[] arr, int i, int j) {\n        int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;\n    }\n}"
+                    },
+                    {
+                      type: "java-collection-array-reference-swap"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tham số dòng lệnh String[] args:</strong> Phương thức khởi chạy <code>main()</code> mặc định luôn có tham số là mảng các đối tượng String <code>String[] args</code> để nhận các đối số truyền vào từ Command-line."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestCommandLineArgs {\n    public static void main(String[] args) {\n        for (int i=0; i<args.length; i++) {\n            System.out.println(\"args[\" + i + \"] = \" + args[i]);\n        }\n    }\n}"
+                    },
+                    {
+                      type: "java-collection-array-cli-detour"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ thi cử</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Mảng được truyền vào hàm dưới dạng <strong>tham chiếu</strong>, mọi thay đổi bên trong hàm sẽ tác động trực tiếp tới mảng gốc bên ngoài.<br/>• Các tham số CLI phân tách bởi dấu cách trống, nếu muốn truyền cả cụm từ có dấu cách cần bao quanh bằng cặp dấu ngoặc kép <code>\"\"</code>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-array-errors",
+              number: "4",
+              title: "Trả về mảng & Lỗi thường gặp (NullPointer)",
+              parts: [
+                {
+                  id: "oop-part-collection-array-errors-detail",
+                  label: "",
+                  title: "Trả về mảng và Các lỗi thường gặp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Trả về mảng (Returning an Array):</strong> Một phương thức hoàn toàn có thể trả về một mảng. Kiểu dữ liệu trả về của phương thức sẽ được khai báo ở dạng <code>datatype[]</code>."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public static double[] makeArray(int size, double limit) {\n    double[] arr = new double[size];\n    for (int i=0; i < arr.length; i++)\n        arr[i] = limit/(i+1);\n    return arr;\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các lỗi thường gặp khi làm việc với Mảng:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a. length vs length():</strong> Lấy độ dài chuỗi String dùng phương thức <code>str.length()</code> (có dấu ngoặc), còn mảng dùng thuộc tính <code>arr.length</code> (không có dấu ngoặc).",
+                        "<strong>b. Truy cập ngoài phạm vi (ArrayIndexOutOfBoundsException):</strong> Chỉ số mảng hợp lệ chạy từ <code>0</code> đến <code>length - 1</code>. Chạy đến <code>i <= length</code> sẽ bị crash.",
+                        "<strong>c. Quên khởi tạo phần tử là Object:</strong> Cú pháp <code>new Point[3]</code> mới chỉ tạo mảng chứa 3 tham chiếu <code>null</code>. Bắt buộc phải khởi tạo từng phần tử bằng <code>new Point()</code> trước khi gọi phương thức."
+                      ]
+                    },
+                    {
+                      type: "java-collection-array-errors-warning"
+                    },
+                    {
+                      type: "java-collection-array-null-pointer-sim"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ lỗi mảng</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Đây là lỗi **cực kỳ hay gặp** trong đề thi: Khai báo mảng đối tượng <code>new Type[size]</code> mới chỉ tạo ra mảng các tham chiếu <code>null</code>, chưa tạo đối tượng thực tế; bắt buộc phải dùng vòng lặp để <code>new</code> từng phần tử riêng biệt.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-array-2d",
+              number: "5",
+              title: "Mảng 2 chiều & Mảng răng cưa",
+              parts: [
+                {
+                  id: "oop-part-collection-array-2d-detail",
+                  label: "",
+                  title: "Mảng 2 chiều và Mảng răng cưa",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mảng 2 chiều (2D Array):</strong> Được định nghĩa là **mảng của các mảng** (array of arrays). Trong Java, mảng 2 chiều cho phép các hàng có độ dài khác nhau, gọi là **mảng răng cưa (jagged array)**."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "int[][] products = new int[12][]; // mảng 12 hàng, mỗi hàng chưa xác định cột\nint[][] array2D = { {4, 5, 2}, {1, 3}, {7, 1, 5, 6} };"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Lớp kiểm thử duyệt mảng 2 chiều:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class Test2DArray {\n    public static void main(String[] args) {\n        int[][] array2D = { {4, 5, 2}, {1, 3}, {7, 1, 5, 6} };\n        System.out.println(\"array2D.length = \" + array2D.length); // số hàng = 3\n        for (int i = 0; i < array2D.length; i++)\n            System.out.println(\"array2D[\" + i + \"].length = \" + array2D[i].length);\n            \n        for (int row = 0; row < array2D.length; row++) {\n            for (int col = 0; col < array2D[row].length; col++)\n                System.out.print(array2D[row][col] + \" \");\n            System.out.println();\n        }\n    }\n}"
+                    },
+                    {
+                      type: "java-collection-array-jagged-2d"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ mảng 2 chiều</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• <code>array2D.length</code>: Trả về **số hàng**.<br/>• <code>array2D[i].length</code>: Trả về **số cột của hàng thứ i** (số cột hoàn toàn có thể khác nhau giữa các hàng).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-array-drawbacks",
+              number: "6",
+              title: "Nhược điểm của mảng & Giới thiệu Vector/ArrayList",
+              parts: [
+                {
+                  id: "oop-part-collection-array-drawbacks-detail",
+                  label: "",
+                  title: "Nhược điểm kích thước cố định và hướng phát triển",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Nhược điểm lớn nhất của Array:</strong> Sau khi khởi tạo đối tượng mảng, **kích thước của mảng là cố định (fixed size)** và không thể co giãn."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Muốn thay đổi kích thước mảng ➔ Bắt buộc phải tạo lại mảng mới (reconstruction) có kích thước lớn hơn, sao chép dữ liệu cũ sang và chuyển hướng con trỏ tham chiếu.",
+                        "Trong thực tế, để giải quyết nhược điểm này, Java cung cấp các lớp động như <code>Vector</code> hoặc <code>ArrayList</code> với khả năng tự động co giãn kích thước (dynamic size) linh hoạt.",
+                        "Trước khi học về Vector/ArrayList, lập trình viên cần nắm vững khái niệm **Generics (Kiểu chung)** ở các bài học tiếp theo."
+                      ]
+                    },
+                    {
+                      type: "java-collection-array-reconstruction"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ tổng kết phần Mảng</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• 'Drawback' = nhược điểm, trở ngại lớn nhất của mảng là kích thước cố định.<br/>• Đây là nguyên nhân trực tiếp thúc đẩy sự ra đời của **Vector** và **ArrayList** trong gói <code>java.util</code>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-collection-generics-sec",
+          roman: "II",
+          title: "Generics (Kiểu tổng quát)",
+          subsections: [
+            {
+              id: "oop-sub-collection-generics-intro",
+              number: "1",
+              title: "Động lực & Lớp Pair tổng quát",
+              parts: [
+                {
+                  id: "oop-part-collection-generics-intro-detail",
+                  label: "",
+                  title: "Khái niệm chung, động lực và lớp Pair tổng quát",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<blockquote><strong>Khái niệm chung:</strong> Generics (Kiểu tổng quát/chung) cho phép lập trình viên định nghĩa các lớp, giao diện và phương thức có thể thao tác trên các đối tượng thuộc nhiều kiểu dữ liệu khác nhau mà không cần ràng buộc cứng vào một kiểu cụ thể nào.</blockquote>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Động lực (Motivation):</strong> Trong thực tế, có rất nhiều bài toán lập trình có cùng thuật toán và cấu trúc code nhưng lại áp dụng cho nhiều kiểu dữ liệu khác nhau. Nếu không dùng Generics, ta phải viết thủ công nhiều lớp trùng lặp (ví dụ: lớp <code>IntPair</code> lưu 2 số nguyên, lớp <code>StringPair</code> lưu 2 chuỗi...) dẫn đến lãng phí và khó bảo trì code."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class IntPair {\n    private int first, second;\n    public IntPair(int a, int b) {\n        first = a; second = b;\n    }\n    public int getFirst() { return first; }\n    public int getSecond() { return second; }\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Giải pháp dùng Generics:</strong> Định nghĩa lớp <code>Pair&lt;T&gt;</code> dùng chung cho mọi kiểu dữ liệu đối tượng:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class Pair<T> {\n    private T first, second;\n    public Pair(T a, T b) {\n        first = a; second = b;\n    }\n    public T getFirst() { return first; }\n    public T getSecond() { return second; }\n}"
+                    },
+                    {
+                      type: "java-collection-generics-playground"
+                    },
+                    {
+                      type: "java-collection-generics-wrapper-type"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ quy tắc tham chiếu</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Tham số kiểu <code>&lt;T&gt;</code> đại diện cho một kiểu đối tượng bất kỳ.<br/>• **Quy tắc quan trọng:** Kiểu tổng quát chỉ được thay thế bằng kiểu dữ liệu tham chiếu (Reference Type), **cấm** dùng trực tiếp kiểu nguyên thủy (Primitive Type) như <code>int</code>, <code>double</code>. Phải dùng các wrapper class tương ứng như <code>Integer</code>, <code>Double</code>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-generics-autoboxing",
+              number: "2",
+              title: "Autoboxing & Unboxing",
+              parts: [
+                {
+                  id: "oop-part-collection-generics-autoboxing-detail",
+                  label: "",
+                  title: "Tự động đóng và mở gói kiểu dữ liệu",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để hỗ trợ chuyển đổi mượt mà giữa kiểu nguyên thủy và đối tượng bao bọc (wrapper class), Java cung cấp cơ chế tự động chuyển đổi:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "**Autoboxing:** Java compiler tự động chuyển đổi giá trị kiểu nguyên thủy (primitive) thành đối tượng wrapper tương ứng (ví dụ: chuyển <code>int</code> thành <code>Integer</code>).",
+                        "**Unboxing:** Java compiler tự động chuyển đổi đối tượng wrapper về lại kiểu nguyên thủy tương ứng (ví dụ: chuyển <code>Integer</code> thành <code>int</code>)."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "Pair<Integer> twoInt = new Pair<Integer>(-5, 20); // autoboxing: -5, 20 (int) -> Integer\nint i = new Integer(5); // unboxing: Integer -> int\nInteger intObj = 7;     // autoboxing: int -> Integer"
+                    },
+                    {
+                      type: "java-collection-generics-autoboxing"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ Autoboxing/Unboxing</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• **Autoboxing:** primitive ➔ wrapper object (tự động).<br/>• **Unboxing:** wrapper object ➔ primitive (tự động).<br/>• Khái niệm này rất hay xuất hiện trong bài kiểm tra trắc nghiệm lý thuyết Java.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-generics-multi",
+              number: "3",
+              title: "Nhiều kiểu tổng quát & Tổng kết Generics",
+              parts: [
+                {
+                  id: "oop-part-collection-generics-multi-detail",
+                  label: "",
+                  title: "Nhiều tham số kiểu và quy ước",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Nhiều tham số kiểu tổng quát:</strong> Một lớp generic hoàn toàn có thể hỗ trợ nhiều tham số kiểu khác nhau, ví dụ: <code>class NewPair&lt;S, T&gt;</code>."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class NewPair<S, T> {\n    private S first;\n    private T second;\n    public NewPair(S a, T b) {\n        first = a; second = b;\n    }\n    public S getFirst() { return first; }\n    public T getSecond() { return second; }\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Quy ước đặt tên tham số kiểu:</strong> Thường dùng các chữ cái in hoa đơn để tránh nhầm lẫn với các lớp thông thường:<br/>• <code>T</code>: Type (Kiểu dữ liệu chung)<br/>• <code>S</code>, <code>U</code>, <code>V</code>: Các kiểu dữ liệu kế tiếp<br/>• <code>E</code>: Element (Phần tử trong Collection)<br/>• <code>K</code>: Key (Khóa trong Map)<br/>• <code>V</code>: Value (Giá trị trong Map)"
+                    },
+                    {
+                      type: "java-collection-generics-multi-pair"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ tổng kết Generics</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Generics giúp giảm thiểu trùng lặp mã nguồn tối đa khi cùng giải pháp thuật toán nhưng khác kiểu dữ liệu.<br/>• Chỉ hoạt động với Reference Type (kiểu đối tượng).<br/>• Autoboxing/Unboxing diễn ra tự động tại thời điểm biên dịch.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-collection-vector-sec",
+          roman: "III",
+          title: "Vector",
+          subsections: [
+            {
+              id: "oop-sub-collection-vector-intro",
+              number: "1",
+              title: "Khái niệm & Bảng phương thức Vector",
+              parts: [
+                {
+                  id: "oop-part-collection-vector-intro-detail",
+                  label: "",
+                  title: "Giới thiệu lớp Vector và bảng các phương thức thường dùng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<blockquote><strong>Khái niệm chung:</strong> Vector là một lớp (class) trong gói <code>java.util</code> đại diện cho cấu trúc dữ liệu **mảng có kích thước động (dynamic-size array)**.</blockquote>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Động lực sử dụng:</strong> Vector giải quyết triệt để nhược điểm kích thước cố định của mảng thông thường bằng cách tự động co giãn (mở rộng hoặc thu nhỏ) ô nhớ khi ta thêm/bớt phần tử. Ngoài ra, Vector hỗ trợ Generic cho phép chứa bất kỳ kiểu dữ liệu đối tượng nào."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Package & Cú pháp khai báo:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.Vector;\n\n// Khai báo biến tham chiếu\nVector<E> myVector;\n\n// Khởi tạo Vector rỗng\nmyVector = new Vector<E>();"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các phương thức API thông dụng của Vector:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>isEmpty()</code>: Kiểm tra Vector có rỗng hay không.",
+                        "<code>size()</code>: Lấy số phần tử hiện có trong Vector.",
+                        "<code>add(E o)</code>: Thêm phần tử vào cuối Vector.",
+                        "<code>add(int index, E element)</code>: Chèn phần tử vào vị trí chỉ định (yêu cầu dịch chuyển các phần tử phía sau sang phải).",
+                        "<code>remove(int index)</code>: Xóa phần tử tại vị trí chỉ định (yêu cầu dịch chuyển dồn các phần tử phía sau sang trái).",
+                        "<code>get(int index)</code>: Lấy phần tử tại vị trí chỉ định.",
+                        "<code>contains(Object elem)</code>: Kiểm tra phần tử có tồn tại trong Vector không."
+                      ]
+                    },
+                    {
+                      type: "java-collection-vector-sandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-vector-example",
+              number: "2",
+              title: "Ví dụ thực tế & So sánh đồng bộ (Synchronized)",
+              parts: [
+                {
+                  id: "oop-part-collection-vector-example-detail",
+                  label: "",
+                  title: "Ví dụ hoạt động và đặc tính đồng bộ",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là một lớp ví dụ đầy đủ sử dụng mảng động Vector để lưu trữ danh sách mã khóa môn học:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.Vector;\n\npublic class TestVector {\n    public static void main(String[] args) {\n        Vector<String> courses = new Vector<String>();\n        courses.add(\"503005\");\n        courses.add(0, \"501042\");\n        courses.add(\"502043\");\n        \n        System.out.println(courses);\n        System.out.println(\"At index 0: \" + courses.get(0));\n        \n        if (courses.contains(\"503005\")) {\n            System.out.println(\"503005 is in courses\");\n        }\n        \n        courses.remove(\"503005\");\n        for (String c : courses) {\n            System.out.println(c);\n        }\n    }\n}"
+                    },
+                    {
+                      type: "java-collection-vector-executer"
+                    },
+                    {
+                      type: "java-collection-vector-synchronized"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Click để xem Ghi nhớ Vector</summary><p class=\"text-xs text-slate-300 mt-2 leading-relaxed font-normal\">• Vector có sẵn phương thức <code>toString()</code> giúp in nhanh danh sách đẹp dạng <code>[A, B, C]</code>.<br/>• Có thể dùng vòng lặp for mở rộng <code>enhanced for-loop</code> cho Vector tương tự như mảng thô.<br/>• **Điểm dễ thi:** Vector được đồng bộ hóa (synchronized) ➔ an toàn đa luồng nhưng chạy chậm hơn <code>ArrayList</code>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-collection-arraylist-sec",
+          roman: "IV",
+          title: "ArrayList",
+          subsections: [
+            {
+              id: "oop-sub-collection-arraylist-intro",
+              number: "1",
+              title: "Giới thiệu (Introduction)",
+              parts: [
+                {
+                  id: "oop-part-collection-arraylist-intro-detail",
+                  label: "",
+                  title: "Giới thiệu lớp ArrayList và điểm tương đồng/khác biệt với Vector",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<blockquote><strong>Khái niệm chung:</strong> <code>ArrayList</code> là một lớp khác trong Java cũng dùng để biểu diễn mảng kích thước động (dynamic-size array).</blockquote>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Giới thiệu (Introduction):</strong> Java cung cấp lớp <code>ArrayList</code> với tính năng tương tự Vector: tự động mở rộng/thu nhỏ dung lượng (dynamic size), hỗ trợ Generic (cho phép kiểm soát kiểu tham chiếu), và cung cấp sẵn nhiều phương thức hữu ích."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Điểm giống nhau (Similarities) giữa Vector và ArrayList:</strong> Cả hai đều dựa trên chỉ số (index-based) và dùng mảng nội bộ. Đồng thời cả hai đều giữ nguyên thứ tự chèn (insertion order) của các phần tử."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>So sánh Vector và ArrayList:</strong>"
+                    },
+                    {
+                      type: "java-collection-arraylist-comparison"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khuyến nghị:</strong> Nên dùng <code>ArrayList</code> nếu không cần đồng bộ hóa (synchronisation) đa luồng để đạt hiệu năng tốt hơn.",
+                        "<strong>Đồng bộ hóa (Synchronisation):</strong> Cơ chế đảm bảo tại một thời điểm chỉ có thể có tối đa một luồng (thread) thực thi các phương thức của một đối tượng.",
+                        "<strong>Lưu ý hiệu năng:</strong> Khi dùng Vector/ArrayList, nếu biết trước số phần tử tối đa, nên khởi tạo với dung lượng lớn nhất ngay từ đầu để tránh việc co giãn mảng tự động nhiều lần (vì thao tác này yêu cầu cấp phát mảng mới và copy toàn bộ dữ liệu cũ, rất tốn kém hiệu năng)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Đây là <strong>câu hỏi rất hay gặp</strong> trong phòng vấn tuyển dụng và đề thi trắc nghiệm Java: Phân biệt Vector (đồng bộ, an toàn đa luồng nhưng chạy chậm) và ArrayList (không đồng bộ, chạy nhanh hơn nhưng không an toàn đa luồng).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-arraylist-api",
+              number: "2",
+              title: "Tài liệu API (API Documentation)",
+              parts: [
+                {
+                  id: "oop-part-collection-arraylist-api-detail",
+                  label: "",
+                  title: "Khai báo và các phương thức thông dụng của ArrayList",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.ArrayList;\n\n// Khai báo tham chiếu ArrayList\nArrayList<E> myArrayList;\n\n// Khởi tạo ArrayList rỗng\nmyArrayList = new ArrayList<E>();"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bảng phương thức thường dùng của ArrayList:</strong>"
+                    },
+                    {
+                      type: "java-collection-arraylist-api-table"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-arraylist-example",
+              number: "3",
+              title: "Ví dụ (Example)",
+              parts: [
+                {
+                  id: "oop-part-collection-arraylist-example-detail",
+                  label: "",
+                  title: "Ví dụ thực tế sử dụng ArrayList",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là một chương trình ví dụ đầy đủ sử dụng <code>ArrayList</code> để lưu danh sách các số nguyên nhập từ bàn phím:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.ArrayList;\nimport java.util.Scanner;\n\npublic class TestArrayList {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        ArrayList<Integer> list = new ArrayList<Integer>();\n        \n        System.out.println(\"Enter a list of integers, press ctrl-d to end.\");\n        while (sc.hasNextInt()) {\n            list.add(sc.nextInt());\n        }\n        \n        System.out.println(list); // toString() của ArrayList\n        \n        // Chuyển giá trị đầu tiên xuống cuối danh sách\n        list.add(list.remove(0));\n        \n        System.out.println(list);\n    }\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Kết quả mẫu (input: 31, 17, -5, 26, 50):</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "plain",
+                      code: "[31, 17, -5, 26, 50]\n[17, -5, 26, 50, 31]"
+                    },
+                    {
+                      type: "java-collection-arraylist-executer"
+                    },
+                    {
+                      type: "java-collection-arraylist-sandbox"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ nhanh về ví dụ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khởi tạo:</strong> ArrayList<E> list = new ArrayList<E>();\n<br/>• <strong>Mục đích:</strong> Thao tác linh hoạt với danh sách có số lượng phần tử thay đổi liên tục.\n<br/>• <strong>Ứng dụng thực tế:</strong> Danh sách điểm số sinh viên nhập từ bàn phím.\n<br/>• <strong>Dạng bài thi trắc nghiệm:</strong> So sánh Vector vs ArrayList (về tính đồng bộ hóa, tốc độ, tỉ lệ tự mở rộng dung lượng).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-collection-summary-sec",
+          roman: "V",
+          title: "Tổng kết bài học (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-collection-summary",
+              number: "",
+              title: "Tổng kết & Ghi nhớ tổng quát",
+              parts: [
+                {
+                  id: "oop-part-collection-summary-detail",
+                  label: "",
+                  title: "Tóm tắt lý thuyết trọng tâm chương 10",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Tổng kết lại các khái niệm cơ bản đã học trong Bài 10:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Array (Mảng):</strong> Cấu trúc dữ liệu cơ bản lưu trữ các phần tử cùng kiểu liên tiếp trong bộ nhớ RAM, kích thước cố định.",
+                        "<strong>Generics (Kiểu chung):</strong> Khung an toàn giúp tham số hóa kiểu đối tượng cho cấu trúc dữ liệu lúc biên dịch.",
+                        "<strong>Vector và ArrayList:</strong> Hai lớp cài đặt mảng kích thước động (dynamic-size array), cung cấp nhiều phương thức tiện lợi."
+                      ]
+                    },
+                    {
+                      type: "java-collection-summary-mindmap"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-collection-exercises",
+              number: "",
+              title: "Bài tập thực hành (Practice Exercises)",
+              parts: [
+                {
+                  id: "oop-part-collection-exercises-detail",
+                  label: "",
+                  title: "Danh sách đề bài tập thực hành trên Slide bài giảng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là danh sách các bài tập thực hành chương 10 (trích từ slide bài giảng chính thức của NUS 503005 Lecture 10):"
+                    },
+                    {
+                      type: "java-collection-practice-exercises"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<span className=\"text-xs text-stone-500 italic\">*Ghi chú: Nội dung dựa theo slide bài giảng gốc của School of Computing, National University of Singapore (503005 Lecture 10: Collection of Data).*</span>"
                     }
                   ]
                 }
@@ -2784,23 +6094,763 @@ public class HelloWorld {
       subtitle: "Exceptions",
       sections: [
         {
-          id: "oop-exceptions-sec",
+          id: "oop-exceptions-goals-sec",
           roman: "",
-          title: "Nội dung bài học",
+          title: "Mục tiêu bài học (Objectives)",
           subsections: [
             {
-              id: "oop-sub-exceptions",
+              id: "oop-sub-exceptions-goals",
               number: "",
-              title: "Bài giảng chi tiết",
+              title: "Mục tiêu bài học",
               parts: [
                 {
-                  id: "oop-part-exceptions",
+                  id: "oop-part-exceptions-goals-desc",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Mục tiêu bài học",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Chào mừng bạn đến với <strong>Bài 11: Ngoại lệ (Exceptions)</strong>! Dưới đây là các định hướng mục tiêu học tập cốt lõi của bài học này:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Hiểu cách dùng cơ chế <strong>Exception (Ngoại lệ)</strong> để xử lý lỗi hoặc sự kiện bất thường xảy ra khi chương trình đang chạy."
+                      ]
+                    },
+                    {
+                      type: "java-oop-exceptions-goals-explorer"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Nội dung bài giảng chi tiết của chương Exceptions đang được cập nhật..."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-motivation-sec",
+          roman: "I",
+          title: "Motivation (Động lực)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-error-types",
+              number: "1",
+              title: "Ba loại lỗi trong lập trình",
+              parts: [
+                {
+                  id: "oop-part-exceptions-error-types-detail",
+                  label: "",
+                  title: "Phân loại các lỗi thường gặp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Syntax errors (Lỗi cú pháp):</strong><br/>• Xảy ra khi vi phạm quy tắc ngôn ngữ.<br/>• Được trình biên dịch (compiler) phát hiện.<br/>• <strong>Dễ phát hiện và sửa nhất.</strong>",
+                        "<strong>Run-time errors (Lỗi thời gian chạy):</strong><br/>• Xảy ra khi máy tính phát hiện một phép toán <strong>không thể thực hiện được</strong>.<br/>• Ví dụ: chia cho 0 (<code>x/y</code> đúng cú pháp nhưng nếu <code>y = 0</code> lúc chạy sẽ lỗi).",
+                        "<strong>Logic errors (Lỗi logic):</strong><br/>• Xảy ra khi chương trình chạy nhưng <strong>không thực hiện đúng ý đồ</strong> người viết.<br/>• <strong>Khó phát hiện và sửa nhất.</strong>"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ phân loại lỗi</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Thứ tự độ khó tăng dần: Syntax (dễ nhất) ➔ Run-time ➔ Logic (khó nhất).<br/>• Đây là điểm rất dễ ra thi dưới dạng câu hỏi trắc nghiệm lý thuyết phân loại lỗi.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-runtime-example",
+              number: "2",
+              title: "Ví dụ minh họa lỗi run-time (Example.java)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-runtime-example-detail",
+                  label: "",
+                  title: "Mô tả lỗi InputMismatchException",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.Scanner;\n\npublic class Example {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print(\"Enter an integer: \");\n        int num = sc.nextInt();\n        System.out.println(\"num = \" + num);\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Nếu người dùng nhập chữ (không phải số nguyên) ➔ lỗi xảy ra tại <code>sc.nextInt()</code>.",
+                        "Kết quả: chương trình bị <strong>dừng đột ngột (terminate)</strong>, phần code còn lại <strong>bị bỏ qua</strong>.",
+                        "Thông báo lỗi xuất hiện: <code>Exception in thread \"main\" java.util.InputMismatchException</code> kèm theo <strong>stack trace</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">💡 Giải thích thêm về Stack trace</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• <strong>Stack trace:</strong> danh sách các dòng lệnh (method call) dẫn tới lỗi, giúp lập trình viên định vị nhanh lỗi xảy ra ở dòng nào trong mã nguồn.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-factorial-negative",
+              number: "3",
+              title: "Ví dụ: phương thức factorial() với tham số âm",
+              parts: [
+                {
+                  id: "oop-part-exceptions-factorial-negative-detail",
+                  label: "",
+                  title: "Vấn đề factorial với số âm và giải pháp System.exit",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public static int factorial(int n) {\n    int ans = 1;\n    for (int i = 2; i <= n; i++) ans *= i;\n    return ans;\n}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Câu hỏi đặt ra:</strong> Nếu tham số truyền vào <code>n</code> mang giá trị âm thì sao? Chương trình có nên tiếp tục chạy không?"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Cách xử lý thô sơ (chưa dùng exception):</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public static int factorial(int n) {\n    if (n < 0) {\n        System.out.println(\"n is negative\");\n        System.exit(1);\n    }\n    // Các dòng code khác giữ nguyên\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>System.exit(n)</code>: dừng toàn bộ chương trình ngay lập tức, trả về mã thoát <code>n</code>.",
+                        "Trên hệ điều hành UNIX, ta có thể kiểm tra mã thoát này bằng lệnh: <code>echo $?</code>.",
+                        "<strong>Vấn đề lớn:</strong> Phương thức <code>factorial()</code> có thể được gọi và sử dụng bởi rất nhiều chương trình khác nhau ➔ việc dừng đột ngột chương trình bằng exit làm cho ứng dụng gọi nó không có cơ hội xử lý lỗi phù hợp cho từng tình huống cụ thể."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-error-types-examples"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-java-mechanism",
+              number: "4",
+              title: "Giải pháp: Cơ chế Exception của Java",
+              parts: [
+                {
+                  id: "oop-part-exceptions-java-mechanism-detail",
+                  label: "",
+                  title: "Giới thiệu cơ chế Exception",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Thay vì tự quyết định cách xử lý lỗi ngay tại chỗ, Java cung cấp <strong>cơ chế Exception (Exception mechanism)</strong> gồm 2 bước:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Báo hiệu lỗi (exception event):</strong> được kích hoạt khi có sự cố xảy ra.",
+                        "Cho phép <strong>người dùng phương thức</strong> tự quyết định cách xử lý lỗi ở một đoạn code riêng biệt.",
+                        "Nếu ngoại lệ không được xử lý ở bất kỳ đâu ➔ chương trình sẽ bị <strong>crash (sập)</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Cơ chế Exception gồm 2 thành phần chính cấu thành:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Exception Indication (Báo hiệu ngoại lệ):</strong> Tạo và ném đối tượng exception.",
+                        "<strong>Exception Handling (Xử lý ngoại lệ):</strong> Bắt và xử lý đối tượng exception đó bằng khối code catch."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">💡 Giải thích thêm về ứng dụng của Exception</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Ví dụ <code>n < 0</code> ở trên chỉ mang tính minh họa. Exception thật sự phù hợp hơn cho các trường hợp <strong>khó kiểm tra trước</strong>, ví dụ: giá trị <code>n</code> quá lớn gây ra hiện tượng <strong>tràn số (overflow)</strong>.</p></details>"
+                    },
+                    {
+                      type: "java-exceptions-mechanism"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-indication-sec",
+          roman: "II",
+          title: "Exception Indication (Báo hiệu ngoại lệ)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-indication-syntax",
+              number: "1",
+              title: "Cú pháp (Syntax)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-indication-syntax-detail",
+                  label: "",
+                  title: "Cú pháp báo hiệu một lỗi bằng cách ném ngoại lệ",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Để báo hiệu một lỗi đã được phát hiện: gọi là <strong>\"throwing an exception\" (ném ngoại lệ)</strong>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Mục đích: cho phép người dùng phát hiện và xử lý lỗi."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "// Cú pháp ném ngoại lệ\nthrow ExceptionObject;"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Đối tượng ngoại lệ (<strong>Exception object</strong>) phải là đối tượng của lớp <strong>kế thừa (derived)</strong> từ lớp <code>Throwable</code>.",
+                        "Chứa thông tin hữu ích về lỗi.",
+                        "Một số lớp Exception dựng sẵn (predefined) thường dùng:<br/>• <code>ArithmeticException</code><br/>• <code>NullPointerException</code><br/>• <code>IndexOutOfBoundsException</code><br/>• <code>IllegalArgumentException</code>"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-indication-constructor",
+              number: "2",
+              title: "Constructor và phương thức chung của lớp Exception",
+              parts: [
+                {
+                  id: "oop-part-exceptions-indication-constructor-detail",
+                  label: "",
+                  title: "Các phương thức thông dụng của lớp Exception",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Lớp Exception cung cấp các constructor và phương thức cơ bản để quản lý thông tin ngoại lệ:"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-indication-example",
+              number: "3",
+              title: "Ví dụ báo hiệu ngoại lệ (Exception Indication Example)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-indication-example-detail",
+                  label: "",
+                  title: "Ví dụ thực thi báo hiệu lỗi trong hàm factorial()",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public static int factorial(int n)\n    throws IllegalArgumentException {\n    \n    if (n < 0) {\n        IllegalArgumentException exObj =\n            new IllegalArgumentException(n + \" is invalid!\");\n        throw exObj;\n    }\n    \n    int ans = 1;\n    for (int i = 2; i <= n; i++) ans *= i;\n    return ans;\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>throws IllegalArgumentException</code> (ở khai báo phương thức): khai báo rằng phương thức <code>factorial()</code> <strong>có thể</strong> ném ra <code>IllegalArgumentException</code>.",
+                        "<code>throw exObj;</code> (bên trong hàm): hành động <strong>thực sự ném</strong> ngoại lệ ra."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-red-500/10 to-rose-500/10 border-l-4 border-rose-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-rose-500 font-mono uppercase tracking-wider\">⚠️ Điểm dễ nhầm lẫn</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Cần phân biệt rõ <code>throw</code> (ném 1 đối tượng ngoại lệ) khác với <code>throws</code> (khai báo trong chữ ký hàm) ➔ rất dễ nhầm, hay ra đề thi lý thuyết.</p></details>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Có thể viết gọn 2 dòng tạo đối tượng + throw thành 1 dòng duy nhất:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "throw new IllegalArgumentException(n + \" is invalid!\");"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Một phương thức có thể <code>throws</code> nhiều loại exception khác nhau phân tách bằng dấu phẩy.",
+                        "<code>throw</code> = động từ, dùng để ném <strong>1 đối tượng exception</strong> cụ thể.",
+                        "<code>throws</code> = khai báo trong signature của method, liệt kê <strong>các loại exception</strong> có thể xảy ra."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-indication-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-handling-sec",
+          roman: "III",
+          title: "Exception Handling (Xử lý ngoại lệ)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-handling-example1",
+              number: "1",
+              title: "Ví dụ #1: Nhập số nguyên có xử lý lỗi (ExampleImproved.java)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-handling-example1-detail",
+                  label: "",
+                  title: "Chương trình nhập dữ liệu an toàn",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.util.Scanner;\nimport java.util.InputMismatchException;\n\npublic class ExampleImproved {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        boolean isError = false;\n        do {\n            System.out.print(\"Enter an integer: \");\n            try {\n                int num = sc.nextInt();\n                System.out.println(\"num = \" + num);\n                isError = false;\n            }\n            catch (InputMismatchException e) {\n                System.out.print(\"Incorrect input: integer required. \");\n                sc.nextLine(); // skip newline\n                isError = true;\n            }\n        } while (isError);\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>try { ... }</code>: khối chứa các câu lệnh <strong>có khả năng</strong> phát sinh lỗi.",
+                        "<code>catch (InputMismatchException e) { ... }</code>: khối \"bắt lỗi\" - chạy khi có exception loại <code>InputMismatchException</code> xảy ra trong khối try.",
+                        "<code>e</code>: đối tượng exception được bắt, dùng để lấy thông tin lỗi.",
+                        "<code>sc.nextLine();</code>: dùng để bỏ qua ký tự newline còn sót lại trong bộ đệm sau khi nhập sai.",
+                        "Vòng lặp <code>do...while (isError)</code>: lặp lại việc nhập cho đến khi <strong>không còn lỗi</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Kết quả chạy chương trình giả lập:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "plain",
+                      code: "Enter an integer: abc\nIncorrect input: integer required. Enter an integer: def\nIncorrect input: integer required. Enter an integer: 1.23\nIncorrect input: integer required. Enter an integer: 92\nnum = 92"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ handling</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Nhờ khối try-catch, chương trình <strong>không bị dừng đột ngột</strong> khi nhập sai, mà tiếp tục yêu cầu nhập lại cho đến khi thành công.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-handling-syntax",
+              number: "2",
+              title: "Cú pháp tổng quát Exception Handling",
+              parts: [
+                {
+                  id: "oop-part-exceptions-handling-syntax-detail",
+                  label: "",
+                  title: "Cú pháp đầy đủ của try-catch-finally",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Người dùng của 1 phương thức có khả năng ném exception thì <strong>có trách nhiệm xử lý</strong> exception đó – còn gọi là <strong>\"exception catching\" (bắt ngoại lệ)</strong>."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "try {\n    statement(s);\n} catch (ExpClass1 obj1) {\n    statement(s);\n} catch (ExpClass2 obj2) {\n    statement(s);\n} finally {\n    statement(s);\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>try</code>: khối lệnh có thể phát sinh lỗi.",
+                        "<code>catch</code>: khối bắt và xử lý 1 loại exception cụ thể; có thể có <strong>nhiều catch</strong> cho nhiều loại lỗi khác nhau.",
+                        "<code>finally</code>: khối <strong>luôn được thực thi</strong> (dù có lỗi hay không), thường dùng để <strong>giải phóng tài nguyên</strong> (đóng file, đóng kết nối...)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ khối finally</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Có thể có nhiều <code>catch</code> nhưng chỉ <strong>một <code>finally</code></strong> (không bắt buộc).<br/>• <code>finally</code> luôn chạy – kể cả khi có <code>return</code> trong <code>try</code> hoặc <code>catch</code>. Đây là điểm <strong>rất hay bị hỏi trong thi</strong>.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-handling-example-factorial",
+              number: "3",
+              title: "Ví dụ xử lý exception với factorial() (TestException.java)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-handling-example-factorial-detail",
+                  label: "",
+                  title: "Chương trình TestException gọi và bắt lỗi",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestException {\n    // Code factorial(n) throws IllegalArgumentException ở trước\n    \n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print(\"Enter n: \");\n        int input = sc.nextInt();\n        \n        try {\n            System.out.println(\"Ans = \" + factorial(input));\n        } catch (IllegalArgumentException expObj) {\n            System.out.println(expObj.getMessage());\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong ví dụ này, chọn cách <strong>in ra thông báo lỗi</strong> (<code>expObj.getMessage()</code>) khi bắt được exception.",
+                        "Ngoài in thông báo lỗi, còn có nhiều cách xử lý khác (ví dụ: yêu cầu nhập lại, gán giá trị mặc định...)."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-handling-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-flow-sec",
+          roman: "IV",
+          title: "Execution Flow (Luồng thực thi khi có Exception)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-flow-cases",
+              number: "1",
+              title: "Trường hợp KHÔNG có lỗi (n = 4) vs Có lỗi (n = -2)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-flow-cases-detail",
+                  label: "",
+                  title: "Khảo sát luồng chạy của khối try-catch-finally",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Không có exception:</strong><br/>• Khối <code>catch</code> bị bỏ qua hoàn toàn.<br/>• Chỉ có khối <code>try</code> chạy hết các lệnh rồi chuyển ngay đến <code>finally</code>.",
+                        "<strong>Khi có exception xảy ra tại lệnh throw:</strong><br/>• Chương trình dừng ngay khối <code>try</code> hiện tại, <strong>bỏ qua phần code còn lại của try</strong> (ví dụ lệnh in 'After factorial()' không được chạy).<br/>• Nhảy thẳng sang khối <code>catch</code> phù hợp để xử lý.<br/>• Sau khi chạy xong catch ➔ luôn nhảy vào khối <code>finally</code>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-red-500/10 to-rose-500/10 border-l-4 border-rose-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-rose-500 font-mono uppercase tracking-wider\">📌 Ghi nhớ luồng thực thi</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Đây là sơ đồ luồng quan trọng nhất bài học.<br/>• Rất hay ra thi dưới dạng cho đoạn code mẫu và hỏi kết quả console output là gì khi truyền tham số có/không lỗi.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-flow-retry",
+              number: "2",
+              title: "Phiên bản khác: Lặp lại cho đến khi nhập đúng (TestExceptionRetry.java)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-flow-retry-detail",
+                  label: "",
+                  title: "Retry Pattern nhập dữ liệu an toàn",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public static void main(String[] args) {\n    Scanner sc = new Scanner(System.in);\n    int input;\n    boolean retry = true;\n    do {\n        try {\n            System.out.print(\"Enter n: \");\n            input = sc.nextInt();\n            System.out.println(\"Ans = \" + factorial(input));\n            retry = false; // không cần thử lại nữa\n        } catch (IllegalArgumentException expObj) {\n            System.out.println(expObj.getMessage());\n        }\n    } while (retry);\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Kỹ thuật: đặt khối <code>try-catch</code> <strong>bên trong vòng lặp do-while</strong> để tự động <strong>thử lại (retry)</strong> khi có lỗi xảy ra.",
+                        "Vòng lặp tiếp tục cho đến khi người dùng nhập giá trị hợp lệ ➔ thực thi khối try thành công ➔ gán <code>retry = false</code> để thoát lặp."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-flow-retry"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-checked-unchecked-sec",
+          roman: "V",
+          title: "Checked vs Unchecked Exceptions",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-checked-unchecked-concept",
+              number: "1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "oop-part-exceptions-checked-unchecked-concept-detail",
+                  label: "",
+                  title: "Phân loại ngoại lệ",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Checked exceptions (Ngoại lệ được kiểm tra):</strong><br/>• Là loại <strong>bắt buộc phải xử lý</strong> (hoặc khai báo <code>throws</code> ở chữ ký hàm) ngay từ lúc <strong>biên dịch (compile time)</strong>.<br/>• Nếu không xử lý ➔ báo lỗi biên dịch.",
+                        "<strong>Unchecked exceptions (Ngoại lệ không được kiểm tra):</strong><br/>• Là loại <strong>không bị kiểm tra bắt buộc</strong> lúc biên dịch.<br/>• Các lớp con của <code>RuntimeException</code>, <code>Error</code> đều là unchecked exceptions."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-checked-unchecked-cause",
+              number: "2",
+              title: "Nguyên nhân và lý do",
+              parts: [
+                {
+                  id: "oop-part-exceptions-checked-unchecked-cause-detail",
+                  label: "",
+                  title: "Tại sao Java chia thành 2 loại Exception?",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Unchecked exceptions thường biểu diễn các <strong>lỗi lập trình (programming errors)</strong> không thể phục hồi tại thời điểm runtime, ví dụ:<br/>• Gọi phương thức từ đối tượng null ➔ <code>NullPointerException</code>.<br/>• Truy cập mảng quá giới hạn ➔ <code>IndexOutOfBoundsException</code>.",
+                        "Vì unchecked exception có thể xảy ra ở bất kỳ dòng lệnh nào, việc ép buộc try-catch sẽ làm mã nguồn cực kỳ rườm rà. Do đó Java <strong>không bắt buộc</strong> phải xử lý chúng."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">💡 Điểm giải thích thêm rất quan trọng</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Đây là điểm <strong>rất hay gây nhầm lẫn:</strong> học sinh thường nghĩ mọi Exception đều bắt buộc dùng <code>try-catch</code>, nhưng thực tế chỉ <strong>checked exception</strong> mới bị compiler ép buộc xử lý.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-custom-sec",
+          roman: "VI",
+          title: "Định nghĩa lớp Exception mới (Defining New Exception Classes)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-custom-create",
+              number: "1",
+              title: "Cách tạo lớp Exception tùy chỉnh",
+              parts: [
+                {
+                  id: "oop-part-exceptions-custom-create-detail",
+                  label: "",
+                  title: "Khai báo Exception tự chế bằng extends",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Có thể tạo lớp exception mới bằng cách <strong>kế thừa (extends)</strong> từ lớp <code>Exception</code> có sẵn:"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class MyException extends Exception {\n    public MyException(String s) {\n        super(s);\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>extends Exception</code>: khai báo <code>MyException</code> là lớp con kế thừa từ lớp cha <code>Exception</code>.",
+                        "<code>super(s)</code>: gọi constructor của lớp cha để lưu trữ thông điệp lỗi <code>s</code>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-custom-use",
+              number: "2",
+              title: "Cách sử dụng lớp Exception tự định nghĩa",
+              parts: [
+                {
+                  id: "oop-part-exceptions-custom-use-detail",
+                  label: "",
+                  title: "Thực thi ném và bắt MyException",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "throw new MyException(\"MyException: Some reasons\");\n\ntry {\n    // code\n} catch (MyException e) {\n    // xử lý lỗi\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dùng <code>throw new MyException(...)</code> để chủ động ném ngoại lệ tùy chỉnh ra ngoài.",
+                        "Dùng khối <code>catch (MyException e)</code> để bắt và xử lý ngoại lệ đó.",
+                        "<strong>Quy tắc tạo Exception riêng:</strong> Kế thừa từ <code>Exception</code> (nếu muốn tạo checked) hoặc kế thừa từ <code>RuntimeException</code> (nếu muốn tạo unchecked). Luôn gọi <code>super(s)</code> để lưu thông báo."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-checked-custom"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-bank-sec",
+          roman: "VII",
+          title: "Ví dụ tổng hợp: Bank Account (Tài khoản ngân hàng)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-bank-custom",
+              number: "1",
+              title: "Lớp Exception tùy chỉnh: NotEnoughFundException.java",
+              parts: [
+                {
+                  id: "oop-part-exceptions-bank-custom-detail",
+                  label: "",
+                  title: "Định nghĩa lớp Exception tùy chỉnh của ứng dụng",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class NotEnoughFundException extends Exception {\n    private double amount;\n    \n    public NotEnoughFundException(String s, double amount) {\n        super(s);\n        this.amount = amount;\n    }\n    \n    public double getAmount() {\n        return amount;\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>extends Exception</code>: <code>NotEnoughFundException</code> là <strong>checked exception</strong>.",
+                        "<code>private double amount</code>: lưu số tiền còn thiếu.",
+                        "<code>this.amount = amount</code>: dùng <code>this</code> để phân biệt biến thành viên (<code>amount</code> của đối tượng) với tham số truyền vào (<code>amount</code> của constructor) có cùng tên.",
+                        "<code>getAmount()</code>: phương thức getter, trả về số tiền còn thiếu."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-bank-class",
+              number: "2",
+              title: "Lớp BankAcct.java (phần khai báo & getter)",
+              parts: [
+                {
+                  id: "oop-part-exceptions-bank-class-detail",
+                  label: "",
+                  title: "Khai báo lớp tài khoản ngân hàng BankAcct",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "class BankAcct {\n    private int acctNum;\n    private double balance;\n    \n    public BankAcct() {\n        // By default, numeric attributes are initialised to 0\n    }\n    \n    public BankAcct(int aNum, double bal) {\n        acctNum = aNum;\n        balance = bal;\n    }\n    \n    public int getAcctNum() {\n        return acctNum;\n    }\n    \n    public double getBalance() {\n        return balance;\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>private int acctNum; private double balance;</code>: 2 thuộc tính private – thể hiện tính <strong>Encapsulation (Đóng gói)</strong>.",
+                        "Constructor không tham số <code>BankAcct()</code>: các thuộc tính số sẽ tự động khởi tạo bằng <strong>0.0</strong>.",
+                        "Constructor có tham số <code>BankAcct(int aNum, double bal)</code>: khởi tạo tài khoản với số tài khoản và số dư cụ thể.",
+                        "<code>getAcctNum()</code>, <code>getBalance()</code>: các phương thức getter để lấy giá trị thuộc tính private."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-bank-methods",
+              number: "3",
+              title: "Phương thức deposit() và withdraw()",
+              parts: [
+                {
+                  id: "oop-part-exceptions-bank-methods-detail",
+                  label: "",
+                  title: "Nghiệp vụ gửi tiền và rút tiền",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public void deposit(double amount) {\n    balance += amount;\n}\n\npublic void withdraw(double amount) throws NotEnoughFundException {\n    if (balance >= amount) {\n        balance -= amount;\n    } else {\n        double needs = amount - balance;\n        throw new NotEnoughFundException(\"withdrawal Unsuccessful\", needs);\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>deposit(double amount)</code>: gửi tiền, cộng vào <code>balance</code>.",
+                        "<code>withdraw(double amount) throws NotEnoughFundException</code>: rút tiền.",
+                        "Nếu <strong>đủ tiền</strong> (<code>balance >= amount</code>): trừ tiền bình thường.",
+                        "Nếu <strong>không đủ tiền</strong>: tính số tiền thiếu (<code>needs</code>), rồi <code>throw</code> ra <code>NotEnoughFundException</code> kèm thông báo và số tiền thiếu."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-exceptions-bank-test",
+              number: "4",
+              title: "Chương trình kiểm thử: TestBankAcct.java và Xử lý với try-catch-finally",
+              parts: [
+                {
+                  id: "oop-part-exceptions-bank-test-detail",
+                  label: "",
+                  title: "Kiểm thử chương trình gửi/rút tiền có try-catch-finally",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "public class TestBankAcct {\n    public static void main(String[] args) {\n        BankAcct acc = new BankAcct(1234, 0.0);\n        System.out.println(\"Current balance: $\" + acc.getBalance());\n        acc.deposit(200.0);\n        System.out.println(\"Current balance: $\" + acc.getBalance());\n        \n        try {\n            System.out.println(\"Withdrawing $150...\");\n            acc.withdraw(150.0);\n            System.out.println(\"Withdrawing $100...\");\n            acc.withdraw(100.0);\n        } catch (NotEnoughFundException e) {\n            System.out.println(e.getMessage());\n            System.out.println(\"Your account is short of $\" + e.getAmount());\n        } finally {\n            System.out.println(\"Current balance: $\" + acc.getBalance());\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Giải thích luồng chạy của chương trình:</strong>",
+                        "Rút $150 lần đầu: <strong>thành công</strong> (balance đủ 200 ➔ còn 50).",
+                        "Rút $100 lần hai: <strong>thất bại</strong> vì chỉ còn $50 ➔ ném <code>NotEnoughFundException</code>.",
+                        "Khối <code>catch</code> bắt lỗi, in ra <code>getMessage()</code> (\"withdrawal Unsuccessful\") và <code>getAmount()</code> (số tiền thiếu = 50.0).",
+                        "Khối <code>finally</code> <strong>luôn chạy</strong>, in ra số dư hiện tại cuối cùng ($50.0)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-amber-400 font-mono uppercase tracking-wider\">📌 Ghi nhớ bài thi</summary><p class=\"text-xs text-slate-350 mt-2 leading-relaxed font-normal\">• Ví dụ Bank Account là ví dụ kinh điển thể hiện <strong>toàn bộ quy trình:</strong> định nghĩa exception riêng ➔ throw khi có lỗi nghiệp vụ ➔ try-catch-finally để xử lý.<br/>• Rất dễ ra thi tự luận dạng: cho đoạn code và yêu cầu viết output chính xác từng dòng.</p></details>"
+                    },
+                    {
+                      type: "java-exceptions-bank-simulation"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-exceptions-summary-sec",
+          roman: "VIII",
+          title: "Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-exceptions-summary-all",
+              number: "1",
+              title: "Tóm tắt chương học",
+              parts: [
+                {
+                  id: "oop-part-exceptions-summary-all-detail",
+                  label: "",
+                  title: "Tóm tắt các kiến thức cốt lõi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Đã học về <strong>Exception</strong>: cách <strong>báo hiệu (raise/throw)</strong> và <strong>xử lý (handle)</strong> ngoại lệ.",
+                        "Đã học cách <strong>định nghĩa lớp Exception mới</strong> (custom exception)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ghi nhớ tổng thế toàn bài:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Phân biệt <code>throw</code> (ném 1 đối tượng) vs <code>throws</code> (khai báo trong signature của phương thức).",
+                        "Cấu trúc <code>try-catch-finally</code>: khối <code>finally</code> luôn luôn được thực thi.",
+                        "Phân biệt <strong>Checked exception</strong> (bắt buộc xử lý, kiểm tra lúc compile) vs <strong>Unchecked exception</strong> (RuntimeException, Error và lớp con – không bắt buộc xử lý cưỡng chế).",
+                        "Muốn tạo Exception riêng: <code>extends Exception</code> (Checked) hoặc <code>extends RuntimeException</code> (Unchecked) + gọi <code>super(s)</code> trong constructor.",
+                        "Luồng thực thi: khi exception xảy ra trong <code>try</code>, các dòng code <strong>sau đó trong try bị bỏ qua ngay lập tức</strong>, nhảy thẳng tới <code>catch</code> phù hợp."
+                      ]
+                    },
+                    {
+                      type: "java-exceptions-summary-mindmap"
                     }
                   ]
                 }

@@ -35,8 +35,50 @@ import PointGridSandbox from "./PointGridSandbox";
 import ApiBlackBoxSimulator from "./ApiBlackBoxSimulator";
 import UserToDesignerTimeline from "./UserToDesignerTimeline";
 import ExamGotchasFlashcards from "./ExamGotchasFlashcards";
+import UmlToCodeSandbox from "./UmlToCodeSandbox";
+import UmlSymbolMatcher from "./UmlSymbolMatcher";
+import UserVsDesignerSwitcher from "./UserVsDesignerSwitcher";
+import MultiParadigmSyntaxViewer from "./MultiParadigmSyntaxViewer";
+import ProceduralVsOopInteractiveGrid from "./ProceduralVsOopInteractiveGrid";
+import OopPillarsDashboard from "./OopPillarsDashboard";
+import BankAccountExploitSimulator from "./BankAccountExploitSimulator";
+import EncapsulationSolutionBox from "./EncapsulationSolutionBox";
+import BankAcctCompileWorkflow from "./BankAcctCompileWorkflow";
+import ClassVsInstanceComparison from "./ClassVsInstanceComparison";
+import StaticMemoryVisualizer from "./StaticMemoryVisualizer";
+import TestBallWorkflow from "./TestBallWorkflow";
+import ThisReferenceVisualizer from "./ThisReferenceVisualizer";
+import ConstructorChainingVisualizer from "./ConstructorChainingVisualizer";
+import ObjectEqualityInspector from "./ObjectEqualityInspector";
+import ImprovedMyBallTabs from "./ImprovedMyBallTabs";
+import UmlVisibilityCards from "./UmlVisibilityCards";
+import UmlInteractiveDiagram from "./UmlInteractiveDiagram";
+import DependencyVisualizer from "./DependencyVisualizer";
+import InteractiveRecapPanel from "./InteractiveRecapPanel";
 import PrintfFormatter from "./PrintfFormatter";
 import ComplexVisualizer from "./ComplexVisualizer";
+import StringBufferMemoryVisualizer from "./StringBufferMemoryVisualizer";
+import StringBufferThreadLockVisualizer from "./StringBufferThreadLockVisualizer";
+import StringBufferSandbox from "./StringBufferSandbox";
+import StringBufferExamplesTabs from "./StringBufferExamplesTabs";
+import StringBuilderThreadSafetyVisualizer from "./StringBuilderThreadSafetyVisualizer";
+import StringPerformanceBenchmark from "./StringPerformanceBenchmark";
+import StringCompareMatrix from "./StringCompareMatrix";
+import StringTokenizerSandbox from "./StringTokenizerSandbox";
+import VietnameseNameNormalizer from "./VietnameseNameNormalizer";
+import StringSummaryDashboard from "./StringSummaryDashboard";
+import InheritanceGoalsExplorer from "./InheritanceGoalsExplorer";
+import InheritanceOopOverview from "./InheritanceOopOverview";
+import InheritanceOverridingReview from "./InheritanceOverridingReview";
+import InheritanceCreatingSubclass from "./InheritanceCreatingSubclass";
+import InheritanceSubstitutability from "./InheritanceSubstitutability";
+import InheritanceObjectClass from "./InheritanceObjectClass";
+import InheritanceIsaHasa from "./InheritanceIsaHasa";
+import InheritanceFinalKeyword from "./InheritanceFinalKeyword";
+import InheritanceLimitations from "./InheritanceLimitations";
+import InheritanceQuizChaining from "./InheritanceQuizChaining";
+import InheritanceQuizCompileRun from "./InheritanceQuizCompileRun";
+import InheritanceSummary from "./InheritanceSummary";
 import FractionVisualizer from "./FractionVisualizer";
 import HcmTimeline1945to1969 from "./HcmTimeline1945to1969";
 import HcmValuesExplorer from "./HcmValuesExplorer";
@@ -95,6 +137,79 @@ import LsdLiberationPreparation from "./LsdLiberationPreparation";
 import LsdAntiJapaneseMovement from "./LsdAntiJapaneseMovement";
 import LsdAugustRevolution from "./LsdAugustRevolution";
 import LsdRevolutionSignificance from "./LsdRevolutionSignificance";
+import AbstractionConceptVisualizer from "./AbstractionConceptVisualizer";
+import AbstractionLevelCompare from "./AbstractionLevelCompare";
+import AbstractBikeVisualizer from "./AbstractBikeVisualizer";
+import AbstractShapeVisualizer from "./AbstractShapeVisualizer";
+import AbstractBankVisualizer from "./AbstractBankVisualizer";
+import AbstractBikeConstructorVisualizer from "./AbstractBikeConstructorVisualizer";
+import AbstractNotationsFlashcards from "./AbstractNotationsFlashcards";
+import AbstractCombinedHierarchy from "./AbstractCombinedHierarchy";
+import AbstractSummaryDashboard from "./AbstractSummaryDashboard";
+import AbstractSpectrumVisualizer from "./AbstractSpectrumVisualizer";
+import AbstractKeywordCloud from "./AbstractKeywordCloud";
+import InterfaceDesignPrinciples from "./InterfaceDesignPrinciples";
+import InterfaceInformationHiding from "./InterfaceInformationHiding";
+import InterfacePrePostConditions from "./InterfacePrePostConditions";
+import InterfaceDataAbstractionAdt from "./InterfaceDataAbstractionAdt";
+import InterfaceEmployeeCohesion from "./InterfaceEmployeeCohesion";
+import InterfaceWaterDispenserAdt from "./InterfaceWaterDispenserAdt";
+import InterfaceAdtOperationsTable from "./InterfaceAdtOperationsTable";
+import InterfaceComplexNumberPlane from "./InterfaceComplexNumberPlane";
+import InterfaceShapeComparable from "./InterfaceShapeComparable";
+import InterfaceComplexImplementations from "./InterfaceComplexImplementations";
+import InterfaceJvmMemoryPolymorphism from "./InterfaceJvmMemoryPolymorphism";
+import InterfaceFloatPrecisionPlayground from "./InterfaceFloatPrecisionPlayground";
+import InterfaceFractionMemoryRam from "./InterfaceFractionMemoryRam";
+import InterfaceFractionImmutableFlow from "./InterfaceFractionImmutableFlow";
+import InterfaceFractionSandbox from "./InterfaceFractionSandbox";
+import InterfaceExamTrapFlashcards from "./InterfaceExamTrapFlashcards";
+import CollectionArrayCvsJava from "./CollectionArrayCvsJava";
+import CollectionArrayForLoopSim from "./CollectionArrayForLoopSim";
+import CollectionArrayReferenceSwap from "./CollectionArrayReferenceSwap";
+import CollectionArrayCliDetour from "./CollectionArrayCliDetour";
+import CollectionArrayErrorsWarning from "./CollectionArrayErrorsWarning";
+import CollectionArrayNullPointerSim from "./CollectionArrayNullPointerSim";
+import CollectionArrayJagged2D from "./CollectionArrayJagged2D";
+import CollectionArrayReconstruction from "./CollectionArrayReconstruction";
+import CollectionGenericsPlayground from "./CollectionGenericsPlayground";
+import CollectionGenericsWrapperType from "./CollectionGenericsWrapperType";
+import CollectionGenericsAutoboxing from "./CollectionGenericsAutoboxing";
+import CollectionGenericsMultiPair from "./CollectionGenericsMultiPair";
+import CollectionVectorSandbox from "./CollectionVectorSandbox";
+import CollectionVectorExecuter from "./CollectionVectorExecuter";
+import CollectionVectorSynchronized from "./CollectionVectorSynchronized";
+import CollectionArrayListComparison from "./CollectionArrayListComparison";
+import CollectionArrayListApiTable from "./CollectionArrayListApiTable";
+import CollectionArrayListExecuter from "./CollectionArrayListExecuter";
+import CollectionArrayListSandbox from "./CollectionArrayListSandbox";
+import CollectionSummaryMindMap from "./CollectionSummaryMindMap";
+import CollectionPracticeExercises from "./CollectionPracticeExercises";
+import ExceptionsGoalsExplorer from "./ExceptionsGoalsExplorer";
+import ExceptionsErrorTypesAndExamples from "./ExceptionsErrorTypesAndExamples";
+import ExceptionsJavaMechanism from "./ExceptionsJavaMechanism";
+import ExceptionsIndicationVisualizer from "./ExceptionsIndicationVisualizer";
+import ExceptionsHandlingVisualizer from "./ExceptionsHandlingVisualizer";
+import ExceptionsFlowAndRetry from "./ExceptionsFlowAndRetry";
+import ExceptionsCheckedVsCustom from "./ExceptionsCheckedVsCustom";
+import ExceptionsBankSimulation from "./ExceptionsBankSimulation";
+import ExceptionsSummaryMindMap from "./ExceptionsSummaryMindMap";
+import FileGoalsExplorer from "./FileGoalsExplorer";
+import FileStreamsAndIO from "./FileStreamsAndIO";
+import FileClassSandbox from "./FileClassSandbox";
+import FileDescriptorAndDataIO from "./FileDescriptorAndDataIO";
+import JavaIOPackageExplorer from "./JavaIOPackageExplorer";
+import InputStreamMethodsExplorer from "./InputStreamMethodsExplorer";
+import FileAndByteStreamVisualizer from "./FileAndByteStreamVisualizer";
+import CodeExplainer from "./CodeExplainer";
+import OutputStreamVisualizer from "./OutputStreamVisualizer";
+import FilterStreamVisualizer from "./FilterStreamVisualizer";
+import BufferedStreamVisualizer from "./BufferedStreamVisualizer";
+import CharacterStreamVisualizer from "./CharacterStreamVisualizer";
+import CharArrayStreamVisualizer from "./CharArrayStreamVisualizer";
+import ChainingPipelineBuilder from "./ChainingPipelineBuilder";
+import SerializationVisualizer from "./SerializationVisualizer";
+import FileIoSummaryMindmap from "./FileIoSummaryMindmap";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -432,7 +547,7 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
   if (currentSubject.chapters && currentSubject.chapters.length > 0) {
     isChapterBased = true;
     for (const ch of currentSubject.chapters) {
-      const hasSub = ch.sections.some(sec => 
+      const hasSub = ch.sections && ch.sections.some(sec => 
         sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
       );
       if (hasSub) {
@@ -468,17 +583,17 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
         }
       }
       if (firstSubId) {
-        setActiveSubsectionId(firstSubId);
-        // Scroll back to top smoothly
         if (typeof window !== "undefined") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({ top: 0, behavior: "instant" });
         }
+        setActiveSubsectionId(firstSubId);
       }
     }
   };
 
   // Helper to render sections and subsections list
   const renderSections = (sections) => {
+    if (!sections) return null;
     let globalPartIdx = 0;
     return sections.map((sec, secIdx) => (
       <div key={sec.id || secIdx} className="space-y-6">
@@ -817,18 +932,21 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
       );
 
     case "code":
-      return (
-        <div className="code-block my-5 rounded-xl overflow-hidden bg-[#1e1e1e] border border-[#2d2d2d] text-[#d4d4d4]" data-hl-path={path}>
-          {block.language && (
-            <div className="code-block__header px-4 py-2 bg-[#252526] border-b border-[#2d2d2d] text-xs font-mono text-[#858585] flex justify-between items-center select-none">
-              <span>{block.language}</span>
-            </div>
-          )}
-          <pre className="code-block__pre p-4 whitespace-pre-wrap break-words text-xs md:text-sm font-mono leading-relaxed select-text bg-[#1e1e1e]">
-            <code dangerouslySetInnerHTML={{ __html: highlightCode(block.code, block.language) }} />
-          </pre>
-        </div>
-      );
+      {
+        const lang = block.language || block.lang;
+        return (
+          <div className="code-block my-5 rounded-xl overflow-hidden bg-[#1e1e1e] border border-[#2d2d2d] text-[#d4d4d4]" data-hl-path={path}>
+            {lang && (
+              <div className="code-block__header px-4 py-2 bg-[#252526] border-b border-[#2d2d2d] text-xs font-mono text-[#858585] flex justify-between items-center select-none">
+                <span>{lang}</span>
+              </div>
+            )}
+            <pre className="code-block__pre p-4 whitespace-pre-wrap break-words text-xs md:text-sm font-mono leading-relaxed select-text bg-[#1e1e1e]">
+              <code dangerouslySetInnerHTML={{ __html: highlightCode(block.code, lang) }} />
+            </pre>
+          </div>
+        );
+      }
 
     case "table":
       return (
@@ -1076,6 +1194,581 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "java-exam-gotchas-flashcards":
       return (
         <ExamGotchasFlashcards key={path} />
+      );
+
+    case "java-abstraction-concept-visualizer":
+      return (
+        <AbstractionConceptVisualizer key={path} />
+      );
+
+    case "java-abstraction-level-compare":
+      return (
+        <AbstractionLevelCompare key={path} />
+      );
+
+    case "java-abstract-bike-visualizer":
+      return (
+        <AbstractBikeVisualizer key={path} />
+      );
+
+    case "java-abstract-shape-visualizer":
+      return (
+        <AbstractShapeVisualizer key={path} />
+      );
+
+    case "java-abstract-bank-visualizer":
+      return (
+        <AbstractBankVisualizer key={path} />
+      );
+
+    case "java-abstract-bike-constructor-visualizer":
+      return (
+        <AbstractBikeConstructorVisualizer key={path} />
+      );
+
+    case "java-abstract-notations-flashcards":
+      return (
+        <AbstractNotationsFlashcards key={path} />
+      );
+
+    case "java-abstract-combined-hierarchy":
+      return (
+        <AbstractCombinedHierarchy key={path} />
+      );
+
+    case "java-abstract-summary-dashboard":
+      return (
+        <AbstractSummaryDashboard key={path} />
+      );
+
+    case "java-abstract-spectrum-visualizer":
+      return (
+        <AbstractSpectrumVisualizer key={path} />
+      );
+
+    case "java-abstract-keyword-cloud":
+      return (
+        <AbstractKeywordCloud key={path} />
+      );
+
+    case "java-interface-design-principles":
+      return (
+        <InterfaceDesignPrinciples key={path} />
+      );
+
+    case "java-interface-information-hiding":
+      return (
+        <InterfaceInformationHiding key={path} />
+      );
+
+    case "java-interface-pre-post-conditions":
+      return (
+        <InterfacePrePostConditions key={path} />
+      );
+
+    case "java-interface-data-abstraction-adt":
+      return (
+        <InterfaceDataAbstractionAdt key={path} />
+      );
+
+    case "java-interface-employee-cohesion":
+      return (
+        <InterfaceEmployeeCohesion key={path} />
+      );
+
+    case "java-interface-water-dispenser-adt":
+      return (
+        <InterfaceWaterDispenserAdt key={path} />
+      );
+
+    case "java-interface-adt-operations-table":
+      return (
+        <InterfaceAdtOperationsTable key={path} />
+      );
+
+    case "java-interface-complex-number-plane":
+      return (
+        <InterfaceComplexNumberPlane key={path} />
+      );
+
+    case "java-interface-shape-comparable":
+      return (
+        <InterfaceShapeComparable key={path} />
+      );
+
+    case "java-interface-complex-implementations":
+      return (
+        <InterfaceComplexImplementations key={path} />
+      );
+
+    case "java-interface-jvm-memory-polymorphism":
+      return (
+        <InterfaceJvmMemoryPolymorphism key={path} />
+      );
+
+    case "java-interface-float-precision-playground":
+      return (
+        <InterfaceFloatPrecisionPlayground key={path} />
+      );
+
+    case "java-interface-fraction-memory-ram":
+      return (
+        <InterfaceFractionMemoryRam key={path} />
+      );
+
+    case "java-interface-fraction-immutable-flow":
+      return (
+        <InterfaceFractionImmutableFlow key={path} />
+      );
+
+    case "java-interface-fraction-sandbox":
+      return (
+        <InterfaceFractionSandbox key={path} />
+      );
+
+    case "java-interface-exam-trap-flashcards":
+      return (
+        <InterfaceExamTrapFlashcards key={path} />
+      );
+
+    case "java-collection-array-c-vs-java":
+      return (
+        <CollectionArrayCvsJava key={path} />
+      );
+
+    case "java-collection-array-for-loop-sim":
+      return (
+        <CollectionArrayForLoopSim key={path} />
+      );
+
+    case "java-collection-array-reference-swap":
+      return (
+        <CollectionArrayReferenceSwap key={path} />
+      );
+
+    case "java-collection-array-cli-detour":
+      return (
+        <CollectionArrayCliDetour key={path} />
+      );
+
+    case "java-collection-array-errors-warning":
+      return (
+        <CollectionArrayErrorsWarning key={path} />
+      );
+
+    case "java-collection-array-null-pointer-sim":
+      return (
+        <CollectionArrayNullPointerSim key={path} />
+      );
+
+    case "java-collection-array-jagged-2d":
+      return (
+        <CollectionArrayJagged2D key={path} />
+      );
+
+    case "java-collection-array-reconstruction":
+      return (
+        <CollectionArrayReconstruction key={path} />
+      );
+
+    case "java-collection-generics-playground":
+      return (
+        <CollectionGenericsPlayground key={path} />
+      );
+
+    case "java-collection-generics-wrapper-type":
+      return (
+        <CollectionGenericsWrapperType key={path} />
+      );
+
+    case "java-collection-generics-autoboxing":
+      return (
+        <CollectionGenericsAutoboxing key={path} />
+      );
+
+    case "java-collection-generics-multi-pair":
+      return (
+        <CollectionGenericsMultiPair key={path} />
+      );
+
+    case "java-collection-vector-sandbox":
+      return (
+        <CollectionVectorSandbox key={path} />
+      );
+
+    case "java-collection-vector-executer":
+      return (
+        <CollectionVectorExecuter key={path} />
+      );
+
+    case "java-collection-vector-synchronized":
+      return (
+        <CollectionVectorSynchronized key={path} />
+      );
+
+    case "java-collection-arraylist-comparison":
+      return (
+        <CollectionArrayListComparison key={path} />
+      );
+
+    case "java-collection-arraylist-api-table":
+      return (
+        <CollectionArrayListApiTable key={path} />
+      );
+
+    case "java-collection-arraylist-executer":
+      return (
+        <CollectionArrayListExecuter key={path} />
+      );
+
+    case "java-collection-arraylist-sandbox":
+      return (
+        <CollectionArrayListSandbox key={path} />
+      );
+
+    case "java-collection-summary-mindmap":
+      return (
+        <CollectionSummaryMindMap key={path} />
+      );
+
+    case "java-collection-practice-exercises":
+      return (
+        <CollectionPracticeExercises key={path} />
+      );
+
+    case "java-oop-exceptions-goals-explorer":
+      return (
+        <ExceptionsGoalsExplorer key={path} />
+      );
+
+    case "java-exceptions-error-types-examples":
+      return (
+        <ExceptionsErrorTypesAndExamples key={path} />
+      );
+
+    case "java-exceptions-mechanism":
+      return (
+        <ExceptionsJavaMechanism key={path} />
+      );
+
+    case "java-exceptions-indication-visualizer":
+      return (
+        <ExceptionsIndicationVisualizer key={path} />
+      );
+
+    case "java-exceptions-handling-visualizer":
+      return (
+        <ExceptionsHandlingVisualizer key={path} />
+      );
+
+    case "java-exceptions-flow-retry":
+      return (
+        <ExceptionsFlowAndRetry key={path} />
+      );
+
+    case "java-exceptions-checked-custom":
+      return (
+        <ExceptionsCheckedVsCustom key={path} />
+      );
+
+    case "java-exceptions-bank-simulation":
+      return (
+        <ExceptionsBankSimulation key={path} />
+      );
+
+    case "java-exceptions-summary-mindmap":
+      return (
+        <ExceptionsSummaryMindMap key={path} />
+      );
+
+    case "java-oop-file-goals-explorer":
+      return (
+        <FileGoalsExplorer key={path} />
+      );
+
+    case "java-oop-file-streams-io":
+      return (
+        <FileStreamsAndIO key={path} />
+      );
+
+    case "java-oop-file-class-sandbox":
+      return (
+        <FileClassSandbox key={path} />
+      );
+
+    case "java-oop-file-descriptor-data-io":
+      return (
+        <FileDescriptorAndDataIO key={path} />
+      );
+
+    case "java-oop-file-package-explorer":
+      return (
+        <JavaIOPackageExplorer key={path} />
+      );
+
+    case "java-oop-inputstream-methods-explorer":
+      return (
+        <InputStreamMethodsExplorer key={path} />
+      );
+
+    case "java-oop-file-and-byte-stream-visualizer":
+      return (
+        <FileAndByteStreamVisualizer key={path} />
+      );
+
+    case "java-oop-code-explainer":
+      return (
+        <CodeExplainer key={path} {...block} />
+      );
+
+    case "java-oop-output-stream-visualizer":
+      return (
+        <OutputStreamVisualizer key={path} />
+      );
+
+    case "java-oop-filter-stream-visualizer":
+      return (
+        <FilterStreamVisualizer key={path} />
+      );
+
+    case "java-oop-buffered-stream-visualizer":
+      return (
+        <BufferedStreamVisualizer key={path} />
+      );
+
+    case "java-oop-character-stream-visualizer":
+      return (
+        <CharacterStreamVisualizer key={path} />
+      );
+
+    case "java-oop-char-array-stream-visualizer":
+      return (
+        <CharArrayStreamVisualizer key={path} />
+      );
+
+    case "java-oop-chaining-pipeline-builder":
+      return (
+        <ChainingPipelineBuilder key={path} />
+      );
+
+    case "java-oop-serialization-visualizer":
+      return (
+        <SerializationVisualizer key={path} />
+      );
+
+    case "java-oop-file-io-summary-mindmap":
+      return (
+        <FileIoSummaryMindmap key={path} />
+      );
+
+    case "java-uml-to-code-sandbox":
+      return (
+        <UmlToCodeSandbox key={path} />
+      );
+
+    case "java-uml-symbol-matcher":
+      return (
+        <UmlSymbolMatcher key={path} />
+      );
+
+    case "java-user-vs-designer-switcher":
+      return (
+        <UserVsDesignerSwitcher key={path} />
+      );
+
+    case "java-multi-paradigm-syntax-viewer":
+      return (
+        <MultiParadigmSyntaxViewer key={path} />
+      );
+
+    case "java-procedural-vs-oop-interactive-grid":
+      return (
+        <ProceduralVsOopInteractiveGrid key={path} />
+      );
+
+    case "java-oop-pillars-dashboard":
+      return (
+        <OopPillarsDashboard key={path} />
+      );
+
+    case "java-stringbuffer-memory-visualizer":
+      return (
+        <StringBufferMemoryVisualizer key={path} />
+      );
+
+    case "java-stringbuffer-thread-lock-visualizer":
+      return (
+        <StringBufferThreadLockVisualizer key={path} />
+      );
+
+    case "java-stringbuffer-sandbox":
+      return (
+        <StringBufferSandbox key={path} />
+      );
+
+    case "java-stringbuffer-examples-tabs":
+      return (
+        <StringBufferExamplesTabs key={path} />
+      );
+
+    case "java-stringbuilder-thread-safety-visualizer":
+      return (
+        <StringBuilderThreadSafetyVisualizer key={path} />
+      );
+
+    case "java-string-performance-benchmark":
+      return (
+        <StringPerformanceBenchmark key={path} />
+      );
+
+    case "java-string-compare-matrix":
+      return (
+        <StringCompareMatrix key={path} />
+      );
+
+    case "java-string-tokenizer-sandbox":
+      return (
+        <StringTokenizerSandbox key={path} />
+      );
+
+    case "java-vietnamese-name-normalizer":
+      return (
+        <VietnameseNameNormalizer key={path} />
+      );
+
+    case "java-string-summary-dashboard":
+      return (
+        <StringSummaryDashboard key={path} />
+      );
+
+    case "java-inheritance-goals-explorer":
+      return (
+        <InheritanceGoalsExplorer key={path} />
+      );
+
+    case "java-inheritance-oop-overview":
+      return (
+        <InheritanceOopOverview key={path} />
+      );
+
+    case "java-inheritance-overriding-review":
+      return (
+        <InheritanceOverridingReview key={path} />
+      );
+
+    case "java-inheritance-creating-subclass":
+      return (
+        <InheritanceCreatingSubclass key={path} />
+      );
+
+    case "java-inheritance-substitutability":
+      return (
+        <InheritanceSubstitutability key={path} />
+      );
+
+    case "java-inheritance-object-class":
+      return (
+        <InheritanceObjectClass key={path} />
+      );
+
+    case "java-inheritance-isa-hasa":
+      return (
+        <InheritanceIsaHasa key={path} />
+      );
+
+    case "java-inheritance-final-keyword":
+      return (
+        <InheritanceFinalKeyword key={path} />
+      );
+
+    case "java-inheritance-limitations":
+      return (
+        <InheritanceLimitations key={path} />
+      );
+
+    case "java-inheritance-quiz-chaining":
+      return (
+        <InheritanceQuizChaining key={path} />
+      );
+
+    case "java-inheritance-quiz-compilerun":
+      return (
+        <InheritanceQuizCompileRun key={path} />
+      );
+
+    case "java-inheritance-summary":
+      return (
+        <InheritanceSummary key={path} />
+      );
+
+    case "java-bank-account-exploit-simulator":
+      return (
+        <BankAccountExploitSimulator key={path} />
+      );
+
+    case "java-encapsulation-solution-box":
+      return (
+        <EncapsulationSolutionBox key={path} />
+      );
+
+    case "java-bankacct-compile-workflow":
+      return (
+        <BankAcctCompileWorkflow key={path} />
+      );
+
+    case "java-class-vs-instance-comparison":
+      return (
+        <ClassVsInstanceComparison key={path} />
+      );
+
+    case "java-static-memory-visualizer":
+      return (
+        <StaticMemoryVisualizer key={path} />
+      );
+
+    case "java-test-ball-workflow":
+      return (
+        <TestBallWorkflow key={path} />
+      );
+
+    case "java-this-reference-visualizer":
+      return (
+        <ThisReferenceVisualizer key={path} />
+      );
+
+    case "java-constructor-chaining-visualizer":
+      return (
+        <ConstructorChainingVisualizer key={path} />
+      );
+
+    case "java-object-equality-inspector":
+      return (
+        <ObjectEqualityInspector key={path} />
+      );
+
+    case "java-improved-myball-tabs":
+      return (
+        <ImprovedMyBallTabs key={path} />
+      );
+
+    case "java-uml-visibility-cards":
+      return (
+        <UmlVisibilityCards key={path} />
+      );
+
+    case "java-uml-interactive-diagram":
+      return (
+        <UmlInteractiveDiagram key={path} />
+      );
+
+    case "java-dependency-visualizer":
+      return (
+        <DependencyVisualizer key={path} />
+      );
+
+    case "java-interactive-recap-panel":
+      return (
+        <InteractiveRecapPanel key={path} />
       );
 
     case "dsa-complex-visualizer":

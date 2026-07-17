@@ -22,7 +22,7 @@ export default function ScannerPlayground() {
     resetSim();
   }, [scenario]);
 
-  const resetSim = () => {
+  function resetSim() {
     setStep(0);
     setBuffer("");
     setVarS1(null);

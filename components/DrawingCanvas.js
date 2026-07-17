@@ -39,6 +39,11 @@ export default function DrawingCanvas({
   // Keep a ref to paths for synchronous reading in event handlers
   const pathsRef = useRef(paths);
 
+  // Sync ref with state when state updates
+  useEffect(() => {
+    pathsRef.current = paths;
+  }, [paths]);
+
   // Helper to update state and ref synchronously
   const updatePaths = (nextVal) => {
     setPaths((prev) => {

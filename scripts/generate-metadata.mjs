@@ -7,7 +7,7 @@ import { chuong2 } from "../legacy_data/chuong-2.js";
 import { chuong3 } from "../legacy_data/chuong-3.js";
 import { lichSuDangMoDau } from "../legacy_data/lich-su-dang-mo-dau.js";
 import { lichSuDangChuong1 } from "../legacy_data/lich-su-dang.js";
-import { oopData } from "../legacy_data/oop.js";
+import { oopData } from "../data/oop.js";
 import { analysisDesignData } from "../legacy_data/analysis-design.js";
 import { dsaData } from "../legacy_data/dsa.js";
 import { databaseData } from "../legacy_data/database.js";
@@ -25,6 +25,21 @@ function stripMetadata(chapter) {
           // Remove parts and content
           delete sub.parts;
           delete sub.content;
+        });
+      }
+    });
+  }
+  if (chCopy.chapters) {
+    chCopy.chapters.forEach(ch => {
+      if (ch.sections) {
+        ch.sections.forEach(sec => {
+          if (sec.subsections) {
+            sec.subsections.forEach(sub => {
+              // Remove parts and content
+              delete sub.parts;
+              delete sub.content;
+            });
+          }
         });
       }
     });
@@ -121,7 +136,7 @@ export const subjects = {
       accentRgb: "37, 99, 235"
     },
     icon: "💻",
-    chapters: ${JSON.stringify([oopMeta], null, 2)},
+    chapters: ${JSON.stringify(oopMeta.chapters, null, 2)},
     questionsMap: {},
     isActive: true
   },

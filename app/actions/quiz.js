@@ -86,6 +86,7 @@ export async function submitExamScore({ name, subjectId, chapterId, examSetId, i
 
     const record = {
       name,
+      subjectId,
       score: correctCount,
       total: questionsState.length,
       time: elapsedTime,

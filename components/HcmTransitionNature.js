@@ -14,7 +14,8 @@ import {
   Scale,
   Users,
   Layers,
-  Activity
+  Activity,
+  BookOpen
 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
