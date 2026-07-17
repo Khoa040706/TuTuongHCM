@@ -596,7 +596,7 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
     if (!sections) return null;
     let globalPartIdx = 0;
     return sections.map((sec, secIdx) => (
-      <div key={sec.id || secIdx} className="space-y-6">
+      <div key={`section-${sec.id || secIdx}`} className="space-y-6">
         {/* Section Header */}
         {sec.title && (
           <div className="section-title-wrapper mt-10 mb-4 px-4 py-2 bg-stone-100/60 rounded-xl border-l-4 border-accent/80 backdrop-blur-xs select-none">
@@ -611,7 +611,7 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
         {sec.subsections && sec.subsections.map((sub, subIdx) => {
           return (
             <div 
-              key={sub.id || subIdx} 
+              key={`subsection-${sub.id || subIdx}`} 
               id={`content-${sub.id}`} 
               className="scroll-mt-24 space-y-6"
             >
@@ -630,10 +630,10 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
               )}
 
               {/* Parts / Bento cards of this subsection */}
-              {sub.parts && sub.parts.map((part) => {
+              {sub.parts && sub.parts.map((part, partIdx) => {
                 const currentPartIdx = globalPartIdx++;
                 return (
-                  <CinematicScrollWrapper key={part.id} index={currentPartIdx} className="mb-8">
+                  <CinematicScrollWrapper key={`part-${part.id || currentPartIdx}`} index={currentPartIdx} className="mb-8">
                     <SpotlightCardWrapper id={`part-${part.id}`}>
                       <div className="card-content-blocks font-sans relative z-10 space-y-4">
                         {(part.label || part.title) && (
@@ -854,7 +854,10 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "definition":
       return (
         <div className="definition-box p-5 rounded-xl bg-red-500/5 border-l-4 border-red-650 my-5" data-hl-path={path}>
-          <div className="definition-box__content leading-[1.9] text-sm md:text-base font-medium font-sans" dangerouslySetInnerHTML={{ __html: formatMathText(block.text) }} />
+          {block.term && (
+            <div className="font-extrabold text-stone-850 text-xs md:text-sm mb-1.5 font-sans" dangerouslySetInnerHTML={{ __html: formatMathText(block.term) }} />
+          )}
+          <div className="definition-box__content leading-[1.9] text-sm md:text-base font-medium font-sans" dangerouslySetInnerHTML={{ __html: formatMathText(block.definition || block.text) }} />
         </div>
       );
 

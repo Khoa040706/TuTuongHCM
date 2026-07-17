@@ -23,7 +23,10 @@ export default function CodeExplainer({ code, language = "java", explanations = 
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-0 relative">
         {/* Code Panel */}
-        <div className={`p-4 font-mono text-[11px] overflow-x-auto ${Object.keys(explanations).length > 0 ? "md:col-span-8 border-r border-stone-850" : "md:col-span-12"} bg-stone-950 text-stone-300 leading-relaxed select-none`}>
+        <div 
+          className={`p-4 font-mono text-[11px] overflow-x-auto ${Object.keys(explanations).length > 0 ? "md:col-span-8 border-r border-stone-850" : "md:col-span-12"} leading-relaxed select-none`}
+          style={{ backgroundColor: "#0c0a09", color: "#e7e5e4" }}
+        >
           {lines.map((line, idx) => {
             const hasExplanation = explanations[idx] !== undefined;
             const isHovered = hoveredLine === idx;
@@ -35,23 +38,28 @@ export default function CodeExplainer({ code, language = "java", explanations = 
                 onMouseLeave={() => hasExplanation && setHoveredLine(null)}
                 className={`group flex items-start -mx-4 px-4 py-1 transition-all duration-150 ${
                   hasExplanation ? "cursor-help" : ""
-                } ${
-                  isHovered
-                    ? "bg-sky-950/60 border-l-4 border-sky-500 text-sky-100"
-                    : hasExplanation
-                    ? "hover:bg-sky-950/20 border-l-4 border-transparent hover:border-sky-500/30"
-                    : "border-l-4 border-transparent"
                 }`}
+                style={
+                  isHovered
+                    ? { backgroundColor: "rgba(14, 165, 233, 0.18)", borderLeft: "4px solid #0ea5e9" }
+                    : hasExplanation
+                    ? { borderLeft: "4px solid transparent" }
+                    : { borderLeft: "4px solid transparent" }
+                }
               >
                 {/* Line number */}
-                <span className={`w-8 text-right pr-3 select-none font-mono text-[10px] ${
-                  isHovered ? "text-sky-400 font-bold" : "text-stone-600"
-                }`}>
+                <span 
+                  className="w-8 text-right pr-3 select-none font-mono text-[10px]"
+                  style={isHovered ? { color: "#38bdf8", fontWeight: "bold" } : { color: "#57534e" }}
+                >
                   {idx + 1}
                 </span>
 
                 {/* Line content */}
-                <span className="flex-1 whitespace-pre font-mono">
+                <span 
+                  className="flex-1 whitespace-pre font-mono"
+                  style={isHovered ? { color: "#f0f9ff" } : { color: "#e7e5e4" }}
+                >
                   {line || " "}
                 </span>
 
@@ -79,7 +87,11 @@ export default function CodeExplainer({ code, language = "java", explanations = 
                     Dòng {hoveredLine + 1}
                   </span>
                 </div>
-                <p className="text-xs text-stone-305 leading-relaxed font-sans" dangerouslySetInnerHTML={{ __html: explanations[hoveredLine] }}>
+                <p 
+                  className="text-xs leading-relaxed font-sans" 
+                  style={{ color: "#e7e5e4" }}
+                  dangerouslySetInnerHTML={{ __html: explanations[hoveredLine] }}
+                >
                 </p>
               </div>
             ) : (

@@ -6864,27 +6864,1664 @@ public class HelloWorld {
       id: "oop-file",
       title: "Bài 12",
       subtitle: "File I/O",
-      sections: [
+            sections: [
         {
-          id: "oop-file-sec",
+          id: "oop-file-goals-sec",
           roman: "",
-          title: "Nội dung bài học",
+          title: "Mục tiêu bài học (Objectives)",
           subsections: [
             {
-              id: "oop-sub-file",
+              id: "oop-sub-file-goals",
               number: "",
-              title: "Bài giảng chi tiết",
+              title: "Mục tiêu học tập chính",
               parts: [
                 {
-                  id: "oop-part-file",
+                  id: "oop-part-file-goals",
                   label: "",
-                  title: "Nội dung chi tiết",
+                  title: "Mục tiêu bài học",
+                  content: [
+                    {
+                      type: "java-oop-file-goals-explorer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-stream-overview-sec",
+          roman: "I",
+          title: "Tổng quan về Stream Classes",
+          subsections: [
+            {
+              id: "oop-sub-file-streams-concept",
+              number: "1",
+              title: "Khái niệm Stream (luồng)",
+              parts: [
+                {
+                  id: "oop-part-file-streams-concept-detail",
+                  label: "",
+                  title: "Khái niệm và thuật ngữ",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Java làm việc với <strong>stream</strong> dữ liệu.",
+                        "<strong>Stream:</strong> một chuỗi (sequence) dữ liệu — thực thể logic tạo ra (produce) hoặc tiêu thụ (consume) thông tin.",
+                        "<strong>Data stream:</strong> kênh truyền dữ liệu từ nguồn (source) đến đích (destination).",
+                        "Nguồn/đích có thể là: thiết bị nhập/xuất, thiết bị lưu trữ, hoặc máy tính trên mạng."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-streams-phys",
+              number: "2",
+              title: "Đọc tệp tin vật lý",
+              parts: [
+                {
+                  id: "oop-part-file-streams-phys-detail",
+                  label: "",
+                  title: "Các loại luồng đọc tệp vật lý",
                   content: [
                     {
                       type: "paragraph",
-                      text: "Nội dung bài học đang được cập nhật..."
+                      text: "Có thể dùng nhiều loại stream khác nhau để đọc file vật lý, ví dụ: <code>FileInputStream</code> hoặc <code>FileReader</code>."
                     }
                   ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-streams-std",
+              number: "3",
+              title: "Luồng nhập/xuất tiêu chuẩn",
+              parts: [
+                {
+                  id: "oop-part-file-streams-std-detail",
+                  label: "",
+                  title: "Cổng I/O chuẩn trong lớp System",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Được đại diện bởi 3 field của lớp <code>System</code>:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>in:</strong> Standard input stream — đọc dữ liệu ký tự nhập vào.",
+                        "<strong>out:</strong> Standard output stream — hiển thị output ra màn hình/thiết bị khác.",
+                        "<strong>err:</strong> Standard error stream — dùng cho thông báo lỗi."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Ghi nhớ cổng chuẩn</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>System.in</code>, <code>System.out</code>, <code>System.err</code> là 3 stream chuẩn có sẵn, không cần khai báo.<br/>• Rất dễ nhầm: <code>in</code> dùng để đọc, <code>out</code>/<code>err</code> dùng để ghi.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-stream-need-all",
+              number: "4",
+              title: "Nhu cầu sử dụng Stream",
+              parts: [
+                {
+                  id: "oop-part-file-stream-need-desc",
+                  label: "",
+                  title: "Tại sao cần dùng lớp luồng?",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong Java, <strong>stream là bắt buộc</strong> để thực hiện mọi thao tác I/O (Input/Output).",
+                        "Giúp chuẩn hóa cách tương tác với hệ thống tệp và thiết bị mà không cần quan tâm sâu đến phần cứng bên dưới."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-stream-steps-all",
+              number: "5",
+              title: "Quy trình sử dụng",
+              parts: [
+                {
+                  id: "oop-part-file-stream-steps-desc",
+                  label: "",
+                  title: "Các bước và cấu trúc kế thừa",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>InputStream</code> và <code>OutputStream</code> là các <strong>abstract class (lớp trừu tượng)</strong>, dùng để đọc/ghi chuỗi byte không có cấu trúc.",
+                        "Các stream input/output khác là <strong>subclass (lớp con)</strong> của lớp Input/Output cơ bản, dùng để đọc/ghi file.",
+                        "Các loại byte stream khác nhau có thể dùng thay thế lẫn nhau vì cùng kế thừa cấu trúc của lớp Input/Output Stream.",
+                        "Để đọc hoặc ghi byte, phải dùng một <strong>subclass</strong> của <code>InputStream</code> hoặc <code>OutputStream</code> tương ứng."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ nhanh thi cử</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> InputStream/OutputStream là lớp trừu tượng gốc cho việc đọc/ghi byte.<br/>• <strong>Mục đích:</strong> Chuẩn hóa cách đọc/ghi dữ liệu bất kể nguồn/đích.<br/>• <strong>Điểm dễ thi:</strong> InputStream/OutputStream là abstract class, không thể khởi tạo trực tiếp (ví dụ: <code>new InputStream()</code> là sai compile) ➔ phải dùng lớp con.</p></details>"
+                    },
+                    {
+                      type: "java-oop-file-streams-io"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-package-java-io-concept",
+              number: "6",
+              title: "Package java.io",
+              parts: [
+                {
+                  id: "oop-part-package-java-io-concept-detail",
+                  label: "",
+                  title: "Khái niệm luồng cốt lõi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Stream</strong> đại diện cho nhiều nguồn/đích khác nhau: file đĩa, mảng bộ nhớ...",
+                        "Là một <strong>chuỗi dữ liệu (sequence of data)</strong>.",
+                        "<strong>I/O Stream:</strong> đại diện cho nguồn nhập (input source) hoặc đích xuất (output destination).",
+                        "Stream hỗ trợ nhiều dạng dữ liệu: byte đơn giản, kiểu dữ liệu nguyên thủy, ký tự bản địa hóa (localized characters)...",
+                        "Một số stream chỉ <strong>truyền (pass)</strong> dữ liệu, một số <strong>biến đổi (transform)</strong> dữ liệu.",
+                        "Dù khác nhau, tất cả stream đều cung cấp <strong>mô hình đơn giản</strong> cho chương trình sử dụng.",
+                        "Chương trình dùng <strong>input stream</strong> để đọc dữ liệu từ nguồn — đọc <strong>từng phần tử một lúc</strong> (one item at a time)."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-package-java-io-model-detail",
+                  label: "",
+                  title: "Mô hình luồng Input và Output",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Input Stream Model:</strong> Program (chương trình) ➔ đọc dữ liệu ➔ Input Stream ➔ lấy dữ liệu từ Source (nguồn). Dữ liệu đi theo chiều: Source ➔ Input Stream ➔ Program.",
+                        "<strong>Output Stream Model:</strong> Program (chương trình) ➔ ghi dữ liệu ➔ Output Stream ➔ đưa dữ liệu tới Destination (đích). Dữ liệu đi theo chiều: Program ➔ Output Stream ➔ Destination.",
+                        "💡 <em>Giải thích thêm:</em> Đây là mô hình trừu tượng nền tảng của mọi I/O trong Java — chương trình không thao tác trực tiếp với nguồn/đích mà luôn thông qua \"trung gian\" là stream."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-package-java-io-byte-stream-detail",
+                  label: "",
+                  title: "Lớp FileInputStream và FileOutputStream",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.io.FileInputStream;\nimport java.io.FileOutputStream;\nimport java.io.IOException;\n\npublic class ByteStreamApp {\n    public static void main(String[] args) throws IOException {\n        FileInputStream inObj = null;\n        FileOutputStream outObj = null;\n        try {\n            inObj = new FileInputStream(\"c:/java/hello.txt\");\n            outObj = new FileOutputStream(\"outagain.txt\");\n            int ch;\n            while ((ch = inObj.read()) != -1) {\n                outObj.write(ch);\n            }\n        } finally {\n            if (inObj != null) { inObj.close(); }\n            if (outObj != null) { outObj.close(); }\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>throws IOException</code>: phương thức <code>main</code> khai báo có thể ném ngoại lệ <code>IOException</code> — bắt buộc với các thao tác I/O.",
+                        "<code>read()</code>: đọc một ký tự (byte), trả về giá trị <code>int</code>; khi hết stream trả về <code>-1</code> (đây là dấu hiệu kết thúc).",
+                        "<code>while ((ch = inObj.read()) != -1)</code>: vòng lặp đọc từng byte cho đến khi hết file.",
+                        "<code>finally { ... close(); }</code>: đảm bảo <strong>luôn đóng stream</strong> dù có lỗi hay không — tránh rò rỉ tài nguyên (resource leak)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Cần lưu ý khi đi thi</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>read()</code> trả về <code>int</code> chứ không phải <code>char</code> / <code>byte</code> — vì cần thêm giá trị <code>-1</code> để báo hết file (byte thường chỉ từ 0-255).<br/>• Luôn đóng stream trong khối <code>finally</code> — đây là điểm cực kỳ hay ra thi.</p></details>"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-package-java-io-char-stream-detail",
+                  label: "",
+                  title: "Lớp FileReader và FileWriter",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Chương trình dùng <strong>character stream</strong> thích ứng với bộ ký tự địa phương (local character set), sẵn sàng cho <strong>quốc tế hóa (internationalization)</strong>.",
+                        "Tất cả lớp <strong>character stream</strong> đều kế thừa từ <strong>Reader</strong> và <strong>Writer</strong>.",
+                        "Có các lớp chuyên cho I/O file: <strong>FileReader</strong> và <strong>FileWriter</strong>.",
+                        "<strong>Character stream</strong> đóng vai trò như <strong>wrapper (lớp bọc)</strong> cho <strong>byte stream</strong>: quản lý việc chuyển đổi giữa ký tự và byte, đồng thời dùng byte stream để thực hiện I/O vật lý thực sự."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.io.FileReader;\nimport java.io.FileWriter;\nimport java.io.IOException;\n\npublic class CharStreamApp {\n    public static void main(String[] args) throws IOException {\n        FileReader inObjStream = null;\n        FileWriter outObjStream = null;\n        try {\n            inObjStream = new FileReader(\"c:/java/hello.txt\");\n            outObjStream = new FileWriter(\"charoutputagain.txt\");\n            int ch;\n            while ((ch = inObjStream.read()) != -1) {\n                outObjStream.write(ch);\n            }\n        } finally {\n            if (inObjStream != null) { inObjStream.close(); }\n        }\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-package-java-io-line-term-detail",
+                  label: "",
+                  title: "Ký tự kết thúc dòng trên các OS",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "I/O ký tự thường xử lý theo <strong>đơn vị lớn hơn 1 ký tự</strong>, ví dụ 1 dòng (line) — chuỗi ký tự kết thúc bằng dấu xuống dòng.",
+                        "Các dạng <strong>line terminator</strong>:<br/>• Carriage-return/line-feed: <code>\"\\r\\n\"</code><br/>• Carriage-return đơn: <code>\"\\r\"</code><br/>• Line-feed đơn: <code>\"\\n\"</code>",
+                        "<code>BufferedReader.readLine()</code> và <code>PrintWriter.println()</code> (hoặc <code>BufferedWriter</code>) dùng để đọc/ghi từng dòng.",
+                        "<code>readLine()</code>: trả về một dòng văn bản (không gồm dấu xuống dòng).",
+                        "<code>println()</code>: xuất mỗi dòng, tự thêm ký tự kết thúc dòng phù hợp với hệ điều hành đang chạy."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ nhanh thi cử</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> Byte Stream đọc/ghi từng byte thô; Character Stream đọc/ghi ký tự (Unicode 2-byte), có chuyển đổi mã hóa.<br/>• <strong>Mục đích:</strong> Byte Stream cho dữ liệu nhị phân (ảnh, âm thanh...); Character Stream cho văn bản, hỗ trợ đa ngôn ngữ.<br/>• <strong>Cú pháp Java:</strong> <code>FileInputStream</code> / <code>FileOutputStream</code> (byte) vs <code>FileReader</code> / <code>FileWriter</code> (character).<br/>• <strong>Ví dụ thực tế:</strong> Đọc file <code>.txt</code> tiếng Việt nên dùng <code>FileReader</code> để không lỗi font.<br/>• <strong>Điểm dễ thi:</strong> Character stream wrap (bọc) byte stream bên dưới — không phải hai cơ chế tách biệt hoàn toàn.</p></details>"
+                    },
+                    {
+                      type: "java-oop-file-package-explorer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-file-class-group-sec",
+          roman: "II",
+          title: "Lớp File và FileDescriptor",
+          subsections: [
+            {
+              id: "oop-sub-file-class-concept",
+              number: "1",
+              title: "Khái niệm & Pathname",
+              parts: [
+                {
+                  id: "oop-part-file-class-concept-detail",
+                  label: "",
+                  title: "Làm việc với siêu dữ liệu tệp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>File class:</strong> làm việc trực tiếp với file và hệ thống file (file system).",
+                        "Tên file tuân theo quy ước đặt tên file của hệ điều hành, được đóng gói (encapsulate) trong các hằng số của lớp File.",
+                        "<strong>Pathname (đường dẫn)</strong> có thể là:<br/>• <strong>Absolute pathname (đường dẫn tuyệt đối):</strong> đầy đủ, không cần thông tin nào khác để định vị file.<br/>• <strong>Relative pathname (đường dẫn tương đối):</strong> cần thông tin từ một pathname khác để xác định vị trí.",
+                        "Package <code>java.io</code> phân giải (resolve) đường dẫn tương đối dựa vào thư mục người dùng hiện tại (<code>user.dir</code> — system property)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-class-methods",
+              number: "2",
+              title: "Phương thức thư mục & constructor",
+              parts: [
+                {
+                  id: "oop-part-file-class-methods-detail",
+                  label: "",
+                  title: "Các constructor và phương thức cơ bản",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Các <strong>method</strong> thao tác thư mục trong lớp File: tạo, xóa, đổi tên, liệt kê thư mục.",
+                        "Package <code>java.nio.file</code> hỗ trợ JVM truy cập file, hệ thống file và thuộc tính file.",
+                        "<code>toPath()</code>: lấy đối tượng Path dùng đường dẫn tương đối/tuyệt đối."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các constructor của lớp File:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "File(String dirpath)\nFile(String parent, String child)\nFile(File fileobj, String filename)\nFile(URL urlobj)"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Phân biệt absolute vs relative pathname ➔ rất dễ ra trong đề thi.<br/>• Lớp File **không đọc/ghi nội dung file**, chỉ thao tác với thông tin/metadata của file (tên, đường dẫn, kích thước, kiểm tra tồn tại...).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-methods-table",
+              number: "3",
+              title: "Danh sách phương thức lớp File",
+              parts: [
+                {
+                  id: "oop-part-file-methods-table-detail",
+                  label: "",
+                  title: "Các phương thức metadata của lớp File",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Lớp File cung cấp nhiều phương thức để thao tác và kiểm tra trạng thái tệp:"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-methods-example-detail",
+                  label: "",
+                  title: "Ví dụ Hello.txt và bộ lọc phần mở rộng FilenameFilter",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "File fileObj = new File(\"C:/Java/Hello.txt\");\nSystem.out.println(\"Path is: \" + fileObj.getPath());\nSystem.out.println(\"Name is: \" + fileObj.getName());\nSystem.out.println(\"File exists is: \" + fileObj.exists());\nSystem.out.println(\"File is: \" + fileObj.isFile());"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dòng 1: Tạo đối tượng File trỏ tới <code>C:/Java/Hello.txt</code> (Lưu ý: Chỉ tham chiếu đường dẫn ảo chứ <strong>chưa mở tệp tin vật lý</strong>).",
+                        "<code>getPath()</code>: In ra đường dẫn đầy đủ kèm tên file.",
+                        "<code>exists()</code>: Trả về <code>true</code> nếu tệp tồn tại trên máy tính thực tế, <code>false</code> nếu không.",
+                        "<code>isFile()</code>: Trả về <code>true</code> nếu đó là tệp tin, <code>false</code> nếu là thư mục."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Lọc file theo phần mở rộng (FilenameFilter):</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.io.*;\n\nclass FileFilter implements FilenameFilter {\n    String ext;\n    public FileFilter(String ext) {\n        this.ext = \".\" + ext;\n    }\n    public boolean accept(File dir, String fName) {\n        return fName.endsWith(ext);\n    }\n}\n\npublic class DirList {\n    public static void main(String[] args) {\n        File fileObj = new File(\"d:/resources\");\n        FilenameFilter filterObj = new FileFilter(\"java\");\n        String[] fileName = fileObj.list(filterObj);\n        for (int ctr = 0; ctr < fileName.length; ctr++) {\n            System.out.println(fileName[ctr]);\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>implements FilenameFilter</code>: Lớp <code>FileFilter</code> hiện thực interface <code>FilenameFilter</code> để lọc tên tệp.",
+                        "<code>this.ext = \".\" + ext</code>: Sử dụng <code>this</code> để phân biệt biến thành viên và tham số truyền vào.",
+                        "<code>accept(File dir, String fName)</code>: Phương thức bắt buộc phải <code>@Override</code> khi hiện thực interface ➔ trả về <code>true</code> nếu tên tệp kết thúc bằng đuôi mở rộng mong muốn.",
+                        "<code>fileObj.list(filterObj)</code>: Liệt kê tên các tệp tin thỏa mãn điều kiện lọc của bộ lọc <code>filterObj</code>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ lọc tệp</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>FilenameFilter</code> là interface, bắt buộc phải cài đặt phương thức duy nhất là <code>accept()</code>.<br/>• Phương thức <code>list(FilenameFilter)</code> khác với <code>list()</code> không tham số ở chỗ nó chỉ trả về danh sách các tệp tin vượt qua bộ lọc <code>accept()</code>.</p></details>"
+                    },
+                    {
+                      type: "java-oop-file-class-sandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-descriptor-concept",
+              number: "4",
+              title: "Khái niệm FileDescriptor",
+              parts: [
+                {
+                  id: "oop-part-file-descriptor-concept-detail",
+                  label: "",
+                  title: "Khái niệm cốt lõi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>FileDescriptor:</strong> cung cấp quyền truy cập vào file descriptor mà hệ điều hành (OS) quản lý khi file/thư mục được truy cập.",
+                        "Trong thực tế, file descriptor dùng để tạo <strong>FileInputStream</strong> hoặc <strong>FileOutputStream</strong> chứa nó.",
+                        "<strong>Không nên</strong> tự tạo file descriptor trong ứng dụng vì chúng gắn liền với hệ điều hành."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-descriptor-syntax-detail",
+                  label: "",
+                  title: "Cú pháp khai báo trường tĩnh và phương thức",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Field public tĩnh đại diện các cổng luồng chuẩn:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "static final FileDescriptor err\nstatic final FileDescriptor in\nstatic final FileDescriptor out"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Constructor & method cốt lõi:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "FileDescriptor()\nsync()\nvalid()"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-byte-input-group-sec",
+          roman: "III",
+          title: "Lớp luồng nhập dạng Byte",
+          subsections: [
+            {
+              id: "oop-sub-inputstream-methods-table",
+              number: "1",
+              title: "Các phương thức của InputStream",
+              parts: [
+                {
+                  id: "oop-part-inputstream-methods-table-detail",
+                  label: "",
+                  title: "Các phương thức cụ thể",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>read():</strong> Đọc byte tiếp theo, trả về giá trị int (0–255); trả về -1 khi hết file.",
+                        "<strong>available():</strong> Trả về số byte có thể đọc mà không bị block (chặn).",
+                        "<strong>close():</strong> Đóng input stream, giải phóng tài nguyên hệ thống.",
+                        "<strong>mark(int n):</strong> Đánh dấu vị trí hiện tại trong stream, hợp lệ cho đến khi đọc đủ n byte.",
+                        "<strong>skip(long n):</strong> Bỏ qua n byte dữ liệu khi đọc.",
+                        "<strong>reset():</strong> Đưa con trỏ đọc về vị trí mark đã đặt trước đó."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Ghi nhớ nhanh thi cử</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>read()</code> là <strong>abstract method</strong> — mọi lớp con của InputStream phải cài đặt (implement) lại.<br/>• <code>mark()</code> phải đi kèm <code>reset()</code> để hoạt động — nếu không gọi <code>mark()</code> trước, <code>reset()</code> sẽ báo lỗi.</p></details>"
+                    },
+                    {
+                      type: "java-oop-inputstream-methods-explorer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-inputstream-concept",
+              number: "2",
+              title: "FileInputStream Class",
+              parts: [
+                {
+                  id: "oop-part-file-inputstream-concept-detail",
+                  label: "",
+                  title: "Đặc điểm và cơ chế mở file",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Đối tượng file stream có thể tạo bằng cách truyền: tên file, đối tượng File, hoặc đối tượng <strong>FileDescriptor</strong>.",
+                        "<strong>FileInputStream:</strong> dùng để đọc byte từ file.",
+                        "Khi đối tượng <strong>FileInputStream</strong> được tạo, file đó cũng được <strong>mở để đọc (opened for reading)</strong> ngay lập tức.",
+                        "<strong>FileInputStream</strong> ghi đè (override) tất cả method của <strong>InputStream</strong>, ngoại trừ <code>mark()</code> và <code>reset()</code>.",
+                        "Gọi <code>reset()</code> trên FileInputStream sẽ sinh ra <strong>IOException</strong>."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-inputstream-constructors-detail",
+                  label: "",
+                  title: "Các dạng hàm khởi tạo",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "FileInputStream(String sObj)\nFileInputStream(File fObj)\nFileInputStream(FileDescriptor fdObj)"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-inputstream-example-detail",
+                  label: "",
+                  title: "Ví dụ tạo FileInputStream và đọc in nội dung",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Cú pháp khởi tạo đối tượng:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "FileInputStream fileName = new FileInputStream(\"Helloworld.txt\");\nFile fName = new File(\"/command.doc\");\nFileInputStream fileObj = new FileInputStream(fName);"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đoạn code đọc file và in nội dung ra màn hình:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "import java.io.FileInputStream;\nimport java.io.IOException;\n\npublic class FISream {\n    public static void main(String argv[]) {\n        try {\n            FileInputStream intest;\n            intest = new FileInputStream(\"D:/resources/Client.java\");\n            int ch;\n            while ((ch = intest.read()) > -1) {\n                StringBuffer buf = new StringBuffer();\n                buf.append((char) ch);\n                System.out.print(buf.toString());\n            }\n        } catch (IOException e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>(char) ch</code>: ép kiểu (cast) giá trị <code>int</code> đọc được về <code>char</code> để hiển thị đúng ký tự.",
+                        "<code>catch (IOException e)</code>: bắt lỗi nếu file không tồn tại hoặc lỗi khi đọc; <code>e.getMessage()</code> lấy nội dung thông báo lỗi."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Cần lưu ý khi đi thi</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• FileInputStream <strong>không hỗ trợ</strong> <code>mark()</code> / <code>reset()</code> — khác với InputStream cơ sở, đây là điểm rất hay gây nhầm lẫn.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-bytearray-inputstream-concept",
+              number: "3",
+              title: "ByteArrayInputStream Class",
+              parts: [
+                {
+                  id: "oop-part-bytearray-inputstream-concept-detail",
+                  label: "",
+                  title: "Làm việc với bộ đệm bộ nhớ",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Chứa một <strong>buffer (bộ đệm)</strong> lưu các byte được đọc từ stream.",
+                        "Dùng <strong>mảng byte (byte array)</strong> làm nguồn dữ liệu (source).",
+                        "Có <strong>bộ đệm nội bộ (internal counter)</strong> theo dõi byte tiếp theo cần đọc.",
+                        "<strong>Không hỗ trợ method mới</strong> — chỉ <strong>override</strong> lại các method của InputStream: <code>read()</code>, <code>skip()</code>, <code>available()</code>, <code>reset()</code>."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-bytearray-inputstream-fields-detail",
+                  label: "",
+                  title: "Các trường biến bảo vệ bên trong",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>protected byte[] buf:</strong> Mảng byte do người tạo stream cung cấp.",
+                        "<strong>protected int count:</strong> Chỉ số lớn hơn ký tự hợp lệ cuối cùng trong buffer.",
+                        "<strong>protected int mark:</strong> Vị trí đang được đánh dấu (mark) trong stream.",
+                        "<strong>protected int pos:</strong> Chỉ số của ký tự tiếp theo cần đọc từ buffer."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-bytearray-inputstream-methods-detail",
+                  label: "",
+                  title: "Mã nguồn và giải thích hoạt động trên RAM",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các constructor phổ biến:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "ByteArrayInputStream(byte[] b)\nByteArrayInputStream(byte[] b, int start, int num)"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đoạn code minh họa:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "String content = \"Hello World\";\nbyte[] bObj = content.getBytes();\nByteArrayInputStream inputByte = new ByteArrayInputStream(bObj);"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>content.getBytes()</code>: chuyển String thành mảng byte[] (theo bảng mã mặc định).",
+                        "<code>new ByteArrayInputStream(bObj)</code>: tạo stream đọc dữ liệu trực tiếp từ mảng byte trong bộ nhớ, không cần file vật lý."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> ByteArrayInputStream (Luồng nhập từ mảng byte) — đọc dữ liệu từ mảng byte trong RAM thay vì từ file đĩa.<br/>• <strong>Mục đích:</strong> Xử lý dữ liệu nhị phân trong bộ nhớ mà không cần thao tác file thật.<br/>• <strong>Ví dụ thực tế:</strong> Test code đọc dữ liệu mà không cần tạo file thật trên đĩa.<br/>• <strong>Điểm dễ thi:</strong> Không có method mới — chỉ override các method sẵn có của InputStream.</p></details>"
+                    },
+                    {
+                      type: "java-oop-file-and-byte-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-byte-output-group-sec",
+          roman: "IV",
+          title: "Lớp luồng xuất dạng Byte",
+          subsections: [
+            {
+              id: "oop-sub-outputstream-concept",
+              number: "1",
+              title: "Khái niệm OutputStream",
+              parts: [
+                {
+                  id: "oop-part-outputstream-concept-detail",
+                  label: "",
+                  title: "Khái niệm luồng xuất (OutputStream)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>OutputStream</strong> là một <strong>abstract class (lớp trừu tượng)</strong>, định nghĩa cách ghi các byte hoặc mảng byte ra <strong>stream (luồng dữ liệu)</strong>.",
+                        "<strong>Các lớp con (subclasses):</strong> Hai lớp con tiêu biểu kế thừa từ <code>OutputStream</code> là: <strong>ByteArrayOutputStream</strong> và <strong>FileOutputStream</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>OutputStream</code> là lớp cha trừu tượng cho việc <strong>ghi dữ liệu dạng byte</strong>.<br/>• Không thể tạo đối tượng (instance) trực tiếp từ <code>OutputStream</code> vì đây là abstract class.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-file-outputstream-features",
+              number: "2",
+              title: "FileOutputStream Class",
+              parts: [
+                {
+                  id: "oop-part-file-outputstream-features-detail",
+                  label: "",
+                  title: "Cơ chế hoạt động của FileOutputStream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dùng để tạo một đối tượng <strong>OutputStream</strong> để <strong>ghi byte vào file</strong>.",
+                        "Việc file có được tạo trước khi mở để ghi hay không <strong>phụ thuộc vào nền tảng (platform)</strong> hệ điều hành bên dưới.",
+                        "Một số nền tảng chỉ cho phép <strong>một đối tượng ghi file</strong> mở file đó tại một thời điểm ➔ nếu mở ghi tiếp, <strong>constructor sẽ báo lỗi (fail)</strong>.",
+                        "Lỗi ngoại lệ <strong>IOException</strong> chỉ bị ném ra khi mở file ở chế độ <strong>chỉ đọc (read-only)</strong> để ghi."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-outputstream-constructors-detail",
+                  label: "",
+                  title: "Các dạng hàm khởi tạo",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "FileOutputStream(String filename)\nFileOutputStream(File name)\nFileOutputStream(String filename, boolean flag)\nFileOutputStream(File name, boolean flag)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>filename/name:</strong> Đường dẫn hoặc đối tượng File của tệp tin cần ghi.",
+                        "<strong>flag:</strong> nếu truyền <code>true</code> ➔ chế độ <strong>ghi nối tiếp (append)</strong> vào cuối file thay vì ghi đè (overwrite)."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-file-outputstream-example-detail",
+                  label: "",
+                  title: "Ghi dữ liệu văn bản xuống File",
+                  content: [
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "FileOutputStream - Ghi chuỗi văn bản vào file",
+                      code: "import java.io.FileOutputStream;\nimport java.io.OutputStream;\n\npublic class WriteFileExample {\n    public static void main(String[] args) {\n        try {\n            String temp = \"One way to get the most out of life is to look upon it as an adventure.\";\n            byte[] bufObj = temp.getBytes();\n            OutputStream fileObj = new FileOutputStream(\"Thought.txt\");\n            fileObj.write(bufObj);\n            fileObj.close();\n        } catch (Exception e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        6: "Chuỗi ký tự cần ghi xuống tệp tin.",
+                        7: "<code>temp.getBytes()</code>: chuyển đổi đối tượng <strong>String</strong> thành <strong>mảng byte[]</strong> để ghi dưới dạng byte stream.",
+                        8: "<code>new FileOutputStream(\"Thought.txt\")</code>: Khởi tạo luồng ghi, mở tệp tin <code>Thought.txt</code> trên đĩa. Nếu tệp tin chưa có, JVM tự tạo mới.",
+                        9: "<code>fileObj.write(bufObj)</code>: Ghi toàn bộ mảng byte chứa dữ liệu văn bản vào tệp tin.",
+                        10: "<code>fileObj.close()</code>: Đóng luồng ghi để giải phóng tài nguyên hệ thống (file descriptors)."
+                      }
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Luôn gọi <code>close()</code> stream sau khi sử dụng xong để tránh rò rỉ tài nguyên.<br/>• <code>getBytes()</code> là bước bắt buộc để chuyển đổi văn bản String về dạng <code>byte[]</code> thô trước khi ghi.<br/>• FileOutputStream <strong>không tự tạo thư mục cha</strong> nếu đường dẫn chứa thư mục không tồn tại.</p></details>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">🧠 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> Lớp dùng để ghi dữ liệu nhị phân/byte vào file.<br/>• <strong>Mục đích:</strong> Xuất dữ liệu nhị phân hoặc văn bản ra file đĩa cứng.<br/>• <strong>Cú pháp Java:</strong> <code>new FileOutputStream(String filename)</code><br/>• <strong>Điểm dễ thi:</strong> Hàm dựng có tham số <code>flag = true</code> dùng để <strong>ghi tiếp (append)</strong> vào cuối tệp tin.</p></details>"
+                    },
+                    {
+                      type: "java-oop-output-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-bytearray-outputstream-features",
+              number: "3",
+              title: "ByteArrayOutputStream Class",
+              parts: [
+                {
+                  id: "oop-part-bytearray-outputstream-features-detail",
+                  label: "",
+                  title: "Nguyên lý hoạt động trên bộ nhớ đệm",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Tạo một đối tượng <strong>output stream</strong> mà dữ liệu ghi vào sẽ được lưu vào một <strong>mảng byte trong bộ nhớ RAM</strong>.",
+                        "Mảng chứa dữ liệu này có khả năng <strong>tự động tăng kích thước (grow)</strong> khi dung lượng ghi vượt quá kích thước hiện tại."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-bytearray-outputstream-constructors-detail",
+                  label: "",
+                  title: "Hàm khởi tạo ByteArrayOutputStream",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "ByteArrayOutputStream()\nByteArrayOutputStream(int size)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>ByteArrayOutputStream()</code>: Khởi tạo bộ đệm mặc định (thường là 32 bytes).",
+                        "<code>ByteArrayOutputStream(int size)</code>: Thiết lập kích thước ban đầu của bộ đệm là <code>size</code> bytes."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-bytearray-outputstream-example-detail",
+                  label: "",
+                  title: "Ghi dữ liệu nhị phân trong bộ đệm RAM",
+                  content: [
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "ByteArrayOutputStream - Ghi vào bộ nhớ RAM",
+                      code: "import java.io.ByteArrayOutputStream;\n\npublic class ByteArrayExample {\n    public static void main(String[] args) {\n        try {\n            String strObj = \"Hello World\";\n            byte[] buf = strObj.getBytes();\n            ByteArrayOutputStream byObj = new ByteArrayOutputStream();\n            byObj.write(buf);\n            System.out.println(\"The string is: \" + byObj.toString());\n        } catch (Exception e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        5: "Chuỗi ban đầu cần nạp.",
+                        7: "Khởi tạo đối tượng luồng ghi đệm trong RAM với dung lượng mặc định.",
+                        8: "<code>byObj.write(buf)</code>: Ghi mảng byte dữ liệu vào mảng đệm nội bộ của stream.",
+                        9: "<code>byObj.toString()</code>: Chuyển dữ liệu byte stream trong bộ nhớ RAM thành chuỗi String để in ra."
+                      }
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Khác với <code>FileOutputStream</code>, dữ liệu ghi vào <code>ByteArrayOutputStream</code> được lưu hoàn toàn trên <strong>bộ nhớ (mảng byte trong RAM)</strong>, không tạo file trên đĩa cứng.<br/>• Phương thức <code>toString()</code> được sử dụng phổ biến để trích xuất nhanh dữ liệu dạng văn bản từ bộ đệm.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-buffered-filter-group-sec",
+          roman: "V",
+          title: "Luồng bộ đệm và Luồng lọc",
+          subsections: [
+            {
+              id: "oop-sub-filter-streams-concept",
+              number: "1",
+              title: "Khái niệm Luồng lọc (Filter)",
+              parts: [
+                {
+                  id: "oop-part-filter-streams-concept-detail",
+                  label: "",
+                  title: "Mục đích của luồng lọc (Filter Streams)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>FilterInputStream:</strong> cung cấp thêm các chức năng hữu ích cho một input stream khác (được truyền vào qua constructor) để làm nguồn dữ liệu cơ bản.",
+                        "<strong>FilterOutputStream:</strong> hoạt động tương tự trên một output stream cơ sở có sẵn.",
+                        "Cả hai luồng này đều thực hiện <strong>biến đổi dữ liệu</strong> hoặc <strong>bổ dung thêm tính năng mới</strong> (như tạo bộ đệm đếm dòng, mã hóa) trong quá trình đọc/ghi."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-filter-input-stream-detail",
+                  label: "",
+                  title: "Phương thức & Cơ chế FilterInputStream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Ghi đè (<code>override</code>) tất cả phương thức của <code>InputStream</code> và chuyển tiếp yêu cầu đến luồng dữ liệu bên trong.",
+                        "Lớp con kế thừa từ FilterInputStream có thể định nghĩa thêm các phương thức và trường (field) bổ sung.",
+                        "<strong>Field bảo vệ nội bộ:</strong> <code>protected InputStream in</code> - luồng dữ liệu gốc bị lọc.",
+                        "<strong>Constructor:</strong> <code>protected FilterInputStream(InputStream in)</code>"
+                      ]
+                    },
+                    {
+                      type: "table",
+                      headers: ["Phương thức của FilterInputStream", "Mô tả chức năng"],
+                      rows: [
+                        ["<code>mark(int readlimit)</code>", "Đánh dấu vị trí hiện tại của luồng đọc."],
+                        ["<code>markSupported()</code>", "Kiểm tra xem luồng lọc này có hỗ trợ cơ chế mark/reset hay không."],
+                        ["<code>read()</code>", "Đọc một byte dữ liệu tiếp theo từ luồng."],
+                        ["<code>available()</code>", "Trả về số lượng byte ước tính có thể đọc mà không bị chặn (block)."],
+                        ["<code>close()</code>", "Đóng luồng lọc và giải phóng luồng gốc đi kèm."],
+                        ["<code>read(byte[] b)</code>", "Đọc các byte vào mảng byte cung cấp sẵn."],
+                        ["<code>reset()</code>", "Đưa con trỏ đọc quay về vị trí được đánh dấu gần nhất."],
+                        ["<code>skip(long n)</code>", "Bỏ qua n byte trong luồng đọc."],
+                        ["<code>read(byte[] b, int off, int len)</code>", "Đọc tối đa len byte dữ liệu ghi vào mảng bắt đầu từ vị trí off."]
+                      ]
+                    },
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "FilterInputStream - Sử dụng BufferedInputStream bọc FileInputStream",
+                      code: "import java.io.FileInputStream;\nimport java.io.BufferedInputStream;\nimport java.io.FilterInputStream;\nimport java.io.IOException;\n\npublic class FilterInputApplication {\n    public static void main(String[] args) throws Exception {\n        FileInputStream inputObj = null;\n        FilterInputStream filterInputObj = null;\n        try {\n            inputObj = new FileInputStream(\"C:/Java/Hello.txt\");\n            filterInputObj = new BufferedInputStream(inputObj);\n            System.out.println((char) filterInputObj.read());\n            System.out.println((char) filterInputObj.read());\n            filterInputObj.mark(0);\n            System.out.println(\"mark() invoked\");\n            System.out.println((char) filterInputObj.read());\n            System.out.println((char) filterInputObj.read());\n            filterInputObj.reset();\n            System.out.println((char) filterInputObj.read());\n            System.out.println((char) filterInputObj.read());\n        } catch (IOException e) {\n            e.printStackTrace();\n        } finally {\n            if (inputObj != null) inputObj.close();\n            if (filterInputObj != null) filterInputObj.close();\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        10: "Mở luồng đọc file vật lý tại đường dẫn C:/Java/Hello.txt.",
+                        11: "Bọc FileInputStream bên trong luồng lọc BufferedInputStream để kích hoạt bộ đệm RAM và các tính năng như mark/reset.",
+                        12: "Đọc ký tự đầu tiên thông qua luồng lọc.",
+                        14: "<code>mark(0)</code>: Đánh dấu vị trí đọc hiện tại trong bộ đệm.",
+                        18: "<code>reset()</code>: Đưa con trỏ đọc quay lại đúng vị trí đã gọi <code>mark()</code> trước đó.",
+                        23: "Giải phóng toàn bộ tài nguyên luồng trong khối <code>finally</code> để đảm bảo an toàn kể cả khi có ngoại lệ xảy ra."
+                      }
+                    },
+                    {
+                      type: "definition",
+                      term: "Giải thích từ khóa & khái niệm mới:",
+                      definition: "• <strong>try/catch/finally:</strong> Khối xử lý ngoại lệ an toàn; khối <code>finally</code> luôn luôn được thực thi để đóng các luồng kết nối IO.<br/>• <strong>throws Exception:</strong> Khai báo phương thức có thể ném ra ngoại lệ, nhường quyền xử lý cho môi trường gọi nó (JVM).<br/>• <strong>mark(int readlimit):</strong> Đánh dấu vị trí hiện tại trong luồng để quay lại sau này bằng <code>reset()</code>."
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-filter-output-stream-detail",
+                  label: "",
+                  title: "Phương thức & Cơ chế FilterOutputStream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Ghi đè tất cả phương thức của <code>OutputStream</code> và chuyển tiếp các yêu cầu ghi dữ liệu đến luồng xuất bên dưới.",
+                        "<strong>Trường bảo vệ nội bộ:</strong> <code>protected OutputStream out</code> - luồng xuất gốc được lọc.",
+                        "<strong>Constructor:</strong> <code>FilterOutputStream(OutputStream out)</code>"
+                      ]
+                    },
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "FilterOutputStream - Sử dụng luồng lọc để xuất và xả dữ liệu",
+                      code: "import java.io.FileOutputStream;\nimport java.io.FilterOutputStream;\nimport java.io.OutputStream;\nimport java.io.IOException;\n\npublic class FilterOutputApplication {\n    public static void main(String[] args) throws Exception {\n        OutputStream outputStreamObj = null;\n        FilterOutputStream filterOutputStreamObj = null;\n        try {\n            outputStreamObj = new FileOutputStream(\"C:/Java/test.txt\");\n            filterOutputStreamObj = new FilterOutputStream(outputStreamObj);\n            byte[] bufObj = {81, 82, 83, 84, 85};\n            filterOutputStreamObj.write(bufObj);\n            filterOutputStreamObj.flush();\n        } catch (IOException e) {\n            System.out.print(\"Close() is invoked prior to write()\");\n        } finally {\n            if (outputStreamObj != null) outputStreamObj.close();\n            if (filterOutputStreamObj != null) filterOutputStreamObj.close();\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        10: "Tạo luồng ghi file vật lý test.txt.",
+                        11: "Khởi tạo FilterOutputStream bọc ngoài FileOutputStream.",
+                        12: "Mảng byte gồm giá trị ASCII của các ký tự 'Q', 'R', 'S', 'T', 'U'.",
+                        13: "Ghi mảng byte này vào luồng lọc.",
+                        14: "<code>flush()</code>: Ép buộc toàn bộ dữ liệu đang xếp hàng trong bộ đệm RAM phải ghi ngay ra tệp tin vật lý."
+                      }
+                    },
+                    {
+                      type: "definition",
+                      term: "Giải thích từ khóa mới:",
+                      definition: "• <strong>flush():</strong> Phương thức xả đệm, yêu cầu dữ liệu tạm thời trong RAM được ghi tức thì ra thiết bị lưu trữ vật lý đích."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Cả <code>FilterInputStream</code> và <code>FilterOutputStream</code> đều không trực tiếp thao tác ghi/đọc thô — chúng chỉ đóng vai trò là một lớp bọc bổ trợ (wrapper) quanh một luồng khác để cung cấp tính năng mở rộng.<br/>• Cách nhớ đơn giản nhất tránh nhầm lẫn: <strong>Input</strong> là để đọc, <strong>Output</strong> là để ghi.</p></details>"
+                    },
+                    {
+                      type: "java-oop-filter-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-buffered-streams-concept",
+              number: "2",
+              title: "Khái niệm Luồng bộ đệm (Buffered)",
+              parts: [
+                {
+                  id: "oop-part-buffered-streams-concept-detail",
+                  label: "",
+                  title: "Khái niệm Luồng có bộ đệm",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Buffer (bộ đệm)</strong> là vùng lưu trữ tạm thời cho dữ liệu trong bộ nhớ RAM.",
+                        "Lưu trữ dữ liệu vào buffer giúp <strong>tiết kiệm thời gian</strong>, vì dữ liệu được lấy ngay từ buffer nhanh hơn nhiều so với việc phải truy cập lại nguồn/đích vật lý ngoại vi.",
+                        "Java dùng <strong>buffered input/output</strong> để tạo một mảng byte làm cache lưu trữ dữ liệu đọc/ghi.",
+                        "Giúp chương trình đọc/ghi lượng dữ liệu nhỏ mà <strong>không ảnh hưởng nhiều đến hiệu năng hệ thống</strong>.",
+                        "Buffer hỗ trợ các cơ chế điều hướng luồng tiện lợi như: <strong>skip (bỏ qua)</strong>, <strong>mark (đánh dấu)</strong>, <strong>reset (đặt lại)</strong> trên stream.",
+                        "Các lớp luồng lọc bộ đệm (buffered filter) hoạt động trên buffer và nằm trung gian giữa chương trình và stream gốc."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Bộ đệm giúp <strong>tăng hiệu năng</strong> thao tác I/O bằng cách giảm thiểu tối đa số lần truy cập trực tiếp vào nguồn/đích dữ liệu vật lý (như ổ đĩa cứng hoặc kết nối mạng).</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-buffered-inputstream-detail",
+              number: "3",
+              title: "Lớp BufferedInputStream",
+              parts: [
+                {
+                  id: "oop-part-buffered-inputstream-detail-part",
+                  label: "",
+                  title: "Nguyên lý BufferedInputStream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Cho phép <strong>bọc (wrap)</strong> bất kỳ đối tượng <code>InputStream</code> nào thành một <strong>buffered stream</strong>.",
+                        "Hoạt động như một <strong>cache cho input</strong> - tạo một mảng byte nội bộ để lưu đệm dữ liệu đọc được nhằm sử dụng cho lần đọc tiếp theo.",
+                        "Cách đơn giản nhất để đọc dữ liệu từ luồng đệm là gọi phương thức <code>read()</code>.",
+                        "Hỗ trợ các phương thức định vị luồng <code>mark()</code> và <code>reset()</code>; phương thức <code>markSupported()</code> sẽ trả về giá trị <code>true</code>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của BufferedInputStream:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "BufferedInputStream(InputStream in)\nBufferedInputStream(InputStream in, int size)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>in</code>: Đối tượng luồng nhập gốc cần bọc đệm.",
+                        "<code>size</code>: Thiết lập kích thước tùy chọn cho mảng đệm nội bộ (bytes)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Công thức ghi nhớ nhanh: <strong>BufferedInputStream = InputStream + Bộ đệm</strong> giúp chương trình đọc dữ liệu nhanh hơn.</p></details>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-buffered-outputstream-detail",
+              number: "4",
+              title: "Lớp BufferedOutputStream",
+              parts: [
+                {
+                  id: "oop-part-buffered-outputstream-detail-part",
+                  label: "",
+                  title: "Nguyên lý BufferedOutputStream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Tạo một <strong>buffer (bộ đệm)</strong> dùng cho việc ghi dữ liệu ra output stream.",
+                        "Cung cấp hiệu suất hoạt động tương tự như lớp <code>BufferedInputStream</code> đối với thao tác ghi.",
+                        "<strong>Ý tưởng cốt lõi:</strong> Thay vì ghi từng byte một trực tiếp ra thiết bị lưu trữ vật lý mỗi khi gọi lệnh ghi, dữ liệu sẽ được <strong>cache (lưu đệm) trong mảng đệm RAM</strong> trước.",
+                        "Kế thừa hầu hết các phương thức ghi của <code>OutputStream</code>, ngoại trừ việc ghi đè phương thức <code>flush()</code> để ép buộc ghi dữ liệu từ bộ đệm ra đĩa vật lý."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của BufferedOutputStream:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "BufferedOutputStream(OutputStream os)\nBufferedOutputStream(OutputStream os, int size)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>os</code>: Đối tượng luồng xuất gốc cần bọc đệm.",
+                        "<code>size</code>: Thiết lập kích thước tùy chỉnh cho bộ đệm RAM."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Đây là điểm thi cực kỳ phổ biến: Hãy luôn gọi phương thức <code>flush()</code> để đảm bảo toàn bộ dữ liệu đang lưu tạm trong buffer RAM được ghi xuống tệp tin đích thật sự.</p></details>"
+                    },
+                    {
+                      type: "java-oop-buffered-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-char-streams-group-sec",
+          roman: "VI",
+          title: "Luồng xử lý ký tự",
+          subsections: [
+            {
+              id: "oop-sub-char-streams-concept",
+              number: "1",
+              title: "Khái niệm Character Stream",
+              parts: [
+                {
+                  id: "oop-part-char-streams-concept-detail",
+                  label: "",
+                  title: "Khác biệt Byte Stream vs Character Stream",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Byte Stream:</strong> Xử lý tốt mọi định dạng I/O thô nhưng <strong>ngoại trừ các ký tự Unicode</strong> đa ngôn ngữ.",
+                        "<strong>Character Stream:</strong> Cung cấp chức năng chuyên biệt để xử lý I/O hướng ký tự Unicode (16-bit).",
+                        "Hỗ trợ đầy đủ chuẩn mã hóa <strong>Unicode</strong> quốc tế giúp chương trình dễ dàng quốc tế hóa (internationalized).",
+                        "<strong>Reader</strong> và <strong>Writer</strong> là hai <strong>abstract class</strong> đứng đầu hệ thống phân cấp của luồng ký tự.",
+                        "Mọi lớp luồng ký tự con trong java.io đều được kế thừa (derived) từ <code>Reader</code> và <code>Writer</code>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-reader-class",
+              number: "2",
+              title: "Reader Class & Writer Class",
+              parts: [
+                {
+                  id: "oop-part-reader-class-detail",
+                  label: "",
+                  title: "Đặc điểm lớp trừu tượng Reader",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Là <strong>abstract class</strong> dùng để đọc luồng dữ liệu hướng ký tự.",
+                        "Các lớp con kế thừa thường ghi đè một số phương thức cơ sở để cải tiến chức năng hoặc tối ưu hiệu năng.",
+                        "Tất cả phương thức của lớp này đều có khả năng ném ra ngoại lệ bắt buộc <strong>IOException</strong>.",
+                        "Phương thức đọc ký tự <code>read()</code> trả về giá trị số nguyên <code>-1</code> khi luồng đạt tới cuối file (end of file)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của lớp Reader:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "Reader()\nReader(Object lock)"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-writer-class-detail",
+                  label: "",
+                  title: "Đặc điểm lớp trừu tượng Writer",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Là <strong>abstract class</strong> định nghĩa luồng ghi ký tự thô ra thiết bị ngoại vi.",
+                        "Các phương thức của lớp <code>java.io.Writer</code> hoạt động tương đương với các phương thức ghi của lớp byte stream <code>java.io.OutputStream</code>.",
+                        "Mọi phương thức ghi đều ném ra ngoại lệ bắt buộc <strong>IOException</strong> nếu xảy ra lỗi phần cứng hoặc tệp tin."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của lớp Writer:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "Writer()\nWriter(Object lock)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-printwriter-class",
+              number: "3",
+              title: "PrintWriter Class & Ví dụ",
+              parts: [
+                {
+                  id: "oop-part-printwriter-class-detail",
+                  label: "",
+                  title: "Đặc điểm lớp PrintWriter",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Là lớp chuyên biệt hướng ký tự (character-based), rất hữu dụng cho việc hiển thị định dạng đầu ra (console output).",
+                        "Cài đặt (<code>implements</code>) toàn bộ các phương thức in định dạng giống như lớp byte stream <code>PrintStream</code>.",
+                        "<strong>Điểm khác biệt:</strong> PrintWriter không chứa các phương thức ghi dữ liệu thô dạng byte.",
+                        "Có khả năng xử lý đúng đắn các bảng mã ký tự Unicode phức tạp và đa ngôn ngữ.",
+                        "Ghi đè phương thức <code>write()</code> của lớp Writer nhưng các phương thức này <strong>không ném ra IOException</strong> trực tiếp.",
+                        "Kiểm tra lỗi in ấn bằng cách gọi phương thức chuyên biệt <code>checkError()</code>.",
+                        "Hỗ trợ in tất cả các kiểu dữ liệu nguyên thủy (primitive), mảng ký tự, chuỗi ký tự, và đối tượng bằng các phương thức nạp chồng <code>print()</code> và <code>println()</code>.",
+                        "Phương thức <code>toString()</code> trả về chuỗi biểu diễn giá trị của đối tượng đang in."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của PrintWriter:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "PrintWriter(OutputStream out)\nPrintWriter(OutputStream out, boolean autoFlush)\nPrintWriter(Writer out)\nPrintWriter(Writer out, boolean autoFlush)"
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-printwriter-example-detail",
+                  label: "",
+                  title: "Lồng ghép các luồng chuyển đổi ký tự",
+                  content: [
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "PrintWriter - Đọc ký tự bàn phím và in phản hồi",
+                      code: "import java.io.InputStreamReader;\nimport java.io.OutputStreamWriter;\nimport java.io.PrintWriter;\nimport java.io.IOException;\n\npublic class PrintWriterExample {\n    public static void main(String[] args) {\n        InputStreamReader reader = new InputStreamReader(System.in);\n        OutputStreamWriter writer = new OutputStreamWriter(System.out);\n        PrintWriter pwObj = new PrintWriter(writer, true);\n        try {\n            int tmp = 0;\n            char ch;\n            while (tmp != -1) {\n                tmp = reader.read();\n                ch = (char) tmp;\n                pwObj.println(\"echo \" + ch);\n            }\n        } catch (IOException e) {\n            System.out.println(\"IO error: \" + e);\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        6: "<code>new InputStreamReader(System.in)</code>: chuyển đổi Byte Stream từ bàn phím (System.in) thành Character Stream để xử lý theo ký tự Unicode.",
+                        7: "<code>new OutputStreamWriter(System.out)</code>: chuyển đổi luồng ký tự xuất thành Byte Stream tiêu chuẩn để in ra console.",
+                        8: "<code>new PrintWriter(writer, true)</code>: Tạo luồng in PrintWriter bọc ngoài Writer, đặt cờ <code>autoFlush = true</code> để tự động đẩy buffer ra màn hình sau mỗi lệnh println().",
+                        13: "Vòng lặp đọc từng ký tự từ bàn phím cho đến khi hết luồng (-1).",
+                        14: "<code>reader.read()</code>: Đọc một ký tự Unicode tiếp theo.",
+                        16: "<code>pwObj.println()</code>: Định dạng và xuất chuỗi phản hồi có xuống dòng."
+                      }
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Phân biệt rõ: Byte stream (InputStream/OutputStream) xử lý các khối <strong>byte</strong> thô; Character stream (Reader/Writer) chuyên xử lý <strong>ký tự Unicode 16-bit</strong>.<br/>• PrintWriter <strong>không ném ngoại lệ IOException trực tiếp</strong>, lập trình viên bắt buộc phải dùng hàm <code>checkError()</code> để kiểm tra trạng thái lỗi.</p></details>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">🧠 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> Character Stream — xử lý dữ liệu theo ký tự (2-byte Unicode).<br/>• <strong>Mục đích:</strong> Đọc/ghi văn bản đa ngôn ngữ đạt chuẩn quốc tế.<br/>• <strong>Lớp chính:</strong> <code>Reader</code>, <code>Writer</code>, và <code>PrintWriter</code>.<br/>• <strong>Ví dụ thực tế:</strong> Đọc dữ liệu từ bàn phím tiếng Việt và xuất ra màn hình định dạng.<br/>• <strong>Điểm dễ thi:</strong> Phân biệt sự khác nhau giữa Byte Stream (InputStream/OutputStream) và Character Stream.</p></details>"
+                    },
+                    {
+                      type: "java-oop-character-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-char-array-reader-detail",
+              number: "4",
+              title: "Lớp CharArrayReader",
+              parts: [
+                {
+                  id: "oop-part-char-array-reader-detail-part",
+                  label: "",
+                  title: "Nguyên lý hoạt động CharArrayReader",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Là lớp con cụ thể (subclass) kế thừa từ lớp trừu tượng <code>Reader</code>.",
+                        "Sử dụng một <strong>mảng ký tự (character array)</strong> làm nguồn cấp dữ liệu chính để đọc.",
+                        "Cung cấp 2 dạng constructor thiết lập vùng đọc trong mảng ký tự."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các Constructor của CharArrayReader:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "CharArrayReader(char arr[])\nCharArrayReader(char arr[], int start, int num)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>arr[]</code>: Mảng ký tự nguồn dữ liệu.",
+                        "<code>start</code>: Vị trí bắt đầu đọc trong mảng.",
+                        "<code>num</code>: Số lượng ký tự tối đa sẽ đọc tính từ vị trí bắt đầu."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-char-array-reader-example-part",
+                  label: "",
+                  title: "Đọc dữ liệu từ mảng ký tự RAM",
+                  content: [
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "CharArrayReader - Khởi tạo luồng đọc từ mảng char[]",
+                      code: "import java.io.CharArrayReader;\n\npublic class CharArrayReaderExample {\n    public static void main(String[] args) {\n        try {\n            String temp = \"Hello World\";\n            int size = temp.length();\n            char[] ch = new char[size];\n            temp.getChars(0, size, ch, 0);\n            CharArrayReader readObj = new CharArrayReader(ch, 0, 5);\n            int i;\n            while ((i = readObj.read()) != -1) {\n                System.out.print((char) i);\n            }\n        } catch (Exception e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        8: "<code>temp.getChars(...)</code>: Sao chép toàn bộ ký tự từ đối tượng String vào mảng <code>char[]</code> thô.",
+                        9: "<code>new CharArrayReader(ch, 0, 5)</code>: Tạo luồng đọc chỉ đọc 5 ký tự đầu tiên bắt đầu từ vị trí index 0 của mảng ký tự <code>ch</code>.",
+                        11: "Vòng lặp đọc ký tự qua phương thức <code>read()</code> đến khi hết dữ liệu (-1) và in ra màn hình."
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-char-array-writer-features",
+              number: "5",
+              title: "Lớp CharArrayWriter",
+              parts: [
+                {
+                  id: "oop-part-char-array-writer-features-part",
+                  label: "",
+                  title: "Nguyên lý hoạt động CharArrayWriter",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Là lớp con cụ thể (subclass) kế thừa từ lớp trừu tượng <code>Writer</code>.",
+                        "Dùng để tạo một <strong>mảng ký tự trong RAM</strong> làm bộ đệm để ghi dữ liệu văn bản vào.",
+                        "Kích thước của mảng ký tự bộ đệm này sẽ <strong>tự động mở rộng</strong> khi dung lượng dữ liệu ghi vào vượt giới hạn hiện tại.",
+                        "Cung cấp các phương thức tiện ích để lấy lại dữ liệu như <code>toCharArray()</code>, <code>toString()</code>, và <code>writeTo()</code>.",
+                        "Kế thừa toàn bộ các phương thức ghi cơ bản của lớp cha <code>Writer</code>."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-char-array-writer-constructors-part",
+                  label: "",
+                  title: "Các dạng hàm khởi tạo",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "CharArrayWriter()\nCharArrayWriter(int num)"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>CharArrayWriter()</code>: Khởi tạo bộ đệm ký tự mặc định trong RAM.",
+                        "<code>CharArrayWriter(int num)</code>: Khởi tạo bộ đệm với dung lượng ban đầu là <code>num</code> ký tự."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-char-array-writer-example-part",
+                  label: "",
+                  title: "Ghi ký tự vào mảng RAM bằng CharArrayWriter",
+                  content: [
+                    {
+                      type: "java-oop-code-explainer",
+                      title: "CharArrayWriter - Ghi dữ liệu vào mảng đệm",
+                      code: "import java.io.CharArrayWriter;\n\npublic class CharArrayWriterExample {\n    public static void main(String[] args) {\n        try {\n            CharArrayWriter fObj = new CharArrayWriter();\n            String temp = \"Hello World\";\n            char[] ch = new char[temp.length()];\n            temp.getChars(0, temp.length(), ch, 0);\n            fObj.write(ch);\n            char[] buffer = fObj.toCharArray();\n            System.out.println(buffer);\n            System.out.println(fObj.toString());\n        } catch (Exception e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}",
+                      language: "java",
+                      explanations: {
+                        5: "Khởi tạo đối tượng luồng ghi bộ đệm ký tự trong RAM.",
+                        9: "<code>fObj.write(ch)</code>: Ghi toàn bộ mảng ký tự <code>ch</code> vào bộ đệm của CharArrayWriter.",
+                        10: "<code>fObj.toCharArray()</code>: Lấy toàn bộ nội dung ký tự đã ghi dưới dạng mảng <code>char[]</code> mới.",
+                        12: "<code>fObj.toString()</code>: Chuyển đổi dữ liệu đã ghi thành chuỗi String tiêu chuẩn."
+                      }
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Cặp lớp <code>CharArrayReader</code> (đọc) và <code>CharArrayWriter</code> (ghi) đóng vai trò tương tự như cặp lớp <code>ByteArrayInputStream</code>/<code>ByteArrayOutputStream</code> nhưng hoạt động trên đơn vị <strong>ký tự (char 16-bit)</strong> thay vì đơn vị byte.</p></details>"
+                    },
+                    {
+                      type: "java-oop-char-array-stream-visualizer"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-chaining-io-group-sec",
+          roman: "VII",
+          title: "Chuỗi hóa hệ thống I/O",
+          subsections: [
+            {
+              id: "oop-sub-chaining-io-concept",
+              number: "1",
+              title: "Khái niệm Chaining I/O",
+              parts: [
+                {
+                  id: "oop-part-chaining-io-concept-detail",
+                  label: "",
+                  title: "Khái niệm nối chuỗi luồng dữ liệu (Chaining)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Một chương trình Java thường dùng <strong>một chuỗi các stream nối tiếp nhau</strong> lồng ghép để xử lý dữ liệu phức tạp hiệu quả.",
+                        "Kỹ thuật này được gọi là <strong>chaining (nối chuỗi)</strong> - bọc một luồng dữ liệu này bên trong một luồng dữ liệu khác (ví dụ: bọc luồng ghi file trong luồng bộ đệm và luồng mã hóa ký tự)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<div class=\"bg-gradient-to-r from-indigo-500/10 to-sky-500/10 border-l-4 border-indigo-500 rounded-r-xl p-4 my-3\"><strong class=\"text-xs font-bold text-indigo-650 font-mono uppercase tracking-wider block mb-1\">💡 Giải thích thêm:</strong><p class=\"text-xs text-slate-355 leading-relaxed font-normal\">Đây là ứng dụng thực tế tối ưu của các lớp <strong>Filter Stream</strong> và <strong>Buffered Stream</strong> đã học. Lập trình viên có thể \"xếp chồng\" nhiều bộ lọc lên nhau để luồng vừa có khả năng đọc file, vừa tự tạo bộ đệm RAM để tăng tốc, vừa tự chuyển đổi bảng mã ký tự.</p></div>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Nối chuỗi (Chaining) giúp <strong>kết hợp nhiều tính năng độc lập</strong> (như thao tác file thô + đệm RAM + mã hóa Unicode) chỉ bằng cách lồng các constructor của các lớp bọc vào nhau.</p></details>"
+                    },
+                    {
+                      type: "java-oop-chaining-pipeline-builder"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-serialization-group-sec",
+          roman: "VIII",
+          title: "Tuần tự hóa đối tượng",
+          subsections: [
+            {
+              id: "oop-sub-data-input-output-concept",
+              number: "1",
+              title: "Interface DataInput & DataOutput",
+              parts: [
+                {
+                  id: "oop-part-data-input-output-concept-detail",
+                  label: "",
+                  title: "Kiểu dữ liệu nguyên thủy (primitive) và chuỗi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Data stream</strong> hỗ trợ input/output cho <strong>kiểu dữ liệu nguyên thủy (primitive)</strong> và <strong>chuỗi (string)</strong>.",
+                        "Các data stream implement interface <strong>DataInput</strong> hoặc <strong>DataOutput</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bảng so sánh chức năng chính của hai Interface:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>DataInput:</strong> Đọc byte từ binary stream và chuyển thành kiểu primitive của Java; chuyển dữ liệu từ UTF-8 (Java modified) thành chuỗi.",
+                        "<strong>DataOutput:</strong> Chuyển dữ liệu kiểu primitive thành chuỗi byte để ghi vào binary stream; chuyển chuỗi thành UTF-8 để ghi vào stream."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  id: "oop-part-data-input-output-methods-detail",
+                  label: "",
+                  title: "Các phương thức cụ thể và mã nguồn Java",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các method chính của DataInput Interface:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "readBoolean()\nreadByte()\nreadInt()\nreadDouble()\nreadChar()\nreadLine()\nreadUTF()"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đoạn code minh họa cách dùng DataInputStream:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "try {\n    DataInputStream dis = new DataInputStream(System.in);\n    double d = dis.readDouble();\n    int num = dis.readInt();\n} catch (IOException e) {}"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>DataInputStream dis = new DataInputStream(System.in)</code>: bọc (wrap) stream chuẩn <code>System.in</code> bằng <code>DataInputStream</code> để đọc kiểu dữ liệu nguyên thủy.",
+                        "<code>readDouble()</code>, <code>readInt()</code>: đọc trực tiếp giá trị kiểu <code>double</code>, <code>int</code> từ stream (không cần tự parse chuỗi)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Các method chính của DataOutput Interface:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "writeBoolean(boolean b)\nwriteByte(int value)\nwriteInt(int value)\nwriteDouble(double value)\nwriteChar(int value)\nwriteChars(String value)\nwriteUTF(String value)"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Đoạn code minh họa cách dùng DataOutputStream:</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: "try {\n    outStream.writeBoolean(true);\n    outStream.writeDouble(9.95);\n} catch (IOException e) {}"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">💡 Cảnh báo bẫy thi trắc nghiệm</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>DataInput/DataOutput</strong> là <strong>interface</strong>, không phải class.<br/>• <strong>DataInputStream/DataOutputStream</strong> là <strong>class</strong> hiện thực các interface trên — hay bị nhầm giữa dạng \"Data...Stream\" (class) và \"Data...put\" (interface).</p></details>"
+                    },
+                    {
+                      type: "java-oop-file-descriptor-data-io"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "oop-sub-serialization-concept",
+              number: "2",
+              title: "Khái niệm & Quy tắc Serialization",
+              parts: [
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Serialization (Tuần tự hóa)</strong> là quá trình đọc và ghi đối tượng (object) vào <strong>byte stream</strong>.",
+                    "Một đối tượng implement <strong>interface Serializable</strong> sẽ được lưu và khôi phục trạng thái thông qua cơ chế serialization/deserialization."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Các quy tắc chính của Serialization:</strong>"
+                },
+                {
+                  type: "bullets",
+                  items: [
+                    "Nếu class hoặc superclass của một Java object implement <code>java.io.Serializable</code> (hoặc interface con của nó là <code>java.io.Externalizable</code>) ➔ object đó <strong>có thể serialize</strong>.",
+                    "<code>java.io.Serializable</code> là một <strong>marker interface</strong> (không định nghĩa phương thức nào cả) — chỉ đánh dấu rằng class đó được xem xét để serialize.",
+                    "Nếu <strong>superclass</strong> là serializable thì các <strong>subclass</strong> cũng tự động serializable.",
+                    "<strong>Ngoại lệ:</strong> Các biến khai báo với từ khóa <code>transient</code> và <code>static</code> sẽ <strong>không được lưu</strong> bởi cơ chế serialization.",
+                    "<strong>Deserialization:</strong> quá trình chuyển dữ liệu đã serialize trở lại thành bản sao của đối tượng ban đầu."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>Serializable</code> là <strong>marker interface</strong>, không có method nào cả.<br/>• Từ khóa <code>transient</code> ➔ loại trừ field đó khỏi quá trình serialize.<br/>• Các trường <code>static</code> cũng không được serialize (vì thuộc về class, không thuộc về instance).</p></details>"
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">🧠 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> Serialization (Tuần tự hóa) — chuyển đổi đối tượng thành byte stream để lưu/truyền.<br/>• <strong>Mục đích:</strong> Lưu trạng thái đối tượng ra file hoặc truyền qua mạng.<br/>• <strong>Cú pháp Java:</strong> <code>class X implements Serializable {}</code><br/>• <strong>Ví dụ thực tế:</strong> Lưu thông tin một đối tượng <code>Employee</code> xuống file để dùng lại sau.<br/>• <strong>Điểm dễ thi:</strong> <code>transient</code> và <code>static</code> field <strong>không</strong> được serialize.</p></details>"
+                }
+              ]
+            },
+            {
+              id: "oop-sub-object-outputstream-detail",
+              number: "3",
+              title: "Lớp ObjectOutputStream",
+              parts: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Kế thừa (extends) lớp <code>OutputStream</code> và implement interface <code>ObjectOutput</code>.",
+                    "Chịu trách nhiệm ghi các kiểu dữ liệu nguyên thủy (primitive) và đối tượng (object) ra output stream."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Các Constructor của ObjectOutputStream:</strong>"
+                },
+                {
+                  type: "code",
+                  language: "java",
+                  code: "ObjectOutputStream()\nObjectOutputStream(OutputStream out)"
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Các phương thức chính:</strong>"
+                },
+                {
+                  type: "code",
+                  language: "java",
+                  code: "writeFloat(float f)\nwriteObject(Object obj)\ndefaultWriteObject()"
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Ví dụ code ghi đối tượng:</strong>"
+                },
+                {
+                  type: "java-oop-code-explainer",
+                  title: "ObjectOutputStream - Ghi đối tượng xuống tệp tin",
+                  code: "Point pointObj = new Point(50, 75);\nFileOutputStream fObj = new FileOutputStream(\"point.ser\");\nObjectOutputStream oos = new ObjectOutputStream(fObj);\noos.writeObject(pointObj);\noos.writeObject(new java.util.Date());\noos.close();",
+                  language: "java",
+                  explanations: {
+                    1: "Khởi tạo đối tượng Point cần lưu trữ.",
+                    2: "Tạo FileOutputStream trỏ đến tệp tin đích 'point.ser'.",
+                    3: "Bọc FileOutputStream bằng ObjectOutputStream để ghi đối tượng.",
+                    4: "<code>writeObject(pointObj)</code>: Tuần tự hóa và ghi đối tượng pointObj xuống file.",
+                    5: "Ghi thêm một đối tượng Date hiện tại nối tiếp vào luồng."
+                  }
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <code>writeObject()</code> là phương thức quan trọng nhất cần nhớ khi làm bài về serialization để ghi đối tượng xuống file.</p></details>"
+                }
+              ]
+            },
+            {
+              id: "oop-sub-object-inputstream-detail",
+              number: "4",
+              title: "Lớp ObjectInputStream",
+              parts: [
+                {
+                  type: "bullets",
+                  items: [
+                    "Kế thừa lớp <code>InputStream</code> và implement interface <code>ObjectInput</code>.",
+                    "<code>ObjectInput</code> kế thừa từ <code>DataInput</code>, có các phương thức hỗ trợ object serialization.",
+                    "Chịu trách nhiệm đọc lại instance của đối tượng và các kiểu primitive từ input stream.",
+                    "Phương thức <code>readObject()</code> khôi phục đối tượng gồm các trường non-static và non-transient."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Các Constructor của ObjectInputStream:</strong>"
+                },
+                {
+                  type: "code",
+                  language: "java",
+                  code: "ObjectInputStream()\nObjectInputStream(InputStream in)"
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Các phương thức chính:</strong>"
+                },
+                {
+                  type: "code",
+                  language: "java",
+                  code: "readFloat()    readBoolean()    readByte()\nreadChar()     readObject()"
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Ví dụ code 1 - Đọc đối tượng Point:</strong>"
+                },
+                {
+                  type: "java-oop-code-explainer",
+                  title: "ObjectInputStream - Đọc và khôi phục đối tượng",
+                  code: "FileInputStream fObj = new FileInputStream(\"point.ser\");\nObjectInputStream ois = new ObjectInputStream(fObj);\nPoint obj = (Point) ois.readObject();\nois.close();",
+                  language: "java",
+                  explanations: {
+                    1: "Mở FileInputStream đọc từ tệp tin 'point.ser'.",
+                    2: "Tạo ObjectInputStream bọc ngoài file input stream.",
+                    3: "<code>readObject()</code>: Đọc dữ liệu, giải tuần tự hóa và ép kiểu (cast) về đúng lớp Point ban đầu."
+                  }
+                },
+                {
+                  type: "definition",
+                  term: "Lưu ý quan trọng:",
+                  definition: "• ObjectInputStream dùng để deserialize một đối tượng.<br/>• Đối tượng cần deserialize phải được tạo ra trước đó bằng ObjectOutputStream."
+                },
+                {
+                  type: "paragraph",
+                  text: "<strong>Ví dụ code 2 - Minh họa đầy đủ luồng đối tượng Employee:</strong>"
+                },
+                {
+                  type: "java-oop-code-explainer",
+                  title: "BranchEmpProcessor - Ghi/Đọc đối tượng Employee hoàn chỉnh",
+                  code: "import java.io.*;\n\nclass Employee implements Serializable {\n    String lastName;\n    String firstName;\n    double sal;\n}\n\npublic class BranchEmpProcessor {\n    public static void main(String[] args) {\n        FileOutputStream fOut = null;\n        ObjectOutputStream oOut = null;\n        FileInputStream fIn = null;\n        ObjectInputStream oIn = null;\n        try {\n            fOut = new FileOutputStream(\"employee.ser\");\n            oOut = new ObjectOutputStream(fOut);\n            Employee e = new Employee();\n            e.lastName = \"Smith\";\n            e.firstName = \"John\";\n            e.sal = 5000.00;\n            oOut.writeObject(e);\n            oOut.close();\n            fOut.close();\n\n            fIn = new FileInputStream(\"employee.ser\");\n            oIn = new ObjectInputStream(fIn);\n            Employee emp = (Employee) oIn.readObject();\n            System.out.println(\"Deserialized - \" + emp.firstName + \" \" + emp.lastName);\n        } catch (IOException e1) {\n            e1.printStackTrace();\n        } catch (ClassNotFoundException e2) {\n            e2.printStackTrace();\n        } finally {\n            System.out.println(\"finally\");\n        }\n    }\n}",
+                  language: "java",
+                  explanations: {
+                    3: "Khai báo lớp Employee implement interface Serializable để đánh dấu có thể tuần tự hóa.",
+                    16: "Khởi tạo luồng ghi đối tượng ra tệp tin 'employee.ser'.",
+                    20: "Ghi đối tượng Employee xuống file thông qua <code>oOut.writeObject(e)</code>.",
+                    26: "Khởi tạo luồng đọc đối tượng từ tệp tin 'employee.ser'.",
+                    28: "Đọc đối tượng và ép kiểu về Employee.",
+                    30: "Bắt ngoại lệ IOException nếu gặp lỗi đọc ghi file.",
+                    32: "Bắt ngoại lệ ClassNotFoundException nếu lớp đối tượng không tồn tại khi nạp lại.",
+                    34: "Khối <code>finally</code> luôn chạy để in thông báo hoặc dọn dẹp tài nguyên."
+                  }
+                },
+                {
+                  type: "definition",
+                  term: "Giải thích từ khóa mới:",
+                  definition: "• <strong>implements Serializable:</strong> Đánh dấu class Employee có thể tuần tự hóa.<br/>• <strong>ClassNotFoundException:</strong> Ngoại lệ xảy ra khi JVM không tìm thấy định nghĩa class của đối tượng đang giải tuần tự hóa.<br/>• <strong>finally:</strong> Khối luôn thực thi, dùng để đóng luồng hoặc dọn tài nguyên."
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Khi deserialize, cần bắt cả <code>IOException</code> lẫn <code>ClassNotFoundException</code>.<br/>• Phải ép kiểu (cast) kết quả của <code>readObject()</code> về đúng lớp mong muốn.<br/>• Các trường đối tượng nằm bên trong class cũng phải implement Serializable thì mới serialize đầy đủ được.</p></details>"
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">🧠 Ghi nhớ nhanh</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• <strong>Khái niệm:</strong> ObjectInputStream/ObjectOutputStream — đọc/ghi đối tượng dưới dạng byte stream.<br/>• <strong>Mục đích:</strong> Lưu và khôi phục toàn bộ trạng thái của đối tượng.<br/>• <strong>Cú pháp:</strong> <code>writeObject(obj)</code> và <code>(Type) ois.readObject()</code>.<br/>• <strong>Mẹo đi thi:</strong> Bắt buộc phải catch <code>ClassNotFoundException</code> khi deserialize, và cần ép kiểu đúng class mong muốn.</p></details>"
+                },
+                {
+                  type: "java-oop-serialization-visualizer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "oop-file-summary-group-sec",
+          roman: "IX",
+          title: "Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "oop-sub-file-summary",
+              number: "1",
+              title: "Tổng kết chương",
+              parts: [
+                {
+                  type: "bullets",
+                  items: [
+                    "<strong>Stream</strong> là một thực thể logic dùng để sản xuất (produce) hoặc tiêu thụ (consume) thông tin.",
+                    "<strong>Data stream</strong> hỗ trợ input/output cho các kiểu dữ liệu nguyên thủy (primitive) và giá trị String.",
+                    "<strong>InputStream</strong> là abstract class định nghĩa cách nhận dữ liệu.",
+                    "<strong>OutputStream</strong> là abstract class định nghĩa cách ghi dữ liệu ra stream.",
+                    "<strong>File class</strong> làm việc trực tiếp với tệp tin trên hệ thống tập tin vật lý.",
+                    "<strong>Buffer</strong> là vùng lưu trữ tạm thời trong RAM cho dữ liệu.",
+                    "<strong>Serialization</strong> là quá trình đọc và ghi đối tượng vào byte stream."
+                  ]
+                },
+                {
+                  type: "paragraph",
+                  text: "<details class=\"bg-gradient-to-r from-sky-500/10 to-indigo-500/10 border-l-4 border-sky-500 rounded-r-xl p-4 cursor-pointer select-none\"><summary class=\"text-xs font-bold text-sky-600 font-mono uppercase tracking-wider\">📌 Ghi nhớ (Tổng kết)</summary><p class=\"text-xs text-slate-355 mt-2 leading-relaxed font-normal\">• Phân biệt rõ: Byte Stream (InputStream/OutputStream) vs Character Stream (Reader/Writer).<br/>• Buffered Stream giúp tăng hiệu năng nhờ cơ chế cache RAM.<br/>• Serialization gắn liền với <code>Serializable</code>, <code>transient</code>, <code>writeObject()</code>, <code>readObject()</code>.</p></details>"
+                },
+                {
+                  type: "java-oop-file-io-summary-mindmap"
                 }
               ]
             }

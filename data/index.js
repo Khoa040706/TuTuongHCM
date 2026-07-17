@@ -1910,16 +1910,234 @@ export const subjects = {
     "id": "oop-file",
     "title": "Bài 12",
     "subtitle": "File I/O",
-    "sections": [
+        "sections": [
       {
-        "id": "oop-file-sec",
+        "id": "oop-file-goals-sec",
         "roman": "",
-        "title": "Nội dung bài học",
+        "title": "Mục tiêu bài học (Objectives)",
         "subsections": [
           {
-            "id": "oop-sub-file",
+            "id": "oop-sub-file-goals",
             "number": "",
-            "title": "Bài giảng chi tiết"
+            "title": "Mục tiêu học tập chính"
+          }
+        ]
+      },
+      {
+        "id": "oop-stream-overview-sec",
+        "roman": "I",
+        "title": "Tổng quan về Stream Classes",
+        "subsections": [
+          {
+            "id": "oop-sub-file-streams-concept",
+            "number": "1",
+            "title": "Khái niệm Stream (luồng)"
+          },
+          {
+            "id": "oop-sub-file-streams-phys",
+            "number": "2",
+            "title": "Đọc tệp tin vật lý"
+          },
+          {
+            "id": "oop-sub-file-streams-std",
+            "number": "3",
+            "title": "Luồng nhập/xuất tiêu chuẩn"
+          },
+          {
+            "id": "oop-sub-file-stream-need-all",
+            "number": "4",
+            "title": "Nhu cầu sử dụng Stream"
+          },
+          {
+            "id": "oop-sub-file-stream-steps-all",
+            "number": "5",
+            "title": "Quy trình sử dụng"
+          },
+          {
+            "id": "oop-sub-package-java-io-concept",
+            "number": "6",
+            "title": "Package java.io"
+          }
+        ]
+      },
+      {
+        "id": "oop-file-class-group-sec",
+        "roman": "II",
+        "title": "Lớp File và FileDescriptor",
+        "subsections": [
+          {
+            "id": "oop-sub-file-class-concept",
+            "number": "1",
+            "title": "Khái niệm & Pathname"
+          },
+          {
+            "id": "oop-sub-file-class-methods",
+            "number": "2",
+            "title": "Phương thức thư mục & constructor"
+          },
+          {
+            "id": "oop-sub-file-methods-table",
+            "number": "3",
+            "title": "Danh sách phương thức lớp File"
+          },
+          {
+            "id": "oop-sub-file-descriptor-concept",
+            "number": "4",
+            "title": "Khái niệm FileDescriptor"
+          }
+        ]
+      },
+      {
+        "id": "oop-byte-input-group-sec",
+        "roman": "III",
+        "title": "Lớp luồng nhập dạng Byte",
+        "subsections": [
+          {
+            "id": "oop-sub-inputstream-methods-table",
+            "number": "1",
+            "title": "Các phương thức của InputStream"
+          },
+          {
+            "id": "oop-sub-file-inputstream-concept",
+            "number": "2",
+            "title": "FileInputStream Class"
+          },
+          {
+            "id": "oop-sub-bytearray-inputstream-concept",
+            "number": "3",
+            "title": "ByteArrayInputStream Class"
+          }
+        ]
+      },
+      {
+        "id": "oop-byte-output-group-sec",
+        "roman": "IV",
+        "title": "Lớp luồng xuất dạng Byte",
+        "subsections": [
+          {
+            "id": "oop-sub-outputstream-concept",
+            "number": "1",
+            "title": "Khái niệm OutputStream"
+          },
+          {
+            "id": "oop-sub-file-outputstream-features",
+            "number": "2",
+            "title": "FileOutputStream Class"
+          },
+          {
+            "id": "oop-sub-bytearray-outputstream-features",
+            "number": "3",
+            "title": "ByteArrayOutputStream Class"
+          }
+        ]
+      },
+      {
+        "id": "oop-buffered-filter-group-sec",
+        "roman": "V",
+        "title": "Luồng bộ đệm và Luồng lọc",
+        "subsections": [
+          {
+            "id": "oop-sub-filter-streams-concept",
+            "number": "1",
+            "title": "Khái niệm Luồng lọc (Filter)"
+          },
+          {
+            "id": "oop-sub-buffered-streams-concept",
+            "number": "2",
+            "title": "Khái niệm Luồng bộ đệm (Buffered)"
+          },
+          {
+            "id": "oop-sub-buffered-inputstream-detail",
+            "number": "3",
+            "title": "Lớp BufferedInputStream"
+          },
+          {
+            "id": "oop-sub-buffered-outputstream-detail",
+            "number": "4",
+            "title": "Lớp BufferedOutputStream"
+          }
+        ]
+      },
+      {
+        "id": "oop-char-streams-group-sec",
+        "roman": "VI",
+        "title": "Luồng xử lý ký tự",
+        "subsections": [
+          {
+            "id": "oop-sub-char-streams-concept",
+            "number": "1",
+            "title": "Khái niệm Character Stream"
+          },
+          {
+            "id": "oop-sub-reader-class",
+            "number": "2",
+            "title": "Reader Class & Writer Class"
+          },
+          {
+            "id": "oop-sub-printwriter-class",
+            "number": "3",
+            "title": "PrintWriter Class & Ví dụ"
+          },
+          {
+            "id": "oop-sub-char-array-reader-detail",
+            "number": "4",
+            "title": "Lớp CharArrayReader"
+          },
+          {
+            "id": "oop-sub-char-array-writer-features",
+            "number": "5",
+            "title": "Lớp CharArrayWriter"
+          }
+        ]
+      },
+      {
+        "id": "oop-chaining-io-group-sec",
+        "roman": "VII",
+        "title": "Chuỗi hóa hệ thống I/O",
+        "subsections": [
+          {
+            "id": "oop-sub-chaining-io-concept",
+            "number": "1",
+            "title": "Khái niệm Chaining I/O"
+          }
+        ]
+      },
+      {
+        "id": "oop-serialization-group-sec",
+        "roman": "VIII",
+        "title": "Tuần tự hóa đối tượng",
+        "subsections": [
+          {
+            "id": "oop-sub-data-input-output-concept",
+            "number": "1",
+            "title": "Interface DataInput & DataOutput"
+          },
+          {
+            "id": "oop-sub-serialization-concept",
+            "number": "2",
+            "title": "Khái niệm & Quy tắc Serialization"
+          },
+          {
+            "id": "oop-sub-object-outputstream-detail",
+            "number": "3",
+            "title": "Lớp ObjectOutputStream"
+          },
+          {
+            "id": "oop-sub-object-inputstream-detail",
+            "number": "4",
+            "title": "Lớp ObjectInputStream"
+          }
+        ]
+      },
+      {
+        "id": "oop-file-summary-group-sec",
+        "roman": "IX",
+        "title": "Tổng kết (Summary)",
+        "subsections": [
+          {
+            "id": "oop-sub-file-summary",
+            "number": "1",
+            "title": "Tổng kết chương"
           }
         ]
       }
