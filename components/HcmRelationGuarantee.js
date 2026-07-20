@@ -26,11 +26,15 @@ export default function HcmRelationGuarantee() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-card",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-card") : document.querySelectorAll(".animate-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, scale: 0.95 },
       { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.2)", stagger: 0.05 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   // 6 Đặc trưng của CNXH theo HCM

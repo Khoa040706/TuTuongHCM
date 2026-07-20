@@ -19,10 +19,15 @@ export default function LsdMethodologyExplorer() {
 
   // GSAP Entrance Animation
   useGSAP(() => {
-    gsap.fromTo(".methodology-column",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".methodology-column") : document.querySelectorAll(".methodology-column");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.65, ease: "power2.out", stagger: 0.12 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   return (

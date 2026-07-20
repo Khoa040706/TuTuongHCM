@@ -25,11 +25,15 @@ export default function HcmSocialismConcept() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-fade-in",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-fade-in") : document.querySelectorAll(".animate-fade-in");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeTab, activeDomain, selectedRegime, activeStage] });
 
   // 1. Lĩnh vực tiếp cận

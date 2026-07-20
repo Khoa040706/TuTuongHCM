@@ -26,10 +26,15 @@ export default function LsdDemocracyContext() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".context-panel-box",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".context-panel-box") : document.querySelectorAll(".context-panel-box");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, [activeTab]);
 
   return (

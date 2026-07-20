@@ -1613,22 +1613,36 @@ export default function Page() {
   // GSAP animation for 3D Book on mount/reset
   useGSAP(() => {
     if (showHero && appStep === "study") {
-      // Return and closing transition
-      gsap.fromTo(".book-3d",
-        { scale: 2.8, z: 600, opacity: 0, rotationX: 45, rotationY: -90 },
-        { scale: 1, z: 0, opacity: 1, rotationX: 15, rotationY: -10, duration: 1.2, ease: "power2.out" }
-      );
-      gsap.fromTo(".book-cover-3d",
-        { rotationY: -180 },
-        { rotationY: 0, duration: 1.4, ease: "power2.out" }
-      );
-      gsap.fromTo(".storytelling-hero",
-        { opacity: 0 },
-        { opacity: 1, duration: 1.0, ease: "power2.out" }
-      );
-      // Reset quote chars to hidden
-      gsap.set(".quote-char", { opacity: 0, filter: "blur(5px)", y: 5 });
-      gsap.set(".quote-cursor", { display: "inline-block" });
+      const book3d = document.querySelector(".book-3d");
+      const bookCover = document.querySelector(".book-cover-3d");
+      const hero = document.querySelector(".storytelling-hero");
+      const quoteChars = document.querySelectorAll(".quote-char");
+      const quoteCursor = document.querySelector(".quote-cursor");
+
+      if (book3d) {
+        gsap.fromTo(book3d,
+          { scale: 2.8, z: 600, opacity: 0, rotationX: 45, rotationY: -90 },
+          { scale: 1, z: 0, opacity: 1, rotationX: 15, rotationY: -10, duration: 1.2, ease: "power2.out" }
+        );
+      }
+      if (bookCover) {
+        gsap.fromTo(bookCover,
+          { rotationY: -180 },
+          { rotationY: 0, duration: 1.4, ease: "power2.out" }
+        );
+      }
+      if (hero) {
+        gsap.fromTo(hero,
+          { opacity: 0 },
+          { opacity: 1, duration: 1.0, ease: "power2.out" }
+        );
+      }
+      if (quoteChars.length > 0) {
+        gsap.set(quoteChars, { opacity: 0, filter: "blur(5px)", y: 5 });
+      }
+      if (quoteCursor) {
+        gsap.set(quoteCursor, { display: "inline-block" });
+      }
     }
   }, { dependencies: [showHero, appStep, selectedSubjectId] });
 
@@ -1689,17 +1703,22 @@ export default function Page() {
   // GSAP Subject Select grid entrance
   useGSAP(() => {
     if (appStep === "subject-select" && subjectGridRef.current) {
-      // Bento cards reveal
-      gsap.fromTo(".bento-subject-card, .add-subject-card",
-        { y: 40, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
-      );
+      const container = subjectGridRef.current;
+      const cards = container.querySelectorAll(".bento-subject-card, .add-subject-card");
+      if (cards.length > 0) {
+        gsap.fromTo(cards,
+          { y: 40, opacity: 0, scale: 0.95 },
+          { y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
+        );
+      }
       
-      // Header title reveal
-      gsap.fromTo(".select-subject-header > *",
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
-      );
+      const headerElements = container.querySelectorAll(".select-subject-header > *");
+      if (headerElements.length > 0) {
+        gsap.fromTo(headerElements,
+          { y: -20, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" }
+        );
+      }
     }
   }, { dependencies: [appStep], scope: subjectGridRef });
 
@@ -2038,7 +2057,8 @@ export default function Page() {
           duration: 0.4,
           ease: "power1.out",
           onComplete: () => {
-            gsap.to(".quote-cursor", { display: "none", duration: 0.1 });
+            const cursor = document.querySelector(".quote-cursor");
+            if (cursor) gsap.to(cursor, { display: "none", duration: 0.1 });
           }
         },
         "-=0.6" // Start typing while the cover is still opening

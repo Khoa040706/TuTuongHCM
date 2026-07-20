@@ -55,10 +55,15 @@ export default function HcmWorldDevelopment() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".development-card", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".development-card") : document.querySelectorAll(".development-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, { dependencies: [activeTab], scope: containerRef });
 
   const handleSelectOption = (idx) => {

@@ -126,22 +126,32 @@ export default function HcmProletarianRevolution() {
 
   useGSAP(() => {
     // GSAP Step panel animations
-    gsap.fromTo(".journey-node-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".journey-node-panel") : document.querySelectorAll(".journey-node-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeStep], scope: containerRef });
 
   useGSAP(() => {
     // GSAP Tab change animations
-    gsap.fromTo(".creativity-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".creativity-panel") : document.querySelectorAll(".creativity-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, x: 20 },
       { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeTab], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: JOURNEY TIMELINE */}
       <div className="space-y-4">

@@ -64,14 +64,19 @@ export default function HcmIndependenceUnity() {
 
   useGSAP(() => {
     // GSAP Step panel animations
-    gsap.fromTo(".unity-step-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".unity-step-panel") : document.querySelectorAll(".unity-step-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, x: -20 },
       { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeStep], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: ÂM MƯU CHIA CẮT ĐẤT NƯỚC CỦA KẺ THÙ */}
       <div className="space-y-4">

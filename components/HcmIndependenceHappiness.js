@@ -91,14 +91,19 @@ export default function HcmIndependenceHappiness() {
 
   useGSAP(() => {
     // GSAP Tab change entrance animations
-    gsap.fromTo(".happiness-tab-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".happiness-tab-panel") : document.querySelectorAll(".happiness-tab-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeTab], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: INTERACTIVE TABS */}
       <div>
@@ -278,7 +283,7 @@ export default function HcmIndependenceHappiness() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,119,6,0.12),transparent_60%)] pointer-events-none z-0" />
         
         {/* Huge watermarked quote icon */}
-        <Quote className="absolute top-4 left-4 w-28 h-28 text-amber-500/[0.04] -rotate-12 pointer-events-none z-0" />
+        <Quote className="absolute top-4 left-4 w-28 h-28 text-amber-500 opacity-10 -rotate-12 pointer-events-none z-0" />
 
         <div className="relative z-10 space-y-6">
           <div className="flex items-center gap-2">

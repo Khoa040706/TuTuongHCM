@@ -27,26 +27,51 @@ export default function LsdRevolutionSignificance() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(".nature-card",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".nature-card") : document.querySelectorAll(".nature-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 25, scale: 0.96 },
       { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out", stagger: 0.12 }
     );
-    gsap.fromTo(".sig-domestic",
+      }
+    }
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".sig-domestic") : document.querySelectorAll(".sig-domestic");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: -30 },
       { opacity: 1, x: 0, duration: 0.7, ease: "power2.out", delay: 0.3 }
     );
-    gsap.fromTo(".sig-intl",
+      }
+    }
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".sig-intl") : document.querySelectorAll(".sig-intl");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: 30 },
       { opacity: 1, x: 0, duration: 0.7, ease: "power2.out", delay: 0.4 }
     );
-    gsap.fromTo(".lesson-card",
+      }
+    }
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".lesson-card") : document.querySelectorAll(".lesson-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.1, delay: 0.5 }
     );
-    gsap.fromTo(".chapter-banner",
+      }
+    }
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".chapter-banner") : document.querySelectorAll(".chapter-banner");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, scale: 0.95 },
       { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out", delay: 0.8 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   /* ─── DỮ LIỆU TÍNH CHẤT ─── */

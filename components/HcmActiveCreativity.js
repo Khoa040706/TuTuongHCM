@@ -40,14 +40,19 @@ export default function HcmActiveCreativity() {
 
   useGSAP(() => {
     // GSAP metaphor details animation
-    gsap.fromTo(".metaphor-detail-card", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".metaphor-detail-card") : document.querySelectorAll(".metaphor-detail-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeMetaphor], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: COMINTERN VS HO CHI MINH DUEL */}
       <div className="space-y-4">

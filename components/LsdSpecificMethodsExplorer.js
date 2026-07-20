@@ -66,10 +66,15 @@ export default function LsdSpecificMethodsExplorer() {
 
   // GSAP Animation when activeTab changes
   useGSAP(() => {
-    gsap.fromTo(".method-detail-bullet",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".method-detail-bullet") : document.querySelectorAll(".method-detail-bullet");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: -10 },
       { opacity: 1, x: 0, duration: 0.45, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, [activeTab]);
 
   const activeMethod = methods[activeTab];

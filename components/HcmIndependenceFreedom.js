@@ -236,7 +236,7 @@ export default function HcmIndependenceFreedom() {
 
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent">
       
       {/* SECTION 1: INTERACTIVE MIND MAP */}
       <div className="mb-10">

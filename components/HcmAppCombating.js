@@ -23,11 +23,15 @@ export default function HcmAppCombating() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-goal-detail",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-goal-detail") : document.querySelectorAll(".animate-goal-detail");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 12 },
       { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [selectedGoal] });
 
   // 4 Mục tiêu của Đảng cầm quyền

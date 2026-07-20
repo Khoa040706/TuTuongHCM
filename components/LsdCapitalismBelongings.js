@@ -8,7 +8,10 @@ export default function LsdCapitalismBelongings() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(".capitalism-card",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".capitalism-card") : document.querySelectorAll(".capitalism-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", stagger: 0.15, scrollTrigger: {
         trigger: containerRef.current,
@@ -16,6 +19,8 @@ export default function LsdCapitalismBelongings() {
         toggleActions: "play none none reverse"
       }}
     );
+      }
+    }
   }, { scope: containerRef });
 
   return (

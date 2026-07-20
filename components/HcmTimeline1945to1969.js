@@ -57,10 +57,15 @@ export default function HcmTimeline1945to1969() {
 
   // GSAP animation on tab changes
   useGSAP(() => {
-    gsap.fromTo(".timeline-content-card", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".timeline-content-card") : document.querySelectorAll(".timeline-content-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out", stagger: 0.1 }
     );
+      }
+    }
   }, { dependencies: [activeTab], scope: containerRef });
 
   const handleSelectOption = (idx) => {

@@ -63,10 +63,15 @@ export default function LsdTasksExplorer() {
 
   // GSAP Entrance Animation
   useGSAP(() => {
-    gsap.fromTo(".task-card",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".task-card") : document.querySelectorAll(".task-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   return (

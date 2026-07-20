@@ -72,10 +72,15 @@ export default function HcmValuesExplorer() {
 
   // GSAP animation for intro cards
   useGSAP(() => {
-    gsap.fromTo(".value-pillar-card", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".value-pillar-card") : document.querySelectorAll(".value-pillar-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   // Shuffle game cards

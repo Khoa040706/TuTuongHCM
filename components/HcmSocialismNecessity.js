@@ -23,11 +23,15 @@ export default function HcmSocialismNecessity() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-slide-up",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-slide-up") : document.querySelectorAll(".animate-slide-up");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeTab, activeStep, selectedPath] });
 
   // 1. Dữ liệu sự tiến hóa Lực lượng Sản xuất

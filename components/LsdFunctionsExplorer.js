@@ -113,14 +113,24 @@ export default function LsdFunctionsExplorer() {
 
   // GSAP Animation when activeTab changes
   useGSAP(() => {
-    gsap.fromTo(".function-subcard",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".function-subcard") : document.querySelectorAll(".function-subcard");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out", stagger: 0.08 }
     );
-    gsap.fromTo(".tab-desc-panel",
+      }
+    }
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".tab-desc-panel") : document.querySelectorAll(".tab-desc-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: -10 },
       { opacity: 1, x: 0, duration: 0.4 }
     );
+      }
+    }
   }, [activeTab]);
 
   const activeData = functionsData[activeTab];

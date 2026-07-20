@@ -36,10 +36,15 @@ export default function LsdOctoberRevolution() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".step-content-box",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".step-content-box") : document.querySelectorAll(".step-content-box");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, [activeStep]);
 
   return (

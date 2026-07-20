@@ -84,6 +84,32 @@ import HcmTimeline1945to1969 from "./HcmTimeline1945to1969";
 import HcmValuesExplorer from "./HcmValuesExplorer";
 import HcmWorldDevelopment from "./HcmWorldDevelopment";
 import HcmChapter3GoalsExplorer from "./HcmChapter3GoalsExplorer";
+import HcmChapter4GoalsExplorer from "./HcmChapter4GoalsExplorer";
+import HcmChapter5GoalsExplorer from "./HcmChapter5GoalsExplorer";
+import HcmGreatUnityRole from "./HcmGreatUnityRole";
+import HcmGreatUnityForce from "./HcmGreatUnityForce";
+import HcmUnityConditions from "./HcmUnityConditions";
+import HcmFrontOrganization from "./HcmFrontOrganization";
+import HcmUnityMethods from "./HcmUnityMethods";
+import HcmInternationalNeed from "./HcmInternationalNeed";
+import HcmInternationalForces from "./HcmInternationalForces";
+import HcmInternationalPrinciples from "./HcmInternationalPrinciples";
+import HcmApplyingPartyLines from "./HcmApplyingPartyLines";
+import HcmApplyingAlliance from "./HcmApplyingAlliance";
+import HcmApplyingInternational from "./HcmApplyingInternational";
+import HcmPartyFoundingNecessity from "./HcmPartyFoundingNecessity";
+import HcmPartyMorality from "./HcmPartyMorality";
+import HcmPartyPrinciples from "./HcmPartyPrinciples";
+import HcmCadreBuilding from "./HcmCadreBuilding";
+import HcmStateClassNature from "./HcmStateClassNature";
+import HcmStateOfPeople from "./HcmStateOfPeople";
+import HcmStateByPeople from "./HcmStateByPeople";
+import HcmStateForPeople from "./HcmStateForPeople";
+import HcmStateRuleOfLaw from "./HcmStateRuleOfLaw";
+import HcmStatePowerControl from "./HcmStatePowerControl";
+import HcmStateAntiCorruption from "./HcmStateAntiCorruption";
+import HcmApplyPartyBuilding from "./HcmApplyPartyBuilding";
+import HcmApplyStateBuilding from "./HcmApplyStateBuilding";
 import HcmIndependenceFreedom from "./HcmIndependenceFreedom";
 import HcmIndependenceHappiness from "./HcmIndependenceHappiness";
 import HcmIndependenceThorough from "./HcmIndependenceThorough";
@@ -291,42 +317,47 @@ function ChapterHeader({ title, subtitle, chapterId }) {
     const subText = banner.querySelector(".chapter-banner-subtitle");
     const bgText = banner.querySelector(".chapter-banner-bgtext");
 
-    gsap.fromTo([badge, mainTitle, subText],
-      {
-        y: 25,
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.15,
-        duration: 0.7,
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: banner,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
+    const textElements = [badge, mainTitle, subText].filter(Boolean);
+    if (textElements.length > 0) {
+      gsap.fromTo(textElements,
+        {
+          y: 25,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 0.7,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: banner,
+            start: "top bottom-=100",
+            toggleActions: "play none none reverse"
+          }
         }
-      }
-    );
+      );
+    }
 
-    gsap.fromTo(bgText,
-      {
-        scale: 0.85,
-        opacity: 0
-      },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: banner,
-          start: "top bottom-=100",
-          toggleActions: "play none none reverse"
+    if (bgText) {
+      gsap.fromTo(bgText,
+        {
+          scale: 0.85,
+          opacity: 0
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: banner,
+            start: "top bottom-=100",
+            toggleActions: "play none none reverse"
+          }
         }
-      }
-    );
+      );
+    }
   }, { scope: bannerRef });
 
   useEffect(() => {
@@ -500,19 +531,25 @@ function ChapterHeader({ title, subtitle, chapterId }) {
       />
 
       {/* Background Huge Text Overlay */}
-      <div className="chapter-banner-bgtext absolute right-10 bottom-2 text-[8rem] md:text-[11rem] font-black font-playfair text-white/[0.03] tracking-widest leading-none pointer-events-none z-0">
-        CHƯƠNG {chapterId}
+      <div className="chapter-banner-bgtext absolute left-8 md:left-16 bottom-2 text-[8rem] md:text-[11rem] font-black font-playfair text-[var(--accent)]/[0.04] tracking-widest leading-none pointer-events-none z-0 text-left">
+        CHƯƠNG<br />{chapterId}
       </div>
 
-      <div className="chapter-banner-content relative z-10 w-full h-[270px] md:h-[310px] bg-gradient-to-br from-[#1e1d1a] to-[#141312] border-b border-[#2a2926] flex flex-col justify-center px-8 md:px-16">
-        <div className="chapter-banner-badge inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-amber-500/25 bg-amber-500/10 text-amber-400 text-xs font-extrabold uppercase tracking-wider mb-4.5 w-fit">
+      <div 
+        style={{
+          background: `linear-gradient(135deg, rgba(var(--accent-rgb), 0.08) 0%, rgba(var(--accent-rgb), 0.02) 50%, rgba(255, 255, 255, 0.95) 100%)`,
+          borderColor: `rgba(var(--accent-rgb), 0.15)`
+        }}
+        className="chapter-banner-content relative z-10 w-full h-[270px] md:h-[310px] border rounded-3xl flex flex-col justify-center px-8 md:px-16 shadow-[0_10px_30px_rgba(var(--accent-rgb),0.04)]"
+      >
+        <div className="chapter-banner-badge inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-[var(--accent)]/20 bg-[var(--accent)]/8 text-[var(--accent)] text-xs font-extrabold uppercase tracking-wider mb-4.5 w-fit">
           <span>📚</span>
           <span>Chương {chapterId}</span>
         </div>
-        <h1 className="chapter-banner-title text-2xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 font-playfair tracking-tight mb-4.5 leading-tight">
+        <h1 className="chapter-banner-title text-2xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-[var(--accent)] to-stone-800 font-playfair tracking-tight mb-4.5 leading-tight">
           {title}
         </h1>
-        <p className="chapter-banner-subtitle text-[#eae6db] text-xs md:text-sm leading-relaxed opacity-65 max-w-3xl font-sans font-medium">
+        <p className="chapter-banner-subtitle text-stone-600/90 text-xs md:text-sm leading-relaxed max-w-3xl font-sans font-medium">
           {subtitle}
         </p>
       </div>
@@ -1815,6 +1852,136 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "hcm-chapter3-goals-explorer":
       return (
         <HcmChapter3GoalsExplorer key={path} />
+      );
+
+    case "hcm-chapter4-goals-explorer":
+      return (
+        <HcmChapter4GoalsExplorer key={path} />
+      );
+
+    case "hcm-chapter5-goals-explorer":
+      return (
+        <HcmChapter5GoalsExplorer key={path} />
+      );
+
+    case "hcm-great-unity-role":
+      return (
+        <HcmGreatUnityRole key={path} />
+      );
+
+    case "hcm-great-unity-force":
+      return (
+        <HcmGreatUnityForce key={path} />
+      );
+
+    case "hcm-unity-conditions":
+      return (
+        <HcmUnityConditions key={path} />
+      );
+
+    case "hcm-front-organization":
+      return (
+        <HcmFrontOrganization key={path} />
+      );
+
+    case "hcm-unity-methods":
+      return (
+        <HcmUnityMethods key={path} />
+      );
+
+    case "hcm-international-need":
+      return (
+        <HcmInternationalNeed key={path} />
+      );
+
+    case "hcm-international-forces":
+      return (
+        <HcmInternationalForces key={path} />
+      );
+
+    case "hcm-international-principles":
+      return (
+        <HcmInternationalPrinciples key={path} />
+      );
+
+    case "hcm-applying-party-lines":
+      return (
+        <HcmApplyingPartyLines key={path} />
+      );
+
+    case "hcm-applying-alliance":
+      return (
+        <HcmApplyingAlliance key={path} />
+      );
+
+    case "hcm-applying-international":
+      return (
+        <HcmApplyingInternational key={path} />
+      );
+
+    case "hcm-party-founding-necessity":
+      return (
+        <HcmPartyFoundingNecessity key={path} />
+      );
+
+    case "hcm-party-morality":
+      return (
+        <HcmPartyMorality key={path} />
+      );
+
+    case "hcm-party-principles":
+      return (
+        <HcmPartyPrinciples key={path} />
+      );
+
+    case "hcm-cadre-building":
+      return (
+        <HcmCadreBuilding key={path} />
+      );
+
+    case "hcm-state-class-nature":
+      return (
+        <HcmStateClassNature key={path} />
+      );
+
+    case "hcm-state-of-people":
+      return (
+        <HcmStateOfPeople key={path} />
+      );
+
+    case "hcm-state-by-people":
+      return (
+        <HcmStateByPeople key={path} />
+      );
+
+    case "hcm-state-for-people":
+      return (
+        <HcmStateForPeople key={path} />
+      );
+
+    case "hcm-state-rule-of-law":
+      return (
+        <HcmStateRuleOfLaw key={path} />
+      );
+
+    case "hcm-state-power-control":
+      return (
+        <HcmStatePowerControl key={path} />
+      );
+
+    case "hcm-state-anti-corruption":
+      return (
+        <HcmStateAntiCorruption key={path} />
+      );
+
+    case "hcm-apply-party-building":
+      return (
+        <HcmApplyPartyBuilding key={path} />
+      );
+
+    case "hcm-apply-state-building":
+      return (
+        <HcmApplyStateBuilding key={path} />
       );
 
     case "hcm-independence-freedom":

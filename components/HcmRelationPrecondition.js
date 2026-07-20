@@ -24,11 +24,15 @@ export default function HcmRelationPrecondition() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-content",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-content") : document.querySelectorAll(".animate-content");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeStep] });
 
   // Dữ liệu lộ trình cách mạng

@@ -52,14 +52,19 @@ export default function HcmPartyLeadership() {
 
   useGSAP(() => {
     // GSAP concentric circle details animation
-    gsap.fromTo(".circle-detail-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".circle-detail-panel") : document.querySelectorAll(".circle-detail-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeCircle], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: SPOTLIGHT "ĐƯỜNG CÁCH MỆNH 1927" */}
       <div className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1d1a] to-[#141312] border border-[#2a2926] p-6 md:p-8 text-white shadow-xl">
@@ -68,7 +73,7 @@ export default function HcmPartyLeadership() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(217,119,6,0.12),transparent_60%)] pointer-events-none z-0" />
         
         {/* Quote watermark */}
-        <Quote className="absolute top-4 left-4 w-28 h-28 text-amber-500/[0.04] -rotate-12 pointer-events-none z-0" />
+        <Quote className="absolute top-4 left-4 w-28 h-28 text-amber-500 opacity-10 -rotate-12 pointer-events-none z-0" />
 
         <div className="relative z-10 space-y-6">
           <div className="flex items-center gap-2">

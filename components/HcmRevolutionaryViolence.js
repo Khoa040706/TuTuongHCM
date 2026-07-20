@@ -67,22 +67,32 @@ export default function HcmRevolutionaryViolence() {
 
   useGSAP(() => {
     // GSAP theory change animation
-    gsap.fromTo(".theory-detail-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".theory-detail-panel") : document.querySelectorAll(".theory-detail-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, x: -15 },
       { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeTheory], scope: containerRef });
 
   useGSAP(() => {
     // GSAP struggle form change animation
-    gsap.fromTo(".struggle-detail-panel", 
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".struggle-detail-panel") : document.querySelectorAll(".struggle-detail-panel");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets, 
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeForm], scope: containerRef });
 
   return (
-    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-white space-y-10">
+    <div ref={containerRef} className="w-full py-2 select-text font-sans bg-transparent space-y-10">
       
       {/* SECTION 1: MARXIST-LENINIST TIMELINE OF THEORY */}
       <div className="space-y-4">

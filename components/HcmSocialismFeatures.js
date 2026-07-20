@@ -23,11 +23,15 @@ export default function HcmSocialismFeatures() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-content",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-content") : document.querySelectorAll(".animate-content");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: 20 },
       { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeFeature] });
 
   // 4 Đặc trưng cơ bản

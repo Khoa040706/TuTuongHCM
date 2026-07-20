@@ -25,19 +25,27 @@ export default function HcmAppSteadfast() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-timeline-content",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-timeline-content") : document.querySelectorAll(".animate-timeline-content");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: -15 },
       { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [selectedMilestone] });
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-pairing-content",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-pairing-content") : document.querySelectorAll(".animate-pairing-content");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 10 },
       { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [selectedPairing] });
 
   // 4 Cặp phạm trù thống nhất trong Cương lĩnh

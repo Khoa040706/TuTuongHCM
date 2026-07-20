@@ -25,10 +25,15 @@ export default function LsdChapter1GoalsExplorer() {
 
   // GSAP Animation when activeTab changes
   useGSAP(() => {
-    gsap.fromTo(".goal-panel-node",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".goal-panel-node") : document.querySelectorAll(".goal-panel-node");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }
     );
+      }
+    }
   }, [activeTab]);
 
   return (

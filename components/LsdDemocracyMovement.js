@@ -77,10 +77,15 @@ export default function LsdDemocracyMovement() {
   };
 
   useGSAP(() => {
-    gsap.fromTo(".slider-content-box",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".slider-content-box") : document.querySelectorAll(".slider-content-box");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, x: 20 },
       { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, [activeSlide]);
 
   return (

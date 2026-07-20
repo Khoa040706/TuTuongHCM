@@ -40,10 +40,15 @@ export default function LsdSearchForWay() {
   ];
 
   useGSAP(() => {
-    gsap.fromTo(".search-way-content-box",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".search-way-content-box") : document.querySelectorAll(".search-way-content-box");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, [activeStep]);
 
   return (

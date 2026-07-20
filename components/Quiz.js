@@ -181,25 +181,31 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       });
 
       // Animate progress bars
-      gsap.fromTo(".diagnostic-bar-progress",
-        { width: "0%" },
-        {
-          width: (i, el) => el.getAttribute("data-target-width"),
-          duration: 1.2,
-          ease: "power2.out",
-          stagger: 0.08
-        }
-      );
+      const diagBars = document.querySelectorAll(".diagnostic-bar-progress");
+      if (diagBars.length > 0) {
+        gsap.fromTo(diagBars,
+          { width: "0%" },
+          {
+            width: (i, el) => el.getAttribute("data-target-width"),
+            duration: 1.2,
+            ease: "power2.out",
+            stagger: 0.08
+          }
+        );
+      }
     }
   }, { dependencies: [step, latestScore] });
 
   // GSAP stagger leaderboard rows
   useGSAP(() => {
     if (step === "results" && !loadingRankings) {
-      gsap.fromTo(".leaderboard-row",
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, stagger: 0.04, duration: 0.5, ease: "power2.out" }
-      );
+      const leaderboardRows = document.querySelectorAll(".leaderboard-row");
+      if (leaderboardRows.length > 0) {
+        gsap.fromTo(leaderboardRows,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, stagger: 0.04, duration: 0.5, ease: "power2.out" }
+        );
+      }
     }
   }, { dependencies: [step, loadingRankings] });
 
@@ -296,12 +302,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const insidePool = questionData.inside || [];
     const outsidePool = questionData.outside || [];
 
-    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, chuong-2, and chuong-3; 3 for others)
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 4 : 3;
+    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, and chuong-5; 3 for others)
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 4 : 3;
     const sampledOutside = getRandomSample(outsidePool, outsideCount);
 
-    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, and chuong-3; 3 for others)
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 36 : 37;
+    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, and chuong-5; 37 for others)
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 36 : 37;
     let sampledInside = [];
 
     if (chapterId === "chuong-1") {
@@ -536,8 +542,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const N = insidePool.length;
     const M = outsidePool.length;
 
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 36 : 37;
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3") ? 4 : 3;
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 36 : 37;
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 4 : 3;
 
     const K = Math.max(1, Math.ceil(N / insideCount));
     const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
@@ -912,6 +918,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         diag["c2-trick"] = { title: "Câu hỏi bẫy giáo trình chương 2", correct: 0, total: 0 };
       } else if (selectedChapterId === "chuong-3") {
         diag["c3-trick"] = { title: "Câu hỏi bẫy giáo trình chương 3", correct: 0, total: 0 };
+      } else if (selectedChapterId === "chuong-4") {
+        diag["c4-trick"] = { title: "Câu hỏi bẫy giáo trình chương 4", correct: 0, total: 0 };
       }
     }
 
@@ -1219,7 +1227,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   if (!questionData) return null;
                   const insidePool = questionData.inside || [];
                   const N = insidePool.length;
-                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3") ? 36 : 37;
+                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3" || selectedChapterId === "chuong-4" || selectedChapterId === "chuong-5") ? 36 : 37;
                   const K = Math.max(1, Math.ceil(N / insideCount));
 
                   return (

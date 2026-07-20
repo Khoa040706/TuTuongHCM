@@ -4,6 +4,8 @@
 import { questionsChuong1 } from "./questions-chuong-1";
 import { questionsChuong2 } from "./questions-chuong-2";
 import { questionsChuong3 } from "./questions-chuong-3";
+import { questionsChuong4 } from "./questions-chuong-4";
+import { questionsChuong5 } from "./questions-chuong-5";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
 import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
 
@@ -263,12 +265,184 @@ export const subjects = {
         ]
       }
     ]
+  },
+  {
+    "id": "chuong-4",
+    "title": "Chương IV",
+    "subtitle": "Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam và Nhà nước của nhân dân, do nhân dân, vì nhân dân",
+    "sections": [
+      {
+        "id": "hcm-c4-goals",
+        "roman": "",
+        "title": "Mục tiêu chương IV",
+        "subsections": [
+          {
+            "id": "hcm-c4-sub-goals",
+            "number": "",
+            "title": ""
+          }
+        ]
+      },
+      {
+        "id": "hcm-ve-dang-csvn-sec",
+        "roman": "I",
+        "title": "Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam",
+        "subsections": [
+          {
+            "id": "tinh-tat-yeu-vai-tro-dang-sub",
+            "number": "1",
+            "title": "Tính tất yếu và vai trò lãnh đạo của Đảng Cộng sản Việt Nam"
+          },
+          {
+            "id": "dang-trong-sach-vung-manh-sub",
+            "number": "2",
+            "title": "Đảng phải trong sạch, vững mạnh"
+          }
+        ]
+      },
+      {
+        "id": "hcm-ve-nha-nuoc-sec",
+        "roman": "II",
+        "title": "Tư tưởng Hồ Chí Minh về Nhà nước của nhân dân, do nhân dân, vì nhân dân",
+        "subsections": [
+          {
+            "id": "nha-nuoc-dan-chu-sub",
+            "number": "1",
+            "title": "Nhà nước dân chủ"
+          },
+          {
+            "id": "nha-nuoc-phap-quyen-sub",
+            "number": "2",
+            "title": "Nhà nước pháp quyền"
+          },
+          {
+            "id": "nha-nuoc-trong-sach-sub",
+            "number": "3",
+            "title": "Nhà nước trong sạch, vững mạnh"
+          }
+        ]
+      },
+      {
+        "id": "hcm-van-dung-sec",
+        "roman": "III",
+        "title": "Vận dụng tư tưởng Hồ Chí Minh vào công tác xây dựng Đảng và xây dựng Nhà nước",
+        "subsections": [
+          {
+            "id": "xay-dung-dang-trong-sach-sub",
+            "number": "1",
+            "title": "Xây dựng Đảng thật sự trong sạch, vững mạnh"
+          },
+          {
+            "id": "xay-dung-nha-nuoc-sub",
+            "number": "2",
+            "title": "Xây dựng Nhà nước"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chuong-5",
+    "title": "Chương V",
+    "subtitle": "Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế",
+    "sections": [
+      {
+        "id": "hcm-c5-goals",
+        "roman": "",
+        "title": "Mục tiêu chương V",
+        "subsections": [
+          {
+            "id": "hcm-c5-sub-goals",
+            "number": "",
+            "title": ""
+          }
+        ]
+      },
+      {
+        "id": "hcm-great-unity-sec",
+        "roman": "I",
+        "title": "Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc",
+        "subsections": [
+          {
+            "id": "hcm-great-unity-role-sub",
+            "number": "1",
+            "title": "Vai trò của đại đoàn kết toàn dân tộc"
+          },
+          {
+            "id": "hcm-great-unity-force-sub",
+            "number": "2",
+            "title": "Lực lượng của khối đại đoàn kết toàn dân tộc"
+          },
+          {
+            "id": "hcm-great-unity-conditions-sub",
+            "number": "3",
+            "title": "Điều kiện để xây dựng khối đại đoàn kết toàn dân tộc"
+          },
+          {
+            "id": "hcm-front-organization-sub",
+            "number": "4",
+            "title": "Hình thức, nguyên tắc tổ chức của khối đại đoàn kết toàn dân tộc - Mặt trận dân tộc thống nhất"
+          },
+          {
+            "id": "hcm-great-unity-methods-sub",
+            "number": "5",
+            "title": "Phương thức xây dựng khối đại đoàn kết toàn dân tộc"
+          }
+        ]
+      },
+      {
+        "id": "hcm-international-unity-sec",
+        "roman": "II",
+        "title": "Tư tưởng Hồ Chí Minh về đoàn kết quốc tế",
+        "subsections": [
+          {
+            "id": "hcm-international-need-sub",
+            "number": "1",
+            "title": "Sự cần thiết phải đoàn kết quốc tế"
+          },
+          {
+            "id": "hcm-international-forces-sub",
+            "number": "2",
+            "title": "Lực lượng đoàn kết quốc tế và hình thức tổ chức"
+          },
+          {
+            "id": "hcm-international-principles-sub",
+            "number": "3",
+            "title": "Nguyên tắc đoàn kết quốc tế"
+          }
+        ]
+      },
+      {
+        "id": "hcm-applying-sec",
+        "roman": "III",
+        "title": "Vận dụng tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế trong giai đoạn hiện nay",
+        "subsections": [
+          {
+            "id": "hcm-applying-party-lines-sub",
+            "number": "1",
+            "title": "Quán triệt tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế trong hoạch định chủ trương, đường lối của Đảng"
+          },
+          {
+            "id": "hcm-applying-alliance-sub",
+            "number": "2",
+            "title": "Xây dựng khối đại đoàn kết toàn dân tộc trên nền tảng liên minh công - nông - trí dưới sự lãnh đạo của Đảng"
+          },
+          {
+            "id": "hcm-applying-international-sub",
+            "number": "3",
+            "title": "Đại đoàn kết toàn dân tộc phải kết hợp với đoàn kết quốc tế"
+          }
+        ]
+      }
+    ]
   }
 ],
     questionsMap: {
       "chuong-1": questionsChuong1,
       "chuong-2": questionsChuong2,
-      "chuong-3": questionsChuong3
+      "chuong-3": questionsChuong3,
+      "chuong-4": questionsChuong4,
+      "chuong-5": questionsChuong5
     }
   },
   "lich-su-dang": {

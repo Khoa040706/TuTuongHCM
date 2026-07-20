@@ -23,11 +23,15 @@ export default function HcmRelationConditions() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-pillar",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-pillar") : document.querySelectorAll(".animate-pillar");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.1 }
     );
+      }
+    }
   }, { scope: containerRef });
 
   const pillars = [

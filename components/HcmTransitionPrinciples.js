@@ -30,11 +30,15 @@ export default function HcmTransitionPrinciples() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-tab-content",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-tab-content") : document.querySelectorAll(".animate-tab-content");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeTab] });
 
   // 5 căn bệnh của chủ nghĩa cá nhân

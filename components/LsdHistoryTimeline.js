@@ -49,10 +49,15 @@ export default function LsdHistoryTimeline() {
 
   // GSAP animations
   useGSAP(() => {
-    gsap.fromTo(".timeline-card",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".timeline-card") : document.querySelectorAll(".timeline-card");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out" }
     );
+      }
+    }
   }, { dependencies: [activeTab], scope: containerRef });
 
   return (

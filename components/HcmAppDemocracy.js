@@ -22,11 +22,15 @@ export default function HcmAppDemocracy() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      ".animate-step-detail",
+    {
+      const targets = containerRef.current ? containerRef.current.querySelectorAll(".animate-step-detail") : document.querySelectorAll(".animate-step-detail");
+      if (targets && targets.length > 0) {
+      gsap.fromTo(targets,
       { opacity: 0, scale: 0.98 },
       { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }
     );
+      }
+    }
   }, { scope: containerRef, dependencies: [activeStep] });
 
   // 4 bước dân chủ

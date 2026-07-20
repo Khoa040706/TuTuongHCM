@@ -42,7 +42,7 @@ export default function HcmIndependenceThorough() {
   ];
 
   return (
-    <div className="w-full py-2 select-text font-sans bg-white space-y-8">
+    <div className="w-full py-2 select-text font-sans bg-transparent space-y-8">
       
       {/* CẢNH BÁO ĐỘC LẬP GIẢ HIỆU */}
       <div className="bg-rose-500/5 rounded-2xl p-5 md:p-6 border border-rose-500/15 shadow-sm space-y-4">
