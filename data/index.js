@@ -6,6 +6,7 @@ import { questionsChuong2 } from "./questions-chuong-2";
 import { questionsChuong3 } from "./questions-chuong-3";
 import { questionsChuong4 } from "./questions-chuong-4";
 import { questionsChuong5 } from "./questions-chuong-5";
+import { questionsChuong6 } from "./questions-chuong-6";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
 import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
 
@@ -435,6 +436,106 @@ export const subjects = {
         ]
       }
     ]
+  },
+  {
+    "id": "chuong-6",
+    "title": "Chương VI",
+    "subtitle": "Tư tưởng Hồ Chí Minh về văn hóa, đạo đức và con người",
+    "sections": [
+      {
+        "id": "tu-tuong-hcm-ve-van-hoa",
+        "roman": "I",
+        "title": "Tư tưởng Hồ Chí Minh về văn hóa",
+        "subsections": [
+          {
+            "id": "mo-dau-van-hoa",
+            "number": "",
+            "title": "Mở đầu"
+          },
+          {
+            "id": "nhan-thuc-chung-van-hoa",
+            "number": "1",
+            "title": "Một số nhận thức chung về văn hóa và quan hệ giữa văn hóa với các lĩnh vực khác"
+          },
+          {
+            "id": "vai-tro-cua-van-hoa",
+            "number": "2",
+            "title": "Quan điểm của Hồ Chí Minh về vai trò của văn hóa"
+          },
+          {
+            "id": "xay-dung-nen-van-hoa-moi",
+            "number": "3",
+            "title": "Quan điểm Hồ Chí Minh về xây dựng nền văn hóa mới"
+          }
+        ]
+      },
+      {
+        "id": "tu-tuong-hcm-ve-dao-duc",
+        "roman": "II",
+        "title": "Tư tưởng Hồ Chí Minh về đạo đức",
+        "subsections": [
+          {
+            "id": "dao-duc-la-goc",
+            "number": "1",
+            "title": "Đạo đức là gốc, là nền tảng tinh thần của xã hội, của người cách mạng"
+          },
+          {
+            "id": "chuan-muc-dao-duc-cach-mang",
+            "number": "2",
+            "title": "Quan điểm của Hồ Chí Minh về những chuẩn mực đạo đức cách mạng"
+          },
+          {
+            "id": "nguyen-tac-xay-dung-dao-duc",
+            "number": "3",
+            "title": "Quan điểm của Hồ Chí Minh về những nguyên tắc xây dựng đạo đức cách mạng"
+          }
+        ]
+      },
+      {
+        "id": "tu-tuong-hcm-ve-con-nguoi",
+        "roman": "III",
+        "title": "Tư tưởng Hồ Chí Minh về con người",
+        "subsections": [
+          {
+            "id": "quan-niem-ve-con-nguoi",
+            "number": "1",
+            "title": "Quan niệm của Hồ Chí Minh về con người"
+          },
+          {
+            "id": "vai-tro-cua-con-nguoi",
+            "number": "2",
+            "title": "Quan điểm của Hồ Chí Minh về vai trò của con người"
+          },
+          {
+            "id": "xay-dung-con-nguoi",
+            "number": "3",
+            "title": "Quan điểm của Hồ Chí Minh về xây dựng con người"
+          }
+        ]
+      },
+      {
+        "id": "xay-dung-van-hoa-dao-duc-con-nguoi-hien-nay",
+        "roman": "IV",
+        "title": "Xây dựng văn hóa, đạo đức, con người Việt Nam hiện nay theo tư tưởng Hồ Chí Minh",
+        "subsections": [
+          {
+            "id": "boi-canh-chung-van-hoa-hien-nay",
+            "number": "",
+            "title": "Bối cảnh chung"
+          },
+          {
+            "id": "xay-dung-phat-trien-van-hoa-con-nguoi",
+            "number": "1",
+            "title": "Xây dựng và phát triển văn hóa, con người"
+          },
+          {
+            "id": "xay-dung-dao-duc-cach-mang",
+            "number": "2",
+            "title": "Xây dựng đạo đức cách mạng"
+          }
+        ]
+      }
+    ]
   }
 ],
     questionsMap: {
@@ -442,7 +543,8 @@ export const subjects = {
       "chuong-2": questionsChuong2,
       "chuong-3": questionsChuong3,
       "chuong-4": questionsChuong4,
-      "chuong-5": questionsChuong5
+      "chuong-5": questionsChuong5,
+      "chuong-6": questionsChuong6
     }
   },
   "lich-su-dang": {

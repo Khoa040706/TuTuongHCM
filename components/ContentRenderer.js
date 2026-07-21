@@ -163,6 +163,33 @@ import LsdLiberationPreparation from "./LsdLiberationPreparation";
 import LsdAntiJapaneseMovement from "./LsdAntiJapaneseMovement";
 import LsdAugustRevolution from "./LsdAugustRevolution";
 import LsdRevolutionSignificance from "./LsdRevolutionSignificance";
+import HcmCulturePillarsVisualizer from "./HcmCulturePillarsVisualizer";
+import HcmCultureAcculturationVisualizer from "./HcmCultureAcculturationVisualizer";
+import HcmCultureHistoryTimeline from "./HcmCultureHistoryTimeline";
+import HcmCultureDriversVisualizer from "./HcmCultureDriversVisualizer";
+import HcmCultureFrontVisualizer from "./HcmCultureFrontVisualizer";
+import HcmNewCultureTimeline from "./HcmNewCultureTimeline";
+import HcmCreativeQuestionsCard from "./HcmCreativeQuestionsCard";
+import HcmDucTaiBalanceVisualizer from "./HcmDucTaiBalanceVisualizer";
+import HcmCanKiemLiemChinhVisualizer from "./HcmCanKiemLiemChinhVisualizer";
+import HcmTrungHieuShiftCard from "./HcmTrungHieuShiftCard";
+import HcmHumanityInternationalCard from "./HcmHumanityInternationalCard";
+import HcmNoiDiDoiVoiLamVisualizer from "./HcmNoiDiDoiVoiLamVisualizer";
+import HcmXayDoiVoiChongVisualizer from "./HcmXayDoiVoiChongVisualizer";
+import HcmTuDuongDaoDucVisualizer from "./HcmTuDuongDaoDucVisualizer";
+import HcmConNguoiQuanNiemVisualizer from "./HcmConNguoiQuanNiemVisualizer";
+import HcmBonGiaiPhongVisualizer from "./HcmBonGiaiPhongVisualizer";
+import HcmConNguoiDongLucCard from "./HcmConNguoiDongLucCard";
+import HcmTrongNguoiStrategyVisualizer from "./HcmTrongNguoiStrategyVisualizer";
+import HcmVuaHongVuaChuyenVisualizer from "./HcmVuaHongVuaChuyenVisualizer";
+import HcmGiaoDucConNguoiVisualizer from "./HcmGiaoDucConNguoiVisualizer";
+import HcmVanHoaContextVisualizer from "./HcmVanHoaContextVisualizer";
+import HcmVanHoaQuanDiemTimeline from "./HcmVanHoaQuanDiemTimeline";
+import HcmTamNhiemVuVanHoaVisualizer from "./HcmTamNhiemVuVanHoaVisualizer";
+import HcmBacHoMoralityVisualizer from "./HcmBacHoMoralityVisualizer";
+import HcmMoralityStatusVisualizer from "./HcmMoralityStatusVisualizer";
+import HcmFiveMoralityLessonsVisualizer from "./HcmFiveMoralityLessonsVisualizer";
+import HcmCourseCompletionBanner from "./HcmCourseCompletionBanner";
 import AbstractionConceptVisualizer from "./AbstractionConceptVisualizer";
 import AbstractionLevelCompare from "./AbstractionLevelCompare";
 import AbstractBikeVisualizer from "./AbstractBikeVisualizer";
@@ -1918,6 +1945,158 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
       return (
         <HcmApplyingInternational key={path} />
       );
+
+    case "flashcard":
+      return (
+        <div key={path} className="my-6 perspective-1000 select-none" data-hl-path={path}>
+          <div 
+            className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 via-white to-red-50/50 border border-red-200 text-stone-850 shadow-md hover:shadow-lg hover:border-red-400 transition-all cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-100 text-red-800 border border-red-200 shadow-xs">
+                {block.title || "GHI NHỚ TRỌNG TÂM"}
+              </span>
+            </div>
+            <div className="my-2">
+              <h5 className="text-xs uppercase font-extrabold text-amber-800 mb-1">CÂU HỎI TRỌNG TÂM:</h5>
+              <p className="text-sm md:text-base font-bold text-stone-900 mb-3">{block.front}</p>
+              <h5 className="text-xs uppercase font-extrabold text-emerald-800 mb-1">ĐÁP ÁN GHI NHỚ:</h5>
+              <p className="text-xs md:text-sm text-stone-700 leading-relaxed font-sans font-medium">{block.back}</p>
+            </div>
+          </div>
+        </div>
+      );
+
+    case "glowing-keywords":
+      return (
+        <div key={path} className="my-6 p-5 rounded-2xl bg-amber-50/70 border border-amber-200/90 shadow-sm relative overflow-hidden" data-hl-path={path}>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
+          <h5 className="text-xs font-black uppercase tracking-widest text-amber-900 mb-3 flex items-center gap-2">
+            ✨ {block.title || "TỪ KHÓA ÔN THI BẮT BUỘC NẮM CHẮC"}
+          </h5>
+          <div className="flex flex-wrap gap-2">
+            {block.keywords && block.keywords.map((kw, i) => (
+              <span 
+                key={i} 
+                className="px-3 py-1.5 rounded-xl text-xs md:text-sm font-bold bg-white text-amber-900 border border-amber-300 hover:bg-amber-100/80 shadow-xs transition-all cursor-default"
+              >
+                #{kw}
+              </span>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "component":
+      if (block.component === "hcm-culture-pillars-visualizer") return <HcmCulturePillarsVisualizer key={path} />;
+      if (block.component === "hcm-culture-acculturation-visualizer") return <HcmCultureAcculturationVisualizer key={path} />;
+      if (block.component === "hcm-culture-history-timeline") return <HcmCultureHistoryTimeline key={path} />;
+      if (block.component === "hcm-culture-drivers-visualizer") return <HcmCultureDriversVisualizer key={path} />;
+      if (block.component === "hcm-culture-front-visualizer") return <HcmCultureFrontVisualizer key={path} />;
+      if (block.component === "hcm-new-culture-timeline") return <HcmNewCultureTimeline key={path} />;
+      if (block.component === "hcm-creative-questions-card") return <HcmCreativeQuestionsCard key={path} />;
+      if (block.component === "hcm-duc-tai-balance-visualizer") return <HcmDucTaiBalanceVisualizer key={path} />;
+      if (block.component === "hcm-can-kiem-liem-chinh-visualizer") return <HcmCanKiemLiemChinhVisualizer key={path} />;
+      if (block.component === "hcm-trung-hieu-shift-card") return <HcmTrungHieuShiftCard key={path} />;
+      if (block.component === "hcm-humanity-international-card") return <HcmHumanityInternationalCard key={path} />;
+      if (block.component === "hcm-noi-di-doi-voi-lam-visualizer") return <HcmNoiDiDoiVoiLamVisualizer key={path} />;
+      if (block.component === "hcm-xay-doi-voi-chong-visualizer") return <HcmXayDoiVoiChongVisualizer key={path} />;
+      if (block.component === "hcm-tu-duong-dao-duc-visualizer") return <HcmTuDuongDaoDucVisualizer key={path} />;
+      if (block.component === "hcm-con-nguoi-quan-niem-visualizer") return <HcmConNguoiQuanNiemVisualizer key={path} />;
+      if (block.component === "hcm-bon-giai-phong-visualizer") return <HcmBonGiaiPhongVisualizer key={path} />;
+      if (block.component === "hcm-con-nguoi-dong-luc-card") return <HcmConNguoiDongLucCard key={path} />;
+      if (block.component === "hcm-trong-nguoi-strategy-visualizer") return <HcmTrongNguoiStrategyVisualizer key={path} />;
+      if (block.component === "hcm-vua-hong-vua-chuyen-visualizer") return <HcmVuaHongVuaChuyenVisualizer key={path} />;
+      if (block.component === "hcm-giao-duc-con-nguoi-visualizer") return <HcmGiaoDucConNguoiVisualizer key={path} />;
+      if (block.component === "hcm-van-hoa-context-visualizer") return <HcmVanHoaContextVisualizer key={path} />;
+      if (block.component === "hcm-van-hoa-quan-diem-timeline") return <HcmVanHoaQuanDiemTimeline key={path} />;
+      if (block.component === "hcm-tam-nhiem-vu-van-hoa-visualizer") return <HcmTamNhiemVuVanHoaVisualizer key={path} />;
+      if (block.component === "hcm-bac-ho-morality-visualizer") return <HcmBacHoMoralityVisualizer key={path} />;
+      if (block.component === "hcm-morality-status-visualizer") return <HcmMoralityStatusVisualizer key={path} />;
+      if (block.component === "hcm-five-morality-lessons-visualizer") return <HcmFiveMoralityLessonsVisualizer key={path} />;
+      if (block.component === "hcm-course-completion-banner") return <HcmCourseCompletionBanner key={path} />;
+      return null;
+
+    case "hcm-culture-pillars-visualizer":
+      return <HcmCulturePillarsVisualizer key={path} />;
+
+    case "hcm-culture-acculturation-visualizer":
+      return <HcmCultureAcculturationVisualizer key={path} />;
+
+    case "hcm-culture-history-timeline":
+      return <HcmCultureHistoryTimeline key={path} />;
+
+    case "hcm-culture-drivers-visualizer":
+      return <HcmCultureDriversVisualizer key={path} />;
+
+    case "hcm-culture-front-visualizer":
+      return <HcmCultureFrontVisualizer key={path} />;
+
+    case "hcm-new-culture-timeline":
+      return <HcmNewCultureTimeline key={path} />;
+
+    case "hcm-creative-questions-card":
+      return <HcmCreativeQuestionsCard key={path} />;
+
+    case "hcm-duc-tai-balance-visualizer":
+      return <HcmDucTaiBalanceVisualizer key={path} />;
+
+    case "hcm-can-kiem-liem-chinh-visualizer":
+      return <HcmCanKiemLiemChinhVisualizer key={path} />;
+
+    case "hcm-trung-hieu-shift-card":
+      return <HcmTrungHieuShiftCard key={path} />;
+
+    case "hcm-humanity-international-card":
+      return <HcmHumanityInternationalCard key={path} />;
+
+    case "hcm-noi-di-doi-voi-lam-visualizer":
+      return <HcmNoiDiDoiVoiLamVisualizer key={path} />;
+
+    case "hcm-xay-doi-voi-chong-visualizer":
+      return <HcmXayDoiVoiChongVisualizer key={path} />;
+
+    case "hcm-tu-duong-dao-duc-visualizer":
+      return <HcmTuDuongDaoDucVisualizer key={path} />;
+
+    case "hcm-con-nguoi-quan-niem-visualizer":
+      return <HcmConNguoiQuanNiemVisualizer key={path} />;
+
+    case "hcm-bon-giai-phong-visualizer":
+      return <HcmBonGiaiPhongVisualizer key={path} />;
+
+    case "hcm-con-nguoi-dong-luc-card":
+      return <HcmConNguoiDongLucCard key={path} />;
+
+    case "hcm-trong-nguoi-strategy-visualizer":
+      return <HcmTrongNguoiStrategyVisualizer key={path} />;
+
+    case "hcm-vua-hong-vua-chuyen-visualizer":
+      return <HcmVuaHongVuaChuyenVisualizer key={path} />;
+
+    case "hcm-giao-duc-con-nguoi-visualizer":
+      return <HcmGiaoDucConNguoiVisualizer key={path} />;
+
+    case "hcm-van-hoa-context-visualizer":
+      return <HcmVanHoaContextVisualizer key={path} />;
+
+    case "hcm-van-hoa-quan-diem-timeline":
+      return <HcmVanHoaQuanDiemTimeline key={path} />;
+
+    case "hcm-tam-nhiem-vu-van-hoa-visualizer":
+      return <HcmTamNhiemVuVanHoaVisualizer key={path} />;
+
+    case "hcm-bac-ho-morality-visualizer":
+      return <HcmBacHoMoralityVisualizer key={path} />;
+
+    case "hcm-morality-status-visualizer":
+      return <HcmMoralityStatusVisualizer key={path} />;
+
+    case "hcm-five-morality-lessons-visualizer":
+      return <HcmFiveMoralityLessonsVisualizer key={path} />;
+
+    case "hcm-course-completion-banner":
+      return <HcmCourseCompletionBanner key={path} />;
 
     case "hcm-party-founding-necessity":
       return (

@@ -3,6 +3,7 @@ import { chuong2 } from "./chuong-2";
 import { chuong3 } from "./chuong-3";
 import { chuong4 } from "./chuong-4";
 import { chuong5 } from "./chuong-5";
+import { chuong6 } from "./chuong-6";
 import { analysisDesignData } from "./analysis-design";
 import { basicAlgorithmsData } from "./basic-algorithms";
 import { basicConceptsData } from "./basic-concepts";
@@ -15,7 +16,7 @@ import { oopData } from "./oop";
 
 export const lessonsData = {
   "tu-tuong-hcm": {
-    chapters: [chuong1, chuong2, chuong3, chuong4, chuong5]
+    chapters: [chuong1, chuong2, chuong3, chuong4, chuong5, chuong6]
   },
   "lich-su-dang": {
     chapters: [lichSuDangMoDau, lichSuDangChuong1]

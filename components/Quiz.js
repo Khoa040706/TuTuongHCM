@@ -302,12 +302,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const insidePool = questionData.inside || [];
     const outsidePool = questionData.outside || [];
 
-    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, and chuong-5; 3 for others)
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 4 : 3;
+    // 1. Draw random outside questions (4 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, chuong-5, and chuong-6; 3 for others)
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 4 : 3;
     const sampledOutside = getRandomSample(outsidePool, outsideCount);
 
-    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, and chuong-5; 37 for others)
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 36 : 37;
+    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, chuong-5, and chuong-6; 37 for others)
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37;
     let sampledInside = [];
 
     if (chapterId === "chuong-1") {
@@ -542,8 +542,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const N = insidePool.length;
     const M = outsidePool.length;
 
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 36 : 37;
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5") ? 4 : 3;
+    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37;
+    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 4 : 3;
 
     const K = Math.max(1, Math.ceil(N / insideCount));
     const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
@@ -920,6 +920,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         diag["c3-trick"] = { title: "Câu hỏi bẫy giáo trình chương 3", correct: 0, total: 0 };
       } else if (selectedChapterId === "chuong-4") {
         diag["c4-trick"] = { title: "Câu hỏi bẫy giáo trình chương 4", correct: 0, total: 0 };
+      } else if (selectedChapterId === "chuong-6") {
+        diag["c6-trick"] = { title: "Câu hỏi bẫy giáo trình chương 6", correct: 0, total: 0 };
       }
     }
 
@@ -1227,7 +1229,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   if (!questionData) return null;
                   const insidePool = questionData.inside || [];
                   const N = insidePool.length;
-                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3" || selectedChapterId === "chuong-4" || selectedChapterId === "chuong-5") ? 36 : 37;
+                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3" || selectedChapterId === "chuong-4" || selectedChapterId === "chuong-5" || selectedChapterId === "chuong-6") ? 36 : 37;
                   const K = Math.max(1, Math.ceil(N / insideCount));
 
                   return (
