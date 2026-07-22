@@ -1507,7 +1507,7 @@ export default function Page() {
       };
     });
     setAllSubjects(merged);
-  }, [customSubjects]);
+  }, [customSubjects, subjects]);
 
   const handleAddSubject = (e) => {
     e.preventDefault();

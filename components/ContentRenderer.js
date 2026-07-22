@@ -163,6 +163,87 @@ import LsdLiberationPreparation from "./LsdLiberationPreparation";
 import LsdAntiJapaneseMovement from "./LsdAntiJapaneseMovement";
 import LsdAugustRevolution from "./LsdAugustRevolution";
 import LsdRevolutionSignificance from "./LsdRevolutionSignificance";
+import LsdSituation1945Visualizer from "./LsdSituation1945Visualizer";
+import LsdThreeEnemiesVisualizer from "./LsdThreeEnemiesVisualizer";
+import LsdVerticalTimeline1945To1946 from "./LsdVerticalTimeline1945To1946";
+import LsdStrategyDiBatBienVisualizer from "./LsdStrategyDiBatBienVisualizer";
+import LsdNationalResistanceQuote from "./LsdNationalResistanceQuote";
+import LsdFourPillarsVisualizer from "./LsdFourPillarsVisualizer";
+import LsdCampaignsCompareVisualizer from "./LsdCampaignsCompareVisualizer";
+import LsdFilteredTimeline1946To1950 from "./LsdFilteredTimeline1946To1950";
+import LsdGotchasAndExamFlashcards from "./LsdGotchasAndExamFlashcards";
+import LsdCongress2AndPlatform1951 from "./LsdCongress2AndPlatform1951";
+import LsdLandReformVisualizer from "./LsdLandReformVisualizer";
+import LsdDienBienPhu56DaysVisualizer from "./LsdDienBienPhu56DaysVisualizer";
+import LsdGenevaAccords1954Matrix from "./LsdGenevaAccords1954Matrix";
+import Lsd9YearsSummaryTimeline from "./Lsd9YearsSummaryTimeline";
+import Lsd9YearsSignificanceHero from "./Lsd9YearsSignificanceHero";
+import Lsd5LessonsAccordion from "./Lsd5LessonsAccordion";
+import LsdThreeArmedForcesVisualizer from "./LsdThreeArmedForcesVisualizer";
+import LsdLandReformConferencesMatrix from "./LsdLandReformConferencesMatrix";
+import LsdPart1ComprehensiveReviewDashboard from "./LsdPart1ComprehensiveReviewDashboard";
+import LsdLessons1945To1946Visualizer from "./LsdLessons1945To1946Visualizer";
+import LsdContext1954SplitScreen from "./LsdContext1954SplitScreen";
+import LsdNorthAgricultureAndCorrection from "./LsdNorthAgricultureAndCorrection";
+import LsdSouthOppressionAndOutline1956 from "./LsdSouthOppressionAndOutline1956";
+import LsdResolution15AndDongKhoi from "./LsdResolution15AndDongKhoi";
+import LsdNationalFrontAndReview1954To1960 from "./LsdNationalFrontAndReview1954To1960";
+import LsdCongress3Dashboard from "./LsdCongress3Dashboard";
+import LsdFirstFiveYearPlan from "./LsdFirstFiveYearPlan";
+import LsdSpecialWarDashboard from "./LsdSpecialWarDashboard";
+import LsdThreeProngedAttack from "./LsdThreeProngedAttack";
+import LsdSignificanceAndReview1961To1965 from "./LsdSignificanceAndReview1961To1965";
+import LsdLocalWarDashboard from "./LsdLocalWarDashboard";
+import LsdTetOffensive1968 from "./LsdTetOffensive1968";
+import LsdParisAccordsDashboard from "./LsdParisAccordsDashboard";
+import LsdSpring1975Offensive from "./LsdSpring1975Offensive";
+import LsdSignificanceAndReview1965To1975 from "./LsdSignificanceAndReview1965To1975";
+import LsdAntiUSSignificanceHero from "./LsdAntiUSSignificanceHero";
+import Lsd5LessonsAntiUS from "./Lsd5LessonsAntiUS";
+import LsdChronologyTable1954To1975 from "./LsdChronologyTable1954To1975";
+import LsdUSStrategiesMatrix from "./LsdUSStrategiesMatrix";
+import LsdPart2ComprehensiveReview from "./LsdPart2ComprehensiveReview";
+import LsdPostWarContext1975 from "./LsdPostWarContext1975";
+import LsdUnificationDashboard1976 from "./LsdUnificationDashboard1976";
+import LsdCongress4Dashboard from "./LsdCongress4Dashboard";
+import LsdCongress4Limitations from "./LsdCongress4Limitations";
+import LsdChapter3Part1Review from "./LsdChapter3Part1Review";
+import LsdEconomicBreakthroughs1979 from "./LsdEconomicBreakthroughs1979";
+import LsdBorderWarsDashboard from "./LsdBorderWarsDashboard";
+import LsdPeriod1975To1981Summary from "./LsdPeriod1975To1981Summary";
+import LsdChapter3Part1FullReview from "./LsdChapter3Part1FullReview";
+import LsdCongress5Dashboard from "./LsdCongress5Dashboard";
+import LsdCongress5Limitations from "./LsdCongress5Limitations";
+import LsdPriceWageMoney1985 from "./LsdPriceWageMoney1985";
+import LsdPolitburoBreakthrough1986 from "./LsdPolitburoBreakthrough1986";
+import LsdChapter3Part2Review from "./LsdChapter3Part2Review";
+import LsdPeriod1975To1986DecadeSummary from "./LsdPeriod1975To1986DecadeSummary";
+import LsdJuly1986LeadershipShift from "./LsdJuly1986LeadershipShift";
+import Lsd3EconomicBreakthroughsMatrix from "./Lsd3EconomicBreakthroughsMatrix";
+import LsdCongresses4And5Compare from "./LsdCongresses4And5Compare";
+import LsdSection1MegaReview from "./LsdSection1MegaReview";
+import LsdCongress6DoiMoiDashboard from "./LsdCongress6DoiMoiDashboard";
+import LsdPostCongress6Context from "./LsdPostCongress6Context";
+import LsdDoiMoiResults1986To1991 from "./LsdDoiMoiResults1986To1991";
+import LsdTW6AndTW8Conferences from "./LsdTW6AndTW8Conferences";
+import LsdSection2Part1Review from "./LsdSection2Part1Review";
+import LsdCongress7CuongLinhDashboard from "./LsdCongress7CuongLinhDashboard";
+import LsdCongressVIIImplementation from "./LsdCongressVIIImplementation";
+import LsdTWConferencesSession7 from "./LsdTWConferencesSession7";
+import LsdDiplomacy1991To1996 from "./LsdDiplomacy1991To1996";
+import LsdSection2Part1DEReview from "./LsdSection2Part1DEReview";
+import LsdDoiMoiDecadeMegaHub from "./LsdDoiMoiDecadeMegaHub";
+import LsdCongress8FullContent from "./LsdCongress8FullContent";
+import LsdCongress9FullContent from "./LsdCongress9FullContent";
+import LsdCongress10FullContent from "./LsdCongress10FullContent";
+import LsdCongress10And11Part2FullContent from "./LsdCongress10And11Part2FullContent";
+import LsdAchievementsFullContent from "./LsdAchievementsFullContent";
+import LsdLessonsFullContent from "./LsdLessonsFullContent";
+import LsdRecapFullHub from "./LsdRecapFullHub";
+import LsdConclusionPart1FullContent from "./LsdConclusionPart1FullContent";
+import LsdConclusionPart2FullContent from "./LsdConclusionPart2FullContent";
+import LsdConclusionPart3FullContent from "./LsdConclusionPart3FullContent";
+import LsdConclusionPart4FullContent from "./LsdConclusionPart4FullContent";
 import HcmCulturePillarsVisualizer from "./HcmCulturePillarsVisualizer";
 import HcmCultureAcculturationVisualizer from "./HcmCultureAcculturationVisualizer";
 import HcmCultureHistoryTimeline from "./HcmCultureHistoryTimeline";
@@ -2428,9 +2509,414 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
         <LsdRevolutionSignificance key={path} />
       );
 
+    case "lsd-situation-1945":
+      return (
+        <LsdSituation1945Visualizer key={path} />
+      );
+
+    case "lsd-three-enemies":
+      return (
+        <LsdThreeEnemiesVisualizer key={path} />
+      );
+
+    case "lsd-vertical-timeline-1945-1946":
+      return (
+        <LsdVerticalTimeline1945To1946 key={path} />
+      );
+
+    case "lsd-strategy-di-bat-bien":
+      return (
+        <LsdStrategyDiBatBienVisualizer key={path} />
+      );
+
+    case "lsd-national-resistance-quote":
+      return (
+        <LsdNationalResistanceQuote key={path} />
+      );
+
+    case "lsd-four-pillars":
+      return (
+        <LsdFourPillarsVisualizer key={path} />
+      );
+
+    case "lsd-campaigns-compare":
+      return (
+        <LsdCampaignsCompareVisualizer key={path} />
+      );
+
+    case "lsd-filtered-timeline-1946-1950":
+      return (
+        <LsdFilteredTimeline1946To1950 key={path} />
+      );
+
+    case "lsd-gotchas-exam-flashcards":
+      return (
+        <LsdGotchasAndExamFlashcards key={path} />
+      );
+
+    case "lsd-congress-2-platform-1951":
+      return (
+        <LsdCongress2AndPlatform1951 key={path} />
+      );
+
+    case "lsd-land-reform":
+      return (
+        <LsdLandReformVisualizer key={path} />
+      );
+
+    case "lsd-dien-bien-phu-56-days":
+      return (
+        <LsdDienBienPhu56DaysVisualizer key={path} />
+      );
+
+    case "lsd-geneva-accords-1954-matrix":
+      return (
+        <LsdGenevaAccords1954Matrix key={path} />
+      );
+
+    case "lsd-9-years-summary-timeline":
+      return (
+        <Lsd9YearsSummaryTimeline key={path} />
+      );
+
+    case "lsd-9-years-significance-hero":
+      return (
+        <Lsd9YearsSignificanceHero key={path} />
+      );
+
+    case "lsd-5-lessons-accordion":
+      return (
+        <Lsd5LessonsAccordion key={path} />
+      );
+
+    case "lsd-three-armed-forces":
+      return (
+        <LsdThreeArmedForcesVisualizer key={path} />
+      );
+
+    case "lsd-land-reform-conferences-matrix":
+      return (
+        <LsdLandReformConferencesMatrix key={path} />
+      );
+
+    case "lsd-part-1-comprehensive-review-dashboard":
+      return (
+        <LsdPart1ComprehensiveReviewDashboard key={path} />
+      );
+
+    case "lsd-lessons-1945-1946":
+      return (
+        <LsdLessons1945To1946Visualizer key={path} />
+      );
+
+    case "lsd-context-1954-split-screen":
+      return (
+        <LsdContext1954SplitScreen key={path} />
+      );
+
+    case "lsd-north-agriculture-and-correction":
+      return (
+        <LsdNorthAgricultureAndCorrection key={path} />
+      );
+
+    case "lsd-south-oppression-and-outline-1956":
+      return (
+        <LsdSouthOppressionAndOutline1956 key={path} />
+      );
+
+    case "lsd-resolution-15-and-dong-khoi":
+      return (
+        <LsdResolution15AndDongKhoi key={path} />
+      );
+
+    case "lsd-national-front-and-review-1954-to-1960":
+      return (
+        <LsdNationalFrontAndReview1954To1960 key={path} />
+      );
+
+    case "lsd-congress-3-dashboard":
+      return (
+        <LsdCongress3Dashboard key={path} />
+      );
+
+    case "lsd-first-five-year-plan":
+      return (
+        <LsdFirstFiveYearPlan key={path} />
+      );
+
+    case "lsd-special-war-dashboard":
+      return (
+        <LsdSpecialWarDashboard key={path} />
+      );
+
+    case "lsd-three-pronged-attack":
+      return (
+        <LsdThreeProngedAttack key={path} />
+      );
+
+    case "lsd-significance-and-review-1961-to-1965":
+      return (
+        <LsdSignificanceAndReview1961To1965 key={path} />
+      );
+
+    case "lsd-local-war-dashboard":
+      return (
+        <LsdLocalWarDashboard key={path} />
+      );
+
+    case "lsd-tet-offensive-1968":
+      return (
+        <LsdTetOffensive1968 key={path} />
+      );
+
+    case "lsd-paris-accords-dashboard":
+      return (
+        <LsdParisAccordsDashboard key={path} />
+      );
+
+    case "lsd-spring-1975-offensive":
+      return (
+        <LsdSpring1975Offensive key={path} />
+      );
+
+    case "lsd-significance-and-review-1965-to-1975":
+      return (
+        <LsdSignificanceAndReview1965To1975 key={path} />
+      );
+
+    case "lsd-anti-us-significance-hero":
+      return (
+        <LsdAntiUSSignificanceHero key={path} />
+      );
+
+    case "lsd-5-lessons-anti-us":
+      return (
+        <Lsd5LessonsAntiUS key={path} />
+      );
+
+    case "lsd-chronology-table-1954-to-1975":
+      return (
+        <LsdChronologyTable1954To1975 key={path} />
+      );
+
+    case "lsd-us-strategies-matrix":
+      return (
+        <LsdUSStrategiesMatrix key={path} />
+      );
+
+    case "lsd-part-2-comprehensive-review":
+      return (
+        <LsdPart2ComprehensiveReview key={path} />
+      );
+
+    case "lsd-post-war-context-1975":
+      return (
+        <LsdPostWarContext1975 key={path} />
+      );
+
+    case "lsd-unification-dashboard-1976":
+      return (
+        <LsdUnificationDashboard1976 key={path} />
+      );
+
+    case "lsd-congress-4-dashboard":
+      return (
+        <LsdCongress4Dashboard key={path} />
+      );
+
+    case "lsd-congress-4-limitations":
+      return (
+        <LsdCongress4Limitations key={path} />
+      );
+
+    case "lsd-chapter-3-part-1-review":
+      return (
+        <LsdChapter3Part1Review key={path} />
+      );
+
+    case "lsd-economic-breakthroughs-1979":
+      return (
+        <LsdEconomicBreakthroughs1979 key={path} />
+      );
+
+    case "lsd-border-wars-dashboard":
+      return (
+        <LsdBorderWarsDashboard key={path} />
+      );
+
+    case "lsd-period-1975-to-1981-summary":
+      return (
+        <LsdPeriod1975To1981Summary key={path} />
+      );
+
+    case "lsd-chapter-3-part-1-full-review":
+      return (
+        <LsdChapter3Part1FullReview key={path} />
+      );
+
+    case "lsd-congress-5-dashboard":
+      return (
+        <LsdCongress5Dashboard key={path} />
+      );
+
+    case "lsd-congress-5-limitations":
+      return (
+        <LsdCongress5Limitations key={path} />
+      );
+
+    case "lsd-price-wage-money-1985":
+      return (
+        <LsdPriceWageMoney1985 key={path} />
+      );
+
+    case "lsd-politburo-breakthrough-1986":
+      return (
+        <LsdPolitburoBreakthrough1986 key={path} />
+      );
+
+    case "lsd-chapter-3-part-2-review":
+      return (
+        <LsdChapter3Part2Review key={path} />
+      );
+
+    case "lsd-period-1975-to-1986-decade-summary":
+      return (
+        <LsdPeriod1975To1986DecadeSummary key={path} />
+      );
+
+    case "lsd-july-1986-leadership-shift":
+      return (
+        <LsdJuly1986LeadershipShift key={path} />
+      );
+
+    case "lsd-3-economic-breakthroughs-matrix":
+      return (
+        <Lsd3EconomicBreakthroughsMatrix key={path} />
+      );
+
+    case "lsd-congresses-4-and-5-compare":
+      return (
+        <LsdCongresses4And5Compare key={path} />
+      );
+
+    case "lsd-section-1-mega-review":
+      return (
+        <LsdSection1MegaReview key={path} />
+      );
+
+    case "lsd-congress-6-doi-moi-dashboard":
+      return (
+        <LsdCongress6DoiMoiDashboard key={path} />
+      );
+
+    case "lsd-post-congress-6-context":
+      return (
+        <LsdPostCongress6Context key={path} />
+      );
+
+    case "lsd-doi-moi-results-1986-to-1991":
+      return (
+        <LsdDoiMoiResults1986To1991 key={path} />
+      );
+
+    case "lsd-tw6-and-tw8-conferences":
+      return (
+        <LsdTW6AndTW8Conferences key={path} />
+      );
+
+    case "lsd-section-2-part-1-review":
+      return (
+        <LsdSection2Part1Review key={path} />
+      );
+
+    case "lsd-congress-7-cuong-linh-dashboard":
+      return (
+        <LsdCongress7CuongLinhDashboard key={path} />
+      );
+
+    case "lsd-congress-vii-implementation":
+      return (
+        <LsdCongressVIIImplementation key={path} />
+      );
+
+    case "lsd-tw-conferences-session-7":
+      return (
+        <LsdTWConferencesSession7 key={path} />
+      );
+
+    case "lsd-diplomacy-1991-to-1996":
+      return (
+        <LsdDiplomacy1991To1996 key={path} />
+      );
+
+    case "lsd-section-2-part-1-de-review":
+      return (
+        <LsdSection2Part1DEReview key={path} />
+      );
+
+    case "lsd-doi-moi-decade-mega-hub":
+      return (
+        <LsdDoiMoiDecadeMegaHub key={path} />
+      );
+
+    case "lsd-congress-8-full-content":
+      return (
+        <LsdCongress8FullContent key={path} />
+      );
+
+    case "lsd-congress-9-full-content":
+      return (
+        <LsdCongress9FullContent key={path} />
+      );
+
+    case "lsd-congress-10-full-content":
+      return (
+        <LsdCongress10FullContent key={path} />
+      );
+
+    case "lsd-congress-10-11-part2-full-content":
+      return (
+        <LsdCongress10And11Part2FullContent key={path} />
+      );
+
+    case "lsd-achievements-full-content":
+      return (
+        <LsdAchievementsFullContent key={path} />
+      );
+
+    case "lsd-lessons-full-content":
+      return (
+        <LsdLessonsFullContent key={path} />
+      );
+
+    case "lsd-recap-full-hub":
+      return (
+        <LsdRecapFullHub key={path} />
+      );
+
+    case "lsd-conclusion-part-1-full-content":
+      return (
+        <LsdConclusionPart1FullContent key={path} />
+      );
+
+    case "lsd-conclusion-part-2-full-content":
+      return (
+        <LsdConclusionPart2FullContent key={path} />
+      );
+
+    case "lsd-conclusion-part-3-full-content":
+      return (
+        <LsdConclusionPart3FullContent key={path} />
+      );
+
+    case "lsd-conclusion-part-4-full-content":
+      return (
+        <LsdConclusionPart4FullContent key={path} />
+      );
+
     default:
       return (
-        <p className="text-paragraph text-stone-700 leading-[1.9] mb-4 text-sm md:text-base font-sans" data-hl-path={path} dangerouslySetInnerHTML={{ __html: formatMathText(block.text) }} />
+        <p className="text-paragraph text-stone-700 leading-[1.9] mb-4 text-sm md:text-base font-sans" data-hl-path={path} dangerouslySetInnerHTML={{ __html: formatMathText(block.text || block.value || "") }} />
       );
   }
 }

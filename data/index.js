@@ -707,6 +707,205 @@ export const subjects = {
         ]
       }
     ]
+  },
+  {
+    "id": "lich-su-dang-chuong-2",
+    "title": "Chương II",
+    "subtitle": "Đảng lãnh đạo hai cuộc kháng chiến chống ngoại xâm, hoàn thành giải phóng dân tộc, thống nhất đất nước (1945 - 1975)",
+    "sections": [
+      {
+        "id": "lsd2-section-1",
+        "roman": "I",
+        "title": "Lãnh đạo xây dựng, bảo vệ chính quyền cách mạng, kháng chiến chống thực dân Pháp xâm lược 1945-1954",
+        "subsections": [
+          {
+            "id": "lsd2-sub-1-1",
+            "number": "1",
+            "title": "Xây dựng và bảo vệ chính quyền cách mạng 1945-1946"
+          },
+          {
+            "id": "lsd2-sub-1-2",
+            "number": "2",
+            "title": "Đường lối kháng chiến toàn quốc và quá trình tổ chức thực hiện từ năm 1946 đến năm 1950"
+          },
+          {
+            "id": "lsd2-sub-1-3",
+            "number": "3",
+            "title": "Đẩy mạnh cuộc kháng chiến đến thắng lợi 1951-1954"
+          },
+          {
+            "id": "lsd2-sub-1-4",
+            "number": "4",
+            "title": "Ý nghĩa lịch sử và kinh nghiệm của Đảng trong lãnh đạo kháng chiến chống Pháp và can thiệp Mỹ 1945-1954"
+          }
+        ]
+      },
+      {
+        "id": "lsd2-section-2",
+        "roman": "II",
+        "title": "Lãnh đạo xây dựng chủ nghĩa xã hội ở miền Bắc và kháng chiến chống đế quốc Mỹ xâm lược, giải phóng miền Nam, thống nhất đất nước 1954-1975",
+        "subsections": [
+          {
+            "id": "lsd2-sub-2-1-a",
+            "number": "1.a",
+            "title": "Khôi phục kinh tế, cải tạo xã hội chủ nghĩa ở miền Bắc, chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công 1954-1960"
+          },
+          {
+            "id": "lsd2-sub-2-1-b",
+            "number": "1.b",
+            "title": "Xây dựng chủ nghĩa xã hội ở miền Bắc, phát triển thế tiến công của cách mạng miền Nam 1961-1965"
+          },
+          {
+            "id": "lsd2-sub-2-2",
+            "number": "2",
+            "title": "Lãnh đạo cách mạng cả nước 1965-1975"
+          },
+          {
+            "id": "lsd2-sub-2-3",
+            "number": "3",
+            "title": "Ý nghĩa lịch sử và kinh nghiệm lãnh đạo của Đảng thời kỳ 1954-1975"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lich-su-dang-chuong-3",
+    "title": "Chương III",
+    "subtitle": "Đảng lãnh đạo cả nước quá độ lên chủ nghĩa xã hội và tiến hành công cuộc đổi mới (1975 - nay)",
+    "sections": [
+      {
+        "id": "lsd3-section-1",
+        "roman": "I",
+        "title": "Lãnh đạo cả nước xây dựng chủ nghĩa xã hội và bảo vệ Tổ quốc 1975-1986",
+        "subsections": [
+          {
+            "id": "lsd3-sub-3-1-a",
+            "number": "1.a-b",
+            "title": "Xây dựng chủ nghĩa xã hội và bảo vệ Tổ quốc 1975-1981"
+          },
+          {
+            "id": "lsd3-sub-3-1-b",
+            "number": "1.2",
+            "title": "Đại hội V của Đảng và các bước đột phá tiếp tục đổi mới kinh tế 1982-1986"
+          }
+        ]
+      },
+      {
+        "id": "lsd3-section-2",
+        "roman": "II",
+        "title": "Lãnh đạo công cuộc đổi mới, đẩy mạnh công nghiệp hóa, hiện đại hóa và hội nhập quốc tế (1986 - 2018)",
+        "subsections": [
+          {
+            "id": "lsd3-sub-3-2-a",
+            "number": "2.1",
+            "title": "Đổi mới toàn diện, đưa đất nước ra khỏi khủng hoảng kinh tế - xã hội (1986-1996)"
+          },
+          {
+            "id": "lsd3-sec2-part-2-congress8-a",
+            "number": "2.2.a",
+            "title": "Đại hội VIII và bước đầu đẩy mạnh công nghiệp hoá, hiện đại hoá (1996 - 2001)"
+          },
+          {
+            "id": "lsd3-sec2-part-2-congress9-b",
+            "number": "2.2.b",
+            "title": "Đại hội IX -- tiếp tục đẩy mạnh công nghiệp hoá, hiện đại hoá đất nước (2001 - 2006)"
+          },
+          {
+            "id": "lsd3-sec2-part-2-congress10-c",
+            "number": "2.2.c",
+            "title": "Đại hội X và quá trình thực hiện (2006 - 2011)"
+          },
+          {
+            "id": "lsd3-sec2-part-2-congress11-d",
+            "number": "2.2.d",
+            "title": "Đại hội XI và Cương lĩnh bổ sung 2011 (2011 - 2016)"
+          }
+        ]
+      },
+      {
+        "id": "lsd3-section-3",
+        "roman": "III",
+        "title": "Thành tựu, kinh nghiệm của công cuộc đổi mới",
+        "subsections": [
+          {
+            "id": "lsd3-sec3-part-a-achievements",
+            "number": "3.a",
+            "title": "Thành tựu của sự nghiệp đổi mới"
+          },
+          {
+            "id": "lsd3-sec3-part-b-limitations",
+            "number": "3.b",
+            "title": "Một số hạn chế và nguyên nhân"
+          },
+          {
+            "id": "lsd3-sec3-part-c-lessons",
+            "number": "3.c",
+            "title": "Một số kinh nghiệm của Đảng trong công cuộc đổi mới"
+          },
+          {
+            "id": "lsd3-sec3-part-d-recap",
+            "number": "3.d",
+            "title": "Bảng số liệu, từ khóa ghi nhớ & 5 câu hỏi ôn tập giáo trình"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lich-su-dang-ket-luan",
+    "title": "Kết Luận",
+    "subtitle": "Kết luận -- Lịch sử Đảng Cộng sản Việt Nam",
+    "sections": [
+      {
+        "id": "lsd-conclusion-sec-1",
+        "roman": "I",
+        "title": "Khái quát các thời kỳ lịch sử của Đảng",
+        "subsections": [
+          {
+            "id": "lsd-conclusion-part-1-a",
+            "number": "1.a",
+            "title": "Khái quát các thời kỳ lịch sử của Đảng"
+          }
+        ]
+      },
+      {
+        "id": "lsd-conclusion-sec-2",
+        "roman": "II",
+        "title": "Những thắng lợi vĩ đại của cách mạng Việt Nam",
+        "subsections": [
+          {
+            "id": "lsd-conclusion-part-2-a",
+            "number": "2.a",
+            "title": "Những thắng lợi vĩ đại của cách mạng Việt Nam"
+          }
+        ]
+      },
+      {
+        "id": "lsd-conclusion-sec-3",
+        "roman": "III",
+        "title": "Những bài học lớn về sự lãnh đạo của Đảng",
+        "subsections": [
+          {
+            "id": "lsd-conclusion-part-3-a",
+            "number": "3.a",
+            "title": "Những bài học lớn về sự lãnh đạo của Đảng"
+          }
+        ]
+      },
+      {
+        "id": "lsd-conclusion-sec-4",
+        "roman": "IV",
+        "title": "Truyền thống vẻ vang và Tổng ôn toàn môn",
+        "subsections": [
+          {
+            "id": "lsd-conclusion-part-4-a",
+            "number": "4.a",
+            "title": "Truyền thống vẻ vang của Đảng và Tổng ôn toàn môn"
+          }
+        ]
+      }
+    ]
   }
 ],
     questionsMap: {

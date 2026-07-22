@@ -12,6 +12,9 @@ import { databaseData } from "./database";
 import { dsaData } from "./dsa";
 import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { lichSuDangChuong1 } from "./lich-su-dang";
+import { lichSuDangChuong2 } from "./lich-su-dang-chuong-2";
+import { lichSuDangChuong3Data } from "./lich-su-dang-chuong-3";
+import { lichSuDangKetLuanData } from "./lich-su-dang-ket-luan";
 import { oopData } from "./oop";
 
 export const lessonsData = {
@@ -19,7 +22,7 @@ export const lessonsData = {
     chapters: [chuong1, chuong2, chuong3, chuong4, chuong5, chuong6]
   },
   "lich-su-dang": {
-    chapters: [lichSuDangMoDau, lichSuDangChuong1]
+    chapters: [lichSuDangMoDau, lichSuDangChuong1, lichSuDangChuong2, lichSuDangChuong3Data, lichSuDangKetLuanData]
   },
   "basic-general": basicGeneralData,
   "basic-concepts": basicConceptsData,
