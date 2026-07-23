@@ -134,9 +134,9 @@ export default function Sidebar({
       let secToExpand = null;
 
       // Find which chapter and section this subsection belongs to
-      chapters.forEach((ch) => {
-        ch.sections.forEach((sec) => {
-          const match = sec.subsections.some((sub) => sub.id === activeSubsectionId);
+      chapters?.forEach((ch) => {
+        ch.sections?.forEach((sec) => {
+          const match = sec.subsections?.some((sub) => sub.id === activeSubsectionId);
           if (match) {
             chToExpand = ch.id;
             secToExpand = sec.id;

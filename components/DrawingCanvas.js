@@ -57,6 +57,7 @@ export default function DrawingCanvas({
   useEffect(() => {
     if (onClearRef) {
       onClearRef.current = () => {
+        pathsRef.current = [];
         updatePaths([]);
         localStorage.removeItem(drawingKey);
       };
@@ -102,6 +103,9 @@ export default function DrawingCanvas({
 
   const startDraw = (e) => {
     if (activeTool !== "pen" && activeTool !== "eraser") return;
+    if (e.touches && e.cancelable) {
+      e.preventDefault();
+    }
     const svgElement = svgRef.current;
     if (!svgElement || dimensions.width === 0 || dimensions.height === 0) return;
 
@@ -128,6 +132,9 @@ export default function DrawingCanvas({
 
   const draw = (e) => {
     if (!isDrawingRef.current && !isErasingRef.current) return;
+    if (e.touches && e.cancelable) {
+      e.preventDefault();
+    }
     const svgElement = svgRef.current;
     if (!svgElement || dimensions.width === 0 || dimensions.height === 0) return;
 
@@ -216,6 +223,7 @@ export default function DrawingCanvas({
       }`}
       style={{
         pointerEvents: isInteractive ? "auto" : "none",
+        touchAction: isInteractive ? "none" : "auto",
         minHeight: "100%",
         background: "transparent"
       }}

@@ -71,7 +71,7 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-be-vietnam), sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.scroll-locked {

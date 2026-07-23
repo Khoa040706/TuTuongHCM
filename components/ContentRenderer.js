@@ -237,6 +237,10 @@ import LsdCongress8FullContent from "./LsdCongress8FullContent";
 import LsdCongress9FullContent from "./LsdCongress9FullContent";
 import LsdCongress10FullContent from "./LsdCongress10FullContent";
 import LsdCongress10And11Part2FullContent from "./LsdCongress10And11Part2FullContent";
+import LsdCongress11CuongLinh2011FullVisualizer from "./LsdCongress11CuongLinh2011FullVisualizer";
+import LsdCongress11StrategyAndConferencesVisualizer from "./LsdCongress11StrategyAndConferencesVisualizer";
+import LsdCongress12FullVisualizer from "./LsdCongress12FullVisualizer";
+import LsdCongress12ConferencesAndSummaryVisualizer from "./LsdCongress12ConferencesAndSummaryVisualizer";
 import LsdAchievementsFullContent from "./LsdAchievementsFullContent";
 import LsdLessonsFullContent from "./LsdLessonsFullContent";
 import LsdRecapFullHub from "./LsdRecapFullHub";
@@ -2877,6 +2881,26 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
     case "lsd-congress-10-11-part2-full-content":
       return (
         <LsdCongress10And11Part2FullContent key={path} />
+      );
+
+    case "lsd-congress-11-cuong-linh-2011-full-visualizer":
+      return (
+        <LsdCongress11CuongLinh2011FullVisualizer key={path} />
+      );
+
+    case "lsd-congress-11-strategy-and-conferences-visualizer":
+      return (
+        <LsdCongress11StrategyAndConferencesVisualizer key={path} />
+      );
+
+    case "lsd-congress-12-full-visualizer":
+      return (
+        <LsdCongress12FullVisualizer key={path} />
+      );
+
+    case "lsd-congress-12-conferences-and-summary-visualizer":
+      return (
+        <LsdCongress12ConferencesAndSummaryVisualizer key={path} />
       );
 
     case "lsd-achievements-full-content":

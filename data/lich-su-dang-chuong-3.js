@@ -367,7 +367,37 @@ export const lichSuDangChuong3Data = {
               title: "Đại hội XI và Cương lĩnh bổ sung 2011 (2011 - 2016)",
               content: [
                 {
-                  type: "lsd-congress-10-11-part2-full-content"
+                  type: "lsd-congress-11-cuong-linh-2011-full-visualizer"
+                }
+              ]
+            },
+            {
+              id: "lsd3-sec2-part-2-strategy-tw11",
+              label: "e",
+              title: "Chiến lược phát triển 2011-2020 & Dòng thời gian các Hội nghị Trung ương khóa XI",
+              content: [
+                {
+                  type: "lsd-congress-11-strategy-and-conferences-visualizer"
+                }
+              ]
+            },
+            {
+              id: "lsd3-sec2-part-2-congress12-f",
+              label: "f",
+              title: "Đại hội đại biểu toàn quốc lần thứ XII của Đảng (2016 - 2021) & 30 năm Đổi mới",
+              content: [
+                {
+                  type: "lsd-congress-12-full-visualizer"
+                }
+              ]
+            },
+            {
+              id: "lsd3-sec2-part-2-tw12-summary",
+              label: "g",
+              title: "Các Hội nghị TW khóa XII, Bảng so sánh Đại hội XI & XII và Tổng kết công cuộc Đổi mới",
+              content: [
+                {
+                  type: "lsd-congress-12-conferences-and-summary-visualizer"
                 }
               ]
             }

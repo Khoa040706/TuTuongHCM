@@ -8,6 +8,9 @@ import { questionsChuong4 } from "./questions-chuong-4";
 import { questionsChuong5 } from "./questions-chuong-5";
 import { questionsChuong6 } from "./questions-chuong-6";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
+import { questionsLsdChuong2 } from "./questions-lich-su-dang-chuong-2";
+import { questionsLsdChuong3 } from "./questions-lich-su-dang-chuong-3";
+import { questionsLsdKetLuan } from "./questions-lich-su-dang-ket-luan";
 import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
 
 export const subjects = {
@@ -910,7 +913,10 @@ export const subjects = {
 ],
     questionsMap: {
       "lich-su-dang-mo-dau": questionsLsdMoDau,
-      "lich-su-dang-chuong-1": questionsLsdChuong1
+      "lich-su-dang-chuong-1": questionsLsdChuong1,
+      "lich-su-dang-chuong-2": questionsLsdChuong2,
+      "lich-su-dang-chuong-3": questionsLsdChuong3,
+      "lich-su-dang-ket-luan": questionsLsdKetLuan
     },
     isActive: true
   },

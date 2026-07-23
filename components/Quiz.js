@@ -88,13 +88,19 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
   const playSoundEffect = (type) => {
     if (!soundEnabled) return;
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      const ctx = new AudioContextClass();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.connect(gain);
       gain.connect(ctx.destination);
+
+      osc.onended = () => {
+        try {
+          ctx.close();
+        } catch (e) {}
+      };
 
       if (type === "correct") {
         osc.type = "sine";
