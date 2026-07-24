@@ -19,6 +19,10 @@ import { questionsDh3 } from "./questions-dh-3";
 import { questionsDh4 } from "./questions-dh-4";
 import { questionsDh5 } from "./questions-dh-5";
 import { questionsDh6 } from "./questions-dh-6";
+import { questionsDh7 } from "./questions-dh-7";
+import { questionsDh8 } from "./questions-dh-8";
+import { questionsDh9 } from "./questions-dh-9";
+import { questionsDh10 } from "./questions-dh-10";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -946,7 +950,11 @@ export const subjects = {
       "dh-3": questionsDh3,
       "dh-4": questionsDh4,
       "dh-5": questionsDh5,
-      "dh-6": questionsDh6
+      "dh-6": questionsDh6,
+      "dh-7": questionsDh7,
+      "dh-8": questionsDh8,
+      "dh-9": questionsDh9,
+      "dh-10": questionsDh10
     },
     isActive: true
   },

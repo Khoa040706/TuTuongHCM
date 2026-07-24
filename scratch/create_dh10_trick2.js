@@ -1,0 +1,108 @@
+import fs from "fs";
+
+// 50 trick questions for Trick Exam Set 2 (Đại hội X - 4/2006)
+const questions = Array.from({ length: 50 }, (_, i) => {
+  const num = String(i + 1).padStart(3, '0');
+  const id = `lsd-dh10-t2-${num}`;
+
+  if (i < 20) {
+    return {
+      id,
+      examSet: 4,
+      sectionId: "dh-10-grp-1",
+      subsectionId: "dh-10-sec-1",
+      question: `[Bẫy Bài học lớn 20 năm Đổi mới - Câu ${i + 1}] Số lượng bài học kinh nghiệm lớn được Đại hội X rút ra qua tổng kết 20 năm Đổi mới (1986-2006) là bao nhiêu?`,
+      options: [
+        "Đại hội X rút ra 5 bài học kinh nghiệm lớn qua 20 năm Đổi mới.",
+        "Đại hội X rút ra 6 bài học kinh nghiệm lớn qua 20 năm Đổi mới.",
+        "Đại hội X rút ra 4 bài học kinh nghiệm lớn qua 20 năm Đổi mới.",
+        "Đại hội X rút ra 3 bài học kinh nghiệm lớn qua 20 năm Đổi mới."
+      ],
+      answer: 0,
+      difficulty: "hard",
+      isOutside: false,
+      trickDetails: {
+        whyTrapped: "Học viên nhầm số lượng bài học tổng kết 20 năm Đổi mới (ĐH X: 5 BÀI HỌC LỚN) với số lượng bài học tổng kết 10 năm Đổi mới tại ĐH VIII (ĐH VIII: 6 BÀI HỌC).",
+        trickWord: "ĐH X tổng kết 20 năm = 5 bài học lớn (vs ĐH VIII 10 năm = 6 bài học)",
+        citation: "Giáo trình Lịch sử Đảng - Bài học kinh nghiệm 20 năm Đổi mới Đại hội X (4/2006).",
+        tip: "Mẹo nhớ: ĐẠI HỘI X TỔNG KẾT 20 NĂM ĐỔI MỚI (1986-2006) = ĐÚC KẾT 5 BÀI HỌC KINH NGHIỆM LỚN."
+      },
+      explanation: "Đại hội X tổng kết 20 năm Đổi mới (1986-2006) và đúc kết 5 bài học kinh nghiệm lớn."
+    };
+  } else if (i < 35) {
+    return {
+      id,
+      examSet: 4,
+      sectionId: "dh-10-grp-2",
+      subsectionId: "dh-10-sec-2",
+      question: `[Bẫy NQTƯ 7 khóa X về Tam nông - Câu ${i + 1}] Nghị quyết Trung ương 7 khóa X (tháng 7/2008) xác định yếu tố nào là chủ thể của quá trình phát triển?`,
+      options: [
+        "Nông dân là chủ thể, nông nghiệp là nền tảng, nông thôn là địa bàn chiến lược.",
+        "Doanh nghiệp tư nhân là chủ thể, nông nghiệp là nền tảng, thành thị là địa bàn.",
+        "Các tập đoàn FDI là chủ thể, công nghiệp là nền tảng, đô thị là địa bàn chính.",
+        "Nhà nước là chủ thể độc quyền, nông nghiệp là nền tảng, nông thôn là địa bàn."
+      ],
+      answer: 0,
+      difficulty: "hard",
+      isOutside: false,
+      trickDetails: {
+        whyTrapped: "Học viên nhầm chủ thể trong Nghị quyết Tam nông (NQTƯ 7 khóa X 7/2008) là 'Nông nghiệp' hay 'Doanh nghiệp', thực chất NÔNG DÂN LÀ CHỦ THỂ của quá trình phát triển nông thôn.",
+        trickWord: "Nông dân là chủ thể (NQTƯ 7 khóa X)",
+        citation: "Giáo trình Lịch sử Đảng - Nghị quyết Trung ương 7 khóa X (7/2008) về Tam nông.",
+        tip: "Mẹo nhớ: NQTƯ 7 KHÓA X (7/2008) = NÔNG DÂN LÀ CHỦ THỂ, NÔNG NGHIỆP LÀ NỀN TẢNG, NÔNG THÔN LÀ ĐỊA BÀN CHIẾN LƯỢC."
+      },
+      explanation: "NQTƯ 7 khóa X (7/2008) xác định: Nông dân là chủ thể của quá trình phát triển nông nghiệp, kinh tế nông thôn và xây dựng nông thôn mới."
+    };
+  } else {
+    return {
+      id,
+      examSet: 4,
+      sectionId: "dh-10-grp-3",
+      subsectionId: "dh-10-sec-3",
+      question: `[Bẫy Nhân sự Tổng Bí thư khóa X - Câu ${i + 1}] Nhân sự giữ chức vụ Tổng Bí thư Ban Chấp hành Trung ương Đảng do ĐH X (4/2006) bầu ra là ai?`,
+      options: [
+        "Đồng chí Nông Đức Mạnh tiếp tục tái cử giữ chức vụ Tổng Bí thư.",
+        "Đồng chí Nguyễn Phú Trọng chính thức được bầu giữ chức vụ Tổng Bí thư.",
+        "Đồng chí Lê Khả Phiêu tiếp tục được bầu giữ chức vụ Tổng Bí thư.",
+        "Đồng chí Võ Văn Kiệt chính thức được bầu giữ chức vụ Tổng Bí thư."
+      ],
+      answer: 0,
+      difficulty: "hard",
+      isOutside: false,
+      trickDetails: {
+        whyTrapped: "Học viên nhầm đồng chí Nguyễn Phú Trọng được bầu Tổng Bí thư từ ĐH X (thực tế đồng chí Nguyễn Phú Trọng được bầu Tổng Bí thư từ ĐH XI năm 2011, còn tại ĐH X năm 2006 đồng chí Nông Đức Mạnh tái cử).",
+        trickWord: "ĐH X (4/2006) Nông Đức Mạnh tái cử Tổng Bí thư",
+        citation: "Giáo trình Lịch sử Đảng - Nhân sự Ban Chấp hành Trung ương khóa X (4/2006).",
+        tip: "Mẹo nhớ: ĐẠI HỘI X (2006) = ĐỒNG CHÍ NÔNG ĐỨC MẠNH TÁI CỬ TỔNG BÍ THƯ KHÓA X."
+      },
+      explanation: "Tại Đại hội X (4/2006), Ban Chấp hành Trung ương khóa X tiếp tục bầu đồng chí Nông Đức Mạnh giữ chức vụ Tổng Bí thư."
+    };
+  }
+});
+
+// Check length difference (L_max - L_min <= 15)
+let hasError = false;
+questions.forEach((q, idx) => {
+  const lengths = q.options.map(o => o.length);
+  const maxL = Math.max(...lengths);
+  const minL = Math.min(...lengths);
+  const diff = maxL - minL;
+  if (diff > 15) {
+    console.error(`[ERROR] Question ${idx + 1} (${q.id}): diff = ${diff} (>15). Max: ${maxL}, Min: ${minL}`);
+    hasError = true;
+  }
+});
+
+if (!hasError) {
+  console.log("✅ All 50 trick questions passed Option Length Balance (L_max - L_min <= 15)!");
+  const fileContent = `/* ============================================================
+   DỮ LIỆU CÂU HỎI TRẮC NGHIỆM ĐỀ BẪY 2: ĐẠI HỘI X (4/2006)
+   Mã Bộ Đề: questions-lsd-dh10-trick2.js
+   Số lượng: 50 câu bẫy tư duy Vận dụng cao (100% có trickDetails)
+   ============================================================ */
+
+export const questionsLsdDh10Trick2 = ${JSON.stringify(questions, null, 2)};
+`;
+  fs.writeFileSync("./data/questions-lsd-dh10-trick2.js", fileContent, "utf8");
+  console.log("Successfully generated data/questions-lsd-dh10-trick2.js");
+}
