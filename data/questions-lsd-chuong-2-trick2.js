@@ -1,466 +1,468 @@
 /* ============================================================
-   DỮ LIỆU CÂU HỎI TRẮC NGHIỆM BẪY (TRICK SET 2): CHƯƠNG II MÔN LỊCH SỬ ĐẢNG
+   DỮ LIỆU CÂU HỎI TRẮC NGHIỆM BẪY (TRICK SET 2): CHƯƠNG II LỊCH SỬ ĐẢNG (1945-1975)
+   Mã Bộ Đề: questions-lsd-chuong-2-trick2.js
+   Số lượng: 50 câu bẫy tư duy Vận dụng cao (100% có trickDetails)
    ============================================================ */
 
 export const lsdChuong2Trick2 = [
   {
     "id": "lsd2-tr2-001",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG NHẤT vị trí chiến lược của hai miền Nam - Bắc do Đại hội III (9-1960) xác định?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Nhiệm vụ cấp bách nhất được Đảng xác định trong Chỉ thị Kháng chiến kiến quốc (25-11-1945) là gì?",
     "options": [
-      "Miền Bắc giữ vai trò quyết định nhất; Miền Nam giữ vai trò quyết định trực tiếp.",
-      "Miền Bắc giữ vai trò quyết định trực tiếp; Miền Nam giữ vai trò quyết định nhất.",
-      "Cả hai miền đều giữ vai trò quyết định trực tiếp đối với toàn bộ cách mạng cả nước.",
-      "Cả hai miền đều giữ vai trò phụ trợ lẫn nhau không phân định vai trò quyết định."
+      "Củng cố chính quyền, chống thực dân Pháp, bài trừ nội phản, cải thiện đời sống.",
+      "Thực hiện ngay cuộc cải cách ruộng đất triệt để cho toàn bộ nông dân nghèo.",
+      "Tập trung toàn bộ lực lượng xây dựng nền công nghiệp nặng sản xuất vũ khí.",
+      "Gia nhập ngay vào Liên Xô và các nước XHCN để nhận sự bảo hộ quân sự."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Đại hội III (9-1960) xác định rõ: Cách mạng XHCN ở miền Bắc giữ vai trò 'quyết định nhất'; Cách mạng dân tộc dân chủ ở miền Nam giữ vai trò 'quyết định trực tiếp'.",
+    "explanation": "Chỉ thị xác định 4 nhiệm vụ cấp bách: Củng cố chính quyền, chống thực dân Pháp xâm lược, bài trừ nội phản, cải thiện đời sống nhân dân.",
     "trickDetails": {
-      "whyTrapped": "Học sinh rất hay nhầm lẫn đảo ngược hai cụm từ 'quyết định nhất' (Miền Bắc) và 'quyết định trực tiếp' (Miền Nam).",
-      "trickWord": "Bẫy đảo vị trí từ khóa 'quyết định nhất' vs 'quyết định trực tiếp'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.1.",
-      "tip": "Nhớ mẹo: Bắc = Nhất (Căn cứ hậu phương); Nam = Trực tiếp (Tiền tuyến chống Mỹ)."
+      "whyTrapped": "Học sinh dễ nhầm sang cải cách ruộng đất hoặc công nghiệp nặng.",
+      "trickWord": "Củng cố chính quyền, chống Pháp, bài trừ nội phản, cải thiện đời sống",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Chỉ thị Kháng chiến kiến quốc.",
+      "tip": "4 nhiệm vụ cấp bách 25-11-1945."
     }
   },
   {
     "id": "lsd2-tr2-002",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Điểm khác biệt căn bản về lực lượng chiến đấu giữa 'Chiến tranh đặc biệt' và 'Chiến tranh cục bộ' của Mỹ ở miền Nam là gì?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Lý do quan trọng nhất khiến Đảng quyết định ký Hiệp định Sơ bộ (6-3-1946) với Pháp là gì?",
     "options": [
-      "Chiến tranh đặc biệt dùng quân ngụy tay sai; Chiến tranh cục bộ dùng quân viễn chinh Mỹ làm nòng cốt.",
-      "Chiến tranh đặc biệt dùng quân viễn chinh Mỹ; Chiến tranh cục bộ dùng quân đội đồng minh chốt giữ.",
-      "Chiến tranh đặc biệt dùng lực lượng hải quân Mỹ; Chiến tranh cục bộ dùng lực lượng không quân Mỹ.",
-      "Chiến tranh đặc biệt dùng quân lính thuê Đông Nam Á; Chiến tranh cục bộ dùng cảnh sát dã chiến."
+      "Mỹ và Pháp đã bắt tay thỏa thuận với nhau tại Hội nghị I-an-ta thế giới.",
+      "Tránh cùng lúc đối phó hai kẻ thù lớn và đuổi 20 vạn quân Tưởng về nước.",
+      "Muốn gia nhập ngay vào Khối Liên hiệp Pháp để phát triển kinh tế thương.",
+      "Do lực lượng quân sự của ta đã bị tổn thất hoàn toàn không thể chiến đấu."
     ],
-    "answer": 0,
+    "answer": 1,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Chiến tranh đặc biệt: Công thức = Quân đội ngụy Saigon + Cố vấn vũ khí Mỹ. Chiến tranh cục bộ: Lực lượng nòng cốt = Quân viễn chinh Mỹ trực tiếp chiến đấu.",
+    "explanation": "Hiệp định Sơ bộ giúp ta 'Hòa để tiến': Tránh việc cùng lúc đánh cả Pháp và Tưởng, loại bớt quân Tưởng khỏi miền Bắc.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm lẫn lực lượng nòng cốt giữa 2 chiến lược chiến tranh của Mỹ.",
-      "trickWord": "Bẫy lực lượng 'Quân ngụy' vs 'Quân viễn chinh Mỹ'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.1 & II.2.",
-      "tip": "Đặc biệt = Quân Ngụy + Cố vấn Mỹ; Cục bộ = Quân viễn chinh MỸ làm nòng cốt."
+      "whyTrapped": "Dễ nhầm A do tưởng bối cảnh Ianta quyết định.",
+      "trickWord": "Tránh đánh 2 kẻ thù + Đuổi quân Tưởng",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "6-3-1946 = Hòa Pháp đuổi Tưởng."
     }
   },
   {
     "id": "lsd2-tr2-003",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Tầm vóc bước ngoặt chiến lược của Cuộc Tổng tiến công Mậu Thân 1968 là gì?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Phát biểu nào KHÔNG ĐÚNG khi đánh giá về bản Tạm ước ngày 14-9-1946?",
     "options": [
-      "Buộc Mỹ xuống thang chiến tranh, chấp nhận đàm phán tại Pa-ri và ngừng ném bom miền Bắc.",
-      "Giải phóng hoàn toàn miền Nam và kết thúc cuộc kháng chiến chống Mỹ cứu nước.",
-      "Đánh đổ hoàn toàn bộ máy chính quyền ngụy Saigon và xóa bỏ quân đội tay sai.",
-      "Buộc tổng thống Nixon phải từ chức ngay lập tức và rút hết quân về nước năm 1968."
+      "Bản Tạm ước đã công nhận tính độc lập hoàn toàn của Việt Nam trên pháp lý.",
+      "Bản Tạm ước tiếp tục kéo dài thời gian hòa hoãn quý báu để ta chuẩn bị.",
+      "Chủ tịch Hồ Chí Minh đã nhân nhượng cho Pháp một số quyền lợi kinh tế.",
+      "Bản Tạm ước tạo điều kiện cho lực lượng vũ trang cách mạng củng cố thêm."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Mậu Thân 1968 chưa giải phóng miền Nam, nhưng có ý nghĩa bước ngoặt: đập tan ý chí xâm lược của Mỹ, buộc Mỹ xuống thang ngồi đàm phán Pa-ri.",
+    "explanation": "Phát biểu A SAI vì Tạm ước 14/9 chỉ nhượng bộ thêm quyền lợi kinh tế văn hóa để kéo dài hòa hoãn, chưa thể công nhận độc lập hoàn toàn.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm B (nghĩ là giải phóng miền Nam ngay năm 1968).",
-      "trickWord": "Bẫy ý nghĩa 'xuống thang chiến tranh, ngồi đàm phán Pa-ri'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Mậu Thân 1968 = Mỹ xuống thang, ngừng ném bom miền Bắc, chấp nhận ngồi đàm phán Pa-ri."
+      "whyTrapped": "Bẫy từ 'công nhận độc lập hoàn toàn'.",
+      "trickWord": "Kéo dài thời gian hòa hoãn (chưa độc lập hoàn toàn)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Tạm ước 14/9 = Mua thêm thời gian hòa hoãn."
     }
   },
   {
     "id": "lsd2-tr2-004",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Ý nghĩa chiến lược trực tiếp của thắng lợi trận 'Điện Biên Phủ trên không' cuối năm 1972 là gì?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Điền từ thích hợp: 'Chủ trương đối ngoại với quân Tưởng giai đoạn 1945-1946 là [...]'.",
     "options": [
-      "Buộc Mỹ phải ký Hiệp định Pa-ri năm 1973 và rút hoàn toàn quân viễn chinh về nước.",
-      "Giải phóng hoàn toàn các tỉnh dải đất miền Trung và Tây Nguyên ngay năm 1972.",
-      "Buộc chính quyền Saigon phải tuyên bố giải tán bộ máy quản lý chính trị địa phương.",
-      "Tiêu diệt hoàn toàn lực lượng không quân và hải quân Mỹ tại các căn cứ Thái Bình Dương."
+      "Hoa - Việt thân thiện, nhân nhượng có nguyên tắc để giữ vững độc lập.",
+      "Tuyên chiến quyết liệt, huy động quân đội đánh bật quân Tưởng khỏi biên.",
+      "Hòa hoãn vô điều kiện, chấp nhận mọi yêu sách chính trị của quân Tưởng.",
+      "Liên minh chiến lược, cùng quân Tưởng đánh đuổi thực dân Pháp miền Nam."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Trận 'Điện Biên Phủ trên không' 12 ngày đêm 12-1972 đánh đập tan tập kích B-52, buộc Mỹ ký Hiệp định Pa-ri rút quân về nước.",
+    "explanation": "Sách lược với Tưởng: 'Hoa - Việt thân thiện', nhân nhượng CÓ NGUYÊN TẮC.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay sập bẫy kết quả trực tiếp của trận 1972 là buộc Mỹ ký Hiệp định Pa-ri.",
-      "trickWord": "Bẫy kết quả 'buộc Mỹ ký Hiệp định Pa-ri 1973'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Điện Biên Phủ trên không 1972 ➔ Buộc Mỹ ký Hiệp định Pa-ri (27-1-1973)."
+      "whyTrapped": "Nhầm nhượng bộ vô điều kiện.",
+      "trickWord": "Hoa-Việt thân thiện + CÓ NGUYÊN TẮC",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Đối Tưởng = Hoa-Việt thân thiện."
     }
   },
   {
     "id": "lsd2-tr2-005",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Hiệp định Pa-ri 1973 tạo ra so sánh lực lượng có lợi cho cách mạng miền Nam như thế nào?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Ý nghĩa của việc tổ chức Nha Bình dân học vụ (tháng 9-1945) là gì?",
     "options": [
-      "Hoàn thành mục tiêu 'Đánh cho Mỹ cút', làm suy yếu quân ngụy để tiến lên 'Đánh cho ngụy nhào'.",
-      "Giải phóng hoàn toàn miền Nam ngay khi bản Hiệp định được đặt bút ký kết trên toàn bộ khu vực.",
-      "Buộc quân đội chính quyền Saigon phải giải tán hoàn toàn lực lượng bộ binh trong thực tiễn mới.",
-      "Xóa bỏ hoàn toàn vĩ tuyến 17 và thống nhất đất nước về mặt nhà nước ngay năm 1973 một cách đồng bộ."
+      "Xóa nạn mù chữ, nâng cao dân trí, phát huy quyền làm chủ của nhân dân.",
+      "Đào tạo ngay đội ngũ tri thức có trình độ tiến sĩ cho nền kinh tế mới.",
+      "Phổ cập tiếng Pháp và tiếng Anh cho toàn bộ lực lượng lao động nông thôn.",
+      "Biến toàn bộ trường học tư thục thành trường công lập trực thuộc Nhà nước."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Hiệp định Pa-ri 1973 buộc Mỹ rút quân, tạo thế so sánh lực lượng: 'Đánh cho Mỹ cút' xong ➔ tạo đà cho 'Đánh cho ngụy nhào' năm 1975.",
+    "explanation": "Nha Bình dân học vụ thành lập 8/9/1945 để diệt giặc dốt, nâng cao trình độ dân trí cho quần chúng nhân dân.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm B hoặc D (nghĩ là giải phóng thống nhất ngay năm 1973).",
-      "trickWord": "Bẫy tư tưởng 'Đánh cho Mỹ cút' làm tiền đề 'Đánh cho ngụy nhào'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Hiệp định Pa-ri 1973 = Đánh cho Mỹ cút. Đại thắng 1975 = Đánh cho ngụy nhào."
+      "whyTrapped": "Bẫy từ 'phổ cập tiếng Pháp/Anh' hoặc 'đào tạo tiến sĩ'.",
+      "trickWord": "Diệt giặc dốt, nâng cao dân trí",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Bình dân học vụ = Diệt giặc dốt."
     }
   },
   {
     "id": "lsd2-tr2-006",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Quyết định chuyển kế hoạch giải phóng miền Nam từ 2 năm (1975-1976) sang hoàn thành ngay trong năm 1975 thể hiện bài học nghệ thuật nào?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Tài liệu nào sau đây được coi là Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa?",
     "options": [
-      "Nghệ thuật chớp thời cơ chiến lược nhạy bén và chỉ đạo thần tốc táo bạo.",
-      "Sự thay đổi mục tiêu chiến lược ban đầu của cuộc kháng chiến chống Mỹ.",
-      "Sự thiếu chuẩn bị lực lượng nên phải đánh vội vàng ứng phó trong thực tiễn mới.",
-      "Do sự ép buộc của điều kiện đàm phán quốc tế bên ngoài một cách đồng bộ."
+      "Hiến pháp năm 1946 được Quốc hội khóa I thông qua vào tháng 11 năm 1946.",
+      "Hiến pháp năm 1959 được Quốc hội thông qua thời kỳ xây dựng chủ nghĩa xã hội.",
+      "Hiến pháp năm 1980 được Quốc hội thông qua sau khi đất nước hoàn toàn thống.",
+      "Hiến pháp năm 1992 được Quốc hội thông qua thời kỳ đầu đẩy mạnh công cuộc Đổi."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Đó là đỉnh cao nghệ thuật chớp thời cơ chiến lược nhạy bén của Bộ Chính trị: khi thời cơ đến là thần tốc táo bạo giải phóng ngay trong năm 1975.",
+    "explanation": "Hiến pháp 1946 (thông qua 9/11/1946) là bản Hiến pháp đầu tiên của nước ta.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm B (nghĩ là đổi mục tiêu) hoặc C.",
-      "trickWord": "Bẫy nghệ thuật 'Chớp thời cơ chiến lược thần tốc táo bạo'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Kế hoạch 2 năm (1975-1976) ➔ Chớp thời cơ rút ngắn giải phóng ngay trong 55 ngày đêm Xuân 1975."
+      "whyTrapped": "Nhầm Hiến pháp 1959.",
+      "trickWord": "Hiến pháp 1946 (bản đầu tiên)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Hiến pháp I = 11/1946."
     }
   },
   {
     "id": "lsd2-tr2-007",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Trận tiến công chiến lược mở đầu Tổng tiến công Mùa Xuân 1975 diễn ra tại đâu?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Sự kiện nào đánh dấu cuộc kháng chiến chống Pháp chính thức lan rộng ra quy mô toàn quốc?",
     "options": [
-      "Chiến dịch Tây Nguyên (bắt đầu bằng đòn then chốt Buôn Ma Thuột).",
-      "Chiến dịch Huế - Đà Nẵng giải phóng miền Trung trên toàn bộ khu vực.",
-      "Chiến dịch Hồ Chí Minh giải phóng sào huyệt Saigon trong thực tiễn mới.",
-      "Chiến dịch Đường 9 Phước Long giải phóng Đông Nam Bộ một cách đồng bộ."
+      "Lời kêu gọi toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh (19-12-1946).",
+      "Chính phủ Pháp tuyên bố bãi bỏ Hiệp định Sơ bộ ngày 6 tháng 3 năm 1946.",
+      "Quân Pháp bất ngờ nổ súng đánh chiếm Trụ sở Ủy ban Nhân dân Nam Bộ.",
+      "Quân Pháp khiêu khích đánh chiếm thị xã Lạng Sơn và thành phố Hải Phòng."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Tổng tiến công Xuân 1975 mở đầu bằng Chiến dịch Tây Nguyên với đòn thọc sâu then chốt Buôn Ma Thuột (10-3-1975).",
+    "explanation": "Đêm 19/12/1946, Lời kêu gọi toàn quốc kháng chiến phát đi, cuộc kháng chiến chính thức bùng nổ trên quy mô toàn quốc.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm Phước Long (1-1975 là đòn trinh sát chiến lược, chưa phải mở đầu Tổng tiến công).",
-      "trickWord": "Bẫy phân biệt 'Đòn trinh sát Phước Long' vs 'Mở đầu Tây Nguyên'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Phước Long 1-1975 = Trinh sát chiến lược; Buôn Ma Thuột 10-3-1975 = Mở đầu Tổng tiến công."
+      "whyTrapped": "Dễ nhầm sự kiện Nam Bộ nổ súng (23/9/1945) là toàn quốc.",
+      "trickWord": "19-12-1946 = TOÀN QUỐC kháng chiến",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "19/12/1946 = Toàn quốc kháng chiến."
     }
   },
   {
     "id": "lsd2-tr2-008",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Tác dụng chiến lược lớn nhất của Chiến dịch Huế - Đà Nẵng (3-1975) là gì?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Sách lược ngoại giao 'Hòa để tiến' của Bác Hồ giai đoạn 1945-1946 thể hiện điều gì?",
     "options": [
-      "Đập tan Quân đoàn I ngụy, giải phóng dải đất miền Trung, tạo thế kẹp kìm uy hiếp Saigon.",
-      "Buộc tổng thống Dương Văn Minh tuyên bố đầu hàng không điều kiện trên toàn bộ khu vực.",
-      "Khai thông hoàn toàn tuyến đường vận tải trên biển phía Nam trong thực tiễn mới.",
-      "Chấm dứt hoàn toàn sự can thiệp của không quân Mỹ một cách đồng bộ. một cách đồng bộ."
+      "Biết chấp nhận tổn thất nhỏ để bảo vệ lợi ích tối cao độc lập dân tộc.",
+      "Từ bỏ hoàn toàn cuộc đấu tranh vũ trang để giải quyết mọi tranh chấp.",
+      "Ỷ lại vào sự can thiệp của các cường quốc trong Hội đồng Bảo an LHQ.",
+      "Nhân nhượng toàn bộ quyền lãnh thổ để đổi lấy hòa bình ngắn hạn ngắn."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Chiến dịch Huế - Đà Nẵng tiêu diệt Quân đoàn I ngụy, giải phóng miền Trung, đẩy quân Saigon vào nguy cơ sụp đổ hoàn toàn.",
+    "explanation": "Lùi một bước để tiến hai bước: Nhân nhượng sách lược để bảo vệ độc lập chính trị tối cao.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ nhầm tác dụng với Chiến dịch Hồ Chí Minh.",
-      "trickWord": "Bẫy tác dụng 'giải phóng miền Trung, uy hiếp Saigon'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Tây Nguyên (Đòn 1) ➔ Huế-Đà Nẵng (Đòn 2) ➔ Hồ Chí Minh (Đòn 3 giải phóng Saigon)."
+      "whyTrapped": "Nhầm là đầu hàng hay từ bỏ đấu tranh.",
+      "trickWord": "Hòa để tiến = Bảo vệ lợi ích tối cao",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Hòa để tiến = Lùi để tiến."
     }
   },
   {
     "id": "lsd2-tr2-009",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Chiến dịch Hồ Chí Minh giải phóng Saigon diễn ra trong thời gian siêu tốc nào?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Nội dung nào KHÔNG thuộc về biện pháp củng cố chính quyền cách mạng năm 1946?",
     "options": [
-      "Trong 5 ngày đêm (từ 26-4 đến 30-4-1975).",
-      "Trong 12 ngày đêm liên tục.",
-      "Trong 55 ngày đêm liên tục.",
-      "Trong 30 ngày đêm anh dũng."
+      "Quốc hữu hóa toàn bộ các ruộng đất của nông dân để làm nông trường nhà.",
+      "Tổ chức cuộc Tổng tuyển cử bầu Quốc hội khóa I ngày 6 tháng 1 năm 1946.",
+      "Ban hành Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa 1946.",
+      "Xây dựng lực lượng vũ trang và Giải phóng quân thành Vệ quốc đoàn."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Chiến dịch Hồ Chí Minh diễn ra thần tốc trong đúng 5 ngày đêm (bắt đầu 17h ngày 26-4, kết thúc 11h30 ngày 30-4-1975). (55 ngày đêm là tổng toàn bộ 3 chiến dịch Xuân 1975).",
+    "explanation": "Nhận định A SAI vì năm 1946 Đảng chủ trương tịch lưu ruộng đất của đế quốc phản động chia cho nông dân, không quốc hữu hóa toàn bộ ruộng đất.",
     "trickDetails": {
-      "whyTrapped": "Học sinh rất dễ nhầm giữa '5 ngày đêm' (riêng Chiến dịch Hồ Chí Minh) và '55 ngày đêm' (toàn bộ cuộc Tổng tiến công Xuân 1975).",
-      "trickWord": "Bẫy con số '5 ngày đêm' vs '55 ngày đêm'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Chiến dịch Hồ Chí Minh = 5 ngày đêm (26 đến 30-4-1975); Cả cuộc Tổng tiến công = 55 ngày đêm."
+      "whyTrapped": "Bẫy từ 'quốc hữu hóa toàn bộ ruộng đất'.",
+      "trickWord": "Bẫy 'quốc hữu hóa toàn bộ'",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "1946 = Chưa quốc hữu hóa ruộng đất."
     }
   },
   {
     "id": "lsd2-tr2-010",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-2",
-    "question": "Nguyên nhân bao trùm và quyết định nhất dẫn đến Đại thắng Mùa Xuân 1975 là gì?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-1",
+    "question": "Ý nghĩa trực tiếp nhất của cuộc đấu tranh bài trừ nội phản (Việt Quốc, Việt Cách) năm 1946 là gì?",
     "options": [
-      "Sự lãnh đạo đúng đắn, sáng suốt của Đảng Cộng sản Việt Nam với đường lối độc lập tự chủ.",
-      "Sự viện trợ kinh tế và quân sự dồi dào từ các quốc gia xã hội chủ nghĩa trên toàn bộ khu vực.",
-      "Sự suy yếu tự phát của chính quyền Saigon do bị cắt giảm viện trợ Mỹ trong thực tiễn mới.",
-      "Vị trí địa lý tự nhiên bằng phẳng thuận lợi cho tiến công vũ trang một cách đồng bộ."
+      "Giữ vững sự lãnh đạo của Đảng và bảo vệ an toàn cho Nhà nước cách mạng.",
+      "Tiêu diệt hoàn toàn các lực lượng phản động trong cả nước ngay trong 1946.",
+      "Buộc quân Tưởng Giới Thạch phải rút quân về nước sớm hơn dự kiến 6 tháng.",
+      "Làm cho thực dân Pháp phải từ bỏ ý đồ xâm lược lại Việt Nam lần thứ hai."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Nguyên nhân quyết định hàng đầu bao trùm mọi thắng lợi của cách mạng Việt Nam là sự lãnh đạo đúng đắn, tài tình của Đảng.",
+    "explanation": "Đập tan các cuộc đảo chính (như vụ án phố Ô Ôn Như侯), bảo vệ chính quyền cách mạng non trẻ.",
     "trickDetails": {
-      "whyTrapped": "Học sinh dễ chọn nhầm B (viện trợ) hoặc C (địch tự suy yếu).",
-      "trickWord": "Bẫy nguyên nhân 'lãnh đạo đúng đắn sáng suốt của Đảng'",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II, Mục II.2.",
-      "tip": "Luôn nhớ: Nguyên nhân quyết định HÀNG ĐẦU = Sự lãnh đạo đúng đắn của Đảng."
+      "whyTrapped": "Bẫy từ 'tiêu diệt hoàn toàn' hoặc 'Pháp từ bỏ ý đồ'.",
+      "trickWord": "Bảo vệ an toàn chính quyền cách mạng",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.1.",
+      "tip": "Trừ nội phản = Bảo vệ chính quyền."
     }
   },
   {
     "id": "lsd2-tr2-011",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #11: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Tác phẩm 'Kháng chiến nhất định thắng lợi' của Trường Chinh nêu rõ phương châm kháng chiến nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #11.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #11.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #11.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #11."
+      "Kháng chiến toàn dân, toàn diện, lâu dài và dựa vào sức mình là chính.",
+      "Kháng chiến đánh nhanh thắng nhanh, tập trung toàn lực đánh sào huyệt.",
+      "Kháng chiến chủ yếu dựa vào sự hỗ trợ quân sự từ các nước XHCN anh em.",
+      "Kháng chiến kết hợp quân sự với tổng khởi nghĩa của công nhân đô thị."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #11: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương châm kháng chiến chống Pháp: Toàn dân, toàn diện, lâu dài, dựa vào sức mình là chính.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #11",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm 'Đánh nhanh thắng nhanh'.",
+      "trickWord": "Toàn dân, toàn diện, lâu dài, tự lực cánh sinh",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "Kháng chiến nhất định thắng lợi = 4 nguyên tắc."
     }
   },
   {
     "id": "lsd2-tr2-012",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #12: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Mục đích chủ yếu của Pháp khi mở Chiến dịch Việt Bắc Thu - Đông 1947 là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #12.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #12.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #12.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #12."
+      "Tiêu diệt cơ quan đầu não kháng chiến và lực lượng chủ lực của ta.",
+      "Mở rộng con đường giao thông quốc tế nối Việt Nam với Trung Quốc.",
+      "Giành lại quyền kiểm soát vùng đồng bằng Nam Bộ và miền Trung.",
+      "Buộc Ta phải ký tiếp bản Tạm ước nhượng bộ thêm về kinh tế tài chính."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #12: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Pháp tập trung quân tấn công Việt Bắc nhằm tiêu diệt cơ quan đầu não kháng chiến và quân chủ lực, kết thúc nhanh chiến tranh.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #12",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm sang mục đích Chiến dịch Biên giới 1950.",
+      "trickWord": "Việt Bắc 1947 = Tiêu diệt CƠ QUAN ĐẦU NÃO",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "Việt Bắc 47 = Phản công bảo vệ đầu não."
     }
   },
   {
     "id": "lsd2-tr2-013",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #13: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Kết quả lớn nhất của Chiến dịch Việt Bắc Thu - Đông 1947 là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #13.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #13.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #13.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #13."
+      "Bảo vệ an toàn cơ quan đầu não, làm thất bại chiến lược 'Đánh nhanh thắng nhanh'.",
+      "Khai thông biên giới Việt - Trung, nối liền Việt Nam với các nước XHCN.",
+      "Giải phóng hoàn toàn tỉnh Cao Bằng, Lạng Sơn và vùng biên giới phía Bắc.",
+      "Buộc Pháp phải ngồi vào bàn đàm phán ký Hiệp định Giơ-ne-vơ năm 1954."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #13: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chiến dịch Việt Bắc 1947 làm thất bại chiến lược 'Đánh nhanh thắng nhanh' của Pháp, buộc Pháp phải chuyển sang 'Đánh lâu dài'.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #13",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm kết quả Chiến dịch Biên giới 1950.",
+      "trickWord": "Phá sản 'Đánh nhanh thắng nhanh'",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "Việt Bắc 47 = Thất bại đánh nhanh."
     }
   },
   {
     "id": "lsd2-tr2-014",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #14: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Ý nghĩa của việc Đại hội II (1951) quyết định tách Đảng Cộng sản Đông Dương thành ba Đảng riêng là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #14.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #14.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #14.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #14."
+      "Phù hợp với đặc điểm thực tiễn cách mạng riêng của mỗi nước Đông Dương.",
+      "Vì Đảng Cộng sản Đông Dương không còn khả năng lãnh đạo phong trào.",
+      "Nhằm mục đích giải tán liên minh chiến lược giữa ba nước Việt-Lào-Campuchia.",
+      "Theo yêu cầu bắt buộc của Quốc tế Cộng sản đối với các quốc gia thuộc địa."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #14: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Mỗi nước có đặc điểm riêng, việc thành lập Đảng riêng ở mỗi nước (ở Việt Nam là Đảng Lao động Việt Nam) phù hợp với thực tiễn lãnh đạo.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #14",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm là làm rạn nứt liên minh Đông Dương.",
+      "trickWord": "Phù hợp thực tiễn từng nước",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "ĐH II = Mỗi nước 1 Đảng riêng."
     }
   },
   {
     "id": "lsd2-tr2-015",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #15: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Điền từ thích hợp: 'Chính sách ruộng đất của Đảng trong kháng chiến chống Pháp là [...]'.",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #15.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #15.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #15.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #15."
+      "giảm tức, giảm sai, tiến tới cải cách ruộng đất ở những nơi có điều kiện.",
+      "tịch thu toàn bộ ruộng đất của địa chủ chia ngay cho nông dân nghèo.",
+      "quốc hữu hóa toàn bộ ruộng đất nông nghiệp thành tài sản công cộng.",
+      "giữ nguyên toàn bộ chế độ bóc lột địa chủ để tập trung kháng chiến."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #15: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Đảng thực hiện chính sách từng bước: Giảm tức, giảm sai, tịch thu ruộng đất địa chủ phản động, tiến tới Cải cách ruộng đất (từ 1953).",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #15",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm tịch thu ruộng đất ngay từ đầu.",
+      "trickWord": "Giảm tức, giảm sai ➔ Cải cách ruộng đất từng bước",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "Ruộng đất chống Pháp = Giảm tức giảm sai từng bước."
     }
   },
   {
     "id": "lsd2-tr2-016",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #16: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Âm mưu cốt lõi của Kế hoạch Na-va (1953) do Pháp - Mỹ triển khai là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #16.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #16.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #16.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #16."
+      "Xoay chuyển cục diện chiến tranh, giành thắng lợi quyết định trong 18 tháng.",
+      "Rút toàn bộ quân Pháp về nước để giao lại chiến trường cho quân Mỹ.",
+      "Tập trung quân mở cuộc tiến công chiếm lại vùng biên giới phía Bắc.",
+      "Bảo vệ an toàn cho cơ quan đầu não kháng chiến của chính quyền tay sai."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #16: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Na-va định trong 18 tháng xoay chuyển cục diện, giành thắng lợi quân sự quyết định để 'kết thúc chiến tranh trong danh dự'.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #16",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm là Pháp muốn rút quân ngay.",
+      "trickWord": "Thắng lợi quyết định trong 18 tháng",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.3.",
+      "tip": "Na-va = 18 tháng xoay chuyển cục diện."
     }
   },
   {
     "id": "lsd2-tr2-017",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #17: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Phương châm tác chiến của Bộ Chính trị trong Kế hoạch tác chiến Đông Xuân 1953-1954 là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #17.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #17.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #17.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #17."
+      "Tích cực, chủ động, cơ động, linh hoạt; 'Đánh chắc thắng, chắc tiến mới đánh'.",
+      "Đánh nhanh thắng nhanh, tập trung toàn lực vào quân chủ lực Pháp ở đô thị.",
+      "Tránh né giao chiến, rút toàn bộ lực lượng về căn cứ địa Việt Bắc bảo toàn.",
+      "Đánh bóc vỏ từng công sự, tập trung 100% quân số vào một hướng duy nhất."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #17: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương châm: 'Tích cực, chủ động, cơ động, linh hoạt', buộc địch phải phân tán lực lượng đối phó.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #17",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm phương châm 'Đánh nhanh thắng nhanh'.",
+      "trickWord": "Tích cực, chủ động, cơ động, linh hoạt",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.3.",
+      "tip": "Đông Xuân 53-54 = Cơ động linh hoạt phân tán địch."
     }
   },
   {
     "id": "lsd2-tr2-018",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #18: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Chiến dịch Điện Biên Phủ (1954) được chia làm bao nhiêu đợt tiến công liên tục?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #18.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #18.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #18.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #18."
+      "Chiến dịch được chia làm 3 đợt tiến công lớn kéo dài từ 13-3 đến 7-5-1954.",
+      "Chiến dịch được chia làm 2 đợt tiến công lớn kéo dài trong 12 ngày đêm.",
+      "Chiến dịch được chia làm 4 đợt tiến công lớn kéo dài suốt mùa thu 1953.",
+      "Chiến dịch diễn ra trong 1 đợt tiến công bứt phá duy nhất trong 5 ngày."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #18: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chiến dịch Điện Biên Phủ gồm 3 đợt (Đợt 1: 13-17/3; Đợt 2: 30/3-30/4; Đợt 3: 1/5-7/5/1954).",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #18",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm số đợt chiến dịch.",
+      "trickWord": "3 đợt tiến công (13/3 - 7/5/1954)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.3.",
+      "tip": "Điện Biên Phủ = 3 đợt."
     }
   },
   {
     "id": "lsd2-tr2-019",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #19: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Hội nghị Giơ-ne-vơ về Đông Dương được chính thức khai mạc vào thời điểm nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #19.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #19.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #19.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #19."
+      "Khai mạc ngày 8 tháng 5 năm 1954 (ngay sau ngày Điện Biên Phủ chiến thắng).",
+      "Khai mạc ngày 7 tháng 5 năm 1954 (đúng ngày lá cờ quyết thắng tung bay).",
+      "Khai mạc ngày 20 tháng 7 năm 1954 (ngày ký kết các văn kiện Hiệp định).",
+      "Khai mạc ngày 13 tháng 3 năm 1954 (đúng ngày nổ súng đánh trận Him Lam)."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #19: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Hội nghị Giơ-ne-vơ bàn về Đông Dương khai mạc ngày 8/5/1954, 1 ngày sau khi Điện Biên Phủ toàn thắng (7/5).",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #19",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm ngày 7/5 (ngày chiến thắng) hoặc 20/7 (ngày ký Hiệp định).",
+      "trickWord": "Khai mạc ngày 8/5/1954",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.3.",
+      "tip": "7/5 thắng ➔ 8/5 họp Giơ-ne-vơ."
     }
   },
   {
     "id": "lsd2-tr2-020",
     "trickSet": 2,
-    "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #20: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "sectionId": "lsd2-sec-1",
+    "subsectionId": "lsd2-sub-1-2",
+    "question": "Ý nghĩa của việc thành lập Mặt trận Liên Việt năm 1951 là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #20.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #20.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #20.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #20."
+      "Hợp nhất Việt Minh và Hội Liên Việt, mở rộng khối đại đoàn kết toàn dân.",
+      "Thành lập lực lượng chính trị riêng biệt cạnh tranh với Tổng bộ Việt Minh.",
+      "Thay thế cho vai trò lãnh đạo của Đảng Lao động Việt Nam trong kháng chiến.",
+      "Tập hợp các lực lượng tư sản dân tộc để chuẩn bị cải cách kinh tế."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #20: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Tháng 3/1951, hợp nhất Mặt trận Việt Minh và Hội Liên Việt thành Mặt trận Liên Việt, tăng cường đại đoàn kết.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #20",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm là tổ chức cạnh tranh.",
+      "trickWord": "Hợp nhất Việt Minh và Hội Liên Việt (3/1951)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục I.2.",
+      "tip": "1951 = Mặt trận Liên Việt."
     }
   },
   {
@@ -468,22 +470,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #21: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "question": "Nhiệm vụ chiến lược của cách mạng miền Bắc được ĐH III (9-1960) xác định là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #21.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #21.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #21.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #21."
+      "Xây dựng chủ nghĩa xã hội, là hậu phương lớn quyết định nhất cách mạng.",
+      "Tiến hành bạo lực cách mạng giải phóng hoàn toàn miền Nam ngay lập tức.",
+      "Tập trung phát triển công nghiệp nặng và xuất khẩu nông sản sang Châu Âu.",
+      "Chỉ làm nhiệm vụ tiếp nhận viện trợ từ các nước XHCN và phân phối."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #21: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "ĐH III xác định miền Bắc tiến hành cách mạng XHCN, là hậu phương giữ vai trò quyết định nhất.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #21",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm miền Bắc trực tiếp đánh bạo lực ở Nam.",
+      "trickWord": "Miền Bắc = Xây dựng CNXH + Hậu phương quyết định nhất",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.1.",
+      "tip": "Miền Bắc = Hậu phương CNXH."
     }
   },
   {
@@ -491,22 +493,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #22: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "question": "Nhiệm vụ chiến lược của cách mạng miền Nam được ĐH III (9-1960) xác định là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #22.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #22.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #22.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #22."
+      "Cách mạng dân tộc dân chủ nhân dân, giữ vai trò quyết định trực tiếp.",
+      "Cách mạng xã hội chủ nghĩa, giữ vai trò quyết định nhất cả nước.",
+      "Cách mạng tư sản dân quyền, thành lập chính quyền tư sản thân Mỹ.",
+      "Tập trung cải cách kinh tế trang trại và hòa nhập thị trường tự do."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #22: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân, đánh đổ ách trị của Mỹ - Ngụy, giữ vai trò 'quyết định trực tiếp'.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #22",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm từ 'quyết định nhất'.",
+      "trickWord": "Miền Nam = Cách mạng DTDCNN + Quyết định TRỰC TIẾP",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.1.",
+      "tip": "Miền Nam = Dân tộc dân chủ nhân dân."
     }
   },
   {
@@ -514,183 +516,183 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #23: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "question": "Chiến lược 'Chiến tranh đơn phương' (1954-1960) của Mỹ ở miền Nam bị đánh bại bởi phong trào nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #23.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #23.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #23.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #23."
+      "Phong trào 'Đồng khởi' bùng nổ cuối năm 1959 đầu năm 1960.",
+      "Phong trào thi đua 'Ấp Bắc giết giặc lập công' năm 1963.",
+      "Cuộc Tiến công chiến lược Mậu Thân năm 1968 trên toàn miền.",
+      "Phong trào 'Ba sẵn sàng' của thanh niên học sinh miền Bắc."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #23: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phong trào Đồng khởi (1959-1960) giáng đòn quyết định làm thất bại chiến lược 'Chiến tranh đơn phương' của Mỹ - Diệm.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #23",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm sang Chiến tranh đặc biệt.",
+      "trickWord": "Đồng khởi = Đánh bại Chiến tranh đơn phương",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.1.",
+      "tip": "1954-1960 = Đơn phương ➔ Đồng khởi phá tan."
     }
   },
   {
     "id": "lsd2-tr2-024",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #24: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Điểm khác biệt giữa 'Việt Nam hóa chiến tranh' và 'Chiến tranh cục bộ' về quy mô chiến trường là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #24.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #24.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #24.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #24."
+      "Việt Nam hóa chiến tranh mở rộng ra toàn Đông Dương (Lào và Campuchia).",
+      "Việt Nam hóa chiến tranh thu hẹp chỉ diễn ra ở vùng đô thị miền Nam.",
+      "Chiến tranh cục bộ mở rộng sang cả các nước Châu Á Đông Nam Á.",
+      "Chiến tranh cục bộ chỉ diễn ra trên không phận hậu phương miền Bắc."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #24: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "'Việt Nam hóa chiến tranh' gắn liền với 'Đông Dương hóa chiến tranh', mở rộng xâm lược sang cả Campuchia và Lào.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #24",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm Việt Nam hóa chiến tranh bị thu hẹp diện tích.",
+      "trickWord": "Việt Nam hóa = Mở rộng ra toàn ĐÔNG DƯƠNG",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Việt Nam hóa = Mở rộng Đông Dương."
     }
   },
   {
     "id": "lsd2-tr2-025",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #25: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Tuyến đường chiến lược vận tải quân sự Bắc - Nam được khai thông từ năm 1959 có tên gọi là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #25.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #25.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #25.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #25."
+      "Đường Trường Sơn (Đường 559) trên đất liền và Đường Hồ Chí Minh trên biển.",
+      "Đường Quốc lộ 1A kết nối liên tục từ tỉnh Lạng Sơn đến tận mũi Cà Mau.",
+      "Đường Xương sống Việt Bắc nối liền căn cứ địa với đồng bằng sông Hồng.",
+      "Đường Sắt Thống Nhất kết nối hai miền Nam - Bắc hoàn thành vượt tiến độ."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #25: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Đoàn 559 (Đường Trường Sơn) và Đoàn 759 (Đường Hồ Chí Minh trên biển) thành lập năm 1959 vận chuyển vũ khí chi viện miền Nam.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #25",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm Quốc lộ 1A.",
+      "trickWord": "Đường 559 (Trường Sơn) & Đường Hồ Chí Minh trên biển",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.1.",
+      "tip": "1959 = Đường 559 Trường Sơn."
     }
   },
   {
     "id": "lsd2-tr2-026",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #26: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Thắng lợi quân sự nào buộc Mỹ phải ký Hiệp định Pa-ri (1973) chấm dứt chiến tranh?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #26.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #26.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #26.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #26."
+      "Thắng lợi 'Điện Biên Phủ trên không' (12-1972) và Tiến công chiến lược 1972.",
+      "Thắng lợi của Cuộc Tổng tiến công và nổi dậy Mậu Thân năm 1968.",
+      "Thắng lợi của Chiến dịch Phước Long đầu năm 1975 giải phóng tỉnh.",
+      "Thắng lợi của Phong trào Đồng khởi ở Bến Tre giai đoạn 1959-1960."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #26: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Tiến công chiến lược 1972 và đặc biệt là chiến thắng 'Điện Biên Phủ trên không' (12/1972) buộc Mỹ phải ký Hiệp định Paris ngày 27/1/1973.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #26",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm Mậu Thân 1968 (1968 mới buộc Mỹ ngồi vào bàn đàm phán, còn 12/1972 mới buộc Mỹ KÝ Hiệp định).",
+      "trickWord": "12/1972 Điện Biên Phủ trên không ➔ KÝ Hiệp định Paris",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "1968 = Đàm phán; 12/1972 = Ký kết."
     }
   },
   {
     "id": "lsd2-tr2-027",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #27: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Tư tưởng chỉ đạo của Bộ Chính trị trong Kế hoạch giải phóng miền Nam (1975-1976) là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #27.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #27.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #27.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #27."
+      "Thần tốc, táo bạo, bất ngờ, chắc thắng; tranh thủ thời cơ giải phóng trong năm 1975.",
+      "Đánh lâu dài, kết hợp đàm phán ngoại giao kéo dài sang tới tận thời kỳ thập niên 80.",
+      "Tập trung toàn lực vào mặt trận ngoại giao để Mỹ buộc tự rút hết quân viễn chinh.",
+      "Chỉ giải phóng các tỉnh vùng ven bỏ qua các thành phố lớn sào huyệt chính quyền."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #27: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương châm: 'Thần tốc, táo bạo, bất ngờ, chắc thắng'. Đề ra kế hoạch 2 năm 1975-1976 nhưng dự kiến nếu thời cơ đến thì giải phóng ngay trong năm 1975.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #27",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'kéo dài sang thập niên 80'.",
+      "trickWord": "Thần tốc, táo bạo, bất ngờ, chắc thắng",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Mùa Xuân 75 = Thần tốc táo bạo."
     }
   },
   {
     "id": "lsd2-tr2-028",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #28: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Bản chất của chiến lược 'Đông Dương hóa chiến tranh' của Mỹ là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #28.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #28.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #28.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #28."
+      "Dùng người Đông Dương đánh người Đông Dương dưới sự chỉ huy của Mỹ.",
+      "Rút hết cố vấn quân sự Mỹ về nước để ba nước Đông Dương tự giải quyết.",
+      "Biến ba nước Đông Dương thành một quốc gia liên bang thân Mỹ duy nhất.",
+      "Chuyển toàn bộ quân viễn chinh Mỹ sang làm nhiệm vụ giữ trật tự đô thị."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #28: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "'Dùng người Việt đánh người Việt', 'Dùng người Đông Dương đánh người Đông Dương' là bản chất của Việt Nam hóa / Đông Dương hóa chiến tranh.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #28",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm là Mỹ rút bỏ completely.",
+      "trickWord": "Dùng người Đông Dương đánh người Đông Dương",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Đông Dương hóa = Dùng người Đông Dương đánh nhau."
     }
   },
   {
     "id": "lsd2-tr2-029",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #29: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Chiến dịch Huế - Đà Nẵng (tháng 3-1975) có ý nghĩa trực tiếp nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #29.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #29.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #29.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #29."
+      "Tiêu diệt Quân đoàn 1 ngụy, giải phóng các tỉnh miền Trung, đẩy ngụy vào thế sụp đổ.",
+      "Mở màn cho Cuộc Tổng tiến công và nổi dậy Mùa Xuân năm 1975 trên toàn miền Nam.",
+      "Buộc chính quyền Mỹ phải tuyên bố chấm dứt hoàn toàn viện trợ quân sự cho Saigon.",
+      "Kết thúc hoàn toàn Cuộc kháng chiến chống Mỹ cứu nước vĩ đại của nhân dân ta."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #29: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chiến dịch Huế - Đà Nẵng đập tan Quân đoàn 1 ngụy, giải phóng dải đất miền Trung, tạo thế hoảng loạn sụp đổ cho toàn bộ hệ thống ngụy.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #29",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm là chiến dịch mở màn (Tây Nguyên mới là mở màn).",
+      "trickWord": "Giải phóng miền Trung ➔ Ngụy sụp đổ",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Huế - Đà Nẵng = Đập tan Quân đoàn 1 ngụy."
     }
   },
   {
     "id": "lsd2-tr2-030",
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
-    "subsectionId": "lsd2-sub-2-1",
-    "question": "Câu hỏi bẫy tư duy nâng cao #30: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1954-1965)?",
+    "subsectionId": "lsd2-sub-2-2",
+    "question": "Tên gọi Chiến dịch Hồ Chí Minh chính thức được Bộ Chính trị phê chuẩn vào ngày nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #30.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #30.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #30.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #30."
+      "Ngày 14 tháng 4 năm 1975 (đổi tên từ Chiến dịch Giải phóng Saigon - Gia Định).",
+      "Ngày 30 tháng 4 năm 1975 (sau khi chiếc xe tăng húc đổ cổng Dinh Độc Lập).",
+      "Ngày 4 tháng 3 năm 1975 (ngày nổ súng mở màn Chiến dịch Tây Nguyên).",
+      "Ngày 27 tháng 1 năm 1973 (ngày ký kết Hiệp định Pa-ri tại Pháp)."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #30: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Ngày 14/4/1975, Bộ Chính trị quyết định đổi tên Chiến dịch giải phóng Sài Gòn - Gia Định thành 'Chiến dịch Hồ Chí Minh'.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #30",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm ngày 30/4/1975.",
+      "trickWord": "14/4/1975 = Đổi tên thành Chiến dịch Hồ Chí Minh",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "14/4/1975 = Tên Chiến dịch Hồ Chí Minh."
     }
   },
   {
@@ -698,22 +700,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #31: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Khẩu hiệu nổi tiếng của Đại tướng Võ Nguyên Giáp trong Chiến dịch Hồ Chí Minh là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #31.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #31.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #31.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #31."
+      "'Thần tốc, thần tốc hơn nữa; táo bạo, táo bạo hơn nữa' xông lên.",
+      "'Nhất tề đứng lên tiêu diệt tập đoàn điểm Điện Biên Phủ'.",
+      "'Thà hy sinh tất cả chứ nhất định không chịu mất nước'.",
+      "'Tất cả cho tiền tuyến, tất cả để đánh bại quân viễn chinh Mỹ'."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #31: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Mệnh lệnh nổi tiếng ngày 7/4/1975: 'Thần tốc, thần tốc hơn nữa; táo bạo, táo bạo hơn nữa; tranh thủ từng giờ, từng phút, xóc tới mặt trận, giải phóng miền Nam'.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #31",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm khẩu hiệu Lời kêu gọi 1946.",
+      "trickWord": "Thần tốc, thần tốc hơn nữa; táo bạo, táo bạo hơn nữa",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Võ Nguyên Giáp 1975 = Thần tốc táo bạo."
     }
   },
   {
@@ -721,22 +723,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #32: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Nội dung nào KHÔNG ĐÚNG về ý nghĩa của thắng lợi cuộc kháng chiến chống Mỹ (1954-1975)?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #32.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #32.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #32.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #32."
+      "Đưa Việt Nam trở thành quốc gia có nền kinh tế phát triển đứng đầu thế giới.",
+      "Chấm dứt vĩnh viễn ách thống trị của chủ nghĩa thực dân, đế quốc ở nước ta.",
+      "Hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân trên phạm vi cả nước.",
+      "Mở ra kỷ nguyên mới: Đất nước độc lập, thống nhất, cả nước đi lên CNXH."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #32: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương án A SAI vì sau 1975 Việt Nam bị chiến tranh tàn phá nặng nề, chưa thể trở thành kinh tế phát triển đứng đầu thế giới.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #32",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'nền kinh tế phát triển đứng đầu thế giới'.",
+      "trickWord": "Bẫy 'kinh tế phát triển đứng đầu'",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Ý nghĩa lịch sử.",
+      "tip": "1975 = Độc lập thống nhất đi lên CNXH."
     }
   },
   {
@@ -744,22 +746,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #33: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Chiến dịch Tây Nguyên (3-1975) đã chuyển cuộc kháng chiến chống Mỹ từ thế nào sang thế nào?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #33.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #33.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #33.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #33."
+      "Chuyển từ cuộc tiến công chiến lược sang Cuộc Tổng tiến công và nổi dậy.",
+      "Chuyển từ thế phòng ngự bị động sang thế phản công trên toàn chiến trường.",
+      "Chuyển từ đấu tranh chính trị sang đấu tranh vũ trang bạo lực cách mạng.",
+      "Chuyển từ chiến tranh du kích nhỏ lẻ sang chiến tranh tập đoàn điểm."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #33: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Thắng lợi Tây Nguyên chuyển tiến công chiến lược thành Tổng tiến công và nổi dậy trên toàn miền Nam.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #33",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm là chuyển từ phòng ngự sang phản công.",
+      "trickWord": "Chuyển tiến công chiến lược ➔ TỔNG TIẾN CÔNG VÀ NỔI DẬY",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Tây Nguyên = Chuyển sang Tổng tiến công."
     }
   },
   {
@@ -767,22 +769,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #34: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Tổng thống cuối cùng của chính quyền Saigon phải tuyên bố đầu hàng không điều kiện ngày 30-4-1975 là ai?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #34.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #34.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #34.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #34."
+      "Dương Văn Minh (người vừa nhận chức Tổng thống được 2 ngày).",
+      "Nguyễn Văn Thiệu (người từ chức và bỏ chạy ra nước ngoài trước đó).",
+      "Trần Văn Hương (người giữ chức Tổng thống trong vài ngày ngắn).",
+      "Ngô Đình Diệm (người bị đảo chính và bị sát hại từ năm 1963)."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #34: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Dương Văn Minh nhận chức ngày 28/4, đến 11h30 ngày 30/4/1975 tuyên bố đầu hàng không điều kiện.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #34",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm Nguyễn Văn Thiệu (Thiệu từ chức ngày 21/4).",
+      "trickWord": "Dương Văn Minh (đầu hàng ngày 30/4/1975)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Đầu hàng 30/4/1975 = Dương Văn Minh."
     }
   },
   {
@@ -790,22 +792,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #35: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Yếu tố hậu phương đóng vai trò gì đối với thắng lợi của cách mạng miền Nam (1954-1975)?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #35.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #35.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #35.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #35."
+      "Miền Bắc là hậu phương lớn, cung cấp sức người sức của quyết định nhất.",
+      "Miền Bắc chỉ đóng vai trò hỗ trợ tinh thần không chi viện vật chất.",
+      "Hậu phương chủ yếu là các nước XHCN Châu Âu hỗ trợ trực tiếp chiến.",
+      "Miền Nam tự lực hoàn toàn về nhân lực vật lực không cần miền Bắc."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #35: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Hậu phương miền Bắc là nhân tố quyết định nhất đối với sự nghiệp giải phóng miền Nam.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #35",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm hậu phương ngoại quốc.",
+      "trickWord": "Miền Bắc = Hậu phương lớn quyết định nhất",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.1 & II.3.",
+      "tip": "Hậu phương = Miền Bắc."
     }
   },
   {
@@ -813,22 +815,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #36: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Quân đoàn chủ lực nào của ta đã tiến cắm cờ trên nóc Dinh Độc Lập ngày 30-4-1975?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #36.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #36.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #36.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #36."
+      "Quân đoàn 2 (Lữ đoàn xe tăng 203 dẫn đầu tiến công vào Dinh).",
+      "Quân đoàn 1 (Binh đoàn Quyết Thắng tiến công từ hướng Bắc).",
+      "Quân đoàn 3 (Binh đoàn Tây Nguyên tiến công đánh sân bay Tân Sơn).",
+      "Quân đoàn 4 (Binh đoàn Cửu Long tiến công đánh Bộ Tổng tham mưu)."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #36: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Xe tăng 390 và 843 thuộc Lữ đoàn xe tăng 203, Quân đoàn 2 húc cổng Dinh Độc Lập, cắm cờ giải phóng.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #36",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm giữa các Quân đoàn tiến công 5 hướng.",
+      "trickWord": "Quân đoàn 2 (Lữ đoàn xe tăng 203)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Cắm cờ Dinh Độc Lập = Quân đoàn 2."
     }
   },
   {
@@ -836,22 +838,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #37: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Số lượng hướng tiến công của ta vào sào huyệt Sài Gòn trong Chiến dịch Hồ Chí Minh là bao nhiêu?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #37.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #37.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #37.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #37."
+      "5 hướng tiến công đồng loạt (Bắc, Tây Bắc, Tây và Tây Nam, Đông, Đông Nam).",
+      "3 hướng tiến công tập trung (hướng Bắc, hướng Nam và hướng Đông).",
+      "2 hướng tiến công chính (hướng đường bộ và hướng đường biển).",
+      "4 hướng tiến công bao vây (Đông, Tây, Nam, Bắc xung quanh thành phố)."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #37: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chiến dịch Hồ Chí Minh hình thành 5 cánh quân đồng loạt tiến công vào 5 mục tiêu sào huyệt Saigon.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #37",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm 4 hướng hay 3 hướng.",
+      "trickWord": "5 cánh quân tiến công",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "Sài Gòn 1975 = 5 cánh quân."
     }
   },
   {
@@ -859,22 +861,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #38: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Bài học kinh nghiệm nổi bật về phương pháp cách mạng trong Chương II (1945-1975) là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #38.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #38.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #38.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #38."
+      "Sử dụng bạo lực cách mạng, kết hợp đấu tranh quân sự, chính trị và ngoại giao.",
+      "Chỉ sử dụng đấu tranh ngoại giao thuần túy không dùng lực lượng vũ trang.",
+      "Chỉ áp dụng đấu tranh du kích nhỏ lẻ không xây dựng các binh đoàn chủ lực.",
+      "Ỷ lại hoàn toàn vào sự can thiệp và hỗ trợ quân sự từ các nước bên ngoài."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #38: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương pháp bạo lực cách mạng tổng hợp: Đấu tranh quân sự + chính trị + ngoại giao, kết hợp tiến công và nổi dậy.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #38",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm đấu tranh ngoại giao đơn thuần.",
+      "trickWord": "Bạo lực cách mạng + Quân sự, chính trị, ngoại giao",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Bài học kinh nghiệm.",
+      "tip": "Phương pháp cách mạng = Bạo lực tổng hợp."
     }
   },
   {
@@ -882,22 +884,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #39: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Thắng lợi của kháng chiến chống Mỹ (1975) đã mở ra bước ngoặt gì cho dân tộc Việt Nam?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #39.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #39.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #39.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #39."
+      "Chấm dứt 21 năm chia cắt, đất nước hoàn toàn độc lập, thống nhất đi lên CNXH.",
+      "Bắt đầu thời kỳ quá độ lên CNXH chỉ riêng ở địa bàn khu vực miền Bắc.",
+      "Chuyển sang mô hình kinh tế thị trường tư bản tự do cạnh tranh hoàn toàn.",
+      "Thành lập Liên bang ba nước Đông Dương với sự quản lý chung một chính phủ."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #39: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chấm dứt 21 năm chia cắt (1954-1975), hoàn thành độc lập dân tộc và thống nhất đất nước, đưa cả nước đi lên CNXH.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #39",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm là chỉ miền Bắc đi lên CNXH.",
+      "trickWord": "Chấm dứt 21 năm chia cắt, CẢ NƯỚC đi lên CNXH",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Ý nghĩa lịch sử.",
+      "tip": "1975 = Thống nhất CẢ NƯỚC đi lên CNXH."
     }
   },
   {
@@ -905,22 +907,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #40: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Bài học về kết hợp sức mạnh dân tộc và sức mạnh thời đại trong Chương II thể hiện ra sao?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #40.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #40.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #40.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #40."
+      "Phát huy tối đa nội lực dân tộc, tranh thủ sự ủng hộ quốc tế rộng rãi.",
+      "Dựa hoàn toàn vào ngoại lực để thay thế cho sự nỗ lực của nhân dân trong.",
+      "Đóng cửa biên giới tuyệt đối không tranh thủ sự giúp đỡ của bạn bè quốc.",
+      "Đánh đổi độc lập chủ quyền để lấy sự viện trợ tài chính quân sự nước."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #40: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Nội lực là quyết định, kết hợp phát huy sức mạnh dân tộc với tranh thủ sự ủng hộ của Liên Xô, Trung Quốc và nhân dân tiến bộ thế giới.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #40",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm phụ thuộc ngoại lực.",
+      "trickWord": "Nội lực dân tộc + Tranh thủ ủng hộ quốc tế",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Bài học kinh nghiệm.",
+      "tip": "Sức mạnh dân tộc + Sức mạnh thời đại."
     }
   },
   {
@@ -928,22 +930,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #41: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Ý nghĩa của Nghị quyết Trung ương 21 khóa III (tháng 7-1973) sau Hiệp định Paris là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #41.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #41.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #41.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #41."
+      "Khẳng định con đường cách mạng miền Nam vẫn là bạo lực cách mạng tiến công.",
+      "Yêu cầu nhân dân miền Nam ngừng hoàn toàn đấu tranh vũ trang chuyển sang hòa.",
+      "Chấp nhận cho quân Mỹ quay trở lại miền Nam để giám sát việc thi hành.",
+      "Giải tán Mặt trận Dân tộc Giải phóng miền Nam Việt Nam để thành lập hội."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #41: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "NQTƯ 21 (7/1973) nhấn mạnh bất kỳ trong tình hình nào cũng phải tiếp tục con đường bạo lực cách mạng, kiên quyết nắm vững giương cao cờ tiến công.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #41",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm là NQTƯ 21 yêu cầu hòa hoãn ngưng đánh.",
+      "trickWord": "NQTƯ 21 (7/1973) = Tiếp tục BẠO LỰC CÁCH MẠNG",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "NQTƯ 21 = Giữ vững bạo lực cách mạng."
     }
   },
   {
@@ -951,22 +953,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #42: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Nguyên nhân giúp quân dân miền Bắc đánh bại 2 cuộc chiến tranh phá hoại bằng không quân Mỹ là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #42.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #42.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #42.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #42."
+      "Đường lối chiến tranh nhân dân, chủ động phòng không nhân dân và dũng cảm.",
+      "Nhờ hệ thống tên lửa tự động hiện đại do ta tự nghiên cứu chế tạo 100%.",
+      "Do Mỹ chủ động ngừng ném bom mà không chịu sự tổn thất máy bay nào.",
+      "Do nhân dân miền Bắc rút hết về vùng nông thôn không còn ai ở thành thị."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #42: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chiến tranh nhân dân chống chiến tranh phá hoại: Vừa sản xuất vừa chiến đấu, chủ động sơ tán phòng không và bộ đội tên lửa kiên cường.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #42",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'tự chế tạo 100% tên lửa'.",
+      "trickWord": "Chiến tranh nhân dân + Sơ tán phòng không",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Chống phá hoại = Vừa sản xuất vừa chiến đấu."
     }
   },
   {
@@ -974,22 +976,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #43: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Ý nghĩa bài học 'Dân là gốc' thể hiện sâu sắc nhất trong 30 năm chiến tranh (1945-1975) là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #43.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #43.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #43.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #43."
+      "Dựa vào dân, phát huy sức mạnh của khối đại đoàn kết toàn dân tộc làm nền.",
+      "Huy động sự đóng góp tài chính của dân mà không quan tâm cải thiện đời.",
+      "Chỉ coi trọng vai trò của lực lượng quân đội chính quy bỏ qua quần chúng.",
+      "Để nhân dân tự tổ chức kháng chiến mà không cần sự lãnh đạo của Đảng."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #43: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Dân là gốc, cuộc kháng chiến là của toàn dân, vì toàn dân, dựa vào sức mạnh toàn dân tộc.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #43",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm coi trọng quân đội hơn dân.",
+      "trickWord": "Dân là gốc, sức mạnh toàn dân tộc",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Bài học kinh nghiệm.",
+      "tip": "Dân là gốc."
     }
   },
   {
@@ -997,22 +999,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #44: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Điểm tương đồng nổi bật giữa Hiệp định Sơ bộ (1946), Giơ-ne-vơ (1954) và Pa-ri (1973) là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #44.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #44.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #44.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #44."
+      "Đều là những thắng lợi ngoại giao phản ánh kết quả đấu tranh trên chiến trường.",
+      "Đều ngay lập tức mang lại độc lập hoàn toàn và thống nhất đất nước trọn.",
+      "Đều do phe ta chủ động đề xuất mà không cần thông qua đấu tranh quân sự.",
+      "Đều bắt buộc các đối thủ phải bồi thường toàn bộ kinh phí chiến tranh cho."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #44: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Đấu tranh ngoại giao là sự phản ánh kết quả trên chiến trường quân sự ('Thực lực là cái chuông, ngoại giao là cái tiếng').",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #44",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'mang lại thống nhất ngay lập tức'.",
+      "trickWord": "Ngoại giao phản ánh thực lực chiến trường",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Bài học kinh nghiệm.",
+      "tip": "Ngoại giao gắn liền với thực lực quân sự."
     }
   },
   {
@@ -1020,22 +1022,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #45: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Nội dung nào phản ánh SAI bài học về sự chỉ đạo chiến lược của Đảng trong Mùa Xuân 1975?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #45.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #45.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #45.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #45."
+      "Chờ đợi cho đến khi nhận đủ 100% vũ khí mới từ nước ngoài mới ra lệnh tiến.",
+      "Đánh giá đúng thời cơ lịch sử, chuyển từ kế hoạch 2 năm sang giải phóng ngay.",
+      "Chọn đúng địa bàn chọc thủng chiến lược (Tây Nguyên) làm sụp đổ hệ thống.",
+      "Tập trung lực lượng áp đảo 5 cánh quân tiến thẳng vào sào huyệt chính."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #45: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Phương án A SAI vì Đảng chủ động chớp thời cơ giải phóng ngay trong năm 1975, không bị động chờ đợi viện trợ.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #45",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'chờ đợi nhận đủ vũ khí mới tiến'.",
+      "trickWord": "Chớp thời cơ lịch sử (không chờ đợi)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.3.",
+      "tip": "1975 = Chớp thời cơ nhanh chóng."
     }
   },
   {
@@ -1043,22 +1045,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #46: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Phong trào 'Ba sẵn sàng' (thanh niên) và 'Phụ nữ ba đảm đang' ra đời hưởng ứng nhiệm vụ gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #46.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #46.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #46.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #46."
+      "Vừa sản xuất vừa chiến đấu, chi viện cho tiền tuyến miền Nam chống Mỹ.",
+      "Tham gia phong trào xóa nạn mù chữ diệt giặc dốt năm 1945 sau độc lập.",
+      "Khai phá vùng kinh tế mới ở đồng bằng sông Cửu Long thời kỳ Đổi mới.",
+      "Xây dựng các tập đoàn kinh tế tư nhân vươn tầm ra thị trường thế giới."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #46: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "'Ba sẵn sàng' và 'Phụ nữ ba đảm đang' là các phong trào thi đua yêu nước nổi tiếng thời kỳ kháng chiến chống Mỹ cứu nước.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #46",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm thời kỳ 1945 hay thời Đổi mới.",
+      "trickWord": "Ba sẵn sàng + Ba đảm đang (Chống Mỹ)",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Ba đảm đang = Kháng chiến chống Mỹ."
     }
   },
   {
@@ -1066,22 +1068,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #47: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Bài học lịch sử lớn nhất rút ra từ thắng lợi 30 năm chiến tranh (1945-1975) đối với hôm nay là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #47.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #47.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #47.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #47."
+      "Giữ vững độc lập tự chủ, phát huy sức mạnh đại đoàn kết toàn dân tộc.",
+      "Chỉ tập trung phát triển quân sự mà xem nhẹ việc xây dựng phát triển kinh.",
+      "Dựa vào sự bảo hộ an ninh của các cường quốc để phát triển đất nước.",
+      "Khép kín kinh tế nội địa không tham gia hội nhập với thị trường thế giới."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #47: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Bài học xuyên suốt: Giữ vững độc lập, tự chủ, kiên định mục tiêu độc lập dân tộc và CNXH, phát huy đại đoàn kết.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #47",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm sang đóng cửa kinh tế hoặc phụ thuộc nước lớn.",
+      "trickWord": "Độc lập tự chủ + Đại đoàn kết dân tộc",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Bài học kinh nghiệm.",
+      "tip": "Bài học lớn nhất = Độc lập tự chủ + Đại đoàn kết."
     }
   },
   {
@@ -1089,22 +1091,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #48: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Chủ tịch Hồ Chí Minh qua đời vào ngày tháng năm nào trong niềm tiếc thương vô hạn?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #48.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #48.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #48.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #48."
+      "Ngày 2 tháng 9 năm 1969 tại Thủ đô Hà Nội trong chiến dịch chống Mỹ.",
+      "Ngày 30 tháng 4 năm 1975 đúng ngày miền Nam hoàn toàn giải phóng xong.",
+      "Ngày 19 tháng 5 năm 1965 đúng dịp kỷ niệm 75 năm ngày sinh của Bác.",
+      "Ngày 27 tháng 1 năm 1973 đúng ngày Hiệp định Pa-ri được chính thức ký."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #48: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Chủ tịch Hồ Chí Minh qua đời ngày 2/9/1969 tại Hà Nội.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #48",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Dễ nhầm mốc 1975 hay 1973.",
+      "trickWord": "Ngày 2 tháng 9 năm 1969",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Bác Hồ mất = 2/9/1969."
     }
   },
   {
@@ -1112,22 +1114,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #49: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Văn kiện ghi lại di nguyện thiêng liêng của Bác Hồ trước khi qua đời có tên gọi là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #49.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #49.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #49.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #49."
+      "Bản Di chúc của Chủ tịch Hồ Chí Minh để lại cho toàn Đảng và toàn dân.",
+      "Tác phẩm 'Đường Cách mệnh' giảng dạy cho cán bộ lớp thanh niên ban đầu.",
+      "Tác phẩm 'Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân'.",
+      "Lời kêu gọi chống Mỹ cứu nước ban hành năm 1966 trên đài Tiếng nói."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #49: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Bản Di chúc thiêng liêng của Bác Hồ là tài liệu vô giá về xây dựng Đảng và con đường cách mạng Việt Nam.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #49",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Nhầm các tác phẩm khác của Bác.",
+      "trickWord": "Bản Di chúc của Chủ tịch Hồ Chí Minh",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Mục II.2.",
+      "tip": "Di nguyện thiêng liêng = Bản Di chúc."
     }
   },
   {
@@ -1135,22 +1137,22 @@ export const lsdChuong2Trick2 = [
     "trickSet": 2,
     "sectionId": "lsd2-sec-2",
     "subsectionId": "lsd2-sub-2-2",
-    "question": "Câu hỏi bẫy tư duy nâng cao #50: Khẳng định nào sau đây phản ánh ĐÚNG NHẤT về chỉ đạo chiến lược của Đảng trong kháng chiến chống Mỹ (1965-1975)?",
+    "question": "Ý nghĩa quyết định nhất của Đại thắng Mùa Xuân 1975 đối với tiến trình lịch sử dân tộc là gì?",
     "options": [
-      "Khẳng định chuẩn xác phân tích đúng bản chất chỉ đạo chiến lược của Đảng trong giai đoạn bẫy #50.",
-      "Khẳng định nhiễu bẫy thiếu yếu tố cốt lõi về vai trò của hậu phương lớn miền Bắc trong giai đoạn bẫy #50.",
-      "Khẳng định nhiễu sai mốc thời gian sự kiện và nhầm lẫn giữa các chiến lược chiến tranh của Mỹ #50.",
-      "Khẳng định nhiễu đánh tráo khái niệm giữa nhiệm vụ giải phóng miền Nam và xây dựng chủ nghĩa xã hội #50."
+      "Hoàn thành sự nghiệp giải phóng dân tộc, mở ra thời kỳ cả nước tiến lên CNXH.",
+      "Giúp Việt Nam ngay lập tức trở thành cường quốc kinh tế giàu nhất khu vực.",
+      "Thay thế hoàn toàn chế độ sở hữu nhà nước bằng chế độ tư hữu hoàn toàn.",
+      "Bãi bỏ toàn bộ hệ thống cơ quan pháp luật và tư pháp trên cả hai miền."
     ],
     "answer": 0,
     "difficulty": "hard",
     "isTrick": true,
-    "explanation": "Phân tích bẫy #50: Đáp án A phân tích chuẩn xác nghệ thuật chỉ đạo. Các đáp án B, C, D cố tình gài bẫy từ khóa nhiễu học thuật.",
+    "explanation": "Đại thắng Mùa Xuân 1975 kết thúc trọn vẹn 30 năm chiến tranh giải phóng dân tộc, mở ra kỷ nguyên độc lập, thống nhất và đi lên CNXH.",
     "trickDetails": {
-      "whyTrapped": "Học sinh hay bị mắc bẫy ở từ khóa nhiễu ở đáp án B và C.",
-      "trickWord": "Bẫy từ khóa nhiễu học thuật #50",
-      "citation": "Giáo trình Lịch sử Đảng Cộng sản Việt Nam — Chương II.",
-      "tip": "Ghi nhớ bản chất chỉ đạo chiến lược kháng chiến chống Mỹ."
+      "whyTrapped": "Bẫy từ 'trở thành cường quốc giàu nhất'.",
+      "trickWord": "Giải phóng dân tộc ➔ Cả nước tiến lên CNXH",
+      "citation": "Giáo trình Lịch sử Đảng — Chương II, Ý nghĩa lịch sử.",
+      "tip": "1975 = Độc lập, Thống nhất, CNXH."
     }
   }
 ];
