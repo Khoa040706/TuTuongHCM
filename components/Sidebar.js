@@ -136,15 +136,16 @@ export default function Sidebar({
       // Find which chapter and section this subsection belongs to
       chapters?.forEach((ch) => {
         ch.sections?.forEach((sec) => {
-          const match = sec.subsections?.some((sub) => sub.id === activeSubsectionId);
-          if (match) {
+          const matchSub = sec.subsections?.some((sub) => sub.id === activeSubsectionId);
+          const matchSec = sec.id === activeSubsectionId;
+          if (matchSub || matchSec) {
             chToExpand = ch.id;
             secToExpand = sec.id;
           }
         });
       });
 
-      if (chToExpand && secToExpand) {
+      if (chToExpand) {
         setExpandedGroups((prev) => {
           const nextExpanded = { ...prev };
           let changed = false;
@@ -153,7 +154,7 @@ export default function Sidebar({
             nextExpanded[chToExpand] = true;
             changed = true;
           }
-          if (!nextExpanded[secToExpand]) {
+          if (secToExpand && !nextExpanded[secToExpand]) {
             nextExpanded[secToExpand] = true;
             changed = true;
           }
@@ -237,18 +238,22 @@ export default function Sidebar({
         onConfirm: () => {
           setIsQuizMode(false);
           const ch = chapters.find((c) => c.id === chId);
-          if (ch && ch.sections[0]?.subsections[0]) {
-            setActiveSubsectionId(ch.sections[0].subsections[0].id);
+          const targetSubId = ch?.sections?.[0]?.subsections?.[0]?.id || ch?.sections?.[0]?.id;
+          if (targetSubId) {
+            setActiveSubsectionId(targetSubId);
           }
+          setExpandedGroups((prev) => ({ ...prev, [chId]: true }));
           onNavigate(`chapter-${chId}`);
           setIsOpen(false);
         }
       });
       return;
     }
+    setExpandedGroups((prev) => ({ ...prev, [chId]: true }));
     const ch = chapters.find((c) => c.id === chId);
-    if (ch && ch.sections[0]?.subsections[0]) {
-      setActiveSubsectionId(ch.sections[0].subsections[0].id);
+    const targetSubId = ch?.sections?.[0]?.subsections?.[0]?.id || ch?.sections?.[0]?.id;
+    if (targetSubId) {
+      setActiveSubsectionId(targetSubId);
     }
     onNavigate(`chapter-${chId}`);
   };
@@ -265,10 +270,10 @@ export default function Sidebar({
         onConfirm: () => {
           setIsQuizMode(false);
           let foundSubId = null;
-          chapters.forEach((ch) => {
-            const sec = ch.sections.find((s) => s.id === secId);
-            if (sec && sec.subsections[0]) {
-              foundSubId = sec.subsections[0].id;
+          (chapters || []).forEach((ch) => {
+            const sec = (ch.sections || []).find((s) => s.id === secId);
+            if (sec) {
+              foundSubId = sec.subsections?.[0]?.id || sec.id;
             }
           });
           if (foundSubId) {
@@ -281,10 +286,10 @@ export default function Sidebar({
       return;
     }
     let foundSubId = null;
-    chapters.forEach((ch) => {
-      const sec = ch.sections.find((s) => s.id === secId);
-      if (sec && sec.subsections[0]) {
-        foundSubId = sec.subsections[0].id;
+    (chapters || []).forEach((ch) => {
+      const sec = (ch.sections || []).find((s) => s.id === secId);
+      if (sec) {
+        foundSubId = sec.subsections?.[0]?.id || sec.id;
       }
     });
     if (foundSubId) {
@@ -303,15 +308,16 @@ export default function Sidebar({
     setIsOpen(false);
     
     // Auto-expand first chapter & section, and activate first subsection
-    const firstCh = chapters[0];
+    const firstCh = (chapters || [])[0];
     if (firstCh) {
       setExpandedGroups((prev) => ({
         ...prev,
         [firstCh.id]: true,
-        [firstCh.sections[0]?.id]: true
+        [(firstCh.sections || [])[0]?.id]: true
       }));
-      if (firstCh.sections[0]?.subsections[0]) {
-        setActiveSubsectionId(firstCh.sections[0].subsections[0].id);
+      const firstId = (firstCh.sections || [])[0]?.subsections?.[0]?.id || (firstCh.sections || [])[0]?.id;
+      if (firstId) {
+        setActiveSubsectionId(firstId);
       }
     }
 
@@ -415,7 +421,7 @@ export default function Sidebar({
               Nội dung môn học
             </div>
             <ul className="space-y-2">
-              {chapters.map((ch) => {
+              {(chapters || []).map((ch) => {
                 const isChExpanded = expandedGroups[ch.id];
                 return (
                   <li key={ch.id} className="space-y-1">
@@ -438,26 +444,32 @@ export default function Sidebar({
                       className="pl-4 border-l border-stone-200 space-y-1 mt-1 sidebar-sub-wrapper"
                       data-group-id={ch.id}
                     >
-                      {ch.sections.map((sec) => {
+                      {(ch.sections || []).map((sec) => {
                         const isSecExpanded = expandedGroups[sec.id];
+                        const isSecActive = activeSubsectionId === sec.id && !isQuizMode;
+                        const hasSubsections = sec.subsections && sec.subsections.length > 0;
                         return (
                           <li key={sec.id} className="space-y-1">
                             <button
                               onClick={() => handleSectionClick(sec.id)}
-                              className="w-full flex items-center justify-between px-3 py-1.5 rounded-md text-xs font-semibold text-stone-700 hover:bg-stone-150 transition-colors duration-200 text-left cursor-pointer"
+                              className={`w-full flex items-center justify-between px-3 py-1.5 rounded-md text-xs font-semibold transition-colors duration-200 text-left cursor-pointer ${
+                                isSecActive
+                                  ? "sidebar-active-item bg-accent/10 text-accent font-bold"
+                                  : "text-stone-700 hover:bg-stone-150"
+                              }`}
                             >
                               <span className="truncate max-w-[150px]">
                                 {sec.roman && <span className="text-accent mr-1">{sec.roman}.</span>}
                                 {sec.title}
                               </span>
-                              {isSecExpanded ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                              {hasSubsections ? (isSecExpanded ? <ChevronDown size={12} /> : <ChevronRight size={12} />) : null}
                             </button>
 
                             <ul 
                               className="pl-3 space-y-0.5 mt-0.5 sidebar-sub-wrapper"
                               data-group-id={sec.id}
                             >
-                              {sec.subsections
+                              {(sec.subsections || [])
                                 .filter((sub) => sub.number || sub.title)
                                 .map((sub) => {
                                   const isActive = activeSubsectionId === sub.id && !isQuizMode;

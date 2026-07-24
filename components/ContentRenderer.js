@@ -236,6 +236,15 @@ import LsdDoiMoiDecadeMegaHub from "./LsdDoiMoiDecadeMegaHub";
 import LsdCongress8FullContent from "./LsdCongress8FullContent";
 import LsdCongress9FullContent from "./LsdCongress9FullContent";
 import LsdCongress10FullContent from "./LsdCongress10FullContent";
+import LsdCongress2Vs3Compare from "./LsdCongress2Vs3Compare";
+import LsdCongress3Vs4Compare from "./LsdCongress3Vs4Compare";
+import LsdCongress4Vs5Compare from "./LsdCongress4Vs5Compare";
+import LsdCongress5Vs6Compare from "./LsdCongress5Vs6Compare";
+import LsdCongress6Vs7Compare from "./LsdCongress6Vs7Compare";
+import LsdCongress7Vs8Compare from "./LsdCongress7Vs8Compare";
+import LsdCongress8Vs9Compare from "./LsdCongress8Vs9Compare";
+import LsdCongress8CnhHdhDashboard from "./LsdCongress8CnhHdhDashboard";
+import LsdCongress9KttthDoiMoiDashboard from "./LsdCongress9KttthDoiMoiDashboard";
 import LsdCongress10And11Part2FullContent from "./LsdCongress10And11Part2FullContent";
 import LsdCongress11CuongLinh2011FullVisualizer from "./LsdCongress11CuongLinh2011FullVisualizer";
 import LsdCongress11StrategyAndConferencesVisualizer from "./LsdCongress11StrategyAndConferencesVisualizer";
@@ -394,7 +403,7 @@ function formatMathText(text) {
   });
 }
 
-function ChapterHeader({ title, subtitle, chapterId }) {
+function ChapterHeader({ title, subtitle, chapterId, id }) {
   const bannerRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -634,6 +643,7 @@ function ChapterHeader({ title, subtitle, chapterId }) {
   return (
     <div
       ref={bannerRef}
+      id={id}
       className="chapter-banner-container w-full relative mb-14 overflow-hidden select-none cursor-pointer"
       style={{ transformStyle: "preserve-3d" }}
     >
@@ -697,7 +707,7 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
     isChapterBased = true;
     for (const ch of currentSubject.chapters) {
       const hasSub = ch.sections && ch.sections.some(sec => 
-        sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+        sec.id === activeSubsectionId || (sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId))
       );
       if (hasSub) {
         activeChapter = ch;
@@ -814,6 +824,48 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
                               setActiveLang={setActiveLang}
                             />
                           ))}
+                          {part.id === "dh-3-sec-5-content" && (
+                            <LsdCongress3Dashboard />
+                          )}
+                          {part.id === "dh-3-sec-8-content" && (
+                            <LsdCongress2Vs3Compare />
+                          )}
+                          {part.id === "dh-4-sec-5-content" && (
+                            <LsdCongress4Dashboard />
+                          )}
+                          {part.id === "dh-4-sec-8-content" && (
+                            <LsdCongress3Vs4Compare />
+                          )}
+                          {part.id === "dh-5-sec-5-content" && (
+                            <LsdCongress5Dashboard />
+                          )}
+                          {part.id === "dh-5-sec-8-content" && (
+                            <LsdCongress4Vs5Compare />
+                          )}
+                          {part.id === "dh-6-sec-5-content" && (
+                            <LsdCongress6DoiMoiDashboard />
+                          )}
+                          {part.id === "dh-6-sec-8-content" && (
+                            <LsdCongress5Vs6Compare />
+                          )}
+                          {part.id === "dh-7-sec-5-content" && (
+                            <LsdCongress7CuongLinhDashboard />
+                          )}
+                          {part.id === "dh-7-sec-8-content" && (
+                            <LsdCongress6Vs7Compare />
+                          )}
+                          {part.id === "dh-8-sec-5-content" && (
+                            <LsdCongress8CnhHdhDashboard />
+                          )}
+                          {part.id === "dh-8-sec-8-content" && (
+                            <LsdCongress7Vs8Compare />
+                          )}
+                          {part.id === "dh-9-sec-5-content" && (
+                            <LsdCongress9KttthDoiMoiDashboard />
+                          )}
+                          {part.id === "dh-9-sec-8-content" && (
+                            <LsdCongress8Vs9Compare />
+                          )}
                         </div>
                       </SpotlightCardWrapper>
                     </CinematicScrollWrapper>
@@ -2068,6 +2120,207 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
                 #{kw}
               </span>
             ))}
+          </div>
+        </div>
+      );
+
+    case "flashcards-banner":
+      return (
+        <div key={path} className="my-6 p-5 md:p-6 rounded-2xl bg-gradient-to-br from-amber-500/10 via-amber-400/5 to-red-500/10 border border-amber-500/30 shadow-md relative overflow-hidden" data-hl-path={path}>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-lg">⚡</span>
+            <h4 className="text-xs md:text-sm font-black uppercase tracking-wider text-amber-900 dark:text-amber-300">
+              TÓM TẮT SIÊU TỐC — BẢNG GHI NHỚ NHANH BÀI HỌC
+            </h4>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {block.items && block.items.map((item, idx) => (
+              <div key={idx} className="p-3.5 rounded-xl bg-white dark:bg-stone-900 border border-amber-200/80 dark:border-stone-800 shadow-xs hover:shadow-sm transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-800 dark:text-amber-400 mb-1.5">
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                  <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed font-sans font-medium">
+                    {item.value}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "trap-badge":
+      return (
+        <div key={path} className="my-6 p-5 rounded-2xl bg-gradient-to-r from-red-500/15 via-red-500/10 to-amber-500/10 border-l-4 border-l-red-600 border border-red-200/80 dark:border-red-900/50 shadow-sm relative overflow-hidden" data-hl-path={path}>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-base animate-pulse">⚠️</span>
+            <h4 className="text-xs font-black uppercase tracking-widest text-red-800 dark:text-red-300">
+              {block.title || "CẢNH BÁO BẪY THI THƯỜNG GẶP"}
+            </h4>
+          </div>
+          <p className="text-xs md:text-sm font-medium text-stone-800 dark:text-stone-200 leading-relaxed whitespace-pre-line font-sans">
+            {block.text}
+          </p>
+        </div>
+      );
+
+    case "resolution-grid":
+      return (
+        <div key={path} className="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5" data-hl-path={path}>
+          {block.items && block.items.map((res, idx) => (
+            <div key={idx} className="p-4 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-850 shadow-xs hover:border-accent/50 hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="text-2xl mb-2">{res.icon}</div>
+                <h5 className="text-xs font-bold text-stone-900 dark:text-stone-100 mb-1.5 font-sans">
+                  {res.title}
+                </h5>
+                <p className="text-[11px] text-stone-600 dark:text-stone-400 leading-relaxed font-sans">
+                  {res.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+
+    case "comparison-table":
+      return (
+        <div key={path} className="my-6 rounded-2xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 overflow-hidden shadow-md" data-hl-path={path}>
+          {block.title && (
+            <div className="px-5 py-3.5 bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-red-500/10 border-b border-stone-200 dark:border-stone-800 font-bold text-xs md:text-sm text-stone-900 dark:text-stone-100 flex items-center gap-2">
+              <span>📊</span>
+              <span>{block.title}</span>
+            </div>
+          )}
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs md:text-sm text-left border-collapse">
+              <thead>
+                <tr className="bg-stone-100 dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 text-stone-700 dark:text-stone-300 uppercase tracking-wider text-[11px] font-bold">
+                  {block.headers && block.headers.map((h, idx) => (
+                    <th key={idx} className="px-4 py-3 font-extrabold">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-150 dark:divide-stone-850">
+                {block.rows && block.rows.map((row, rIdx) => (
+                  <tr key={rIdx} className="hover:bg-amber-50/30 dark:hover:bg-stone-850/50 transition-colors">
+                    {row.map((cell, cIdx) => (
+                      <td key={cIdx} className={`px-4 py-3 text-stone-800 dark:text-stone-200 leading-relaxed font-sans ${cIdx === 0 ? "font-bold text-amber-900 dark:text-amber-400 whitespace-nowrap bg-stone-50/50 dark:bg-stone-900/50" : ""}`}>
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+
+    case "result-three-card":
+      return (
+        <div key={path} className="my-6 grid grid-cols-1 md:grid-cols-3 gap-4" data-hl-path={path}>
+          {/* Success Card */}
+          {block.success && (
+            <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 shadow-sm flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs md:text-sm font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300 mb-3 flex items-center gap-1.5">
+                  {block.success.title}
+                </h4>
+                <ul className="space-y-2 text-xs md:text-sm text-stone-700 dark:text-stone-300 leading-relaxed list-disc list-inside font-sans">
+                  {block.success.bullets && block.success.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+          {/* Limitations Card */}
+          {block.limitations && (
+            <div className="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 shadow-sm flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs md:text-sm font-black uppercase tracking-wider text-amber-900 dark:text-amber-300 mb-3 flex items-center gap-1.5">
+                  {block.limitations.title}
+                </h4>
+                <ul className="space-y-2 text-xs md:text-sm text-stone-700 dark:text-stone-300 leading-relaxed list-disc list-inside font-sans">
+                  {block.limitations.bullets && block.limitations.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+          {/* Causes Card */}
+          {block.causes && (
+            <div className="p-5 rounded-2xl bg-blue-500/10 border border-blue-500/30 shadow-sm flex flex-col justify-between">
+              <div>
+                <h4 className="text-xs md:text-sm font-black uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-1.5">
+                  {block.causes.title}
+                </h4>
+                <ul className="space-y-2 text-xs md:text-sm text-stone-700 dark:text-stone-300 leading-relaxed list-disc list-inside font-sans">
+                  {block.causes.bullets && block.causes.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+
+    case "golden-summary-box":
+      return (
+        <div key={path} className="my-8 p-6 md:p-8 rounded-3xl bg-gradient-to-br from-amber-500/15 via-amber-400/10 to-yellow-500/15 border-2 border-amber-400/60 shadow-xl relative overflow-hidden" data-hl-path={path}>
+          <div className="absolute top-0 right-0 w-48 h-48 bg-amber-300/20 rounded-full blur-3xl pointer-events-none" />
+          <h3 className="text-sm md:text-base font-black uppercase tracking-widest text-amber-950 dark:text-amber-200 mb-4 flex items-center gap-2">
+            <span>{block.title || "🗝️ CHÌA KHÓA VÀNG HỌC THUỘC LÒNG"}</span>
+          </h3>
+          <div className="space-y-2.5">
+            {block.lines && block.lines.map((line, idx) => (
+              <div key={idx} className="p-3 rounded-xl bg-white/80 dark:bg-stone-900/80 border border-amber-200/60 dark:border-stone-800 text-xs md:text-sm font-semibold text-stone-900 dark:text-stone-100 shadow-2xs flex items-start gap-2">
+                <span className="text-amber-600 font-bold shrink-0">❖</span>
+                <span className="leading-relaxed font-sans">{line}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "trap-matrix-two-col":
+      return (
+        <div key={path} className="my-6 p-6 rounded-2xl bg-gradient-to-br from-red-500/10 via-amber-500/5 to-red-500/5 border border-red-300/60 dark:border-red-900/50 shadow-md" data-hl-path={path}>
+          <h4 className="text-xs md:text-sm font-black uppercase tracking-wider text-red-900 dark:text-red-300 mb-4 flex items-center gap-2">
+            <span>{block.title || "⚠️ MA TRẬN PHÂN BIỆT ĐIỂM BẪY THI CỰC KỲ NGUY HIỂM"}</span>
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Column 1 */}
+            <div className="p-4 rounded-xl bg-white dark:bg-stone-900 border border-red-200/80 dark:border-stone-800 shadow-xs">
+              <h5 className="text-xs font-bold text-red-800 dark:text-red-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+                <span>{block.col1Title}</span>
+              </h5>
+              <ul className="space-y-2 text-xs md:text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
+                {block.col1Items && block.col1Items.map((item, i) => (
+                  <li key={i} className="bg-stone-50 dark:bg-stone-950 p-2 rounded-lg border border-stone-200/60 dark:border-stone-850 font-medium">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Column 2 */}
+            <div className="p-4 rounded-xl bg-white dark:bg-stone-900 border border-amber-200/80 dark:border-stone-800 shadow-xs">
+              <h5 className="text-xs font-bold text-amber-800 dark:text-amber-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+                <span>{block.col2Title}</span>
+              </h5>
+              <ul className="space-y-2 text-xs md:text-sm text-stone-700 dark:text-stone-300 leading-relaxed font-sans">
+                {block.col2Items && block.col2Items.map((item, i) => (
+                  <li key={i} className="bg-stone-50 dark:bg-stone-950 p-2 rounded-lg border border-stone-200/60 dark:border-stone-850 font-medium">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       );

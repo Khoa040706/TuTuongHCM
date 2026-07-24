@@ -1,0 +1,1745 @@
+{
+  "id": "basic-general",
+  "title": "Kiến thức cơ bản môn Đại cương",
+  "subtitle": "Tìm hiểu lịch sử 10 kỳ Đại hội Đại biểu Toàn quốc của Đảng Cộng sản Việt Nam (1935 – 2006).",
+  "chapters": [
+    {
+      "id": "dh-1",
+      "title": "Đại hội I (3/1935)",
+      "subtitle": "Khôi phục hệ thống tổ chức Đảng",
+      "sections": [
+        {
+          "id": "dh-1-grp-1",
+          "roman": "I",
+          "title": "Tổng quan & Bối cảnh lịch sử",
+          "subsections": [
+            {
+              "id": "dh-1-sec-1",
+              "number": "1",
+              "title": "Thông tin chung về Đại hội I",
+              "parts": [
+                {
+                  "id": "dh-1-flashcards",
+                  "label": "⚡",
+                  "title": "TÓM TẮT SIÊU TỐC — BẢNG GHI NHỚ NHANH ĐẠI HỘI I",
+                  "content": [
+                    {
+                      "type": "flashcards-banner",
+                      "items": [
+                        {
+                          "icon": "📍",
+                          "label": "Địa điểm & Hoàn cảnh",
+                          "value": "Họp tại Ma Cao (Trung Quốc) do trong nước bị thực dân Pháp khủng bố trắng tàn khốc."
+                        },
+                        {
+                          "icon": "👥",
+                          "label": "Quy mô Đại hội",
+                          "value": "13 đại biểu chính thức, đại diện cho khoảng 600 đảng viên trong cả nước và hải ngoại."
+                        },
+                        {
+                          "icon": "👤",
+                          "label": "Tổng Bí thư bầu tại ĐH",
+                          "value": "Đồng chí Lê Hồng Phong được bầu làm Tổng Bí thư Ban Chấp hành Trung ương."
+                        },
+                        {
+                          "icon": "🌐",
+                          "label": "Nguyễn Ái Quốc",
+                          "value": "Được cử làm đại diện của Đảng bên cạnh Quốc tế Cộng sản (không trực tiếp dự ĐH)."
+                        },
+                        {
+                          "icon": "🎯",
+                          "label": "Trọng tâm lịch sử",
+                          "value": "Khôi phục hệ thống tổ chức Đảng từ TƯ đến cơ sở; chưa đề ra đổi hướng chiến lược lớn."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "dh-1-sec-1",
+                  "label": "I",
+                  "title": "Thông tin chung về Đại hội I",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "Đại hội đại biểu toàn quốc lần thứ I của Đảng Cộng sản Đông Dương diễn ra từ ngày 27 đến ngày 31-3-1935 tại Ma Cao (Trung Quốc)."
+                    },
+                    {
+                      "type": "highlight",
+                      "text": "⏰ Thời gian: 27 – 31/3/1935 | 📍 Địa điểm: Ma Cao (Trung Quốc) | 👥 Quy mô: 13 đại biểu chính thức (~600 đảng viên)"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Thành phần tham dự: Đại biểu các đảng bộ trong nước và các ban chỉ huy hải ngoại (Xiêm, Trung Quốc...)",
+                        "Lãnh đạo chủ chốt:",
+                        "• Đồng chí Lê Hồng Phong: Được Đại hội bầu làm Tổng Bí thư Ban Chấp hành Trung ương.",
+                        "• Đồng chí Hà Huy Tập: Ủy viên Trung ương, phụ trách công tác trong nước và chuẩn bị nội dung văn kiện.",
+                        "• Đồng chí Nguyễn Ái Quốc: Đang hoạt động, học tập ở Liên Xô, được cử làm Đại diện của Đảng bên cạnh Quốc tế Cộng sản (không trực tiếp dự Đại hội)."
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — THÔNG TIN CHUNG ĐẠI HỘI I",
+                      "text": "1. Đại hội I họp ở NƯỚC NGOÀI (Ma Cao, Trung Quốc) chứ KHÔNG PHẢI trong nước do thực dân Pháp khủng bố trắng.\n2. Tổng Bí thư bầu tại Đại hội I là LÊ HỒNG PHONG (Dễ nhầm với Trần Phú – Tổng Bí thư đầu tiên năm 1930, hoặc Hà Huy Tập – Tổng Bí thư sau đó từ năm 1936).\n3. Nguyễn Ái Quốc KHÔNG trực tiếp dự Đại hội I vì đang ở Liên Xô."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-2",
+              "number": "2",
+              "title": "Bối cảnh lịch sử trong nước và quốc tế",
+              "parts": [
+                {
+                  "id": "dh-1-sec-2",
+                  "label": "II",
+                  "title": "Bối cảnh lịch sử trong nước và quốc tế",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Trong nước:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Sau cao trào Xô viết Nghệ – Tĩnh (1930–1931), thực dân Pháp tiến hành khủng bố trắng cực kỳ tàn khốc.",
+                        "Nhiều tổ chức Đảng bị phá vỡ, hàng loạt cán bộ, đảng viên xuất sắc bị bắt, tù đày hoặc hy sinh.",
+                        "Giai đoạn 1932–1935: Phong trào cách mạng từng bước được khôi phục, các cơ sở Đảng lần lượt được lập lại.",
+                        "Yêu cầu cấp thiết: Phải củng cố và phục hồi hệ thống tổ chức Đảng từ Trung ương đến cơ sở."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Quốc tế:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Chủ nghĩa phát xít đang trỗi dậy mạnh mẽ ở Đức, Ý, Nhật, đe dọa nghiêm trọng hòa bình thế giới.",
+                        "Quốc tế Cộng sản chuẩn bị tổ chức Đại hội VII (7/1935) nhằm đề ra chủ trương thành lập Mặt trận nhân dân chống phát xít.",
+                        "Phong trào cộng sản và công nhân quốc tế đang tìm hướng đi mới chống phát xít và chiến tranh đế quốc."
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh bối cảnh: Trong nước vừa trải qua khủng bố trắng và đang phục hồi tổ chức; Quốc tế có nguy cơ chủ nghĩa phát xít và chuẩn bị Đại hội VII Quốc tế Cộng sản."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-3",
+              "number": "3",
+              "title": "Mục tiêu và 3 nhiệm vụ trước mắt của Đại hội",
+              "parts": [
+                {
+                  "id": "dh-1-sec-3",
+                  "label": "III",
+                  "title": "Mục tiêu và 3 nhiệm vụ trước mắt của Đại hội",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Củng cố và phát triển Đảng:",
+                          "bullets": [
+                            "Khôi phục hệ thống tổ chức Đảng từ Trung ương đến cơ sở.",
+                            "Chuẩn hóa nguyên tắc sinh hoạt và củng cố hàng ngũ cán bộ."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Tranh thủ quần chúng rộng rãi:",
+                          "bullets": [
+                            "Mở rộng ảnh hưởng của Đảng trong công nhân, nông dân và các tầng lớp nhân dân lao động.",
+                            "Tập hợp quần chúng vào các đoàn thể cách mạng."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Chống chiến tranh đế quốc:",
+                          "bullets": [
+                            "Đấu tranh chống nguy cơ chiến tranh do chủ nghĩa đế quốc và chủ nghĩa phát xít gây ra.",
+                            "Ủng hộ phong trào hòa bình thế giới."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "definition",
+                      "text": "✨ 3 Nhiệm vụ trước mắt của Đại hội I: Củng cố phát triển Đảng | Tranh thủ quần chúng | Chống chiến tranh đế quốc."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-1-grp-2",
+          "roman": "II",
+          "title": "Nội dung Văn kiện & Quyết định quan trọng",
+          "subsections": [
+            {
+              "id": "dh-1-sec-4",
+              "number": "1",
+              "title": "Các văn kiện chính và 7 Nghị quyết chuyên đề",
+              "parts": [
+                {
+                  "id": "dh-1-sec-4",
+                  "label": "IV",
+                  "title": "Các văn kiện chính và 7 Nghị quyết chuyên đề",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Văn kiện chính được thông qua:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "1. Nghị quyết chính trị: Do Ban Chấp hành lâm thời (đồng chí Hà Huy Tập chuẩn bị nội dung chính), đánh giá tình hình thế giới, Đông Dương và định hướng đường lối phục hồi lực lượng.",
+                        "2. Điều lệ Đảng (sửa đổi): Quy định chặt chẽ về tổ chức, nguyên tắc sinh hoạt và kết nạp đảng viên sau thời kỳ bị địch đánh phá."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Interactive Grid — 7 Nghị quyết chuyên đề được thông qua tại Đại hội I:"
+                    },
+                    {
+                      "type": "resolution-grid",
+                      "items": [
+                        {
+                          "icon": "👷",
+                          "title": "1. Vận động Công nhân",
+                          "desc": "Đẩy mạnh phong trào công nhân, phát triển tổ chức Công hội bí mật."
+                        },
+                        {
+                          "icon": "🌾",
+                          "title": "2. Vận động Nông dân",
+                          "desc": "Tập hợp nông dân đấu tranh chống sưu thuế, cướp đoạt ruộng đất."
+                        },
+                        {
+                          "icon": "✊",
+                          "title": "3. Thanh niên & Phụ nữ",
+                          "desc": "Phát huy lực lượng thanh niên, phụ nữ tham gia phong trào cách mạng."
+                        },
+                        {
+                          "icon": "🛡️",
+                          "title": "4. Công tác Binh lính",
+                          "desc": "Tuyên truyền, vận động binh lính người Việt trong quân đội Pháp."
+                        },
+                        {
+                          "icon": "⛰️",
+                          "title": "5. Dân tộc thiểu số",
+                          "desc": "Tăng cường đoàn kết và vận động đồng bào các dân tộc thiểu số."
+                        },
+                        {
+                          "icon": "⚔️",
+                          "title": "6. Đội Tự vệ",
+                          "desc": "Xây dựng các đội tự vệ công nông để bảo vệ phong trào và cán bộ."
+                        },
+                        {
+                          "icon": "🚑",
+                          "title": "7. Cứu tế đỏ",
+                          "desc": "Tổ chức giúp đỡ các đồng chí tù chính trị và gia đình cách mạng."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-5",
+              "number": "2",
+              "title": "Các quyết định và chủ trương quan trọng ⭐️",
+              "parts": [
+                {
+                  "id": "dh-1-sec-5",
+                  "label": "V",
+                  "title": "Các quyết định và chủ trương quan trọng ⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Quyết định 1: Củng cố hệ thống tổ chức Đảng",
+                          "bullets": [
+                            "Nội dung: Khôi phục các cấp bộ Đảng từ Trung ương đến cơ sở.",
+                            "Lý do: Đảng bị tổn thất nặng nề sau khủng bố trắng 1931-1935.",
+                            "Tác động: Tạo nền tảng tổ chức vững chắc để lãnh đạo các phong trào tiếp theo."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Quyết định 2: Cử Nguyễn Ái Quốc làm đại diện Đảng tại Quốc tế Cộng sản",
+                          "bullets": [
+                            "Ai đề xuất: Ban Chấp hành Trung ương mới.",
+                            "Thực hiện: Thực hiện ngay (Nguyễn Ái Quốc đang học tập, công tác tại Liên Xô)."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Chủ trương: Chuẩn bị cho giai đoạn đấu tranh mới",
+                          "bullets": [
+                            "Nội dung: Đặt nền móng tư tưởng để chuyển hướng chỉ đạo chiến lược.",
+                            "Thực tế triển khai: Đại hội I mới ở mức đề ra nhiệm vụ chung. Chủ trương chuyển hướng chỉ đạo chiến lược chỉ thực sự triển khai mạnh mẽ từ Hội nghị TƯ tháng 7/1936 và đặc biệt là Hội nghị Trung ương 8 (tháng 5/1941)."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — CHỦ TRƯƠNG CHIẾN LƯỢC ĐẠI HỘI I",
+                      "text": "Trọng tâm của Đại hội I là KHÔI PHỤC HỆ THỐNG TỔ CHỨC ĐẢNG, chưa đề ra chuyển hướng chiến lược lớn (Chuyển hướng chiến lược thành lập Mặt trận thuộc về Hội nghị TƯ 7/1936 và TƯ 8 năm 1941 do Nguyễn Ái Quốc chủ trì)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-6",
+              "number": "3",
+              "title": "Nhân sự và Điểm mới của Ban Chấp hành Trung ương",
+              "parts": [
+                {
+                  "id": "dh-1-sec-6",
+                  "label": "VI",
+                  "title": "Nhân sự và Điểm mới của Ban Chấp hành Trung ương",
+                  "content": [
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Ban Chấp hành Trung ương: Được bầu lại tại Đại hội, gồm các ủy viên chính thức và dự khuyết (Lê Hồng Phong, Hà Huy Tập và các đồng chí khác).",
+                        "Tổng Bí thư: Đồng chí Lê Hồng Phong.",
+                        "Điểm mới quan trọng: Lần đầu tiên sau thời kỳ bị khủng bố trắng, Đảng bầu lại được một Ban Chấp hành Trung ương chính thức, thay thế cho Ban Chỉ huy ở ngoài (lâm thời) trước đó."
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "👤 Nhân sự Tổng Bí thư: Lê Hồng Phong là Tổng Bí thư bầu tại Đại hội I (3/1935). Cần phân biệt với Trần Phú (Tổng Bí thư đầu tiên 1930) và Hà Huy Tập (Tổng Bí thư từ 1936)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-1-grp-3",
+          "roman": "III",
+          "title": "Phân tích & Bài học lịch sử",
+          "subsections": [
+            {
+              "id": "dh-1-sec-7",
+              "number": "1",
+              "title": "Nhận định về ý nghĩa khôi phục tổ chức và Bài học lịch sử",
+              "parts": [
+                {
+                  "id": "dh-1-sec-7",
+                  "label": "VII",
+                  "title": "Nhận định về ý nghĩa khôi phục tổ chức và Bài học lịch sử",
+                  "content": [
+                    {
+                      "type": "conclusion",
+                      "text": "✨ Ý NGHĨA LỊCH SỬ ĐẠI HỘI I: Việc 'khôi phục hệ thống tổ chức Đảng' là điều kiện tiên quyết để tiếp tục lãnh đạo cách mạng Việt Nam. Đại hội khẳng định bản lĩnh kiên cường, sức sống kỳ diệu của Đảng trong hoàn cảnh bị kẻ thù khủng bố tàn khốc."
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📖 Ghi nhớ nhanh nhận định: Đại hội I không có khẩu hiệu rầm rộ như các Đại hội sau; điểm nhấn lịch sử bao trùm và cao nhất là SỰ PHỤC HỒI HOÀN TOÀN HỆ THỐNG TỔ CHỨC ĐẢNG."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-8",
+              "number": "2",
+              "title": "Điểm mới so với giai đoạn trước ⭐️",
+              "parts": [
+                {
+                  "id": "dh-1-sec-8",
+                  "label": "VIII",
+                  "title": "Điểm mới so với giai đoạn trước ⭐️",
+                  "content": [
+                    {
+                      "type": "comparison-table",
+                      "title": "BẢNG SO SÁNH: GIAI ĐOẠN TRƯỚC ĐẠI HỘI I (1930-1935) VS ĐẠI HỘI I (1935)",
+                      "headers": [
+                        "Tiêu chí so sánh",
+                        "Trước Đại hội I (1930–1935)",
+                        "Tại Đại hội I (3/1935)"
+                      ],
+                      "rows": [
+                        [
+                          "Tổ chức Đảng",
+                          "Bị khủng bố trắng tàn khốc, tan vỡ nhiều nơi",
+                          "Được KHÔI PHỤC hoàn toàn từ TƯ đến cơ sở"
+                        ],
+                        [
+                          "Ban lãnh đạo",
+                          "Ban Chỉ huy ở ngoài (lâm thời)",
+                          "Bầu BAN CHẤP HÀNH TRUNG ƯƠNG CHÍNH THỨC"
+                        ],
+                        [
+                          "Tổng Bí thư",
+                          "Trần Phú (1930–1931, đã hy sinh)",
+                          "LÊ HỒNG PHONG (Được bầu tại ĐH I)"
+                        ],
+                        [
+                          "Văn kiện",
+                          "Luận cương chính trị (10/1930)",
+                          "Nghị quyết chính trị + Điều lệ + 7 Nghị quyết chuyên đề"
+                        ],
+                        [
+                          "Vị trí họp",
+                          "Chưa họp Đại hội toàn quốc",
+                          "Lần đầu tiên họp Đại hội toàn quốc (ở nước ngoài: Ma Cao)"
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh bước ngoặt: Đại hội I là Đại hội đầu tiên kể từ khi thành lập Đảng (1930) ➔ Đánh dấu bước ngoặt chuyển từ 'tồn tại phân tán' sang 'có tổ chức thống nhất trở lại'."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-9",
+              "number": "3",
+              "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+              "parts": [
+                {
+                  "id": "dh-1-sec-9",
+                  "label": "IX",
+                  "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+                  "content": [
+                    {
+                      "type": "result-three-card",
+                      "success": {
+                        "title": "Thành công ✅",
+                        "bullets": [
+                          "Hệ thống tổ chức Đảng được khôi phục mạnh mẽ ở nhiều địa phương.",
+                          "Phong trào đấu tranh của công nhân, nông dân từng bước được phục hồi.",
+                          "Tạo tiền đề vững chắc để Đảng chuyển sang giai đoạn đấu tranh công khai, hợp pháp thời kỳ 1936–1939 (Mặt trận Dân chủ Đông Dương)."
+                        ]
+                      },
+                      "limitations": {
+                        "title": "Hạn chế ⚠️",
+                        "bullets": [
+                          "Nhận thức về tình hình quốc tế, nguy cơ phát xít và sách lược đấu tranh CHƯA THEO KỊP những chuyển biến mới (Đại hội VII Quốc tế Cộng sản họp ngay sau đó vào 7/1935).",
+                          "Một số quan điểm trong Nghị quyết còn mang tính GIÁO ĐIỀU, TẢ KHUYNH, chưa linh hoạt."
+                        ]
+                      },
+                      "causes": {
+                        "title": "Nguyên nhân 🔍",
+                        "bullets": [
+                          "Đảng vừa trải qua giai đoạn khủng bố khốc liệt, thiếu thông tin và thiếu liên lạc thông suốt với Quốc tế Cộng sản.",
+                          "Đại hội họp trước khi có chủ trương mới của Quốc tế Cộng sản (Đại hội VII) nên chưa kịp cập nhật tinh thần Mặt trận nhân dân chống phát xít."
+                        ]
+                      }
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh kết quả: Thành công cốt lõi là KHÔI PHỤC TỔ CHỨC; Hạn chế chính là NHẬN THỨC CHƯA BẮT KỊP TÌNH HÌNH QUỐC TẾ MỚI (chủ nghĩa phát xít & Mặt trận nhân dân)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-1-grp-4",
+          "roman": "IV",
+          "title": "Ý nghĩa lịch sử & Chìa khóa Ôn thi",
+          "subsections": [
+            {
+              "id": "dh-1-sec-10",
+              "number": "1",
+              "title": "Ý nghĩa lịch sử toàn diện của Đại hội I ⭐️",
+              "parts": [
+                {
+                  "id": "dh-1-sec-10",
+                  "label": "X",
+                  "title": "Ý nghĩa lịch sử toàn diện của Đại hội I ⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Đối với Đảng:",
+                          "bullets": [
+                            "Đánh dấu mốc Đảng đã khôi phục được hệ thống tổ chức từ Trung ương đến địa phương sau thời kỳ khủng bố trắng.",
+                            "Khẳng định sức sống mãnh liệt, bản lĩnh kiên cường không gì lay chuyển nổi của Đảng."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Đối với Đất nước:",
+                          "bullets": [
+                            "Chuẩn bị cơ sở tổ chức vững chắc để Đảng lãnh đạo phong trào đấu tranh dân chủ, dân sinh giai đoạn 1936–1939."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Đối với Nhân dân:",
+                          "bullets": [
+                            "Tạo điều kiện để phong trào cách mạng của công nhân, nông dân và các tầng lớp nhân dân được tập hợp, thống nhất trở lại."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conclusion",
+                      "text": "✨ TỔNG KẾT Ý NGHĨA: Đại hội I = Mốc KHÔI PHỤC TỔ CHỨC ĐẢNG sau khủng bố trắng, chuẩn bị tiền đề cho giai đoạn đấu tranh mới 1936–1939."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-11",
+              "number": "2",
+              "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội I",
+              "parts": [
+                {
+                  "id": "dh-1-sec-11",
+                  "label": "XI",
+                  "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội I",
+                  "content": [
+                    {
+                      "type": "golden-summary-box",
+                      "title": "🗝️ 10 DÒNG CỐT LÕI BẮT BUỘC HỌC THUỘC LÒNG ĐẠI HỘI I",
+                      "lines": [
+                        "1. Đại hội I họp từ 27–31/3/1935 tại Ma Cao (Trung Quốc).",
+                        "2. Tham dự có 13 đại biểu chính thức, đại diện cho khoảng 600 đảng viên.",
+                        "3. Bầu đồng chí Lê Hồng Phong làm Tổng Bí thư Ban Chấp hành Trung ương.",
+                        "4. Nguyễn Ái Quốc làm đại diện Đảng bên cạnh Quốc tế Cộng sản (không dự trực tiếp).",
+                        "5. Thông qua Nghị quyết chính trị, Điều lệ Đảng sửa đổi và 7 Nghị quyết chuyên đề.",
+                        "6. Xác định 3 nhiệm vụ trước mắt: Củng cố phát triển Đảng, Tranh thủ quần chúng, Chống chiến tranh đế quốc.",
+                        "7. Bối cảnh: Đảng vừa trải qua khủng bố trắng 1931–1935, đang dần phục hồi lực lượng.",
+                        "8. Là Đại hội đầu tiên của Đảng kể từ khi thành lập năm 1930.",
+                        "9. Hạn chế: Nhận thức chưa theo kịp chuyển biến quốc tế (Đại hội VII Quốc tế Cộng sản, 7/1935).",
+                        "10. Ý nghĩa: Đánh dấu Đảng khôi phục hệ thống tổ chức, mở đường cho thời kỳ đấu tranh 1936–1939."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-1-sec-12",
+              "number": "3",
+              "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+              "parts": [
+                {
+                  "id": "dh-1-sec-12",
+                  "label": "XII",
+                  "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+                  "content": [
+                    {
+                      "type": "trap-matrix-two-col",
+                      "title": "⚠️ MA TRẬN PHÂN BIỆT ĐIỂM BẪY THI CỰC KỲ NGUY HIỂM",
+                      "col1Title": "⏰ Các mốc thời gian dễ nhầm",
+                      "col1Items": [
+                        "• 3/2/1930: Thành lập Đảng Cộng sản Việt Nam (Hội nghị hợp nhất).",
+                        "• 10/1930: Hội nghị Trung ương 1, đổi tên thành Đảng Cộng sản Đông Dương, thông qua Luận cương chính trị.",
+                        "• 1930–1931: Cao trào Xô viết Nghệ – Tĩnh.",
+                        "• 3/1935: ĐẠI HỘI I họp tại Ma Cao (Trung Quốc).",
+                        "• 7/1935: Đại hội VII Quốc tế Cộng sản (Dễ nhầm với Đại hội I của Đảng ta).",
+                        "• 7/1936: Hội nghị Trung ương – Chuyển hướng chỉ đạo chiến lược, thành lập Mặt trận."
+                      ],
+                      "col2Title": "👤 Các nhân vật lịch sử dễ nhầm",
+                      "col2Items": [
+                        "• Trần Phú: Tổng Bí thư đầu tiên (1930–1931), tác giả Luận cương chính trị 10/1930.",
+                        "• Lê Hồng Phong: Tổng Bí thư bầu tại ĐẠI HỘI I (3/1935).",
+                        "• Hà Huy Tập: Chuẩn bị nội dung văn kiện ĐH I, làm Tổng Bí thư giai đoạn sau (từ 1936).",
+                        "• Nguyễn Ái Quốc: Không dự ĐH I trực tiếp, làm đại diện của Đảng tại Quốc tế Cộng sản."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📝 Các câu hỏi trắc nghiệm & tự luận phổ biến trong kỳ thi:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Trắc nghiệm trọng tâm:",
+                        "1. Đại hội I họp ở đâu? ➔ Ma Cao (Trung Quốc).",
+                        "2. Đại hội I diễn ra vào thời gian nào? ➔ 27–31/3/1935.",
+                        "3. Ai được bầu làm Tổng Bí thư tại Đại hội I? ➔ Lê Hồng Phong.",
+                        "4. Số lượng đại biểu dự Đại hội I? ➔ 13 đại biểu (~600 đảng viên).",
+                        "Tự luận vận dụng:",
+                        "1. Trình bày bối cảnh, nội dung và ý nghĩa lịch sử của Đại hội I (3/1935).",
+                        "2. Vì sao Đại hội I của Đảng lại phải họp ở nước ngoài (Ma Cao)?",
+                        "3. Phân tích 3 nhiệm vụ trước mắt do Đại hội I xác định."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dh-2",
+      "title": "Đại hội II (2/1951)",
+      "subtitle": "Kháng chiến thắng lợi & Đổi tên Đảng Lao động Việt Nam",
+      "sections": [
+        {
+          "id": "dh-2-grp-1",
+          "roman": "I",
+          "title": "Tổng quan & Bối cảnh lịch sử",
+          "subsections": [
+            {
+              "id": "dh-2-sec-1",
+              "number": "1",
+              "title": "Thông tin chung về Đại hội II",
+              "parts": [
+                {
+                  "id": "dh-2-flashcards",
+                  "label": "⚡",
+                  "title": "TÓM TẮT SIÊU TỐC — BẢNG GHI NHỚ NHANH ĐẠI HỘI II",
+                  "content": [
+                    {
+                      "type": "flashcards-banner",
+                      "items": [
+                        {
+                          "icon": "📍",
+                          "label": "Địa điểm & Hoàn cảnh",
+                          "value": "Họp TRONG NƯỚC tại xã Vinh Quang (Kim Bình), Chiêm Hóa, Tuyên Quang (Căn cứ địa Việt Bắc)."
+                        },
+                        {
+                          "icon": "👥",
+                          "label": "Quy mô Đại hội",
+                          "value": "158 đại biểu chính thức, 53 dự khuyết, đại diện cho hơn 766.349 đảng viên toàn quốc."
+                        },
+                        {
+                          "icon": "👤",
+                          "label": "Lãnh đạo tối cao",
+                          "value": "Hồ Chí Minh làm CHỦ TỊCH ĐẢNG (lần đầu xuất hiện); Trường Chinh làm TỔNG BÍ THƯ."
+                        },
+                        {
+                          "icon": "🔄",
+                          "label": "Đổi tên Đảng",
+                          "value": "Đảng Cộng sản Đông Dương ra hoạt động công khai lấy tên mới là ĐẢNG LAO ĐỘNG VIỆT NAM."
+                        },
+                        {
+                          "icon": "🏆",
+                          "label": "Tên gọi lịch sử",
+                          "value": "Được gọi là 'Đại hội kháng chiến thắng lợi' hoặc 'Đại hội xây dựng Đảng Lao động Việt Nam'."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "dh-2-sec-1",
+                  "label": "I",
+                  "title": "Thông tin chung về Đại hội II",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "Đại hội đại biểu toàn quốc lần thứ II của Đảng diễn ra từ ngày 11 đến ngày 19-2-1951 tại xã Vinh Quang (nay là Kim Bình), huyện Chiêm Hóa, tỉnh Tuyên Quang (Căn cứ địa Việt Bắc)."
+                    },
+                    {
+                      "type": "highlight",
+                      "text": "⏰ Thời gian: 11 – 19/2/1951 | 📍 Địa điểm: Vinh Quang (Kim Bình), Chiêm Hóa, Tuyên Quang | 👥 Quy mô: 158 chính thức + 53 dự khuyết (~766.349 đảng viên)"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Thành phần tham dự: Đại biểu các đảng bộ trong cả nước; có đại biểu quốc tế (Đảng Cộng sản Trung Quốc và một số đảng anh em) tới dự.",
+                        "Lãnh đạo chủ chốt được bầu tại Đại hội:",
+                        "• Chủ tịch Hồ Chí Minh: Được bầu làm CHỦ TỊCH ĐẢNG (chức danh LẦN ĐẦU TIÊN xuất hiện trong lịch sử Đảng).",
+                        "• Đồng chí Trường Chinh: Được bầu làm TỔNG BÍ THƯ Ban Chấp hành Trung ương."
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — ĐỊA ĐIỂM & NHÂN SỰ ĐẠI HỘI II",
+                      "text": "1. Đại hội II họp TRONG NƯỚC tại Việt Bắc (Chiêm Hóa, Tuyên Quang), KHÁC VỚI Đại hội I họp ở nước ngoài (Ma Cao, Trung Quốc).\n2. Chức danh CHỦ TỊCH ĐẢNG lần đầu xuất hiện được trao cho HỒ CHÍ MINH, còn TỔNG BÍ THƯ là TRƯỜNG CHINH (Dễ bẫy nhầm lẫn vai trò 2 chức danh này trong bài thi)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-2",
+              "number": "2",
+              "title": "Bối cảnh lịch sử trong nước và quốc tế",
+              "parts": [
+                {
+                  "id": "dh-2-sec-2",
+                  "label": "II",
+                  "title": "Bối cảnh lịch sử trong nước và quốc tế",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Trong nước:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Cuộc kháng chiến chống thực dân Pháp xâm lược đang chuyển sang giai đoạn mới sau CHIẾN THẮNG BIÊN GIỚI THU – ĐÔNG 1950.",
+                        "Ta đã giành được QUYỀN CHỦ ĐỘNG CHIẾN LƯỢC trên chiến trường chính Bắc Bộ.",
+                        "Vùng giải phóng được mở rộng, hậu phương kháng chiến được củng cố về mọi mặt."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Quốc tế:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Hệ thống các nước xã hội chủ nghĩa được mở rộng; từ đầu năm 1950, Trung Quốc, Liên Xô và các nước dân chủ nhân dân lần lượt công nhận và đặt quan hệ ngoại giao với Việt Nam Dân chủ Cộng hòa.",
+                        "Phong trào giải phóng dân tộc ở châu Á, châu Phi, Mỹ Latinh phát triển mạnh mẽ.",
+                        "Đế quốc Mỹ can thiệp ngày càng sâu, tăng cường viện trợ quân sự cho thực dân Pháp trong cuộc chiến tranh Đông Dương."
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh bối cảnh: Trong nước kháng chiến chuyển sang giai đoạn chủ động chiến lược sau Chiến thắng Biên giới 1950; Quốc tế được Liên Xô, Trung Quốc công nhận ngoại giao, Mỹ bắt đầu can thiệp."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-3",
+              "number": "3",
+              "title": "Mục tiêu và nhiệm vụ chiến lược của Đại hội II",
+              "parts": [
+                {
+                  "id": "dh-2-sec-3",
+                  "label": "III",
+                  "title": "Mục tiêu và nhiệm vụ chiến lược của Đại hội II",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Đưa Đảng ra hoạt động công khai:",
+                          "bullets": [
+                            "Đưa Đảng ra hoạt động công khai ở Việt Nam với tên gọi mới là ĐẢNG LAO ĐỘNG VIỆT NAM."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Đưa kháng chiến đến thắng lợi hoàn toàn:",
+                          "bullets": [
+                            "Đề ra đường lối, chính sách quân sự, chính trị, kinh tế nhằm đánh bại thực dân Pháp và can thiệp Mỹ."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Kiến quốc & Củng cố đoàn kết 3 nước Đông Dương:",
+                          "bullets": [
+                            "Tăng cường sự lãnh đạo của Đảng đối với công cuộc kháng chiến và kiến quốc.",
+                            "Củng cố khối đoàn kết chiến đấu ba nước Đông Dương (Việt Nam – Lào – Campuchia)."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "definition",
+                      "text": "✨ Mục tiêu lớn nhất của Đại hội II: ĐƯA ĐẢNG RA HOẠT ĐỘNG CÔNG KHAI + ĐƯA CUỘC KHÁNG CHIẾN ĐẾN THẮNG LỢI HOÀN TOÀN."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-2-grp-2",
+          "roman": "II",
+          "title": "Nội dung Văn kiện & Quyết định quan trọng",
+          "subsections": [
+            {
+              "id": "dh-2-sec-4",
+              "number": "1",
+              "title": "Các văn kiện nền tảng được thông qua",
+              "parts": [
+                {
+                  "id": "dh-2-sec-4",
+                  "label": "IV",
+                  "title": "Các văn kiện nền tảng được thông qua",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Báo cáo Chính trị (Do Chủ tịch Hồ Chí Minh trình bày):",
+                          "bullets": [
+                            "Nội dung: Tổng kết kinh nghiệm phong trào cách mạng Việt Nam và của Đảng; xác định nhiệm vụ chủ yếu: tiêu diệt thực dân Pháp xâm lược, đánh bại âm mưu can thiệp Mỹ, giành độc lập, thống nhất hoàn toàn.",
+                            "Ý nghĩa: Định hướng chiến lược cho toàn bộ cuộc kháng chiến giai đoạn tiếp theo."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Báo cáo 'Bàn về cách mạng Việt Nam' (Do đồng chí Trường Chinh trình bày):",
+                          "bullets": [
+                            "Nội dung: Phân tích tính chất xã hội, đối tượng, nhiệm vụ, động lực của cách mạng Việt Nam; là cơ sở xây dựng Chính cương Đảng Lao động Việt Nam.",
+                            "Ý nghĩa: Cụ thể hóa đường lối cách mạng dân tộc dân chủ nhân dân tiến lên chủ nghĩa xã hội."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Chính cương Đảng Lao động Việt Nam:",
+                          "bullets": [
+                            "Nội dung: Xác định tính chất xã hội Việt Nam có 3 tính chất: dân tộc dân chủ, một phần thuộc địa, nửa phong kiến; nhiệm vụ cơ bản là đánh đế quốc, đánh phong kiến, phát triển chế độ dân chủ nhân dân.",
+                            "Ý nghĩa: Là Cương lĩnh cách mạng của Đảng trong giai đoạn kháng chiến chống Pháp."
+                          ]
+                        },
+                        {
+                          "number": "4",
+                          "title": "Điều lệ Đảng (mới) — Đảng Lao động Việt Nam:",
+                          "bullets": [
+                            "Nội dung: Quy định tôn chỉ, mục đích, nguyên tắc tổ chức và sinh hoạt khi Đảng ra hoạt động công khai."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ văn kiện: 2 Báo cáo lớn (Báo cáo Chính trị của Bác Hồ + Bàn về cách mạng VN của Trường Chinh) và Văn kiện nền tảng (Chính cương Đảng Lao động VN + Điều lệ Đảng mới)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-5",
+              "number": "2",
+              "title": "Các quyết định và chủ trương quan trọng ⭐️",
+              "parts": [
+                {
+                  "id": "dh-2-sec-5",
+                  "label": "V",
+                  "title": "Các quyết định và chủ trương quan trọng ⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Quyết định 1: Đưa Đảng ra hoạt động công khai & Đổi tên Đảng",
+                          "bullets": [
+                            "Nội dung: Đảng Cộng sản Đông Dương ra hoạt động công khai ở Việt Nam lấy tên mới là ĐẢNG LAO ĐỘNG VIỆT NAM.",
+                            "Lý do: Yêu cầu tăng cường vai trò lãnh đạo trực tiếp, công khai đối với cuộc kháng chiến trong tình hình mới.",
+                            "Tác động: Nâng cao uy tín, hiệu lực lãnh đạo của Đảng trước nhân dân và quốc tế."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Quyết định 2: Thành lập các Đảng riêng ở Lào và Campuchia",
+                          "bullets": [
+                            "Nội dung: Do đặc điểm riêng của mỗi nước, cách mạng Lào và Campuchia sẽ do các tổ chức Đảng riêng lãnh đạo (tiền thân của Đảng Nhân dân Cách mạng Lào và Đảng Nhân dân Cách mạng Khmer sau này).",
+                            "Tác động: Tách Đảng Cộng sản Đông Dương thành 3 Đảng riêng phù hợp từng nước, nhưng vẫn giữ vững khối đoàn kết chiến đấu thông qua Liên minh nhân dân Việt – Miên – Lào."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Chủ trương: Thành lập Mặt trận Liên Việt (3/1951)",
+                          "bullets": [
+                            "Nội dung: Quyết định hợp nhất Mặt trận Việt Minh và Hội Liên Việt thành MẶT TRẬN LIÊN VIỆT (tháng 3-1951).",
+                            "Ý nghĩa: Mở rộng, củng cố vững chắc khối đại đoàn kết toàn dân phục vụ kháng chiến."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — TÁCH ĐẢNG & TÊN MẶT TRẬN ĐẠI HỘI II",
+                      "text": "1. Đại hội II TÁCH ĐẢNG CỘNG SẢN ĐÔNG DƯƠNG THÀNH 3 ĐẢNG RIÊNG (Ở Việt Nam lấy tên là Đảng Lao động Việt Nam).\n2. Mặt trận thành lập tháng 3/1951 là MẶT TRẬN LIÊN VIỆT (Hợp nhất giữa Việt Minh và Hội Liên Việt)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-6",
+              "number": "3",
+              "title": "Nhân sự Ban Chấp hành Trung ương & Chức danh mới",
+              "parts": [
+                {
+                  "id": "dh-2-sec-6",
+                  "label": "VI",
+                  "title": "Nhân sự Ban Chấp hành Trung ương & Chức danh mới",
+                  "content": [
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Ban Chấp hành Trung ương: Bầu ra 29 ủy viên chính thức, 9 ủy viên dự khuyết.",
+                        "Bộ Chính trị: Được bầu trong số các Ủy viên Trung ương.",
+                        "Chủ tịch Đảng: CHỦ TỊCH HỒ CHÍ MINH (Chức danh mới, duy nhất tồn tại từ ĐH II đến khi Bác qua đời năm 1969).",
+                        "Tổng Bí thư: ĐỒNG CHÍ TRƯỜNG CHINH.",
+                        "Điểm mới nổi bật về nhân sự: Lần đầu tiên đặt ra chức danh CHỦ TỊCH ĐẢNG."
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "👤 Ghi nhớ nhân sự ĐH II: CHỦ TỊCH ĐẢNG = HỒ CHÍ MINH | TỔNG BÍ THƯ = TRƯỜNG CHINH. (BCH TƯ gồm 29 chính thức + 9 dự khuyết)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-2-grp-3",
+          "roman": "III",
+          "title": "Phân tích & Bài học lịch sử",
+          "subsections": [
+            {
+              "id": "dh-2-sec-7",
+              "number": "1",
+              "title": "Tên gọi lịch sử và Nhận định nổi bật của Đại hội II",
+              "parts": [
+                {
+                  "id": "dh-2-sec-7",
+                  "label": "VII",
+                  "title": "Tên gọi lịch sử và Nhận định nổi bật của Đại hội II",
+                  "content": [
+                    {
+                      "type": "conclusion",
+                      "text": "🏆 TÊN GỌI LỊCH SỬ: Đại hội II được lịch sử ghi nhận là 'ĐẠI HỘI KHÁNG CHIẾN THẮNG LỢI' hoặc 'Đại hội xây dựng Đảng Lao động Việt Nam'."
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📖 Ghi nhớ nhận định: Đại hội II diễn ra giữa lúc cuộc kháng chiến chống Pháp đang trên đà thắng lợi sau Chiến thắng Biên giới 1950, khẳng định vai trò lãnh đạo công khai của Đảng đưa cuộc kháng chiến đến thắng lợi hoàn toàn."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-8",
+              "number": "2",
+              "title": "Điểm mới so với Đại hội trước (Đại hội I vs Đại hội II) ⭐️",
+              "parts": [
+                {
+                  "id": "dh-2-sec-8",
+                  "label": "VIII",
+                  "title": "Điểm mới so với Đại hội trước (Đại hội I vs Đại hội II) ⭐️",
+                  "content": [
+                    {
+                      "type": "comparison-table",
+                      "title": "BẢNG SO SÁNH: ĐẠI HỘI I (1935) VS ĐẠI HỘI II (1951)",
+                      "headers": [
+                        "Tiêu chí so sánh",
+                        "Đại hội I (3/1935)",
+                        "Đại hội II (2/1951)"
+                      ],
+                      "rows": [
+                        [
+                          "Địa điểm tổ chức",
+                          "Ma Cao (nước ngoài)",
+                          "Tuyên Quang (TRONG NƯỚC - Việt Bắc)"
+                        ],
+                        [
+                          "Số lượng đại biểu",
+                          "13 đại biểu chính thức / ~600 đảng viên",
+                          "158 chính thức + 53 dự khuyết / 766.349 đảng viên"
+                        ],
+                        [
+                          "Tên gọi của Đảng",
+                          "Đảng Cộng sản Đông Dương",
+                          "ĐẢNG LAO ĐỘNG VIỆT NAM"
+                        ],
+                        [
+                          "Hình thức hoạt động",
+                          "Bí mật",
+                          "CÔNG KHAI"
+                        ],
+                        [
+                          "Chức danh cao nhất",
+                          "Tổng Bí thư (Lê Hồng Phong)",
+                          "CHỦ TỊCH ĐẢNG (Hồ Chí Minh) + TỔNG BÍ THƯ (Trường Chinh)"
+                        ],
+                        [
+                          "Phạm vi tổ chức",
+                          "Chung cho cả 3 nước Đông Dương",
+                          "TÁCH THÀNH 3 ĐẢNG RIÊNG cho Việt Nam, Lào, Campuchia"
+                        ],
+                        [
+                          "Trọng tâm lịch sử",
+                          "Khôi phục hệ thống tổ chức Đảng",
+                          "LÃNH ĐẠO KHÁNG CHIẾN CHỐNG PHÁP ĐẾN THẮNG LỢI"
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh khác biệt lớn nhất: Đại hội II diễn ra TRONG NƯỚC, CÔNG KHAI, ĐỔI TÊN ĐẢNG thành Đảng Lao động Việt Nam và TÁCH THÀNH 3 ĐẢNG RIÊNG ở Đông Dương."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-9",
+              "number": "3",
+              "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+              "parts": [
+                {
+                  "id": "dh-2-sec-9",
+                  "label": "IX",
+                  "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+                  "content": [
+                    {
+                      "type": "result-three-card",
+                      "success": {
+                        "title": "Thành công ✅",
+                        "bullets": [
+                          "Đảng Lao động Việt Nam lãnh đạo quân và dân ta liên tiếp giành thắng lợi lớn, đỉnh cao là CHIẾN THẮNG ĐIỆN BIÊN PHỦ (5/1954).",
+                          "Buộc thực dân Pháp phải ký HIỆP ĐỊNH GIƠ-NE-VƠ (7/1954), chấm dứt chiến tranh xâm lược, lập lại hòa bình ở Đông Dương.",
+                          "Hậu phương kháng chiến được củng cố vững chắc về chính trị, kinh tế, quân sự."
+                        ]
+                      },
+                      "limitations": {
+                        "title": "Hạn chế ⚠️",
+                        "bullets": [
+                          "Trong quá trình thực hiện nhiệm vụ ruộng đất, có những sai lầm trong CẢI CÁCH RUỘNG ĐẤT ở giai đoạn sau (1953–1956), gây ảnh hưởng đến khối đoàn kết nông thôn.",
+                          "Việc thực hiện đường lối cách mạng dân tộc dân chủ nhân dân ở một số nơi còn nóng vội, chưa hoàn toàn phù hợp thực tiễn."
+                        ]
+                      },
+                      "causes": {
+                        "title": "Nguyên nhân 🔍",
+                        "bullets": [
+                          "Điều kiện chiến tranh khốc liệt, kinh nghiệm quản lý và chỉ đạo thực tiễn ở một số lĩnh vực còn hạn chế.",
+                          "Chịu ảnh hưởng của kinh nghiệm nước ngoài chưa được vận dụng sáng tạo, phù hợp với hoàn cảnh Việt Nam."
+                        ]
+                      }
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh kết quả: Thành công lớn nhất dẫn tới Chiến thắng Điện Biên Phủ 1954 và Hiệp định Giơ-ne-vơ; Hạn chế chính là sai lầm trong Cải cách ruộng đất (1953–1956)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-2-grp-4",
+          "roman": "IV",
+          "title": "Ý nghĩa lịch sử & Chìa khóa Ôn thi",
+          "subsections": [
+            {
+              "id": "dh-2-sec-10",
+              "number": "1",
+              "title": "Ý nghĩa lịch sử toàn diện của Đại hội II ⭐️",
+              "parts": [
+                {
+                  "id": "dh-2-sec-10",
+                  "label": "X",
+                  "title": "Ý nghĩa lịch sử toàn diện của Đại hội II ⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Đối với Đảng:",
+                          "bullets": [
+                            "Đánh dấu bước phát triển mới trong tư duy lý luận và tổ chức của Đảng.",
+                            "Đảng chính thức RA HOẠT ĐỘNG CÔNG KHAI với tên gọi mới là Đảng Lao động Việt Nam."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Đối với Đất nước:",
+                          "bullets": [
+                            "Tăng cường sự lãnh đạo trực tiếp, toàn diện của Đảng đối với cuộc kháng chiến, góp phần quyết định đưa cuộc kháng chiến chống Pháp đến thắng lợi."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Đối với Nhân dân:",
+                          "bullets": [
+                            "Củng cố niềm tin của nhân dân vào sự lãnh đạo công khai của Đảng; mở rộng khối đại đoàn kết toàn dân qua Mặt trận Liên Việt."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conclusion",
+                      "text": "✨ TỔNG KẾT Ý NGHĨA: Đại hội II = Mốc Đảng RA CÔNG KHAI LÃNH ĐẠO KHÁNG CHIẾN, đặt nền móng vững chắc cho thắng lợi vĩ đại Điện Biên Phủ 1954."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-11",
+              "number": "2",
+              "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội II",
+              "parts": [
+                {
+                  "id": "dh-2-sec-11",
+                  "label": "XI",
+                  "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội II",
+                  "content": [
+                    {
+                      "type": "golden-summary-box",
+                      "title": "🗝️ 10 DÒNG CỐT LÕI BẮT BUỘC HỌC THUỘC LÒNG ĐẠI HỘI II",
+                      "lines": [
+                        "1. Đại hội II họp từ 11–19/2/1951 tại Vinh Quang (Kim Bình), Chiêm Hóa, Tuyên Quang.",
+                        "2. Có 158 đại biểu chính thức, 53 dự khuyết, đại diện cho hơn 766.349 đảng viên.",
+                        "3. Hồ Chí Minh làm Chủ tịch Đảng; Trường Chinh làm Tổng Bí thư.",
+                        "4. Đảng ra hoạt động công khai, đổi tên thành Đảng Lao động Việt Nam.",
+                        "5. Thông qua Chính cương Đảng Lao động Việt Nam và Điều lệ Đảng mới.",
+                        "6. Quyết định tách Đảng Cộng sản Đông Dương thành 3 Đảng riêng cho Việt Nam, Lào, Campuchia.",
+                        "7. Thành lập Mặt trận Liên Việt (hợp nhất Việt Minh và Hội Liên Việt) vào 3/1951.",
+                        "8. Bối cảnh: Sau Chiến thắng Biên giới Thu – Đông 1950, ta giành quyền chủ động chiến lược.",
+                        "9. Mục tiêu lớn nhất: Đưa cuộc kháng chiến chống Pháp đến thắng lợi hoàn toàn.",
+                        "10. Ý nghĩa: Mở đường cho vĩ đại Chiến thắng Điện Biên Phủ 1954 và Hiệp định Giơ-ne-vơ."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-2-sec-12",
+              "number": "3",
+              "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+              "parts": [
+                {
+                  "id": "dh-2-sec-12",
+                  "label": "XII",
+                  "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+                  "content": [
+                    {
+                      "type": "trap-matrix-two-col",
+                      "title": "⚠️ MA TRẬN PHÂN BIỆT ĐIỂM BẪY THI ĐẠI HỘI II",
+                      "col1Title": "⏰ Các mốc thời gian dễ nhầm",
+                      "col1Items": [
+                        "• 9/1950: Chiến thắng Biên giới Thu – Đông (giành quyền chủ động chiến lược).",
+                        "• 2/1951: ĐẠI HỘI II – đổi tên thành Đảng Lao động Việt Nam.",
+                        "• 3/1951: Thành lập Mặt trận Liên Việt & Liên minh nhân dân Việt – Miên – Lào.",
+                        "• 5/1954: Chiến thắng vĩ đại Điện Biên Phủ.",
+                        "• 7/1954: Ký kết Hiệp định Giơ-ne-vơ lập lại hòa bình ở Đông Dương."
+                      ],
+                      "col2Title": "👤 Các nhân vật & Chức danh dễ nhầm",
+                      "col2Items": [
+                        "• Hồ Chí Minh: CHỦ TỊCH ĐẢNG (Chức danh riêng lần đầu xuất hiện từ ĐH II).",
+                        "• Trường Chinh: TỔNG BÍ THƯ tại Đại hội II.",
+                        "• Phân biệt chức danh: CHỦ TỊCH NƯỚC (Bác Hồ đảm nhiệm từ 1945) KHÁC VỚI CHỦ TỊCH ĐẢNG (chức danh trong Đảng thành lập từ ĐH II năm 1951)."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📝 Các câu hỏi trắc nghiệm & tự luận phổ biến trong kỳ thi:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Trắc nghiệm trọng tâm:",
+                        "1. Đại hội II họp ở đâu? ➔ Vinh Quang (Kim Bình), Chiêm Hóa, Tuyên Quang.",
+                        "2. Đại hội II diễn ra thời gian nào? ➔ 11–19/2/1951.",
+                        "3. Đảng đổi tên thành gì tại Đại hội II? ➔ Đảng Lao động Việt Nam.",
+                        "4. Ai giữ chức Chủ tịch Đảng? Ai giữ chức Tổng Bí thư? ➔ Hồ Chí Minh (Chủ tịch Đảng) – Trường Chinh (Tổng Bí thư).",
+                        "Tự luận vận dụng:",
+                        "1. Trình bày bối cảnh, nội dung và ý nghĩa lịch sử của Đại hội II (2/1951).",
+                        "2. Vì sao Đại hội II quyết định tách Đảng Cộng sản Đông Dương thành 3 Đảng riêng?",
+                        "3. So sánh Đại hội I và Đại hội II về hình thức hoạt động, tên gọi, địa điểm tổ chức."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dh-10",
+      "title": "Đại hội X (4/2006)",
+      "subtitle": "Nâng cao năng lực lãnh đạo & Hội nhập kinh tế quốc tế sâu rộng",
+      "sections": [
+        {
+          "id": "dh-10-grp-1",
+          "roman": "I",
+          "title": "Tổng quan & Bối cảnh lịch sử",
+          "subsections": [
+            {
+              "id": "dh-10-sec-1",
+              "number": "1",
+              "title": "Thông tin chung về Đại hội X",
+              "parts": [
+                {
+                  "id": "dh-10-flashcards",
+                  "label": "⚡",
+                  "title": "TÓM TẮT SIÊU TỐC — BẢNG GHI NHỚ NHANH ĐẠI HỘI X",
+                  "content": [
+                    {
+                      "type": "flashcards-banner",
+                      "items": [
+                        {
+                          "icon": "📍",
+                          "label": "Địa điểm & Thời gian",
+                          "value": "Họp từ 18 – 25/4/2006 tại Thủ đô Hà Nội."
+                        },
+                        {
+                          "icon": "👥",
+                          "label": "Quy mô Đại hội",
+                          "value": "1.176 đại biểu chính thức (triệu tập 1.178), đại diện hơn 3,1 triệu đảng viên toàn quốc."
+                        },
+                        {
+                          "icon": "🌐",
+                          "label": "Đặc điểm lịch sử ⭐️",
+                          "value": "Lần đầu tiên kể từ ngày thành lập Đảng, Đại hội KHÔNG MỜI KHÁCH QUỐC TẾ THAM DỰ."
+                        },
+                        {
+                          "icon": "👤",
+                          "label": "Tổng Bí thư",
+                          "value": "Đồng chí Nông Đức Mạnh TÁI CỬ Tổng Bí thư nhiệm kỳ thứ 2 liên tiếp."
+                        },
+                        {
+                          "icon": "🌟",
+                          "label": "Đột phá tư duy ⭐️⭐️",
+                          "value": "Cho phép ĐẢNG VIÊN LÀM KINH TẾ TƯ NHÂN, kể cả tư bản tư nhân, không giới hạn quy mô."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "dh-10-sec-1",
+                  "label": "I",
+                  "title": "Thông tin chung về Đại hội X",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "Đại hội đại biểu toàn quốc lần thứ X của Đảng diễn ra từ ngày 18 đến ngày 25-4-2006 tại Thủ đô Hà Nội."
+                    },
+                    {
+                      "type": "highlight",
+                      "text": "⏰ Thời gian: 18 – 25/4/2006 | 📍 Địa điểm: Thủ đô Hà Nội | 👥 Quy mô: 1.176 đại biểu chính thức (>3.1 triệu đảng viên)"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Thành phần tham dự: Đại biểu ưu tú được bầu từ các đại hội đảng bộ trực thuộc.",
+                        "Đặc điểm đặc biệt ⭐️: Lần đầu tiên kể từ ngày thành lập Đảng, Đại hội KHÔNG MỜI KHÁCH QUỐC TẾ THAM DỰ.",
+                        "Lãnh đạo chủ chốt ⭐️: Đồng chí NÔNG ĐỨC MẠNH được bầu tái cử làm TỔNG BÍ THƯ Ban Chấp hành Trung ương (nhiệm kỳ thứ 2 liên tiếp)."
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — THÔNG TIN ĐẶC BIỆT ĐẠI HỘI X",
+                      "text": "1. Đại hội X là Đại hội LẦN ĐẦU TIÊN KHÔNG MỜI KHÁCH QUỐC TẾ THAM DỰ.\n2. Tổng Bí thư NÔNG ĐỨC MẠNH TÁI CỬ nhiệm kỳ thứ 2 liên tiếp."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-2",
+              "number": "2",
+              "title": "Bối cảnh lịch sử trong nước và quốc tế",
+              "parts": [
+                {
+                  "id": "dh-10-sec-2",
+                  "label": "II",
+                  "title": "Bối cảnh lịch sử trong nước và quốc tế",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Trong nước:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Đất nước đã trải qua 20 năm đổi mới (1986–2006) — một mốc lịch sử lớn được Đại hội tổng kết sâu sắc.",
+                        "Tổng kết 5 năm thực hiện Nghị quyết Đại hội IX (2001–2005) và kiểm điểm sự lãnh đạo của Ban Chấp hành Trung ương khóa IX.",
+                        "Trước thềm Đại hội, vụ án tham nhũng PMU 18 bị phát hiện — cảnh báo tình trạng tham nhũng nghiêm trọng trong bộ máy nhà nước.",
+                        "Việt Nam đang trong giai đoạn đàm phán gia nhập WTO (chính thức gia nhập tháng 1/2007), hội nhập kinh tế quốc tế ngày càng sâu rộng."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "🔹 Quốc tế:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Toàn cầu hóa kinh tế và hội nhập quốc tế tiếp tục là xu thế lớn.",
+                        "Cạnh tranh kinh tế, khoa học – công nghệ giữa các quốc gia ngày càng gay gắt.",
+                        "Hòa bình, hợp tác, phát triển vẫn là xu thế chủ đạo nhưng còn tiềm ẩn bất ổn."
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — MỐC THỜI GIAN GIA NHẬP WTO",
+                      "text": "Việt Nam ĐÀM PHÁN gia nhập WTO tại thời điểm Đại hội X (4/2006), nhưng CHÍNH THỨC GIA NHẬP WTO VÀO THÁNG 1/2007 (Sau Đại hội X)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-3",
+              "number": "3",
+              "title": "Mục tiêu và Chủ đề Đại hội X",
+              "parts": [
+                {
+                  "id": "dh-10-sec-3",
+                  "label": "III",
+                  "title": "Mục tiêu và Chủ đề Đại hội X",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Tổng kết & Đánh giá 20 năm Đổi mới:",
+                          "bullets": [
+                            "Kiểm điểm việc thực hiện Nghị quyết Đại hội IX (2001-2005) và nhìn lại 20 năm đổi mới (1986-2006)."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Xác định mục tiêu 5 năm 2006–2010:",
+                          "bullets": [
+                            "Đề ra phương hướng, nhiệm vụ phát triển kinh tế - xã hội 5 năm 2006–2010.",
+                            "Bổ sung, sửa đổi một số điểm trong Điều lệ Đảng."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Chủ đề Đại hội ⭐️:",
+                          "bullets": [
+                            "'Nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng, phát huy sức mạnh toàn dân tộc, đẩy mạnh toàn diện công cuộc đổi mới, sớm đưa nước ta ra khỏi tình trạng kém phát triển'."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "definition",
+                      "text": "✨ Cụm từ khóa cốt lõi Chủ đề Đại hội X: 'SỚM ĐƯA NƯỚC TA RA KHỎI TÌNH TRẠNG KÉM PHÁT TRIỂN'."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-10-grp-2",
+          "roman": "II",
+          "title": "Nội dung Văn kiện & Quyết định quan trọng",
+          "subsections": [
+            {
+              "id": "dh-10-sec-4",
+              "number": "1",
+              "title": "Các văn kiện chính được thông qua",
+              "parts": [
+                {
+                  "id": "dh-10-sec-4",
+                  "label": "IV",
+                  "title": "Các văn kiện chính được thông qua",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Báo cáo Chính trị của Ban Chấp hành Trung ương khóa IX:",
+                          "bullets": [
+                            "Nội dung: Tổng kết 20 năm đổi mới, nêu chủ đề Đại hội, định hướng phát triển đất nước 2006–2010.",
+                            "Ý nghĩa: Kết tinh trí tuệ và ý chí của toàn Đảng, toàn dân, là sự tổng kết sâu sắc thực tiễn và lý luận 20 năm đổi mới."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Báo cáo phương hướng phát triển Kinh tế – Xã hội 5 năm 2006–2010:",
+                          "bullets": [
+                            "Nội dung: Các chỉ tiêu, nhiệm vụ, giải pháp phát triển kinh tế - xã hội giai đoạn 2006–2010."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Báo cáo về công tác xây dựng Đảng:",
+                          "bullets": [
+                            "Nội dung: Đánh giá công tác xây dựng Đảng nhiệm kỳ Đại hội IX, phương hướng chỉnh đốn Đảng nhiệm kỳ mới."
+                          ]
+                        },
+                        {
+                          "number": "4",
+                          "title": "Điều lệ Đảng (bổ sung, sửa đổi):",
+                          "bullets": [
+                            "Nội dung: Sửa đổi, bổ sung một số điểm trong Điều lệ Đảng khóa IX, trong đó có quy định liên quan đến 'ĐẢNG VIÊN LÀM KINH TẾ TƯ NHÂN'."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ 4 văn kiện lớn: Báo cáo chính trị + Báo cáo KT-XH 2006-2010 + Báo cáo xây dựng Đảng + Điều lệ Đảng (sửa đổi)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-5",
+              "number": "2",
+              "title": "Các quyết định và chủ trương quan trọng ⭐️⭐️",
+              "parts": [
+                {
+                  "id": "dh-10-sec-5",
+                  "label": "V",
+                  "title": "Các quyết định và chủ trương quan trọng ⭐️⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Chủ trương Đột phá ⭐⭐: Cho phép Đảng viên làm kinh tế tư nhân",
+                          "bullets": [
+                            "Nội dung: Đảng viên được làm kinh tế tư nhân, KỂ CẢ KINH TẾ TƯ BẢN TƯ NHÂN, KHÔNG GIỚI HẠN VỀ QUY MÔ, nhưng phải gương mẫu chấp hành Điều lệ Đảng, pháp luật Nhà nước và quy định của Trung ương.",
+                            "Lý do: Tổng kết thực tiễn 20 năm đổi mới cho thấy cần huy động mọi nguồn lực (kể cả từ đảng viên có vốn, kinh nghiệm) để phát triển kinh tế, tránh để đảng viên 'đứng ngoài cuộc'.",
+                            "Tác động: Được đánh giá là 'bước tiến quan trọng, bước đột phá trong thay đổi tư duy' của Đảng sau 20 năm đổi mới (Quy định số 15-QĐ/TW)."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Lấy ý kiến rộng rãi của nhân dân về Dự thảo Báo cáo chính trị:",
+                          "bullets": [
+                            "Nội dung: Trước Đại hội (từ 3/2/2006, trong 1 tháng), Đảng công khai Dự thảo Báo cáo chính trị để nhân dân góp ý — nhận trên 1.400 lá thư góp ý.",
+                            "Ý nghĩa: Thể hiện bước đổi mới về tính công khai, minh bạch, tập hợp trí tuệ toàn dân."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Đổi mới hình thức tổ chức Đại hội:",
+                          "bullets": [
+                            "Nội dung: Không mời khách quốc tế; dành nhiều thời gian thảo luận văn kiện; truyền hình trực tiếp một số phiên họp; ra thông cáo báo chí hằng ngày."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "trap-badge",
+                      "title": "⚠️ CẢNH BÁO BẪY THI — ĐỘT PHÁ TƯ DUY ĐẠI HỘI X",
+                      "text": "Chủ trương nổi bật nhất và là bước đột phá tư duy lớn nhất của Đại hội X là: CHO PHÉP ĐẢNG VIÊN LÀM KINH TẾ TƯ NHÂN (KỂ CẢ TƯ BẢN TƯ NHÂN, KHÔNG GIỚI HẠN QUY MÔ)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-6",
+              "number": "3",
+              "title": "Nhân sự Ban Chấp hành Trung ương khóa X",
+              "parts": [
+                {
+                  "id": "dh-10-sec-6",
+                  "label": "VI",
+                  "title": "Nhân sự Ban Chấp hành Trung ương khóa X",
+                  "content": [
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Ban Chấp hành Trung ương khóa X: 160 ủy viên chính thức, 21 ủy viên dự khuyết.",
+                        "Bộ Chính trị khóa X: 14 ủy viên.",
+                        "Ban Bí thư khóa X: 8 ủy viên.",
+                        "Tổng Bí thư: ĐỒNG CHÍ NÔNG ĐỨC MẠNH (tái cử, giữ chức nhiệm kỳ thứ hai liên tiếp).",
+                        "Điểm mới về nhân sự: Là Đại hội đầu tiên có Tổng Bí thư tái cử liên tiếp 2 nhiệm kỳ kể từ thời kỳ Đổi mới."
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "👤 Ghi nhớ nhân sự ĐH X: TỔNG BÍ THƯ = NÔNG ĐỨC MẠNH (tái cử nhiệm kỳ 2). BCH TƯ gồm 160 chính thức + 21 dự khuyết; Bộ Chính trị 14 ủy viên."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-10-grp-3",
+          "roman": "III",
+          "title": "Phân tích & Bài học lịch sử",
+          "subsections": [
+            {
+              "id": "dh-10-sec-7",
+              "number": "1",
+              "title": "Khẩu hiệu và Nhận định nổi bật của Đại hội X",
+              "parts": [
+                {
+                  "id": "dh-10-sec-7",
+                  "label": "VII",
+                  "title": "Khẩu hiệu và Nhận định nổi bật của Đại hội X",
+                  "content": [
+                    {
+                      "type": "conclusion",
+                      "text": "🏆 KHẨU HIỆU CHỦ ĐỀ: 'Nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng, phát huy sức mạnh toàn dân tộc, đẩy mạnh toàn diện công cuộc đổi mới, sớm đưa nước ta ra khỏi tình trạng kém phát triển'."
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📖 Ghi nhớ nhận định văn kiện: Văn kiện Đại hội X là 'kết tinh trí tuệ và ý chí của toàn Đảng, toàn dân ta, là sự tổng kết sâu sắc thực tiễn và lý luận 20 năm đổi mới'."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-8",
+              "number": "2",
+              "title": "Điểm mới so với Đại hội trước (Đại hội IX vs Đại hội X) ⭐️",
+              "parts": [
+                {
+                  "id": "dh-10-sec-8",
+                  "label": "VIII",
+                  "title": "Điểm mới so với Đại hội trước (Đại hội IX vs Đại hội X) ⭐️",
+                  "content": [
+                    {
+                      "type": "comparison-table",
+                      "title": "BẢNG SO SÁNH: ĐẠI HỘI IX (2001) VS ĐẠI HỘI X (2006)",
+                      "headers": [
+                        "Tiêu chí so sánh",
+                        "Đại hội IX (2001)",
+                        "Đại hội X (4/2006)"
+                      ],
+                      "rows": [
+                        [
+                          "Kinh tế tư nhân/Đảng viên",
+                          "Chưa quy định đảng viên làm kinh tế tư nhân quy mô lớn",
+                          "CHO PHÉP ĐẢNG VIÊN LÀM KINH TẾ TƯ NHÂN (Kể cả tư bản tư nhân, không giới hạn quy mô) ⭐️"
+                        ],
+                        [
+                          "Tổng Bí thư",
+                          "Bầu mới: Nông Đức Mạnh",
+                          "NÔNG ĐỨC MẠNH TÁI CỬ (Nhiệm kỳ 2)"
+                        ],
+                        [
+                          "Hình thức tổ chức",
+                          "Có khách quốc tế tham dự",
+                          "LẦN ĐẦU TIÊN KHÔNG MỜI KHÁCH QUỐC TẾ ⭐️"
+                        ],
+                        [
+                          "Lấy ý kiến nhân dân",
+                          "Chưa nổi bật",
+                          "Công khai Dự thảo Báo cáo chính trị lấy ý kiến toàn dân (>1.400 thư góp ý)"
+                        ],
+                        [
+                          "Trọng tâm lịch sử",
+                          "Xác lập mô hình KTTT định hướng XHCN",
+                          "TỔNG KẾT 20 NĂM ĐỔI MỚI (1986–2006), đẩy mạnh toàn diện đổi mới"
+                        ],
+                        [
+                          "Quy mô BCH Trung ương",
+                          "150 ủy viên",
+                          "160 ủy viên chính thức + 21 dự khuyết"
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh điểm mới lớn nhất: Đảng viên được làm kinh tế tư nhân không giới hạn quy mô + Lần đầu tiên không mời khách quốc tế tham dự."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-9",
+              "number": "3",
+              "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+              "parts": [
+                {
+                  "id": "dh-10-sec-9",
+                  "label": "IX",
+                  "title": "Kết quả thực hiện sau Đại hội: Thành công, Hạn chế & Nguyên nhân",
+                  "content": [
+                    {
+                      "type": "result-three-card",
+                      "success": {
+                        "title": "Thành công ✅",
+                        "bullets": [
+                          "Bộ Chính trị ra Chỉ thị về nghiên cứu, quán triệt, triển khai Nghị quyết Đại hội X và xây dựng chương trình hành động.",
+                          "Việt Nam chính thức GIA NHẬP WTO (1/2007), đánh dấu bước hội nhập kinh tế quốc tế sâu rộng.",
+                          "Chủ trương đảng viên làm kinh tế tư nhân góp phần huy động thêm nguồn lực xã hội cho phát triển kinh tế."
+                        ]
+                      },
+                      "limitations": {
+                        "title": "Hạn chế ⚠️",
+                        "bullets": [
+                          "Tình trạng tham nhũng, tiêu cực (như vụ PMU 18) vẫn là vấn đề nhức nhối, đòi hỏi Đảng phải tiếp tục đấu tranh phòng, chống.",
+                          "Một số ý kiến còn băn khoăn, chưa đồng thuận hoàn toàn về chủ trương đảng viên làm kinh tế tư nhân."
+                        ]
+                      },
+                      "causes": {
+                        "title": "Nguyên nhân 🔍",
+                        "bullets": [
+                          "Công tác quản lý, giám sát cán bộ, đảng viên trong một số lĩnh vực còn hạn chế.",
+                          "Nhận thức về mối quan hệ giữa đảng viên và kinh tế tư nhân trong nền kinh tế thị trường định hướng XHCN còn là vấn đề mới, cần thời gian để thống nhất."
+                        ]
+                      }
+                    },
+                    {
+                      "type": "key-point",
+                      "text": "📌 Ghi nhớ nhanh kết quả: Dấu mốc hội nhập lớn nhất sau Đại hội X là Việt Nam chính thức GIA NHẬP WTO (tháng 1/2007)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dh-10-grp-4",
+          "roman": "IV",
+          "title": "Ý nghĩa lịch sử & Chìa khóa Ôn thi",
+          "subsections": [
+            {
+              "id": "dh-10-sec-10",
+              "number": "1",
+              "title": "Ý nghĩa lịch sử toàn diện của Đại hội X ⭐️",
+              "parts": [
+                {
+                  "id": "dh-10-sec-10",
+                  "label": "X",
+                  "title": "Ý nghĩa lịch sử toàn diện của Đại hội X ⭐️",
+                  "content": [
+                    {
+                      "type": "numbered-group",
+                      "items": [
+                        {
+                          "number": "1",
+                          "title": "Đối với Đảng:",
+                          "bullets": [
+                            "Đánh dấu BƯỚC ĐỘT PHÁ TRONG THAY ĐỔI TƯ DUY của Đảng sau 20 năm đổi mới, đặc biệt về vai trò của đảng viên trong kinh tế tư nhân."
+                          ]
+                        },
+                        {
+                          "number": "2",
+                          "title": "Đối với Đất nước:",
+                          "bullets": [
+                            "Là 'MỐC SƠN' trên chặng đường hơn 76 năm lãnh đạo cách mạng của Đảng, mở ra một thời kỳ phát triển mới của công cuộc đổi mới."
+                          ]
+                        },
+                        {
+                          "number": "3",
+                          "title": "Đối với Nhân dân:",
+                          "bullets": [
+                            "Tạo điều kiện huy động mọi nguồn lực trong nhân dân (kể cả đảng viên) để phát triển kinh tế, hướng tới mục tiêu sớm thoát khỏi tình trạng kém phát triển."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conclusion",
+                      "text": "✨ TỔNG KẾT Ý NGHĨA: Đại hội X = Đại hội TỔNG KẾT 20 NĂM ĐỔI MỚI + 'MỐC SƠN' ĐỘT PHÁ TƯ DUY về đảng viên làm kinh tế tư nhân."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-11",
+              "number": "2",
+              "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội X",
+              "parts": [
+                {
+                  "id": "dh-10-sec-11",
+                  "label": "XI",
+                  "title": "Chìa khóa Vàng 🗝️ — 10 Dòng Học Thuộc Lòng Đại Hội X",
+                  "content": [
+                    {
+                      "type": "golden-summary-box",
+                      "title": "🗝️ 10 DÒNG CỐT LÕI BẮT BUỘC HỌC THUỘC LÒNG ĐẠI HỘI X",
+                      "lines": [
+                        "1. Đại hội X họp từ 18–25/4/2006 tại Thủ đô Hà Nội.",
+                        "2. Tham dự có 1.176 đại biểu chính thức, đại diện cho hơn 3,1 triệu đảng viên.",
+                        "3. Lần đầu tiên trong lịch sử Đảng KHÔNG MỜI KHÁCH QUỐC TẾ tham dự.",
+                        "4. Bối cảnh: Tổng kết 20 năm Đổi mới (1986–2006); trước Đại hội xảy ra vụ án tham nhũng PMU 18.",
+                        "5. Chủ đề: Nâng cao năng lực lãnh đạo, phát huy sức mạnh toàn dân, 'sớm đưa nước ta ra khỏi tình trạng kém phát triển'.",
+                        "6. Đột phá tư duy lớn nhất: Cho phép ĐẢNG VIÊN LÀM KINH TẾ TƯ NHÂN, kể cả tư bản tư nhân, không giới hạn quy mô.",
+                        "7. Công khai lấy ý kiến toàn dân về dự thảo Báo cáo chính trị (nhận hơn 1.400 lá thư góp ý).",
+                        "8. Đồng chí Nông Đức Mạnh tái cử làm Tổng Bí thư (nhiệm kỳ thứ 2 liên tiếp).",
+                        "9. Sau Đại hội: Việt Nam chính thức gia nhập WTO (tháng 1/2007).",
+                        "10. Ý nghĩa: 'Mốc sơn' đột phá tư duy trên chặng đường 76 năm lãnh đạo cách mạng của Đảng."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dh-10-sec-12",
+              "number": "3",
+              "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+              "parts": [
+                {
+                  "id": "dh-10-sec-12",
+                  "label": "XII",
+                  "title": "Câu hỏi thi thường gặp & Ma trận phân biệt điểm bẫy thi ⚠️",
+                  "content": [
+                    {
+                      "type": "trap-matrix-two-col",
+                      "title": "⚠️ MA TRẬN PHÂN BIỆT ĐIỂM BẪY THI ĐẠI HỘI X",
+                      "col1Title": "⏰ Các mốc thời gian dễ nhầm",
+                      "col1Items": [
+                        "• Đại hội IX (2001) – ĐẠI HỘI X (2006) – Đại hội XI (2011).",
+                        "• 1/2007: Việt Nam chính thức gia nhập WTO (Ngay sau Đại hội X, KHÔNG PHẢI trong Đại hội).",
+                        "• '20 năm đổi mới' được tổng kết tại ĐẠI HỘI X (1986–2006) — Dễ nhầm với '15 năm đổi mới' tại ĐH IX."
+                      ],
+                      "col2Title": "👤 Các nhân vật & Chức danh dễ nhầm",
+                      "col2Items": [
+                        "• Nông Đức Mạnh: Giữ chức Tổng Bí thư qua CẢ 2 KỲ ĐẠI HỘI IX VÀ X (2001–2011).",
+                        "• Không nhầm lẫn với Nguyễn Phú Trọng (Tổng Bí thư từ Đại hội XI, năm 2011)."
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "text": "📝 Các câu hỏi trắc nghiệm & tự luận phổ biến trong kỳ thi:"
+                    },
+                    {
+                      "type": "bullets",
+                      "items": [
+                        "Trắc nghiệm trọng tâm:",
+                        "1. Đại hội X họp vào thời gian nào, ở đâu? ➔ 18–25/4/2006, Hà Nội.",
+                        "2. Đại hội X có điểm gì đặc biệt lần đầu tiên trong lịch sử Đảng? ➔ Không mời khách quốc tế.",
+                        "3. Chủ trương nổi bật nhất của Đại hội X về Đảng viên? ➔ Cho phép đảng viên làm kinh tế tư nhân, không giới hạn quy mô.",
+                        "4. Ai được bầu làm Tổng Bí thư tại Đại hội X? ➔ Nông Đức Mạnh (tái cử).",
+                        "Tự luận vận dụng:",
+                        "1. Phân tích ý nghĩa của chủ trương cho phép đảng viên làm kinh tế tư nhân tại Đại hội X.",
+                        "2. Trình bày bối cảnh trong nước dẫn đến các quyết sách của Đại hội X (20 năm đổi mới, vụ PMU 18).",
+                        "3. So sánh điểm mới của Đại hội X so với Đại hội IX về nhận thức kinh tế và tổ chức Đại hội."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1952,7 +1952,7 @@ export default function Page() {
       let activeCh = null;
       for (const ch of currentSub.chapters) {
         const hasSub = ch.sections.some(sec => 
-          sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+          sec.id === activeSubsectionId || (sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId))
         );
         if (hasSub) {
           activeCh = ch;
@@ -1967,8 +1967,10 @@ export default function Page() {
       // Gather all subsections in current chapter
       const subsInChapter = [];
       for (const sec of activeCh.sections) {
-        if (sec.subsections) {
+        if (sec.subsections && sec.subsections.length > 0) {
           subsInChapter.push(...sec.subsections);
+        } else if (sec.id) {
+          subsInChapter.push(sec);
         }
       }
 
@@ -2587,8 +2589,9 @@ export default function Page() {
     }
     
     const chaptersList = allSubjects[subjId]?.chapters || [];
-    if (chaptersList.length > 0 && chaptersList[0].sections.length > 0 && chaptersList[0].sections[0].subsections.length > 0) {
-      setActiveSubsectionId(chaptersList[0].sections[0].subsections[0].id);
+    const firstSubId = chaptersList[0]?.sections?.[0]?.subsections?.[0]?.id || chaptersList[0]?.sections?.[0]?.id;
+    if (firstSubId) {
+      setActiveSubsectionId(firstSubId);
     }
     
     setAppStep("study");
@@ -2687,7 +2690,7 @@ export default function Page() {
       let activeCh = null;
       for (const ch of currentSub.chapters) {
         const hasSub = ch.sections.some(sec => 
-          sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId)
+          sec.id === activeSubsectionId || (sec.subsections && sec.subsections.some(sub => sub.id === activeSubsectionId))
         );
         if (hasSub) {
           activeCh = ch;
@@ -2700,6 +2703,11 @@ export default function Page() {
       if (activeCh) {
         currentChapterTitle = activeCh.title;
         for (const sec of activeCh.sections) {
+          if (sec.id === activeSubsectionId) {
+            currentSubTitle = sec.title;
+            currentSectionRoman = sec.roman || "";
+            break;
+          }
           if (sec.subsections) {
             const found = sec.subsections.find(sub => sub.id === activeSubsectionId);
             if (found) {

@@ -12,6 +12,13 @@ import { questionsLsdChuong2 } from "./questions-lich-su-dang-chuong-2";
 import { questionsLsdChuong3 } from "./questions-lich-su-dang-chuong-3";
 import { questionsLsdKetLuan } from "./questions-lich-su-dang-ket-luan";
 import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
+import { basicGeneralData } from "./basic-general";
+import { questionsDh1 } from "./questions-dh-1";
+import { questionsDh2 } from "./questions-dh-2";
+import { questionsDh3 } from "./questions-dh-3";
+import { questionsDh4 } from "./questions-dh-4";
+import { questionsDh5 } from "./questions-dh-5";
+import { questionsDh6 } from "./questions-dh-6";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -932,82 +939,15 @@ export const subjects = {
       accentRgb: "219, 39, 119"
     },
     icon: "📚",
-    chapters: [
-  {
-    "id": "basic-general",
-    "title": "Kiến thức cơ bản môn Đại cương",
-    "subtitle": "Tìm hiểu các kiến thức nền tảng đại cương, trọng tâm là lịch sử 14 kỳ Đại hội Đại biểu Toàn quốc của Đảng Cộng sản Việt Nam (1935 – 2026).",
-    "sections": [
-      {
-        "id": "dh-section-1",
-        "roman": "I",
-        "title": "Đại hội Đảng giai đoạn Đấu tranh giải phóng dân tộc và xây dựng đầu tiên (1930 - 1982)",
-        "subsections": [
-          {
-            "id": "dh-sub-1",
-            "number": "1",
-            "title": "Đại hội I (1935) và Đại hội II (1951) — Khôi phục tổ chức và Kháng chiến"
-          },
-          {
-            "id": "dh-sub-2",
-            "number": "2",
-            "title": "Đại hội III (1960), IV (1976) và V (1982) — Hai nhiệm vụ chiến lược, thống nhất đất nước và xây dựng CNXH"
-          },
-          {
-            "id": "dh-sub-1-compare",
-            "number": "3",
-            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương I"
-          }
-        ]
-      },
-      {
-        "id": "dh-section-2",
-        "roman": "II",
-        "title": "Đại hội Đảng thời kỳ Đổi mới đất nước (1986 - 2006)",
-        "subsections": [
-          {
-            "id": "dh-sub-3",
-            "number": "1",
-            "title": "Đại hội VI (1986) và VII (1991) — Khởi xướng Đổi mới và xây dựng Cương lĩnh"
-          },
-          {
-            "id": "dh-sub-4",
-            "number": "2",
-            "title": "Đại hội VIII (1996), IX (2001) và X (2006) — Công nghiệp hóa, hiện đại hóa và hội nhập quốc tế"
-          },
-          {
-            "id": "dh-sub-2-compare",
-            "number": "3",
-            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương II"
-          }
-        ]
-      },
-      {
-        "id": "dh-section-3",
-        "roman": "III",
-        "title": "Đại hội Đảng thời kỳ Hội nhập quốc tế sâu rộng và Phát triển bền vững (2011 - nay)",
-        "subsections": [
-          {
-            "id": "dh-sub-5",
-            "number": "1",
-            "title": "Đại hội XI (2011) và XII (2016) — Cương lĩnh bổ sung và phòng chống tham nhũng"
-          },
-          {
-            "id": "dh-sub-6",
-            "number": "2",
-            "title": "Đại hội XIII (2021) và XIV (2026) — Khát vọng phồn vinh và Kỷ nguyên vươn mình"
-          },
-          {
-            "id": "dh-sub-3-compare",
-            "number": "3",
-            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương III"
-          }
-        ]
-      }
-    ]
-  }
-],
-    questionsMap: {},
+    chapters: basicGeneralData.chapters,
+    questionsMap: {
+      "dh-1": questionsDh1,
+      "dh-2": questionsDh2,
+      "dh-3": questionsDh3,
+      "dh-4": questionsDh4,
+      "dh-5": questionsDh5,
+      "dh-6": questionsDh6
+    },
     isActive: true
   },
   "oop": {
