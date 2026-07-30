@@ -357,7 +357,7 @@ export const lsdChuong2Part1 = [
       "Giữ vai trò phụ trợ hậu cần, chủ yếu hỗ trợ lương thực thực phẩm cho chiến trường miền Nam Việt Nam.",
       "Giữ vai trò trung gian đàm phán ngoại giao với các cường quốc lớn trên thế giới trong thời kỳ mới."
     ],
-    "answer": 0,
+    "answer": 1,
     "difficulty": "medium",
     "isOutside": false,
     "explanation": "Đại hội III xác định cách mạng miền Nam giữ vai trò quyết định trực tiếp đối với sự nghiệp giải phóng miền Nam."

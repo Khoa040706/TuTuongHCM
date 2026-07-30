@@ -23,6 +23,10 @@ import { questionsDh7 } from "./questions-dh-7";
 import { questionsDh8 } from "./questions-dh-8";
 import { questionsDh9 } from "./questions-dh-9";
 import { questionsDh10 } from "./questions-dh-10";
+import { questionsOopDeOnTap } from "./questions-oop-on-tap";
+import { questionsOopNestedDesignPatterns } from "./questions-oop-nested-design-patterns";
+import { questionsOopTrickFundamentals } from "./questions-oop-trick-fundamentals";
+import { questionsOopTrickAdvanced } from "./questions-oop-trick-advanced";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -971,7 +975,31 @@ export const subjects = {
     },
     icon: "💻",
     chapters: [
-  {
+      {
+        "id": "de-on-tap",
+        "title": "Đề ôn tập",
+        "subtitle": "Đề kiểm tra ôn tập Lập trình hướng đối tượng OOP (29 câu)",
+        "sections": []
+      },
+      {
+        "id": "nested-design-patterns",
+        "title": "Nested Class & Design Patterns",
+        "subtitle": "Bộ 40 câu hỏi trắc nghiệm Nested Class & Design Patterns (Dễ -> Khó)",
+        "sections": []
+      },
+      {
+        "id": "trick-fundamentals",
+        "title": "Đề bẫy Java Fundamentals",
+        "subtitle": "Bộ 40 câu trắc nghiệm bẫy Vận dụng cao (If-else, Loop, Inc/Dec, String, Array)",
+        "sections": []
+      },
+      {
+        "id": "trick-oop-advanced",
+        "title": "Đề bẫy OOP Nâng cao",
+        "subtitle": "Bộ 50 câu trắc nghiệm bẫy Vận dụng cao (Chương 2 -> 8: OOP, Kế thừa, Đa hình, Generics, Exception, UML)",
+        "sections": []
+      },
+      {
     "id": "oop-intro-to-java",
     "title": "Bài 1 & 2",
     "subtitle": "Intro to Java",
@@ -2611,7 +2639,12 @@ export const subjects = {
     ]
   }
 ],
-    questionsMap: {},
+    questionsMap: {
+      "de-on-tap": questionsOopDeOnTap,
+      "nested-design-patterns": questionsOopNestedDesignPatterns,
+      "trick-fundamentals": questionsOopTrickFundamentals,
+      "trick-oop-advanced": questionsOopTrickAdvanced
+    },
     isActive: true
   },
   "analysis-design": {

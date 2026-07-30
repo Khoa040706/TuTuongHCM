@@ -16,6 +16,168 @@ import { submitExamScore } from "../app/actions/quiz";
 
 const STATE_STORAGE_KEY = "studymaster_active_quiz_state";
 
+// Helper function to highlight Java code syntax like VS Code Dark+ theme
+function highlightJavaCode(code) {
+  if (!code) return "";
+
+  const tokenRegex = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|("[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*')|(\b(?:abstract|assert|boolean|byte|char|class|const|default|do|double|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while)\b)|(\b(?:true|false|null)\b)|(\b\d+(?:\.\d+)?(?:f|F|l|L|d|D)?\b)|(\b[A-Z][a-zA-Z0-9_$]*\b)|(\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*\())/g;
+
+  const escapeHtml = (str) =>
+    str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  let html = "";
+  let lastIndex = 0;
+  let match;
+
+  while ((match = tokenRegex.exec(code)) !== null) {
+    if (match.index > lastIndex) {
+      html += escapeHtml(code.slice(lastIndex, match.index));
+    }
+
+    const [
+      full,
+      comment,
+      stringLit,
+      keyword,
+      booleanNull,
+      numberLit,
+      className,
+      methodName
+    ] = match;
+
+    if (comment) {
+      html += `<span class="text-[#6a9955] italic font-medium">${escapeHtml(comment)}</span>`;
+    } else if (stringLit) {
+      html += `<span class="text-[#ce9178] font-medium">${escapeHtml(stringLit)}</span>`;
+    } else if (keyword) {
+      const isControl = /^(if|else|switch|case|default|break|continue|for|while|do|try|catch|finally|return|throw|throws)$/.test(keyword);
+      if (isControl) {
+        html += `<span class="text-[#c586c0] font-bold">${escapeHtml(keyword)}</span>`;
+      } else {
+        html += `<span class="text-[#569cd6] font-bold">${escapeHtml(keyword)}</span>`;
+      }
+    } else if (booleanNull) {
+      html += `<span class="text-[#569cd6] font-bold">${escapeHtml(booleanNull)}</span>`;
+    } else if (numberLit) {
+      html += `<span class="text-[#b5cea8] font-semibold">${escapeHtml(numberLit)}</span>`;
+    } else if (className) {
+      html += `<span class="text-[#4ec9b0] font-semibold">${escapeHtml(className)}</span>`;
+    } else if (methodName) {
+      html += `<span class="text-[#dcdcaa] font-medium">${escapeHtml(methodName)}</span>`;
+    }
+
+    lastIndex = match.index + full.length;
+  }
+
+  if (lastIndex < code.length) {
+    html += escapeHtml(code.slice(lastIndex));
+  }
+
+  return html;
+}
+
+// Helper function to render text with code blocks and inline formatting
+const renderFormattedText = (text) => {
+  if (!text) return null;
+  if (typeof text !== "string") return text;
+
+  // Split by code blocks ```...```
+  const codeBlockRegex = /```(?:[a-zA-Z]+)?\n?([\s\S]*?)```/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = codeBlockRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push({
+        type: "text",
+        content: text.slice(lastIndex, match.index)
+      });
+    }
+    parts.push({
+      type: "code",
+      content: match[1].trim()
+    });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push({
+      type: "text",
+      content: text.slice(lastIndex)
+    });
+  }
+
+  return (
+    <div className="space-y-3">
+      {parts.map((part, pIdx) => {
+        if (part.type === "code") {
+          const highlightedHtml = highlightJavaCode(part.content);
+          return (
+            <div key={pIdx} className="my-3 rounded-xl overflow-hidden border border-[#333333] bg-[#1e1e1e] shadow-xl text-left">
+              {/* VS Code Title Bar Header */}
+              <div className="flex items-center justify-between px-4 py-2 bg-[#252526] text-[11px] font-mono text-stone-400 border-b border-[#333333]">
+                <div className="flex items-center gap-2">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-[#ff5f56] inline-block"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block"></span>
+                    <span className="w-3 h-3 rounded-full bg-[#27c93f] inline-block"></span>
+                  </span>
+                  <span className="ml-2 font-bold text-stone-300 flex items-center gap-1.5">
+                    <span className="text-[#569cd6]">☕</span> Main.java <span className="text-[10px] text-stone-500 font-normal">(VS Code Dark+)</span>
+                  </span>
+                </div>
+                <span className="text-[10px] bg-[#333333] text-[#4ec9b0] px-2 py-0.5 rounded font-mono font-semibold">Java 17</span>
+              </div>
+              <pre className="p-4 font-mono text-xs md:text-sm text-[#d4d4d4] overflow-x-auto leading-relaxed">
+                <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
+              </pre>
+            </div>
+          );
+        }
+
+        // Render plain text with inline code `code` support and preserved newlines
+        const lines = part.content.split("\n");
+        return (
+          <div key={pIdx} className="space-y-1">
+            {lines.map((line, lIdx) => {
+              if (!line.trim()) return <div key={lIdx} className="h-1.5" />;
+              
+              const inlineRegex = /`([^`]+)`/g;
+              const inlineParts = [];
+              let inLast = 0;
+              let inMatch;
+              while ((inMatch = inlineRegex.exec(line)) !== null) {
+                if (inMatch.index > inLast) {
+                  inlineParts.push(line.slice(inLast, inMatch.index));
+                }
+                inlineParts.push(
+                  <code key={inMatch.index} className="bg-stone-100 dark:bg-stone-800 text-[#569cd6] dark:text-[#4ec9b0] px-1.5 py-0.5 rounded font-mono text-xs font-semibold border border-stone-200 dark:border-stone-700">
+                    {inMatch[1]}
+                  </code>
+                );
+                inLast = inMatch.index + inMatch[0].length;
+              }
+              if (inLast < line.length) {
+                inlineParts.push(line.slice(inLast));
+              }
+
+              return (
+                <p key={lIdx} className="leading-relaxed">
+                  {inlineParts}
+                </p>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 export default function Quiz({ onClose, showToast, showConfirm, showAlert, subjectId = "tu-tuong-hcm" }) {
   const currentSubject = subjects[subjectId] || subjects["tu-tuong-hcm"];
   const chapters = currentSubject.chapters;
@@ -312,8 +474,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 4 : 3;
     const sampledOutside = getRandomSample(outsidePool, outsideCount);
 
-    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, chuong-5, and chuong-6; 37 for others)
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37;
+    // 2. Draw inside questions (36 for lich-su-dang-mo-dau, chuong-2, chuong-3, chuong-4, chuong-5, and chuong-6; 37 for others; all for chapters <= 50 questions)
+    const insideCount = insidePool.length <= 50 ? insidePool.length : ((chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37);
     let sampledInside = [];
 
     if (chapterId === "chuong-1") {
@@ -543,26 +705,31 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     const questionData = questionsMap[chapterId];
     if (!questionData) return [];
 
-    const insidePool = questionData.inside || [];
-    const outsidePool = questionData.outside || [];
-    const N = insidePool.length;
-    const M = outsidePool.length;
+    let combined = [];
+    if (questionData.sets && questionData.sets[setNum]) {
+      combined = questionData.sets[setNum];
+    } else {
+      const insidePool = questionData.inside || [];
+      const outsidePool = questionData.outside || [];
+      const N = insidePool.length;
+      const M = outsidePool.length;
 
-    const insideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37;
-    const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 4 : 3;
+      const insideCount = insidePool.length <= 50 ? insidePool.length : ((chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 36 : 37);
+      const outsideCount = (chapterId === "lich-su-dang-mo-dau" || chapterId === "chuong-2" || chapterId === "chuong-3" || chapterId === "chuong-4" || chapterId === "chuong-5" || chapterId === "chuong-6") ? 4 : 3;
 
-    const K = Math.max(1, Math.ceil(N / insideCount));
-    const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
+      const K = Math.max(1, Math.ceil(N / insideCount));
+      const setIndex = Math.max(0, Math.min(K - 1, setNum - 1));
 
-    // Calculate offsets
-    const offsetInside = K > 1 ? Math.round(setIndex * (N - insideCount) / (K - 1)) : 0;
-    const offsetOutside = K > 1 ? Math.round(setIndex * (M - outsideCount) / (K - 1)) : 0;
+      // Calculate offsets
+      const offsetInside = K > 1 ? Math.round(setIndex * (N - insideCount) / (K - 1)) : 0;
+      const offsetOutside = K > 1 ? Math.round(setIndex * (M - outsideCount) / (K - 1)) : 0;
 
-    // Slice consecutive questions
-    const slicedInside = insidePool.slice(offsetInside, offsetInside + insideCount);
-    const slicedOutside = outsidePool.slice(offsetOutside, offsetOutside + outsideCount);
+      // Slice consecutive questions
+      const slicedInside = insidePool.slice(offsetInside, offsetInside + insideCount);
+      const slicedOutside = outsidePool.slice(offsetOutside, offsetOutside + outsideCount);
 
-    const combined = [...slicedOutside, ...slicedInside];
+      combined = [...slicedOutside, ...slicedInside];
+    }
 
     // Deep copy and shuffle options
     const finalPool = combined.map((q) => {
@@ -624,7 +791,14 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         sampled = getFixedSetQuestions(selectedChapterId, setNum);
       }
       setIsTrickMode(false);
-      setTimeLeft(2700); // 45 minutes countdown
+      // Auto-adjust countdown timer based on question count
+      if (sampled.length > 100) {
+        setTimeLeft(10800); // 180 minutes (3 hours) for Mega 240-question set
+      } else if (sampled.length > 50) {
+        setTimeLeft(3600); // 60 minutes
+      } else {
+        setTimeLeft(2700); // 45 minutes for 40 questions
+      }
     }
 
     if (sampled.length === 0) {
@@ -1183,7 +1357,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                       <span>Xem sau khi nộp bài</span>
                     </div>
                     <div className="text-xs text-stone-550 dark:text-stone-400 leading-relaxed">
-                      Giữ kín mọi đáp án cho tới khi bạn hoàn thành toàn bộ 40 câu trắc nghiệm. Phù hợp để làm đề thi thử nghiêm túc tự đánh giá năng lực.
+                      Giữ kín mọi đáp án cho tới khi bạn hoàn thành toàn bộ câu trắc nghiệm. Phù hợp để làm đề thi thử nghiêm túc tự đánh giá năng lực.
                     </div>
                   </button>
                 </div>
@@ -1235,8 +1409,15 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   if (!questionData) return null;
                   const insidePool = questionData.inside || [];
                   const N = insidePool.length;
-                  const insideCount = (selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3" || selectedChapterId === "chuong-4" || selectedChapterId === "chuong-5" || selectedChapterId === "chuong-6") ? 36 : 37;
-                  const K = Math.max(1, Math.ceil(N / insideCount));
+                  const insideCount = insidePool.length <= 50 ? insidePool.length : ((selectedChapterId === "lich-su-dang-mo-dau" || selectedChapterId === "chuong-2" || selectedChapterId === "chuong-3" || selectedChapterId === "chuong-4" || selectedChapterId === "chuong-5" || selectedChapterId === "chuong-6") ? 36 : 37);
+                  let K = Math.max(1, Math.ceil(N / insideCount));
+
+                  if (questionData.sets) {
+                    const numericKeys = Object.keys(questionData.sets).map(Number).filter(n => !isNaN(n));
+                    if (numericKeys.length > 0) {
+                      K = Math.max(K, ...numericKeys);
+                    }
+                  }
 
                   return (
                     <div className="space-y-3 pt-4 border-t border-stone-150 dark:border-stone-850">
@@ -1257,20 +1438,24 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                         >
                           🎲 Đề ngẫu nhiên
                         </button>
-                        {Array.from({ length: K }).map((_, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            onClick={() => setSelectedSet(`de-${idx + 1}`)}
-                            className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer text-center ${
-                              selectedSet === `de-${idx + 1}`
-                                ? "bg-accent/5 border-accent text-accent shadow-sm font-extrabold"
-                                : "bg-stone-50 dark:bg-stone-955 border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100"
-                            }`}
-                          >
-                            📄 Đề {idx + 1}
-                          </button>
-                        ))}
+                        {Array.from({ length: K }).map((_, idx) => {
+                          const setNum = idx + 1;
+                          const isMega = questionData.sets?.[setNum] && questionData.sets[setNum].length > 50;
+                          return (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => setSelectedSet(`de-${setNum}`)}
+                              className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer text-center ${
+                                selectedSet === `de-${setNum}`
+                                  ? "bg-accent/5 border-accent text-accent shadow-sm font-extrabold"
+                                  : "bg-stone-50 dark:bg-stone-955 border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-100"
+                              }`}
+                            >
+                              {isMega ? `🔥 Đề ${setNum} (Mega ${questionData.sets[setNum].length} câu)` : `📄 Đề ${setNum}`}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   );
@@ -1296,7 +1481,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                     onClick={() => startNewQuiz(false)}
                     className="flex-1 min-w-[180px] py-2.5 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer flex items-center justify-center gap-1"
                   >
-                    🚀 Bắt đầu làm bài (40 câu)
+                    🚀 Bắt đầu làm bài ({questionsMap[selectedChapterId]?.inside?.length || 40} câu)
                   </button>
                 </div>
               </div>
@@ -1470,7 +1655,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
 
               {/* Question Text */}
               <div className="text-stone-900 dark:text-stone-100 font-semibold text-base md:text-lg mb-6 leading-relaxed">
-                {currentQuestion.question}
+                {renderFormattedText(currentQuestion.question)}
               </div>
 
               {/* Options list */}
@@ -1536,7 +1721,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                     </span>
                   </div>
                   <div className="leading-relaxed mt-2.5 pl-3 border-l-2 border-accent/40 text-stone-600 dark:text-stone-400">
-                    <strong>Giải thích chi tiết:</strong> {currentQuestion.explanation || "Không có giải thích chi tiết."}
+                    <strong>Giải thích chi tiết:</strong>
+                    <div className="mt-1">{renderFormattedText(currentQuestion.explanation || "Không có giải thích chi tiết.")}</div>
                   </div>
                 </div>
               )}
@@ -1996,7 +2182,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                       </div>
 
                       <div className="text-stone-900 dark:text-stone-100 font-semibold text-sm leading-relaxed">
-                        {q.question}
+                        {renderFormattedText(q.question)}
                       </div>
 
                       <div className="space-y-2 text-xs">
@@ -2015,7 +2201,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                       </div>
 
                       <div className="p-3.5 rounded-xl bg-accent/5 border border-accent/10 text-stone-600 dark:text-stone-400 text-xs leading-relaxed mt-2 pl-3 border-l-2 border-accent/40">
-                        <strong>Giải thích:</strong> {q.explanation || "Không có giải thích chi tiết."}
+                        <strong>Giải thích:</strong>
+                        <div className="mt-1">{renderFormattedText(q.explanation || "Không có giải thích chi tiết.")}</div>
                       </div>
                     </div>
                   );
@@ -2055,7 +2242,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                 }}
                 className="px-6 py-2.5 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer"
               >
-                🚀 Bắt đầu thi (40 câu)
+                🚀 Bắt đầu thi ({questionsMap[selectedChapterId]?.inside?.length || 40} câu)
               </button>
             </div>
           </div>
@@ -2089,7 +2276,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   </div>
 
                   <div className="text-stone-900 dark:text-stone-100 font-semibold text-sm leading-relaxed">
-                    {q.question}
+                    {renderFormattedText(q.question)}
                   </div>
 
                   <div className="space-y-2.5 pl-2">
@@ -2118,7 +2305,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-accent/5 border border-accent/10 text-stone-600 dark:text-stone-400 text-xs leading-relaxed pl-4 border-l-2 border-accent/40">
-                    <strong>Giải thích:</strong> {q.explanation || "Không có giải thích chi tiết."}
+                    <strong>Giải thích:</strong>
+                    <div className="mt-1">{renderFormattedText(q.explanation || "Không có giải thích chi tiết.")}</div>
                   </div>
                 </div>
               );
@@ -2134,7 +2322,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
               }}
               className="px-8 py-3.5 rounded-xl bg-accent hover:bg-accent/90 text-white dark:text-stone-950 font-bold text-sm transition-colors shadow-md cursor-pointer"
             >
-              🚀 Bắt đầu làm bài thi (40 câu)
+              🚀 Bắt đầu làm bài thi ({questionsMap[selectedChapterId]?.inside?.length || 40} câu)
             </button>
           </div>
         </div>

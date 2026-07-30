@@ -9,15 +9,16 @@ import { lsdChuong2Part2 } from "./questions-lsd-chuong-2-part2.js";
 import { lsdChuong2Trick1 } from "./questions-lsd-chuong-2-trick1.js";
 import { lsdChuong2Trick2 } from "./questions-lsd-chuong-2-trick2.js";
 
-// Phân tách 6 bộ đề thi chính thức (Đề 1 đến Đề 6)
+// Phân tách bộ đề thi chính thức (Đề 1 đến Đề 6 và Đề 7 tổng hợp 240 câu)
 export const lsdChuong2ExamSet1 = lsdChuong2Part1.filter(q => q.examSet === 1);
 export const lsdChuong2ExamSet2 = lsdChuong2Part1.filter(q => q.examSet === 2);
 export const lsdChuong2ExamSet3 = lsdChuong2Part2.filter(q => q.examSet === 3);
 export const lsdChuong2ExamSet4 = lsdChuong2Part2.filter(q => q.examSet === 4);
 export const lsdChuong2ExamSet5 = lsdChuong2Part2.filter(q => q.examSet === 5);
 export const lsdChuong2ExamSet6 = lsdChuong2Part2.filter(q => q.examSet === 6);
+export const lsdChuong2ExamSet7 = [...lsdChuong2Part1, ...lsdChuong2Part2]; // Đề 7: Tổng hợp 6 đề (240 câu)
 
-// Tập hợp trọn bộ 340 câu hỏi trắc nghiệm của 8 bộ đề (6 Đề chuẩn + 2 Đề Bẫy)
+// Tập hợp trọn bộ 340 câu hỏi trắc nghiệm của các bộ đề (6 Đề chuẩn + 1 Đề Mega 240 câu + 2 Đề Bẫy)
 export const questionsLsdChuong2 = {
   chapterId: "lsd-chuong-2",
   inside: [...lsdChuong2Part1, ...lsdChuong2Part2].filter(q => !q.isOutside),
@@ -30,6 +31,7 @@ export const questionsLsdChuong2 = {
     4: lsdChuong2ExamSet4,
     5: lsdChuong2ExamSet5,
     6: lsdChuong2ExamSet6,
+    7: lsdChuong2ExamSet7,
     trick1: lsdChuong2Trick1,
     trick2: lsdChuong2Trick2
   }
