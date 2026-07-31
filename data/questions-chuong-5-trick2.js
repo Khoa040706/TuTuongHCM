@@ -1,856 +1,1157 @@
 /* ============================================================
-   DỮ LIỆU CÂU HỎI TRẮC NGHIỆM BẪY CHƯƠNG V - ĐỀ BẪY 2 (TRICK SET 2)
-   Chủ đề: Trích dẫn Bác Hồ, Khái niệm Hạt nhân - Nền tảng, 5 Giải pháp & 4 Bài học
+   DỮ LIỆU ĐỀ BẪY 2 — CHƯƠNG V (50 CÂU HỎI BẪY VẬN DỤNG CAO 100% HARD)
+   Chuyên đề: Tư tưởng Hồ Chí Minh về Đoàn kết quốc tế
    ============================================================ */
 
 export const trickSet2 = [
-  // CÂU 1 - ANS: A
   {
-    id: "hcm-c5-trick2-001",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào phản ánh đúng bản chất vị trí của 'Đảng Cộng sản' và 'Khối liên minh Công - Nông - Trí' trong khối đại đoàn kết?",
-    options: [
-      "Đảng là hạt nhân lãnh đạo, liên minh công - nông - trí là nền tảng",
-      "Đảng là nền tảng tổ chức, liên minh công - nông - trí là hạt nhân",
-      "Đảng và liên minh công - nông - trí đều là các cơ quan quản lý nhà nước",
-      "Đảng là phương tiện hành chính, liên minh công - nông - trí là mục tiêu"
+    "id": "hcm-c5-tr2-001",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Đoàn kết quốc tế trong tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Là phương tiện ngoại giao tình thế ngắn hạn.",
+      "Là nhân tố quyết định trực tiếp duy nhất thắng lợi.",
+      "Là điều kiện quan trọng để kết hợp sức mạnh thời đại.",
+      "Là chính sách phụ thuộc vào viện trợ tư bản."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Khối liên minh công - nông - trí do Đảng lãnh đạo là NỀN TẢNG, sự đoàn kết thống nhất trong Đảng là HẠT NHÂN.\n⚠️ Vạch trần cái bẫy: Đánh tráo vị trí từ giữa 'Hạt nhân' và 'Nền tảng'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết quốc tế có vai trò vô cùng quan trọng: Giúp kết hợp sức mạnh dân tộc với sức mạnh thời đại để tạo nên sức mạnh tổng hợp cho cách mạng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (nhân tố quyết định duy nhất) hoặc D (phụ thuộc tư bản).",
+      "trickWord": "Bẫy vai trò 'điều kiện quan trọng để kết hợp sức mạnh thời đại'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Đoàn kết quốc tế = Kết hợp sức mạnh dân tộc với sức mạnh thời đại."
+    }
   },
-
-  // CÂU 2 - ANS: B
   {
-    id: "hcm-c5-trick2-002",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trong luận điểm ẩn dụ 'Chiêng và Tiếng' của Hồ Chí Minh, khẳng định nào sau đây là chuẩn xác nhất?",
-    options: [
-      "Ngoại giao là cái chiêng, thực lực là cái tiếng",
-      "Thực lực là cái chiêng, ngoại giao là cái tiếng",
-      "Viện trợ quốc tế là cái chiêng, nội lực là cái tiếng",
-      "Nội lực và ngoại giao là hai cái chiêng độc lập"
+    "id": "hcm-c5-tr2-002",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi giải thích tính tất yếu của Đoàn kết quốc tế?",
+    "options": [
+      "Cách mạng Việt Nam là bộ phận cách mạng thế giới.",
+      "Thắng lợi cách mạng cần có sự ủng hộ quốc tế.",
+      "Việt Nam có thể cô lập phát triển không cần ai.",
+      "Đô hộ chủ nghĩa đế quốc có tính chất quốc tế."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Hồ Chí Minh viết: 'Thực lực là cái chiêng, ngoại giao là cái tiếng, chiêng có to tiếng mới lớn'.\n⚠️ Vạch trần cái bẫy: Đảo ngược vai trò giữa 'thực lực (chiêng)' và 'ngoại giao (tiếng)'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chỉ rõ chủ nghĩa đế quốc là một lực lượng quốc tế, cách mạng không thể đơn độc mở đường mà phải thực hiện đoàn kết quốc tế, tuyệt đối không 'cô lập phát triển'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định bi quan bế quan sai lầm.",
+      "trickWord": "Bẫy phủ định 'Việt Nam có thể cô lập phát triển không cần ai'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Chủ nghĩa đế quốc mang tính quốc tế -> Cách mạng phải đoàn kết quốc tế."
+    }
   },
-
-  // CÂU 3 - ANS: C
   {
-    id: "hcm-c5-trick2-003",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khi nói về mối quan hệ giữa nội lực và ngoại lực, Hồ Chí Minh khẳng định yếu tố nào giữ vai trò quyết định?",
-    options: [
-      "Nguồn lực hỗ trợ và viện trợ từ bên ngoài",
-      "Sự bảo hộ an ninh của các cường quốc",
-      "Nguồn lực nội sinh tự lực cánh sinh của dân tộc",
-      "Sự kết hợp đồng đều không bên nào quyết định"
+    "id": "hcm-c5-tr2-003",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào nhận định của Bác: 'Cách mạng An Nam là một bộ phận của [...]; Ai làm cách mạng trong thế giới đều là đồng chí'?",
+    "options": [
+      "bộ phận của cách mạng thế giới",
+      "bộ phận của phong trào khu vực",
+      "bộ phận của chính quyền các nước",
+      "bộ phận của Liên Hợp Quốc"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Nội lực là nhân tố quyết định hàng đầu, ngoại lực chỉ phát huy tác dụng thông qua nội lực.\n⚠️ Vạch trần cái bẫy: Tráo đổi vai trò quyết định cho nguồn lực ngoại nhập."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong Tác phẩm Đường Kách mệnh (1927), Bác xác định: Cách mạng Việt Nam là một bộ phận của cách mạng thế giới.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm cách mạng khu vực hay Liên Hợp Quốc.",
+      "trickWord": "Bẫy trích dẫn 'bộ phận của cách mạng thế giới'",
+      "citation": "Tác phẩm Đường Kách mệnh (1927) — Nguyễn Ái Quốc.",
+      "tip": "Ghi nhớ Đường Kách mệnh 1927: Cách mạng Việt Nam = Bộ phận cách mạng thế giới."
+    }
   },
-
-  // CÂU 4 - ANS: D
   {
-    id: "hcm-c5-trick2-004",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Phương châm 'Cầu đồng tồn dị' trong hoạt động của Mặt trận dân tộc thống nhất được hiểu đúng nhất là gì?",
-    options: [
-      "Bắt buộc loại bỏ hoàn toàn các ý kiến cá nhân",
-      "Đồng hóa nét văn hóa riêng của các dân tộc thiểu số",
-      "Tìm kiếm cái sai để trừng phạt phê bình công khai",
-      "Tìm kiếm điểm tương đồng chung, tôn trọng chấp nhận sự khác biệt không hại lợi ích chung"
+    "id": "hcm-c5-tr2-004",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Khái niệm 'Sức mạnh thời đại' trong tư tưởng Hồ Chí Minh bao hàm yếu tố cốt lõi nào?",
+    "options": [
+      "Sức mạnh của phong trào cách mạng và tiến bộ thế giới.",
+      "Sức mạnh quân sự của các nước tư bản phát triển.",
+      "Sức mạnh của các tập đoàn tài chính đa quốc gia.",
+      "Sức mạnh của thị trường hàng hóa tự do quốc tế."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: 'Cầu đồng tồn dị' nghĩa là tìm cái tương đồng chung (đồng), tôn trọng chấp nhận sự khác biệt không tổn hại lợi ích tối cao (dị).\n⚠️ Vạch trần cái bẫy: Đổi nghĩa 'tồn dị' thành loại bỏ hoặc đồng hóa ý kiến."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Sức mạnh thời đại là sự tổng hợp sức mạnh của các dòng thác cách mạng thế giới: phong trào công nhân, phong trào giải phóng dân tộc và phong trào hòa bình dân chủ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với sức mạnh tư bản hay thị trường tự do.",
+      "trickWord": "Bẫy định nghĩa 'Sức mạnh của phong trào cách mạng thế giới'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Sức mạnh thời đại = Ba dòng thác cách mạng thế giới."
+    }
   },
-
-  // CÂU 5 - ANS: A
   {
-    id: "hcm-c5-trick2-005",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Ba khuynh hướng sai lầm nào mà Hồ Chí Minh dặn các Đảng Cộng sản phải kiên quyết đấu tranh chống lại trong đoàn kết quốc tế?",
-    options: [
-      "Chủ nghĩa cơ hội, chủ nghĩa vị kỷ dân tộc và chủ nghĩa sôvanh",
-      "Chủ nghĩa yêu nước, chủ nghĩa dân tộc và chủ nghĩa quốc tế",
-      "Chủ nghĩa cá nhân, chủ nghĩa tập thể và chủ nghĩa cộng hòa",
-      "Chủ nghĩa tự do, chủ nghĩa bảo hộ và chủ nghĩa biệt lập"
+    "id": "hcm-c5-tr2-005",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT mối quan hệ giữa Sức mạnh dân tộc và Sức mạnh thời đại?",
+    "options": [
+      "Sức mạnh dân tộc là gốc, quyết định việc tranh thủ.",
+      "Sức mạnh thời đại thay thế hoàn toàn sức mạnh dân tộc.",
+      "Sức mạnh dân tộc phụ thuộc hoàn toàn sức mạnh thời đại.",
+      "Hai sức mạnh này tách rời hoàn toàn không liên quan."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: 3 khuynh hướng sai lầm cần chống là: Chủ nghĩa cơ hội, vị kỷ dân tộc và sôvanh.\n⚠️ Vạch trần cái bẫy: Đưa các từ ngữ tích cực như 'chủ nghĩa yêu nước' vào đáp án nhiễu để lừa."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chỉ rõ nội lực (sức mạnh dân tộc) là quyết định nhất, ngoại lực (sức mạnh thời đại) chỉ phát huy tác dụng thông qua sức mạnh nội lực.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (thay thế) hay C (phụ thuộc hoàn toàn).",
+      "trickWord": "Bẫy mối quan hệ 'Sức mạnh dân tộc là gốc, quyết định'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Nội lực dân tộc = Gốc quyết định tranh thủ ngoại lực."
+    }
   },
-
-  // CÂU 6 - ANS: B
   {
-    id: "hcm-c5-trick2-006",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trong trích dẫn: 'Đoàn kết là một chính sách dân tộc, không phải là một thủ đoạn chính trị', từ 'chính sách' và 'thủ đoạn' phản ánh điều gì?",
-    options: [
-      "Đoàn kết chỉ là biện pháp tạm thời phục vụ chiến tranh",
-      "Đoàn kết là đường lối chiến lâu dài, không phải sách lược ứng phó nhất thời",
-      "Đoàn kết là khẩu hiệu tuyên truyền đối ngoại",
-      "Đoàn kết là công cụ thu hút viện trợ quốc tế"
+    "id": "hcm-c5-tr2-006",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về mục đích đoàn kết quốc tế của Đảng ta theo Hồ Chí Minh?",
+    "options": [
+      "Nhằm tạo môi trường quốc tế thuận lợi cho cách mạng.",
+      "Nhằm tranh thủ sự ủng hộ rộng rãi của nhân dân thế giới.",
+      "Nhằm can thiệp xâm lược lãnh thổ các quốc gia khác.",
+      "Nhằm góp phần vào sự nghiệp hòa bình thế giới."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Nhấn mạnh đại đoàn kết là chiến lược lâu dài xuyên suốt, không phải thủ đoạn hay sách lược tạm thời.\n⚠️ Vạch trần cái bẫy: Đổi thành 'biện pháp tạm thời' hoặc 'công cụ thu hút viện trợ'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Việt Nam đoàn kết quốc tế vì hòa bình, độc lập và tiến bộ xã hội, kiên quyết chống lại tư tưởng 'xâm lược hay can thiệp nước khác'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định can thiệp xâm lược sai trái.",
+      "trickWord": "Bẫy phủ định 'Nhằm can thiệp xâm lược lãnh thổ các quốc gia khác'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Đoàn kết quốc tế = Vì hòa bình & Độc lập dân tộc."
+    }
   },
-
-  // CÂU 7 - ANS: C
   {
-    id: "hcm-c5-trick2-007",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trích dẫn bàn tay có 'ngón ngắn ngón dài' của Hồ Chí Minh nhằm chứng minh cho điều kiện xây dựng đại đoàn kết nào?",
-    options: [
-      "Kế thừa truyền thống phân chia giai cấp",
-      "Đã là con người thì không cần đoàn kết",
-      "Có lòng khoan dung độ lượng trân trọng lòng ái quốc của mọi con Lạc cháu Hồng",
-      "Tuyệt đối không tha thứ cho người lỡ bước"
+    "id": "hcm-c5-tr2-007",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào khẩu hiệu đoàn kết của Nguyễn Ái Quốc: 'Lao động tất cả các nước [...]'?",
+    "options": [
+      "đoàn kết lại",
+      "đều là bạn bè",
+      "hãy đấu tranh",
+      "đều thành công"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Hình ảnh ngón ngắn ngón dài cùng trên bàn tay để chứng minh lòng khoan dung độ lượng với mọi người dân yêu nước.\n⚠️ Vạch trần cái bẫy: Tráo nghĩa thành 'phân chia giai cấp' hoặc 'không tha thứ'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Khẩu hiệu vô sản nổi tiếng được Nguyễn Ái Quốc giương cao từ những năm 1920: 'Lao động tất cả các nước đoàn kết lại!'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các cụm từ đồng nghĩa.",
+      "trickWord": "Bẫy trích dẫn cụm từ 'đoàn kết lại'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ khẩu hiệu vô sản: 'Lao động tất cả các nước ĐOÀN KẾT LẠI'."
+    }
   },
-
-  // CÂU 8 - ANS: D
   {
-    id: "hcm-c5-trick2-008",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nội dung giải pháp thứ ba trong 5 giải pháp tăng cường đại đoàn kết giai đoạn hiện nay nhấn mạnh việc xử lý mối quan hệ nào?",
-    options: [
-      "Giải quyết tranh chấp biên giới đất liền",
-      "Xóa bỏ hoàn toàn lợi ích cá nhân để ưu tiên lợi ích xã hội",
-      "Ưu tiên tuyệt đối lợi ích nhóm doanh nghiệp",
-      "Giải quyết tốt quan hệ lợi ích, kết hợp hài hòa lợi ích cá nhân, tập thể và toàn xã hội"
+    "id": "hcm-c5-tr2-008",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Luận điểm 'Cách mạng ở thuộc địa có thể giành thắng lợi trước cách mạng ở chính quốc' của Nguyễn Ái Quốc thể hiện điều gì?",
+    "options": [
+      "Sự phát triển sáng tạo lý luận Mác-Lênin.",
+      "Sự phủ nhận hoàn toàn vai trò giai cấp công nhân.",
+      "Sự phụ thuộc vào quyết định của Quốc tế Cộng sản.",
+      "Sự tách rời cách mạng thuộc địa với thế giới."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Giải pháp 3: Giải quyết tốt quan hệ lợi ích, kết hợp hài hòa lợi ích cá nhân, tập thể và toàn xã hội.\n⚠️ Vạch trần cái bẫy: Đổi thành 'xóa bỏ lợi ích cá nhân' hoặc 'ưu tiên lợi ích nhóm'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đây là đóng góp lý luận xuất sắc của Nguyễn Ái Quốc vào kho tàng chủ nghĩa Mác-Lênin, khẳng định tính chủ động của cách mạng thuộc địa.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (phủ nhận công nhân) hay C (phụ thuộc).",
+      "trickWord": "Bẫy ý nghĩa 'Sự phát triển sáng tạo lý luận Mác-Lênin'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ luận điểm 1924: Thuộc địa có thể bứt phá thắng lợi trước chính quốc."
+    }
   },
-
-  // CÂU 9 - ANS: A
   {
-    id: "hcm-c5-trick2-009",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Quy luật hai chiều giữa Mặt trận, Liên minh và Đảng thể hiện sự tương tác hữu cơ nào?",
-    options: [
-      "Mặt trận rộng ⇹ Liên minh mạnh ⇹ Đảng vững",
-      "Kinh tế giàu ⇹ Quân sự mạnh ⇹ Ngoại giao rộng",
-      "Luật pháp nghiêm ⇹ Ngân sách lớn ⇹ Công an đông",
-      "Dân số đông ⇹ Đất đai rộng ⇹ Tài nguyên nhiều"
+    "id": "hcm-c5-tr2-009",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Tinh thần Yêu nước trong gắn kết với Tinh thần Quốc tế?",
+    "options": [
+      "Chủ nghĩa yêu nước chân chính thống nhất với quốc tế.",
+      "Chủ nghĩa yêu nước đối lập với chủ nghĩa quốc tế.",
+      "Chủ nghĩa quốc tế triệt tiêu chủ nghĩa yêu nước.",
+      "Yêu nước chân chính là chủ nghĩa dân tộc vị kỷ."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Tam giác quy luật hai chiều: Mặt trận dân tộc rộng rãi <-> Khối liên minh công-nông-trí mạnh <-> Sự lãnh đạo của Đảng vững.\n⚠️ Vạch trần cái bẫy: Tráo các yếu tố tam giác sang quân sự, kinh tế hoặc tài nguyên."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định: Chủ nghĩa yêu nước chân chính hoàn toàn thống nhất với Chủ nghĩa quốc tế vô sản chân chính, kiên quyết chống chủ nghĩa vị kỷ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (đối lập) hoặc D (vị kỷ).",
+      "trickWord": "Bẫy mối quan hệ 'yêu nước chân chính thống nhất với quốc tế'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Yêu nước chân chính = Thống nhất với Tinh thần Quốc tế."
+    }
   },
-
-  // CÂU 10 - ANS: B
   {
-    id: "hcm-c5-trick2-010",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Bài học chiến lược thứ tư trong 4 bài học vận dụng đoàn kết quốc tế hiện nay coi yếu tố nào là 'hạt nhân'?",
-    options: [
-      "Tăng cường thu hút vốn ODA",
-      "Xây dựng Đảng trong sạch, vững mạnh làm hạt nhân đoàn kết",
-      "Tham gia các liên minh quân sự đa quốc gia",
-      "Hiện đại hóa lực lượng hải quân"
+    "id": "hcm-c5-tr2-010",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về thái độ của Hồ Chí Minh đối với nhân dân tiến bộ ở các nước đi xâm lược (Pháp, Mỹ)?",
+    "options": [
+      "Phân biệt rõ nhân dân tiến bộ và bọn phản động.",
+      "Đoàn kết thân ái với nhân dân tiến bộ các nước.",
+      "Coi toàn bộ nhân dân nước đi xâm lược là kẻ thù.",
+      "Tranh thủ sự ủng hộ của phong trào chống chiến tranh."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Bài học 4: Xây dựng Đảng trong sạch, vững mạnh làm hạt nhân đoàn kết dân tộc và đoàn kết quốc tế.\n⚠️ Vạch trần cái bẫy: Đổi hạt nhân Đảng thành hạt nhân kinh tế hay quân sự."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh luôn phân biệt rạch ròi giữa nhân dân lao động Pháp, Mỹ yêu chuộng hòa bình với bọn đế quốc hiếu chiến, tuyệt đối không 'coi toàn bộ nhân dân họ là kẻ thù'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định vơ đũa cả nắm sai lầm.",
+      "trickWord": "Bẫy phủ định 'Coi toàn bộ nhân dân nước đi xâm lược là kẻ thù'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Phân biệt rõ Nhân dân tiến bộ (Bạn) vs Bọn xâm lược (Thù)."
+    }
   },
-
-  // CÂU 11 - ANS: C
   {
-    id: "hcm-c5-trick2-011",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trong trích dẫn: 'Một dân tộc không tự lực cánh sinh mà cứ ngồi chờ dân tộc khác giúp đỡ thì không xứng đáng được độc lập', Hồ Chí Minh nhấn mạnh điều gì?",
-    options: [
-      "Tự lực cánh sinh là từ chối mọi sự trợ giúp quốc tế",
-      "Ngoại lực là yếu tố duy nhất bảo vệ độc lập",
-      "Tinh thần tự lực tự cường, độc lập tự chủ là tiên quyết",
-      "Độc lập dân tộc chỉ đạt được khi có viện trợ vũ khí"
+    "id": "hcm-c5-tr2-011",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào khẳng định của Bác: 'Trúp-măng hay Ách-sơn không phải là nhân dân Mỹ. Nhân dân Mỹ [...]'?",
+    "options": [
+      "nhân dân Mỹ là bạn của nhân dân ta",
+      "nhân dân Mỹ là kẻ thù của nhân dân ta",
+      "nhân dân Mỹ đứng ngoài cuộc chiến tranh",
+      "nhân dân Mỹ không quan tâm thời sự"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Nhấn mạnh tinh thần tự lực tự cường, độc lập tự chủ là điều kiện tiên quyết giữ vững độc lập.\n⚠️ Vạch trần cái bẫy: Suy diễn thành 'từ chối trợ giúp' hoặc 'ngoại lực là duy nhất'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bác Hồ khẳng định tinh thần phân biệt đối ngoại sâu sắc: Giới cầm quyền hiếu chiến Mỹ không đại diện cho Nhân dân Mỹ; Nhân dân Mỹ yêu hòa bình là bạn của ta.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm kẻ thù hay không quan tâm.",
+      "trickWord": "Bẫy trích dẫn 'nhân dân Mỹ là bạn của nhân dân ta'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ: Bọn hiếu chiến = Thù. Nhân dân Mỹ tiến bộ = Bạn."
+    }
   },
-
-  // CÂU 12 - ANS: D
   {
-    id: "hcm-c5-trick2-012",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nội dung nào sau đây mô tả ĐÚNG 4 tầng Mặt trận đoàn kết quốc tế từ hẹp đến rộng theo tư tưởng Bác?",
-    options: [
-      "Á-Phi ➔ Đông Dương ➔ Dân tộc ➔ Nhân dân thế giới",
-      "Đông Dương ➔ Á-Phi ➔ Dân tộc ➔ Nhân dân thế giới",
-      "Nhân dân thế giới ➔ Á-Phi ➔ Đông Dương ➔ Dân tộc",
-      "Đại đoàn kết dân tộc ➔ Việt-Lào-Campuchia ➔ Nhân dân Á-Phi ➔ Nhân dân thế giới đoàn kết với Việt Nam"
+    "id": "hcm-c5-tr2-012",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "vai-tro-doan-ket-qt-sub",
+    "question": "Sự kiện Nguyễn Ái Quốc tham gia sáng lập Hội Liên hiệp các dân tộc thuộc địa tại Pari diễn ra vào năm nào?",
+    "options": [
+      "Năm 1919.",
+      "Năm 1921.",
+      "Năm 1925.",
+      "Năm 1930."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: 4 tầng mặt trận theo vòng tròn mở rộng: (1) Dân tộc ➔ (2) Việt-Lào-Campuchia ➔ (3) Á-Phi ➔ (4) Nhân dân thế giới.\n⚠️ Vạch trần cái bẫy: Đảo lộn thứ tự mở rộng từ trong ra ngoài của 4 tầng mặt trận."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Năm 1921, Nguyễn Ái Quốc cùng một số nhà cách mạng các nước thuộc địa thành lập Hội Liên hiệp các dân tộc thuộc địa tại Pari để đoàn kết đấu tranh.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với năm 1919 (gửi Yêu cầu) hay 1925 (Thanh niên).",
+      "trickWord": "Bẫy mốc lịch sử 'Năm 1921'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.1.",
+      "tip": "Ghi nhớ mốc 1921 = Thành lập Hội Liên hiệp các dân tộc thuộc địa."
+    }
   },
-
-  // CÂU 13 - ANS: A
   {
-    id: "hcm-c5-trick2-013",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Hồ Chí Minh khẳng định đoàn kết giữa cách mạng Việt Nam và phong trào công nhân quốc tế phải dựa trên nền tảng nào?",
-    options: [
-      "Chủ nghĩa Mác - Lênin và chủ nghĩa quốc tế vô sản, có lý có tình",
-      "Sự tính toán thiệt hơn về kinh tế thương mại",
-      "Sự thỏa hiệp nhượng bộ về chủ quyền dân tộc",
-      "Các hiệp định vay nợ lãi suất thấp"
+    "id": "hcm-c5-tr2-013",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về 3 lực lượng cốt lõi của Lực lượng đoàn kết quốc tế?",
+    "options": [
+      "Phong trào CS, Phong trào GPDT, Phong trào Hòa bình.",
+      "Các quốc gia tư bản, Các tổ chức tài chính, Các công ty.",
+      "Quân đội đồng minh, Các tôn giáo, Các nhà đầu tư.",
+      "Cơ quan Liên Hợp Quốc, Các tổ chức phi chính phủ."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Nền tảng là chủ nghĩa Mác - Lênin và chủ nghĩa quốc tế vô sản, 'có lý, có tình'.\n⚠️ Vạch trần cái bẫy: Đổi nền tảng lý luận thành sự tính toán thiệt hơn về kinh tế."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "3 lực lượng đoàn kết quốc tế gồm: Phong trào cộng sản và công nhân quốc tế; Phong trào giải phóng dân tộc; Phong trào hòa bình, dân chủ và tiến bộ thế giới.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các tập hợp tổ chức kinh tế hay tư bản.",
+      "trickWord": "Bẫy bộ 3 lực lượng 'Phong trào CS, Phong trào GPDT, Phong trào Hòa bình'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ 3 lực lượng quốc tế: Phong trào Cộng sản + GPDT + Hòa bình."
+    }
   },
-
-  // CÂU 14 - ANS: B
   {
-    id: "hcm-c5-trick2-014",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Phương thức dân vận Hồ Chí Minh quy định tiến trình 3 bước xây dựng đại đoàn kết gồm những bước nào?",
-    options: [
-      "Tuyên truyền ➔ Thu thuế ➔ Cưỡng chế",
-      "Dân vận (vận động quần chúng) ➔ Thành lập các đoàn thể ➔ Tập hợp các đoàn thể vào Mặt trận",
-      "Thành lập Mặt trận ➔ Giải tán các hội ➔ Bầu cử chính quyền",
-      "Hợp tác quốc tế ➔ Nhận viện trợ ➔ Phân phát ngân sách"
+    "id": "hcm-c5-tr2-014",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về Liên minh đoàn kết 3 nước Đông Dương (Việt Nam - Lào - Campuchia)?",
+    "options": [
+      "Dựa trên cơ sở cùng chung kẻ thù xâm lược.",
+      "Dựa trên nguyên tắc bình đẳng tôn trọng nhau.",
+      "Việt Nam có quyền áp đặt quyết định lên hai nước.",
+      "Giúp đỡ lẫn nhau để cùng giành độc lập."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: 3 bước: Bước 1: Dân vận ➔ Bước 2: Thành lập các đoàn thể quần chúng ➔ Bước 3: Tập hợp vào Mặt trận.\n⚠️ Vạch trần cái bẫy: Đặt bước thành lập Mặt trận lên trước công tác dân vận quần chúng."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh tôn trọng tuyệt đối độc lập của Lào và Campuchia trên tinh thần 'giúp bạn là tự giúp mình', kiên quyết không 'áp đặt quyết định'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định áp đặt sai trái.",
+      "trickWord": "Bẫy phủ định 'Việt Nam có quyền áp đặt quyết định lên hai nước'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ liên minh Đông Dương: Bình đẳng tôn trọng (Giúp bạn = Tự giúp mình)."
+    }
   },
-
-  // CÂU 15 - ANS: C
   {
-    id: "hcm-c5-trick2-015",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trong mối quan hệ giữa Đảng với Mặt trận, khẳng định nào sau đây thể hiện ĐÚNG bản chất hai chiều?",
-    options: [
-      "Đảng chỉ đạo Mặt trận bằng các sắc lệnh bắt buộc",
-      "Mặt trận quản lý và ra quyết định thay cho Đảng",
-      "Đảng vừa là thành viên vừa là lực lượng lãnh đạo Mặt trận; Mặt trận làm cầu nối Đảng với nhân dân",
-      "Đảng đứng ngoài Mặt trận để đảm bảo tính độc lập tuyệt đối"
+    "id": "hcm-c5-tr2-015",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào chỉ thị của Bác đối với bộ đội Việt Nam làm nhiệm vụ quốc tế tại Lào và Campuchia: '[...] là tự giúp mình'?",
+    "options": [
+      "Giúp bạn",
+      "Giúp dân",
+      "Giúp quân",
+      "Giúp nước"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Đảng vừa là thành viên vừa là lực lượng lãnh đạo; Mặt trận là sợi dây gắn kết Đảng với nhân dân.\n⚠️ Vạch trần cái bẫy: Tráo thành Đảng đứng ngoài Mặt trận hoặc dùng sắc lệnh áp đặt."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Lời dạy bất hủ của Bác Hồ cho bộ đội tình nguyện làm nhiệm vụ quốc tế: 'Giúp bạn là tự giúp mình'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các từ giúp dân hay giúp nước.",
+      "trickWord": "Bẫy trích dẫn cụm từ 'Giúp bạn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ lời dạy bộ đội tình nguyện: 'GIÚP BẠN là tự giúp mình'."
+    }
   },
-
-  // CÂU 16 - ANS: D
   {
-    id: "hcm-c5-trick2-016",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào SAI khi giải thích nội dung 'có lý, có tình' trong đoàn kết quốc tế?",
-    options: [
-      "Có lý là tuân thủ các nguyên tắc cơ bản của chủ nghĩa Mác - Lênin",
-      "Có tình là sự cảm thông tôn trọng hoàn cảnh cụ thể từng quốc gia",
-      "Có lý có tình giúp xử lý thỏa đáng mâu thuẫn trong phong trào cộng sản",
-      "Có tình nghĩa là sẵn sàng từ bỏ nguyên tắc Mác - Lênin để làm vừa lòng bạn"
+    "id": "hcm-c5-tr2-016",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Đối với phong trào giải phóng dân tộc ở Á - Phi - Mỹ La-tinh, Hồ Chí Minh chủ trương đoàn kết trên cơ sở nào?",
+    "options": [
+      "Cùng chung số phận bị áp bức và mục tiêu độc lập.",
+      "Cùng chung mức thu nhập phát triển kinh tế.",
+      "Cùng chung ngôn ngữ và bản sắc văn hóa.",
+      "Cùng chung vị trí địa lý cùng một châu lục."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: 'Có tình' không bao giờ đồng nghĩa với từ bỏ nguyên tắc Mác - Lênin hay độc lập dân tộc.\n⚠️ Vạch trần cái bẫy: Đưa vế 'từ bỏ nguyên tắc' vào câu hỏi yêu cầu chọn khẳng định SAI."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết với nhân dân Á - Phi - Mỹ La-tinh dựa trên cơ sở cùng chung nỗi đau bị chủ nghĩa thực dân bóc lột và cùng nguyện vọng giải phóng dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các yếu tố địa lý hay thu nhập.",
+      "trickWord": "Bẫy cơ sở đoàn kết 'Cùng chung số phận bị áp bức và mục tiêu độc lập'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ đoàn kết Á-Phi-Mỹ La-tinh = Cùng cảnh nghèo bị bóc lột & Cùng đánh thực dân."
+    }
   },
-
-  // CÂU 17 - ANS: A
   {
-    id: "hcm-c5-trick2-017",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Bài học chiến lược thứ hai trong 4 bài học vận dụng đoàn kết quốc tế hiện nay nhấn mạnh hành động gì?",
-    options: [
-      "Chủ động mở cửa, hội nhập quốc tế và tích cực tham gia các vấn đề toàn cầu",
-      "Bế quan tỏa cảng bảo vệ thị trường nội địa",
-      "Liên minh quân sự với một cường quốc duy nhất",
-      "Ủy thác quyền giải quyết tranh chấp cho bên thứ ba"
+    "id": "hcm-c5-tr2-017",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT thái độ của Hồ Chí Minh đối với các lực lượng yêu chuộng hòa bình thế giới?",
+    "options": [
+      "Mở rộng mặt trận nhân dân thế giới chống chiến tranh.",
+      "Chỉ tranh thủ các nước trong phe xã hội chủ nghĩa.",
+      "Không cần liên kết với các phong trào hòa bình.",
+      "Coi các phong trào hòa bình là lực lượng ảo."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Bài học 2: Chủ động mở cửa, hội nhập quốc tế, làm bạn với tất cả các nước, tham gia vấn đề toàn cầu.\n⚠️ Vạch trần cái bẫy: Tráo thành 'bế quan tỏa cảng' hoặc 'ủy thác quyền giải quyết'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chủ trương xây dựng Mặt trận nhân dân thế giới rộng rãi đoàn kết với tất cả các lực lượng yêu chuộng hòa bình, công lý trên toàn cầu.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (chỉ tranh thủ phe XHCN) hoặc C/D (không liên kết).",
+      "trickWord": "Bẫy thái độ 'Mở rộng mặt trận nhân dân thế giới chống chiến tranh'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ: Xây dựng Mặt trận nhân dân thế giới chống chiến tranh xâm lược."
+    }
   },
-
-  // CÂU 18 - ANS: B
   {
-    id: "hcm-c5-trick2-018",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trích dẫn: 'Nước lấy dân làm gốc. Chở thuyền là dân, lật thuyền cũng là dân' nhằm khẳng định vị thế gì của nhân dân?",
-    options: [
-      "Nhân dân là đối tượng thụ động quản lý của Nhà nước",
-      "Nhân dân là chủ thể, là nguồn sức mạnh quyết định sự còn mất của cách mạng",
-      "Nhân dân chỉ có nghĩa vụ đóng thuế không có quyền làm chủ",
-      "Nhân dân là công cụ để giải quyết các mâu thuẫn chính trị"
+    "id": "hcm-c5-tr2-018",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về chính sách đoàn kết với các nước Xã hội chủ nghĩa anh em theo Bác Hồ?",
+    "options": [
+      "Đoàn kết trên nền tảng chủ nghĩa Mác-Lênin.",
+      "Đoàn kết trên tinh thần quốc tế vô sản.",
+      "Can thiệp vào công việc nội bộ của các nước.",
+      "Tôn trọng độc lập chủ quyền của mỗi nước."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Nhân dân là gốc, là chủ thể, quyết định sự thắng lợi hay thất bại của cách mạng.\n⚠️ Vạch trần cái bẫy: Biến nhân dân thành 'đối tượng thụ động' hoặc 'công cụ'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết giữa các nước XHCN dựa trên nguyên tắc bình đẳng, tôn trọng độc lập chủ quyền của nhau, kiên quyết chống 'can thiệp công việc nội bộ'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là hành vi can thiệp sai trái.",
+      "trickWord": "Bẫy phủ định 'Can thiệp vào công việc nội bộ của các nước'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ: Đoàn kết phe XHCN = Bình đẳng + Tôn trọng độc lập nội bộ."
+    }
   },
-
-  // CÂU 19 - ANS: C
   {
-    id: "hcm-c5-trick2-019",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Giải pháp thứ năm trong 5 giải pháp đại đoàn kết yêu cầu kiên quyết đấu tranh chống lại các âm mưu thù địch nào?",
-    options: [
-      "Âm mưu cạnh tranh thương mại quốc tế",
-      "Âm mưu thu hút đầu tư nước ngoài",
-      "Âm mưu chia rẽ khối đại đoàn kết dân tộc, chia rẽ Đảng với Nhân dân",
-      "Âm mưu phát triển khoa học công nghệ"
+    "id": "hcm-c5-tr2-019",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào nhận định của Bác: 'Quan hệ giữa ba nước Việt Nam - Lào - Campuchia là quan hệ [...]'?",
+    "options": [
+      "quan hệ môi hở răng lạnh, giúp đỡ lẫn nhau",
+      "quan hệ phụ thuộc cấp trên cấp dưới",
+      "quan hệ cạnh tranh kinh tế khu vực",
+      "quan hệ tạm thời trong giai đoạn chiến đấu"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Đấu tranh chống âm mưu chia rẽ khối đại đoàn kết, chia rẽ dân tộc, tôn giáo, chia rẽ Đảng với Dân.\n⚠️ Vạch trần cái bẫy: Đổi thành đấu tranh chống 'cạnh tranh thương mại'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh miêu tả mối quan hệ đoàn kết chiến đấu 3 nước Đông Dương như 'môi hở răng lạnh', hoạn nạn có nhau.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các từ cấp trên cấp dưới hay cạnh tranh.",
+      "trickWord": "Bẫy trích dẫn 'môi hở răng lạnh, giúp đỡ lẫn nhau'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ quan hệ 3 nước Đông Dương = Môi hở răng lạnh."
+    }
   },
-
-  // CÂU 20 - ANS: D
   {
-    id: "hcm-c5-trick2-020",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Hồ Chí Minh chỉ rõ sức mạnh dân tộc bao gồm những yếu tố cốt lõi nào?",
-    options: [
-      "Chỉ bao gồm số lượng quân đội chính quy",
-      "Chỉ bao gồm tổng sản phẩm quốc nội GDP",
-      "Chỉ bao gồm vũ khí trang thiết bị hiện đại",
-      "Tổng hợp chủ nghĩa yêu nước, tinh thần tự lực tự cường, truyền thống đoàn kết và văn hóa dân tộc"
+    "id": "hcm-c5-tr2-020",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Mặt trận Nhân dân thế giới đoàn kết với Việt Nam chống Mỹ được thành lập rộng rãi trên thực tế đạt đỉnh cao vào thập niên nào?",
+    "options": [
+      "Thập niên 1940.",
+      "Thập niên 1950.",
+      "Thập niên 1960 - 1970.",
+      "Thập niên 1990."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Sức mạnh dân tộc là sự tổng hợp vật chất và tinh thần (yêu nước, tự lực, đoàn kết, văn hóa).\n⚠️ Vạch trần cái bẫy: Thu hẹp sức mạnh dân tộc chỉ ở GDP hay vũ khí."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong thập niên 1960 - 1970, phong trào Nhân dân thế giới ủng hộ Việt Nam kháng chiến chống Mỹ cứu nước phát triển mạnh mẽ chưa từng có.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm mốc thập niên 1940 hay 1950.",
+      "trickWord": "Bẫy mốc thời gian 'Thập niên 1960 - 1970'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ đỉnh cao Mặt trận nhân dân thế giới ủng hộ VN = Thập niên 1960-1970."
+    }
   },
-
-  // CÂU 21 - ANS: A
   {
-    id: "hcm-c5-trick2-021",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nguyên tắc 'đoàn kết thực sự' theo Hồ Chí Minh được hiểu như thế nào là đúng nhất?",
-    options: [
-      "Vừa đoàn kết vừa đấu tranh phê bình trên lập trường thân ái vì nước vì dân",
-      "Né tránh phê bình để giữ hòa khí bề ngoài",
-      "Phê bình gay gắt bôi nhọ uy tín đồng chí",
-      "Tùy tiện bỏ qua các vi phạm kỷ luật"
+    "id": "hcm-c5-tr2-021",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Liên Xô và Trung Quốc đối với cách mạng Việt Nam theo Bác?",
+    "options": [
+      "Là những người bạn chỗ dựa tin cậy lớn.",
+      "Là những nước lãnh đạo bắt Việt Nam tuân lệnh.",
+      "Là các quốc gia không có đóng góp gì.",
+      "Là các đối thủ cạnh tranh ảnh hưởng."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Đoàn kết thực sự là vừa đoàn kết vừa đấu tranh, phê bình trên lập trường thân ái vì nước vì dân.\n⚠️ Vạch trần cái bẫy: Tráo thành 'né tránh phê bình giữ hòa khí' hoặc 'bôi nhọ uy tín'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh luôn đánh giá cao và biết ơn sự giúp đỡ to lớn của Liên Xô, Trung Quốc và các nước XHCN anh em như những chỗ dựa tin cậy.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (bắt tuân lệnh) hoặc C/D (không đóng góp/cạnh tranh).",
+      "trickWord": "Bẫy đánh giá 'Là những người bạn chỗ dựa tin cậy lớn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ: Liên Xô, Trung Quốc = Chỗ dựa anh em tin cậy to lớn."
+    }
   },
-
-  // CÂU 22 - ANS: B
   {
-    id: "hcm-c5-trick2-022",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào phản ánh ĐÚNG quan điểm của Hồ Chí Minh về mối quan hệ giữa độc lập dân tộc và đại đoàn kết?",
-    options: [
-      "Đại đoàn kết chỉ cần thiết khi đất nước đã có độc lập",
-      "Đại đoàn kết là lực lượng quyết định để giành và giữ vững độc lập dân tộc",
-      "Độc lập dân tộc có thể đạt được mà không cần đại đoàn kết",
-      "Đại đoàn kết là mục tiêu độc lập với độc lập dân tộc"
+    "id": "hcm-c5-tr2-022",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về tinh thần 'Đoàn kết quốc tế vô sản' trong tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Tôn trọng tính độc lập tự chủ của mỗi Đảng.",
+      "Không can thiệp áp đặt mô hình cho nhau.",
+      "Đảng lớn có quyền ra lệnh cho Đảng nhỏ.",
+      "Đoàn kết trên cơ sở chủ nghĩa Mác-Lênin."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Đại đoàn kết là nguồn sức mạnh quyết định để giành độc lập và bảo vệ vững chắc độc lập.\n⚠️ Vạch trần cái bẫy: Đưa vế 'đạt được độc lập không cần đại đoàn kết'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định tất cả các Đảng Cộng sản đều bình đẳng, không có chuyện 'Đảng lớn có quyền ra lệnh cho Đảng nhỏ'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là tư tưởng cửa trên sai trái.",
+      "trickWord": "Bẫy phủ định 'Đảng lớn có quyền ra lệnh cho Đảng nhỏ'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ: Các Đảng Cộng sản bình đẳng (KHÔNG có Đảng cửa trên)."
+    }
   },
-
-  // CÂU 23 - ANS: C
   {
-    id: "hcm-c5-trick2-023",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Sức mạnh thời đại theo Hồ Chí Minh bao gồm những dòng thác cách mạng nào?",
-    options: [
-      "Các tập đoàn tài chính tư bản thế giới",
-      "Các liên minh quân sự xâm lược",
-      "Phong trào công nhân quốc tế, phong trào giải phóng dân tộc và phong trào hòa bình dân chủ",
-      "Các cuộc cạnh tranh thương mại toàn cầu"
+    "id": "hcm-c5-tr2-023",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào di huấn của Bác trong Di chúc (1969) về phong trào cộng sản thế giới: 'Tôi mong rằng Đảng ta sẽ hết sức làm việc để phục hồi [...]'?",
+    "options": [
+      "phục hồi sự đoàn kết giữa các Đảng anh em",
+      "phục hồi nền kinh tế các nước bị tàn phá",
+      "phục hồi các hiệp định hòa bình đã ký",
+      "phục hồi các cơ quan Quốc tế Cộng sản"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Sức mạnh thời đại gồm: Phong trào công nhân, phong trào giải phóng dân tộc và phong trào hòa bình dân chủ.\n⚠️ Vạch trần cái bẫy: Đổi dòng thác cách mạng thành các tập đoàn tài chính tư bản."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong Di chúc (1969), Bác Hồ đau lòng trước sự bất hòa trong phe XHCN và di dặn Đảng ta phải hết sức làm việc để hàn gắn, phục hồi sự đoàn kết giữa các Đảng anh em.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm phục hồi kinh tế hay Quốc tế Cộng sản.",
+      "trickWord": "Bẫy trích dẫn 'phục hồi sự đoàn kết giữa các Đảng anh em'",
+      "citation": "Di chúc (1969) — Chủ tịch Hồ Chí Minh.",
+      "tip": "Ghi nhớ Di chúc 1969: Phục hồi sự đoàn kết giữa các Đảng anh em."
+    }
   },
-
-  // CÂU 24 - ANS: D
   {
-    id: "hcm-c5-trick2-024",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nội dung giải pháp thứ tư trong 5 giải pháp tăng cường đại đoàn kết giai đoạn hiện nay yêu cầu điều gì?",
-    options: [
-      "Tăng cường thu ngân sách địa phương",
-      "Tăng cường mật độ xây dựng hạ tầng",
-      "Tăng cường giao lưu thương mại quốc tế",
-      "Tăng cường mối quan hệ mật thiết giữa Nhân dân với Đảng và Nhà nước"
+    "id": "hcm-c5-tr2-024",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "luc-luong-doan-ket-qt-sub",
+    "question": "Chính sách đối ngoại hòa bình, làm bạn với tất cả các nước thể hiện bản chất gì của Ngoại giao Hồ Chí Minh?",
+    "options": [
+      "Bản chất nhân văn và yêu chuộng hòa bình.",
+      "Bản chất cơ hội và thay đổi thất thường.",
+      "Bản chất khuất phục перед các cường quốc.",
+      "Bản chất đóng cửa không giao lưu quốc tế."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Giải pháp 4: Tăng cường mối quan hệ mật thiết giữa Nhân dân với Đảng, Nhà nước tạo sinh lực mới.\n⚠️ Vạch trần cái bẫy: Đổi thành mối quan hệ thương mại hay ngân sách."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Chính sách 'Làm bạn với tất cả các nước' thể hiện bản chất nhân văn, yêu chuộng hòa bình, tinh thần rộng mở của Ngoại giao Hồ Chí Minh.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (cơ hội) hoặc C (khuất phục).",
+      "trickWord": "Bẫy bản chất 'Bản chất nhân văn và yêu chuộng hòa bình'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.2.",
+      "tip": "Ghi nhớ Ngoại giao Bác Hồ = Nhân văn + Yêu chuộng hòa bình."
+    }
   },
-
-  // CÂU 25 - ANS: A
   {
-    id: "hcm-c5-trick2-025",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Hồ Chí Minh coi 'Bốn phương vô sản đều là anh em' phản ánh tinh thần đoàn kết với lực lượng nào?",
-    options: [
-      "Phong trào công nhân và các Đảng Cộng sản trên thế giới",
-      "Các tầng lớp tư sản dân tộc Á - Phi",
-      "Các chính phủ đế quốc phương Tây",
-      "Các tổ chức thương mại đa quốc gia"
+    "id": "hcm-c5-tr2-025",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về Ngọn cờ đoàn kết đối với phong trào giải phóng dân tộc?",
+    "options": [
+      "Ngọn cờ Độc lập, tự do và bình đẳng dân tộc.",
+      "Ngọn cờ Chủ nghĩa quốc tế vô sản thuần túy.",
+      "Ngọn cờ Cải cách kinh tế thị trường tự do.",
+      "Ngọn cờ Tôn giáo đoàn kết hòa hợp thế giới."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Phản ánh tinh thần đoàn kết quốc tế vô sản với giai cấp công nhân thế giới.\n⚠️ Vạch trần cái bẫy: Đổi đối tượng vô sản thành tư sản hay đế quốc."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đối với các dân tộc bị áp bức và phong trào giải phóng dân tộc, Hồ Chí Minh giương cao Ngọn cờ Độc lập, tự do và Quyền bình đẳng giữa các dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với ngọn cờ phong trào công nhân (Độc lập dân tộc gắn liền CNXH).",
+      "trickWord": "Bẫy ngọn cờ 'Độc lập, tự do và bình đẳng dân tộc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ ngọn cờ GPDT = Độc lập, Tự do & Bình đẳng giữa các dân tộc."
+    }
   },
-
-  // CÂU 26 - ANS: B
   {
-    id: "hcm-c5-trick2-026",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào SAI khi nói về vai trò của Mặt trận Tổ quốc Việt Nam trong hệ thống chính trị hiện nay?",
-    options: [
-      "Mặt trận là cơ sở chính trị của chính quyền nhân dân",
-      "Mặt trận là cơ quan quyền lực nhà nước cao nhất ban hành luật",
-      "Mặt trận đại diện bảo vệ quyền và lợi ích hợp pháp của nhân dân",
-      "Mặt trận tập hợp phát huy sức mạnh đại đoàn kết toàn dân"
+    "id": "hcm-c5-tr2-026",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về nguyên tắc 'Độc lập, tự chủ, tự lực cánh sinh' trong đoàn kết quốc tế?",
+    "options": [
+      "Muốn người ta giúp thì phải tự giúp mình trước.",
+      "Trông chờ ỷ lại hoàn toàn vào giúp đỡ ngoài.",
+      "Tự lực cánh sinh là gốc của đoàn kết quốc tế.",
+      "Đoàn kết quốc tế không làm mất đi tự chủ."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Cơ quan quyền lực nhà nước cao nhất ban hành luật là Quốc hội, không phải Mặt trận.\n⚠️ Vạch trần cái bẫy: Tráo chức năng ban hành luật của Quốc hội cho Mặt trận."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết chống tư tưởng 'trông chờ ỷ lại vào sự giúp đỡ của bên ngoài', khẳng định tự lực cánh sinh là nền tảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn B vì B là tư tưởng ỷ lại sai trái.",
+      "trickWord": "Bẫy phủ định 'Trông chờ ỷ lại hoàn toàn vào giúp đỡ ngoài'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: Tự lực cánh sinh = Gốc của Đoàn kết quốc tế (KHÔNG ỷ lại)."
+    }
   },
-
-  // CÂU 27 - ANS: C
   {
-    id: "hcm-c5-trick2-027",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Chủ trương 'giúp bạn là tự giúp mình' của Hồ Chí Minh được áp dụng đặc biệt trong quan hệ với các nước nào?",
-    options: [
-      "Các cường quốc phương Tây",
-      "Các nước tư bản phát triển",
-      "Hai nước láng giềng Lào và Campuchia",
-      "Các tổ chức tài chính quốc tế"
+    "id": "hcm-c5-tr2-027",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào khẳng định của Hồ Chí Minh: 'Một dân tộc không tự lực cánh sinh mà cứ chờ người khác giúp đỡ thì [...]'?",
+    "options": [
+      "thì không đáng được độc lập",
+      "thì sẽ nhanh chóng thành công",
+      "thì sẽ được các nước khen ngợi",
+      "thì sẽ nhận nhiều tiền viện trợ"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Khẩu hiệu 'Giúp bạn là tự giúp mình' áp dụng đặc biệt trong liên minh chiến đấu Việt-Lào-Campuchia.\n⚠️ Vạch trần cái bẫy: Đổi đối tượng sang các nước tư bản hay tổ chức tài chính."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh cảnh báo nghiêm khắc: 'Một dân tộc không tự lực cánh sinh mà cứ chờ người khác giúp đỡ thì không đáng được độc lập'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các vế khen ngợi hay viện trợ.",
+      "trickWord": "Bẫy trích dẫn 'thì không đáng được độc lập'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: Cứ chờ giúp đỡ = 'KHÔNG ĐÁNG ĐƯỢC ĐỘC LẬP'."
+    }
   },
-
-  // CÂU 28 - ANS: D
   {
-    id: "hcm-c5-trick2-028",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nội dung giải pháp thứ nhất trong 5 giải pháp đại đoàn kết giai đoạn hiện nay tập trung vào nhiệm vụ gì?",
-    options: [
-      "Đẩy mạnh xuất khẩu hàng hóa",
-      "Tăng cường thu hút khách du lịch",
-      "Xây dựng hệ thống giao thông kết nối",
-      "Đẩy mạnh tuyên truyền để các cấp ngành có nhận thức sâu sắc về vị trí đại đoàn kết"
+    "id": "hcm-c5-tr2-028",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Ngọn cờ đoàn kết quốc tế đối với các lực lượng tiến bộ yêu chuộng hòa bình chống chiến tranh xâm lược là gì?",
+    "options": [
+      "Hòa bình, trong tự do và công lý.",
+      "Chủ nghĩa vô sản nguyên bản.",
+      "Chủ nghĩa tự do thương mại.",
+      "Bảo hộ sản xuất nội địa."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Giải pháp 1: Đẩy mạnh tuyên truyền nâng cao nhận thức sâu sắc về đại đoàn kết toàn dân tộc.\n⚠️ Vạch trần cái bẫy: Đổi thành 'xuất khẩu hàng hóa' hay 'du lịch'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đối với lực lượng yêu chuộng hòa bình toàn thế giới, Hồ Chí Minh giương cao Ngọn cờ Hòa bình, công lý, chống chiến tranh xâm lược.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với ngọn cờ vô sản hay thương mại.",
+      "trickWord": "Bẫy ngọn cờ 'Hòa bình, trong tự do và công lý'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ ngọn cờ yêu chuộng hòa bình = Hòa bình & Công lý."
+    }
   },
-
-  // CÂU 29 - ANS: A
   {
-    id: "hcm-c5-trick2-029",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào ĐÚNG về vai trò của trí thức trong liên minh công - nông - trí?",
-    options: [
-      "Trí thức là một bộ phận không thể thiếu, đóng góp tri thức phát triển lực lượng sản xuất",
-      "Trí thức là giai cấp bóc lột công nông",
-      "Trí thức chỉ đóng vai trò phụ không quan trọng bằng công nông",
-      "Trí thức lãnh đạo tuyệt đối thay thế vai trò của Đảng"
+    "id": "hcm-c5-tr2-029",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về nguyên tắc 'Đoàn kết trên cơ sở bình đẳng, bên cùng có lợi'?",
+    "options": [
+      "Không bên nào áp đặt quyền lợi lên bên nào.",
+      "Bên mạnh có quyền áp đặt bên yếu hơn.",
+      "Việt Nam sẵn sàng chịu thiệt thòi mọi mặt.",
+      "Tùy nghi vi phạm cam kết đối ngoại."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Trí thức cùng công nhân, nông dân hợp thành nền tảng khối đại đoàn kết, đóng góp tri thức cho đất nước.\n⚠️ Vạch trần cái bẫy: Coi trí thức là 'bóc lột' hoặc 'thay thế vai trò của Đảng'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết quốc tế phải dựa trên nguyên tắc bình đẳng, hai bên cùng có lợi, tôn trọng độc lập chủ quyền, kiên quyết chống áp đặt.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (bên mạnh áp đặt) hoặc C (chịu thiệt thòi).",
+      "trickWord": "Bẫy nguyên tắc 'Không bên nào áp đặt quyền lợi lên bên nào'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: Đoàn kết quốc tế = Bình đẳng + Hai bên cùng có lợi."
+    }
   },
-
-  // CÂU 30 - ANS: B
   {
-    id: "hcm-c5-trick2-030",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Bài học chiến lược thứ nhất trong 4 bài học vận dụng đoàn kết quốc tế hiện nay yêu cầu xác định điều gì?",
-    options: [
-      "Xác định quy mô viện trợ ODA cần đạt được",
-      "Xác định rõ mục tiêu tổng quát: Dân giàu, nước mạnh, dân chủ, công bằng, văn minh",
-      "Xác định danh sách các nước đối đầu",
-      "Xác định hạn ngạch nhập khẩu hàng hóa"
+    "id": "hcm-c5-tr2-030",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi giải thích câu nói của Bác: 'Thực lực là cái chiêng, ngoại giao là cái tiếng'?",
+    "options": [
+      "Thực lực có mạnh thì tiếng ngoại giao mới vang.",
+      "Ngoại giao quyết định thay thế hoàn toàn thực lực.",
+      "Thực lực nội tại là gốc rễ của hoạt động ngoại giao.",
+      "Chiêng có to thì tiếng ngoại giao mới lớn được."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Bài học 1: Nêu cao mục tiêu Dân giàu, nước mạnh, dân chủ, công bằng, văn minh làm điểm tương đồng đối ngoại.\n⚠️ Vạch trần cái bẫy: Đổi thành 'quy mô viện trợ ODA' hay 'danh sách nước đối đầu'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Câu nói 'Thực lực là cái chiêng, ngoại giao là cái tiếng' khẳng định thực lực (nội lực) là gốc, ngoại giao chỉ phát huy trên cơ sở thực lực, KHÔNG THỂ 'thay thế thực lực'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn B vì B là khẳng định ngoại giao thay thế thực lực sai trái.",
+      "trickWord": "Bẫy phủ định 'Ngoại giao quyết định thay thế hoàn toàn thực lực'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: Chiêng (Thực lực) mạnh -> Tiếng (Ngoại giao) mới vang."
+    }
   },
-
-  // CÂU 31 - ANS: C
   {
-    id: "hcm-c5-trick2-031",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nguyên tắc hiệp thương dân chủ trong Mặt trận dân tộc thống nhất đòi hỏi sự thống nhất trên cơ sở nào?",
-    options: [
-      "Thống nhất bằng mệnh lệnh hành chính của Đảng",
-      "Thống nhất bằng quyết định áp đặt của Chủ tọa",
-      "Thống nhất tự nguyện trên cơ sở bàn bạc công khai vì lợi ích chung",
-      "Thống nhất bằng sự bỏ phiếu đe dọa"
+    "id": "hcm-c5-tr2-031",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào quan điểm ngoại giao của Bác: 'Thực lực là cái chiêng, ngoại giao là [...]; Chiêng có to thì tiếng mới lớn'?",
+    "options": [
+      "cái tiếng",
+      "cái trống",
+      "cái cờ",
+      "cái loa"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Hiệp thương dân chủ là cùng nhau bàn bạc công khai đi đến nhất trí tự nguyện vì lợi ích chung.\n⚠️ Vạch trần cái bẫy: Đổi thành 'mệnh lệnh hành chính' hoặc 'áp đặt'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hình ảnh so sánh ngoại giao nổi tiếng của Bác Hồ: 'Thực lực là cái chiêng, ngoại giao là cái tiếng. Chiêng có to thì tiếng mới lớn'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm cái trống hay cái loa.",
+      "trickWord": "Bẫy trích dẫn cụm từ 'cái tiếng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ câu so sánh: Thực lực = Cái chiêng; Ngoại giao = Cái tiếng."
+    }
   },
-
-  // CÂU 32 - ANS: D
   {
-    id: "hcm-c5-trick2-032",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Hồ Chí Minh ví yếu tố nào là 'nền tảng' vững chắc cho việc thực hiện đoàn kết quốc tế?",
-    options: [
-      "Sự trợ giúp tài chính quốc tế",
-      "Sự ký kết các hiệp định thương mại",
-      "Sự can thiệp của Liên Hợp Quốc",
-      "Khối đại đoàn kết toàn dân tộc vững chắc ở trong nước"
+    "id": "hcm-c5-tr2-032",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Nguyên tắc 'Dĩ bất biến, ứng vạn biến' được Hồ Chí Minh dặn dặn ai trước khi sang Pháp đàm phán năm 1946?",
+    "options": [
+      "Dặn dặn Cụ Huỳnh Thúc Kháng.",
+      "Dặn dặn Đồng chí Phạm Văn Đồng.",
+      "Dặn dặn Đồng chí Võ Nguyên Giáp.",
+      "Dặn dặn Đồng chí Trường Chinh."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Đại đoàn kết toàn dân tộc là cơ sở, là nền tảng vững chắc cho việc thực hiện đoàn kết quốc tế.\n⚠️ Vạch trần cái bẫy: Tráo nền tảng nội bộ thành sự trợ giúp hay hiệp định bên ngoài."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tháng 5/1946, trước khi sang Pháp dự Hội nghị Phông-tên-nơ-blô, Bác Hồ giao quyền Quyền Chủ tịch nước cho Cụ Huỳnh Thúc Kháng và dặn dặn 6 chữ vàng: 'Dĩ bất biến, ứng vạn biến'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm dặn dặn Phạm Văn Đồng hay Võ Nguyên Giáp.",
+      "trickWord": "Bẫy nhân vật lịch sử 'Cụ Huỳnh Thúc Kháng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ dặn dặn 1946: 'Dĩ bất biến, ứng vạn biến' = Dặn Cụ Huỳnh Thúc Kháng."
+    }
   },
-
-  // CÂU 33 - ANS: A
   {
-    id: "hcm-c5-trick2-033",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Bài học chiến lược thứ ba trong 4 bài học vận dụng đoàn kết quốc tế hiện nay nhấn mạnh việc kết hợp sức mạnh nhằm mục tiêu gì?",
-    options: [
-      "Kết hợp sức mạnh dân tộc với thời đại để đẩy mạnh công nghiệp hóa, hiện đại hóa",
-      "Kết hợp ngân sách nhà nước với vốn vay tư nhân",
-      "Kết hợp quân đội chính quy với lực lượng dân quân",
-      "Kết hợp thương mại truyền thống với thương mại điện tử"
+    "id": "hcm-c5-tr2-033",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Trong phương châm 'Dĩ bất biến, ứng vạn biến', cái 'Bất biến' trong tư tưởng Hồ Chí Minh được hiểu là gì?",
+    "options": [
+      "Độc lập dân tộc và Chủ quyền Tổ quốc.",
+      "Các điều khoản hợp đồng kinh tế ký kết.",
+      "Tên gọi của các bộ ngành chính phủ.",
+      "Số lượng đại biểu Quốc hội các khóa."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Bài học 3: Độc lập tự chủ tự lực tự cường kết hợp sức mạnh thời đại phục vụ CNH, HĐH đất nước.\n⚠️ Vạch trần cái bẫy: Đổi thành kết hợp ngân sách hay kết hợp thương mại."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Cái 'Bất biến' (không bao giờ thay đổi hay nhân nhượng) chính là Độc lập dân tộc, Chủ quyền toàn vẹn lãnh thổ và Lợi ích tối cao của Tổ quốc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm cái bất biến với các điều khoản kinh tế.",
+      "trickWord": "Bẫy khái niệm 'Độc lập dân tộc và Chủ quyền Tổ quốc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: BẤT BIẾN = Độc lập dân tộc & Chủ quyền Tổ quốc."
+    }
   },
-
-  // CÂU 34 - ANS: B
   {
-    id: "hcm-c5-trick2-034",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Nội dung giải pháp thứ hai trong 5 giải pháp đại đoàn kết giai đoạn hiện nay yêu cầu công tác thể chế hóa thế nào?",
-    options: [
-      "Bì mật các chính sách đại đoàn kết",
-      "Tăng cường sự lãnh đạo của Đảng, quản lý Nhà nước và thể chế hóa các chủ trương đường lối",
-      "Hạn chế sự tham gia của nhân dân",
-      "Bỏ qua khâu thể chế hóa thành pháp luật"
+    "id": "hcm-c5-tr2-034",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi giải thích cái 'Vạn biến' trong phương châm 'Dĩ bất biến, ứng vạn biến'?",
+    "options": [
+      "Sự linh hoạt về sách lược ngoại giao.",
+      "Sự mềm dẻo ứng phó biến chuyển tình hình.",
+      "Sự từ bỏ mục tiêu độc lập dân tộc.",
+      "Sự đa dạng phương thức tập hợp lực lượng."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Giải pháp 2: Tăng cường sự lãnh đạo của Đảng, quản lý Nhà nước và tiếp tục thể chế hóa đường lối thành pháp luật.\n⚠️ Vạch trần cái bẫy: Đổi thành 'bảo mật chính sách' hoặc 'bỏ qua thể chế hóa'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Cái 'Vạn biến' là linh hoạt về sách lược, phương pháp ứng phó, nhưng tuyệt đối không bao giờ 'từ bỏ mục tiêu độc lập dân tộc'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là sự phản bội mục tiêu sai trái.",
+      "trickWord": "Bẫy phủ định 'Sự từ bỏ mục tiêu độc lập dân tộc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: VẠN BIẾN = Linh hoạt sách lược (KHÔNG từ bỏ Độc lập)."
+    }
   },
-
-  // CÂU 35 - ANS: C
   {
-    id: "hcm-c5-trick2-035",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trích dẫn: 'Đoàn kết là sức mạnh, đoàn kết là thắng lợi' thể hiện bản chất gì của tư tưởng Hồ Chí Minh?",
-    options: [
-      "Đoàn kết là một thủ đoạn khẩu hiệu",
-      "Đoàn kết là giải pháp tạm thời",
-      "Đoàn kết là nguyên tắc sống còn, là đòn bẩy tạo nên sức mạnh vô địch",
-      "Đoàn kết là công việc của riêng cấp ủy"
+    "id": "hcm-c5-tr2-035",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Điền cụm từ còn thiếu vào phương châm đối ngoại của Bác: 'Nguyên tắc thì phải [...], nhưng sách lược thì phải [...]'?",
+    "options": [
+      "kiên định; linh hoạt",
+      "linh hoạt; kiên định",
+      "cứng nhắc; áp đặt",
+      "thay đổi; cố định"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Đại đoàn kết là nguyên tắc sống còn, là đòn bẩy quyết định tạo nên sức mạnh vô địch.\n⚠️ Vạch trần cái bẫy: Đổi thành 'thủ đoạn khẩu hiệu' hay 'biện pháp tạm thời'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nghệ thuật ứng biến ngoại giao Hồ Chí Minh: Nguyên tắc chiến lược phải kiên định vững vàng, nhưng sách lược thực hiện phải cực kỳ linh hoạt dẻo dai.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm vế ngược 'linh hoạt; kiên định'.",
+      "trickWord": "Bẫy trích dẫn 'kiên định; linh hoạt'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ: Nguyên tắc = KIÊN ĐỊNH. Sách lược = LINH HOẠT."
+    }
   },
-
-  // CÂU 36 - ANS: D
   {
-    id: "hcm-c5-trick2-036",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào SAI khi nói về yêu cầu tôn trọng tự do tín ngưỡng tôn giáo của Hồ Chí Minh?",
-    options: [
-      "Tôn trọng quyền theo hoặc không theo tôn giáo của nhân dân",
-      "Đoàn kết đồng bào có đạo và đồng bào không có đạo",
-      "Nghiêm cấm các hành vi xúc phạm tự do tín ngưỡng",
-      "Bắt buộc mọi tín đồ tôn giáo phải từ bỏ giáo lý mới được đại đoàn kết"
+    "id": "hcm-c5-tr2-036",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "nguyen-tac-doan-ket-qt-sub",
+    "question": "Hiệp định Sơ bộ (6/3/1946) và Tạm ước (14/9/1946) là ví dụ điển hình cho nghệ thuật ngoại giao nào của Bác Hồ?",
+    "options": [
+      "Nghệ thuật Nhân nhượng có nguyên tắc.",
+      "Nghệ thuật Đầu hàng khuất phục kẻ thù.",
+      "Nghệ thuật Đóng cửa không đối thoại.",
+      "Nghệ thuật Khiêu khích chiến tranh."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Hồ Chí Minh tôn trọng giáo lý chân chính, đoàn kết công giáo và phật giáo, không bắt từ bỏ giáo lý.\n⚠️ Vạch trần cái bẫy: Đưa vế 'bắt buộc từ bỏ giáo lý' vào câu hỏi chọn phát biểu SAI."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Việc ký Hiệp định Sơ bộ 6/3 và Tạm ước 14/9/1946 thể hiện nghệ thuật 'nhân nhượng có nguyên tắc' để hòa hoãn với Pháp, gạt bớt quân Tưởng, mua thời gian chuẩn bị kháng chiến.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (đầu hàng khuất phục) hay C (đóng cửa).",
+      "trickWord": "Bẫy nghệ thuật 'Nghệ thuật Nhân nhượng có nguyên tắc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.3.",
+      "tip": "Ghi nhớ Hiệp định 1946 = Tạm hòa hoãn -> Nhân nhượng có nguyên tắc."
+    }
   },
-
-  // CÂU 37 - ANS: A
   {
-    id: "hcm-c5-trick2-037",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Phong cách dân vận 'Óc nghĩ, mắt thấy, tai nghe, chân đi, miệng nói, tay làm' chống lại tác phong sai lầm nào?",
-    options: [
-      "Tác phong quan liêu, bàn giấy, xa rời thực tế nhân dân",
-      "Tác phong sát sao với cơ sở",
-      "Tác phong lắng nghe ý kiến nhân dân",
-      "Tác phong gương mẫu của cán bộ"
+    "id": "hcm-c5-tr2-037",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT trường phái ngoại giao của Việt Nam hiện nay tiếp nối tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Trường phái Ngoại giao Cây tre Việt Nam.",
+      "Trường phái Ngoại giao Đóng cửa tự lực.",
+      "Trường phái Ngoại giao Một chiều phụ thuộc.",
+      "Trường phái Ngoại giao Cương cứng áp đặt."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Chống lại tác phong quan liêu, bàn giấy, chỉ ngồi thư phòng chỉ đạo xa rời nhân dân.\n⚠️ Vạch trần cái bẫy: Tráo thành chống tác phong sát sao hay gương mẫu."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đảng ta xác định xây dựng trường phái 'Ngoại giao Cây tre Việt Nam': Gốc vững, thân chắc, cành uyển chuyển, vận dụng sáng tạo tư tưởng đối ngoại Hồ Chí Minh.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các trường phái đóng cửa hay phụ thuộc.",
+      "trickWord": "Bẫy trường phái 'Ngoại giao Cây tre Việt Nam'",
+      "citation": "Văn kiện Đại hội XIII của Đảng & Hội nghị Đối ngoại toàn quốc.",
+      "tip": "Ghi nhớ Ngoại giao VN hiện nay = Ngoại giao Cây tre (Gốc vững, cành uyển chuyển)."
+    }
   },
-
-  // CÂU 38 - ANS: B
   {
-    id: "hcm-c5-trick2-038",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Ý nghĩa của việc kết hợp 'Sức mạnh dân tộc với Sức mạnh thời đại' là gì?",
-    options: [
-      "Thay thế hoàn toàn sức mạnh nội sinh",
-      "Nhân lên gấp bội sức mạnh của cách mạng Việt Nam để chiến thắng kẻ thù",
-      "Giúp Việt Nam trở thành quốc gia xâm lược",
-      "Tạo ra sự lệ thuộc kinh tế hoàn toàn"
+    "id": "hcm-c5-tr2-038",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về đường lối đối ngoại của Việt Nam trong thời kỳ hội nhập quốc tế hiện nay?",
+    "options": [
+      "Độc lập, tự chủ, hòa bình, hợp tác phát triển.",
+      "Đa phương hóa, đa dạng hóa quan hệ đối ngoại.",
+      "Chọn bên và liên minh quân sự chống nước khác.",
+      "Là bạn, là đối tác tin cậy của các nước."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Kết hợp sức mạnh dân tộc và thời đại giúp nhân lên gấp bội sức mạnh tổng hợp của cách mạng.\n⚠️ Vạch trần cái bẫy: Đổi thành 'tạo sự lệ thuộc' hay 'trở thành quốc gia xâm lược'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Việt Nam nhất quán đường lối đối ngoại độc lập tự chủ, đa phương hóa đa dạng hóa, kiên quyết thực hiện chính sách '4 không', tuyệt đối không 'chọn bên hay liên minh chống nước khác'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là hành vi chọn bên sai trái.",
+      "trickWord": "Bẫy phủ định 'Chọn bên và liên minh quân sự chống nước khác'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Đường lối đối ngoại = Đa dạng hóa + KHÔNG chọn bên."
+    }
   },
-
-  // CÂU 39 - ANS: C
   {
-    id: "hcm-c5-trick2-039",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Trong khối đại đoàn kết toàn dân tộc, 'Đoàn kết trong Đảng' đóng vai trò gì?",
-    options: [
-      "Là yếu tố phụ thuộc vào Mặt trận",
-      "Là mục tiêu riêng của các đảng viên",
-      "Là hạt nhân vững chắc cho đại đoàn kết toàn dân tộc",
-      "Là yếu tố cản trở sự rộng mở Mặt trận"
+    "id": "hcm-c5-tr2-039",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Điền cụm từ còn thiếu vào đường lối đối ngoại Đổi mới: 'Việt Nam muốn là bạn, là đối tác tin cậy và là [...] trong cộng đồng quốc tế'?",
+    "options": [
+      "thành viên có trách nhiệm",
+      "thành viên lãnh đạo chủ chốt",
+      "thành viên trung lập đứng ngoài",
+      "thành viên nhận trợ cấp chính"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Sự đoàn kết nhất trí trong Đảng là HẠT NHÂN vững chắc cho khối đại đoàn kết toàn dân tộc.\n⚠️ Vạch trần cái bẫy: Coi đoàn kết trong Đảng là 'yếu tố cản trở' hoặc 'phụ thuộc'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Khẳng định đường lối đối ngoại hiện nay: 'Việt Nam là bạn, là đối tác tin cậy và là thành viên có trách nhiệm trong cộng đồng quốc tế'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm thành viên lãnh đạo hay trung lập đứng ngoài.",
+      "trickWord": "Bẫy trích dẫn 'thành viên có trách nhiệm'",
+      "citation": "Văn kiện Đại hội XIII của Đảng.",
+      "tip": "Ghi nhớ: Là bạn + Đối tác tin cậy + Thành viên có trách nhiệm."
+    }
   },
-
-  // CÂU 40 - ANS: D
   {
-    id: "hcm-c5-trick2-040",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào ĐÚNG về mối quan hệ giữa độc lập tự chủ và đoàn kết quốc tế?",
-    options: [
-      "Đoàn kết quốc tế đòi hỏi từ bỏ độc lập tự chủ",
-      "Độc lập tự chủ là rào cản cho hợp tác quốc tế",
-      "Muốn đoàn kết quốc tế tốt thì không cần có thực lực nội lực",
-      "Độc lập tự chủ là cơ sở, tiền đề vững chắc để thực hiện đoàn kết quốc tế có hiệu quả"
+    "id": "hcm-c5-tr2-040",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Chính sách đối ngoại '4 không' của Việt Nam hiện nay có nguồn gốc sâu xa từ tư tưởng nào của Bác Hồ?",
+    "options": [
+      "Tư tưởng Độc lập tự chủ, tự lực cánh sinh.",
+      "Tư tưởng Bãi bỏ quân đội chính quy.",
+      "Tư tưởng Đóng cửa không thương mại.",
+      "Tư tưởng Phụ thuộc vào bảo hộ bên ngoài."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Độc lập tự chủ là cơ sở, tiền đề vững chắc để thực hiện đoàn kết quốc tế bình đẳng hiệu quả.\n⚠️ Vạch trần cái bẫy: Coi độc lập tự chủ là 'rào cản' hoặc 'đòi hỏi từ bỏ'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Chính sách '4 không' trong Quốc phòng (không liên minh quân sự, không cho đặt căn cứ, không đi với nước này chống nước khác, không dùng vũ lực) kế thừa trực tiếp tư tưởng độc lập, tự chủ, tự lực cánh sinh của Bác.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (bãi bỏ quân đội) hay D (phụ thuộc bảo hộ).",
+      "trickWord": "Bẫy tư tưởng gốc 'Tư tưởng Độc lập tự chủ, tự lực cánh sinh'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Chính sách quốc phòng '4 không' gốc từ TTHCM về Độc lập tự chủ."
+    }
   },
-
-  // CÂU 41 - ANS: A
   {
-    id: "hcm-c5-trick2-041",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Quan điểm 'Lấy lợi ích chung làm điểm tương đồng' đòi hỏi phải xử lý lợi ích riêng như thế nào?",
-    options: [
-      "Tôn trọng lợi ích riêng chính đáng của cá nhân và tập thể phù hợp lợi ích chung",
-      "Xóa bỏ hoàn toàn mọi lợi ích riêng",
-      "Đặt lợi ích riêng lên trên lợi ích quốc gia",
-      "Không quan tâm tới lợi ích riêng của nhân dân"
+    "id": "hcm-c5-tr2-041",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT bài học vận dụng Ngoại giao Hồ Chí Minh trong bảo vệ chủ quyền biển đảo hiện nay?",
+    "options": [
+      "Kiên định mục tiêu chủ quyền, linh hoạt giải pháp.",
+      "Từ bỏ chủ quyền biển đảo để giữ hòa bình.",
+      "Dùng vũ lực quân sự tấn công trước.",
+      "Phó mặc cho cơ quan tài phán nước ngoài."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Tôn trọng lợi ích riêng chính đáng phù hợp với lợi ích chung của dân tộc.\n⚠️ Vạch trần cái bẫy: Đổi thành 'xóa bỏ hoàn toàn lợi ích riêng'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong bảo vệ chủ quyền biển đảo: Nguyên tắc chủ quyền là 'Bất biến' (kiên định tuyệt đối), giải pháp đấu tranh hòa bình luật pháp là 'Vạn biến' (linh hoạt).",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (từ bỏ chủ quyền) hay C (tấn công vũ lực).",
+      "trickWord": "Bẫy phương châm 'Kiên định mục tiêu chủ quyền, linh hoạt giải pháp'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ bảo vệ biển đảo = Kiên định Chủ quyền + Linh hoạt Hòa bình."
+    }
   },
-
-  // CÂU 42 - ANS: B
   {
-    id: "hcm-c5-trick2-042",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào SAI khi nói về bài học dân vận của Hồ Chí Minh?",
-    options: [
-      "Dân vận phải thật thà, không được hình thức",
-      "Dân vận chỉ là dùng lời nói hay để hứa hẹn với dân",
-      "Dân vận là vận động tất cả lực lượng của mỗi một người dân",
-      "Dân vận phải giúp dân thấy rõ quyền lợi gắn liền nghĩa vụ"
+    "id": "hcm-c5-tr2-042",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về vai trò của Ngoại giao nhân dân bên cạnh Ngoại giao Đảng và Ngoại giao Nhà nước?",
+    "options": [
+      "Là một trong 3 trụ cột của nền đối ngoại hiện đại.",
+      "Giúp thắt chặt tình hữu nghị giữa các dân tộc.",
+      "Là hoạt động tự phát không cần theo đường lối.",
+      "Tạo nền tảng xã hội thuận lợi cho quan hệ các nước."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Dân vận không phải chỉ là lời nói hay hứa suông mà phải bằng hành động thực tế đem lại lợi ích cho dân.\n⚠️ Vạch trần cái bẫy: Đưa vế 'chỉ dùng lời nói hay hứa hẹn' vào câu chọn phát biểu SAI."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Ngoại giao nhân dân là 1 trong 3 trụ cột đối ngoại, phải tuân thủ nghiêm ngặt đường lối đối ngoại của Đảng và Nhà nước, không bao giờ là 'hoạt động tự phát'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định tự phát sai trái.",
+      "trickWord": "Bẫy phủ định 'Là hoạt động tự phát không cần theo đường lối'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Ngoại giao nhân dân là 1 trong 3 trụ cột (KHÔNG tự phát)."
+    }
   },
-
-  // CÂU 43 - ANS: C
   {
-    id: "hcm-c5-trick2-043",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Sự phân biệt giữa 'Nhân dân tiến bộ' và 'Chính quyền phản động đế quốc' trong ngoại giao Hồ Chí Minh nhằm mục đích gì?",
-    options: [
-      "Để cô lập hoàn toàn các nước lớn",
-      "Để từ chối quan hệ ngoại giao",
-      "Để tranh thủ sự ủng hộ của nhân dân các nước chính quốc chống lại các thế lực xâm lược",
-      "Để chia rẽ nội bộ nhân dân các nước"
+    "id": "hcm-c5-tr2-043",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Điền cụm từ còn thiếu vào dặn dặn của Bác về công tác ngoại giao: 'Phải nhìn xa thấy rộng, phải [...]'?",
+    "options": [
+      "biết mình biết người, biết thời biết thế",
+      "biết tận dụng mọi nguồn viện trợ kinh tế",
+      "biết từ chối đàm phán khi gặp khó khăn",
+      "biết áp đặt điều kiện lên phía đối tác"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Phân biệt rõ để tranh thủ nhân dân tiến bộ các nước (kể cả nhân dân Pháp, Mỹ) đoàn kết ủng hộ Việt Nam.\n⚠️ Vạch trần cái bẫy: Đổi thành 'cô lập các nước' hoặc 'chia rẽ nhân dân'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nghệ thuật tri ỉ trong ngoại giao Bác Hồ: 'Phải nhìn xa thấy rộng, phải biết mình biết người, biết thời biết thế, biết dừng biết biến'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các phương án gài từ từ chối hay áp đặt.",
+      "trickWord": "Bẫy trích dẫn 'biết mình biết người, biết thời biết thế'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ bộ 5 'Biết' ngoại giao: Biết mình - Biết người - Biết thời - Biết thế - Biết dừng."
+    }
   },
-
-  // CÂU 44 - ANS: D
   {
-    id: "hcm-c5-trick2-044",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào ĐÚNG về nguyên tắc 'Đoàn kết lâu dài' trong Mặt trận?",
-    options: [
-      "Chỉ đoàn kết trong giai đoạn giành chính quyền",
-      "Giải tán Mặt trận khi đã xây dựng xong CNXH",
-      "Đoàn kết tạm thời phục vụ mục đích ứng phó tình thế",
-      "Đoàn kết chân thành, thân ái, cùng nhau hợp tác và giúp đỡ nhau tiến bộ lâu dài"
+    "id": "hcm-c5-tr2-044",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Khái niệm 'Ngoại giao tâm công' (đánh vào lòng người) trong tư tưởng Hồ Chí Minh thể hiện qua hành vi nào?",
+    "options": [
+      "Dùng chính nghĩa và tình nhân văn để cảm hóa.",
+      "Dùng tiền bạc đút lót mua chuộc chính khách.",
+      "Dùng áp lực quân sự đe dọa quốc gia đối lập.",
+      "Dùng tuyên truyền sai sự thật để gây chia rẽ."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Đoàn kết lâu dài là chiến lược xuyên suốt cả trong cách mạng dân tộc dân chủ và cách mạng XHCN.\n⚠️ Vạch trần cái bẫy: Tráo thành 'đoàn kết tạm thời' hoặc 'giải tán khi xong CNXH'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "'Ngoại giao tâm công' của Bác là lấy chính nghĩa cách mạng, lẽ phải và tình cảm chân thành nhân văn để thuyết phục, cảm hóa lòng người.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (đút lót) hoặc C (đe dọa quân sự).",
+      "trickWord": "Bẫy khái niệm 'Dùng chính nghĩa và tình nhân văn để cảm hóa'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ Ngoại giao tâm công = Lấy CHÍNH NGHĨA & NHÂN VĂN cảm hóa."
+    }
   },
-
-  // CÂU 45 - ANS: A
   {
-    id: "hcm-c5-trick2-045",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Quan điểm 'Việt Nam muốn là bạn, là đối tác tin cậy và là thành viên có trách nhiệm trong cộng đồng quốc tế' thể hiện tính chất gì của ngoại giao Việt Nam?",
-    options: [
-      "Tính chủ động, tích cực, hòa hiếu và có trách nhiệm với hòa bình thế giới",
-      "Tính thụ động chờ đợi cơ hội",
-      "Tính lệ thuộc vào ngân sách quốc tế",
-      "Tính khép kín đối ngoại"
+    "id": "hcm-c5-tr2-045",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vị thế của Việt Nam trên trường quốc tế hiện nay nhờ vận dụng tư tưởng đối ngoại Hồ Chí Minh?",
+    "options": [
+      "Vị thế và uy tín quốc tế ngày càng nâng cao.",
+      "Việt Nam bị cô lập hạn chế quan hệ ngoại giao.",
+      "Việt Nam phụ thuộc tài chính vào các nước lớn.",
+      "Việt Nam không tham gia tổ chức quốc tế nào."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Thể hiện tính chủ động, tích cực, hòa hiếu và tinh thần trách nhiệm với cộng đồng quốc tế.\n⚠️ Vạch trần cái bẫy: Đổi thành 'thụ động' hoặc 'lệ thuộc'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đất nước ta chưa bao giờ có được cơ đồ, tiềm lực, vị thế và uy tín quốc tế như ngày nay nhờ vận dụng sáng tạo tư tưởng đối ngoại Hồ Chí Minh.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (bị cô lập) hay C (phụ thuộc).",
+      "trickWord": "Bẫy đánh giá 'Vị thế và uy tín quốc tế ngày càng nâng cao'",
+      "citation": "Văn kiện Đại hội XIII của Đảng.",
+      "tip": "Ghi nhớ: Nhờ TTHCM đối ngoại -> Vị thế uy tín quốc tế ngày càng nâng cao."
+    }
   },
-
-  // CÂU 46 - ANS: B
   {
-    id: "hcm-c5-trick2-046",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Biểu hiện nào SAI với tinh thần đại đoàn kết toàn dân tộc?",
-    options: [
-      "Tôn trọng và phát huy quyền làm chủ của nhân dân",
-      "Cục bộ địa phương, bè phái, chia rẽ vùng miền",
-      "Chăm lo đời sống vật chất và tinh thần của nhân dân",
-      "Đoàn kết đồng bào các dân tộc và tôn giáo"
+    "id": "hcm-c5-tr2-046",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về nguyên tắc ứng xử đối ngoại trong tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Thêm bạn bớt thù.",
+      "Chủ động, chân thành, tin cậy.",
+      "Bội ước và lật lọng cam kết.",
+      "Tôn trọng luật pháp quốc tế."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Cục bộ địa phương, bè phái, chia rẽ là những biểu hiện phá hoại đại đoàn kết.\n⚠️ Vạch trần cái bẫy: Chọn biểu hiện SAI với tinh thần đại đoàn kết."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh luôn giữ chữ Tín trong ngoại giao, kiên quyết bác bỏ thái độ 'bội ước, lật lọng cam kết'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là thái độ lật lọng bất tín sai trái.",
+      "trickWord": "Bẫy phủ định 'Bội ước và lật lọng cam kết'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Ngoại giao Bác Hồ = Giữ chữ TÍN + Thêm bạn bớt thù."
+    }
   },
-
-  // CÂU 47 - ANS: C
   {
-    id: "hcm-c5-trick2-047",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Theo Hồ Chí Minh, lực lượng nòng cốt làm nên chiến thắng của hai cuộc kháng chiến chống Pháp và chống Mỹ là gì?",
-    options: [
-      "Sự viện trợ vũ khí từ nước ngoài",
-      "Sự lãnh đạo của các tướng lĩnh quân sự",
-      "Khối đại đoàn kết toàn dân tộc trên nền tảng liên minh công - nông - trí dưới sự lãnh đạo của Đảng",
-      "Địa hình tự nhiên hiểm trở của đất nước"
+    "id": "hcm-c5-tr2-047",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Điền cụm từ còn thiếu vào phương châm đối ngoại của Bác: 'Muốn người ta giúp mình, thì trước hết mình phải [...]'?",
+    "options": [
+      "phải tự giúp lấy mình trước",
+      "phải vay tiền ngân hàng quốc tế",
+      "phải ký các hợp đồng thương mại",
+      "phải nhượng bộ đất đai lãnh thổ"
     ],
-    answer: 2,
-    explanation: "Trích nguyên văn giáo trình: Nguồn gốc mọi chiến thắng là khối đại đoàn kết toàn dân tộc trên nền tảng liên minh công-nông-trí do Đảng lãnh đạo.\n⚠️ Vạch trần cái bẫy: Quy nguyên nhân chiến thắng cho 'viện trợ' hay 'địa hình'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nguyên tắc tự lực tự cường trong đối ngoại: 'Muốn người ta giúp mình thì trước hết mình phải tự giúp lấy mình đã'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm vay tiền hay nhượng bộ đất đai.",
+      "trickWord": "Bẫy trích dẫn 'phải tự giúp lấy mình trước'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Muốn người khác giúp = Phải TỰ GIÚP MÌNH trước."
+    }
   },
-
-  // CÂU 48 - ANS: D
   {
-    id: "hcm-c5-trick2-048",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Khẳng định nào thể hiện ĐÚNG nhất tư tưởng Hồ Chí Minh về lòng tin vào nhân dân?",
-    options: [
-      "Dân không biết gì nên cán bộ phải chỉ đạo tuyệt đối",
-      "Chỉ tin vào cán bộ không cần tin vào dân",
-      "Dân chỉ là lực lượng phụ trong sản xuất",
-      "Dân khí phát khởi thì không lực lượng nào ngăn cản nổi; có dân là có tất cả"
+    "id": "hcm-c5-tr2-048",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Việc Việt Nam đảm nhiệm thành công vai trò Ủy viên không thường trực Hội đồng Báo an Liên Hợp Quốc thể hiện điều gì?",
+    "options": [
+      "Sự vận dụng thành công đường lối đối ngoại đa phương.",
+      "Sự can thiệp sâu vào nội bộ các nước thành viên.",
+      "Sự từ bỏ đường lối đối ngoại độc lập tự chủ.",
+      "Sự phụ thuộc vào quyết định của các nước lớn."
     ],
-    answer: 3,
-    explanation: "Trích nguyên văn giáo trình: Hồ Chí Minh khẳng định: Dân khí phát khởi thì không lực lượng nào ngăn cản nổi; Dễ trăm lần không dân cũng chịu, khó vạn lần dân liệu cũng xong.\n⚠️ Vạch trần cái bẫy: Coi dân là 'không biết gì' hoặc 'lực lượng phụ'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đảm nhiệm xuất sắc các trọng trách quốc tế là minh chứng sinh động cho đường lối đối ngoại đa phương hóa, đa dạng hóa, chủ động hội nhập quốc tế.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (can thiệp nội bộ) hay C/D (từ bỏ độc lập/phụ thuộc).",
+      "trickWord": "Bẫy thành tựu 'Sự vận dụng thành công đường lối đối ngoại đa phương'",
+      "citation": "Văn kiện Đại hội XIII của Đảng.",
+      "tip": "Ghi nhớ thành tựu đối ngoại = Vận dụng đối ngoại đa phương hóa."
+    }
   },
-
-  // CÂU 49 - ANS: A
   {
-    id: "hcm-c5-trick2-049",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Mối quan hệ giữa 'Giám sát' và 'Phản biện xã hội' của Mặt trận Tổ quốc có tác dụng gì đối với bộ máy nhà nước?",
-    options: [
-      "Giúp kiểm soát quyền lực, phòng chống tham nhũng và nâng cao hiệu lực quản lý nhà nước",
-      "Làm tê liệt hoạt động của bộ máy nhà nước",
-      "Thay thế hoàn toàn chức năng của Tòa án và Viện kiểm sát",
-      "Gây chia rẽ giữa nhân dân với chính quyền"
+    "id": "hcm-c5-tr2-049",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về mối quan hệ giữa Quốc phòng - An ninh và Đối ngoại hiện nay?",
+    "options": [
+      "Đối ngoại bảo vệ Tổ quốc từ sớm, từ xa.",
+      "Đối ngoại tách rời hoàn toàn với Quốc phòng.",
+      "Đối ngoại chỉ triển khai khi có chiến tranh.",
+      "Quốc phòng không hỗ trợ cho Đối ngoại."
     ],
-    answer: 0,
-    explanation: "Trích nguyên văn giáo trình: Giám sát và phản biện xã hội giúp kiểm soát quyền lực, phòng chống tham nhũng, hoàn thiện chính sách.\n⚠️ Vạch trần cái bẫy: Tráo thành 'làm tê liệt bộ máy' hoặc 'thay thế Tòa án'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đối ngoại hiện đại kết hợp với Quốc phòng - An ninh thực hiện nhiệm vụ chiến lược: Bảo vệ Tổ quốc từ sớm, từ xa, giữ vững môi trường hòa bình.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (tách rời) hay C (chỉ khi có chiến tranh).",
+      "trickWord": "Bẫy vai trò 'Đối ngoại bảo vệ Tổ quốc từ sớm, từ xa'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: Đối ngoại + Quốc phòng = Bảo vệ Tổ quốc TỪ SỚM, TỪ XA."
+    }
   },
-
-  // CÂU 50 - ANS: B
   {
-    id: "hcm-c5-trick2-050",
-    chapterId: "chuong-5",
-    trickSet: 2,
-    difficulty: "hard",
-    question: "Tổng kết cốt lõi tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế đúc kết thành chân lý nào?",
-    options: [
-      "Kinh tế là quyết định, quân sự là quan trọng",
-      "Đoàn kết là sức mạnh vô địch, là then chốt của mọi thành công cách mạng Việt Nam",
-      "Hội nhập bằng mọi giá để phát triển",
-      "Đoàn kết chỉ cần thiết trong giai đoạn có chiến tranh"
+    "id": "hcm-c5-tr2-050",
+    "trickSet": 2,
+    "sectionId": "hcm-doan-ket-quoc-te-sec",
+    "subsectionId": "ngoai-giao-bai-hoc-sub",
+    "question": "Giá trị trường tồn của Tư tưởng Hồ Chí Minh về Đoàn kết quốc tế đối với thế hệ trẻ Việt Nam hiện nay là gì?",
+    "options": [
+      "Là ngọn đèn soi đường cho hội nhập quốc tế.",
+      "Đã không còn giá trị trong thời đại toàn cầu hóa.",
+      "Chỉ là tài liệu học tập lịch sử thời kỳ chống Pháp.",
+      "Chỉ áp dụng cho các nhà ngoại giao chuyên nghiệp."
     ],
-    answer: 1,
-    explanation: "Trích nguyên văn giáo trình: Chân lý cốt lõi: 'Đoàn kết, đoàn kết, đại đoàn kết; Thành công, thành công, đại thành công' - Đoàn kết tạo nên sức mạnh vô địch.\n⚠️ Vạch trần cái bẫy: Đổi chân lý đoàn kết thành 'kinh tế quyết định' hay 'hội nhập bằng mọi giá'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tư tưởng Hồ Chí Minh về Đoàn kết quốc tế mãi mãi là ngọn đèn soi đường, bồi dưỡng bản lĩnh, tinh thần chủ động cho thế hệ trẻ tự tin bước ra thế giới.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C cho rằng không còn giá trị hay chỉ thuộc về lịch sử.",
+      "trickWord": "Bẫy giá trị 'Là ngọn đèn soi đường cho hội nhập quốc tế'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương V, Mục II.4.",
+      "tip": "Ghi nhớ: TTHCM về Đoàn kết quốc tế = Mãi mãi là ngọn đèn soi đường hội nhập."
+    }
   }
 ];
