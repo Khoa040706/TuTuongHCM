@@ -997,7 +997,29 @@ details.bg-gradient-to-r code {
   font-family: var(--font-mono), monospace !important;
   border: 1px solid rgba(var(--accent-rgb), 0.15) !important;
 }
+/* --- Custom Sleek & Thin Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent-rgb), 0.25);
+  border-radius: 9999px;
+  transition: background 300ms ease;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--accent-rgb), 0.3) transparent;
+}
 

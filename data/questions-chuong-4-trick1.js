@@ -1,1162 +1,1157 @@
 /* ============================================================
-   DỮ LIỆU ĐỀ BẪY 1 — CHƯƠNG IV (50 CÂU HỎI BẪY CHUYÊN SÂU)
+   DỮ LIỆU ĐỀ BẪY 1 — CHƯƠNG IV (50 CÂU HỎI BẪY VẬN DỤNG CAO 100% HARD)
    Chuyên đề: Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam
    ============================================================ */
 
 export const trickSet1 = [
-  // --- NHÓM 1: QUY LUẬT RA ĐỜI VÀ VAI TRÒ CỦA ĐẢNG (10 CÂU) ---
   {
-    id: "c4-tr1-001",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT sáng tạo lý luận của Hồ Chí Minh về quy luật ra đời của Đảng Cộng sản Việt Nam?",
-    options: [
-      "Đảng Cộng sản Việt Nam ra đời là sản phẩm kết hợp giữa Chủ nghĩa Mác - Lênin với phong trào công nhân Việt Nam.",
-      "Đảng Cộng sản Việt Nam ra đời là sự kết hợp giữa Chủ nghĩa Mác - Lênin, phong trào công nhân và phong trào yêu nước Việt Nam.",
-      "Đảng Cộng sản Việt Nam ra đời là sản phẩm vận dụng nguyên xen mô hình thành lập Đảng Cộng sản của V.I. Lênin tại Nga.",
-      "Đảng Cộng sản Việt Nam ra đời là sự tự phát hợp nhất của ba tổ chức cộng sản với các hội phong trào nông dân yêu nước."
+    "id": "hcm-c4-tr1-001",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT luận điểm sáng tạo của Hồ Chí Minh về quy luật ra đời của Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Là sự kết hợp giữa Chủ nghĩa Mác - Lênin với phong trào công nhân.",
+      "Là sự kết hợp giữa Chủ nghĩa Mác - Lênin với phong trào yêu nước.",
+      "Là kết hợp Chủ nghĩa Mác - Lênin, phong trào công nhân và yêu nước.",
+      "Là sự kết hợp giữa phong trào công nhân với phong trào yêu nước."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Quy luật chung của V.I. Lênin ở phương Tây chỉ gồm 2 yếu tố (Mác-Lênin + Phong trào công nhân). Hồ Chí Minh bổ sung yếu tố thứ 3 là 'Phong trào yêu nước' do đặc thù Việt Nam là nước thuộc địa.",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ nhầm đáp án A (chỉ có 2 yếu tố) vì đó là quy luật chung của Lênin ở phương Tây, bỏ quên nhân tố sáng tạo riêng của Bác.",
-      trickWord: "Bẫy thiếu yếu tố 'Phong trào yêu nước'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.1: Quy luật ra đời của Đảng.",
-      tip: "Ghi nhớ công thức Hồ Chí Minh: Đảng CS Việt Nam = Chủ nghĩa Mác-Lênin + Phong trào công nhân + Phong trào yêu nước."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "V.I. Lênin nêu quy luật chung ở phương Tây gồm 2 yếu tố (Chủ nghĩa Mác + Phong trào công nhân). Hồ Chí Minh sáng tạo bổ sung yếu tố thứ 3 là 'Phong trào yêu nước' do Việt Nam là nước thuộc địa.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm chọn đáp án A vì đó là công thức chung của Lênin ở phương Tây, quên đi nhân tố thứ ba do Bác bổ sung.",
+      "trickWord": "Bẫy thiếu thành tố 'Phong trào yêu nước'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.1.",
+      "tip": "Ghi nhớ công thức Bác Hồ: Mác-Lênin + Công nhân + Yêu nước."
     }
   },
   {
-    id: "c4-tr1-002",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Trong tác phẩm 'Đường cách mệnh' (1927), Hồ Chí Minh sử dụng hình ảnh ẩn dụ nào để nhấn mạnh vai trò tiên quyết của Đảng đối với thắng lợi cách mạng?",
-    options: [
-      "Đảng như ngọn hải đăng soi đường cho nhân dân thoát khỏi đêm tối thuộc địa.",
-      "Đảng như người cầm lái có vững thì con thuyền cách mạng mới chạy thành công.",
-      "Đảng như chiếc chìa khóa vạn năng mở ra cánh cửa độc lập dân tộc và chủ nghĩa xã hội.",
-      "Đảng như chiếc khiên bảo vệ quyền lợi hợp pháp của nông dân và công nhân."
+    "id": "hcm-c4-tr1-002",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về vai trò lãnh đạo tuyệt đối của Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Sự lãnh đạo của Đảng là nhân tố quyết định mọi thắng lợi cách mạng.",
+      "Cách mạng Việt Nam có thể giao quyền cho các đảng phái tư sản.",
+      "Đảng có vững thì cách mạng mới thành công như người lái thuyền.",
+      "Đảng là lực lượng tiên phong duy nhất lãnh đạo nhân dân ta."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong Đường cách mệnh (1927), Bác Hồ viết: 'Đảng có vững cách mệnh mới thành công, cũng như người cầm lái có vững thuyền mới chạy'.",
-    trickDetails: {
-      whyTrapped: "Cả 4 đáp án đều có văn phong ca ngợi Đảng rất hay, nhưng chỉ có hình ảnh 'người cầm lái' là trích dẫn chính xác nguyên văn trong Đường cách mệnh (1927).",
-      trickWord: "Bẫy hình ảnh ẩn dụ giả lập",
-      citation: "Tác phẩm 'Đường cách mệnh' (1927) — Hồ Chí Minh.",
-      tip: "Ghi nhớ từ khóa hình ảnh kinh điển 1927: 'Người cầm lái' = Đảng cách mệnh."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tư tưởng Hồ Chí Minh khẳng định cách mạng Việt Nam phải do Đảng Cộng sản lãnh đạo duy nhất, tuyệt đối không chia sẻ quyền lãnh đạo với các đảng phái tư sản.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ bị sập bẫy ở mệnh đề B vì tưởng rằng có thể thực hiện đa đảng tư sản.",
+      "trickWord": "Bẫy phủ định 'giao quyền cho các đảng phái tư sản'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng Cộng sản lãnh đạo duy nhất và tuyệt đối."
     }
   },
   {
-    id: "c4-tr1-003",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Theo Hồ Chí Minh, yếu tố nào quyết định BẢN CHẤT GIAI CẤP CÔNG NHÂN của Đảng Cộng sản Việt Nam?",
-    options: [
-      "Số lượng đại đa số đảng viên trong Đảng bắt buộc phải xuất thân từ giai cấp công nhân trực tiếp sản xuất.",
-      "Nền tảng tư tưởng Mác - Lênin, mục tiêu độc lập dân tộc gắn liền với CNXH và kỷ luật tổ chức của Đảng.",
-      "Đảng chỉ kết nạp những công nhân ưu tú làm việc tại các nhà máy, xí nghiệp tập trung hầm mỏ.",
-      "Đảng đại diện riêng biệt cho quyền lợi kinh tế độc tôn của giai cấp công nhân Việt Nam."
+    "id": "hcm-c4-tr1-003",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Hồ Chí Minh: 'Muốn khỏi đi lạc phương hướng, quần chúng phải có [...] lãnh đạo để nhận rõ đường lối'?",
+    "options": [
+      "phải có Đảng tiên phong cách mạng",
+      "phải có lực lượng quân đội tinh nhuệ",
+      "phải có tổ chức chính quyền nhân dân",
+      "phải có hội nhóm phong trào quần chúng"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bản chất giai cấp của Đảng không phụ thuộc thuần túy vào thành phần xuất thân của đại đa số đảng viên, mà phụ thuộc vào nền tảng tư tưởng Mác-Lênin, mục tiêu lý tưởng và đường lối chính trị đại diện cho giai cấp công nhân.",
-    trickDetails: {
-      whyTrapped: "Rất nhiều học sinh chọn nhầm đáp án A hoặc C vì nghĩ 'bản chất giai cấp công nhân' là phải do thành phần xuất thân quyết định.",
-      trickWord: "Bẫy đánh tráo khái niệm xuất thân với bản chất tư tưởng",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.1.b: Bản chất giai cấp của Đảng.",
-      tip: "Bản chất giai cấp = Nền tảng Mác-Lênin + Mục tiêu cách mạng, không phải số lượng xuất thân."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nhấn mạnh vai trò tiên phong chỉ đường của Đảng: Quần chúng muốn không lạc phương hướng thì phải có Đảng tiên phong lãnh đạo.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang lực lượng quân đội hoặc chính quyền nhân dân.",
+      "trickWord": "Bẫy trích dẫn cụm từ 'Đảng tiên phong cách mạng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Không đi lạc đường nhờ có 'Đảng tiên phong'."
     }
   },
   {
-    id: "c4-tr1-004",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Luận điểm nào dưới đây thể hiện sự SÁNG TẠO ĐẶC SẮC của Hồ Chí Minh về tính chất đại diện của Đảng Cộng sản Việt Nam?",
-    options: [
-      "Đảng Cộng sản Việt Nam là đội tiên phong của giai cấp công nhân, đồng thời là đội tiên phong của nhân dân lao động và của dân tộc Việt Nam.",
-      "Đảng Cộng sản Việt Nam chỉ thuần túy đại diện cho lợi ích kinh tế của giai cấp vô sản công nghiệp.",
-      "Đảng Cộng sản Việt Nam là tổ chức chính trị đứng trên mọi giai cấp, không mang bản chất giai cấp nào.",
-      "Đảng Cộng sản Việt Nam chỉ đại diện cho giai cấp nông dân vì họ chiếm đại đa số dân số Việt Nam."
+    "id": "hcm-c4-tr1-004",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Luận điểm: 'Đảng muốn vững thì phải có chủ nghĩa làm nòng cốt, trong Đảng ai cũng phải hiểu, ai cũng phải theo chủ nghĩa ấy' thể hiện nội dung gì?",
+    "options": [
+      "Xác định bản chất giai cấp nông dân của Đảng.",
+      "Xác định vai trò nền tảng tư tưởng của Đảng.",
+      "Xác định nguyên tắc tập trung dân chủ Đảng.",
+      "Xác định phương thức bầu cử đại biểu Đảng."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh khẳng định Đảng không chỉ là đội tiên phong của riêng giai cấp công nhân mà còn là đội tiên phong của nhân dân lao động và của toàn thể dân tộc Việt Nam.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C (đứng trên giai cấp - sai lý luận Mác) và B (chỉ thuần túy công nhân - hẹp hòi).",
-      trickWord: "Bẫy mở rộng tính đại diện dân tộc",
-      citation: "Báo cáo Chính trị tại Đại hội II (1951) — Hồ Chí Minh.",
-      tip: "Đội tiên phong của 3 đối tượng: Giai cấp công nhân + Nhân dân lao động + Toàn thể dân tộc."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tác phẩm Đường cách mệnh (1927) khẳng định chủ nghĩa Mác-Lênin là nòng cốt tư tưởng để giữ vững định hướng cách mạng của Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang nguyên tắc tập trung dân chủ hoặc bản chất giai cấp.",
+      "trickWord": "Bẫy nhận diện 'vai trò nền tảng tư tưởng'",
+      "citation": "Tác phẩm Đường cách mệnh (1927) — Hồ Chí Minh.",
+      "tip": "Ghi nhớ: Chủ nghĩa làm nòng cốt = Nền tảng tư tưởng."
     }
   },
   {
-    id: "c4-tr1-005",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Vì sao Phong trào yêu nước Việt Nam lại trở thành một trong ba nhân tố thành lập Đảng Cộng sản Việt Nam theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Vì phong trào yêu nước có trước phong trào công nhân hàng nghìn năm, có lực lượng đông đảo toàn dân tộc và chuyển dần sang xu hướng cộng sản dưới ánh sáng Mác - Lênin.",
-      "Vì giai cấp công nhân Việt Nam lúc đó chưa xuất hiện nên phải lấy phong trào yêu nước thay thế hoàn toàn.",
-      "Vì phong trào yêu nước phong kiến của Phan Đình Phùng đã lãnh đạo thành công giải phóng dân tộc.",
-      "Vì Quốc tế Cộng sản bắt buộc mọi nước thuộc địa phải thành lập Đảng từ các hội tôn giáo yêu nước."
+    "id": "hcm-c4-tr1-005",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT vai trò của tổ chức Hội Việt Nam Cách mạng Thanh niên (1925) đối với sự ra đời của Đảng?",
+    "options": [
+      "Chuẩn bị trực tiếp về mặt chính trị và quân sự.",
+      "Chuẩn bị trực tiếp về tài chính và ngoại giao.",
+      "Chuẩn bị trực tiếp về tư tưởng, tổ chức, cán bộ.",
+      "Chuẩn bị trực tiếp về cơ sở vật chất kỹ thuật."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Ở nước thuộc địa như Việt Nam, mâu thuẫn dân tộc là chủ yếu. Phong trào yêu nước có chiều sâu lịch sử, khi gặp chủ nghĩa Mác-Lênin đã chuyển biến mạnh mẽ kết hợp với phong trào công nhân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B sai thực tế lịch sử (giai cấp công nhân đã hình thành từ khai thác thuộc địa Pháp).",
-      trickWord: "Bẫy vai trò lịch sử của phong trào yêu nước",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.1.a.",
-      tip: "Phong trào yêu nước là chất xúc tác đưa Mác-Lênin vào nhân dân Việt Nam."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hội Việt Nam Cách mạng Thanh niên do Nguyễn Ái Quốc sáng lập năm 1925 là bước chuẩn bị trực tiếp về tư tưởng, lý luận, tổ chức và cán bộ cho sự ra đời của Đảng năm 1930.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ chọn nhầm đáp án A (quân sự) hoặc D (cơ sở vật chất).",
+      "trickWord": "Bẫy bộ ba 'tư tưởng, tổ chức, cán bộ'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.1.",
+      "tip": "Ghi nhớ tiền đề thành lập Đảng: Tư tưởng + Tổ chức + Cán bộ."
     }
   },
   {
-    id: "c4-tr1-006",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Trong luận điểm 'Đảng Muốn Vững Phải Có Chủ Nghĩa Làm Cốt', từ 'CHỦ NGHĨA' mà Hồ Chí Minh đề cập khẳng định học thuyết nào?",
-    options: [
-      "Chủ nghĩa Tam dân của Tôn Trung Sơn.",
-      "Chủ nghĩa xã hội vô chính phủ của Proudhon.",
-      "Chủ nghĩa Mác - Lênin chân chính nhất, chắc chắn nhất, cách mệnh nhất.",
-      "Chủ nghĩa yêu nước truyền thống của dân tộc Việt Nam."
+    "id": "hcm-c4-tr1-006",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG về điều kiện để Đảng Cộng sản Việt Nam giữ vững vai trò là Đảng cầm quyền?",
+    "options": [
+      "Đảng phải luôn luôn giữ vững bản chất cách mạng.",
+      "Đảng phải phát triển kinh tế bằng mọi giá bất chấp.",
+      "Đảng phải liên hệ chặt chẽ với quần chúng nhân dân.",
+      "Đảng phải thường xuyên tự chỉnh đốn và đổi mới."
     ],
-    answer: 2,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong Đường cách mệnh (1927), Bác Hồ ghi rõ: 'Bây giờ học thuyết nhiều, chủ nghĩa nhiều, nhưng chủ nghĩa chân chính nhất, chắc chắn nhất, cách mệnh nhất là chủ nghĩa Lênin'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án D (chủ nghĩa yêu nước) hoặc A (Tam dân) mà Bác từng nghiên cứu, nhưng 'chủ nghĩa làm cốt' cho Đảng phải là Mác - Lênin.",
-      trickWord: "Bẫy phân biệt các hệ tư tưởng",
-      citation: "Tác phẩm 'Đường cách mệnh' (1927).",
-      tip: "Chủ nghĩa làm cốt của Đảng = Chủ nghĩa Mác - Lênin."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đảng phát triển kinh tế nhưng phải gắn liền với định hướng xã hội chủ nghĩa, vì hạnh phúc của dân, không được 'phát triển bằng mọi giá bất chấp đạo đức pháp luật'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy bởi cụm từ cực đoan 'bằng mọi giá bất chấp'.",
+      "trickWord": "Bẫy từ phủ định 'bằng mọi giá bất chấp'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Phát triển kinh tế phải đi liền với đạo đức và định hướng XHCN."
     }
   },
   {
-    id: "c4-tr1-007",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Nhận định nào dưới đây SAI với tư tưởng Hồ Chí Minh về sự ra đời của Đảng?",
-    options: [
-      "Đảng ra đời là một tất yếu khách quan đáp ứng yêu cầu lịch sử giải phóng dân tộc Việt Nam.",
-      "Đảng ra đời hoàn toàn do sự an đặt chủ quan ngẫu nhiên của các cá nhân nhà cách mạng.",
-      "Đảng ra đời đánh dấu sự kết hợp nhuần nhuyễn giữa yếu tố giai cấp và yếu tố dân tộc.",
-      "Đảng ra đời chấm dứt cuộc khủng hoảng bế tắc về đường lối và lực lượng lãnh đạo cách mạng."
+    "id": "hcm-c4-tr1-007",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Điền cụm từ còn thiếu vào luận điểm của Hồ Chí Minh: 'Đảng cầm quyền nhưng nhân dân là [...] của đất nước'?",
+    "options": [
+      "nhân dân là chủ và làm chủ thực sự",
+      "nhân dân là lực lượng sản xuất chính",
+      "nhân dân là đối tượng quản lý nhà nước",
+      "nhân dân là cử tri tham gia bầu cử"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh khẳng định Đảng ra đời là quy luật TẤT YẾU KHÁCH QUAN của lịch sử Việt Nam, không phải sự an đặt ngẫu nhiên chủ quan.",
-    trickDetails: {
-      whyTrapped: "Câu hỏi yêu cầu chọn đáp án SAI. Đáp án B dùng từ 'hoàn toàn do an đặt chủ quan ngẫu nhiên' là hoàn toàn trái ngược với tính tất yếu khách quan.",
-      trickWord: "Bẫy dạng câu hỏi CHỌN CÂU SAI",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.1.",
-      tip: "Đảng ra đời = Tất yếu khách quan, không ngẫu nhiên chủ quan."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định mối quan hệ giữa Đảng và Nhân dân: Đảng lãnh đạo/cầm quyền nhưng Nhân dân mới là chủ và làm chủ đất nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang đáp án C (đối tượng quản lý).",
+      "trickWord": "Bẫy cụm từ 'là chủ và làm chủ thực sự'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng lãnh đạo - Dân làm chủ."
     }
   },
   {
-    id: "c4-tr1-008",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Điền thuật ngữ chính xác vào chỗ trống: 'Đảng Cộng sản Việt Nam là... của giai cấp công nhân, nhân dân lao động và của toàn thể dân tộc Việt Nam'.",
-    options: [
-      "Đội đại biểu duy nhất",
-      "Đội tiên phong",
-      "Cơ quan quản lý hành chính",
-      "Tổ chức liên minh chính trị"
+    "id": "hcm-c4-tr1-008",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Tác phẩm nào của Nguyễn Ái Quốc xuất bản năm 1927 được coi là cuốn sách giáo khoa lý luận chính trị đầu tiên chuẩn bị cho việc thành lập Đảng?",
+    "options": [
+      "Tác phẩm Bản án chế độ thực dân Pháp.",
+      "Tác phẩm Đường cách mệnh xuất bản 1927.",
+      "Tác phẩm Sửa đổi lối làm việc năm 1947.",
+      "Tác phẩm Thường thức chính trị năm 1953."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Thuật ngữ chính xác trong Điều lệ Đảng và Tư tưởng Hồ Chí Minh luôn là 'Đội tiên phong'.",
-    trickDetails: {
-      whyTrapped: "Các cụm từ 'Đội đại biểu duy nhất' hay 'Tổ chức liên minh' nghe rất chính trị nhưng không chuẩn thuật ngữ văn kiện.",
-      trickWord: "Bẫy điền từ thuật ngữ chuẩn xác",
-      citation: "Văn kiện Đảng & Điều lệ Đảng Cộng sản Việt Nam.",
-      tip: "Luôn chọn cụm từ chuẩn: 'Đội tiên phong'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đường cách mệnh (1927) tập hợp các bài giảng của Nguyễn Ái Quốc tại Quảng Châu, là tệp bài giảng chính trị chuẩn bị tư tưởng thành lập Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm với Bản án chế độ thực dân Pháp (1925).",
+      "trickWord": "Bẫy nhận diện tác phẩm Đường cách mệnh (1927)",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.1.",
+      "tip": "Ghi nhớ: Sách giáo khoa chính trị đầu tiên 1927 = Đường cách mệnh."
     }
   },
   {
-    id: "c4-tr1-009",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Hồ Chí Minh đánh giá phong trào yêu nước Việt Nam có vai trò như thế nào đối với sự hình thành Đảng?",
-    options: [
-      "Là ngọn nguồn, môi trường xã hội thuận lợi để chủ nghĩa Mác - Lênin truyền bá và cắm rễ sâu vào quần chúng.",
-      "Là lực lượng cản trở sự phát triển của tư tưởng vô sản.",
-      "Là nhân tố quyết định duy nhất thay thế vai trò của chủ nghĩa Mác - Lênin.",
-      "Là hình thức tổ chức hành chính ban đầu của bộ máy nhà nước."
+    "id": "hcm-c4-tr1-009",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT mối quan hệ giữa Đảng Cộng sản và Phong trào công nhân Việt Nam?",
+    "options": [
+      "Đảng là bộ phận tự phát sinh ra từ công nhân.",
+      "Đảng là đội tiên phong của giai cấp công nhân.",
+      "Đảng chỉ kết nạp đại biểu là giai cấp công nhân.",
+      "Đảng hoạt động hoàn toàn tách biệt với công nhân."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Phong trào yêu nước chính là môi trường mảnh đất màu mỡ để chủ nghĩa Mác-Lênin được đón nhận và cắm rễ vào thực tiễn Việt Nam.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C thổi vồng thái quá 'thay thế Mác-Lênin'.",
-      trickWord: "Bẫy mức độ đóng góp của phong trào yêu nước",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.1.a.",
-      tip: "Phong trào yêu nước = Mảnh đất tiếp nhận Mác-Lênin."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đảng Cộng sản Việt Nam là đội tiên phong của giai cấp công nhân, đại biểu trung thành cho lợi ích của giai cấp công nhân, nhân dân lao động và toàn dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm A (tự phát) hoặc C (chỉ kết nạp công nhân).",
+      "trickWord": "Bẫy cụm từ 'đội tiên phong của giai cấp công nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng là đội tiên phong của giai cấp công nhân."
     }
   },
   {
-    id: "c4-tr1-010",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "tinh-tat-yeu-vai-tro-dang-sub",
-    question: "Theo Hồ Chí Minh, tính chất 'Đảng kiểu mới' của Lênin yêu cầu Đảng Cộng sản phải tổ chức như thế nào?",
-    options: [
-      "Kết nạp tràn lan mọi phần tử không phân biệt nhận thức chính trị để tăng quy mô.",
-      "Tổ chức rất nghiêm, dựa trên kỷ luật sắt tự giác, chỉ kết nạp những phần tử hăng hái nhất, cách mạng nhất.",
-      "Hoạt động như một câu lạc bộ thảo luận lý luận tự do không cần quy chế bắt buộc.",
-      "Phân chia quyền lực lãnh đạo cho nhiều đảng phái đối lập cùng cầm quyền."
+    "id": "hcm-c4-tr1-010",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi giải thích lý do Hồ Chí Minh khẳng định 'Đảng Cộng sản Việt Nam là Đảng của giai cấp công nhân, đồng thời là Đảng của dân tộc Việt Nam'?",
+    "options": [
+      "Vì Đảng đại biểu cho lợi ích toàn dân tộc.",
+      "Vì Đảng xóa bỏ hoàn toàn tính giai cấp công nhân.",
+      "Vì mục tiêu của Đảng trùng với mục tiêu dân tộc.",
+      "Vì Đảng được nhân dân thừa nhận là Đảng của mình."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh chỉ rõ: 'Đảng tổ chức rất nghiêm, khác với các hội quần chúng. Trong Đảng chỉ kết nạp những phần tử hăng hái nhất, cách mạng nhất. Không có kỷ luật sắt không có Đảng'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (kết nạp tràn lan) và C (câu lạc bộ tự do) là các tư tưởng lệch lạc bị Bác nghiêm khắc phê phán.",
-      trickWord: "Bẫy nguyên tắc tổ chức Đảng kiểu mới",
-      citation: "Bài nói của Hồ Chí Minh về công tác xây dựng Đảng.",
-      tip: "Đảng kiểu mới = Kỷ luật sắt + Phần tử hăng hái cách mạng nhất."
-    }
-  },
-
-  // --- NHÓM 2: ĐẢNG LÀ ĐẠO ĐỨC, LÀ VĂN MINH (15 CÂU) ---
-  {
-    id: "c4-tr1-011",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Luận điểm kinh điển 'Đảng ta là đạo đức, là văn minh' được Hồ Chí Minh đưa ra vào thời điểm lịch sử nào?",
-    options: [
-      "Tại Hội nghị hợp nhất thành lập Đảng tháng 2/1930.",
-      "Trong tác phẩm Đường cách mệnh năm 1927.",
-      "Tại Lễ kỷ niệm 30 năm Ngày thành lập Đảng (năm 1960).",
-      "Trong bản Di chúc thiêng liêng viết năm 1969."
-    ],
-    answer: 2,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Câu nói 'Đảng ta là đạo đức, là văn minh' được Bác Hồ đọc trong diễn văn tại Lễ kỷ niệm 30 năm thành lập Đảng (1/1960).",
-    trickDetails: {
-      whyTrapped: "Học sinh rất dễ chọn lầm 1927 (Đường cách mệnh) hoặc 1969 (Di chúc) vì đây là các mốc nổi tiếng khác.",
-      trickWord: "Bẫy mốc thời gian xuất xứ câu nói",
-      citation: "Diễn văn Lễ kỷ niệm 30 năm thành lập Đảng (1960) — Hồ Chí Minh.",
-      tip: "Ghi nhớ: 'Đảng là đạo đức, là văn minh' = Lễ 30 năm thành lập Đảng (1960)."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đảng là Đảng của dân tộc không có nghĩa là 'xóa bỏ tính giai cấp công nhân'. Bản chất giai cấp công nhân luôn là nền tảng cốt lõi của Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở mệnh đề B 'xóa bỏ hoàn toàn tính giai cấp'.",
+      "trickWord": "Bẫy phủ định 'xóa bỏ hoàn toàn tính giai cấp'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Bác mở rộng tính dân tộc nhưng KHÔNG xóa bỏ bản chất giai cấp công nhân."
     }
   },
   {
-    id: "c4-tr1-012",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Nội dung nào dưới đây KHÔNG NẰM TRONG 3 biểu hiện cốt lõi của 'Đảng là đạo đức' theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Mục đích hoạt động tối cao là giải phóng dân tộc, giải phóng giai cấp, mang lại hạnh phúc cho nhân dân.",
-      "Đường lối chính trị đúng đắn, trung thành tuyệt đối với lợi ích của nhân dân và Tổ quốc.",
-      "Đội ngũ cán bộ, đảng viên luôn thấm nhuần đạo đức cách mạng, Cần Kiệm Liêm Chính Chí Công Vô Tư.",
-      "Đảng tập trung mở rộng bộ máy quản lý và thu ngân sách nhà nước để tích lũy tài chính riêng cho Đảng."
+    "id": "hcm-c4-tr1-011",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Hồ Chí Minh: 'Đảng ta vừa là người lãnh đạo, vừa là người [...] của nhân dân'?",
+    "options": [
+      "vừa là người đầy tớ thật trung thành",
+      "vừa là người quản lý hành chính nhà nước",
+      "vừa là người giám sát hoạt động xã hội",
+      "vừa là người đại diện pháp luật cấp cao"
     ],
-    answer: 3,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đảng không có mục đích tự thân, ngoài lợi ích của nhân dân và Tổ quốc thì Đảng không có lợi ích nào khác. Đáp án D là tư tưởng tiêu cực làm quan phát tài.",
-    trickDetails: {
-      whyTrapped: "Câu hỏi yêu cầu chọn đáp án KHÔNG NẰM TRONG 3 biểu hiện. Đáp án D chứa hành vi vi phạm đạo đức cách mạng.",
-      trickWord: "Bẫy dạng câu hỏi loại trừ KHÔNG ĐÚNG",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a.",
-      tip: "Đảng là đạo đức: (1) Mục đích tối cao vì dân; (2) Đường lối trung thành; (3) Cán bộ Cần Kiệm Liêm Chính."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong Di chúc, Hồ Chí Minh dặn dặn: 'Đảng ta là một Đảng cầm quyền... Phải giữ gìn Đảng ta thật trong sạch, phải cống cống xứng đáng là người lãnh đạo, là người đầy tớ thật trung thành của nhân dân'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang khái niệm quản lý hay đại diện pháp luật.",
+      "trickWord": "Bẫy cặp từ sóng đôi 'người lãnh đạo - người đầy tớ trung thành'",
+      "citation": "Tác phẩm Di chúc (1969) — Chủ tịch Hồ Chí Minh.",
+      "tip": "Ghi nhớ: Vừa là người lãnh đạo + Vừa là người đầy tớ trung thành."
     }
   },
   {
-    id: "c4-tr1-013",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Theo Hồ Chí Minh, tiêu chí hàng đầu để xác định một 'Đảng văn minh' bao gồm những yếu tố nào?",
-    options: [
-      "Một Đảng tiêu biểu cho lương tâm, trí tuệ và danh dự của toàn thể dân tộc Việt Nam.",
-      "Một Đảng có trụ sở làm việc nguy nga hiện đại bậc nhất thế giới.",
-      "Một Đảng chỉ chú trọng phát triển kinh tế mà bỏ qua các giá trị văn hóa đạo đức.",
-      "Một Đảng duy trì quyền lực bằng mệnh lệnh hành chính ép buộc quần chúng."
+    "id": "hcm-c4-tr1-012",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "tinh-tat-yeu-vai-tro-dang-sub",
+    "question": "Sự kiện lịch sử nào đánh dấu bước ngoặt Hồ Chí Minh tìm ra con đường cứu nước đúng đắn cho dân tộc Việt Nam?",
+    "options": [
+      "Gửi Bản yêu cầu tới Hội nghị Véc-xây 1919.",
+      "Đọc Sơ thảo Luận cương Lênin tháng 7/1920.",
+      "Thành lập Đảng Cộng sản Việt Nam năm 1930.",
+      "Lãnh đạo thắng lợi Cách mạng Tháng Tám 1945."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh định nghĩa Đảng văn minh là Đảng tiêu biểu cho lương tâm, trí tuệ và danh dự cao quý của toàn dân tộc.",
-    trickDetails: {
-      whyTrapped: "Bẫy các hình thức văn minh vật chất bề ngoài ở đáp án B hoặc dùng quyền lực ép buộc ở D.",
-      trickWord: "Bẫy định nghĩa 'Đảng văn minh'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a.",
-      tip: "Đảng văn minh = Lương tâm + Trí tuệ + Danh dự dân tộc."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tháng 7/1920, khi đọc Luận cương của Lênin trên báo L'Humanité, Nguyễn Ái Quốc đã tìm ra con đường giải phóng dân tộc: Con đường cách mạng vô sản.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang sự kiện thành lập Đảng 1930 hoặc Cách mạng Tháng Tám 1945.",
+      "trickWord": "Bẫy mốc lịch sử 'Sơ thảo Luận cương Lênin (7/1920)'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.1.",
+      "tip": "Ghi nhớ: Tìm ra con đường cứu nước = Tháng 7/1920 đọc Luận cương Lênin."
     }
   },
   {
-    id: "c4-tr1-014",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Trong tư tưởng Hồ Chí Minh, mối quan hệ giữa hoạt động của Đảng với Hiến pháp và Pháp luật được quy định như thế nào?",
-    options: [
-      "Đảng là lực lượng lãnh đạo nên có quyền đứng trên Hiến pháp và ngoài pháp luật.",
-      "Đảng hoạt động nghiêm túc trong khuôn khổ Hiến pháp và Pháp luật, không có đặc quyền đứng trên pháp luật.",
-      "Đảng chỉ tuân thủ Hiến pháp trong thời chiến, thời bình có thể đứng ngoài pháp luật.",
-      "Pháp luật do Nhà nước ban hành không có giá trị ràng buộc đối với cán bộ cấp cao của Đảng."
+    "id": "hcm-c4-tr1-013",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về bản chất giai cấp của Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Đảng mang bản chất giai cấp nông dân Việt Nam.",
+      "Đảng mang bản chất của tầng lớp trí thức Việt.",
+      "Đảng mang bản chất giai cấp công nhân Việt Nam.",
+      "Đảng mang bản chất toàn dân phi giai cấp chung."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh khẳng định Đảng là một bộ phận của dân tộc, hoạt động trong khuôn khổ Hiến pháp và pháp luật. Mọi đảng viên đều bình đẳng trước pháp luật.",
-    trickDetails: {
-      whyTrapped: "Bẫy quan niệm sai lầm nghĩ rằng 'Đảng lãnh đạo thì đứng trên pháp luật' (đáp án A).",
-      trickWord: "Bẫy vị thế của Đảng trước Pháp luật",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a (Đảng văn minh).",
-      tip: "Đảng văn minh = Hoạt động TRONG KHUÔN KHỔ Hiến pháp và Pháp luật."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Dù kết nạp nhiều đảng viên xuất thân từ nông dân, trí thức nhưng bản chất của Đảng Cộng sản Việt Nam luôn là bản chất giai cấp công nhân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang bản chất nông dân (vì nông dân đông) hoặc phi giai cấp.",
+      "trickWord": "Bẫy bản chất 'giai cấp công nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng ở đâu cũng mang bản chất giai cấp công nhân."
     }
   },
   {
-    id: "c4-tr1-015",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Điền từ còn thiếu vào lời khẳng định của Bác Hồ: 'Ngoài lợi ích của..., của..., thì Đảng không có lợi ích gì khác'.",
-    options: [
-      "giai cấp công nhân / giai cấp nông dân",
-      "dân tộc / Tổ quốc",
-      "các ban ngành / bộ máy nhà nước",
-      "các đảng viên / cán bộ lãnh đạo"
+    "id": "hcm-c4-tr1-014",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về tính nhân dân và tính dân tộc của Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Đảng đại biểu trung thành cho lợi ích toàn dân.",
+      "Đảng đối lập lợi ích giai cấp công nhân với dân.",
+      "Mục tiêu của Đảng là độc lập cho toàn dân tộc.",
+      "Đảng gắn bó máu thịt với nhân dân lao động."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nguyên văn Bác Hồ: 'Ngoài lợi ích của dân tộc, của Tổ quốc, thì Đảng không có lợi ích gì khác. Đảng ta là một đảng cách mạng, vì dân vì nước'.",
-    trickDetails: {
-      whyTrapped: "Học sinh hay chọn lầm đáp án A (giai cấp công nhân/nông dân) do thói quen tư duy giai cấp.",
-      trickWord: "Bẫy điền từ lợi ích tối cao của Đảng",
-      citation: "Bài nói của Hồ Chí Minh ngày 10/5/1950.",
-      tip: "Không có lợi ích riêng ngoài: 'Dân tộc' và 'Tổ quốc'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Lợi ích của giai cấp công nhân thống nhất hoàn toàn với lợi ích của nhân dân lao động và toàn thể dân tộc, không hề 'đối lập'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở từ khóa phủ định 'đối lập lợi ích'.",
+      "trickWord": "Bẫy từ phủ định 'đối lập lợi ích'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Lợi ích công nhân THỐNG NHẤT với lợi ích dân tộc."
     }
   },
   {
-    id: "c4-tr1-016",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Hồ Chí Minh ví đạo đức cách mạng đối với người cách mạng có vai trò như thế nào?",
-    options: [
-      "Như ngọn núi cao nâng đỡ ý chí.",
-      "Như gốc của cây, như nguồn của sông.",
-      "Như bộ giáp sắt bảo vệ thân thể.",
-      "Như chiếc đòn bẩy nâng cao năng suất."
+    "id": "hcm-c4-tr1-015",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Điền cụm từ còn thiếu vào luận điểm của Hồ Chí Minh: 'Đảng ta là Đảng của giai cấp công nhân, đại biểu cho lợi ích của [...]'?",
+    "options": [
+      "giai cấp công nhân và nhân dân lao động toàn dân",
+      "tầng lớp tư sản dân tộc và tiểu tư sản trí thức",
+      "khối liên minh công nông và lực lượng vũ trang",
+      "các đại biểu đại biểu Quốc hội chính quyền các cấp"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ viết: 'Cũng như sông thì có nguồn mới có nước, không có nguồn thì sông cạn. Cây phải có gốc, không có gốc thì cây héo. Người cách mạng phải có đạo đức, không có đạo đức thì dù tài giỏi mấy cũng không lãnh đạo được nhân dân'.",
-    trickDetails: {
-      whyTrapped: "Đáp án A, C, D đều có cách so sánh ẩn dụ nghe rất triết lý nhưng sai nguyên văn so sánh của Bác.",
-      trickWord: "Bẫy hình ảnh so sánh 'gốc của cây, nguồn của sông'",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947) & 'Đạo đức cách mạng' (1958).",
-      tip: "Đạo đức = Gốc của cây, Nguồn của sông."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định Đảng không chỉ đại biểu cho công nhân mà đại biểu cho lợi ích của nhân dân lao động và toàn thể dân tộc Việt Nam.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang đại biểu cho tư sản hoặc các cấp quản lý.",
+      "trickWord": "Bẫy trích dẫn 'giai cấp công nhân và nhân dân lao động'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đại biểu cho lợi ích công nhân + nhân dân lao động + dân tộc."
     }
   },
   {
-    id: "c4-tr1-017",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Hồ Chí Minh phê phán nghiêm khắc tư tưởng nào dưới đây ở một số cán bộ đảng viên khi có quyền lực trong tay?",
-    options: [
-      "Tư tưởng 'vác mặt quan cách mạng', đè đầu cưỡi cổ quần chúng nhân dân.",
-      "Tư tưởng hăng hái đi đầu trong các công việc khó khăn nguy hiểm.",
-      "Tư tưởng khiêm tốn lắng nghe ý kiến đóng góp của quần chúng.",
-      "Tư tưởng tích cực nâng cao trình độ chuyên môn nghiệp vụ."
+    "id": "hcm-c4-tr1-016",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Yếu tố nào quyết định giữ vững bản chất giai cấp công nhân của Đảng khi số lượng đảng viên xuất thân từ nông dân chiếm đa số?",
+    "options": [
+      "Nền tảng tư tưởng chủ nghĩa Mác - Lênin.",
+      "Số lượng tiền quỹ đóng góp của các đảng viên.",
+      "Thâm niên công tác của các đồng chí cán bộ.",
+      "Độ tuổi trung bình của các tổ chức cơ sở Đảng."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác phê phán một số cán bộ cậy quyền cậy thế, có tư tưởng 'vác mặt quan cách mạng', sai khiến quần chúng thay vì làm đầy tớ cho dân.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D là phẩm chất tốt. Đáp án A chính là cụm từ Bác dùng để phê phán thói quan liêu.",
-      trickWord: "Bẫy cụm từ phê phán thói quan liêu",
-      citation: "Bài nói của Hồ Chí Minh về tinh thần phục vụ nhân dân.",
-      tip: "Tư tưởng bị phê phán = 'Vác mặt quan cách mạng'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bản chất giai cấp của Đảng không phụ thuộc thuần túy vào thành phần xuất thân của đảng viên mà phụ thuộc quyết định vào nền tảng tư tưởng Mác-Lênin, mục tiêu lý tưởng và đường lối chính trị.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang thâm niên hoặc thành phần xuất thân.",
+      "trickWord": "Bẫy yếu tố quyết định 'Nền tảng tư tưởng Mác - Lênin'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Nền tảng tư tưởng Mác-Lênin quyết định bản chất giai cấp công nhân."
     }
   },
   {
-    id: "c4-tr1-018",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Theo Hồ Chí Minh, điều kiện tiên quyết để Đảng giữ vững vai trò lãnh đạo và được dân tin yêu là gì?",
-    options: [
-      "Đảng phải duy trì quân đội và công an thật đông đảo.",
-      "Đảng phải thường xuyên tự đổi mới, tự chỉnh đốn, giữ gìn Đảng thật trong sạch.",
-      "Đảng phải loại bỏ hoàn toàn việc thảo luận tự do ý kiến trong chi bộ.",
-      "Đảng phải tăng mức thu thuế để hỗ trợ ngân sách cho cán bộ."
+    "id": "hcm-c4-tr1-017",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về mục tiêu tối cao của Đảng Cộng sản Việt Nam?",
+    "options": [
+      "Giải phóng giai cấp công nhân độc tôn duy nhất.",
+      "Độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
+      "Xây dựng nền kinh tế tư bản chủ nghĩa hiện đại.",
+      "Tập trung tranh thủ viện trợ quốc tế bên ngoài."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Sự trong sạch vững mạnh của Đảng là nhân tố quyết định sự tồn vong của cách mạng và niềm tin của nhân dân.",
-    trickDetails: {
-      whyTrapped: "Các đáp án A, C, D đều mang tính cưỡng chế độc đoán hoặc lợi ích riêng.",
-      trickWord: "Bẫy nhân tố quyết định niềm tin của dân",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a.",
-      tip: "Được dân tin = Đảng thật trong sạch, thường xuyên tự chỉnh đốn."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Mục tiêu tối cao xuyên suốt của Đảng do Hồ Chí Minh xác định là Độc lập dân tộc gắn liền với Chủ nghĩa xã hội.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang mục tiêu hẹp độc tôn công nhân hoặc kinh tế tư bản.",
+      "trickWord": "Bẫy mục tiêu 'Độc lập dân tộc gắn liền với CNXH'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ mục tiêu nhất quán: Độc lập dân tộc + Chủ nghĩa xã hội."
     }
   },
   {
-    id: "c4-tr1-019",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Văn minh của Đảng theo Hồ Chí Minh còn thể hiện ở mối quan hệ quốc tế như thế nào?",
-    options: [
-      "Bảo vệ lợi ích dân tộc Việt Nam đồng thời tôn trọng độc lập, chủ quyền của các nước, vì hòa bình hợp tác hữu nghị.",
-      "Can thiệp thô bạo vào nội bộ các nước láng giềng để mở rộng lãnh thổ.",
-      "Bế quan tỏa cảng, cắt đứt hoàn toàn quan hệ với các nước khác hệ thống chính trị.",
-      "Phụ thuộc hoàn toàn vào viện trợ tài chính và mệnh lệnh của các cường quốc."
+    "id": "hcm-c4-tr1-018",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về tư tưởng Hồ Chí Minh đối với việc kết nạp người vào Đảng?",
+    "options": [
+      "Thừa nhận những người thừa nhận Điều lệ Đảng.",
+      "Chỉ kết nạp những người thuộc giai cấp công nhân.",
+      "Kết nạp những người ưu tú trung thành lý tưởng.",
+      "Chú trọng chất lượng hơn số lượng đảng viên mới."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đảng văn minh thể hiện ở tinh thần quốc tế vô sản trong sáng, tôn trọng độc lập dân tộc bạn, vì hòa bình và tiến bộ nhân loại.",
-    trickDetails: {
-      whyTrapped: "Bẫy thái độ cực đoan ở đáp án B (can thiệp), C (bế quan) hoặc D (phụ thuộc).",
-      trickWord: "Bẫy biểu hiện 'Đảng văn minh' trong đối ngoại",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a (Đảng văn minh).",
-      tip: "Quan hệ quốc tế văn minh = Tôn trọng độc lập + Hòa bình hữu nghị."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chủ trương kết nạp những người ưu tú trong nhân dân lao động (dù xuất thân công nhân, nông dân, trí thức) miễn là thừa nhận Cương lĩnh, Điều lệ Đảng và trung thành với cách mạng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở mệnh đề hẹp 'chỉ kết nạp người thuộc giai cấp công nhân'.",
+      "trickWord": "Bẫy phủ định 'Chỉ kết nạp người thuộc giai cấp công nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Kết nạp người ưu tú trung thành, KHÔNG phân biệt xuất thân."
     }
   },
   {
-    id: "c4-tr1-020",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Câu nói 'Đạo đức cách mạng không phải từ trên trời sa xuống. Nó do đấu tranh, rèn luyện hằng ngày mà phát triển và củng cố' nhấn mạnh tính chất gì của đạo đức?",
-    options: [
-      "Tính bẩm sinh di truyền tự nhiên của người cán bộ.",
-      "Tính liên tục, thường xuyên trong quá trình tu dưỡng rèn luyện suốt đời.",
-      "Tính bất biến cố định không bao giờ thay đổi.",
-      "Tính hình thức chỉ cần thể hiện khi có kiểm tra của cấp trên."
+    "id": "hcm-c4-tr1-019",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Hồ Chí Minh: 'Đảng ta không có lợi ích nào khác ngoài [...]'?",
+    "options": [
+      "lợi ích của Tổ quốc và của Nhân dân",
+      "lợi ích riêng của các cán bộ đảng viên",
+      "lợi ích kinh tế của các tập đoàn nhà nước",
+      "lợi ích vị thế vị trí của Đảng cầm quyền"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đạo đức cách mạng đòi hỏi phải tu dưỡng, rèn luyện kiên trì hằng ngày như 'ngọc càng mài càng sáng, vàng càng luyện càng trong'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (bẩm sinh di truyền) hoặc C (bất biến). Đạo đức cách mạng là kết quả tu dưỡng nỗ lực suốt đời.",
-      trickWord: "Bẫy tính chất tu dưỡng của đạo đức",
-      citation: "Tác phẩm 'Đạo đức cách mạng' (1958) — Hồ Chí Minh.",
-      tip: "Đạo đức cách mạng = Tu dưỡng rèn luyện liên tục hằng ngày."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định bản chất vì dân của Đảng: Ngoài lợi ích của Tổ quốc và của Nhân dân, Đảng không có lợi ích riêng nào khác.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang lợi ích riêng của cán bộ hoặc kinh tế.",
+      "trickWord": "Bẫy trích dẫn 'lợi ích của Tổ quốc và của Nhân dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng không có lợi ích riêng ngoài lợi ích Tổ quốc & Nhân dân."
     }
   },
   {
-    id: "c4-tr1-021",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Trong các phẩm chất đạo đức cách mạng của cán bộ đảng viên, phẩm chất nào được Hồ Chí Minh xem là NỀN TẢNG ĐẠO ĐỨC CHUNG?",
-    options: [
-      "Trung với nước, hiếu với dân.",
-      "Cần, Kiệm, Liêm, Chính, Chí công vô tư.",
-      "Thương yêu con người, sống có tình có nghĩa.",
-      "Có tinh thần quốc tế trong sáng."
+    "id": "hcm-c4-tr1-020",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Thuật ngữ nào được Hồ Chí Minh dùng để chỉ tính chất gắn bó sống còn giữa Đảng và Nhân dân?",
+    "options": [
+      "Mối quan hệ hỗ trợ kinh tế thương mại.",
+      "Mối quan hệ gắn bó máu thịt với nhân dân.",
+      "Mối quan hệ hợp đồng lao động hành chính.",
+      "Mối quan hệ đại lý ủy quyền bầu cử xã hội."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Cần, Kiệm, Liêm, Chính, Chí công vô tư là phẩm chất đạo đức gắn liền với hoạt động hằng ngày, là gốc rễ nền tảng của người cách mạng.",
-    trickDetails: {
-      whyTrapped: "Đáp án A (Trung với nước hiếu với dân) là phẩm chất quan trọng nhất/bao trùm nhất, còn Cần Kiệm Liêm Chính là phẩm chất nền tảng hằng ngày.",
-      trickWord: "Bẫy phân biệt phẩm chất bao trùm và phẩm chất nền tảng hằng ngày",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh.",
-      tip: "Phẩm chất nền tảng sinh hoạt hằng ngày = Cần, Kiệm, Liêm, Chính, Chí công vô tư."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh dùng cụm từ 'gắn bó máu thịt' để miêu tả bản chất mối quan hệ không thể tách rời giữa Đảng và Quần chúng nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang quan lệ hành chính hoặc hợp đồng.",
+      "trickWord": "Bẫy hình ảnh so sánh 'gắn bó máu thịt'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Quan hệ Đảng - Dân là quan hệ 'máu thịt'."
     }
   },
   {
-    id: "c4-tr1-022",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Hồ Chí Minh căn dặn: 'Một dân tộc, một đảng và mỗi con người, ngày hôm qua là vĩ đại, có sức hấp dẫn lớn, không nhất định ngày hôm nay và ngày mai vẫn được mọi người yêu mến, nếu...'",
-    options: [
-      "không tiếp tục phát triển kinh tế thị trường.",
-      "lòng mình không sáng nữa, nếu sa vào chủ nghĩa cá nhân.",
-      "không mở rộng quan hệ ngoại giao với các nước lớn.",
-      "không thay đổi toàn bộ hệ thống pháp luật."
+    "id": "hcm-c4-tr1-021",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về nguyên nhân khiến nhân dân Việt Nam thừa nhận Đảng là 'Đảng của mình'?",
+    "options": [
+      "Vì Đảng có lực lượng quân đội đông đảo nhất.",
+      "Vì Đảng hy sinh phấn đấu vì lợi ích toàn dân.",
+      "Vì Đảng nắm quyền phân phối tài sản quốc gia.",
+      "Vì Đảng được sự bảo trợ của các nước lớn."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nguyên văn Bác Hồ cảnh báo: 'Nếu lòng mình không sáng nữa, nếu sa vào chủ nghĩa cá nhân' thì sự vĩ đại ngày qua sẽ bị vứt bỏ.",
-    trickDetails: {
-      whyTrapped: "Bẫy các yếu tố kinh tế hay ngoại giao nghe rất thời sự nhưng sai nguyên văn cảnh báo của Bác về nguy cơ sa sút đạo đức.",
-      trickWord: "Bẫy hoàn thành câu trích cảnh báo sa sút đạo đức",
-      citation: "Bài viết của Hồ Chí Minh năm 1969.",
-      tip: "Nguy cơ mất niềm tin = 'Nếu lòng mình không sáng nữa, sa vào chủ nghĩa cá nhân'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhân dân gọi Đảng là 'Đảng ta' vì Đảng luôn tận tụy, hết lòng hy sinh vì độc lập dân tộc và tự do, hạnh phúc của Nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở yếu tố quân đội hoặc bảo trợ nước ngoài.",
+      "trickWord": "Bẫy lý do 'hy sinh phấn đấu vì lợi ích toàn dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Dân gọi 'Đảng ta' vì Đảng tận tụy hy sinh vì Dân."
     }
   },
   {
-    id: "c4-tr1-023",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Hồ Chí Minh gọi 'Chủ nghĩa cá nhân' là gì trong công tác xây dựng Đảng?",
-    options: [
-      "Một thói quen nhỏ không đáng bận tâm.",
-      "Một thứ vi trùng rất độc, sinh ra các bệnh nguy hiểm, là kẻ thù nội xâm gian ác.",
-      "Động lực thúc đẩy kinh tế cá nhân phát triển.",
-      "Một nguyên tắc cần khuyến khích trong sinh hoạt chi bộ."
+    "id": "hcm-c4-tr1-022",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về tác hại của việc Đảng rời xa quần chúng nhân dân?",
+    "options": [
+      "Đảng sẽ mất đi nguồn sức mạnh vô địch.",
+      "Đảng sẽ rơi vào bệnh quan liêu hách dịch.",
+      "Đảng sẽ nhanh chóng trở nên trong sạch hơn.",
+      "Đảng sẽ đứng trước nguy cơ mất quyền lãnh đạo."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác chỉ rõ: 'Chủ nghĩa cá nhân là một thứ vi trùng rất độc... Địch bên ngoài không đáng sợ. Địch bên trong đáng sợ hơn, vì nó phá hoại từ trong phá ra'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C ngụy biện chủ nghĩa cá nhân là động lực kinh tế.",
-      trickWord: "Bẫy định nghĩa 'Chủ nghĩa cá nhân'",
-      citation: "Tác phẩm 'Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân' (1969).",
-      tip: "Chủ nghĩa cá nhân = Vi trùng rất độc / Giặc nội xâm."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh cảnh báo: Rời xa quần chúng là nguy cơ lớn nhất của Đảng cầm quyền, khiến Đảng suy thoái chứ không bao giờ 'trở nên trong sạch hơn'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì đó là khẳng định sai ngược lại thực tế.",
+      "trickWord": "Bẫy phủ định 'nhanh chóng trở nên trong sạch hơn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Xa dân = Mất sức mạnh + Suy thoái."
     }
   },
   {
-    id: "c4-tr1-024",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Theo Hồ Chí Minh, điều gì xảy ra nếu Đảng cầm quyền mà cán bộ sa vào thói 'hủ hóa, tham ô, lãng phí'?",
-    options: [
-      "Đảng vẫn giữ được uy tín nhờ thành tích lịch sử quá khứ.",
-      "Quần chúng nhân dân sẽ xa rời Đảng, Đảng sẽ mất quyền lãnh đạo và cách mạng thất bại.",
-      "Kinh tế đất nước sẽ tự động điều chỉnh cân bằng.",
-      "Các nước đế quốc sẽ tự động tôn trọng Việt Nam hơn."
+    "id": "hcm-c4-tr1-023",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Hồ Chí Minh: 'Sức mạnh của Đảng là ở nơi [...]'?",
+    "options": [
+      "sự đoàn kết nhất trí và lòng dân ủng hộ",
+      "số lượng vũ khí và tài chính ngân sách",
+      "quy mô bộ máy hành chính công quyền lớn",
+      "sự can thiệp giúp đỡ từ các đồng minh"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác cảnh báo hủ hóa tham ô lãng phí làm mất niềm tin của nhân dân, đe dọa sự tồn vong của Đảng và chế độ.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện ỷ lại thành tích quá khứ ở đáp án A.",
-      trickWord: "Bẫy hậu quả của suy thoái đạo đức",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.a.",
-      tip: "Hủ hóa tham ô = Dân xa rời Đảng, mất quyền lãnh đạo."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định nguồn gốc sức mạnh của Đảng nằm ở sự đoàn kết nội bộ và sự đồng lòng, ủng hộ của toàn thể nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang yếu tố tài chính hoặc ngân sách.",
+      "trickWord": "Bẫy trích dẫn 'sự đoàn kết nhất trí và lòng dân ủng hộ'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Sức mạnh của Đảng = Đoàn kết + Lòng dân."
     }
   },
   {
-    id: "c4-tr1-025",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "dang-trong-sach-vung-manh-sub",
-    question: "Thế nào là 'Chí công vô tư' theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Lo trước thiên hạ, vui sau thiên hạ; khi làm việc gì cũng không nghĩ đến lợi ích riêng tư cá nhân mà chỉ nghĩ đến lợi ích chung.",
-      "Không bao giờ giải quyết quyền lợi chính đáng cá nhân cho bản thân và gia đình.",
-      "Tịch thu toàn bộ tài sản tư nhân đưa vào quỹ tập thể.",
-      "Chỉ làm việc công vào giờ hành chính, ngoài giờ không quan tâm việc chung."
+    "id": "hcm-c4-tr1-024",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "ban-chat-giai-cap-sub",
+    "question": "Việc Hồ Chí Minh khẳng định 'Đảng ta là Đảng của giai cấp công nhân, đồng thời là Đảng của dân tộc' có ý nghĩa gì đối với đại đoàn kết?",
+    "options": [
+      "Mở rộng tối đa nền tảng xã hội của Đảng.",
+      "Thu hẹp lực lượng tham gia cách mạng dân tộc.",
+      "Cô lập giai cấp công nhân với các tầng lớp.",
+      "Tập trung quyền lực vào tay một nhóm nhỏ."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Chí công vô tư là 'khi làm bất cứ việc gì cũng đừng nghĩ đến mình trước, mà hãy nghĩ đến nhân dân, đến dân tộc trước'. Nó không phủ nhận quyền lợi cá nhân chính đáng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B cực đoan (bác bỏ hoàn toàn quyền lợi cá nhân chính đáng). Bác Hồ dạy Chí công vô tư không triệt tiêu lợi ích cá nhân chính đáng.",
-      trickWord: "Bẫy hiểu sai cực đoan về 'Chí công vô tư'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh.",
-      tip: "Chí công vô tư = Đặt lợi ích chung lên trên, không phủ nhận lợi ích cá nhân chính đáng."
-    }
-  },
-
-  // --- NHÓM 3: 7 NGUYÊN TẮC HOẠT ĐỘNG CỦA ĐẢNG (25 CÂU) ---
-  {
-    id: "c4-tr1-026",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Nguyên tắc nào dưới đây được Hồ Chí Minh xác định là NGUYÊN TẮC TỔ CHỨC CƠ BẢN NHẤT của Đảng Cộng sản?",
-    options: [
-      "Nguyên tắc Tự phê bình và phê bình.",
-      "Nguyên tắc Tập trung dân chủ.",
-      "Nguyên tắc Đoàn kết thống nhất.",
-      "Nguyên tắc Kỷ luật nghiêm minh."
-    ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong 7 nguyên tắc, 'Tập trung dân chủ' là nguyên tắc TỔ CHỨC cơ bản nhất của Đảng kiểu mới.",
-    trickDetails: {
-      whyTrapped: "Cả 4 đều là nguyên tắc của Đảng, nhưng chỉ có 'Tập trung dân chủ' mang danh hiệu 'Nguyên tắc TỔ CHỨC cơ bản nhất'. Tự phê bình là 'quy luật phát triển'.",
-      trickWord: "Bẫy danh hiệu vị thế từng nguyên tắc",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Nguyên tắc TỔ CHỨC cơ bản nhất = Tập trung dân chủ."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Quan điểm này giúp quy tụ mọi người dân Việt Nam yêu nước vào khối đại đoàn kết toàn dân tộc dưới sự lãnh đạo của Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang thu hẹp lực lượng hay cô lập giai cấp.",
+      "trickWord": "Bẫy ý nghĩa 'Mở rộng tối đa nền tảng xã hội'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.2.",
+      "tip": "Ghi nhớ: Đảng của dân tộc = Mở rộng nền tảng đại đoàn kết."
     }
   },
   {
-    id: "c4-tr1-027",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong nguyên tắc Tập trung dân chủ, Hồ Chí Minh giải thích mối quan hệ giữa 'Tập trung' và 'Dân chủ' như thế nào?",
-    options: [
-      "Tập trung và Dân chủ là hai mặt đối lập bài xích lẫn nhau, phải triệt tiêu dân chủ để tập trung.",
-      "Dân chủ là nền tảng của tập trung; Tập trung là kết quả của dân chủ. Hai vế gắn kết biện chứng không thể tách rời.",
-      "Dân chủ chỉ áp dụng cho cấp trên, Tập trung áp dụng tuyệt đối cho cấp dưới.",
-      "Tập trung có trước, khi nào hoàn thành cách mạng mới mở rộng dân chủ."
+    "id": "hcm-c4-tr1-025",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT bản chất của nguyên tắc Tập trung dân chủ trong tổ chức Đảng?",
+    "options": [
+      "Là hai mặt đối lập bài trừ lẫn nhau.",
+      "Tập trung trên cơ sở dân chủ rộng rãi.",
+      "Chỉ có tập trung không cần đến dân chủ.",
+      "Chỉ có dân chủ tuyệt đối không tập trung."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy: Dân chủ để mọi người tự do bày tỏ ý kiến. Khi đã bàn bạc rồi thì đi đến Tập trung để thống nhất ý chí và hành động.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (đối lập bài xích) hoặc C (phân chia cấp áp dụng).",
-      trickWord: "Bẫy mối quan hệ biện chứng Tập trung - Dân chủ",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Dân chủ = Nền tảng; Tập trung = Kết quả."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tập trung dân chủ là hai mặt của một thể thống nhất: Dân chủ là mở đường cho tập trung, Tập trung trên cơ sở phát huy dân chủ rộng rãi.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm hai mặt đối lập bài trừ nhau hoặc chỉ chọn 1 vế.",
+      "trickWord": "Bẫy quan hệ 'Tập trung trên cơ sở dân chủ rộng rãi'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Dân chủ mở đường - Tập trung định hướng."
     }
   },
   {
-    id: "c4-tr1-028",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong phương châm 'Tập thể lãnh đạo, cá nhân phụ trách', Hồ Chí Minh coi vế nào là DÂN CHỦ, vế nào là TẬP TRUNG?",
-    options: [
-      "Tập thể lãnh đạo là Dân chủ; Cá nhân phụ trách là Tập trung.",
-      "Tập thể lãnh đạo là Tập trung; Cá nhân phụ trách là Dân chủ.",
-      "Cả hai vế đều là Dân chủ thuần túy.",
-      "Cả hai vế đều là Tập trung áp đặt."
+    "id": "hcm-c4-tr1-026",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG về nguyên tắc Tự phê bình và phê bình theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Là quy luật phát triển thường xuyên của Đảng.",
+      "Phải nhằm mục đích giúp đỡ nhau cùng tiến bộ.",
+      "Được dùng làm công cụ để đả kích cá nhân.",
+      "Phải được thực hiện một cách thật thà chân thành."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ chỉ rõ: 'Tập thể lãnh đạo là dân chủ' (mọi người cùng bàn bạc). 'Cá nhân phụ trách là tập trung' (giao việc rõ ràng cho cá nhân thi hành).",
-    trickDetails: {
-      whyTrapped: "Học sinh rất dễ đảo ngược vế ở đáp án B (nghĩ tập thể là tập trung, cá nhân là dân chủ).",
-      trickWord: "Bẫy tráo đổi bản chất Dân chủ / Tập trung trong phương châm lãnh đạo",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947) — Hồ Chí Minh.",
-      tip: "Tập thể lãnh đạo = DÂN CHỦ; Cá nhân phụ trách = TẬP TRUNG."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nghiêm cấm lợi dụng tự phê bình và phê bình để đả kích, bôi nhọ, phục vụ mục đích cá nhân. Mục đích duy nhất là trị bệnh cứu người, giúp nhau tiến bộ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở mệnh đề C 'dùng làm công cụ đả kích cá nhân'.",
+      "trickWord": "Bẫy phủ định 'dùng làm công cụ để đả kích cá nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Phê bình là vì cái chung, nghiêm cấm đả kích cá nhân."
     }
   },
   {
-    id: "c4-tr1-029",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Hồ Chí Minh chỉ ra hai căn bệnh nguy hiểm nào thường xuất hiện nếu thực hiện SAI phương châm 'Tập thể lãnh đạo, cá nhân phụ trách'?",
-    options: [
-      "Một là độc đoán chuyên quyền; Hai là dựa dẫm tập thể, đùn đẩy trách nhiệm.",
-      "Một là tham ô; Hai là lãng phí tài sản.",
-      "Một là kiêu ngạo; Hai là tự ti khép kín.",
-      "Một là bảo thủ; Hai là giáo điều máy móc."
+    "id": "hcm-c4-tr1-027",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Điền cụm từ còn thiếu vào luận điểm của Hồ Chí Minh: 'Tập thể lãnh đạo là nguyên tắc lãnh đạo; [...] là nguyên tắc làm việc'?",
+    "options": [
+      "cá nhân phụ trách",
+      "tự phê bình nghiêm",
+      "kỷ luật tự giác cao",
+      "đoàn kết nhất trí"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nếu coi nhẹ tập thể lãnh đạo -> sinh ra độc đoán chuyên quyền. Nếu coi nhẹ cá nhân phụ trách -> sinh ra dựa dẫm đùn đẩy trách nhiệm cho tập thể.",
-    trickDetails: {
-      whyTrapped: "Các bệnh ở đáp án B, C, D đều có thật trong công tác cán bộ nhưng không trực tiếp sinh ra từ việc vi phạm phương châm 'Tập thể lãnh đạo, cá nhân phụ trách'.",
-      trickWord: "Bẫy tên 2 căn bệnh vi phạm phương châm lãnh đạo",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Coi nhẹ tập thể = Độc đoán; Coi nhẹ cá nhân = Dựa dẫm đùn đẩy."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh phân biệt rõ: Tập thể lãnh đạo (tránh phiến diện, độc đoán) đi liền với Cá nhân phụ trách (tránh bừa bãi, không ai chịu trách nhiệm).",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các nguyên tắc sinh hoạt khác.",
+      "trickWord": "Bẫy vế sóng đôi 'cá nhân phụ trách'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Tập thể lãnh đạo (Lãnh đạo) - Cá nhân phụ trách (Làm việc)."
     }
   },
   {
-    id: "c4-tr1-030",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Nguyên tắc 'Tự phê bình và phê bình' được Hồ Chí Minh xác định vị thế là gì trong sự tồn tại của Đảng?",
-    options: [
-      "Là quy luật tồn tại và phát triển của Đảng, là thang thuốc tốt nhất để làm sạch nội bộ.",
-      "Là hình thức xử lý kỷ luật khai trừ đảng viên.",
-      "Là công việc chỉ thực hiện một lần khi thành lập chi bộ.",
-      "Là biện pháp để hạ bệ uy tín của đồng chí đối lập."
+    "id": "hcm-c4-tr1-028",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Trong tư tưởng Hồ Chí Minh, nguyên tắc nào được coi là 'chìa khóa' tạo nên sức mạnh vô địch của Đảng?",
+    "options": [
+      "Nguyên tắc đoàn kết thống nhất trong Đảng.",
+      "Nguyên tắc phân chia phụ cấp ngân sách.",
+      "Nguyên tắc thay đổi nhân sự liên tục.",
+      "Nguyên tắc mở rộng số lượng các ban ngành."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Tự phê bình và phê bình là QUY LUẬT phát triển của Đảng. Bác ví nó như 'rửa mặt hằng ngày' và là 'thang thuốc tốt nhất'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (nghĩ phê bình là hình thức kỷ luật) hoặc D (hạ bệ đồng chí).",
-      trickWord: "Bẫy bản chất của Tự phê bình và phê bình",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Tự phê bình & phê bình = QUY LUẬT phát triển = Rửa mặt hằng ngày."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết thống nhất trong Đảng là nguồn gốc sức mạnh, là 'chìa khóa' đảm bảo cho Đảng hoàn thành mọi nhiệm vụ cách mạng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các yếu tố nhân sự hay mở rộng ban ngành.",
+      "trickWord": "Bẫy vai trò 'Nguyên tắc đoàn kết thống nhất trong Đảng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Chìa khóa sức mạnh vô địch = Đoàn kết thống nhất."
     }
   },
   {
-    id: "c4-tr1-031",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Hình ảnh ẩn dụ nổi tiếng nào được Hồ Chí Minh sử dụng để mô tả tính thường xuyên của công tác 'Tự phê bình và phê bình'?",
-    options: [
-      "Như công việc quét nhà hằng tuần.",
-      "Như việc mỗi ngày phải rửa mặt.",
-      "Như việc tập thể dục mỗi buổi sáng.",
-      "Như việc thay áo mới khi đi hội."
+    "id": "hcm-c4-tr1-029",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về thái độ của đảng viên đối với Kỷ luật của Đảng?",
+    "options": [
+      "Kỷ luật bắt buộc nhưng chỉ mang tính gượng ép.",
+      "Kỷ luật nghiêm minh đồng thời là tự giác cao.",
+      "Kỷ luật chỉ áp dụng cho đảng viên cấp dưới.",
+      "Kỷ luật có thể ngoại trừ đối với lãnh đạo."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ viết: 'Tự phê bình và phê bình phải thường xuyên như mỗi ngày phải rửa mặt'.",
-    trickDetails: {
-      whyTrapped: "Các hình ảnh quét nhà hay tập thể dục nghe rất đời thường nhưng không đúng câu chữ hình ảnh của Bác.",
-      trickWord: "Bẫy hình ảnh ẩn dụ 'rửa mặt hằng ngày'",
-      citation: "Bài nói của Hồ Chí Minh về công tác chỉnh đốn Đảng.",
-      tip: "Tự phê bình = Rửa mặt hằng ngày."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Kỷ luật của Đảng là kỷ luật sắt, nghiêm minh tuyệt đối đối với mọi đảng viên, không có ngoại lệ, đồng thời dựa trên sự tự giác giác ngộ cao.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B là gượng ép hoặc C/D có ngoại lệ cho lãnh đạo.",
+      "trickWord": "Bẫy tính chất 'nghiêm minh đồng thời là tự giác cao'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Kỷ luật Đảng = Nghiêm minh + Tự giác (Không ngoại lệ)."
     }
   },
   {
-    id: "c4-tr1-032",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong bản Di chúc (1969), Hồ Chí Minh yêu cầu thái độ tình cảm nào phải luôn giữ vững khi tiến hành tự phê bình và phê bình?",
-    options: [
-      "Phải giữ sự lạnh lùng nguyên tắc tuyệt đối.",
-      "Phải có tình đồng chí thương yêu lẫn nhau.",
-      "Phải kiên quyết trừng phạt không thương tiếc.",
-      "Phải thỏa hiệp bỏ qua các khuyết điểm nghiêm trọng."
+    "id": "hcm-c4-tr1-030",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về hậu quả của việc vi phạm nguyên tắc Tập thể lãnh đạo, cá nhân phụ trách?",
+    "options": [
+      "Dẫn đến bệnh độc đoán chuyên quyền cá nhân.",
+      "Dẫn đến tình trạng hỗn loạn không ai chịu trách nhiệm.",
+      "Giúp giải quyết công việc nhanh chóng và trong sạch.",
+      "Làm suy yếu sức chiến đấu của tổ chức Đảng."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Di chúc 1969 ghi rõ: 'Thường xuyên và nghiêm chỉnh tự phê bình và phê bình là cách tốt nhất để củng cố đoàn kết... Phải có tình đồng chí thương yêu lẫn nhau'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (lạnh lùng nguyên tắc) hoặc D (thỏa hiệp bỏ qua). Phê bình phải nghiêm chỉnh trên cơ sở tình đồng chí.",
-      trickWord: "Bẫy yếu tố tình cảm trong phê bình (Di chúc 1969)",
-      citation: "Di chúc của Chủ tịch Hồ Chí Minh (1969).",
-      tip: "Phê bình trong Di chúc = Phải có tình đồng chí thương yêu lẫn nhau."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tách rời hai vế này sẽ sinh ra độc đoán (nếu bỏ tập thể) hoặc dựa dẫm ỉ ôi không ai chịu trách nhiệm (nếu bỏ cá nhân), chứ không bao giờ 'giúp trong sạch'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai trái phản thực tế.",
+      "trickWord": "Bẫy phủ định 'Giúp giải quyết công việc trong sạch'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Vi phạm tập thể lãnh đạo = Độc đoán hoặc Bừa bãi."
     }
   },
   {
-    id: "c4-tr1-033",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Theo Hồ Chí Minh, bản chất của KỶ LUẬT trong Đảng Cộng sản được xây dựng trên nền tảng nào?",
-    options: [
-      "Nền tảng sự sợ hãi bị đe dọa trừng phạt hành chính.",
-      "Nền tảng lòng tự giác của đảng viên về nhiệm vụ đối với Đảng và nhân dân.",
-      "Nền tảng sự cưỡng chế tuyệt đối của các cơ quan tình báo nội bộ.",
-      "Nền tảng các quy định thưởng tiền cho đảng viên ngoan ngoãn."
+    "id": "hcm-c4-tr1-031",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Điền cụm từ còn thiếu vào dặn dò của Bác Hồ: 'Phê bình việc chứ không [...]'?",
+    "options": [
+      "phê bình việc chứ không phê bình người",
+      "phê bình việc chứ không bỏ qua khuyết điểm",
+      "phê bình việc chứ không công khai thông tin",
+      "phê bình việc chứ không ghi vào hồ sơ"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Kỷ luật của Đảng là 'kỷ luật sắt', nhưng kỷ luật đó bắt nguồn từ LÒNG TỰ GIÁC của mỗi đảng viên.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện nghĩ rằng kỷ luật nghiêm minh là do 'sợ hãi trừng phạt' (đáp án A).",
-      trickWord: "Bẫy gốc rễ của kỷ luật Đảng",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Kỷ luật nghiêm minh = Dựa trên LÒNG TỰ GIÁC."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nhắc nhở phương pháp phê bình: Xét việc để khắc phục hậu quả và học tập kinh nghiệm, chứ không biến thành mâu thuẫn cá nhân 'phê bình người'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các phương án ghi hồ sơ hay công khai.",
+      "trickWord": "Bẫy trích dẫn 'phê bình việc chứ không phê bình người'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Phê bình VIỆC, không đả kích NGƯỜI."
     }
   },
   {
-    id: "c4-tr1-034",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Hồ Chí Minh khẳng định tính chất bình đẳng trước kỷ luật Đảng như thế nào?",
-    options: [
-      "Kỷ luật Đảng nghiêm minh từ trên xuống dưới, không có vùng cấm, không có ngoại lệ cho bất kỳ ai.",
-      "Cán bộ giữ chức vụ càng cao thì càng được miễn trừ kỷ luật.",
-      "Kỷ luật chỉ áp dụng cho đảng viên mới kết nạp còn tập sự.",
-      "Kỷ luật có thể châm chước nếu đảng viên là người nhà của lãnh đạo."
+    "id": "hcm-c4-tr1-032",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Nguyên tắc nào dưới đây vừa là nguyên tắc sinh hoạt Đảng vừa là nguyên tắc đối ngoại quốc tế của Đảng ta?",
+    "options": [
+      "Nguyên tắc tự phê bình và phê bình.",
+      "Nguyên tắc đoàn kết quốc tế chân chính.",
+      "Nguyên tắc tập trung dân chủ chỉ đạo.",
+      "Nguyên tắc cá nhân phụ trách công việc."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong Đảng mọi đảng viên đều bình đẳng trước kỷ luật. Đã vi phạm kỷ luật thì dù ở chức vụ nào cũng phải xử lý nghiêm minh.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D đều là tư tưởng đặc quyền đặc lợi bị Bác lên án.",
-      trickWord: "Bẫy tính bình đẳng trước kỷ luật",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Kỷ luật = Không có vùng cấm, không có ngoại lệ."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đoàn kết quốc tế trên cơ sở chủ nghĩa Mác-Lênin và chủ nghĩa quốc tế vô sản là nguyên tắc hoạt động đối ngoại quan trọng của Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các nguyên tắc nội bộ.",
+      "trickWord": "Bẫy nhận diện 'Nguyên tắc đoàn kết quốc tế'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Đối ngoại = Đoàn kết quốc tế vô sản."
     }
   },
   {
-    id: "c4-tr1-035",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong tác phẩm 'Sửa đổi lối làm việc' (10/1947), Hồ Chí Minh đã đề ra bao nhiêu điều về tư cách của một Đảng chân chính cách mạng?",
-    options: [
-      "8 điều tư cách.",
-      "10 điều tư cách.",
-      "12 điều tư cách.",
-      "15 điều tư cách."
+    "id": "hcm-c4-tr1-033",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về mối quan hệ giữa Đa số và Thiểu số trong nguyên tắc Tập trung dân chủ?",
+    "options": [
+      "Thiểu số phải phục tùng ý kiến Đa số.",
+      "Đa số phải tuân theo quyết định Thiểu số.",
+      "Cấp dưới không cần nghe lời cấp trên.",
+      "Cá nhân được làm trái nghị quyết chung."
     ],
-    answer: 2,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong tác phẩm Sửa đổi lối làm việc (1947), Bác Hồ đề ra đúng '12 điều tư cách của một Đảng chân chính cách mạng'.",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ nhầm con số 12 điều với 8 điều tiêu cực hoặc 10 điều kỷ luật.",
-      trickWord: "Bẫy con số 12 điều tư cách (1947)",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947) — Hồ Chí Minh.",
-      tip: "Ghi nhớ: Sửa đổi lối làm việc 1947 = 12 ĐIỀU TƯ CÁCH."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Kỷ luật tập trung dân chủ quy định: Cán bộ đảng viên chấp hành nghị quyết, Thiểu số phục tùng Đa số, Cấp dưới phục tùng Cấp trên, Toàn Đảng phục tùng Trung ương.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (ngược lại) hoặc C/D (không phục tùng).",
+      "trickWord": "Bẫy quy tắc 'Thiểu số phải phục tùng Đa số'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Thiểu số phục tùng Đa số - Cấp dưới phục tùng Cấp trên."
     }
   },
   {
-    id: "c4-tr1-036",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Điều thứ 9 và Điều thứ 10 trong 12 điều tư cách của Đảng chân chính cách mạng (1947) nhấn mạnh nội dung cốt lõi nào?",
-    options: [
-      "Điều 9: Lựa chọn người trung kiên lãnh đạo; Điều 10: Tẩy bỏ những phần tử hủ hóa ra ngoài.",
-      "Điều 9: Tăng thu ngân sách; Điều 10: Mở rộng kết nạp đảng viên.",
-      "Điều 9: Cắt giảm biên chế; Điều 10: Đổi mới công nghệ sản xuất.",
-      "Điều 9: Bế quan tỏa cảng; Điều 10: Giảm mức kỷ luật."
+    "id": "hcm-c4-tr1-034",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về tư tưởng Hồ Chí Minh đối với hiện tượng 'đoàn kết hai mặt', 'bè phái' trong Đảng?",
+    "options": [
+      "Là nguy cơ phá hoại sự thống nhất Đảng.",
+      "Cần phải thẳng thắn đấu tranh loại bỏ.",
+      "Là hiện tượng bình thường cần khuyến khích.",
+      "Làm tổn hại nghiêm trọng uy tín của Đảng."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Điều 9: 'Đảng phải chọn lựa những người rất trung thành và rất hăng hái...'. Điều 10: 'Đảng phải luôn luôn tẩy bỏ những phần tử hủ hóa ra ngoài'.",
-    trickDetails: {
-      whyTrapped: "Điều 9 & 10 là cặp điều trọng tâm nhất thường xuất hiện trong đề thi trắc nghiệm.",
-      trickWord: "Bẫy nội dung Điều 9 & 10",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Điều 9 = Chọn người trung kiên; Điều 10 = Tẩy bỏ phần tử hủ hóa."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết chống 'đoàn kết giả tạo', 'óc bè phái', vì đó là mầm mống gây chia rẽ làm suy yếu Đảng, không bao giờ 'bình thường khuyến khích'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai trái.",
+      "trickWord": "Bẫy phủ định 'Là hiện tượng bình thường cần khuyến khích'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Bè phái, đoàn kết hai mặt = Kẻ thù của sự thống nhất."
     }
   },
   {
-    id: "c4-tr1-037",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong bản Di chúc (1969), Hồ Chí Minh viết: 'Ngay sau khi cuộc kháng chiến chống Mỹ cứu nước hoàn toàn thắng lợi, việc cần phải làm trước tiên là...'",
-    options: [
-      "tổ chức lễ mừng chiến thắng hoành tráng toàn quốc.",
-      "chỉnh đốn lại Đảng, làm cho mỗi đảng viên, chi bộ làm tròn nhiệm vụ.",
-      "vay vốn nước ngoài để phát triển công nghiệp nặng.",
-      "giảm toàn bộ thuế cho các hộ gia đình thương nhân."
+    "id": "hcm-c4-tr1-035",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Điền cụm từ còn thiếu vào luận điểm của Hồ Chí Minh: 'Đoàn kết là sức mạnh, đoàn kết là [...]'?",
+    "options": [
+      "đoàn kết là thắng lợi hoàn toàn",
+      "đoàn kết là mục tiêu ngắn hạn",
+      "đoàn kết là nhiệm vụ tùy chọn",
+      "đoàn kết là phương tiện tạm thời"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong Di chúc, Bác khẳng định việc cần làm TRƯỚC TIÊN sau hòa bình là 'chỉnh đốn lại Đảng'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (ăn mừng) hoặc C (vay vốn phát triển kinh tế) tưởng như hợp lý sau chiến tranh.",
-      trickWord: "Bẫy công việc TRƯỚC TIÊN trong Di chúc 1969",
-      citation: "Bản Di chúc của Chủ tịch Hồ Chí Minh (1969).",
-      tip: "Việc trước tiên sau chiến thắng = CHỈNH ĐỐN LẠI ĐẢNG."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Khẩu hiệu kinh điển của Bác: 'Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công' (Đoàn kết là sức mạnh, đoàn kết là thắng lợi).",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các câu trả lời mang tính tạm thời.",
+      "trickWord": "Bẫy trích dẫn 'đoàn kết là thắng lợi hoàn toàn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Đoàn kết = Sức mạnh = Thắng lợi."
     }
   },
   {
-    id: "c4-tr1-038",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Hồ Chí Minh sử dụng hình ảnh so sánh đặc biệt nào để yêu cầu các đồng chí từ Trung ương đến chi bộ phải giữ gìn sự ĐOÀN KẾT THỐNG NHẤT?",
-    options: [
-      "Giữ gìn sự đoàn kết như giữ gìn ngọn lửa trong đêm đông.",
-      "Giữ gìn sự đoàn kết nhất trí của Đảng như giữ gìn con ngươi của mắt mình.",
-      "Giữ gìn sự đoàn kết như giữ gìn nguồn nước sạch.",
-      "Giữ gìn sự đoàn kết như giữ gìn báu vật của dòng họ."
+    "id": "hcm-c4-tr1-036",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "nguyen-tac-to-chuc-sub",
+    "question": "Phương châm nào dưới đây thể hiện sự kết hợp giữa tính nghiêm minh và tính nhân văn trong xử lý kỷ luật của Đảng?",
+    "options": [
+      "Trừng trị tất cả không cần giải thích.",
+      "Trị bệnh cứu người, phạt để cảnh tỉnh.",
+      "Bao che khuyết điểm cho cấp lãnh đạo.",
+      "Bỏ qua vi phạm của cán bộ có thâm niên."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nguyên văn Di chúc 1969: 'Các đồng chí từ Trung ương đến các chi bộ cần phải giữ gìn sự đoàn kết nhất trí của Đảng như giữ gìn con ngươi của mắt mình'.",
-    trickDetails: {
-      whyTrapped: "Các hình ảnh ngọn lửa hay nguồn nước nghe rất văn phong nhưng sai nguyên văn lời Bác.",
-      trickWord: "Bẫy hình ảnh ẩn dụ 'con ngươi của mắt mình'",
-      citation: "Bản Di chúc của Chủ tịch Hồ Chí Minh (1969).",
-      tip: "Giữ gìn đoàn kết = 'Như giữ gìn con ngươi của mắt mình'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Kỷ luật Đảng nghiêm minh nhưng mục đích là 'trị bệnh cứu người', giúp người vi phạm nhận ra lỗi lầm để sửa chữa, cảnh tỉnh người khác.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm A (trừng trị bài trừ) hoặc C/D (bao che).",
+      "trickWord": "Bẫy phương châm 'Trị bệnh cứu người, phạt để cảnh tỉnh'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.3.",
+      "tip": "Ghi nhớ: Kỷ luật Đảng = 'Trị bệnh cứu người'."
     }
   },
   {
-    id: "c4-tr1-039",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Nền tảng lý luận và chính trị để xây dựng khối 'Đoàn kết, thống nhất trong Đảng' theo tư tưởng Hồ Chí Minh là gì?",
-    options: [
-      "Dựa trên tình cảm cá nhân nể nả lẫn nhau giữa các lãnh đạo.",
-      "Dựa trên chủ nghĩa Mác - Lênin, trên cương lĩnh, đường lối, quan điểm, nghị quyết của Đảng.",
-      "Dựa trên việc phân chia lợi ích kinh tế đồng đều giữa các chi bộ.",
-      "Dựa trên sự im lặng không tranh luận của toàn thể đảng viên."
+    "id": "hcm-c4-tr1-037",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT tư tưởng Hồ Chí Minh về Đạo đức cách mạng của người đảng viên?",
+    "options": [
+      "Là tài năng chuyên môn nghiệp vụ giỏi.",
+      "Là cái gốc, là nền tảng của người cán bộ.",
+      "Là bằng cấp học vấn đạt trình độ cao.",
+      "Là tài sản vất chất đóng góp cho Đảng."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đoàn kết trong Đảng không phải đoàn kết xuôi chiều hay nể nả cá nhân, mà phải dựa trên nền tảng Chủ nghĩa Mác - Lênin và Đường lối cương lĩnh của Đảng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (nể nả cá nhân) hoặc D (im lặng không tranh luận - đoàn kết giả tạo).",
-      trickWord: "Bẫy cơ sở của sự đoàn kết thống nhất",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Đoàn kết chân chính = Trên nền tảng Mác - Lênin & Cương lĩnh đường lối."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định: Đạo đức là cái gốc của người cách mạng. Người cán bộ có tài mà không có đức là người vô dụng, có đức mà không có tài thì làm việc gì cũng khó.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm Đạo đức với Tài năng hay Bằng cấp.",
+      "trickWord": "Bẫy vai trò 'Là cái gốc, là nền tảng của người cán bộ'",
+      "citation": "Tác phẩm Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân (1969).",
+      "tip": "Ghi nhớ: Đạo đức = Cái gốc của người nhân tố cách mạng."
     }
   },
   {
-    id: "c4-tr1-040",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Câu nói 'Đảng không phải từ trên trời sa xuống. Nó ở trong xã hội mà ra' của Hồ Chí Minh nhằm nhấn mạnh nguyên tắc nào?",
-    options: [
-      "Nguyên tắc Đảng phải liên hệ mật thiết với nhân dân.",
-      "Nguyên tắc tập trung dân chủ.",
-      "Nguyên tắc đoàn kết quốc tế.",
-      "Nguyên tắc tự phê bình và phê bình."
+    "id": "hcm-c4-tr1-038",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về mối quan hệ giữa Đức và Tài theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Đức là gốc, Tài là quan trọng kết hợp.",
+      "Có Đức mà không có Tài làm việc gì cũng khó.",
+      "Có Tài không Đức vẫn là cán bộ hoàn hảo.",
+      "Đức và Tài phải luôn đi đôi với nhau."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác nhấn mạnh Đảng từ trong xã hội mà ra, là con đẻ của nhân dân, nên phải gắn bó máu thịt với nhân dân.",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ nhầm sang nguyên tắc Tự chỉnh đốn.",
-      trickWord: "Bẫy liên hệ câu nói với 7 nguyên tắc",
-      citation: "Bài nói của Hồ Chí Minh năm 1950.",
-      tip: "'Đảng không từ trên trời sa xuống' = Liên hệ mật thiết với nhân dân."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nhấn mạnh: 'Có tài mà không có đức là người vô dụng'. Mệnh đề C khẳng định 'là cán bộ hoàn hảo' là sai hoàn toàn.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai trái.",
+      "trickWord": "Bẫy phủ định 'Có Tài không Đức vẫn là cán bộ hoàn hảo'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Tài không Đức = Vô dụng. Đức không Tài = Việc gì cũng khó."
     }
   },
   {
-    id: "c4-tr1-041",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Thế nào là hiện tượng 'THEO ĐUÔI QUẦN CHÚNG' mà Hồ Chí Minh nghiêm cấm cán bộ đảng viên mắc phải?",
-    options: [
-      "Luôn luôn lắng nghe ý kiến nguyện vọng chính đáng của nhân dân.",
-      "Không có chính kiến lãnh đạo, hùa theo những nhận thức lệch lạc tự phát sai lầm của một bộ phận quần chúng.",
-      "Tích cực tuyên truyền đường lối của Đảng cho nhân dân hiểu.",
-      "Hòa mình vào đời sống nhân dân để cùng làm việc."
+    "id": "hcm-c4-tr1-039",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Điền cụm từ còn thiếu vào phẩm chất đạo đức cán bộ: 'Cần, Kiệm, Liêm, Chính, [...]'?",
+    "options": [
+      "Chí công vô tư",
+      "Trung quân ái quốc",
+      "Dũng cảm kiên cường",
+      "Năng động sáng tạo"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy cán bộ phải học hỏi quần chúng nhưng không được 'theo đuôi quần chúng' (hùa theo cái sai tự phát), mà phải nâng cao trình độ dân chúng để định hướng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A, C, D là thái độ đúng. Đáp án B chính là định nghĩa thói 'theo đuôi quần chúng'.",
-      trickWord: "Bẫy khái niệm 'theo đuôi quần chúng'",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Theo đuôi quần chúng = Hùa theo cái sai tự phát, mất vai trò định hướng."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bộ 5 phẩm chất đạo đức cách mạng cốt lõi của cán bộ đảng viên theo Hồ Chí Minh: Cần, Kiệm, Liêm, Chính, Chí công vô tư.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các khẩu hiệu phong kiến hoặc hiện đại.",
+      "trickWord": "Bẫy cụm từ 'Chí công vô tư'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ bộ 5: Cần - Kiệm - Liêm - Chính - Chí công vô tư."
     }
   },
   {
-    id: "c4-tr1-042",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Câu thành ngữ nào dưới đây phản ánh đúng yêu cầu của Hồ Chí Minh về tác phong gương mẫu đi đầu của cán bộ đảng viên?",
-    options: [
-      "Ăn cỗ đi trước, lội nước đi sau.",
-      "Nói nhiều làm ít, hứa hẹn thật hay.",
-      "Ăn cỗ đi sau, lội nước đi trước (gương mẫu làm trước nhân dân).",
-      "Việc khó tránh né, việc dễ tranh phần."
+    "id": "hcm-c4-tr1-040",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Hồ Chí Minh gọi căn bệnh nào là 'kẻ thù hung ác nhất của chủ nghĩa xã hội', nguyên nhân sinh ra tham ô, lãng phí, quan liêu?",
+    "options": [
+      "Bệnh quan liêu hách dịch.",
+      "Chủ nghĩa cá nhân tà dâm.",
+      "Chủ nghĩa cá nhân thâm hiểm.",
+      "Bệnh lãng phí tiền bạc."
     ],
-    answer: 2,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác phê phán thói 'ăn cỗ đi trước, lội nước đi sau' (tranh quyền lợi, đùn đẩy gian khổ) và yêu cầu đảng viên phải 'lội nước đi trước, ăn cỗ đi sau'.",
-    trickDetails: {
-      whyTrapped: "Đáp án A là câu tục ngữ dân gian phê phán thói cơ hội. Bác Hồ đảo ngược lại thành 'ăn cỗ đi sau, lội nước đi trước' để rèn luyện đảng viên.",
-      trickWord: "Bẫy đảo câu thành ngữ tác phong đảng viên",
-      citation: "Bài nói của Hồ Chí Minh với cán bộ.",
-      tip: "Tác phong đảng viên = 'Ăn cỗ đi sau, lội nước đi trước'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh coi Chủ nghĩa cá nhân là mẹ đẻ của mọi căn bệnh nguy hại (tham ô, lãng phí, quan liêu, kéo bè kéo cánh).",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm tên căn bệnh tham ô hay quan liêu.",
+      "trickWord": "Bẫy căn bệnh 'Chủ nghĩa cá nhân'",
+      "citation": "Tác phẩm Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân (1969).",
+      "tip": "Ghi nhớ: Kẻ thù hung ác nhất = Chủ nghĩa cá nhân."
     }
   },
   {
-    id: "c4-tr1-043",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Hồ Chí Minh đã cảnh báo nguy cơ gì đối với Đảng nếu cán bộ trở nên hách dịch, 'làm quan sai khiến quần chúng'?",
-    options: [
-      "Nếu không làm cho ra trò, quần chúng sẽ không tin tưởng và sẽ 'đá đít' đẩy lùi Đảng.",
-      "Quần chúng sẽ tự động thưởng tiền cho cán bộ.",
-      "Quần chúng sẽ xin gia nhập Đảng đông hơn.",
-      "Các quốc gia khác sẽ đến hỗ trợ cán bộ."
+    "id": "hcm-c4-tr1-041",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về nguyên tắc rèn luyện Đạo đức cách mạng của cán bộ?",
+    "options": [
+      "Chỉ cần rèn luyện khi còn ngồi trên ghế trường.",
+      "Tu dưỡng đạo đức suốt đời như rửa mặt hằng ngày.",
+      "Chỉ rèn luyện khi bị phát hiện có lỗi vi phạm.",
+      "Khi đã lên chức cao thì không cần rèn luyện nữa."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Ngày 10/5/1950, Bác Hồ nói thẳng thắn: 'Đảng không phải làm quan sai khiến quần chúng mà phải làm đầy tớ cho quần chúng và phải làm cho ra trò, nếu không quần chúng sẽ đá đít'.",
-    trickDetails: {
-      whyTrapped: "Bẫy câu nói có dùng từ ngữ dân dã trực diện của Bác ('đá đít') mà nhiều học sinh ngỡ là câu tự chế.",
-      trickWord: "Bẫy trích dẫn nguyên văn dân dã của Bác Hồ",
-      citation: "Bài nói của Hồ Chí Minh ngày 10/5/1950.",
-      tip: "Cảnh báo làm quan hành dân = 'Quần chúng sẽ đá đít'."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đạo đức cách mạng không phải tự nhiên mà có, mà do tu dưỡng, rèn luyện gian khổ hằng ngày, liên tục 'suốt đời như rửa mặt hằng ngày'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm thời gian tu dưỡng chỉ ở trường học hay khi bị phạt.",
+      "trickWord": "Bẫy thời gian 'Tu dưỡng đạo đức suốt đời'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Rèn luyện đạo đức = Việc làm suốt đời."
     }
   },
   {
-    id: "c4-tr1-044",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Trong nguyên tắc Đoàn kết quốc tế, Hồ Chí Minh mong muốn Đảng đóng góp vào việc khôi phục sự đoàn kết giữa các Đảng anh em trên nền tảng nào trong Di chúc?",
-    options: [
-      "Trên nền tảng thỏa hiệp vô nguyên tắc.",
-      "Trên nền tảng chủ nghĩa Mác - Lênin và chủ nghĩa quốc tế vô sản, có lý có tình.",
-      "Trên nền tảng phụ thuộc hoàn toàn vào mệnh lệnh của một Đảng lớn.",
-      "Trên nền tảng cắt đứt quan hệ ngoại giao với các nước khác chế độ."
+    "id": "hcm-c4-tr1-042",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về tác phong làm việc của người cán bộ cách mạng theo Hồ Chí Minh?",
+    "options": [
+      "Tác phong sâu sát nắm bắt tâm tư quần chúng.",
+      "Tác phong làm việc khoa học có kế hoạch.",
+      "Tác phong quan cách xa rời đời sống dân.",
+      "Tác phong nêu gương nói đi đôi với làm."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Di chúc 1969 ghi rõ: 'trên nền tảng chủ nghĩa Mác - Lênin và chủ nghĩa quốc tế vô sản, có lý có tình'.",
-    trickDetails: {
-      whyTrapped: "Bẫy cụm từ 'có lý có tình' là nét độc đáo riêng trong Di chúc Bác Hồ.",
-      trickWord: "Bẫy cụm từ 'có lý có tình' trong Di chúc",
-      citation: "Di chúc của Chủ tịch Hồ Chí Minh (1969).",
-      tip: "Đoàn kết quốc tế = Nền tảng Mác-Lênin + CÓ LÝ CÓ TÌNH."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết chống tác phong 'quan cách, hách dịch, cửa quyền', yêu cầu cán bộ phải có tác phong quần chúng, dân chủ, khoa học.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là tác phong sai lầm bị phê phán.",
+      "trickWord": "Bẫy phủ định 'Tác phong quan cách xa rời đời sống dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Tác phong cán bộ = Dân chủ + Khoa học + Nêu gương."
     }
   },
   {
-    id: "c4-tr1-045",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Theo Hồ Chí Minh, sự khác biệt căn bản giữa 'Kỷ luật của Đảng Cộng sản' và 'Kỷ luật quân phiệt phong kiến' là gì?",
-    options: [
-      "Kỷ luật Đảng dựa trên tinh thần ép buộc bằng nhục hình.",
-      "Kỷ luật Đảng là kỷ luật sắt được xây dựng trên sự giác ngộ chính trị và lòng tự giác của đảng viên.",
-      "Kỷ luật Đảng cho phép đảng viên vi phạm tùy thích.",
-      "Kỷ luật Đảng chỉ áp dụng cho người nghèo."
+    "id": "hcm-c4-tr1-043",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Điền cụm từ còn thiếu vào nguyên tắc rèn luyện đạo đức của Bác: '[...] đi đôi với làm, phải nêu gương về đạo đức'?",
+    "options": [
+      "Nói đi đôi với làm",
+      "Nói một đằng làm một nẻo",
+      "Nói nhiều làm ít",
+      "Hứa hẹn không thực hiện"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Kỷ luật quân phiệt dựa trên áp đặt đe dọa; còn kỷ luật Đảng dựa trên giác ngộ lý tưởng và lòng tự giác.",
-    trickDetails: {
-      whyTrapped: "Bẫy so sánh bản chất kỷ luật Đảng với kỷ luật áp đặt.",
-      trickWord: "Bẫy khác biệt của Kỷ luật sắt tự giác",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Kỷ luật Đảng = Kỷ luật sắt + Giác ngộ tự giác."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nguyên tắc rèn luyện đạo đức cách mạng quan trọng hàng đầu: 'Nói đi đôi với làm', đối lập hoàn toàn với bệnh nói một đằng làm một nẻo.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhận biết nhưng cẩn thận nhầm các phương án gài từ.",
+      "trickWord": "Bẫy nguyên tắc 'Nói đi đôi với làm'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Đạo đức Bác Hồ = Nói đi đôi với Làm."
     }
   },
   {
-    id: "c4-tr1-046",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Câu nói 'Đảng ta tuy nhiều người, nhưng khi tiến đánh thì chỉ như một người' nói lên sức mạnh của nguyên tắc nào?",
-    options: [
-      "Nguyên tắc Kỷ luật nghiêm minh và thống nhất hành động.",
-      "Nguyên tắc tự do kinh doanh.",
-      "Nguyên tắc hoạt động bí mật tuyệt đối.",
-      "Nguyên tắc phân chia quyền lực cho các chi bộ."
+    "id": "hcm-c4-tr1-044",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Tác phẩm nào dưới đây được Hồ Chí Minh viết tháng 10 năm 1947 nhằm chỉnh đốn tác phong làm việc của cán bộ khi bước vào kháng chiến?",
+    "options": [
+      "Tác phẩm Bản án chế độ thực dân.",
+      "Tác phẩm Sửa đổi lối làm việc (10/1947).",
+      "Tác phẩm Đường cách mệnh năm 1927.",
+      "Tác phẩm Tuyên ngôn Độc lập 1945."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Sức mạnh 'tuy nhiều người nhưng tiến đánh như một người' là kết quả của kỷ luật thống nhất và ý chí tập trung.",
-    trickDetails: {
-      whyTrapped: "Bẫy câu nói hình tượng 'tiến đánh như một người'.",
-      trickWord: "Bẫy câu nói về sức mạnh kỷ luật",
-      citation: "Bài nói của Hồ Chí Minh với cán bộ quân đội và Đảng.",
-      tip: "'Nhiều người đánh như một người' = Kỷ luật nghiêm minh."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Sửa đổi lối làm việc (10/1947) là tác phẩm kinh điển về xây dựng Đảng về đạo đức, tác phong, phương pháp công tác cán bộ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với Đường cách mệnh (1927) hay Di chúc (1969).",
+      "trickWord": "Bẫy tên tác phẩm Sửa đổi lối làm việc (10/1947)",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Chỉnh đốn tác phong 10/1947 = Sửa đổi lối làm việc."
     }
   },
   {
-    id: "c4-tr1-047",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Nhận định nào dưới đây ĐÚNG khi nói về công tác 'Thường xuyên tự chỉnh đốn' của Đảng theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Chỉnh đốn Đảng là biện pháp tạm thời chỉ làm khi Đảng mắc khủng hoảng lớn.",
-      "Chỉnh đốn Đảng là quy luật phát triển tất yếu, làm cho Đảng luôn giữ vững bản chất cách mạng trong mọi giai đoạn.",
-      "Chỉnh đốn Đảng sẽ làm giảm uy tín của Đảng trước nhân dân.",
-      "Chỉnh đốn Đảng chỉ là việc riêng của Ban Chấp hành Trung ương không liên quan đến chi bộ."
+    "id": "hcm-c4-tr1-045",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Nêu gương đạo đức theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Một tấm gương sống có giá trị hơn hàng trăm bài diễn văn.",
+      "Chỉ cần cán bộ viết bài tuyên truyền không cần làm theo.",
+      "Nêu gương chỉ bắt buộc đối với cấp nhân viên dưới.",
+      "Nêu gương là hình thức phô trương thành tích cá nhân."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Tự chỉnh đốn là việc làm thường xuyên, là quy luật tồn tại giúp Đảng luôn vươn lên đáp ứng yêu cầu nhiệm vụ mới.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (nghĩ chỉnh đốn là tạm thời) hoặc C (nghĩ chỉnh đốn làm giảm uy tín). Chỉnh đốn chính là làm tăng uy tín của Đảng.",
-      trickWord: "Bẫy bản chất của công tác Chỉnh đốn Đảng",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Tự chỉnh đốn = Việc làm thường xuyên, tăng uy tín cho Đảng."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nhấn mạnh sức mạnh của sự nêu gương: 'Một tấm gương sống còn có giá trị hơn một trăm bài diễn văn tuyên truyền'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D mang tính hình thức hoặc áp đặt.",
+      "trickWord": "Bẫy trích dẫn 'Một tấm gương sống có giá trị hơn hàng trăm bài diễn văn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Tấm gương sống > Hàng trăm bài diễn văn."
     }
   },
   {
-    id: "c4-tr1-048",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Theo Hồ Chí Minh, thái độ đúng đắn đối với KHUYẾT ĐIỂM trong tự phê bình và phê bình là gì?",
-    options: [
-      "Che giấu khuyết điểm để giữ uy tín cho tổ chức và cá nhân.",
-      "Coi khuyết điểm như căn bệnh/vết thương, phải thật thà vạch ra và kiên quyết chữa trị ngay.",
-      "Đổ lỗi khuyết điểm cho hoàn cảnh khách quan và quần chúng.",
-      "Chỉ phê bình người khác, không tự phê bình bản thân."
+    "id": "hcm-c4-tr1-046",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về biểu hiện của Bệnh lãng phí theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Lãng phí sức lao động của nhân dân.",
+      "Lãng phí thời gian và của công nhà nước.",
+      "Tiết kiệm chi tiêu ngân sách đúng quy định.",
+      "Sử dụng tiền công quỹ vào việc cá nhân."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy: 'Một Đảng mà giấu giếm khuyết điểm của mình là một Đảng hỏng. Một Đảng có gan thừa nhận khuyết điểm của mình... rồi tìm mọi cách để sửa chữa khuyết điểm đó. Như thế là một Đảng tiến bộ, mạnh dạn, chắc chắn, chân chính'.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện giấu khuyết điểm để bảo vệ uy tín ở đáp án A.",
-      trickWord: "Bẫy thái độ đối với khuyết điểm",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Có gan thừa nhận và sửa chữa khuyết điểm = Đảng chân chính."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tiết kiệm chi tiêu ngân sách đúng quy định là hành vi đạo đức tích cực, đối lập hoàn toàn với bệnh lãng phí.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là hành vi tích cực đúng đắn.",
+      "trickWord": "Bẫy phủ định 'Tiết kiệm chi tiêu ngân sách đúng quy định'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Tiết kiệm = Đạo đức. Lãng phí = Tội lỗi với dân."
     }
   },
   {
-    id: "c4-tr1-049",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Sự kết hợp giữa 'Trung thành với chủ nghĩa Mác - Lênin' và 'Sáng tạo vận dụng linh hoạt' đòi hỏi Đảng phải chống lại căn bệnh nào?",
-    options: [
-      "Bệnh giáo điều, rập khuôn máy móc.",
-      "Bệnh cần cù chịu khó.",
-      "Bệnh tôn trọng pháp luật.",
-      "Bệnh tác phong sâu sát quần chúng."
+    "id": "hcm-c4-tr1-047",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Điền cụm từ còn thiếu vào nhận định của Bác về Tham ô: 'Tham ô là hành động [...] tài sản của nhà nước và nhân dân'?",
+    "options": [
+      "trộm cắp lấy lén làm của riêng",
+      "bảo vệ và giữ gìn cẩn thận",
+      "đầu tư phát triển sản xuất",
+      "phân phối công bằng cho dân"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trung thành không có nghĩa là giáo điều sách vở. Hồ Chí Minh nghiêm cấm bệnh giáo điều rập khuôn máy móc lý luận nước ngoài.",
-    trickDetails: {
-      whyTrapped: "Bẫy căn bệnh cần chống lại khi vận dụng lý luận.",
-      trickWord: "Bẫy chống bệnh giáo điều rập khuôn",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b (Nguyên tắc 1).",
-      tip: "Vận dụng sáng tạo Mác-Lênin = Chống bệnh GIÁO ĐIỀU."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh lên án gay gắt: Tham ô là hành động trộm cắp tài sản của nhà nước và nhân dân, là 'giặc nội xâm'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh phân biệt từ ngữ trộm cắp làm của riêng.",
+      "trickWord": "Bẫy định nghĩa 'trộm cắp lấy lén làm của riêng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Tham ô = Trộm cắp của công = Giặc nội xâm."
     }
   },
   {
-    id: "c4-tr1-050",
-    trickSet: 1,
-    sectionId: "hcm-ve-dang-csvn-sec",
-    subsectionId: "nhung-van-de-nguyen-tac-sub",
-    question: "Tóm lại, trong toàn bộ hệ thống tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam, mục tiêu xuyên suốt cuối cùng của việc xây dựng Đảng là gì?",
-    options: [
-      "Xây dựng Đảng thật sự trong sạch, vững mạnh, làm tròn sứ mệnh lãnh đạo nhân dân xây dựng thành công một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh.",
-      "Đưa Đảng trở thành tổ chức nắm giữ toàn bộ của cải tài chính trong xã hội.",
-      "Duy trì sự thống trị độc tôn vì lợi ích của các cán bộ lãnh đạo.",
-      "Tách rời Đảng khỏi đời sống nhân dân để giữ sự thần bí."
+    "id": "hcm-c4-tr1-048",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Bản Di chúc năm 1969 của Chủ tịch Hồ Chí Minh dành phần đầu tiên sau khi nói về cuộc kháng chiến để bàn về công việc gì?",
+    "options": [
+      "Công việc phát triển hạ tầng giao thông.",
+      "Công việc chỉnh đốn và xây dựng lại Đảng.",
+      "Công việc mở rộng quan hệ thương mại.",
+      "Công việc tổ chức lại các trường đại học."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Mục tiêu cuối cùng của xây dựng Đảng trong sạch vững mạnh là để phục vụ nhân dân, bảo vệ Tổ quốc, xây dựng đất nước giàu mạnh hạnh phúc.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D đều mang tư tưởng tiêu cực lợi ích nhóm.",
-      trickWord: "Bẫy mục tiêu xuyên suốt của công tác xây dựng Đảng",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV (Mục I kết luận).",
-      tip: "Mục tiêu cuối cùng = Xây dựng Đảng trong sạch vững mạnh vì độc lập dân tộc & hạnh phúc nhân dân."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong Di chúc (1969), việc đầu tiên Hồ Chí Minh dặn dặn là 'Việc cần làm trước tiên là chỉnh đốn lại Đảng' để đảm bảo Đảng vững mạnh lãnh đạo đất nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm phát triển kinh tế hay hạ tầng.",
+      "trickWord": "Bẫy công việc trước tiên 'chỉnh đốn và xây dựng lại Đảng'",
+      "citation": "Tác phẩm Di chúc (1969) — Chủ tịch Hồ Chí Minh.",
+      "tip": "Ghi nhớ Di chúc 1969: Việc cần làm trước tiên = Chỉnh đốn Đảng."
+    }
+  },
+  {
+    "id": "hcm-c4-tr1-049",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về nguyên tắc 'Xây đi đôi với Chống' trong xây dựng Đảng?",
+    "options": [
+      "Chỉ tập trung Xây không cần Chống.",
+      "Chỉ tập trung Chống không cần Xây.",
+      "Xây dựng đạo đức gắn với Chống tiêu cực.",
+      "Xây và Chống là hai việc tách rời."
+    ],
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Xây đi đôi với Chống: Xây dựng đạo đức cách mạng là cơ bản lâu dài, Chống lại các biểu hiện tiêu cực suy thoái là cấp bách thường xuyên.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm A/B chỉ chọn 1 vế hoặc D là tách rời.",
+      "trickWord": "Bẫy quan hệ 'Xây dựng đạo đức gắn với Chống tiêu cực'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Xây dựng (Cơ bản) + Chống tiêu cực (Cấp bách)."
+    }
+  },
+  {
+    "id": "hcm-c4-tr1-050",
+    "trickSet": 1,
+    "sectionId": "hcm-ve-dang-csvn-sec",
+    "subsectionId": "xay-dung-dang-dao-duc-sub",
+    "question": "Tác phẩm 'Nâng cao đạo đức cách mạng, quét sạch chủ nghĩa cá nhân' được Hồ Chí Minh viết nhân dịp kỷ niệm sự kiện nào?",
+    "options": [
+      "Kỷ niệm ngày Quốc khánh 2/9/1945.",
+      "Kỷ niệm 39 năm thành lập Đảng (3/2/1969).",
+      "Kỷ niệm ngày Giải phóng miền Nam 30/4.",
+      "Kỷ niệm ngày sinh nhật Bác 19/5/1965."
+    ],
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tác phẩm được xuất bản trên báo Nhân dân nhân dịp kỷ niệm 39 năm ngày thành lập Đảng (3/2/1969), là tác phẩm lớn cuối cùng của Bác về xây dựng Đảng.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với mốc Quốc khánh 2/9 hay Sinh nhật Bác 19/5.",
+      "trickWord": "Bẫy sự kiện 'Kỷ niệm 39 năm thành lập Đảng (3/2/1969)'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục I.4.",
+      "tip": "Ghi nhớ: Quét sạch chủ nghĩa cá nhân = Xuất bản 3/2/1969."
     }
   }
 ];

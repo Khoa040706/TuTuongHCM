@@ -1,1164 +1,1157 @@
 /* ============================================================
-   DỮ LIỆU ĐỀ BẪY 2 — CHƯƠNG IV (50 CÂU HỎI BẪY CHUYÊN SÂU)
-   Chuyên đề: Tư tưởng Hồ Chí Minh về Nhà nước Việt Nam & Vận dụng
+   DỮ LIỆU ĐỀ BẪY 2 — CHƯƠNG IV (50 CÂU HỎI BẪY VẬN DỤNG CAO 100% HARD)
+   Chuyên đề: Tư tưởng Hồ Chí Minh về Nhà nước Việt Nam
    ============================================================ */
 
 export const trickSet2 = [
-  // --- NHÓM 1: BẢN CHẤT GIAI CẤP CỦA NHÀ NƯỚC (10 CÂU) ---
   {
-    id: "c4-tr2-001",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT tư tưởng Hồ Chí Minh về BẢN CHẤT GIAI CẤP CỦA NHÀ NƯỚC Việt Nam?",
-    options: [
-      "Nhà nước Việt Nam là nhà nước phi giai cấp, mang bản chất toàn dân thuần túy.",
-      "Nhà nước Việt Nam mang bản chất giai cấp công nhân, thống nhất hài hòa với tính nhân dân và tính dân tộc sâu sắc.",
-      "Nhà nước Việt Nam chỉ đại diện cho giai cấp nông dân vì nông dân chiếm đại đa số dân số.",
-      "Nhà nước Việt Nam mang bản chất giai cấp tư sản dân tộc."
+    "id": "hcm-c4-tr2-001",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về bản chất giai cấp của Nhà nước Việt Nam theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Nhà nước mang bản chất giai cấp nông dân.",
+      "Nhà nước mang bản chất giai cấp công nhân.",
+      "Nhà nước mang bản chất toàn dân phi giai cấp.",
+      "Nhà nước mang bản chất tư sản dân tộc."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh khẳng định Nhà nước ở đâu bao giờ cũng mang bản chất một giai cấp nhất định (giai cấp công nhân). Nhưng ở Việt Nam, bản chất giai cấp công nhân luôn thống nhất hài hòa với tính nhân dân và tính dân tộc.",
-    trickDetails: {
-      whyTrapped: "Học sinh rất dễ bị bẫy ở đáp án A (phi giai cấp toàn dân) vì nhầm lẫn tên gọi 'nhà nước của dân, do dân, vì dân'.",
-      trickWord: "Bẫy ngụy biện nhà nước phi giai cấp",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.a.",
-      tip: "Nhà nước Việt Nam = Bản chất giai cấp CÔNG NHÂN + Thống nhất tính Nhân dân & Dân tộc."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định Nhà nước Việt Nam là Nhà nước mang bản chất giai cấp công nhân, đại biểu cho lợi ích của nhân dân lao động và toàn thể dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ nhầm sang Nhà nước phi giai cấp toàn dân hoặc bản chất nông dân.",
+      "trickWord": "Bẫy bản chất 'giai cấp công nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Nhà nước ta mang bản chất giai cấp công nhân."
     }
   },
   {
-    id: "c4-tr2-002",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Vì sao bản chất giai cấp công nhân của Nhà nước Việt Nam lại THỐNG NHẤT HÀI HÒA với tính nhân dân và tính dân tộc?",
-    options: [
-      "Vì giai cấp công nhân không có lợi ích riêng đối lập với lợi ích chung của nhân dân lao động và của toàn dân tộc Việt Nam.",
-      "Vì Nhà nước đã xóa bỏ hoàn toàn sự tồn tại của giai cấp công nhân để hòa vào dân tộc.",
-      "Vì Nhà nước hoạt động mà không cần sự lãnh đạo của Đảng Cộng sản.",
-      "Vì giai cấp công nhân chiếm đại đa số dân số Việt Nam ngay từ năm 1945."
+    "id": "hcm-c4-tr2-002",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về sự thống nhất giữa bản chất giai cấp công nhân với tính nhân dân và tính dân tộc của Nhà nước?",
+    "options": [
+      "Nhà nước vừa mang bản chất giai cấp công nhân.",
+      "Nhà nước bảo vệ lợi ích nhân dân và dân tộc.",
+      "Bản chất giai cấp công nhân tách rời tính dân tộc.",
+      "Nhà nước do nhân dân lao động làm chủ."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Lợi ích của giai cấp công nhân thống nhất hoàn toàn với lợi ích của nhân dân lao động và dân tộc Việt Nam (đều hướng tới độc lập, tự do, ấm no, hạnh phúc).",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án D sai thực tế lịch sử (năm 1945 công nhân chiếm tỉ lệ nhỏ). Sự thống nhất bắt nguồn từ sự THỐNG NHẤT VỀ LỢI ÍCH.",
-      trickWord: "Bẫy cơ sở của sự thống nhất giai cấp - dân tộc",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.a.",
-      tip: "Thống nhất giai cấp và dân tộc = Không có lợi ích riêng đối lập với lợi ích dân tộc."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trong tư tưởng Hồ Chí Minh, bản chất giai cấp công nhân của Nhà nước thống nhất hài hòa, không bao giờ 'tách rời' tính nhân dân và tính dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh bị bẫy ở từ phủ định 'tách rời tính dân tộc'.",
+      "trickWord": "Bẫy phủ định 'tách rời tính dân tộc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Bản chất giai cấp công nhân THỐNG NHẤT với tính dân tộc."
     }
   },
   {
-    id: "c4-tr2-003",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Nội dung nào dưới đây KHÔNG PHẢI là biểu hiện bản chất giai cấp công nhân của Nhà nước Việt Nam theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Nhà nước do Đảng Cộng sản Việt Nam — đội tiên phong của giai cấp công nhân lãnh đạo.",
-      "Nhà nước định hướng đưa đất nước đi lên Chủ nghĩa xã hội và Chủ nghĩa cộng sản.",
-      "Nhà nước tổ chức và hoạt động theo nguyên tắc cơ bản là Tập trung dân chủ.",
-      "Nhà nước ưu tiên dành riêng đặc quyền kinh tế cho đảng viên và công nhân, coi thường quyền lợi của các tầng lớp khác."
+    "id": "hcm-c4-tr2-003",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Điền cụm từ còn thiếu vào định nghĩa của Bác: 'Nhà nước ta là Nhà nước dân chủ nhân dân dựa trên nền tảng [...] do giai cấp công nhân lãnh đạo'?",
+    "options": [
+      "nền tảng liên minh công nhân và nông dân",
+      "nền tảng tài chính của các nhà tư bản",
+      "nền tảng viện trợ của các cường quốc lớn",
+      "nền tảng liên minh trí thức với tư sản"
     ],
-    answer: 3,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhà nước Việt Nam không phải là nhà nước đặc quyền cho riêng công nhân hay đảng viên, mà phục vụ lợi ích của toàn thể nhân dân.",
-    trickDetails: {
-      whyTrapped: "Câu hỏi loại trừ KHÔNG PHẢI. Đáp án D chứa thói đặc quyền đặc lợi bị Bác cấm.",
-      trickWord: "Bẫy dạng câu hỏi loại trừ biểu hiện bản chất giai cấp",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.a.",
-      tip: "Biểu hiện giai cấp công nhân: (1) Đảng lãnh đạo; (2) Mục tiêu CNXH; (3) Nguyên tắc Tập trung dân chủ."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhà nước Việt Nam Dân chủ Cộng hòa dựa trên nền tảng khối liên minh công nông (sau bổ sung thêm tầng lớp trí thức) do giai cấp công nhân lãnh đạo.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang nền tảng tư sản hay viện trợ nước ngoài.",
+      "trickWord": "Bẫy trích dẫn 'nền tảng liên minh công nhân và nông dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Nền tảng Nhà nước = Khối liên minh Công - Nông - Trí thức."
     }
   },
   {
-    id: "c4-tr2-004",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Nhận định nào dưới đây SAI khi nói về mối quan hệ giữa tính giai cấp và tính dân tộc của Nhà nước Việt Nam?",
-    options: [
-      "Tính giai cấp công nhân quyết định định hướng xã hội chủ nghĩa của Nhà nước.",
-      "Tính dân tộc và tính nhân dân làm cho bản chất giai cấp công nhân có cơ sở xã hội rộng lớn vững chắc.",
-      "Tính giai cấp và tính dân tộc là hai yếu tố triệt tiêu lẫn nhau, có tính giai cấp thì phải bỏ tính dân tộc.",
-      "Nhà nước bảo vệ lợi ích của giai cấp công nhân đồng thời là bảo vệ lợi ích của toàn dân tộc."
+    "id": "hcm-c4-tr2-004",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Yếu tố nào biểu hiện rõ nhất bản chất giai cấp công nhân của Nhà nước ta theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Nhà nước do Đảng Cộng sản lãnh đạo tuyệt đối.",
+      "Nhà nước áp dụng chế độ hai viện bãi bỏ.",
+      "Nhà nước trao quyền cho các tập đoàn tư nhân.",
+      "Nhà nước chỉ quản lý hoạt động nông nghiệp."
     ],
-    answer: 2,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Tính giai cấp và tính dân tộc không bài xích hay triệt tiêu nhau mà bổ sung, thống nhất hòa quyện vào nhau.",
-    trickDetails: {
-      whyTrapped: "Đáp án C phát biểu cực đoan 'triệt tiêu lẫn nhau' là đáp án SAI cần chọn.",
-      trickWord: "Bẫy chọn câu sai về tính giai cấp và dân tộc",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.a.",
-      tip: "Tính giai cấp & tính dân tộc = Thống nhất hài hòa, không triệt tiêu nhau."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bản chất giai cấp công nhân của Nhà nước thể hiện trước hết và quyết định nhất ở sự lãnh đạo tuyệt đối của Đảng Cộng sản đối với bộ máy Nhà nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang yếu tố kinh tế hay thể chế hai viện.",
+      "trickWord": "Bẫy yếu tố biểu hiện 'Đảng Cộng sản lãnh đạo tuyệt đối'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Bản chất giai cấp công nhân = Sự lãnh đạo của Đảng."
     }
   },
   {
-    id: "c4-tr2-005",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Hồ Chí Minh chỉ rõ bản chất giai cấp công nhân của Nhà nước được thể hiện sâu sắc nhất ở ĐƯỜNG LỐI NÀO?",
-    options: [
-      "Đường lối đưa dân tộc tiến lên chủ nghĩa xã hội, giải phóng con người khỏi mọi sự áp bức bất công.",
-      "Đường lối phát triển kinh tế tư bản tư nhân tự do không có sự quản lý.",
-      "Đường lối bế quan tỏa cảng không giao lưu quốc tế.",
-      "Đường lối duy trì chế độ phong kiến tập quyền."
+    "id": "hcm-c4-tr2-005",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT tính chất phục vụ của Nhà nước ta đối với quần chúng?",
+    "options": [
+      "Nhà nước bóc lột đa số nhân dân lao động.",
+      "Nhà nước thuộc về nhân dân, phục vụ nhân dân.",
+      "Nhà nước chỉ phục vụ lợi ích tầng lớp giàu.",
+      "Nhà nước quản lý bằng mệnh lệnh áp đặt sai."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Mục tiêu định hướng đi lên CNXH và CNCS chính là biểu hiện tập trung nhất của bản chất giai cấp công nhân.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D đều đi ngược lại đường lối cách mạng.",
-      trickWord: "Bẫy biểu hiện tập trung nhất của bản chất giai cấp",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.a.",
-      tip: "Bản chất giai cấp công nhân = Định hướng đi lên CNXH."
-    }
-  },
-
-  // --- NHÓM 2: NHÀ NƯỚC CỦA DÂN, DO DÂN, VÌ DÂN (15 CÂU) ---
-  {
-    id: "c4-tr2-006",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Thế nào là 'NHÀ NƯỚC CỦA NHÂN DÂN' theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Là nhà nước mà tất cả quyền lực trong nước và trong xã hội đều thuộc về nhân dân.",
-      "Là nhà nước do một nhóm quan lại nắm toàn bộ quyền quyết định.",
-      "Là nhà nước mà nhân dân không có quyền bầu cử hay bãi miễn đại biểu.",
-      "Là nhà nước hoạt động độc lập không chịu sự giám sát của dân."
-    ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhà nước của dân nghĩa là 'tất cả quyền lực trong nước đều là của nhân dân'. Nhân dân là chủ thể tối cao của quyền lực nhà nước.",
-    trickDetails: {
-      whyTrapped: "Bẫy các đáp án B, C, D tước bỏ quyền lực của nhân dân.",
-      trickWord: "Bẫy định nghĩa 'Nhà nước CỦA dân'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.b.",
-      tip: "Nhà nước CỦA dân = Tất cả quyền lực thuộc về nhân dân."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Khác với nhà nước bóc lột của giai cấp thống trị, Nhà nước ta là Nhà nước của nhân dân, do nhân dân, phục vụ lợi ích của toàn thể nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh dễ loại trừ nhưng cần chú ý đáp án B là đầy đủ nhất.",
+      "trickWord": "Bẫy tính chất 'thuộc về nhân dân, phục vụ nhân dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Nhà nước ta = Thuộc về Nhân dân & Phục vụ Nhân dân."
     }
   },
   {
-    id: "c4-tr2-007",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Hồ Chí Minh phân biệt hai khái niệm 'DÂN LÀ CHỦ' và 'DÂN LÀM CHỦ' như thế nào?",
-    options: [
-      "'Dân là chủ' chỉ vị thế xác định chủ thể quyền lực; 'Dân làm chủ' nhấn mạnh năng lực, quyền lợi và nghĩa vụ thực thi quyền lực đó.",
-      "Hai khái niệm hoàn toàn trái ngược nhau.",
-      "'Dân làm chủ' chỉ áp dụng cho người giàu; 'Dân là chủ' áp dụng cho người nghèo.",
-      "'Dân là chủ' có nghĩa là dân được miễn toàn bộ nghĩa vụ đóng thuế."
+    "id": "hcm-c4-tr2-006",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về nguyên tắc tổ chức bộ máy Nhà nước theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Bộ máy nhà nước phải tinh gọn và hiệu quả.",
+      "Cán bộ nhà nước là công bộc của nhân dân.",
+      "Quyền lực nhà nước tập trung hết vào cá nhân.",
+      "Nhà nước hoạt động trên cơ sở pháp luật."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "'Dân là chủ' chỉ vị thế (ai là chủ nước nhà). 'Dân làm chủ' chỉ năng lực thực hành dân chủ (quyền lợi gắn liền với bổn phận nghĩa vụ công dân).",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ coi 2 cụm từ này là một. Bác phân biệt vị thế 'Là chủ' và hành động/năng lực 'Làm chủ'.",
-      trickWord: "Bẫy phân biệt 'Dân LÀ chủ' và 'Dân LÀM chủ'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.b, c.",
-      tip: "Là chủ = Vị thế; Làm chủ = Năng lực & Hành động thực thi."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết chống tập trung quyền lực vào tay cá nhân độc đoán. Quyền lực nhà nước thuộc về toàn thể Nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai trái bị lên án.",
+      "trickWord": "Bẫy phủ định 'Quyền lực nhà nước tập trung hết vào cá nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Quyền lực thuộc về Dân, nghiêm cấm tập trung cá nhân."
     }
   },
   {
-    id: "c4-tr2-008",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Quyền lực tối cao của nhân dân trong 'Nhà nước của dân' được thể hiện qua quyền dân chủ trực tiếp nào dưới đây?",
-    options: [
-      "Quyền bãi miễn các đại biểu Quốc hội và HĐND nếu họ không còn xứng đáng với sự tin cậy của nhân dân.",
-      "Quyền tự do vi phạm trật tự công cộng không cần tuân thủ luật.",
-      "Quyền từ chối tham gia bảo vệ Tổ quốc khi có chiến tranh.",
-      "Quyền tự ý lập các tổ chức phi pháp chống lại chính quyền."
+    "id": "hcm-c4-tr2-007",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Điền cụm từ còn thiếu vào khẳng định của Hồ Chí Minh: 'Bao nhiêu quyền hạn đều là của [...]; Bao nhiêu lợi ích đều vì [...]'?",
+    "options": [
+      "đều là của dân; đều vì dân",
+      "đều là của nhà nước; đều vì cán bộ",
+      "đều là của các cấp; đều vì ngành",
+      "đều là của quân đội; đều vì công an"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhân dân bầu ra đại biểu thì nhân dân cũng có quyền BÃI MIỄN đại biểu đó nếu họ không làm tròn nhiệm vụ đại diện cho dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B, C, D ngụy biện tự do quá trớn thành vi phạm pháp luật.",
-      trickWord: "Bẫy quyền bãi miễn đại biểu của nhân dân",
-      citation: "Hiến pháp 1946 & Tư tưởng Hồ Chí Minh.",
-      tip: "Dân bầu ra được = Dân có quyền BÃI MIỄN được."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Trích bài báo 'Dân vận' (15/10/1949) của Bác: 'Bao nhiêu quyền hạn đều là của dân; Bao nhiêu lợi ích đều vì dân... Chính quyền từ xã đến Trung ương do dân bầu ra'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh phân biệt cụm từ lặp 'của dân - vì dân'.",
+      "trickWord": "Bẫy trích dẫn 'đều là của dân; đều vì dân'",
+      "citation": "Bài báo Dân vận (15/10/1949) — Hồ Chí Minh.",
+      "tip": "Ghi nhớ bài Dân vận 1949: Quyền hạn CỦA DÂN - Lợi ích VÌ DÂN."
     }
   },
   {
-    id: "c4-tr2-009",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Thế nào là 'NHÀ NƯỚC DO NHÂN DÂN' theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Là nhà nước do nhân dân lập nên, do nhân dân ủng hộ, nuôi dưỡng và do nhân dân quản lý thông qua các đại biểu của mình.",
-      "Là nhà nước do các cường quốc bên ngoài lập nên và điều hành.",
-      "Là nhà nước tự động hình thành không cần sự đóng góp công sức thuế khóa của dân.",
-      "Là nhà nước mà mọi cán bộ đều do nước ngoài bổ nhiệm."
+    "id": "hcm-c4-tr2-008",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Tên gọi chính thức của Nhà nước ta được thông qua tại Kỳ họp thứ nhất Quốc hội khóa VI (tháng 7/1976) là gì?",
+    "options": [
+      "Cộng hòa xã hội chủ nghĩa Việt Nam.",
+      "Việt Nam Dân chủ Cộng hòa ban đầu.",
+      "Chính phủ lâm thời Cộng hòa Miền Nam.",
+      "Việt Nam Quân chủ Cộng hòa xã hội."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhà nước do dân là nhà nước do dân bầu ra, dân đóng thuế nuôi dưỡng bộ máy và dân tham gia quản lý nhà nước.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B, D phụ thuộc nước ngoài hoặc C tự động hình thành.",
-      trickWord: "Bẫy định nghĩa 'Nhà nước DO dân'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.c.",
-      tip: "Nhà nước DO dân = Dân lập nên + Dân nuôi dưỡng + Dân quản lý."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tháng 7/1976, Quốc hội khóa VI quyết định đổi tên nước thành 'Cộng hòa xã hội chủ nghĩa Việt Nam'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với tên Việt Nam Dân chủ Cộng hòa (1945-1976).",
+      "trickWord": "Bẫy mốc đổi tên nước 'Cộng hòa xã hội chủ nghĩa Việt Nam (7/1976)'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Đổi tên nước tháng 7/1976 = Cộng hòa XHCN Việt Nam."
     }
   },
   {
-    id: "c4-tr2-010",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Hồ Chí Minh yêu cầu nhân dân phải làm gì để thực hiện tốt vai trò trong 'Nhà nước do nhân dân'?",
-    options: [
-      "Phải nỗ lực học tập, nâng cao trình độ nhận thức để có đủ 'NĂNG LỰC LÀM CHỦ'.",
-      "Chỉ cần phó mặc hoàn toàn cho cán bộ cấp trên tự quyết định.",
-      "Từ chối đóng thuế và không thực hiện nghĩa vụ quân sự.",
-      "Chỉ quan tâm đến lợi ích kinh tế cá nhân gia đình mình."
+    "id": "hcm-c4-tr2-009",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT tính dân tộc của Nhà nước Việt Nam?",
+    "options": [
+      "Nhà nước bảo vệ nền độc lập tự do Tổ quốc.",
+      "Nhà nước đại diện cho quyền lợi các cường quốc.",
+      "Nhà nước chỉ chăm lo cho đời sống đô thị.",
+      "Nhà nước phân biệt đối xử giữa các dân tộc."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ nhấn mạnh: 'Muốn làm chủ được tốt, phải có năng lực làm chủ'. Dân phải học tập nâng cao trình độ.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (ỷ lại phó mặc) hoặc C (từ chối nghĩa vụ).",
-      trickWord: "Bẫy khái niệm 'Năng lực làm chủ'",
-      citation: "Hồ Chí Minh Toàn tập, t.12, tr.527.",
-      tip: "Làm chủ tốt = Phải có NĂNG LỰC LÀM CHỦ."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tính dân tộc thể hiện ở chỗ Nhà nước kiên quyết bảo vệ độc lập, chủ quyền Tổ quốc và chăm lo phát triển đại đoàn kết toàn dân tộc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh loại các đáp án sai B/C/D.",
+      "trickWord": "Bẫy thể hiện 'bảo vệ nền độc lập tự do Tổ quốc'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Tính dân tộc = Bảo vệ độc lập Tổ quốc + Đại đoàn kết."
     }
   },
   {
-    id: "c4-tr2-011",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Thế nào là 'NHÀ NƯỚC VÌ NHÂN DÂN' theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Là nhà nước lấy lợi ích chính đáng của nhân dân làm mục tiêu phục vụ tối cao, cán bộ là đầy tớ trung thành của nhân dân.",
-      "Là nhà nước bắt nhân dân phải phục vụ cho sự giàu sang của cán bộ.",
-      "Là nhà nước ưu tiên thu lợi nhuận kinh tế cho các doanh nghiệp nước ngoài.",
-      "Là nhà nước chỉ phục vụ cho lợi ích của một số ít người giàu có."
+    "id": "hcm-c4-tr2-010",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về chức năng của Nhà nước dân chủ theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Bảo vệ quyền lợi hợp pháp của nhân dân.",
+      "Dùng bạo lực trấn áp kẻ thù chống phá.",
+      "Dùng quyền lực áp đặt tước đoạt dân chủ.",
+      "Tổ chức xây dựng phát triển kinh tế."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhà nước vì dân là nhà nước mưu tự do hạnh phúc cho dân, không có đặc quyền đặc lợi, cán bộ vừa là người lãnh đạo vừa là người đầy tớ thật trung thành của nhân dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đảo ngược vai trò thành 'dân phục vụ cán bộ' ở đáp án B.",
-      trickWord: "Bẫy định nghĩa 'Nhà nước VÌ dân'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.d.",
-      tip: "Nhà nước VÌ dân = Phục vụ lợi ích của dân + Cán bộ là đầy tớ trung thành."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhà nước dân chủ dùng quyền lực để phục vụ dân và trấn áp kẻ phản cách mạng, chứ không phải 'tước đoạt dân chủ của dân'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là khẳng định sai trái bị bác bỏ.",
+      "trickWord": "Bẫy phủ định 'Dùng quyền lực áp đặt tước đoạt dân chủ'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Nhà nước dân chủ = Mở rộng dân chủ cho Dân + Trấn áp kẻ thù."
     }
   },
   {
-    id: "c4-tr2-012",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Câu nói nổi tiếng của Hồ Chí Minh năm 1945: 'Nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì...'",
-    options: [
-      "độc lập cũng chẳng có nghĩa lý gì.",
-      "độc lập vẫn là mục tiêu duy nhất.",
-      "độc lập sẽ tự động mang lại giàu có.",
-      "dân phải tiếp tục chịu đựng chết đói."
+    "id": "hcm-c4-tr2-011",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Hồ Chí Minh: 'Chính quyền dân chủ là chính quyền của [...]'?",
+    "options": [
+      "của toàn thể nhân dân lao động",
+      "của riêng giới địa chủ phong kiến",
+      "của riêng giới tư sản thương nghiệp",
+      "của các quan lại công chức nhà nước"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nguyên văn Bác Hồ năm 1945: 'Nếu nước độc lập mà dân không hưởng hạnh phúc tự do, thì độc lập cũng chẳng có nghĩa lý gì'. Thể hiện sâu sắc bản chất 'Nhà nước vì dân'.",
-    trickDetails: {
-      whyTrapped: "Bẫy hoàn thành câu trích nổi tiếng của Bác Hồ năm 1945.",
-      trickWord: "Bẫy hoàn thành câu trích năm 1945",
-      citation: "Bài nói của Hồ Chí Minh với UBND các cấp (10/1945).",
-      tip: "Nước độc lập mà dân không hạnh phúc = 'Độc lập chẳng có nghĩa lý gì'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định tính dân chủ rộng rãi: Chính quyền dân chủ là chính quyền thuộc về toàn thể nhân dân lao động.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các giai cấp thống trị cũ.",
+      "trickWord": "Bẫy trích dẫn 'của toàn thể nhân dân lao động'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Chính quyền dân chủ = Thuộc về Toàn thể Nhân dân."
     }
   },
   {
-    id: "c4-tr2-013",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-dan-chu-sub",
-    question: "Trong mối quan hệ giữa CÁN BỘ và NHÂN DÂN trong Nhà nước vì dân, Hồ Chí Minh xác định vị thế của cán bộ như thế nào?",
-    options: [
-      "Vừa là người lãnh đạo, vừa là người đầy tớ thật trung thành của nhân dân.",
-      "Là quan cách mạng có quyền cai trị và ban phát ân huệ cho dân.",
-      "Là người đứng ngoài đời sống nhân dân.",
-      "Là chủ nhân có quyền định đoạt tài sản của dân."
+    "id": "hcm-c4-tr2-012",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "ban-chat-giai-cap-nha-nuoc-sub",
+    "question": "Sự kiện lịch sử nào đánh dấu sự ra đời của Nhà nước công nông đầu tiên ở Đông Nam Á?",
+    "options": [
+      "Cách mạng Tháng Tám thắng lợi 1945.",
+      "Đọc Tuyên ngôn Độc lập ngày 2/9/1945.",
+      "Tổng tuyển cử bầu Quốc hội 6/1/1946.",
+      "Thông qua bản Hiến pháp tháng 11/1946."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ xác định cán bộ 'vừa là người lãnh đạo, vừa là người đầy tớ thật trung thành của nhân dân'. Hai vế này thống nhất không tách rời.",
-    trickDetails: {
-      whyTrapped: "Học sinh hay quên vế 'vừa là người lãnh đạo' mà chỉ nhớ vế 'đầy tớ', hoặc bị bẫy ở đáp án B (quan cách mạng).",
-      trickWord: "Bẫy vị thế 2 vế của cán bộ (Lãnh đạo + Đầy tớ)",
-      citation: "Di chúc của Hồ Chí Minh (1969).",
-      tip: "Cán bộ = VỪA LÀ NGƯỜI LÃNH ĐẠO + VỪA LÀ NGƯỜI ĐẦY TỚ THẬT TRUNG THÀNH."
-    }
-  },
-
-  // --- NHÓM 3: NHÀ NƯỚC PHÁP QUYỀN VÀ KIỂM SOÁT QUYỀN LỰC (15 CÂU) ---
-  {
-    id: "c4-tr2-014",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Tư tưởng về 'NHÀ NƯỚC PHÁP QUYỀN' của Hồ Chí Minh được thể hiện sớm nhất qua sự kiện lịch sử nào?",
-    options: [
-      "Bản Yêu cầu của nhân dân An Nam gửi Hội nghị Véc-xây năm 1919 (Yêu cầu về cải cách pháp lý).",
-      "Khi thành lập Đảng năm 1930.",
-      "Khi đọc Tuyên ngôn Độc lập năm 1945.",
-      "Khi ban hành Hiến pháp năm 1959."
-    ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Ngay từ năm 1919 trong Bản Yêu cầu 8 điểm, Nguyễn Ái Quốc đã đòi 'Thừa nhận đối với người An Nam một chế độ ra các đạo luật' (Trăm điều hãy có thần linh pháp quyền).",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ chọn 1945 hay 1946 (Hiến pháp đầu tiên) mà quên mất mốc 1919 (Yêu cầu Véc-xây) là khởi đầu tư tưởng pháp quyền.",
-      trickWord: "Bẫy mốc khởi đầu tư tưởng Pháp quyền (1919)",
-      citation: "Bản Yêu cầu của nhân dân An Nam (1919) — Nguyễn Ái Quốc.",
-      tip: "'Trăm điều hãy có thần linh pháp quyền' = Yêu cầu Véc-xây 1919."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập khai sinh ra nước Việt Nam Dân chủ Cộng hòa — Nhà nước công nông đầu tiên ở Đông Nam Á.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với cuộc Tổng tuyển cử 6/1/1946 hay Hiến pháp 1946.",
+      "trickWord": "Bẫy sự kiện khai sinh 'Tuyên ngôn Độc lập ngày 2/9/1945'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.1.",
+      "tip": "Ghi nhớ: Khai sinh Nhà nước công nông = Ngày 2/9/1945."
     }
   },
   {
-    id: "c4-tr2-015",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Bản HIẾN PHÁP ĐẦU TIÊN của nước Việt Nam Dân chủ Cộng hòa do Hồ Chí Minh trực tiếp chỉ đạo soạn thảo được Quốc hội thông qua vào năm nào?",
-    options: [
-      "Hiến pháp năm 1945.",
-      "Hiến pháp năm 1946.",
-      "Hiến pháp năm 1959.",
-      "Hiến pháp năm 1980."
+    "id": "hcm-c4-tr2-013",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT nội dung khái niệm 'Nhà nước CỦA DÂN' theo Hồ Chí Minh?",
+    "options": [
+      "Dân là người làm chủ mọi quyền lực nhà nước.",
+      "Dân đóng thuế nhưng không có quyền bầu cử.",
+      "Dân chỉ tuân theo lệnh nhà nước áp đặt.",
+      "Dân được ủy quyền toàn bộ cho quan lại."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hiến pháp đầu tiên của nước ta là Hiến pháp năm 1946 (thông qua ngày 9/11/1946). Năm 1945 chỉ đọc Tuyên ngôn độc lập.",
-    trickDetails: {
-      whyTrapped: "Học sinh rất hay nhầm Hiến pháp đầu tiên là 1945 (năm thành lập nước) thay vì đúng là 1946.",
-      trickWord: "Bẫy nhầm mốc Hiến pháp 1945 và 1946",
-      citation: "Lịch sử Hiến pháp Việt Nam.",
-      tip: "Hiến pháp ĐẦU TIÊN = HIẾN PHÁP 1946."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhà nước của dân nghĩa là tất cả quyền lực trong nước và trong xã hội đều thuộc về Nhân dân, nhân dân là người chủ thực sự.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các đáp án bớt quyền của dân.",
+      "trickWord": "Bẫy khái niệm 'Dân là người làm chủ mọi quyền lực'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Nhà nước CỦA DÂN = Dân là chủ sở hữu quyền lực."
     }
   },
   {
-    id: "c4-tr2-016",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Thế nào là 'Quản lý xã hội BẰNG PHÁP LUẬT' trong tư tưởng Nhà nước pháp quyền Hồ Chí Minh?",
-    options: [
-      "Ban hành pháp luật đầy đủ, có hiệu lực pháp lý cao, tổ chức thi hành nghiêm minh và mọi công dân/cán bộ đều bình đẳng trước pháp luật.",
-      "Chỉ dùng pháp luật để trừng phạt nhân dân còn cán bộ được miễn trừ.",
-      "Đặt lệnh của cá nhân người lãnh đạo cao hơn các văn bản pháp luật.",
-      "Thay thế hoàn toàn pháp luật bằng các tục lệ tập quán cổ truyền."
+    "id": "hcm-c4-tr2-014",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi giải thích khái niệm 'Nhà nước DO DÂN'?",
+    "options": [
+      "Do nhân dân trực tiếp lập nên qua bầu cử.",
+      "Do nhân dân đóng thuế chi trả bộ máy.",
+      "Do nhà nước tự phong không cần hỏi dân.",
+      "Do nhân dân tham gia quản lý công việc."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Quản lý bằng pháp luật đòi hỏi tính THƯỢNG TÔN PHÁP LUẬT, luật pháp dân chủ, công minh và bình đẳng với mọi người.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C (đặt lệnh cá nhân trên luật) hoặc B (cán bộ được miễn trừ).",
-      trickWord: "Bẫy nguyên tắc Thượng tôn pháp luật",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.2.a.",
-      tip: "Quản lý bằng pháp luật = Thượng tôn pháp luật + Bình đẳng trước luật."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhà nước do dân là do dân lập nên, do dân ủng hộ, nuôi dưỡng và tham gia quản lý, chứ không bao giờ 'tự phong không hỏi dân'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai hoàn toàn.",
+      "trickWord": "Bẫy phủ định 'Do nhà nước tự phong không cần hỏi dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Nhà nước DO DÂN = Dân lập nên + Dân ủng hộ nuôi dưỡng."
     }
   },
   {
-    id: "c4-tr2-017",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Hồ Chí Minh chỉ rõ gốc rễ sinh ra bệnh Tham ô, Lãng phí là do CĂN BỆNH NÀO?",
-    options: [
-      "Bệnh Quan liêu.",
-      "Bệnh Kiêu ngạo.",
-      "Bệnh Lười biếng.",
-      "Bệnh Nhút nhát."
+    "id": "hcm-c4-tr2-015",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Điền cụm từ còn thiếu vào khái niệm 'Nhà nước VÌ DÂN': 'Nhà nước phục vụ lợi ích và nguyện vọng chính đáng của [...]'?",
+    "options": [
+      "phục vụ lợi ích và nguyện vọng của nhân dân",
+      "phục vụ lợi ích của nhóm cán bộ quản lý",
+      "phục vụ lợi ích của các nhà đầu tư nước ngoài",
+      "phục vụ lợi ích của giới chủ doanh nghiệp"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ khẳng định: 'Bệnh quan liêu là nguồn gốc sinh ra bệnh tham ô, lãng phí. Muốn chống tham ô lãng phí trước hết phải chống bệnh quan liêu'.",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ chọn nhầm sang bệnh lười biếng hay kiêu ngạo.",
-      trickWord: "Bẫy nguồn gốc của tham ô lãng phí",
-      citation: "Tác phẩm 'Chống gian ô, lãng phí và bệnh quan liêu' (1952) — Hồ Chí Minh.",
-      tip: "Nguồn gốc đẻ ra Tham ô & Lãng phí = BỆNH QUAN LIÊU."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhà nước vì dân là Nhà nước lấy lợi ích và sự hạnh phúc của Nhân dân làm mục tiêu phục vụ tối cao, không có lợi ích riêng tư.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang lợi ích nhóm cán bộ hay tư bản.",
+      "trickWord": "Bẫy trích dẫn 'phục vụ lợi ích và nguyện vọng của nhân dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Nhà nước VÌ DÂN = Lấy hạnh phúc Nhân dân làm mục tiêu."
     }
   },
   {
-    id: "c4-tr2-018",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Hồ Chí Minh ví nạn Tham ô, Lãng phí và Bệnh quan liêu nguy hiểm như thế nào?",
-    options: [
-      "Là 'giặc nội xâm', là đồng minh của giặc ngoại xâm, nguy hiểm hơn giặc ngoại xâm vì nó phá từ trong phá ra.",
-      "Là chuyện nhỏ xảy ra ở mọi quốc gia không đáng lo.",
-      "Là hiện tượng tự nhiên của bộ máy hành chính.",
-      "Là động lực làm cho cán bộ tích cực hơn."
+    "id": "hcm-c4-tr2-016",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Cơ chế nào được Hồ Chí Minh dùng để Nhân dân thực hiện quyền lực nhà nước thông qua Quốc hội và Hội đồng nhân dân?",
+    "options": [
+      "Hình thức Dân chủ đại diện (gián tiếp).",
+      "Hình thức Dân chủ tự phát cá nhân.",
+      "Hình thức Dân chủ độc đoán tập trung.",
+      "Hình thức Dân chủ phong kiến trực tiếp."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác gọi tham ô lãng phí quan liêu là 'GIẶC NỘI XÂM' — loại giặc ở trong lòng, phá hoại cách mạng từ bên trong.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện tham ô là 'chuyện nhỏ' ở đáp án B.",
-      trickWord: "Bẫy thuật ngữ 'Giặc nội xâm'",
-      citation: "Bài nói của Hồ Chí Minh về chống tham ô lãng phí (1952).",
-      tip: "Quan liêu tham ô lãng phí = GIẶC NỘI XÂM."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bên cạnh Dân chủ trực tiếp, Nhân dân thực hiện quyền lực của mình thông qua Dân chủ đại diện (gián tiếp) bằng cách bầu ra Quốc hội và HĐND các cấp.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm giữa Dân chủ trực tiếp và Dân chủ đại diện (gián tiếp).",
+      "trickWord": "Bẫy hình thức 'Dân chủ đại diện (gián tiếp)'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Bầu Quốc hội / HĐND = Dân chủ đại diện (gián tiếp)."
     }
   },
   {
-    id: "c4-tr2-019",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Theo Hồ Chí Minh, để KIỂM SOÁT QUYỀN LỰC NHÀ NƯỚC hiệu quả, cần kết hợp hai cơ chế kiểm soát nào?",
-    options: [
-      "Kiểm soát từ trên xuống (của bộ máy) và Kiểm soát từ dưới lên (của quần chúng nhân dân).",
-      "Chỉ cần kiểm soát của cơ quan công an.",
-      "Chỉ cần kiểm soát của các nhà đầu tư nước ngoài.",
-      "Không cần kiểm soát để cán bộ tự do làm việc."
+    "id": "hcm-c4-tr2-017",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT quyền bãi miễn đại biểu Quốc hội của Nhân dân theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Dân bầu ra đại biểu thì có quyền bãi miễn.",
+      "Dân không được phép bãi miễn đại biểu.",
+      "Chỉ Quốc hội mới được quyền bãi miễn.",
+      "Đại biểu giữ chức vụ vĩnh viễn suốt đời."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy kiểm soát phải có 2 chiều: Cấp trên kiểm soát cấp dưới (từ trên xuống) và Nhân dân kiểm soát bộ máy (từ dưới lên).",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án chỉ có 1 chiều kiểm soát từ cấp trên (đáp án B). Bác rất coi trọng sự kiểm soát từ DƯỚI LÊN của nhân dân.",
-      trickWord: "Bẫy 2 chiều kiểm soát quyền lực (Trên xuống & Dưới lên)",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.2.b.",
-      tip: "Kiểm soát quyền lực = Từ trên xuống + Từ dưới lên (của dân)."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định: Nhân dân có quyền bầu ra đại biểu Quốc hội thì cũng có quyền bãi miễn đại biểu đó nếu họ không còn xứng đáng với sự tin cẩn của Dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D bãi bỏ quyền bãi miễn của Dân.",
+      "trickWord": "Bẫy quyền bãi miễn 'Dân bầu ra thì có quyền bãi miễn'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Dân bầu ra được = Dân bãi miễn được."
     }
   },
   {
-    id: "c4-tr2-020",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Trong tác phẩm 'Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng' (10/1945), Hồ Chí Minh vạch rõ 6 lầm lỗi căn bệnh nào của cán bộ?",
-    options: [
-      "Trai gái, cờ bạc, rượu chè, lười biếng, tham ăn, kiêu ngạo.",
-      "Trái phép, Cậy thế, Hủ hóa, Tư thù, Chia rẽ, Kiêu ngạo.",
-      "Quan liêu, Mệnh lệnh, Bè phái, Chủ quan, Tham ô, Lãng phí.",
-      "Giáo điều, Bảo thủ, Rập khuôn, Cơ hội, Tự do, Tự phát."
+    "id": "hcm-c4-tr2-018",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi nói về thái độ của cán bộ nhà nước đối với Nhân dân?",
+    "options": [
+      "Cán bộ phải là công bộc trung thành của dân.",
+      "Cán bộ làm đày tớ phục vụ lợi ích của dân.",
+      "Cán bộ đứng trên đầu dân làm quan cách mạng.",
+      "Cán bộ phải lắng nghe ý kiến phản hồi từ dân."
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Trong Thư gửi UBND các cấp (10/1945), Bác nêu đúng 6 lầm lỗi: Trái phép, Cậy thế, Hủ hóa, Tư thù, Chia rẽ, Kiêu ngạo.",
-    trickDetails: {
-      whyTrapped: "Học sinh rất dễ nhầm với danh sách 6 bệnh ở đáp án C (Quan liêu, Mệnh lệnh, Bè phái...) vốn là các bệnh trong xây dựng Đảng sau này.",
-      trickWord: "Bẫy 6 lầm lỗi cán bộ trong Thư gửi UBND (10/1945)",
-      citation: "Thư gửi UBND các kỳ, tỉnh, huyện và làng (10/1945) — Hồ Chí Minh.",
-      tip: "6 lầm lỗi 10/1945 = Trái phép, Cậy thế, Hủ hóa, Tư thù, Chia rẽ, Kiêu ngạo."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết lên án thái độ 'làm quan cách mạng, đứng trên đầu dân, cậy quyền cậy thế' ép buộc nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là thái độ quan liêu bị lên án.",
+      "trickWord": "Bẫy phủ định 'Cán bộ đứng trên đầu dân làm quan cách mạng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Cán bộ là công bộc của Dân, KHÔNG làm quan cách mạng."
     }
   },
   {
-    id: "c4-tr2-021",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Để đảm bảo tính nghiêm minh của pháp luật, thái độ của Hồ Chí Minh đối với cán bộ cao cấp vi phạm pháp luật (như vụ án Trần Dụ Châu) là gì?",
-    options: [
-      "Bao che khuyết điểm vì là cán bộ có công với cách mạng.",
-      "Xử lý nghiêm minh theo đúng pháp luật 'pháp luật không tha thứ bất kỳ ai', dù là người có chức vụ cao.",
-      "Chỉ nhắc nhở nội bộ không đưa ra tòa án.",
-      "Cho phép nộp tiền để xóa án phạt."
+    "id": "hcm-c4-tr2-019",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Điền cụm từ còn thiếu vào dặn dò của Bác Hồ: 'Việc gì lợi cho dân, ta phải [...]; Việc gì hại đến dân, ta phải [...]'?",
+    "options": [
+      "hết sức làm; hết sức tránh",
+      "tùy nghi làm; không cần tránh",
+      "làm qua loa; tránh triệt để",
+      "hết sức tránh; hết sức làm"
     ],
-    answer: 1,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác khẳng định pháp luật phải nghiêm minh, 'chặt một cây sâu để cứu cả rừng cây'. Vụ án Trần Dụ Châu bị xử bác đơn xin ân xá là bằng chứng kỷ cương pháp luật.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án A (bao che người có công) là tư tưởng sai lầm bị Bác bác bỏ.",
-      trickWord: "Bẫy tinh thần 'chặt một cây sâu để cứu cả rừng'",
-      citation: "Vụ án Trần Dụ Châu (1950) & Tư tưởng Hồ Chí Minh về Pháp luật.",
-      tip: "Pháp luật nghiêm minh = Không bao che người có công vi phạm."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Câu nói kinh điển của Bác dặn dặn cán bộ chính quyền: 'Việc gì lợi cho dân, ta phải hết sức làm. Việc gì hại đến dân, ta phải hết sức tránh'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các vế gài bẫy từ ngược.",
+      "trickWord": "Bẫy vế sóng đôi 'hết sức làm; hết sức tránh'",
+      "citation": "Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng (10/1945).",
+      "tip": "Ghi nhớ: Lợi cho Dân = Hết sức LÀM; Hại cho Dân = Hết sức TRÁNH."
     }
   },
   {
-    id: "c4-tr2-022",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Nhà nước pháp quyền có hiệu lực pháp lý mạnh mẽ theo Hồ Chí Minh phải là Nhà nước như thế nào về mặt TỔ CHỨC CƠ CẤU?",
-    options: [
-      "Bộ máy quản lý gọn nhẹ, làm việc có hiệu quả, chống cồng kềnh quan liêu.",
-      "Bộ máy phình to tối đa để tạo thêm việc làm cán bộ.",
-      "Bộ máy chia nhỏ thành hàng trăm bộ ngành trùng lặp chức năng.",
-      "Bộ máy không có sự phân công trách nhiệm rõ ràng."
+    "id": "hcm-c4-tr2-020",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Cuộc Tổng tuyển cử bầu Quốc hội khóa I (6/1/1946) có ý nghĩa pháp lý dân chủ gì quan trọng nhất?",
+    "options": [
+      "Lần đầu tiên nhân dân tự do cầm lá phiếu bầu.",
+      "Nhằm làm vừa lòng các nước đế quốc bên ngoài.",
+      "Nhằm thu tiền quỹ bầu cử cho chính phủ.",
+      "Nhằm loại bỏ hoàn toàn các tôn giáo xã hội."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Nhà nước pháp quyền có hiệu lực mạnh phải có bộ máy tinh gọn, hoạt động hiệu lực hiệu quả, chống cồng kềnh lãng phí.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (phình to bộ máy) gây lãng phí quan liêu.",
-      trickWord: "Bẫy tiêu chí bộ máy nhà nước tinh gọn",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.2.a.",
-      tip: "Bộ máy hiệu lực = Tinh gọn, hiệu quả, chống cồng kềnh."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Cuộc Tổng tuyển cử 6/1/1946 thực hiện quyền dân chủ trực tiếp: Lần đầu tiên trong lịch sử, mọi người dân Việt Nam độc lập tự tay cầm lá phiếu thực hiện quyền làm chủ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các lý do ngoại giao hay thu tiền quỹ.",
+      "trickWord": "Bẫy ý nghĩa 'Lần đầu tiên nhân dân tự do cầm lá phiếu bầu'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Ngày 6/1/1946 = Lần đầu tiên dân tự do cầm lá phiếu bầu."
     }
   },
   {
-    id: "c4-tr2-023",
-    trickSet: 2,
-    sectionId: "hcm-c4-state-sec",
-    subsectionId: "nha-nuoc-phap-quyen-sub",
-    question: "Sự kết hợp giữa 'ĐẠO ĐỨC' và 'PHÁP LUẬT' trong quản lý xã hội của Hồ Chí Minh được hiểu như thế nào?",
-    options: [
-      "Đạo đức và Pháp luật bổ sung cho nhau: Pháp luật là đạo đức tối thiểu, Đạo đức là pháp luật tối cao.",
-      "Chỉ cần dùng Đạo đức, không cần đến Pháp luật.",
-      "Chỉ cần dùng Pháp luật trừng phạt nghiêm khắc, không cần giáo dục Đạo đức.",
-      "Đạo đức và Pháp luật hoàn toàn triệt tiêu nhau."
+    "id": "hcm-c4-tr2-021",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về trách nhiệm của Nhà nước đối với đời sống Nhân dân?",
+    "options": [
+      "Nhà nước phải làm cho dân có ăn, có mặc.",
+      "Nhà nước chỉ thu thuế không lo đời sống dân.",
+      "Nhà nước phó mặc đời sống cho tự do kinh tế.",
+      "Nhà nước bắt dân tự lo mọi khoản chi phí."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Hồ Chí Minh chủ trương 'Đức trị' kết hợp với 'Pháp trị' (Đức trị là nền tảng giáo dục, Pháp trị là công cụ nghiêm minh). Cả hai bổ sung hỗ trợ lẫn nhau.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (chỉ dùng đạo đức - tuyệt đối hóa đức trị) hoặc C (chỉ dùng pháp luật - tuyệt đối hóa pháp trị).",
-      trickWord: "Bẫy kết hợp Đức trị và Pháp trị",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.2.a.",
-      tip: "Quản lý xã hội = Kết hợp hài hòa ĐỨC TRỊ và PHÁP TRỊ."
-    }
-  },
-
-  // --- NHÓM 4: VẬN DỤNG TƯ TƯỞNG HCM TRONG GIAI ĐOẠN HIỆN NAY (27 CÂU) ---
-  {
-    id: "c4-tr2-024",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Cảnh báo nào của Hồ Chí Minh về '4 NGUY CƠ' đối với Đảng cầm quyền vẫn còn nguyên giá trị thời sự trong giai đoạn hiện nay?",
-    options: [
-      "Nguy cơ tụt hậu xa hơn về kinh tế; Nguy cơ chệch hướng XHCN; Nguy cơ tham nhũng quan liêu; Nguy cơ 'diễn biến hòa bình'.",
-      "Nguy cơ thiếu nguồn nhân lực lao động phổ thông.",
-      "Nguy cơ dư thừa ngân sách nhà nước.",
-      "Nguy cơ phát triển công nghệ quá nhanh."
-    ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "4 nguy cơ lớn được Đảng ta đúc kết từ cảnh báo của Bác: Tụt hậu kinh tế, Chệch hướng XHCN, Tham nhũng quan liêu, Diễn biến hòa bình.",
-    trickDetails: {
-      whyTrapped: "Bẫy các nguy cơ không nằm trong 4 nguy cơ chiến lược của Đảng.",
-      trickWord: "Bẫy nhận diện '4 nguy cơ' đối với Đảng cầm quyền",
-      citation: "Hội nghị Đại biểu toàn quốc giữa nhiệm kỳ khóa VII (1994) & Tư tưởng HCM.",
-      tip: "4 nguy cơ = Tụt hậu kinh tế + Chệch hướng XHCN + Tham nhũng quan liêu + Diễn biến hòa bình."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh dặn dặn chính quyền: 'Nếu nước độc lập mà dân không hưởng hạnh phúc tự do thì độc lập cũng chẳng có nghĩa lý gì. Dân chỉ biết giá trị của tự do khi dân được ăn no mặc ấm'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D nhà nước phủi trách nhiệm.",
+      "trickWord": "Bẫy trách nhiệm 'làm cho dân có ăn, có mặc, có chỗ ở, học hành'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Độc lập phải đi liền với dân có ăn, mặc, học hành."
     }
   },
   {
-    id: "c4-tr2-025",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Hiện tượng 'TỰ DIỄN BIẾN', 'TỰ CHUYỂN HÓA' trong nội bộ cán bộ đảng viên hiện nay là sự suy thoái ở khía cạnh nào?",
-    options: [
-      "Suy thoái về tư tưởng chính trị, đạo đức, lối sống, dẫn đến tự bẻ gãy bản chất cách mạng từ bên trong.",
-      "Sự suy giảm về thể lực sức khỏe do tuổi tác.",
-      "Sự chuyển đổi công tác từ cơ quan này sang cơ quan khác đúng quy trình.",
-      "Sự chủ động học tập nâng cao trình độ thạc sĩ tiến sĩ."
+    "id": "hcm-c4-tr2-022",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về bản chất của chế độ Dân chủ theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Dân chủ là dân làm chủ và dân là chủ.",
+      "Dân chủ là quyền lực thuộc về nhân dân.",
+      "Dân chủ là muốn làm gì tùy thích vô kỷ luật.",
+      "Dân chủ đi đôi với kỷ cương pháp luật."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "'Tự diễn biến', 'tự chuyển hóa' là sự biến chất từ bên trong nội bộ, làm mất dần lý tưởng Mác-Lênin và tinh thần phục vụ nhân dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C (chuyển đổi công tác) ngụy biện thuật ngữ 'chuyển hóa'.",
-      trickWord: "Bẫy bản chất 'Tự diễn biến, tự chuyển hóa'",
-      citation: "Nghị quyết Trung ương 4 (Khóa XII) về Xây dựng Đảng.",
-      tip: "Tự diễn biến tự chuyển hóa = Suy thoái tư tưởng đạo đức từ bên trong."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Dân chủ không phải là thích làm gì thì làm (dân chủ quá trớn, vô kỷ luật), mà Dân chủ phải đi liền với kỷ cương, pháp luật.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai lầm về dân chủ.",
+      "trickWord": "Bẫy phủ định 'Dân chủ là muốn làm gì tùy thích vô kỷ luật'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Dân chủ KHÔNG PHẢI vô kỷ luật; Dân chủ = Kỷ cương."
     }
   },
   {
-    id: "c4-tr2-026",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Vận dụng tư tưởng Hồ Chí Minh về 'Xây dựng Nhà nước pháp quyền xã hội chủ nghĩa' ở nước ta hiện nay đặt ra yêu cầu trọng tâm nào?",
-    options: [
-      "Xây dựng Nhà nước của nhân dân, do nhân dân, vì nhân dân dưới sự lãnh đạo của Đảng; đẩy mạnh phòng chống tham nhũng tiêu cực không có vùng cấm.",
-      "Tách rời Nhà nước khỏi sự lãnh đạo của Đảng Cộng sản.",
-      "Bỏ qua khâu kiểm soát quyền lực nhà nước.",
-      "Không cần cải cách thủ tục hành chính."
+    "id": "hcm-c4-tr2-023",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Điền cụm từ còn thiếu vào luận điểm của Bác: 'Chế độ ta là chế độ dân chủ, nghĩa là nhân dân làm chủ. Đã làm chủ thì phải có [...]'?",
+    "options": [
+      "phải có nghĩa vụ làm tròn bổn phận",
+      "phải có quyền yêu sách nhà nước chi trả",
+      "phải được miễn mọi khoản thuế phí",
+      "phải không cần tham gia nghĩa vụ quân sự"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Xây dựng Nhà nước pháp quyền XHCN hiện nay đòi hỏi tăng cường sự lãnh đạo của Đảng, đẩy mạnh cải cách tư pháp và phòng chống tham nhũng tiêu cực.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (tách rời lãnh đạo của Đảng) là luận điệu sai trái của các thế lực thù địch.",
-      trickWord: "Bẫy yêu cầu xây dựng Nhà nước pháp quyền XHCN hiện nay",
-      citation: "Nghị quyết Đại hội XIII của Đảng.",
-      tip: "Nhà nước pháp quyền XHCN = Thượng tôn pháp luật + Đảng lãnh đạo + Vì nhân dân."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh gắn liền Quyền lợi và Nghĩa vụ: Đã làm chủ thì nhân dân phải có nghĩa vụ làm tròn bổn phận công dân đối với Tổ quốc.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang các phương án đòi hỏi quyền lợi miễn trừ.",
+      "trickWord": "Bẫy trích dẫn 'phải có nghĩa vụ làm tròn bổn phận'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Quyền làm chủ đi liền với Nghĩa vụ bổn phận."
     }
   },
   {
-    id: "c4-tr2-027",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Công cuộc 'Đốt lò' chống tham nhũng, tiêu cực hiện nay của Đảng ta là sự vận dụng trực tiếp tư tưởng nào của Hồ Chí Minh?",
-    options: [
-      "Tư tưởng quét sạch chủ nghĩa cá nhân, kiên quyết trừng trị giặc nội xâm tham ô lãng phí để giữ gìn Đảng trong sạch.",
-      "Tư tưởng bế quan tỏa cảng không giao lưu kinh tế.",
-      "Tư tưởng tha thứ bỏ qua cho cán bộ có chức vụ cao.",
-      "Tư tưởng ngừng tổ chức tự phê bình và phê bình."
+    "id": "hcm-c4-tr2-024",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-dan-chu-sub",
+    "question": "Phương thức dân chủ nào cho phép Nhân dân trực tiếp phát biểu ý kiến, tham gia đóng góp thảo luận vào Hiến pháp và Luật?",
+    "options": [
+      "Hình thức Dân chủ trực tiếp của dân.",
+      "Hình thức Dân chủ gián tiếp thông qua đại biểu.",
+      "Hình thức Ủy quyền cho chính quyền cấp xã.",
+      "Hình thức Trưng cầu ý kiến của cơ quan tư pháp."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Công tác đấu tranh phòng chống tham nhũng tiêu cực hiện nay thực hiện đúng chỉ dạy của Bác: kiên quyết quét sạch chủ nghĩa cá nhân, xử lý 'không có vùng cấm, không có ngoại lệ'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án C (tha thứ cán bộ cao) trái ngược hoàn toàn với quan điểm 'chặt một cây sâu cứu cả rừng'.",
-      trickWord: "Bẫy vận dụng chống tham nhũng 'không vùng cấm'",
-      citation: "Tư tưởng Hồ Chí Minh & Chỉ đạo của Tổng Bí thư về chống tham nhũng.",
-      tip: "Chống tham nhũng hiện nay = Vận dụng tư tưởng diệt 'Giặc nội xâm' của Bác."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nhân dân trực tiếp thảo luận, góp ý vào các dự thảo Hiến pháp, Luật là biểu hiện trực tiếp của Dân chủ trực tiếp.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm sang Dân chủ gián tiếp.",
+      "trickWord": "Bẫy hình thức 'Dân chủ trực tiếp của dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.2.",
+      "tip": "Ghi nhớ: Trực tiếp thảo luận đóng góp luật = Dân chủ trực tiếp."
     }
   },
   {
-    id: "c4-tr2-028",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Để phòng chống bệnh 'Quan liêu, xa dân' trong giai đoạn hiện nay, cán bộ đảng viên cần thực hiện phong cách làm việc nào theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Phong cách làm việc sâu sát cơ sở, trọng dân, gần dân, hiểu dân, học dân và có trách nhiệm với dân.",
-      "Phong cách ngồi phòng máy lạnh chỉ đạo qua văn bản giấy tờ.",
-      "Phong cách hách dịch cửa quyền khi tiếp dân.",
-      "Phong cách hứa hẹn nhưng không thực hiện."
+    "id": "hcm-c4-tr2-025",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT tư tưởng Hồ Chí Minh về tính thần Thượng tôn pháp luật?",
+    "options": [
+      "Pháp luật chỉ áp dụng cho người dân thường.",
+      "Pháp luật quản lý xã hội, mọi người bình đẳng.",
+      "Cán bộ cấp cao được đứng trên pháp luật.",
+      "Pháp luật chỉ mang tính chất tham khảo."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ yêu cầu tác phong cán bộ phải: 'Trọng dân, gần dân, hiểu dân, học dân và có trách nhiệm với dân', chống quan liêu giấy tờ.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (ngồi phòng máy lạnh chỉ đạo giấy tờ) chính là căn bệnh quan liêu hiện đại.",
-      trickWord: "Bẫy phong cách làm việc 'Trọng dân, gần dân'",
-      citation: "Chỉ thị 05-CT/TW của Bộ Chính trị về Học tập tư tưởng Hồ Chí Minh.",
-      tip: "Phong cách cán bộ = Trọng dân, gần dân, hiểu dân, học dân, có trách nhiệm với dân."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tư tưởng thượng tôn pháp luật: Pháp luật là công cụ quản lý xã hội, mọi công dân và cán bộ đều bình đẳng trước pháp luật, không ai có quyền đứng trên pháp luật.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm A/C có ngoại lệ đứng trên pháp luật.",
+      "trickWord": "Bẫy tư tưởng 'Pháp luật quản lý xã hội, mọi người bình đẳng'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Thượng tôn pháp luật = Mọi người bình đẳng trước luật."
     }
   },
   {
-    id: "c4-tr2-029",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Vận dụng nguyên tắc 'Tập trung dân chủ' trong điều kiện Đảng cầm quyền hiện nay cần chống lại hai biểu hiện sai lệch nào?",
-    options: [
-      "Một là Dân chủ vô tổ chức (dân chủ vô chính phủ); Hai là Tập trung quan liêu (độc đoán chuyên quyền).",
-      "Một là Cần kiệm; Hai là Liêm chính.",
-      "Một là Trung thành; Hai là Sáng tạo.",
-      "Một là Tự phê bình; Hai là Phê bình."
+    "id": "hcm-c4-tr2-026",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Nhận định nào dưới đây KHÔNG ĐÚNG khi nói về sự kết hợp giữa 'Pháp trị' và 'Đức trị' trong xây dựng Nhà nước?",
+    "options": [
+      "Kết hợp giữa quản lý bằng luật và đạo đức.",
+      "Pháp luật nghiêm minh gắn với giáo dục đạo đức.",
+      "Chỉ cần dùng pháp luật không cần giáo dục đức.",
+      "Đạo đức làm nền tảng cho pháp luật thực thi."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Vi phạm tập trung dân chủ dẫn đến 2 cực sai lệch: Dân chủ vô tổ chức (coi thường kỷ luật) hoặc Tập trung quan liêu (độc đoán chuyên quyền).",
-    trickDetails: {
-      whyTrapped: "Bẫy 2 biểu hiện sai lệch của nguyên tắc tập trung dân chủ.",
-      trickWord: "Bẫy 2 cực sai lệch (Dân chủ vô chính phủ & Tập trung quan liêu)",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b & Vận dụng.",
-      tip: "Cần chống: Dân chủ vô tổ chức & Tập trung quan liêu độc đoán."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chủ trương kết nạp 'Pháp trị' (thượng tôn pháp luật) kết hợp chặt chẽ với 'Đức trị' (giáo dục đạo đức cách mạng), không bao giờ 'chỉ dùng pháp luật bỏ qua đạo đức'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là khẳng định phiến diện sai lầm.",
+      "trickWord": "Bẫy phủ định 'Chỉ cần dùng pháp luật không cần giáo dục đức'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Nhà nước pháp quyền Bác Hồ = Pháp trị + Đức trị."
     }
   },
   {
-    id: "c4-tr2-030",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Theo tư tưởng Hồ Chí Minh, việc 'Cải cách thủ tục hành chính' hiện nay nhằm mục đích cốt lõi gì?",
-    options: [
-      "Giảm phiền hà cho nhân dân, phục vụ nhân dân tốt hơn, xây dựng chính quyền hiệu lực hiệu quả.",
-      "Tạo thêm các giấy phép con để thu phí hành chính.",
-      "Kéo dài thời gian giải quyết hồ sơ của người dân.",
-      "Cắt giảm hoàn toàn quyền bãi miễn của cử trí."
+    "id": "hcm-c4-tr2-027",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Điền cụm từ còn thiếu vào tập Yêu cầu của nhân dân An Nam (1919) do Nguyễn Ái Quốc gửi tới Hội nghị Véc-xây: 'Trăm điều hãy bàn năng thực hiện / [...] kỳ tà thay [...]'?",
+    "options": [
+      "Pháp luật kỳ tà thay pháp luật",
+      "Chính sách kỳ tà thay chính sách",
+      "Kỷ luật kỳ tà thay kỷ luật",
+      "Sắc lệnh kỳ tà thay sắc lệnh"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Cải cách hành chính là để phục vụ nhân dân, loại bỏ hành vi nhũng nhiễu, xây dựng Nhà nước vì dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy các hành vi tạo giấy phép con gây phiền hà ở đáp án B.",
-      trickWord: "Bẫy mục đích của cải cách hành chính",
-      citation: "Tư tưởng Hồ Chí Minh về Nhà nước vì dân.",
-      tip: "Cải cách hành chính = Giảm phiền hà, phục vụ nhân dân tốt hơn."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hai câu thơ kinh điển trong Bản Yêu cầu ca (1919) thể hiện tư tưởng lập hiến và pháp trị từ rất sớm: 'Trăm điều hãy bàn năng thực hiện / Pháp luật kỳ tà thay pháp luật'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các từ chính sách hay sắc lệnh.",
+      "trickWord": "Bẫy trích dẫn 'Pháp luật kỳ tà thay pháp luật'",
+      "citation": "Tác phẩm Yêu cầu của nhân dân An Nam (1919) — Nguyễn Ái Quốc.",
+      "tip": "Ghi nhớ bài Yêu cầu ca 1919: 'Pháp luật kỳ tà thay pháp luật'."
     }
   },
   {
-    id: "c4-tr2-031",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Nội dung nào dưới đây phản ánh ĐÚNG quan điểm của Hồ Chí Minh về việc kết nạp đảng viên mới?",
-    options: [
-      "Coi trọng CHẤT LƯỢNG đảng viên, không chạy theo số lượng tràn lan, chỉ kết nạp những người thực sự ưu tú hăng hái.",
-      "Chỉ cần đạt chỉ tiêu số lượng giao cho chi bộ mà không cần thẩm tra đạo đức.",
-      "Ưu tiên kết nạp những người giàu có để tranh thủ tài chính.",
-      "Kết nạp tất cả những ai có đơn đăng ký mà không qua thử thách."
+    "id": "hcm-c4-tr2-028",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Bản Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa do Hồ Chí Minh làm Trưởng ban soạn thảo được Quốc hội thông qua vào năm nào?",
+    "options": [
+      "Bản Hiến pháp năm 1945.",
+      "Bản Hiến pháp tháng 11/1946.",
+      "Bản Hiến pháp năm 1959.",
+      "Bản Hiến pháp năm 1980."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy công tác phát triển Đảng phải 'trọng chất lượng hơn số lượng'. Thà ít mà tốt còn hơn nhiều mà nháo nhác.",
-    trickDetails: {
-      whyTrapped: "Bẫy thói chạy theo chỉ tiêu số lượng thuần túy ở đáp án B.",
-      trickWord: "Bẫy quan điểm kết nạp 'trọng chất lượng hơn số lượng'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.",
-      tip: "Kết nạp Đảng = TRỌNG CHẤT LƯỢNG HƠN SỐ LƯỢNG."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hiến pháp 1946 (thông qua ngày 9/11/1946) là bản Hiến pháp đầu tiên của nước ta, đặt nền móng pháp lý dân chủ cho Nhà nước Việt Nam.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm với năm 1945 hoặc Hiến pháp 1959.",
+      "trickWord": "Bẫy mốc lịch sử 'Hiến pháp tháng 11/1946'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Hiến pháp đầu tiên của nước ta = Tháng 11/1946."
     }
   },
   {
-    id: "c4-tr2-032",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Ý nghĩa của việc học tập và làm theo 'Tư tưởng, đạo đức, phong cách Hồ Chí Minh' đối với cán bộ hiện nay là gì?",
-    options: [
-      "Là giải pháp hàng đầu để ngăn chặn sự suy thoái đạo đức, xây dựng Đảng và Nhà nước trong sạch vững mạnh.",
-      "Chỉ là phong trào mang tính hình thức phát động cho vui.",
-      "Chỉ dành riêng cho cán bộ lý luận nghiên cứu không liên quan đến đời sống.",
-      "Thay thế cho việc học tập chuyên môn nghiệp vụ."
+    "id": "hcm-c4-tr2-029",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về tính chất của Pháp luật dưới chế độ ta theo Hồ Chí Minh?",
+    "options": [
+      "Pháp luật là công cụ bảo vệ quyền lợi dân.",
+      "Pháp luật là công cụ áp bức nhân dân.",
+      "Pháp luật chỉ phục vụ tầng lớp quan lại.",
+      "Pháp luật được ban hành ngẫu nhiên."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Học tập và làm theo Bác là giải pháp căn cơ lâu dài để tu dưỡng đạo đức, đẩy lùi suy thoái trong Đảng và bộ máy nhà nước.",
-    trickDetails: {
-      whyTrapped: "Bẫy hạ thấp ý nghĩa thành phong trào hình thức ở đáp án B.",
-      trickWord: "Bẫy ý nghĩa thực tiễn học tập tư tưởng Bác",
-      citation: "Chỉ thị 05-CT/TW của Bộ Chính trị.",
-      tip: "Học tập làm theo Bác = Giải pháp căn cơ xây dựng Đảng trong sạch."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Pháp luật dưới chế độ ta mang bản chất nhân văn: Vừa là công cụ quản lý xã hội nghiêm minh, vừa là công cụ bảo vệ quyền tự do dân chủ của Nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm pháp luật là công cụ áp bức như chế độ cũ.",
+      "trickWord": "Bẫy bản chất 'công cụ bảo vệ quyền lợi dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Pháp luật ta = Bảo vệ quyền lợi Dân & Trừng trị vi phạm."
     }
   },
   {
-    id: "c4-tr2-033",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Vận dụng tư tưởng Hồ Chí Minh về 'Đoàn kết nhất trí trong Đảng' hiện nay yêu cầu cán bộ phải làm gì?",
-    options: [
-      "Kiên quyết chống phe phái, bè cánh, cục bộ địa phương; giữ gìn đoàn kết trên cơ sở đường lối của Đảng.",
-      "Thỏa hiệp gật đầu với các hành vi sai trái để giữ hòa khí bề ngoài.",
-      "Thành lập các nhóm lợi ích riêng trong cơ quan để tranh giành ghế lãnh đạo.",
-      "Nói xấu sau lưng đồng chí trong chi bộ."
+    "id": "hcm-c4-tr2-030",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về việc thực thi pháp luật của cán bộ công chức nhà nước?",
+    "options": [
+      "Cán bộ phải gương mẫu chấp hành pháp luật.",
+      "Cán bộ vi phạm bị xử lý theo đúng luật.",
+      "Cán bộ có quyền tự miễn trừ xử lý vi phạm.",
+      "Cán bộ không được đứng trên pháp luật."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đoàn kết chân chính phải chống bè phái cục bộ nhóm lợi ích, không phải đoàn kết bằng thỏa hiệp bằng mặt không bằng lòng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (thỏa hiệp giữ hòa khí bằng mặt không bằng lòng - đoàn kết bằng mặt).",
-      trickWord: "Bẫy đoàn kết chân chính chống bè phái nhóm lợi ích",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.b.",
-      tip: "Đoàn kết chân chính = Chống bè phái, cục bộ, nhóm lợi ích."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Mọi cán bộ vi phạm pháp luật đều phải bị xử lý nghiêm minh trước pháp luật, 'bất kỳ ai vi phạm đều bị trừng trị', tuyệt đối không có quyền tự miễn trừ.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là tư tưởng特quyền sai trái.",
+      "trickWord": "Bẫy phủ định 'Cán bộ có quyền tự miễn trừ xử lý vi phạm'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Không ai có quyền đứng trên pháp luật hay tự miễn trừ."
     }
   },
   {
-    id: "c4-tr2-034",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Trong tư tưởng Hồ Chí Minh, yếu tố nào là 'CÁI GỐC' của công tác cán bộ?",
-    options: [
-      "Đạo đức cách mạng.",
-      "Bằng cấp lý luận cao.",
-      "Gia thế xuất thân giàu có.",
-      "Khả năng khéo nói nịnh hót cấp trên."
+    "id": "hcm-c4-tr2-031",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Điền cụm từ còn thiếu vào khẳng định của Bác Hồ: 'Pháp luật phải nghiêm minh, công bằng, không phân biệt [...]'?",
+    "options": [
+      "không phân biệt giàu nghèo sang hèn địa vị",
+      "không phân biệt người trong hay ngoài đảng",
+      "không phân biệt nam hay nữ độ tuổi",
+      "không phân biệt thâm niên hay chức vụ"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ khẳng định: 'Cán bộ là cái gốc của mọi công việc' và 'Đạo đức là cái gốc của người cách mạng'.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện lấy bằng cấp hay gia thế làm gốc ở B, C.",
-      trickWord: "Bẫy 'Đạo đức là cái gốc của người cách mạng'",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Gốc của mọi công việc = Cán bộ; Gốc của cán bộ = ĐẠO ĐỨC CÁCH MẠNG."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh đòi hỏi tính công bằng tuyệt đối của pháp luật: 'Pháp luật phải nghiêm minh, công bằng, không phân biệt giàu nghèo, sang hèn, địa vị xã hội'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các phương án gài từ khác.",
+      "trickWord": "Bẫy trích dẫn 'không phân biệt giàu nghèo sang hèn địa vị'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Pháp luật nghiêm minh = Không phân biệt giàu nghèo sang hèn."
     }
   },
   {
-    id: "c4-tr2-035",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Hồ Chí Minh đưa ra tiêu chuẩn đánh giá cán bộ như thế nào để tránh tình trạng 'dùng người theo cảm tình cá nhân'?",
-    options: [
-      "Phải căn cứ vào kết quả công việc thực tế, sự tin yêu của quần chúng và phẩm chất đạo đức lối sống.",
-      "Căn cứ vào việc cán bộ đó có phải là người thân dòng họ với mình không.",
-      "Căn cứ vào những lời hứa hẹn trên giấy tờ.",
-      "Căn cứ vào sự biếu xót quà cáp."
+    "id": "hcm-c4-tr2-032",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Chủ tịch Hồ Chí Minh đã ký sắc lệnh xử tử vụ án tham ô quân nhu nổi tiếng nào năm 1950 để giữ vững tính nghiêm minh của pháp luật?",
+    "options": [
+      "Vụ án Trần Dụ Châu (1950).",
+      "Vụ án Nguyễn Văn Tráp.",
+      "Vụ án Hoàng Quốc Việt.",
+      "Vụ án Lê Hồng Phong."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đánh giá cán bộ phải khách quan, căn cứ vào sản phẩm hiệu quả công việc thực tế và uy tín trước quần chúng.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D phản ánh căn bệnh 'thân quen, quà cáp' bị Bác nghiêm cấm.",
-      trickWord: "Bẫy tiêu chí đánh giá cán bộ khách quan",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục I.2.",
-      tip: "Đánh giá cán bộ = Hiệu quả công việc + Đạo đức + Uy tín với dân."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Năm 1950, Bác Hồ đã đau lòng ký sắc lệnh bác đơn xin ân giảm án tử hình đối với Trần Dụ Châu (Cục trưởng Cục Quân nhu) vì tội tham ô tài sản quân đội, giữ nghiêm phép nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm tên nhân vật xử án nổi tiếng.",
+      "trickWord": "Bẫy nhân diện vụ án 'Trần Dụ Châu (1950)'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Xử nghiêm tham ô 1950 = Vụ án Trần Dụ Châu."
     }
   },
   {
-    id: "c4-tr2-036",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Chủ trương 'Công khai, minh bạch' trong hoạt động của cơ quan nhà nước hiện nay là vận dụng tư tưởng nào của Bác?",
-    options: [
-      "Tư tưởng 'Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng'.",
-      "Tư tưởng giữ bí mật mọi hoạt động ngân sách đối với nhân dân.",
-      "Tư tưởng hạn chế quyền tiếp cận thông tin của cử tri.",
-      "Tư tưởng giao toàn quyền cho doanh nghiệp tư nhân."
+    "id": "hcm-c4-tr2-033",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Giáo dục pháp luật theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Chỉ cần ban hành luật không cần tuyên truyền.",
+      "Nâng cao ý thức tôn trọng pháp luật cho dân.",
+      "Giáo dục luật chỉ áp dụng cho học sinh.",
+      "Giáo dục luật để đe dọa trừng phạt dân."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Công khai minh bạch chính là để thực hiện phương châm: Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (giữ bí mật ngân sách) gây tham nhũng quan liêu.",
-      trickWord: "Bẫy phương châm 'Dân biết, dân bàn, dân làm, dân kiểm tra...'",
-      citation: "Văn kiện Đại hội XIII của Đảng.",
-      tip: "Công khai minh bạch = Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chú trọng công tác tuyên truyền, giáo dục pháp luật để 'làm cho dân hiểu luật, biết luật và tự giác chấp hành pháp luật'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm A (không tuyên truyền) hoặc D (đe dọa).",
+      "trickWord": "Bẫy vai trò 'Nâng cao ý thức tôn trọng pháp luật cho dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Giáo dục pháp luật = Nâng cao ý thức tự giác chấp hành."
     }
   },
   {
-    id: "c4-tr2-037",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Nhận định nào dưới đây ĐÚNG khi nói về quyền lực nhà nước theo tư tưởng Hồ Chí Minh?",
-    options: [
-      "Quyền lực nhà nước là do nhân dân ủy quyền, cán bộ chỉ là người được nhân dân giao phó công việc.",
-      "Quyền lực nhà nước là tài sản tư hữu cá nhân của cán bộ lãnh đạo.",
-      "Quyền lực nhà nước ban phát từ trên trời xuống.",
-      "Quyền lực nhà nước thuộc về các tập đoàn tài chính lớn."
+    "id": "hcm-c4-tr2-034",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về yêu cầu đối với đội ngũ cán bộ ngành Tư pháp (Tòa án, Viện kiểm sát) theo Bác Hồ?",
+    "options": [
+      "Phải phụng công, thủ pháp, chí công vô tư.",
+      "Phải bẻ cong nét chữ vì lợi ích cá nhân.",
+      "Phải công tâm, khách quan, chính trực.",
+      "Phải gần dân, hiểu dân, giúp dân, học dân."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác khẳng định quyền lực nhà nước là quyền lực của nhân dân ủy quyền cho cán bộ thay mặt điều hành.",
-    trickDetails: {
-      whyTrapped: "Bẫy ngụy biện xem quyền lực là 'tài sản tư hữu' ở đáp án B.",
-      trickWord: "Bẫy bản chất ủy quyền của Quyền lực nhà nước",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.1.",
-      tip: "Quyền lực nhà nước = Do Nhân dân ủy quyền."
+    "answer": 1,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh dặn dặn ngành Tư pháp 8 chữ vàng: 'Phụng công, thủ pháp, chí công vô tư', kiên quyết chống bẻ cong pháp luật.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn B vì B là hành vi tiêu cực bị nghiêm cấm.",
+      "trickWord": "Bẫy phủ định 'Phải bẻ cong nét chữ vì lợi ích cá nhân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ dặn dặn Ngành Tư pháp: 'Phụng công, thủ pháp, chí công vô tư'."
     }
   },
   {
-    id: "c4-tr2-038",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Tại sao Hồ Chí Minh lại yêu cầu phải kiên quyết chống 'Bệnh bè phái, cục bộ' trong tổ chức Đảng?",
-    options: [
-      "Vì bệnh bè phái chia rẽ nội bộ, làm suy yếu sức chiến đấu của Đảng, dẫn đến nguy cơ tan rã Đảng.",
-      "Vì bệnh bè phái làm cho chi bộ hoạt động quá vui vẻ.",
-      "Vì bệnh bè phái giúp cán bộ đoàn kết hơn.",
-      "Vì bệnh bè phái là nguyên tắc bắt buộc trong Đảng."
+    "id": "hcm-c4-tr2-035",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Điền cụm từ còn thiếu vào dặn dặn của Bác với ngành Tư pháp: 'Phụng công, thủ pháp, [...]'?",
+    "options": [
+      "chí công vô tư",
+      "kiên cường dũng cảm",
+      "trung thành tuyệt đối",
+      "nghiêm minh tự giác"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bè phái cục bộ kéo cánh gây mất đoàn kết nội bộ, làm suy yếu sức mạnh và gây mất niềm tin nơi nhân dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B, C ngụy biện bệnh bè phái là 'vui vẻ/đoàn kết'.",
-      trickWord: "Bẫy nguy hại của bệnh Bè phái cục bộ",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Bè phái cục bộ = Phá hoại sự đoàn kết, làm suy yếu Đảng."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Văn bản dặn dặn chính thức cho ngành Tư pháp: 'Phụng công, thủ pháp, chí công vô tư' (Phụng sự công lý, giữ vững pháp luật, chí công vô tư).",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các phương án gài từ khác.",
+      "trickWord": "Bẫy trích dẫn 'chí công vô tư'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ bộ 8 chữ Tư pháp: Phụng công - Thủ pháp - Chí công vô tư."
     }
   },
   {
-    id: "c4-tr2-039",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Hồ Chí Minh chỉ rõ tác hại của bệnh 'Lãng phí' so với bệnh 'Tham ô' như thế nào?",
-    options: [
-      "Lãng phí tuy không bỏ túi riêng nhưng tác hại đối với ngân sách nhà nước và xã hội đôi khi còn lớn hơn cả tham ô.",
-      "Lãng phí là hành vi hoàn toàn vô hại không cần lên án.",
-      "Tham ô nguy hiểm hơn lãng phí gấp 100 lần.",
-      "Lãng phí được Nhà nước khuyến khích trong chi tiêu công."
+    "id": "hcm-c4-tr2-036",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-phap-quyen-sub",
+    "question": "Mối quan hệ giữa Đạo đức và Pháp luật trong Nhà nước pháp quyền theo tư tưởng Hồ Chí Minh được hiểu như thế nào?",
+    "options": [
+      "Đạo đức và Pháp luật hỗ trợ bổ sung cho nhau.",
+      "Đạo đức triệt tiêu hoàn toàn vai trò của Luật.",
+      "Pháp luật thay thế hoàn toàn vai trò Đạo đức.",
+      "Đạo đức và Pháp luật luôn luôn xung đột nhau."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác chỉ rõ lãng phí sức lao động, thời gian, của công tuy không bỏ túi cá nhân nhưng gây thiệt hại vô cùng to lớn cho nhân dân và nhà nước.",
-    trickDetails: {
-      whyTrapped: "Học sinh hay coi nhẹ bệnh lãng phí so với tham ô (đáp án B, C). Bác Hồ coi Lãng phí cũng nguy hại như Tham ô.",
-      trickWord: "Bẫy so sánh tác hại của Lãng phí và Tham ô",
-      citation: "Tác phẩm 'Chống gian ô, lãng phí và bệnh quan liêu' (1952).",
-      tip: "Lãng phí = Tác hại vô cùng to lớn, nguy hại như Tham ô."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Đạo đức và Pháp luật là hai công cụ kết hợp bổ trợ cho nhau: Pháp luật là Đạo đức tối thiểu, Đạo đức là Pháp luật tối cao.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C phủ định 1 vế hoặc D xung đột.",
+      "trickWord": "Bẫy mối quan hệ 'hỗ trợ bổ sung cho nhau'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.3.",
+      "tip": "Ghi nhớ: Đạo đức + Pháp luật = Bổ trợ hỗ trợ lẫn nhau."
     }
   },
   {
-    id: "c4-tr2-040",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Theo Hồ Chí Minh, khi cán bộ mắc phải khuyết điểm thì thái độ ứng xử của tổ chức Đảng đối với cán bộ đó nên như thế nào?",
-    options: [
-      "Trị bệnh cứu người: Giúp đỡ họ nhận rõ sai lầm để sửa chữa tiến bộ, chỉ vùi dập vứt bỏ khi họ kiên quyết không chịu sửa.",
-      "Lập tức vùi dập khai trừ ngay không cho cơ hội sửa chữa.",
-      "Bao che hoàn toàn không xử lý kỷ luật.",
-      "Đẩy cán bộ đó sang làm lãnh đạo ở cơ quan khác."
+    "id": "hcm-c4-tr2-037",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Khẳng định nào dưới đây phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về 3 căn bệnh 'giặc nội xâm' bị Hồ Chí Minh nghiêm trị?",
+    "options": [
+      "Bệnh Tham ô, Lãng phí và Quan liêu.",
+      "Bệnh Kiêu ngạo, Thất học và Nghèo đói.",
+      "Bệnh Lười biếng, Nhút nhát và Ba hoa.",
+      "Bệnh Thiếu hụt tài chính và Ngân sách."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác dạy thái độ đối với cán bộ mắc khuyết điểm là 'trị bệnh cứu người', giúp đỡ họ sửa chữa, trừ trường hợp ngoan cố hủ hóa.",
-    trickDetails: {
-      whyTrapped: "Bẫy thái độ 'vùi dập vứt bỏ ngay' ở đáp án B hoặc 'bao che' ở C.",
-      trickWord: "Bẫy phương châm 'Trị bệnh cứu người'",
-      citation: "Tác phẩm 'Sửa đổi lối làm việc' (1947).",
-      tip: "Thái độ với khuyết điểm cán bộ = 'Trị bệnh cứu người'."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh gọi Tham ô, Lãng phí, Quan liêu là 3 căn bệnh 'giặc nội xâm' nguy hiểm từ bên trong tàn phá bộ máy nhà nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các nhóm căn bệnh khác.",
+      "trickWord": "Bẫy bộ ba giặc nội xâm 'Tham ô, Lãng phí, Quan liêu'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ 3 giặc nội xâm: Tham ô + Lãng phí + Quan liêu."
     }
   },
   {
-    id: "c4-tr2-041",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Quan điểm 'Lấy dân làm gốc' trong tư tưởng Hồ Chí Minh xuất phát từ sự kế thừa và phát triển bài học lịch sử nào?",
-    options: [
-      "Bài học truyền thống 'Chở thuyền là dân, lật thuyền cũng là dân' của lịch sử dân tộc Việt Nam.",
-      "Lý thuyết quân chủ chuyên chế của triều đại phong kiến Trung Hoa.",
-      "Chủ nghĩa cá nhân tư bản phương Tây.",
-      "Quan điểm phi giai cấp của các nhà xã hội chủ nghĩa không tưởng."
+    "id": "hcm-c4-tr2-038",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG khi giải thích nguyên nhân sinh ra bệnh Quan liêu trong bộ máy nhà nước?",
+    "options": [
+      "Do cán bộ xa rời thực tế đời sống nhân dân.",
+      "Do cán bộ mắc bệnh chủ nghĩa cá nhân hách dịch.",
+      "Do cán bộ lắng nghe và gần gũi nhân dân.",
+      "Do thiếu kiểm tra giám sát hoạt động cấp dưới."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ kế thừa bài học lịch sử dân tộc 'Dễ trăm lần không dân cũng chịu, khó vạn lần dân liệu cũng xong' và tư tưởng Nguyễn Trãi 'Chở thuyền là dân, lật thuyền cũng là dân'.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (quân chủ chuyên chế) hoặc C (chủ nghĩa cá nhân).",
-      trickWord: "Bẫy nguồn gốc truyền thống 'Lấy dân làm gốc'",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh.",
-      tip: "Lấy dân làm gốc = Kế thừa bài học 'Chở thuyền là dân, lật thuyền cũng là dân'."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Lắng nghe và gần gũi nhân dân là giải pháp tiêu diệt bệnh quan liêu, chứ không bao giờ là 'nguyên nhân sinh ra quan liêu'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là giải pháp khắc phục đúng đắn.",
+      "trickWord": "Bẫy phủ định 'Do cán bộ lắng nghe và gần gũi nhân dân'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Xa dân = Quan liêu. Gần dân = Tiệt trừ quan liêu."
     }
   },
   {
-    id: "c4-tr2-042",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Điều kiện để một văn bản luật có 'HIỆU LỰC PHÁP LÝ THỰC THÁI' theo tư tưởng Nhà nước pháp quyền Hồ Chí Minh là gì?",
-    options: [
-      "Văn bản luật phải thể hiện đúng nguyện vọng ý chí của nhân dân, phù hợp với thực tiễn và được tổ chức thi hành nghiêm minh.",
-      "Văn bản luật chỉ cần copy nguyên văn từ luật nước ngoài.",
-      "Văn bản luật được ban hành bí mật không công bố cho dân biết.",
-      "Văn bản luật chỉ áp dụng cho người nghèo."
+    "id": "hcm-c4-tr2-039",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Điền cụm từ còn thiếu vào nhận định của Bác: 'Quan liêu là gốc sinh ra [...]'?",
+    "options": [
+      "gốc sinh ra tham ô và lãng phí",
+      "gốc sinh ra nghèo đói dốt nát",
+      "gốc sinh ra mất đoàn kết nội bộ",
+      "gốc sinh ra lười biếng lao động"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Luật pháp dân chủ phải phản ánh đúng ý chí nguyện vọng của dân và phải được đưa vào thực tiễn thi hành nghiêm minh.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (copy nguyên văn luật nước ngoài - bệnh giáo điều pháp lý).",
-      trickWord: "Bẫy tính thực tiễn và dân chủ của Pháp luật",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Mục II.2.a.",
-      tip: "Luật pháp có hiệu lực = Phản ánh ý chí của dân + Thi hành nghiêm minh."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chỉ rõ: Bệnh quan liêu là nguồn gốc, là môi trường dung dưỡng sinh ra bệnh tham ô và lãng phí.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các căn bệnh khác.",
+      "trickWord": "Bẫy trích dẫn 'gốc sinh ra tham ô và lãng phí'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Quan liêu = Ngọn nguồn sinh ra Tham ô & Lãng phí."
     }
   },
   {
-    id: "c4-tr2-043",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Tại sao Hồ Chí Minh đặc biệt chú trọng việc 'Xây dựng đội ngũ cán bộ, công chức vừa có TÀI vừa có ĐỨC'?",
-    options: [
-      "Vì có Tài mà không có Đức thì là người vô dụng; có Đức mà không có Tài thì làm việc gì cũng khó.",
-      "Vì chỉ cần có Tài là đủ, không cần Đạo đức.",
-      "Vì chỉ cần có Đức là đủ, không cần học tập kiến thức Chuyên môn.",
-      "Vì có Tài có Đức sẽ giúp cán bộ làm giàu riêng nhanh hơn."
+    "id": "hcm-c4-tr2-040",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Tác phẩm 'Thư gửi Ủy ban nhân dân các kỳ, tỉnh, huyện và làng' (10/1945) được Bác viết nhằm phê bình những căn bệnh nào của cán bộ?",
+    "options": [
+      "Bệnh trái phép, cậy thế, hủ hóa, tư túng.",
+      "Bệnh thiếu hụt ngân sách tài chính địa phương.",
+      "Bệnh không chịu đi học chữ Quốc ngữ.",
+      "Bệnh quá tin tưởng vào các tôn giáo xã hội."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác Hồ dạy câu nói bất hủ: 'Có tài mà không có đức là người vô dụng. Có đức mà không có tài thì làm việc gì cũng khó'. Tài và Đức phải gắn liền.",
-    trickDetails: {
-      whyTrapped: "Học sinh hay bị lừa ở đáp án B (tuyệt đối hóa Tài) hoặc C (tuyệt đối hóa Đức). Bác Hồ yêu cầu VỪA CÓ TÀI VỪA CÓ ĐỨC.",
-      trickWord: "Bẫy mối quan hệ giữa TÀI và ĐỨC",
-      citation: "Bài nói của Hồ Chí Minh với học sinh sinh viên.",
-      tip: "Có Tài không Đức = Vô dụng; Có Đức không Tài = Làm việc gì cũng khó."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tháng 10/1945, Bác viết thư phê bình 6 căn bệnh của cán bộ chính quyền non trẻ: Trái phép, Cậy thế, Hủ hóa, Tư túng, Chia rẽ, Kiêu ngạo.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm tên các căn bệnh không có trong văn bản 1945.",
+      "trickWord": "Bẫy tên các căn bệnh 'Trái phép, cậy thế, hủ hóa, tư túng'",
+      "citation": "Thư gửi UBND các kỳ, tỉnh, huyện và làng (10/1945).",
+      "tip": "Ghi nhớ Thư 10/1945: Phê bình Trái phép, Cậy thế, Hủ hóa, Tư túng."
     }
   },
   {
-    id: "c4-tr2-044",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Phương châm 'Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng' hiện nay là sự phát triển trực tiếp tư tưởng nào của Bác?",
-    options: [
-      "Tư tưởng về Dân chủ và Phát huy quyền làm chủ thực tế của nhân dân.",
-      "Tư tưởng về tập trung quyền lực cho cá nhân người đứng đầu.",
-      "Tư tưởng bế quan tỏa cảng.",
-      "Tư tưởng thương mại hóa bộ máy hành chính."
+    "id": "hcm-c4-tr2-041",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Công tác kiểm tra, giám sát đối với chống tham nhũng?",
+    "options": [
+      "Kiểm tra khéo thì việc gì cũng thành công.",
+      "Kiểm tra chỉ làm cản trở tiến độ công việc.",
+      "Kiểm tra chỉ áp dụng khi có đơn thư tố cáo.",
+      "Kiểm tra là công việc riêng của ngành công an."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Phương châm này mở rộng các khía cạnh dân chủ trực tiếp và dân chủ đại diện, giúp dân thụ hưởng thành quả cách mạng.",
-    trickDetails: {
-      whyTrapped: "Bẫy tập trung quyền lực cá nhân ở đáp án B.",
-      trickWord: "Bẫy phát huy Dân chủ thực tế",
-      citation: "Văn kiện Đại hội XIII của Đảng.",
-      tip: "Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng = Dân chủ thực tế."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh nhấn mạnh: 'Muốn chống tham ô lãng phí quan liêu phải kiểm tra. Kiểm tra khéo thì việc gì cũng thành công. Kiểm tra xoàng thì việc gì cũng thất bại'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B (cản trở) hoặc C/D hạn chế phạm vi.",
+      "trickWord": "Bẫy trích dẫn 'Kiểm tra khéo thì việc gì cũng thành công'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Kiểm tra khéo = Việc gì cũng thành công."
     }
   },
   {
-    id: "c4-tr2-045",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Hồ Chí Minh chỉ rõ tác hại của bệnh 'BẢO THỦ, RẬP KHUÔN' trong công tác xây dựng bộ máy nhà nước là gì?",
-    options: [
-      "Làm cho bộ máy xơ cứng, trì trệ, không theo kịp sự phát triển của thực tiễn, cản trở sự đổi mới.",
-      "Giúp bộ máy phát triển nhanh chóng vượt bậc.",
-      "Làm cho nhân dân giàu có hơn.",
-      "Tăng cường sự sáng tạo của cán bộ."
+    "id": "hcm-c4-tr2-042",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về biện pháp chống giặc nội xâm theo tư tưởng Hồ Chí Minh?",
+    "options": [
+      "Phải kết hợp giáo dục đạo đức với xử lý nghiêm.",
+      "Phải phát huy vai trò giám sát của quần chúng.",
+      "Phải bao che giấu giếm cho cán bộ có công.",
+      "Phải thực hiện công khai minh bạch tài chính."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bảo thủ rập khuôn triệt tiêu sự sáng tạo, làm bộ máy trì trệ không đáp ứng được yêu cầu của thực tiễn cách mạng.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B, C, D ngụy biện thói bảo thủ rập khuôn.",
-      trickWord: "Bẫy tác hại của bệnh Bảo thủ rập khuôn",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh.",
-      tip: "Bảo thủ rập khuôn = Bộ máy xơ cứng trì trệ, cản trở đổi mới."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh kiên quyết không bao che cho bất kỳ ai vi phạm, dù cán bộ đó có công trạng lớn đến đâu cũng phải xử lý nghiêm minh để giữ phép nước.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định bao che sai trái.",
+      "trickWord": "Bẫy phủ định 'Phải bao che giấu giếm cho cán bộ có công'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Có công khen thưởng, Có tội xử nghiêm, KHÔNG bao che."
     }
   },
   {
-    id: "c4-tr2-046",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Tại sao Hồ Chí Minh lại yêu cầu 'Phải nhốt quyền lực vào trong lồng cơ chế pháp luật' (theo cách diễn đạt hiện nay của Đảng ta)?",
-    options: [
-      "Vì quyền lực nếu không được tha hóa kiểm soát sẽ dẫn đến lạm quyền, hoạnh bẹ, tham nhũng tiêu cực.",
-      "Vì muốn triệt tiêu hoàn toàn quyền lực của Nhà nước.",
-      "Vì muốn nhốt cán bộ vào trong ngục tối.",
-      "Vì quyền lực nhà nước không có giá trị thực tế."
+    "id": "hcm-c4-tr2-043",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Điền cụm từ còn thiếu vào dặn dặn của Bác về cán bộ: 'Cán bộ là người [...] của nhân dân, không phải là quan cách mạng'?",
+    "options": [
+      "là người công bộc trung thành",
+      "là người chỉ huy cai trị",
+      "là người ban phát ơn huệ",
+      "là người sở hữu quyền lực"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Quyền lực không được kiểm soát chặt chẽ bằng cơ chế pháp luật dễ bị thao túng sa vào tham nhũng, lạm quyền, xâm phạm lợi ích của dân.",
-    trickDetails: {
-      whyTrapped: "Bẫy đáp án B (triệt tiêu quyền lực) hay C (nhốt cán bộ). Ý nghĩa là KIỂM SOÁT QUYỀN LỰC BẰNG CƠ CHẾ.",
-      trickWord: "Bẫy tư tưởng Kiểm soát quyền lực bằng cơ chế",
-      citation: "Tư tưởng HCM về kiểm soát quyền lực & Quan điểm của Đảng.",
-      tip: "Nhốt quyền lực vào lồng cơ chế = Kiểm soát để chống lạm quyền tham nhũng."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh yêu cầu cán bộ phải gột rửa tư tưởng quan cách: Cán bộ là công bộc (người gánh vác việc chung) của nhân dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các phương án cai trị hay ban phát.",
+      "trickWord": "Bẫy trích dẫn 'là người công bộc trung thành'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Cán bộ = Người công bộc của Nhân dân."
     }
   },
   {
-    id: "c4-tr2-047",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Vận dụng tư tưởng Hồ Chí Minh về 'Xây dựng Đảng trong sạch, vững mạnh' hiện nay được coi là nhiệm vụ có vị trí như thế nào trong sự nghiệp cách mạng?",
-    options: [
-      "Là nhiệm vụ THEN CHỐT, có ý nghĩa sống còn đối với sự tồn vong của Đảng và Chế độ.",
-      "Là nhiệm vụ phụ không quan trọng.",
-      "Là nhiệm vụ chỉ thực hiện khi có khủng hoảng kinh tế.",
-      "Là nhiệm vụ riêng của các cơ quan công an."
+    "id": "hcm-c4-tr2-044",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Thuật ngữ 'Giặc nội xâm' được Hồ Chí Minh dùng để chỉ loại kẻ thù nào?",
+    "options": [
+      "Kẻ thù tham ô lãng phí quan liêu bên trong.",
+      "Quân đội đế quốc xâm lược từ bên ngoài.",
+      "Các quốc gia đối thủ cạnh tranh thương mại.",
+      "Những thiên tai dịch bệnh tàn phá sản xuất."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Đảng ta xác định: Phát triển kinh tế là trung tâm, Xây dựng Đảng là THEN CHỐT, phát triển văn hóa là nền tảng tinh thần.",
-    trickDetails: {
-      whyTrapped: "Bẫy vị trí chiến lược của công tác Xây dựng Đảng.",
-      trickWord: "Bẫy vị trí 'Xây dựng Đảng là THEN CHỐT'",
-      citation: "Văn kiện các kỳ Đại hội Đảng.",
-      tip: "Phát triển kinh tế = TRUNG TÂM; Xây dựng Đảng = THEN CHỐT."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh gọi tham ô, lãng phí, quan liêu là 'giặc nội xâm' — kẻ thù nằm ngay trong tổ chức, nguy hiểm hơn cả giặc ngoại xâm vì nó phá từ bên trong.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm giặc ngoại xâm hay thiên tai dịch bệnh.",
+      "trickWord": "Bẫy thuật ngữ 'Giặc nội xâm'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Giặc nội xâm = Tham ô, Lãng phí, Quan liêu."
     }
   },
   {
-    id: "c4-tr2-048",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Hồ Chí Minh đưa ra tiêu chuẩn 'Cần, Kiệm, Liêm, Chính' cho cán bộ. Từ 'LIÊM' được hiểu chính xác là gì?",
-    options: [
-      "Liêm là trong sạch, không tham lam của công, không tham địa vị, không tham tiền tài danh vọng.",
-      "Liêm là tiết kiệm không chi tiêu tiền cá nhân.",
-      "Liêm là siêng năng chăm chỉ làm việc ngày đêm.",
-      "Liêm là ngay thẳng không thiên vị."
+    "id": "hcm-c4-tr2-045",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về vai trò của Quần chúng nhân dân trong cuộc chiến chống Tham ô, Lãng phí?",
+    "options": [
+      "Dân là lực lượng quyết định thắng lợi chống tham ô.",
+      "Dân không được phép can thiệp vào công việc bộ máy.",
+      "Chống tham ô chỉ là việc riêng của thanh tra.",
+      "Dân chỉ đứng ngoài quan sát không có quyền tố giác."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Liêm là giữ mình trong sạch, không tham của công, không tham tiền tài địa vị. (Chính là ngay thẳng; Cần là siêng năng; Kiệm là tiết kiệm).",
-    trickDetails: {
-      whyTrapped: "Học sinh dễ nhầm giải nghĩa từ 'Liêm' (trong sạch không tham) với 'Chính' (ngay thẳng) hay 'Kiệm' (tiết kiệm).",
-      trickWord: "Bẫy giải nghĩa chính xác từ 'LIÊM'",
-      citation: "Tác phẩm 'Cần Kiệm Liêm Chính' (1949) — Hồ Chí Minh.",
-      tip: "Cần = Siêng năng; Kiệm = Tiết kiệm; LIÊM = Trong sạch không tham; Chính = Ngay thẳng."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh khẳng định: Dựa vào lực lượng vĩ đại của Nhân dân, phát huy sự giám sát của Nhân dân thì cuộc chiến chống tham ô lãng phí nhất định thành công.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D hạ thấp vai trò của Nhân dân.",
+      "trickWord": "Bẫy vai trò 'Dân là lực lượng quyết định thắng lợi chống tham ô'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Chống tham ô phải dựa vào Nhân dân giám sát."
     }
   },
   {
-    id: "c4-tr2-049",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Từ 'CHÍNH' trong phẩm chất 'Cần, Kiệm, Liêm, Chính' của Hồ Chí Minh có nghĩa là gì?",
-    options: [
-      "Chính là nghĩa thẳng, đúng đắn, đối với mình không tự cao tự đại, đối với người không nịnh trên khinh dưới, đối với việc thì làm đến nơi đến chốn.",
-      "Chính là giữ vị trí chính thức trong bộ máy.",
-      "Chính là thu thuế chính xác không sai lệch.",
-      "Chính là đứng đầu một cơ quan hành chính."
+    "id": "hcm-c4-tr2-046",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Nhận định nào KHÔNG ĐÚNG về hậu quả nguy hại của bệnh Quan liêu đối với bộ máy nhà nước?",
+    "options": [
+      "Làm xa rời quần chúng nhân dân sâu sắc.",
+      "Dung dưỡng cho hành vi tham ô lãng phí.",
+      "Thúc đẩy bộ máy hoạt động nhanh chóng mượt.",
+      "Gây cửa quyền nhũng nhiễu làm phiền dân."
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Bác giải thích: Chính nghĩa là không tà, thẳng thắn, đúng đắn. Việc gì đúng thì làm, việc gì sai thì tránh.",
-    trickDetails: {
-      whyTrapped: "Bẫy giải nghĩa từ 'CHÍNH' thành 'chính thức' hay 'chính quyền' ở B, D.",
-      trickWord: "Bẫy giải nghĩa chính xác từ 'CHÍNH'",
-      citation: "Tác phẩm 'Cần Kiệm Liêm Chính' (1949).",
-      tip: "CHÍNH = Thẳng thắn, đúng đắn, việc đúng thì làm, không tà."
+    "answer": 2,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Bệnh quan liêu làm tê liệt bộ máy, chậm trễ hồ sơ, nhũng nhiễu dân chứ không bao giờ 'thúc đẩy mượt mà'.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh chọn C vì C là nhận định sai trái.",
+      "trickWord": "Bẫy phủ định 'Thúc đẩy bộ máy hoạt động nhanh chóng mượt'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Quan liêu = Tê liệt bộ máy + Nhũng nhiễu Dân."
     }
   },
   {
-    id: "c4-tr2-050",
-    trickSet: 2,
-    sectionId: "hcm-c4-app-sec",
-    subsectionId: "van-dung-hcm-c4-sub",
-    question: "Tóm lại, mục tiêu tổng quát của việc vận dụng Tư tưởng Hồ Chí Minh về Đảng và Nhà nước trong công cuộc Đổi mới hiện nay là gì?",
-    options: [
-      "Xây dựng Đảng trong sạch vững mạnh, Xây dựng Nhà nước pháp quyền XHCN của dân, do dân, vì dân, vì mục tiêu 'Dân giàu, nước mạnh, dân chủ, công bằng, văn minh'.",
-      "Đưa đất nước quay trở lại thời kỳ bao cấp.",
-      "Xóa bỏ hoàn toàn hệ thống pháp luật.",
-      "Tách rời Việt Nam khỏi cộng đồng quốc tế."
+    "id": "hcm-c4-tr2-047",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Điền cụm từ còn thiếu vào phát biểu của Bác: 'Muốn trừ sạch bệnh tham ô, lãng phí thì trước hết phải trừ sạch bệnh [...]'?",
+    "options": [
+      "trừ sạch bệnh quan liêu hách dịch",
+      "trừ sạch bệnh nghèo đói dốt nát",
+      "trừ sạch bệnh thiếu hụt nhân sự",
+      "trừ sạch bệnh tranh chấp đất đai"
     ],
-    answer: 0,
-    difficulty: "hard",
-    isTrick: true,
-    explanation: "Mục tiêu tổng quát hiện nay là vận dụng tư tưởng Hồ Chí Minh để xây dựng Đảng và Nhà nước trong sạch vững mạnh, vì mục tiêu 'Dân giàu, nước mạnh, dân chủ, công bằng, văn minh'.",
-    trickDetails: {
-      whyTrapped: "Các đáp án B, C, D đều mang tính thối lui hoặc cực đoan.",
-      trickWord: "Bẫy mục tiêu tổng quát Đổi mới",
-      citation: "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV (Kết luận).",
-      tip: "Mục tiêu tổng quát = Dân giàu, nước mạnh, dân chủ, công bằng, văn minh."
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Hồ Chí Minh chỉ rõ mối quan hệ nguyên nhân - kết quả: Muốn diệt trừ tham ô, lãng phí thì trước hết phải tiêu diệt bệnh quan liêu.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm các căn bệnh xã hội khác.",
+      "trickWord": "Bẫy trích dẫn 'trừ sạch bệnh quan liêu hách dịch'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: Trừ Tham ô, Lãng phí = Trừ gốc Quan liêu."
+    }
+  },
+  {
+    "id": "hcm-c4-tr2-048",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Văn kiện nào của Đảng ta hiện nay tiếp tục vận dụng tư tưởng Hồ Chí Minh về xây dựng Nhà nước tinh gọn bộ máy, hoạt động hiệu lực hiệu quả?",
+    "options": [
+      "Nghị quyết 18-NQ/TW (khóa XII).",
+      "Nghị quyết về phát triển du lịch.",
+      "Nghị định về đăng ký doanh nghiệp.",
+      "Quyết định về thu phí đường bộ."
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Nghị quyết 18-NQ/TW (khóa XII) về tiếp tục đổi mới, sắp xếp tổ chức bộ máy của hệ thống chính trị tinh gọn, hoạt động hiệu lực, hiệu quả.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm tên các nghị quyết kinh định khác.",
+      "trickWord": "Bẫy tên văn kiện 'Nghị quyết 18-NQ/TW (khóa XII)'",
+      "citation": "Văn kiện Đại hội Đảng & Nghị quyết TW 6 khóa XII.",
+      "tip": "Ghi nhớ: Bộ máy tinh gọn hiệu lực = Nghị quyết 18-NQ/TW."
+    }
+  },
+  {
+    "id": "hcm-c4-tr2-049",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Khẳng định nào phản ánh ĐÚNG VÀ ĐẦY ĐỦ NHẤT về phương châm 'Dân biết, dân bàn, dân làm, dân kiểm tra, dân giám sát, dân thụ hưởng'?",
+    "options": [
+      "Là sự hoàn thiện tư tưởng Dân chủ Hồ Chí Minh.",
+      "Là phương châm chỉ áp dụng trong doanh nghiệp.",
+      "Là phương châm hạn chế quyền làm chủ của dân.",
+      "Là phương châm lý thuyết không có thực tiễn."
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Văn kiện Đại hội XIII phát triển bổ sung 'dân thụ hưởng' vào phương châm dân chủ, vận dụng sáng tạo tư tưởng Hồ Chí Minh về Nhà nước của Dân, Do Dân, Vì Dân.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D phủ nhận giá trị thực tiễn.",
+      "trickWord": "Bẫy đánh giá 'Là sự hoàn thiện tư tưởng Dân chủ Hồ Chí Minh'",
+      "citation": "Văn kiện Đại hội XIII của Đảng (2021).",
+      "tip": "Ghi nhớ: Dân biết, bàn, làm, kiểm tra, giám sát, thụ hưởng = ĐH XIII phát triển TTHCM."
+    }
+  },
+  {
+    "id": "hcm-c4-tr2-050",
+    "trickSet": 2,
+    "sectionId": "hcm-ve-nha-nuoc-sec",
+    "subsectionId": "nha-nuoc-trong-sach-sub",
+    "question": "Tư tưởng Hồ Chí Minh về xây dựng Nhà nước trong sạch, vững mạnh có giá trị chỉ đạo như thế nào đối với công cuộc phòng chống tham nhũng hiện nay?",
+    "options": [
+      "Là kim chỉ nam, là nền tảng lý luận soi đường.",
+      "Đã lạc hậu không còn phù hợp thời đại số.",
+      "Chỉ có giá trị lịch sử trong thời kỳ chiến tranh.",
+      "Chỉ áp dụng cho các cơ quan cấp Trung ương."
+    ],
+    "answer": 0,
+    "difficulty": "hard",
+    "isTrick": true,
+    "explanation": "Tư tưởng Hồ Chí Minh về xây dựng Nhà nước trong sạch, phòng chống 'giặc nội xâm' mãi mãi là kim chỉ nam, là nền tảng soi đường cho công cuộc xây dựng chỉnh đốn Đảng và Nhà nước hiện nay.",
+    "trickDetails": {
+      "whyTrapped": "Học sinh nhầm B/C/D cho rằng đã lạc hậu hoặc chỉ áp dụng thời chiến.",
+      "trickWord": "Bẫy giá trị 'Là kim chỉ nam, là nền tảng lý luận soi đường'",
+      "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương IV, Mục II.4.",
+      "tip": "Ghi nhớ: TTHCM về Nhà nước = Mãi mãi là kim chỉ nam soi đường."
     }
   }
 ];

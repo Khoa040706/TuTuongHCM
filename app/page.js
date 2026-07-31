@@ -33,6 +33,13 @@ import ContentRenderer from "../components/ContentRenderer";
 import Quiz from "../components/Quiz";
 import ErrorBoundary from "../components/ErrorBoundary";
 import DrawingCanvas from "../components/DrawingCanvas";
+import AlgoSimDashboard from "../components/AlgoSimDashboard";
+import BubbleSortLab from "../components/BubbleSortLab";
+import BinarySearchLab from "../components/BinarySearchLab";
+import BfsLab from "../components/BfsLab";
+import BstLab from "../components/BstLab";
+import RecursionLab from "../components/RecursionLab";
+import MergeSortLab from "../components/MergeSortLab";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
@@ -87,6 +94,8 @@ export default function Page() {
   const [activeMdxSource, setActiveMdxSource] = useState(null);
   const [loadingMdx, setLoadingMdx] = useState(false);
   const [isQuizMode, setIsQuizModeRaw] = useState(false);
+  const [isAlgoSimActive, setIsAlgoSimActive] = useState(false);
+  const [selectedAlgoId, setSelectedAlgoId] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Note-taking tool states
@@ -2097,6 +2106,7 @@ export default function Page() {
   };
 
   const handleNavigate = (elementId) => {
+    setIsAlgoSimActive(false);
     // Resolve the element ID: sidebar passes raw subId, chapter-xxx, or section-xxx
     const el =
       document.getElementById(elementId) ||
@@ -3473,6 +3483,14 @@ export default function Page() {
               onBackToHero={() => setShowHero(true)}
               hasQuiz={Object.keys(questionsMap).length > 0}
               onBackToAdmin={() => setAppStep("admin-dashboard")}
+              isAlgoSimActive={isAlgoSimActive}
+              onOpenAlgoSim={() => {
+                setIsQuizMode(false);
+                setIsAlgoSimActive(true);
+                setSelectedAlgoId(null);
+                // Scroll to top smooth
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             />
 
             {/* Main Content Area */}
@@ -3498,13 +3516,13 @@ export default function Page() {
                       <span>{currentSubject.title}</span>
                       <span className="text-stone-300">/</span>
                       <span>{currentChapterTitle || (chapters[0] ? chapters[0].title : "")}</span>
-                      {currentSectionRoman && !isQuizMode && (
+                      {currentSectionRoman && !isQuizMode && !isAlgoSimActive && (
                         <>
                           <span className="text-stone-300">/</span>
                           <span className="text-stone-700 font-semibold font-mono">{currentSectionRoman}</span>
                         </>
                       )}
-                      {currentSubTitle && !isQuizMode && (
+                      {currentSubTitle && !isQuizMode && !isAlgoSimActive && (
                         <>
                           <span className="text-stone-300">/</span>
                           <span className="text-stone-850 font-bold max-w-[200px] md:max-w-[450px] truncate" title={currentSubTitle}>
@@ -3518,6 +3536,29 @@ export default function Page() {
                           <span className="text-stone-850 font-bold">Bài kiểm tra trắc nghiệm</span>
                         </>
                       )}
+                      {isAlgoSimActive && (
+                        <>
+                          <span className="text-stone-300">/</span>
+                          <span 
+                            onClick={() => setSelectedAlgoId(null)}
+                            className={`hover:text-indigo-600 transition-colors ${selectedAlgoId ? "cursor-pointer underline decoration-dotted text-stone-600" : "text-stone-850 font-bold"}`}
+                          >
+                            Bộ mô phỏng giải thuật
+                          </span>
+                          {selectedAlgoId === "bubble-sort" && (
+                            <>
+                              <span className="text-stone-300">/</span>
+                              <span className="text-stone-850 font-bold">Bubble Sort</span>
+                            </>
+                          )}
+                          {selectedAlgoId === "binary-search" && (
+                            <>
+                              <span className="text-stone-300">/</span>
+                              <span className="text-stone-850 font-bold">Binary Search</span>
+                            </>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -3529,7 +3570,49 @@ export default function Page() {
                   !showHero ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
-                {isQuizMode ? (
+                {isAlgoSimActive ? (
+                  <div className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 animate-in">
+                    <ErrorBoundary>
+                      {selectedAlgoId === "bubble-sort" ? (
+                        <BubbleSortLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : selectedAlgoId === "binary-search" ? (
+                        <BinarySearchLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : selectedAlgoId === "bfs" ? (
+                        <BfsLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : selectedAlgoId === "bst" || selectedAlgoId === "binary-tree" ? (
+                        <BstLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : selectedAlgoId === "recursion" ? (
+                        <RecursionLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : selectedAlgoId === "merge-sort" ? (
+                        <MergeSortLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
+                      ) : (
+                        <AlgoSimDashboard 
+                          onSelectAlgorithm={(algoId) => {
+                            if (algoId === "bubble-sort" || algoId === "binary-search" || algoId === "bfs" || algoId === "bst" || algoId === "binary-tree" || algoId === "recursion" || algoId === "merge-sort") {
+                              setSelectedAlgoId(algoId);
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            } else {
+                              showToast(`Đã chọn thuật toán: ${algoId}. Phòng thí nghiệm Lab cho thuật toán này đang tiếp tục được phát triển!`, "info");
+                            }
+                          }}
+                          onClose={() => setIsAlgoSimActive(false)}
+                        />
+                      )}
+                    </ErrorBoundary>
+                  </div>
+                ) : isQuizMode ? (
                   <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 animate-in">
                     <ErrorBoundary>
                       <Quiz onClose={() => setIsQuizMode(false)} showToast={showToast} showConfirm={showConfirm} showAlert={showAlert} subjectId={selectedSubjectId} />
