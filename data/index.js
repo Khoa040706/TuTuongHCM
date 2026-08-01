@@ -967,6 +967,7 @@ export const subjects = {
     title: "Lập trình hướng đối tượng (OOP)",
     description: "Khái niệm đối tượng, lớp, tính kế thừa, tính đa hình, tính đóng gói và trừu tượng hóa.",
     category: "Môn chuyên ngành",
+    hasAlgoSim: true,
     quote: "“Viết mã nguồn rõ ràng, dễ bảo trì là nghệ thuật của lập trình viên.”",
     themeColors: {
       accent: "#2563eb",
@@ -2700,6 +2701,7 @@ export const subjects = {
     title: "Cấu trúc dữ liệu và giải thuật",
     description: "Mảng, Danh sách liên kết, Ngăn xếp, Hàng đợi, Cây, Đồ thị và các thuật toán tìm kiếm, sắp xếp kinh điển.",
     category: "Môn chuyên ngành",
+    hasAlgoSim: true,
     quote: "“Cấu trúc dữ liệu tốt giúp thuật toán chạy nhanh và hiệu quả hơn.”",
     themeColors: {
       accent: "#7c3aed",
@@ -3087,6 +3089,7 @@ export const subjects = {
     title: "Thuật Toán & Giải Thuật Kinh Điển",
     description: "Các giải thuật sắp xếp, tìm kiếm và đường đi kinh điển kèm mã giả và code Java minh họa.",
     category: "Môn chuyên ngành",
+    hasAlgoSim: true,
     quote: "“Thuật toán là nền tảng, tư duy là chìa khóa của khoa học máy tính.”",
     themeColors: {
       accent: "#4f46e5",

@@ -31,7 +31,8 @@ export default function Sidebar({
   hasQuiz = false,
   onBackToAdmin,
   onOpenAlgoSim,
-  isAlgoSimActive = false
+  isAlgoSimActive = false,
+  hasAlgoSim = false
 }) {
   const [expandedGroups, setExpandedGroups] = useState({});
   const [mounted, setMounted] = useState(false);
@@ -389,84 +390,86 @@ export default function Sidebar({
           {/* Active indicator */}
           <div className="sidebar-indicator" ref={indicatorRef} />
 
-          {/* 🌟 NỔI BẬT: Thẻ Mô Phỏng Giải Thuật (Clean & Friendly Human Design) */}
-          <div className="relative group">
-            {/* Ambient Pastel Glow Halo */}
-            <div 
-              className={`absolute -inset-0.5 rounded-2xl blur-sm transition-all duration-300 ${
-                isAlgoSimActive 
-                  ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-emerald-500 opacity-80" 
-                  : "bg-gradient-to-r from-cyan-400/40 via-indigo-400/40 to-emerald-400/40 opacity-0 group-hover:opacity-100"
-              }`} 
-            />
-            
-            <button
-              onClick={() => {
-                if (isQuizMode) {
-                  showConfirm({
-                    title: "Xác nhận thoát",
-                    message: "Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn chuyển sang Bộ mô phỏng giải thuật?",
-                    confirmText: "Chuyển ngay",
-                    cancelText: "Ở lại",
-                    type: "warning",
-                    onConfirm: () => {
-                      setIsQuizMode(false);
-                      if (onOpenAlgoSim) onOpenAlgoSim();
-                      setIsOpen(false);
-                    }
-                  });
-                  return;
-                }
-                if (onOpenAlgoSim) onOpenAlgoSim();
-                setIsOpen(false);
-              }}
-              className={`relative w-full p-3 rounded-2xl flex items-center justify-between border transition-all duration-200 group-hover:scale-[1.01] active:scale-[0.99] cursor-pointer overflow-hidden backdrop-blur-md ${
-                isAlgoSimActive 
-                  ? "bg-gradient-to-r from-cyan-600 via-indigo-600 to-emerald-600 text-white border-cyan-400/50 shadow-md shadow-indigo-500/20 sidebar-active-item" 
-                  : "bg-gradient-to-r from-cyan-50/60 via-indigo-50/40 to-emerald-50/40 hover:from-cyan-100/70 hover:to-indigo-100/60 text-slate-900 border-cyan-200/70 hover:border-indigo-300 shadow-sm"
-              }`}
-            >
-              <div className="flex items-center gap-3 z-10 min-w-0 flex-1">
-                {/* Clean Friendly Icon */}
-                <div 
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 ${
-                    isAlgoSimActive 
-                      ? "bg-white/20 text-white shadow-inner" 
-                      : "bg-white text-indigo-600 shadow-sm border border-cyan-100"
-                  }`}
-                >
-                  <Layers className="w-4 h-4" />
-                </div>
-
-                {/* Clean Readable Text (No badges, no truncation) */}
-                <div className="text-left min-w-0 flex-1">
+          {/* 🌟 NỔI BẬT: Thẻ Mô Phỏng Giải Thuật (chỉ hiển thị với môn thuộc lĩnh vực thuật toán) */}
+          {hasAlgoSim && (
+            <div className="relative group">
+              {/* Ambient Pastel Glow Halo */}
+              <div 
+                className={`absolute -inset-0.5 rounded-2xl blur-sm transition-all duration-300 ${
+                  isAlgoSimActive 
+                    ? "bg-gradient-to-r from-cyan-500 via-indigo-500 to-emerald-500 opacity-80" 
+                    : "bg-gradient-to-r from-cyan-400/40 via-indigo-400/40 to-emerald-400/40 opacity-0 group-hover:opacity-100"
+                }`} 
+              />
+              
+              <button
+                onClick={() => {
+                  if (isQuizMode) {
+                    showConfirm({
+                      title: "Xác nhận thoát",
+                      message: "Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn chuyển sang Bộ mô phỏng giải thuật?",
+                      confirmText: "Chuyển ngay",
+                      cancelText: "Ở lại",
+                      type: "warning",
+                      onConfirm: () => {
+                        setIsQuizMode(false);
+                        if (onOpenAlgoSim) onOpenAlgoSim();
+                        setIsOpen(false);
+                      }
+                    });
+                    return;
+                  }
+                  if (onOpenAlgoSim) onOpenAlgoSim();
+                  setIsOpen(false);
+                }}
+                className={`relative w-full p-3 rounded-2xl flex items-center justify-between border transition-all duration-200 group-hover:scale-[1.01] active:scale-[0.99] cursor-pointer overflow-hidden backdrop-blur-md ${
+                  isAlgoSimActive 
+                    ? "bg-gradient-to-r from-cyan-600 via-indigo-600 to-emerald-600 text-white border-cyan-400/50 shadow-md shadow-indigo-500/20 sidebar-active-item" 
+                    : "bg-gradient-to-r from-cyan-50/60 via-indigo-50/40 to-emerald-50/40 hover:from-cyan-100/70 hover:to-indigo-100/60 text-slate-900 border-cyan-200/70 hover:border-indigo-300 shadow-sm"
+                }`}
+              >
+                <div className="flex items-center gap-3 z-10 min-w-0 flex-1">
+                  {/* Clean Friendly Icon */}
                   <div 
-                    className={`text-xs font-bold tracking-tight transition-colors ${
-                      isAlgoSimActive ? "text-white" : "text-slate-800 group-hover:text-indigo-600"
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 ${
+                      isAlgoSimActive 
+                        ? "bg-white/20 text-white shadow-inner" 
+                        : "bg-white text-indigo-600 shadow-sm border border-cyan-100"
                     }`}
                   >
-                    Bộ Mô Phỏng Giải Thuật
+                    <Layers className="w-4 h-4" />
                   </div>
-                  <div 
-                    className={`text-[11px] font-medium leading-tight mt-0.5 transition-colors ${
-                      isAlgoSimActive ? "text-white/85" : "text-slate-500 group-hover:text-slate-600"
-                    }`}
-                  >
-                    Trực quan hóa từng bước
+
+                  {/* Clean Readable Text (No badges, no truncation) */}
+                  <div className="text-left min-w-0 flex-1">
+                    <div 
+                      className={`text-xs font-bold tracking-tight transition-colors ${
+                        isAlgoSimActive ? "text-white" : "text-slate-800 group-hover:text-indigo-600"
+                      }`}
+                    >
+                      Bộ Mô Phỏng Giải Thuật
+                    </div>
+                    <div 
+                      className={`text-[11px] font-medium leading-tight mt-0.5 transition-colors ${
+                        isAlgoSimActive ? "text-white/85" : "text-slate-500 group-hover:text-slate-600"
+                      }`}
+                    >
+                      Trực quan hóa từng bước
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Friendly Navigation Arrow */}
-              <div className="z-10 shrink-0 ml-2">
-                <ChevronRight 
-                  className={`w-4 h-4 transition-all duration-200 group-hover:translate-x-0.5 ${
-                    isAlgoSimActive ? "text-white/90" : "text-slate-400 group-hover:text-indigo-600"
-                  }`} 
-                />
-              </div>
-            </button>
-          </div>
+                {/* Friendly Navigation Arrow */}
+                <div className="z-10 shrink-0 ml-2">
+                  <ChevronRight 
+                    className={`w-4 h-4 transition-all duration-200 group-hover:translate-x-0.5 ${
+                      isAlgoSimActive ? "text-white/90" : "text-slate-400 group-hover:text-indigo-600"
+                    }`} 
+                  />
+                </div>
+              </button>
+            </div>
+          )}
 
           {/* Tools */}
           <div>

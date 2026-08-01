@@ -40,6 +40,7 @@ import BfsLab from "../components/BfsLab";
 import BstLab from "../components/BstLab";
 import RecursionLab from "../components/RecursionLab";
 import MergeSortLab from "../components/MergeSortLab";
+import SelectionSortLab from "../components/SelectionSortLab";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
@@ -3484,6 +3485,7 @@ export default function Page() {
               hasQuiz={Object.keys(questionsMap).length > 0}
               onBackToAdmin={() => setAppStep("admin-dashboard")}
               isAlgoSimActive={isAlgoSimActive}
+              hasAlgoSim={Boolean(currentSubject?.hasAlgoSim || selectedSubjectId === "dsa" || selectedSubjectId === "basic-algorithms" || selectedSubjectId === "oop")}
               onOpenAlgoSim={() => {
                 setIsQuizMode(false);
                 setIsAlgoSimActive(true);
@@ -3597,10 +3599,14 @@ export default function Page() {
                         <MergeSortLab 
                           onBack={() => setSelectedAlgoId(null)}
                         />
+                      ) : selectedAlgoId === "selection-sort" ? (
+                        <SelectionSortLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
                       ) : (
                         <AlgoSimDashboard 
                           onSelectAlgorithm={(algoId) => {
-                            if (algoId === "bubble-sort" || algoId === "binary-search" || algoId === "bfs" || algoId === "bst" || algoId === "binary-tree" || algoId === "recursion" || algoId === "merge-sort") {
+                            if (algoId === "bubble-sort" || algoId === "binary-search" || algoId === "bfs" || algoId === "bst" || algoId === "binary-tree" || algoId === "recursion" || algoId === "merge-sort" || algoId === "selection-sort") {
                               setSelectedAlgoId(algoId);
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             } else {
