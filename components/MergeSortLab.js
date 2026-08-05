@@ -17,321 +17,577 @@ import {
   Sparkles,
   Zap,
   BarChart2,
-  Gauge,
   ArrowDown,
-  Layers,
   Code2,
   Info,
   Sliders,
   Keyboard,
   Activity,
-  Flame,
   HelpCircle,
   Trophy,
-  Check,
-  RefreshCw,
-  Crown
+  Award,
+  Layers,
+  Flame,
+  Scissors,
+  Check
 } from "lucide-react";
 
-// Fixed English Pseudocode definition with Vietnamese Explanations
-const PSEUDOCODE_VI = [
-  { line: 1, text: "thủ tục MERGE_SORT(arr, left, right):", explain: "Hàm chính sắp xếp trộn mảng arr từ vị trí left đến right" },
-  { line: 2, text: "  nếu left >= right thì return // Điểm dừng", explain: "Điều kiện dừng đệ quy: Mảng con chỉ còn 0 hoặc 1 phần tử" },
-  { line: 3, text: "  mid = (left + right) / 2", explain: "Tìm chỉ số giữa để chia mảng thành 2 nửa bằng nhau" },
-  { line: 4, text: "  MERGE_SORT(arr, left, mid)", explain: "Đệ quy sắp xếp nửa trái từ left đến mid" },
-  { line: 5, text: "  MERGE_SORT(arr, mid + 1, right)", explain: "Đệ quy sắp xếp nửa phải từ mid + 1 đến right" },
+// Standardized English Pseudocode with Prominent Vietnamese Explanations
+const PSEUDOCODE = [
+  { line: 1, text: "procedure MERGE_SORT(arr, left, right):", explain: "Thủ tục chính sắp xếp trộn mảng arr từ left đến right" },
+  { line: 2, text: "  if left >= right then return // Base case", explain: "Điểm dừng đệ quy: mảng con chỉ còn 0 hoặc 1 phần tử" },
+  { line: 3, text: "  mid = (left + right) / 2", explain: "Tính chỉ số giữa mid để chia đôi mảng thành 2 nửa" },
+  { line: 4, text: "  MERGE_SORT(arr, left, mid)", explain: "Gọi đệ quy sắp xếp nửa bên trái từ left đến mid" },
+  { line: 5, text: "  MERGE_SORT(arr, mid + 1, right)", explain: "Gọi đệ quy sắp xếp nửa bên phải từ mid + 1 đến right" },
   { line: 6, text: "  MERGE(arr, left, mid, right)", explain: "Trộn 2 mảng con đã sắp xếp thành 1 mảng hoàn chỉnh" },
-  { line: 7, text: "kết thúc thủ tục", explain: "Kết thúc thủ tục MERGE_SORT" },
-  { line: 8, text: "thủ tục MERGE(arr, left, mid, right):", explain: "Thủ tục trộn 2 mảng con đã sắp xếp" },
-  { line: 9, text: "  khi i <= mid và j <= right lặp:", explain: "Lặp so sánh 2 con trỏ i (nửa trái) và j (nửa phải)" },
-  { line: 10, text: "    nếu Left[i] <= Right[j] thì arr[k] = Left[i++]", explain: "Nếu phần tử trái nhỏ hơn hoặc bằng, chép vào vị trí k và tăng i" },
-  { line: 11, text: "    ngược lại arr[k] = Right[j++]", explain: "Nếu phần tử phải nhỏ hơn, chép vào vị trí k và tăng j" },
-  { line: 12, text: "  chép các phần tử còn lại vào arr[k]", explain: "Sao chép tất cả các phần tử còn lại vào k" },
-];
-
-const PSEUDOCODE_EN = [
-  { line: 1, text: "procedure MERGE_SORT(arr, left, right):" },
-  { line: 2, text: "  if left >= right then return // Base case" },
-  { line: 3, text: "  mid = (left + right) / 2" },
-  { line: 4, text: "  MERGE_SORT(arr, left, mid)" },
-  { line: 5, text: "  MERGE_SORT(arr, mid + 1, right)" },
-  { line: 6, text: "  MERGE(arr, left, mid, right)" },
-  { line: 7, text: "end procedure" },
-  { line: 8, text: "procedure MERGE(arr, left, mid, right):" },
-  { line: 9, text: "  while i <= mid and j <= right do:" },
-  { line: 10, text: "    if Left[i] <= Right[j] then arr[k] = Left[i++]" },
-  { line: 11, text: "    else arr[k] = Right[j++]" },
-  { line: 12, text: "  copy remaining elements to arr[k]" },
+  { line: 7, text: "end procedure", explain: "Kết thúc thủ tục đệ quy MERGE_SORT" },
+  { line: 8, text: "procedure MERGE(arr, left, mid, right):", explain: "Thủ tục con trộn 2 đoạn đã sắp xếp [left..mid] và [mid+1..right]" },
+  { line: 9, text: "  while i <= mid and j <= right do:", explain: "Vòng lặp so sánh 2 con trỏ i (nửa trái) và j (nửa phải)" },
+  { line: 10, text: "    if Left[i] <= Right[j] then arr[k] = Left[i++]", explain: "Nếu phần tử trái nhỏ hơn hoặc bằng, chép vào arr[k] và tăng i" },
+  { line: 11, text: "    else arr[k] = Right[j++]", explain: "Ngược lại chép phần tử phải vào arr[k] và tăng j" },
+  { line: 12, text: "  copy remaining elements to arr[k]", explain: "Sao chép tất cả phần tử dư còn lại vào mảng chính arr[k]" },
 ];
 
 const PYTHON_CODE = [
-  { line: 1, text: "def merge_sort(arr, left, right):" },
-  { line: 2, text: "    if left >= right: return" },
-  { line: 3, text: "    mid = (left + right) // 2" },
-  { line: 4, text: "    merge_sort(arr, left, mid)" },
-  { line: 5, text: "    merge_sort(arr, mid + 1, right)" },
-  { line: 6, text: "    merge(arr, left, mid, right)" },
-  { line: 7, text: "def merge(arr, left, mid, right):" },
-  { line: 8, text: "    # Compare L[i] vs R[j] and put into arr[k]" },
+  { line: 1, text: "def merge_sort(arr, left, right):", explain: "Hàm đệ quy Merge Sort bằng ngôn ngữ Python" },
+  { line: 2, text: "    if left >= right: return", explain: "Kiểm tra điều kiện dừng đệ quy" },
+  { line: 3, text: "    mid = (left + right) // 2", explain: "Phép chia lấy nguyên tìm chỉ số giữa mid" },
+  { line: 4, text: "    merge_sort(arr, left, mid)", explain: "Gọi đệ quy sắp xếp nửa mảng trái" },
+  { line: 5, text: "    merge_sort(arr, mid + 1, right)", explain: "Gọi đệ quy sắp xếp nửa mảng phải" },
+  { line: 6, text: "    merge(arr, left, mid, right)", explain: "Trộn hai nửa đã sắp xếp" },
+  { line: 7, text: "def merge(arr, left, mid, right):", explain: "Hàm phụ trách trộn 2 mảng con" },
+  { line: 8, text: "    # Compare L[i] vs R[j] and put into arr[k]", explain: "So sánh và gán phần tử thắng vào mảng arr[k]" },
 ];
 
 const JAVA_CODE = [
-  { line: 1, text: "void mergeSort(int[] arr, int left, int right) {" },
-  { line: 2, text: "    if (left >= right) return;" },
-  { line: 3, text: "    int mid = (left + right) / 2;" },
-  { line: 4, text: "    mergeSort(arr, left, mid);" },
-  { line: 5, text: "    mergeSort(arr, mid + 1, right);" },
-  { line: 6, text: "    merge(arr, left, mid, right);" },
-  { line: 7, text: "}" },
+  { line: 1, text: "void mergeSort(int[] arr, int left, int right) {", explain: "Phương thức đệ quy Merge Sort trong Java" },
+  { line: 2, text: "    if (left >= right) return;", explain: "Điều kiện cơ sở dừng đệ quy" },
+  { line: 3, text: "    int mid = (left + right) / 2;", explain: "Tính vị trí giữa mid" },
+  { line: 4, text: "    mergeSort(arr, left, mid);", explain: "Gọi đệ quy sắp xếp nửa trái" },
+  { line: 5, text: "    mergeSort(arr, mid + 1, right);", explain: "Gọi đệ quy sắp xếp nửa phải" },
+  { line: 6, text: "    merge(arr, left, mid, right);", explain: "Gọi thủ tục trộn 2 nửa mảng" },
+  { line: 7, text: "}", explain: "Kết thúc phương thức mergeSort" },
 ];
 
-// Clean Step Generator for Merge Sort
-function generateMergeSortSteps(initialArr, isStabilityTest = false) {
+// STAGE GEOMETRY (VIEWBOX 800 x 480)
+const STAGE_W = 800;
+const STAGE_H = 480;
+const BALL_R = 18;
+
+// Dynamic Tier Y spacing based on max recursion depth (Safely avoids top clipping)
+function getTierY(depth, maxDepth = 3) {
+  if (maxDepth >= 4) {
+    const topMargin = 100;
+    const tierGap = 70;
+    return topMargin + depth * tierGap;
+  }
+  const topMargin = 110;
+  const tierGap = 85;
+  return topMargin + depth * tierGap;
+}
+
+// Master Step Generator
+function generateDetailedMergeSortSteps(initialArr) {
   const steps = [];
   let comparisons = 0;
   let mergeWrites = 0;
 
-  let workingArr = initialArr.map((val, idx) => {
-    if (typeof val === "object") return val;
-    return {
-      value: val,
-      id: `elem-${idx}-${val}`,
-      tag: isStabilityTest ? `${val}${String.fromCharCode(97 + (idx % 3))}` : `${val}`,
-    };
-  });
+  const n = initialArr.length;
 
+  let balls = initialArr.map((val, idx) => ({
+    id: `ball-${idx}-${typeof val === "object" ? val.value : val}`,
+    val: typeof val === "object" ? val.value : val,
+    tag: `${typeof val === "object" ? val.value : val}`,
+    originalIdx: idx,
+    depth: 0,
+    slotIdx: idx,
+    sideOffset: 0,
+  }));
+
+  const treeNodes = [];
+  let nodeCounter = 0;
+
+  const cloneBalls = (bList) => bList.map((b) => ({ ...b }));
+
+  // 0. ENTRY_DROP
   steps.push({
     activeLine: 1,
-    type: "INITIAL",
-    status: `Khởi tạo mảng ban đầu với ${workingArr.length} phần tử. Chuẩn bị thực thi Chia để Trị (Divide & Conquer).`,
-    currentArray: [...workingArr],
-    leftSub: null,
-    rightSub: null,
-    pointers: null,
+    phase: "ENTRY_DROP",
+    status: `🎬 Khởi tạo mảng gồm ${n} phần tử tại Tầng 0. Chuẩn bị chia để trị!`,
+    balls: cloneBalls(balls),
+    depth: 0,
     comparisons: 0,
     mergeWrites: 0,
-    mergedRanges: [],
-    depth: 0
+    treeNodes: [],
+    activeTreeNodeId: null,
   });
 
-  const mergedRanges = [];
+  function mergeSortHelper(left, right, depth = 0, parentNodeId = null) {
+    const nodeId = `node-${nodeCounter++}`;
+    const currentNode = { id: nodeId, left, right, depth, parentNodeId, status: "active" };
+    treeNodes.push(currentNode);
 
-  function mergeSortHelper(left, right, depth = 0) {
+    for (let i = left; i <= right; i++) {
+      const b = balls.find((ball) => ball.slotIdx === i && ball.depth <= depth);
+      if (b) b.depth = depth;
+    }
+
     if (left >= right) {
+      steps.push({
+        activeLine: 2,
+        phase: "ATOMIC_PULSE",
+        status: `⚡ [CƠ SỞ] Mảng con [${left}..${right}] chỉ có 1 phần tử tại Tầng ${depth} — Đã đạt kích thước tối thiểu!`,
+        balls: cloneBalls(balls),
+        left,
+        right,
+        depth,
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+        comparisons,
+        mergeWrites,
+      });
       return;
     }
 
     const mid = Math.floor((left + right) / 2);
 
-    const leftSub = workingArr.slice(left, mid + 1);
-    const rightSub = workingArr.slice(mid + 1, right + 1);
+    // 1. SPLIT_RUN_UP (Giương kiếm cao)
+    steps.push({
+      activeLine: 3,
+      phase: "SPLIT_RUN_UP",
+      status: `🏃 [THE SPLITTER] Splitter giương cao kiếm Laser Cyan tại ranh giới mid = ${mid}!`,
+      balls: cloneBalls(balls),
+      left,
+      right,
+      mid,
+      depth,
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+      comparisons,
+      mergeWrites,
+    });
+
+    // 2. LEAP_SOMERSAULT_SLASH (CHẶT XUỐNG CỰC MẠNH NGAY CHÍNH GIỮA)
+    steps.push({
+      activeLine: 3,
+      phase: "LEAP_SOMERSAULT_SLASH",
+      status: `⚔️ [NHÁT CHÉM CHẶT XUỐNG] Splitter vung kiếm chém thẳng xuống khoảng giữa bệ mặt đất!`,
+      balls: cloneBalls(balls),
+      left,
+      right,
+      mid,
+      depth,
+      laserSlash: { mid, depth },
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+      comparisons,
+      mergeWrites,
+    });
+
+    // 2.5 RIFT_GROUND_CRACK (ĐẤT NỨT RẠN PHÁT SÁNG NGAY CHÍNH GIỮA)
+    steps.push({
+      activeLine: 3,
+      phase: "RIFT_GROUND_CRACK",
+      status: `💥 [MẶT ĐẤT NỨT TOÁC] Nhát chém làm bệ nứt rạn rạng đông ngay chính giữa trước khi tách làm đôi!`,
+      balls: cloneBalls(balls),
+      left,
+      right,
+      mid,
+      depth,
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+      comparisons,
+      mergeWrites,
+    });
+
+    // 3. RIFT_OPEN_HOP_BACK (TÁCH BỆ BẺ LÀM ĐÔI)
+    for (let i = left; i <= mid; i++) {
+      const b = balls.find((ball) => ball.slotIdx === i && ball.depth === depth);
+      if (b) {
+        b.depth = depth + 1;
+        b.sideOffset = -24;
+      }
+    }
+    for (let i = mid + 1; i <= right; i++) {
+      const b = balls.find((ball) => ball.slotIdx === i && ball.depth === depth);
+      if (b) {
+        b.depth = depth + 1;
+        b.sideOffset = 24;
+      }
+    }
 
     steps.push({
       activeLine: 3,
-      type: "SPLIT",
-      status: `[CHIA ĐÔI] Chia đoạn [${left}..${right}] thành 2 nửa: Trái [${left}..${mid}] (${leftSub.map(e => e.tag).join(", ")}) và Phải [${mid + 1}..${right}] (${rightSub.map(e => e.tag).join(", ")}).`,
-      currentArray: [...workingArr],
-      leftSub: { arr: leftSub, leftIndex: left },
-      rightSub: { arr: rightSub, leftIndex: mid + 1 },
-      activeRange: { left, mid, right },
-      pointers: null,
+      phase: "RIFT_OPEN_HOP_BACK",
+      status: `🌌 [TÁCH BỆ SÂN KHẤU] Vết nứt đứt đôi! Bệ Nửa trái [${left}..${mid}] và Bệ Nửa phải [${mid + 1}..${right}] tách rời ở Tầng ${depth + 1}.`,
+      balls: cloneBalls(balls),
+      left,
+      right,
+      mid,
+      depth,
+      riftAt: mid,
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
       comparisons,
       mergeWrites,
-      mergedRanges: [...mergedRanges],
-      depth
     });
 
-    mergeSortHelper(left, mid, depth + 1);
-    mergeSortHelper(mid + 1, right, depth + 1);
+    // Recursion Left & Right
+    mergeSortHelper(left, mid, depth + 1, nodeId);
+    mergeSortHelper(mid + 1, right, depth + 1, nodeId);
 
-    const L = workingArr.slice(left, mid + 1);
-    const R = workingArr.slice(mid + 1, right + 1);
+    // MERGE PREPARATION
+    const leftSub = [];
+    for (let idx = left; idx <= mid; idx++) {
+      const b = balls.find((ball) => ball.slotIdx === idx && ball.depth === depth + 1);
+      if (b) leftSub.push(b);
+    }
+
+    const rightSub = [];
+    for (let idx = mid + 1; idx <= right; idx++) {
+      const b = balls.find((ball) => ball.slotIdx === idx && ball.depth === depth + 1);
+      if (b) rightSub.push(b);
+    }
+
+    // 4. MERGE_LANE_MARK
+    steps.push({
+      activeLine: 6,
+      phase: "MERGE_LANE_MARK",
+      status: `🎬 [BẮT ĐẦU TRỘN] Dựng bệ hợp nhất tại Tầng Cha ${depth} [${left}..${right}]. Cặp Runner phất cờ chuẩn bị so sánh!`,
+      balls: cloneBalls(balls),
+      left,
+      mid,
+      right,
+      depth,
+      targetRange: { left, right },
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+      comparisons,
+      mergeWrites,
+    });
+
     let i = 0;
     let j = 0;
     let k = left;
 
-    steps.push({
-      activeLine: 6,
-      type: "START_MERGE",
-      status: `[BẮT ĐẦU TRỘN] Chuẩn bị trộn 2 mảng con: Trái [${left}..${mid}] và Phải [${mid + 1}..${right}] vào đoạn chính [${left}..${right}].`,
-      currentArray: [...workingArr],
-      leftSub: { arr: L, leftIndex: left, activeIdx: 0 },
-      rightSub: { arr: R, leftIndex: mid + 1, activeIdx: 0 },
-      activeRange: { left, mid, right },
-      pointers: { i: 0, j: 0, k },
-      comparisons,
-      mergeWrites,
-      mergedRanges: [...mergedRanges],
-      depth,
-      predictQuestion: {
-        leftVal: L[0]?.value,
-        rightVal: R[0]?.value,
-        leftTag: L[0]?.tag,
-        rightTag: R[0]?.tag,
-        correctSide: L[0]?.value <= R[0]?.value ? "L" : "R",
-        correctVal: L[0]?.value <= R[0]?.value ? L[0]?.tag : R[0]?.tag
-      }
-    });
-
-    while (i < L.length && j < R.length) {
+    while (i < leftSub.length && j < rightSub.length) {
       comparisons++;
-      const isLessEqual = L[i].value <= R[j].value;
-      const selected = isLessEqual ? L[i] : R[j];
-      const fromSide = isLessEqual ? "Trái" : "Phải";
+      const isLessEqual = leftSub[i].val <= rightSub[j].val;
+      const winningBall = isLessEqual ? leftSub[i] : rightSub[j];
+      const winningSide = isLessEqual ? "L" : "R";
+      const compareOp = isLessEqual ? "≤" : ">";
 
-      workingArr[k] = selected;
+      // 5. COMPARE_BEAM_LOCK
+      steps.push({
+        activeLine: 9,
+        phase: "COMPARE_BEAM_LOCK",
+        status: `👐 [2 NGƯỜI QUE NHẮC BÓNG LÊN TAY] L-Runner & R-Runner NHẮC BÓNG LÊN TAY so sánh trực tiếp! (${leftSub[i].tag} ${compareOp} ${rightSub[j].tag}) ➔ Bóng ${winningBall.tag} (${winningSide}) THẮNG!`,
+        balls: cloneBalls(balls),
+        left,
+        mid,
+        right,
+        depth,
+        pointerI: leftSub[i].slotIdx,
+        pointerJ: rightSub[j].slotIdx,
+        pointerK: k,
+        winnerSide: winningSide,
+        compareOp,
+        comparingBallIds: [leftSub[i].id, rightSub[j].id],
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+        comparisons,
+        mergeWrites,
+      });
+
+      // 6. TOSS_CATCH_SLAM
+      winningBall.depth = depth;
+      winningBall.slotIdx = k;
+      winningBall.sideOffset = 0;
       mergeWrites++;
 
       steps.push({
         activeLine: isLessEqual ? 10 : 11,
-        type: "MERGE_STEP",
-        status: `[SO SÁNH & GÁN ${mergeWrites}] So sánh L[${i}] (${L[i].tag}) vs R[${j}] (${R[j].tag}) ➔ Chọn ${selected.tag} (${fromSide}) đưa vào vị trí k=${k}.`,
-        currentArray: [...workingArr],
-        leftSub: { arr: L, leftIndex: left, activeIdx: i },
-        rightSub: { arr: R, leftIndex: mid + 1, activeIdx: j },
-        activeRange: { left, mid, right },
-        pointers: { i, j, k },
-        comparing: { leftVal: L[i].tag, rightVal: R[j].tag, chosen: isLessEqual ? "left" : "right" },
+        phase: "TOSS_CATCH_SLAM",
+        status: `☄️ [QUĂNG BÓNG & CATCHER ÚP RỔ] Runner bên ${winningSide} quăng bóng ${winningBall.tag} bay cầu vồng lên Tầng ${depth} ➔ Catcher BẮT & ÚP BÓNG RỔ vào ô k=${k}!`,
+        balls: cloneBalls(balls),
+        left,
+        mid,
+        right,
+        depth,
+        pointerK: k,
+        flyingBallId: winningBall.id,
         targetK: k,
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
         comparisons,
         mergeWrites,
-        mergedRanges: [...mergedRanges],
-        depth
       });
 
       if (isLessEqual) i++;
       else j++;
       k++;
+
+      // 7. POINTER_STEP_WALK
+      steps.push({
+        activeLine: 12,
+        phase: "POINTER_STEP_WALK",
+        status: `🚶 [RUNNER BƯỚC] Runner bên ${winningSide} bước tới 1 bước, phất cờ kiêu hãnh.`,
+        balls: cloneBalls(balls),
+        left,
+        mid,
+        right,
+        depth,
+        pointerK: k,
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
+        comparisons,
+        mergeWrites,
+      });
     }
 
-    while (i < L.length) {
-      const selected = L[i];
-      workingArr[k] = selected;
+    // Remaining Left elements
+    while (i < leftSub.length) {
+      const selected = leftSub[i];
+      selected.depth = depth;
+      selected.slotIdx = k;
+      selected.sideOffset = 0;
       mergeWrites++;
 
       steps.push({
         activeLine: 12,
-        type: "COPY_REMAINING",
-        status: `[CHÉP DƯ TRÁI] Chép nốt phần tử L[${i}] (${selected.tag}) vào vị trí k=${k}.`,
-        currentArray: [...workingArr],
-        leftSub: { arr: L, leftIndex: left, activeIdx: i },
-        rightSub: { arr: R, leftIndex: mid + 1, activeIdx: j },
-        activeRange: { left, mid, right },
-        pointers: { i, j: null, k },
+        phase: "RUNWAY_CLEAR_CASCADE",
+        status: `💫 [SAO CHỔI DƯ TRÁI] Nửa phải cạn bóng ➔ Bóng L[${i}] (${selected.tag}) tự bay sao chổi Teal về Tầng Cha ô k=${k}!`,
+        balls: cloneBalls(balls),
+        left,
+        mid,
+        right,
+        depth,
+        pointerK: k,
+        flyingBallId: selected.id,
         targetK: k,
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
         comparisons,
         mergeWrites,
-        mergedRanges: [...mergedRanges],
-        depth
       });
 
       i++;
       k++;
     }
 
-    while (j < R.length) {
-      const selected = R[j];
-      workingArr[k] = selected;
+    // Remaining Right elements
+    while (j < rightSub.length) {
+      const selected = rightSub[j];
+      selected.depth = depth;
+      selected.slotIdx = k;
+      selected.sideOffset = 0;
       mergeWrites++;
 
       steps.push({
         activeLine: 12,
-        type: "COPY_REMAINING",
-        status: `[CHÉP DƯ PHẢI] Chép nốt phần tử R[${j}] (${selected.tag}) vào vị trí k=${k}.`,
-        currentArray: [...workingArr],
-        leftSub: { arr: L, leftIndex: left, activeIdx: i },
-        rightSub: { arr: R, leftIndex: mid + 1, activeIdx: j },
-        activeRange: { left, mid, right },
-        pointers: { i: null, j, k },
+        phase: "RUNWAY_CLEAR_CASCADE",
+        status: `💫 [SAO CHỔI DƯ PHẢI] Nửa trái cạn bóng ➔ Bóng R[${j}] (${selected.tag}) tự bay sao chổi Teal về Tầng Cha ô k=${k}!`,
+        balls: cloneBalls(balls),
+        left,
+        mid,
+        right,
+        depth,
+        pointerK: k,
+        flyingBallId: selected.id,
         targetK: k,
+        activeTreeNodeId: nodeId,
+        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
         comparisons,
         mergeWrites,
-        mergedRanges: [...mergedRanges],
-        depth
       });
 
       j++;
       k++;
     }
 
-    mergedRanges.push({ left, right });
-
+    // 9. LEVEL_SEAL_RETURN
     steps.push({
       activeLine: 7,
-      type: "SEGMENT_MERGED",
-      status: `[ĐÃ TRỘN XONG] Hoàn tất trộn đoạn [${left}..${right}]: (${workingArr.slice(left, right + 1).map(e => e.tag).join(", ")}).`,
-      currentArray: [...workingArr],
-      leftSub: null,
-      rightSub: null,
-      activeRange: { left, mid, right },
-      pointers: null,
+      phase: "LEVEL_SEAL_RETURN",
+      status: `🔒 [KHÉP VẾT NỨT] Hoàn tất trộn đoạn [${left}..${right}] ➔ Vết nứt khép lại, nhận Run Glow Teal, chuyển góc nhìn lên Tầng Cha ${depth}!`,
+      balls: cloneBalls(balls),
+      left,
+      right,
+      depth,
+      sealedRange: { left, right },
+      activeTreeNodeId: nodeId,
+      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
       comparisons,
       mergeWrites,
-      mergedRanges: [...mergedRanges],
-      depth
     });
+
+    currentNode.status = "merged";
   }
 
-  mergeSortHelper(0, workingArr.length - 1, 0);
+  mergeSortHelper(0, n - 1, 0, null);
+
+  // 10. EMERALD_FINALE
+  for (let b of balls) {
+    b.depth = 0;
+    b.sideOffset = 0;
+  }
 
   steps.push({
     activeLine: 7,
-    type: "ALL_COMPLETE",
-    status: `🎉 HOÀN THÀNH MERGE SORT! Mảng đã được sắp xếp tăng dần hoàn hảo sau ${comparisons} phép so sánh và ${mergeWrites} lần gán.`,
-    currentArray: [...workingArr],
-    leftSub: null,
-    rightSub: null,
-    pointers: null,
+    phase: "EMERALD_FINALE",
+    status: `🎉 [FINALE BÙNG NỔ] Sóng Emerald xanh lá vĩnh viễn quét mảng ➔ Tất cả Người Que xếp hàng cúi chào khán giả!`,
+    balls: cloneBalls(balls),
+    depth: 0,
+    isCompleted: true,
+    treeNodes: JSON.parse(JSON.stringify(treeNodes)),
     comparisons,
     mergeWrites,
-    isCompleted: true,
-    mergedRanges: [{ left: 0, right: workingArr.length - 1 }],
-    depth: 0
   });
 
   return steps;
 }
 
-// Compare step count with Bubble Sort
-function generateBubbleSortStepsForCompare(initialArr) {
+// Compute exact Bubble Sort Algorithmic Operations (Comparisons + Swaps)
+function computeBubbleSortAlgorithmicOps(initialArr) {
   let arr = initialArr.map((v) => (typeof v === "object" ? v.value : v));
-  let steps = 0;
+  let comparisons = 0;
+  let swaps = 0;
   let n = arr.length;
+
   for (let i = 0; i < n - 1; i++) {
     for (let j = 0; j < n - i - 1; j++) {
-      steps++;
+      comparisons++;
       if (arr[j] > arr[j + 1]) {
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        steps++;
+        swaps++;
       }
     }
   }
-  return steps;
+
+  const totalOps = comparisons + swaps * 2;
+  return { comparisons, swaps, totalOps };
 }
 
 export default function MergeSortLab({ onBack }) {
-  const [mode, setMode] = useState("simulator"); // 'simulator' | 'speed-compare' | 'stability-test'
   const [arraySize, setArraySize] = useState(8);
   const [array, setArray] = useState([38, 27, 43, 3, 9, 82, 10, 19]);
   const [customInput, setCustomInput] = useState("");
 
+  // Tầng 1 Simulator Playback State (Independent)
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [speed, setSpeed] = useState(700);
+  const [speed, setSpeed] = useState(900);
 
-  const [lang, setLang] = useState("EN"); // "EN" | "python" | "java"
+  // Ref for currentStep to keep keydown useEffect dependency array constant []
+  const currentStepRef = useRef(currentStep);
+  currentStepRef.current = currentStep;
 
-  // Prediction Quiz states
-  const [enablePredictMode, setEnablePredictMode] = useState(true);
-  const [predictModalOpen, setPredictModalOpen] = useState(false);
-  const [predictScore, setPredictScore] = useState({ correct: 0, total: 0 });
-  const [predictFeedback, setPredictFeedback] = useState(null);
+  // Tầng 2 Full Code Reader State (100% INDEPENDENT State!)
+  const [codeStep, setCodeStep] = useState(0);
+  const [lang, setLang] = useState("pseudocode");
+  const [isCodePlaying, setIsCodePlaying] = useState(false);
+  const [codeSpeed, setCodeSpeed] = useState(800);
+
+  // Easter Eggs State
+  const [splitterSpin, setSplitterSpin] = useState(false);
+  const [catcherJuggle, setCatcherJuggle] = useState(false);
 
   const timerRef = useRef(null);
+  const codeTimerRef = useRef(null);
 
-  // Generate Random Array
+  // Refs for Auto-Scrolling Pseudocode & Recursion Tree
+  const codeBoxRef = useRef(null);
+  const treeBoxRef = useRef(null);
+  const fullCodeBoxRef = useRef(null);
+
+  const activeCodeLineRef = useRef(null);
+  const activeTreeNodeRef = useRef(null);
+  const activeFullCodeLineRef = useRef(null);
+
+  useEffect(() => {
+    const text = array.map((v) => (typeof v === "object" ? v.value : v)).join(", ");
+    setCustomInput(text);
+  }, [array]);
+
+  const steps = useMemo(() => {
+    return generateDetailedMergeSortSteps(array);
+  }, [array]);
+
+  // Tầng 1 Step Object
+  const step = steps[currentStep] || steps[0] || {};
+  const isFinished = currentStep === steps.length - 1;
+  const progressPercent = Math.round(((currentStep + 1) / steps.length) * 100);
+  const activeLine = step.activeLine || 1;
+
+  // Tầng 2 Code Step Object (INDEPENDENT FROM TẦNG 1!)
+  const codeStepObj = steps[codeStep] || steps[0] || {};
+  const codeActiveLine = codeStepObj.activeLine || 1;
+
+  // Algorithmic Operations for Merge Sort vs Bubble Sort
+  const mergeSortAlgorithmicOps = useMemo(() => {
+    const lastStep = steps[steps.length - 1] || {};
+    const totalComparisons = lastStep.comparisons || 0;
+    const totalWrites = lastStep.mergeWrites || 0;
+    return totalComparisons + totalWrites;
+  }, [steps]);
+
+  const bubbleSortStats = useMemo(() => {
+    return computeBubbleSortAlgorithmicOps(array);
+  }, [array]);
+
+  const speedRatio = useMemo(() => {
+    if (!mergeSortAlgorithmicOps || mergeSortAlgorithmicOps === 0) return 1;
+    const ratio = bubbleSortStats.totalOps / mergeSortAlgorithmicOps;
+    return Math.max(1, Math.round(ratio * 10) / 10);
+  }, [bubbleSortStats, mergeSortAlgorithmicOps]);
+
+  // Max recursion depth for dynamic spacing and camera panning
+  const maxDepth = useMemo(() => {
+    return Math.ceil(Math.log2(array.length || 1));
+  }, [array.length]);
+
+  // Smooth SVG Camera Vertical Auto-Pan
+  const cameraY = useMemo(() => {
+    const currentDepth = step.depth || 0;
+    if (maxDepth >= 4 && currentDepth >= 2) {
+      return -(currentDepth - 1) * 65;
+    } else if (currentDepth >= 2) {
+      return -(currentDepth - 1) * 45;
+    }
+    return 0;
+  }, [step.depth, maxDepth]);
+
+  // AUTO SCROLL CODE SNIPPET (TẦNG 1) & TREE CONTAINER
+  useEffect(() => {
+    if (activeCodeLineRef.current) {
+      activeCodeLineRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentStep, activeLine]);
+
+  useEffect(() => {
+    if (activeTreeNodeRef.current) {
+      activeTreeNodeRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentStep, step.activeTreeNodeId]);
+
+  // AUTO SCROLL FULL CODE READER (TẦNG 2) — USES INDEPENDENT codeStep & codeActiveLine!
+  useEffect(() => {
+    if (activeFullCodeLineRef.current) {
+      activeFullCodeLineRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [codeStep, codeActiveLine, lang]);
+
   const handleRandomArray = () => {
     const newArr = Array.from(
       { length: arraySize },
@@ -339,52 +595,22 @@ export default function MergeSortLab({ onBack }) {
     );
     setArray(newArr);
     setCurrentStep(0);
+    setCodeStep(0);
     setIsPlaying(false);
-    setPredictScore({ correct: 0, total: 0 });
+    setIsCodePlaying(false);
   };
 
-  // Generate Reverse Array (Worst Case)
   const handleReverseArray = () => {
     const sorted = [...array].sort((a, b) => (typeof a === "object" ? a.value - b.value : a - b));
     const reversed = sorted.reverse();
     setArray(reversed);
     setCurrentStep(0);
+    setCodeStep(0);
     setIsPlaying(false);
-    setPredictScore({ correct: 0, total: 0 });
+    setIsCodePlaying(false);
   };
 
-  // Mode changes
-  const handleModeChange = (newMode) => {
-    setMode(newMode);
-    setIsPlaying(false);
-    setCurrentStep(0);
-    if (newMode === "stability-test") {
-      setArray([25, 12, 25, 40, 25, 8]);
-    }
-  };
-
-  // Sync customInput string whenever array changes
-  useEffect(() => {
-    const text = array.map((v) => (typeof v === "object" ? v.value : v)).join(", ");
-    setCustomInput(text);
-  }, [array]);
-
-  // Steps generated memoized
-  const steps = useMemo(() => {
-    const isStability = mode === "stability-test";
-    return generateMergeSortSteps(array, isStability);
-  }, [array, mode]);
-
-  const currentStepData = steps[currentStep] || steps[0] || {};
-  const isFinished = currentStep === steps.length - 1;
-  const progressPercent = Math.round(((currentStep + 1) / steps.length) * 100);
-
-  const maxVal = useMemo(() => {
-    const rawVals = (currentStepData.currentArray || array).map(e => typeof e === "object" ? e.value : e);
-    return Math.max(...rawVals, 1);
-  }, [currentStepData.currentArray, array]);
-
-  // Auto-play timer
+  // Tầng 1 Main Theater Auto-Play Loop (Updates currentStep)
   useEffect(() => {
     if (isPlaying) {
       timerRef.current = setInterval(() => {
@@ -393,15 +619,7 @@ export default function MergeSortLab({ onBack }) {
             setIsPlaying(false);
             return prev;
           }
-          const nextIdx = prev + 1;
-          const nextStep = steps[nextIdx];
-          
-          if (enablePredictMode && nextStep && nextStep.type === "START_MERGE" && nextStep.predictQuestion) {
-            setIsPlaying(false);
-            setPredictModalOpen(true);
-            setPredictFeedback(null);
-          }
-          return nextIdx;
+          return prev + 1;
         });
       }, speed);
     } else {
@@ -410,15 +628,34 @@ export default function MergeSortLab({ onBack }) {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPlaying, speed, steps, enablePredictMode]);
+  }, [isPlaying, speed, steps]);
 
-  // Confetti celebration when finished
+  // Tầng 2 Dedicated Pseudocode Reader Auto-Play Loop (Updates codeStep INDEPENDENTLY!)
+  useEffect(() => {
+    if (isCodePlaying) {
+      codeTimerRef.current = setInterval(() => {
+        setCodeStep((prev) => {
+          if (prev >= steps.length - 1) {
+            setIsCodePlaying(false);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, codeSpeed);
+    } else {
+      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
+    }
+    return () => {
+      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
+    };
+  }, [isCodePlaying, codeSpeed, steps]);
+
   useEffect(() => {
     if (isFinished && steps.length > 1) {
       try {
         confetti({
-          particleCount: 80,
-          spread: 80,
+          particleCount: 100,
+          spread: 90,
           origin: { y: 0.6 },
           colors: ["#38bdf8", "#22d3ee", "#34d399", "#fbbf24", "#f43f5e"]
         });
@@ -426,7 +663,9 @@ export default function MergeSortLab({ onBack }) {
     }
   }, [isFinished, steps.length]);
 
-  // Keyboard Shortcuts Listener (Space, ArrowLeft, ArrowRight, KeyR)
+  const stepsLengthRef = useRef(steps.length);
+  stepsLengthRef.current = steps.length;
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
@@ -434,11 +673,16 @@ export default function MergeSortLab({ onBack }) {
       }
       if (e.code === "Space") {
         e.preventDefault();
-        setIsPlaying((prev) => !prev);
+        setIsPlaying((prev) => {
+          if (!prev && currentStepRef.current >= stepsLengthRef.current - 1) {
+            setCurrentStep(0);
+          }
+          return !prev;
+        });
       } else if (e.code === "ArrowRight") {
         e.preventDefault();
         setIsPlaying(false);
-        setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+        setCurrentStep((prev) => Math.min(prev + 1, stepsLengthRef.current - 1));
       } else if (e.code === "ArrowLeft") {
         e.preventDefault();
         setIsPlaying(false);
@@ -446,14 +690,15 @@ export default function MergeSortLab({ onBack }) {
       } else if (e.code === "KeyR") {
         e.preventDefault();
         setIsPlaying(false);
+        setIsCodePlaying(false);
         setCurrentStep(0);
+        setCodeStep(0);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [steps.length]);
+  }, []);
 
-  // Custom Input Submit
   const handleCustomInputSubmit = (e) => {
     e.preventDefault();
     if (!customInput.trim()) return;
@@ -466,44 +711,99 @@ export default function MergeSortLab({ onBack }) {
       setArray(parsed);
       setArraySize(parsed.length);
       setCurrentStep(0);
+      setCodeStep(0);
       setIsPlaying(false);
-      setPredictScore({ correct: 0, total: 0 });
+      setIsCodePlaying(false);
     }
   };
 
-  // Prediction answer check
-  const handleSelectPredictAnswer = (side, q) => {
-    const isCorrect = side === q.correctSide;
-    setPredictScore((prev) => ({
-      correct: prev.correct + (isCorrect ? 1 : 0),
-      total: prev.total + 1
-    }));
-    setPredictFeedback({
-      isCorrect,
-      msg: isCorrect
-        ? `✅ Chính xác! Chọn ${q.correctVal} (${q.correctSide === "L" ? "Nửa Trái" : "Nửa Phải"}).`
-        : `❌ Chưa đúng. Đúng là ${q.correctVal} (${q.correctSide === "L" ? "Nửa Trái" : "Nửa Phải"}).`
-    });
+  const currentCodeLines =
+    lang === "python"
+      ? PYTHON_CODE
+      : lang === "java"
+      ? JAVA_CODE
+      : PSEUDOCODE;
+
+  const totalBars = array.length;
+  const slotW = (STAGE_W - 140) / (totalBars || 1);
+  
+  const getXPos = (slotIdx, sideOffset = 0) => {
+    return 70 + slotIdx * slotW + slotW / 2 + sideOffset;
   };
 
-  const bubbleSortStepCount = useMemo(() => {
-    return generateBubbleSortStepsForCompare(array);
-  }, [array]);
+  const stepBalls = step.balls || [];
 
-  const activeLine = currentStepData.activeLine || 1;
-  const currentCodeLines =
-    lang === "VI"
-      ? PSEUDOCODE_VI
-      : lang === "EN"
-      ? PSEUDOCODE_EN
-      : lang === "python"
-      ? PYTHON_CODE
-      : JAVA_CODE;
+  // Calculate exact current active segment's sideOffset for Splitter centering!
+  const currentSegmentSideOffset = useMemo(() => {
+    if (step.left !== undefined) {
+      const b = stepBalls.find((ball) => ball.slotIdx === step.left && ball.depth === step.depth);
+      if (b) return b.sideOffset;
+    }
+    return 0;
+  }, [stepBalls, step.left, step.depth]);
+
+  // Exact Splitter X position (Centers perfectly on current segment split boundary at ANY depth)
+  const splitterX = useMemo(() => {
+    if (step.mid !== undefined) {
+      const leftX = getXPos(step.mid, currentSegmentSideOffset);
+      const rightX = getXPos(step.mid + 1, currentSegmentSideOffset);
+      return (leftX + rightX) / 2;
+    }
+    if (step.left !== undefined && step.right !== undefined) {
+      const leftX = getXPos(step.left, currentSegmentSideOffset);
+      const rightX = getXPos(step.right, currentSegmentSideOffset);
+      return (leftX + rightX) / 2;
+    }
+    return STAGE_W / 2;
+  }, [step.mid, step.left, step.right, currentSegmentSideOffset]);
+
+  const platformSegmentsByDepth = useMemo(() => {
+    const depthMap = {};
+    stepBalls.forEach((b) => {
+      if (!depthMap[b.depth]) depthMap[b.depth] = [];
+      depthMap[b.depth].push(b);
+    });
+
+    const segments = [];
+    Object.keys(depthMap).forEach((dStr) => {
+      const d = parseInt(dStr, 10);
+      const ballsInDepth = depthMap[d];
+
+      const offsetGroupMap = {};
+      ballsInDepth.forEach((b) => {
+        const offKey = `${b.sideOffset}`;
+        if (!offsetGroupMap[offKey]) offsetGroupMap[offKey] = [];
+        offsetGroupMap[offKey].push(b);
+      });
+
+      Object.keys(offsetGroupMap).forEach((offKey) => {
+        const group = offsetGroupMap[offKey];
+        if (group.length === 0) return;
+        const minSlot = Math.min(...group.map((g) => g.slotIdx));
+        const maxSlot = Math.max(...group.map((g) => g.slotIdx));
+        const sideOffset = group[0].sideOffset;
+
+        const startX = getXPos(minSlot, sideOffset) - BALL_R - 14;
+        const endX = getXPos(maxSlot, sideOffset) + BALL_R + 14;
+        const width = Math.max(65, endX - startX);
+
+        segments.push({
+          depth: d,
+          startX,
+          width,
+          sideOffset,
+          isActive: (step.depth || 0) === d,
+        });
+      });
+    });
+
+    return segments;
+  }, [stepBalls, step.depth]);
 
   return (
     <div className="w-full min-h-screen bg-[#0d1117] text-slate-100 p-3 sm:p-5 md:p-6 font-sans space-y-6 select-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#161b22] via-[#0d1117] to-[#0d1117]">
       
-      {/* 1. HEADER BAR (FULL WIDTH TOPBAR - MIDNIGHT SLATE & ELECTRIC CYAN) */}
+      {/* HEADER TOOLBAR */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-2xl">
         <div className="flex items-center gap-3">
           <button
@@ -518,784 +818,1013 @@ export default function MergeSortLab({ onBack }) {
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[11px] font-extrabold text-sky-400 uppercase tracking-widest bg-[#21262d] border border-[#30363d] px-3.5 py-1 rounded-full shadow-inner flex items-center gap-1.5">
                 <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Merge Sort Lab 3D</span>
+                <span>Merge Sort Theater</span>
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400 font-mono uppercase">
-              MERGE SORT — SẮP XẾP TRỘN 3D
+              MERGE SORT — KIẾN TRÚC 3 TẦNG CHUẨN DỰ ÁN
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-              Chia mảng đệ quy thành 2 nửa và trộn tăng dần (Divide & Conquer - $O(N \log N)$).
+            <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-medium">
+              Tầng 1: Bộ Mô Phỏng Sân Khấu 3D | Tầng 2: Trình Đọc Mã Độc Lập | Tầng 3: Bảng Thông Số
             </p>
           </div>
         </div>
+      </div>
 
-        {/* Mode Switcher Tabs */}
-        <div className="flex items-center gap-1.5 bg-[#0d1117] p-1.5 rounded-2xl border border-[#30363d] text-xs font-semibold shadow-inner">
+      {/* CONFIGURATION TOOLBAR */}
+      <div className="bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-xl space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          {/* Array Size Slider */}
+          <div className="md:col-span-6 flex items-center gap-3 bg-[#0d1117] px-4 py-2.5 rounded-2xl border border-[#30363d]">
+            <span className="text-xs font-bold text-slate-300 shrink-0">Kích thước mảng:</span>
+            <input
+              type="range"
+              min="4"
+              max="16"
+              value={arraySize}
+              onChange={(e) => {
+                const sz = parseInt(e.target.value, 10);
+                setArraySize(sz);
+                const newArr = Array.from({ length: sz }, () => Math.floor(Math.random() * 85) + 10);
+                setArray(newArr);
+                setCurrentStep(0);
+                setCodeStep(0);
+                setIsPlaying(false);
+                setIsCodePlaying(false);
+              }}
+              className="w-full accent-cyan-400 cursor-pointer"
+            />
+            <span className="text-xs font-mono font-extrabold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
+              {arraySize}
+            </span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="md:col-span-6 flex items-center gap-2">
+            <button
+              onClick={handleRandomArray}
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+            >
+              <Shuffle className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Mảng Ngẫu Nhiên</span>
+            </button>
+            <button
+              onClick={handleReverseArray}
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+            >
+              <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
+              <span>Mảng Ngược</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Custom Input Form */}
+        <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2 pt-2 border-t border-[#30363d]">
+          <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
+          <input
+            type="text"
+            value={customInput}
+            onChange={(e) => setCustomInput(e.target.value)}
+            placeholder="Ví dụ: 38, 27, 43, 3, 9, 82..."
+            className="flex-1 px-4 py-2 rounded-2xl bg-[#0d1117] border border-[#30363d] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+          />
           <button
-            onClick={() => handleModeChange("simulator")}
-            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
-              mode === "simulator"
-                ? "bg-sky-600 text-white font-bold shadow-lg shadow-sky-950/60"
-                : "text-slate-400 hover:text-slate-200"
-            }`}
+            type="submit"
+            className="px-4 py-2 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
           >
-            1. Mô phỏng 3D Sub-Arrays
+            Áp Dụng
           </button>
-          <button
-            onClick={() => handleModeChange("speed-compare")}
-            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
-              mode === "speed-compare"
-                ? "bg-teal-600 text-white font-bold shadow-lg shadow-teal-950/60"
-                : "text-slate-400 hover:text-slate-200"
-            }`}
-          >
-            2. So sánh vs Bubble Sort
-          </button>
-          <button
-            onClick={() => handleModeChange("stability-test")}
-            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
-              mode === "stability-test"
-                ? "bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-950/60"
-                : "text-slate-400 hover:text-slate-200"
-            }`}
-          >
-            3. Demo Tính Ổn Định
-          </button>
+        </form>
+      </div>
+
+      {/* ========================================================================================= */}
+      {/* TẦNG 1: BỘ MÔ PHỎNG SÂN KHẤU TRỰC QUAN 3D (3-COLUMN THEATER: 2.5 : 7 : 2.5) */}
+      {/* ========================================================================================= */}
+      <div className="w-full bg-[#161124]/80 backdrop-blur-md rounded-3xl border border-[#30363d] shadow-2xl overflow-hidden flex flex-col p-4 space-y-4">
+        
+        <div className="flex items-center justify-between border-b border-[#30363d] pb-2">
+          <div className="flex items-center gap-2 text-sm font-black uppercase text-sky-400 font-mono tracking-wider">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span>TẦNG 1: BỘ MÔ PHỎNG SÂN KHẤU TRỰC QUAN 3D (CẤU TRÚC 3 CỘT chuẩn)</span>
+          </div>
+          <span className="text-xs font-mono text-slate-400 bg-[#0d1117] px-3 py-1 rounded-xl border border-[#30363d]">
+            Bước {currentStep + 1} / {steps.length}
+          </span>
+        </div>
+
+        {/* Playback Controls Toolbar (Tầng 1) */}
+        <div className="bg-[#0d1117] p-3.5 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-100">
+          {/* Buttons Group */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentStep(0)}
+              disabled={currentStep === 0}
+              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+              title="Về bước đầu (Phím R)"
+            >
+              <RotateCcw className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
+              disabled={currentStep === 0}
+              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+              title="Bước trước (Phím ←)"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* AUTO PLAY TẦNG 1: Auto resets to 0 if clicked at the end! */}
+            <button
+              onClick={() => {
+                if (isPlaying) {
+                  setIsPlaying(false);
+                } else {
+                  if (currentStep >= steps.length - 1) {
+                    setCurrentStep(0);
+                  }
+                  setIsPlaying(true);
+                }
+              }}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-500 hover:from-sky-500 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg shadow-sky-950/60 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-4 h-4 fill-white" />
+                  <span>Tạm dừng</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 fill-white" />
+                  <span>Tự động chạy</span>
+                </>
+              )}
+            </button>
+
+            <button
+              onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
+              disabled={currentStep === steps.length - 1}
+              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+              title="Bước tiếp (Phím →)"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => setCurrentStep(steps.length - 1)}
+              disabled={currentStep === steps.length - 1}
+              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+              title="Xem kết quả cuối cùng"
+            >
+              <SkipForward className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Keyboard Shortcut Hint Tag */}
+          <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-[#21262d] px-3 py-1.5 rounded-xl border border-[#30363d]">
+            <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
+            <span>[Space] Chạy/Dừng | [←] Lùi | [→] Tiến | [R] Reset</span>
+          </div>
+
+          {/* Speed Slider */}
+          <div className="flex items-center gap-3 w-full sm:w-auto bg-[#21262d] px-4 py-2 rounded-xl border border-[#30363d] shadow-xs">
+            <span className="text-xs font-bold text-slate-300 shrink-0">Tốc độ:</span>
+            <input
+              type="range"
+              min="200"
+              max="1800"
+              step="50"
+              value={2000 - speed}
+              onChange={(e) => setSpeed(2000 - parseInt(e.target.value, 10))}
+              className="w-28 sm:w-36 accent-cyan-400 cursor-pointer"
+            />
+            <span className="text-xs font-mono font-bold text-cyan-400 shrink-0 w-14 text-right">
+              {speed}ms
+            </span>
+          </div>
+        </div>
+
+        {/* WORKSPACE GRID: 3 COLUMNS (CỘT TRÁI 2.5 : CỘT GIỮA 7 : CỘT PHẢI 2.5) */}
+        <div className="relative w-full min-h-[520px] grid grid-cols-12 select-none overflow-hidden rounded-2xl border border-[#30363d] shadow-2xl">
+          
+          {/* CỘT TRÁI (2.5 COLUMNS -> lg:col-span-3): PSEUDOCODE SNIPPET & RECURSION TREE MAP */}
+          <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-3.5 border-r border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner space-y-4">
+            <div>
+              <div className="flex items-center justify-between border-b border-[#30363d] pb-2 mb-2.5">
+                <div className="flex items-center gap-1.5">
+                  <Zap className="w-4 h-4 text-cyan-400 animate-pulse" />
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-100">
+                    Pseudocode (EN) & Đệ Quy
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
+                  Depth {step.depth || 0}
+                </span>
+              </div>
+
+              {/* Pseudocode Snippet Container */}
+              <div ref={codeBoxRef} className="space-y-1 font-mono text-[11px] max-h-[220px] overflow-y-auto pr-1 scroll-smooth">
+                {PSEUDOCODE.map((item) => {
+                  const isActive = item.line === activeLine;
+                  return (
+                    <div
+                      key={item.line}
+                      ref={isActive ? activeCodeLineRef : null}
+                      className={`p-1.5 rounded-lg flex items-center gap-2 transition-all ${
+                        isActive
+                          ? "bg-[#1f2937] text-sky-300 font-bold border-l-4 border-sky-400 pl-2 shadow-md"
+                          : "text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      <span className="text-[10px] opacity-40 w-4 text-right font-mono">{item.line}</span>
+                      <span className="truncate whitespace-pre">{item.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Recursion Map Mini-Panel */}
+            <div className="pt-3 border-t border-[#30363d] space-y-2">
+              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5 justify-between">
+                <div className="flex items-center gap-1.5">
+                  <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>Cây Đệ Quy Mini Map:</span>
+                </div>
+                <span className="text-[9px] font-mono text-cyan-400">Click node để nhảy</span>
+              </div>
+
+              <div ref={treeBoxRef} className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] max-h-36 overflow-y-auto space-y-1.5 font-mono text-[10px] scroll-smooth">
+                {step.treeNodes && step.treeNodes.length > 0 ? (
+                  step.treeNodes.map((node) => {
+                    const isActive = node.id === step.activeTreeNodeId;
+                    return (
+                      <div
+                        key={node.id}
+                        ref={isActive ? activeTreeNodeRef : null}
+                        onClick={() => {
+                          const targetStepIdx = steps.findIndex((s) => s.activeTreeNodeId === node.id);
+                          if (targetStepIdx !== -1) {
+                            setIsPlaying(false);
+                            setCurrentStep(targetStepIdx);
+                          }
+                        }}
+                        className={`p-1.5 rounded-lg flex items-center justify-between cursor-pointer transition-all ${
+                          isActive
+                            ? "bg-sky-950/80 border border-sky-400 text-cyan-300 font-bold shadow-md"
+                            : "bg-[#0d1117] border border-[#30363d] text-slate-400 hover:text-slate-200"
+                        }`}
+                      >
+                        <span>[${node.left}..${node.right}] (d=${node.depth})</span>
+                        <span className={`text-[9px] px-1.5 py-0.2 rounded ${node.status === 'merged' ? 'bg-emerald-950 text-emerald-400' : 'bg-cyan-950 text-cyan-400'}`}>
+                          {node.status === 'merged' ? '✓ Trộn' : '▶ Active'}
+                        </span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <span className="text-slate-500 text-[10px] italic">Đang cập nhật cây đệ quy...</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* CỘT GIỮA (7 COLUMNS -> lg:col-span-6): PERFECT SVG STAGE THEATER (VIEWBOX 800x480) */}
+          <div className="col-span-12 lg:col-span-6 bg-gradient-to-b from-[#0b1329] via-[#0d1117] to-[#0d1117] p-3 flex flex-col justify-between items-center relative overflow-hidden">
+            
+            {/* Status Explanatory Banner */}
+            <div className="w-full flex items-center justify-between z-10 px-3 py-1.5 bg-[#161b22]/90 rounded-xl border border-[#30363d] backdrop-blur-md">
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-200">
+                <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span className="truncate max-w-sm font-semibold">{step.status}</span>
+              </div>
+              <span className="text-[10px] font-bold text-sky-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] shrink-0">
+                Stage 3D
+              </span>
+            </div>
+
+            {/* STAGE CANVAS VIEWBOX 800x480 */}
+            <div className="relative w-full h-[420px] flex items-center justify-center overflow-visible my-auto">
+              <svg className="w-full h-full select-none" viewBox="0 0 800 480">
+                <defs>
+                  <filter id="cyanLaserBeam" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="5" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+
+                  <filter id="riftSparkGlow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+
+                  <linearGradient id="platformGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#1e293b" />
+                    <stop offset="100%" stopColor="#0f172a" />
+                  </linearGradient>
+
+                  <linearGradient id="activePlatformGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#0284c7" />
+                    <stop offset="100%" stopColor="#0f172a" />
+                  </linearGradient>
+
+                  <linearGradient id="riftBladeGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#0284c7" />
+                    <stop offset="50%" stopColor="#22d3ee" />
+                    <stop offset="100%" stopColor="#ffffff" />
+                  </linearGradient>
+                </defs>
+
+                {/* DYNAMIC SVG CAMERA PAN GROUP */}
+                <g transform={`translate(0, ${cameraY})`} style={{ transition: "transform 0.5s ease-out" }}>
+                  
+                  {/* RENDER DYNAMICALLY SPLIT PHYSICAL PLATFORM SHELVES */}
+                  {platformSegmentsByDepth.map((seg, idx) => {
+                    const tierY = getTierY(seg.depth, maxDepth);
+                    return (
+                      <g key={`plat-seg-${seg.depth}-${idx}`} opacity={seg.isActive ? 1 : 0.45} style={{ transition: "all 0.5s ease" }}>
+                        <rect 
+                          x={seg.startX} 
+                          y={tierY} 
+                          width={seg.width} 
+                          height="14" 
+                          fill={seg.isActive ? "url(#activePlatformGrad)" : "url(#platformGradient)"} 
+                          stroke={seg.isActive ? "#38bdf8" : "#334155"} 
+                          strokeWidth="1.5" 
+                          rx="4" 
+                        />
+                        <line x1={seg.startX} y1={tierY} x2={seg.startX + seg.width} y2={tierY} stroke={seg.isActive ? "#7dd3fc" : "#475569"} strokeWidth="2" />
+                        <text x={seg.startX + 6} y={tierY + 11} fill={seg.isActive ? "#38bdf8" : "#64748b"} fontSize="9" fontFamily="monospace" fontWeight="bold">
+                          Tầng {seg.depth} {seg.isActive ? "★" : ""}
+                        </text>
+                      </g>
+                    );
+                  })}
+
+                  {/* GROUND CRACK & IMPACT SPARK FLARING EFFECT UNDER EXACT CENTER SWORD IMPACT (x=0) */}
+                  {(step.phase === "RIFT_GROUND_CRACK" || step.phase === "LEAP_SOMERSAULT_SLASH") && (
+                    <g transform={`translate(${splitterX}, ${getTierY(step.depth || 0, maxDepth)})`}>
+                      {/* Clean Jagged crack path right down the center */}
+                      <path 
+                        d="M 0 0 L -5 4 L 5 8 L 0 14"
+                        stroke="#22d3ee" 
+                        strokeWidth="3.5" 
+                        fill="none"
+                        filter="url(#riftSparkGlow)"
+                      />
+                      {/* Impact Spark Flare */}
+                      <circle cx="0" cy="10" r="7" fill="#38bdf8" opacity="0.9" filter="url(#cyanLaserBeam)" />
+                      <circle cx="-6" cy="5" r="2.5" fill="#ffffff" />
+                      <circle cx="6" cy="5" r="2.5" fill="#ffffff" />
+                    </g>
+                  )}
+
+                  {/* COMPARE BEAM & COMPARISON SYMBOL BADGE */}
+                  {step.phase?.includes("BEAM") && step.comparingBallIds && step.comparingBallIds.length === 2 && (
+                    (() => {
+                      const b1 = stepBalls.find((b) => b.id === step.comparingBallIds[0]);
+                      const b2 = stepBalls.find((b) => b.id === step.comparingBallIds[1]);
+                      if (!b1 || !b2) return null;
+                      const x1 = getXPos(b1.slotIdx, b1.sideOffset);
+                      const y1 = getTierY(b1.depth, maxDepth) - BALL_R - 25;
+                      const x2 = getXPos(b2.slotIdx, b2.sideOffset);
+                      const y2 = getTierY(b2.depth, maxDepth) - BALL_R - 25;
+                      return (
+                        <g>
+                          <line 
+                            x1={x1} 
+                            y1={y1} 
+                            x2={x2} 
+                            y2={y2} 
+                            stroke="#0284c7" 
+                            strokeWidth="4" 
+                            filter="url(#cyanLaserBeam)" 
+                            strokeDasharray="6-3"
+                          />
+                          <g transform={`translate(${(x1 + x2) / 2}, ${(y1 + y2) / 2 - 10})`}>
+                            <rect x="-24" y="-12" width="48" height="24" fill="#0d1117" stroke="#38bdf8" strokeWidth="2" rx="12" filter="url(#cyanLaserBeam)" />
+                            <text x="0" y="4" fill="#38bdf8" fontSize="14" fontWeight="900" fontFamily="monospace" textAnchor="middle">
+                              {step.compareOp || "≤"}
+                            </text>
+                          </g>
+                        </g>
+                      );
+                    })()
+                  )}
+
+                  {/* CHARACTERS */}
+                  
+                  {/* THE SPLITTER (PERFECT 100% CENTERED SLASH & SWORD POSES) */}
+                  {(step.phase?.includes("SPLIT") || step.phase?.includes("SLASH") || step.phase?.includes("CRACK") || splitterSpin) && (
+                    (() => {
+                      const isSlashingDown = step.phase === "LEAP_SOMERSAULT_SLASH" || step.phase === "RIFT_GROUND_CRACK";
+                      return (
+                        <g 
+                          transform={`translate(${splitterX}, ${getTierY(step.depth || 0, maxDepth)})`}
+                          onClick={() => {
+                            setSplitterSpin(true);
+                            setTimeout(() => setSplitterSpin(false), 1000);
+                          }}
+                          className="cursor-pointer"
+                        >
+                          {/* Head */}
+                          <circle cx="0" cy={isSlashingDown ? "-68" : "-75"} r="11" fill="none" stroke="#ffffff" strokeWidth="3.5" />
+                          
+                          {/* Torso */}
+                          <line x1="0" y1={isSlashingDown ? "-57" : "-64"} x2="0" y2="-25" stroke="#ffffff" strokeWidth="3.5" />
+                          
+                          {/* Legs */}
+                          {isSlashingDown ? (
+                            <>
+                              <line x1="0" y1="-25" x2="-18" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                              <line x1="0" y1="-25" x2="18" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                            </>
+                          ) : (
+                            <>
+                              <line x1="0" y1="-25" x2="-16" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                              <line x1="0" y1="-25" x2="16" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                            </>
+                          )}
+
+                          {/* Sword & Arms Dynamic Poses */}
+                          {isSlashingDown ? (
+                            <>
+                              {/* Arms holding hilt at center */}
+                              <line x1="0" y1="-48" x2="-6" y2="-34" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                              <line x1="0" y1="-48" x2="6" y2="-34" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                              {/* SWORD BLADE SLASHING STRAIGHT DOWN INTO EXACT CENTER GAP (x=0) */}
+                              <line x1="0" y1="-34" x2="0" y2="10" stroke="url(#riftBladeGradient)" strokeWidth="4.5" strokeLinecap="round" filter="url(#riftSparkGlow)" />
+                            </>
+                          ) : (
+                            <>
+                              {/* SWORD RAISED HIGH PREPARING TO SLASH */}
+                              <line x1="0" y1="-50" x2="38" y2="-90" stroke="url(#riftBladeGradient)" strokeWidth="4" strokeLinecap="round" filter="url(#riftSparkGlow)" />
+                              <line x1="0" y1="-50" x2="26" y2="-72" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                              <line x1="0" y1="-50" x2="-14" y2="-32" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                            </>
+                          )}
+                        </g>
+                      );
+                    })()
+                  )}
+
+                  {/* L-RUNNER & R-RUNNER */}
+                  {(step.phase?.includes("BEAM") || step.phase?.includes("STEP") || step.phase?.includes("MARK")) && step.pointerI !== undefined && step.pointerJ !== undefined && (
+                    <>
+                      {/* L-Runner */}
+                      <g transform={`translate(${getXPos(step.pointerI, currentSegmentSideOffset ? -24 : 0) - 32}, ${getTierY(step.depth + 1, maxDepth)})`}>
+                        <circle cx="0" cy="-65" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-56" x2="0" y2="-20" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="-8" y1="-95" x2="-8" y2="-20" stroke="#38bdf8" strokeWidth="2.5" />
+                        <polygon points="-8,-95 10,-86 -8,-77" fill="#38bdf8" />
+                        {step.phase?.includes("BEAM") ? (
+                          <>
+                            <line x1="0" y1="-45" x2="28" y2="-45" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                            <line x1="0" y1="-45" x2="28" y2="-38" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                          </>
+                        ) : (
+                          <line x1="0" y1="-45" x2="12" y2="-40" stroke="#ffffff" strokeWidth="3" />
+                        )}
+                        <line x1="0" y1="-20" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-20" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+
+                      {/* R-Runner */}
+                      <g transform={`translate(${getXPos(step.pointerJ, currentSegmentSideOffset ? 24 : 0) + 32}, ${getTierY(step.depth + 1, maxDepth)})`}>
+                        <circle cx="0" cy="-65" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-56" x2="0" y2="-20" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="8" y1="-95" x2="8" y2="-20" stroke="#34d399" strokeWidth="2.5" />
+                        <polygon points="8,-95 -10,-86 8,-77" fill="#34d399" />
+                        {step.phase?.includes("BEAM") ? (
+                          <>
+                            <line x1="0" y1="-45" x2="-28" y2="-45" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                            <line x1="0" y1="-45" x2="-28" y2="-38" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                          </>
+                        ) : (
+                          <line x1="0" y1="-45" x2="-12" y2="-40" stroke="#ffffff" strokeWidth="3" />
+                        )}
+                        <line x1="0" y1="-20" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-20" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+                    </>
+                  )}
+
+                  {/* THE CATCHER */}
+                  {(step.phase?.includes("SLAM") || step.phase?.includes("CASCADE") || catcherJuggle) && (
+                    <g 
+                      transform={`translate(${step.targetK !== undefined ? getXPos(step.targetK, 0) : STAGE_W / 2}, ${getTierY(step.depth || 0, maxDepth)})`}
+                      onClick={() => {
+                        setCatcherJuggle(true);
+                        setTimeout(() => setCatcherJuggle(false), 1200);
+                      }}
+                      className="cursor-pointer"
+                    >
+                      <circle cx="0" cy="-75" r="11" fill="none" stroke="#ffffff" strokeWidth="3.5" />
+                      <line x1="0" y1="-64" x2="0" y2="-25" stroke="#ffffff" strokeWidth="3.5" />
+                      <line x1="0" y1="-50" x2="-22" y2="-82" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                      <line x1="0" y1="-50" x2="22" y2="-82" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                      <line x1="0" y1="-25" x2="-15" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                      <line x1="0" y1="-25" x2="15" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
+                    </g>
+                  )}
+
+                  {/* FINALE: STICKMEN BOWING */}
+                  {step.phase === "EMERALD_FINALE" && (
+                    <g transform={`translate(400, ${getTierY(0, maxDepth)})`}>
+                      <g transform="translate(-120, 0)">
+                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+
+                      <g transform="translate(-40, 0)">
+                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+
+                      <g transform="translate(40, 0)">
+                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+
+                      <g transform="translate(120, 0)">
+                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
+                      </g>
+                    </g>
+                  )}
+
+                  {/* RENDER N EXCLUSIVE DATA BALLS */}
+                  {stepBalls.map((b) => {
+                    const isCompleted = step.phase === "EMERALD_FINALE" || step.isCompleted;
+                    const isFlying = (step.phase?.includes("SLAM") || step.phase?.includes("CASCADE")) && step.flyingBallId === b.id;
+                    const isComparing = step.phase?.includes("BEAM") && step.comparingBallIds?.includes(b.id);
+
+                    const tierY = getTierY(b.depth, maxDepth);
+                    let bx = getXPos(b.slotIdx, b.sideOffset);
+                    let by = tierY - BALL_R;
+
+                    if (isComparing) {
+                      by = tierY - BALL_R - 25;
+                    } else if (isFlying) {
+                      by = tierY - BALL_R - 85;
+                    }
+
+                    let ballFill = "#334155";
+                    let ballStroke = "#475569";
+                    let textColor = "#f1f5f9";
+                    let glowFilter = undefined;
+
+                    if (isCompleted) {
+                      ballFill = "#166534";
+                      ballStroke = "#4ade80";
+                      textColor = "#f0fdf4";
+                    } else if (isComparing) {
+                      ballFill = "#0284c7";
+                      ballStroke = "#7dd3fc";
+                      textColor = "#ffffff";
+                      glowFilter = "url(#cyanLaserBeam)";
+                    } else if (isFlying) {
+                      ballFill = "#0d9488";
+                      ballStroke = "#5eead4";
+                      textColor = "#ffffff";
+                    } else if (step.sealedRange && b.slotIdx >= step.sealedRange.left && b.slotIdx <= step.sealedRange.right && b.depth === step.depth) {
+                      ballFill = "#115e59";
+                      ballStroke = "#2dd4bf";
+                      textColor = "#ffffff";
+                    }
+
+                    return (
+                      <g
+                        key={b.id}
+                        transform={`translate(${bx}, ${by})`}
+                        style={{ transition: "transform 0.5s cubic-bezier(0.34, 1.25, 0.64, 1)" }}
+                      >
+                        <ellipse
+                          cx="0"
+                          cy={BALL_R + (by < tierY - BALL_R ? (tierY - BALL_R - by) : 1)}
+                          rx={BALL_R * (by < tierY - BALL_R ? 0.35 : 0.85)}
+                          ry="3"
+                          fill="#000000"
+                          opacity={by < tierY - BALL_R ? 0.2 : 0.6}
+                        />
+
+                        <circle
+                          cx="0"
+                          cy="0"
+                          r={BALL_R}
+                          fill={ballFill}
+                          stroke={ballStroke}
+                          strokeWidth="2.5"
+                          filter={glowFilter}
+                        />
+
+                        <ellipse cx={-BALL_R * 0.3} cy={-BALL_R * 0.3} rx={BALL_R * 0.35} ry={BALL_R * 0.2} fill="#ffffff" opacity="0.35" />
+
+                        <text
+                          x="0"
+                          y="5"
+                          fill={textColor}
+                          fontSize="13"
+                          fontWeight="900"
+                          fontFamily="monospace"
+                          textAnchor="middle"
+                          className="drop-shadow-md"
+                        >
+                          {b.tag}
+                        </text>
+                      </g>
+                    );
+                  })}
+
+                </g>
+
+              </svg>
+            </div>
+
+            {/* Bottom Platform Base */}
+            <div className="w-full h-2.5 bg-[#21262d] rounded-full border border-[#30363d]" />
+          </div>
+
+          {/* CỘT PHẢI (2.5 COLUMNS -> lg:col-span-3): EXECUTION STATS & COMPLEXITY CARD AT TIER 1 */}
+          <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-3.5 border-l border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner space-y-3">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-[#30363d] pb-2">
+                <div className="flex items-center gap-1.5">
+                  <BarChart2 className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-100">
+                    Thông Số Tầng 1
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
+                  N = {array.length}
+                </span>
+              </div>
+
+              {/* Realtime Stat Cards */}
+              <div className="space-y-2">
+                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-slate-400">Số phép so sánh:</span>
+                  <span className="text-base font-black text-sky-400 font-mono">{step.comparisons || 0}</span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-slate-400">Số lần gán/trộn:</span>
+                  <span className="text-base font-black text-teal-400 font-mono">{step.mergeWrites || 0}</span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-slate-400">Độ sâu đệ quy:</span>
+                  <span className="text-base font-black text-amber-400 font-mono">Tầng {step.depth || 0}</span>
+                </div>
+              </div>
+
+              {/* Live Progress Bar */}
+              <div className="space-y-1.5 pt-1 border-t border-[#30363d]">
+                <div className="flex justify-between text-[11px] font-bold text-slate-300">
+                  <span>Tiến trình (%)</span>
+                  <span className="font-mono text-emerald-400 font-extrabold">{progressPercent}%</span>
+                </div>
+                <div className="w-full h-2.5 rounded-full bg-[#161b22] overflow-hidden border border-[#30363d]">
+                  <div
+                    style={{ width: `${progressPercent}%` }}
+                    className="h-full bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-300"
+                  />
+                </div>
+              </div>
+
+              {/* Complexity Summary Cards */}
+              <div className="space-y-1.5 pt-1">
+                <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
+                  <span className="text-[10px] text-slate-400 font-semibold">Thời gian:</span>
+                  <span className="font-mono font-bold text-sky-400 text-[10px] bg-sky-950 px-2 py-0.5 rounded border border-sky-800">
+                    O(N log N)
+                  </span>
+                </div>
+                <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
+                  <span className="text-[10px] text-slate-400 font-semibold">Bộ nhớ phụ:</span>
+                  <span className="font-mono font-bold text-amber-400 text-[10px] bg-amber-950 px-2 py-0.5 rounded border border-amber-800">
+                    O(N)
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Speed Comparison Hint Card */}
+            <div className="p-2.5 rounded-xl bg-gradient-to-br from-sky-950/60 via-[#161b22] to-[#0d1117] border border-cyan-500/30 text-center space-y-1">
+              <span className="text-[10px] font-bold text-cyan-300 block uppercase">VS BUBBLE SORT O(N²)</span>
+              <span className="text-xs font-mono font-black text-amber-300 block">
+                Nhanh hơn ~{speedRatio}x
+              </span>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      {/* MODE 1 & MODE 3: Visual Simulator */}
-      {(mode === "simulator" || mode === "stability-test") && (
-        <div className="space-y-6">
-          
-          {/* 2. CONFIGURATION CONTROLS */}
-          <div className="bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-xl space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-              <Sliders className="w-4 h-4 text-sky-400" />
-              <span>Cấu hình mảng & Chế độ thử thách:</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
-              {/* Array Size Slider */}
-              <div className="md:col-span-4 flex items-center gap-3 bg-[#0d1117] px-4 py-2.5 rounded-2xl border border-[#30363d]">
-                <span className="text-xs font-bold text-slate-300 shrink-0">Kích thước:</span>
-                <input
-                  type="range"
-                  min="4"
-                  max="16"
-                  value={arraySize}
-                  onChange={(e) => {
-                    const sz = parseInt(e.target.value, 10);
-                    setArraySize(sz);
-                    const newArr = Array.from({ length: sz }, () => Math.floor(Math.random() * 85) + 10);
-                    setArray(newArr);
-                    setCurrentStep(0);
-                    setIsPlaying(false);
-                    setPredictScore({ correct: 0, total: 0 });
-                  }}
-                  className="w-full accent-cyan-400 cursor-pointer"
-                />
-                <span className="text-xs font-mono font-extrabold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
-                  {arraySize}
-                </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="md:col-span-4 flex items-center gap-2">
-                <button
-                  onClick={handleRandomArray}
-                  className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
-                >
-                  <Shuffle className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Ngẫu Nhiên</span>
-                </button>
-                <button
-                  onClick={handleReverseArray}
-                  className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
-                >
-                  <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Mảng Ngược</span>
-                </button>
-              </div>
-
-              {/* Prediction Toggle Button */}
-              <div className="md:col-span-4">
-                <button
-                  onClick={() => setEnablePredictMode(!enablePredictMode)}
-                  className={`w-full py-2.5 px-4 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-95 ${
-                    enablePredictMode
-                      ? "bg-gradient-to-r from-sky-600 to-teal-600 text-white shadow-sky-950/50"
-                      : "bg-[#0d1117] text-slate-400 border border-[#30363d] hover:text-slate-200"
-                  }`}
-                >
-                  <HelpCircle className="w-3.5 h-3.5" />
-                  <span>Thử thách dự đoán: {enablePredictMode ? "BẬT 🎯" : "TẮT"}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Custom Input Form */}
-            <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2 pt-2 border-t border-[#30363d]">
-              <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
-              <input
-                type="text"
-                value={customInput}
-                onChange={(e) => setCustomInput(e.target.value)}
-                placeholder="Ví dụ: 38, 27, 43, 3, 9, 82..."
-                className="flex-1 px-4 py-2 rounded-2xl bg-[#0d1117] border border-[#30363d] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
-              >
-                Áp Dụng
-              </button>
-            </form>
-          </div>
-
-          {/* 3. TẦNG 1: BỘ MÔ PHỎNG NỔI BẬT CHIA 3 CỘT (LAYOUT 2.5 : 7 : 2.5) */}
-          <div className="w-full bg-[#161124]/80 backdrop-blur-md rounded-3xl border border-[#30363d] shadow-2xl overflow-hidden flex flex-col p-4 space-y-4">
-            
-            {/* Playback Controls Toolbar & Keyboard Hints */}
-            <div className="bg-[#0d1117] p-3.5 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-100">
-              {/* Buttons Group */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setCurrentStep(0)}
-                  disabled={currentStep === 0}
-                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-                  title="Về bước đầu (Phím R)"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
-                  disabled={currentStep === 0}
-                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-                  title="Bước trước (Phím ←)"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-500 hover:from-sky-500 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg shadow-sky-950/60 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
-                >
-                  {isPlaying ? (
-                    <>
-                      <Pause className="w-4 h-4 fill-white" />
-                      <span>Tạm dừng</span>
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-4 h-4 fill-white" />
-                      <span>Tự động chạy</span>
-                    </>
-                  )}
-                </button>
-
-                <button
-                  onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
-                  disabled={currentStep === steps.length - 1}
-                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-                  title="Bước tiếp (Phím →)"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => setCurrentStep(steps.length - 1)}
-                  disabled={currentStep === steps.length - 1}
-                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-                  title="Xem kết quả cuối cùng"
-                >
-                  <SkipForward className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Keyboard Shortcut Hint Tag */}
-              <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-[#21262d] px-3 py-1.5 rounded-xl border border-[#30363d]">
-                <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
-                <span>[Space] Tạm dừng/Chạy | [←] Lùi | [→] Tiến | [R] Đặt lại</span>
-              </div>
-
-              {/* Speed Slider */}
-              <div className="flex items-center gap-3 w-full sm:w-auto bg-[#21262d] px-4 py-2 rounded-xl border border-[#30363d] shadow-xs">
-                <span className="text-xs font-bold text-slate-300 shrink-0">Tốc độ:</span>
-                <input
-                  type="range"
-                  min="150"
-                  max="1500"
-                  step="50"
-                  value={1650 - speed}
-                  onChange={(e) => setSpeed(1650 - parseInt(e.target.value, 10))}
-                  className="w-28 sm:w-36 accent-cyan-400 cursor-pointer"
-                />
-                <span className="text-xs font-mono font-bold text-cyan-400 shrink-0 w-14 text-right">
-                  {speed}ms
-                </span>
-              </div>
-            </div>
-
-            {/* SIDE-BY-SIDE 3-PANEL GRID WORKSPACE (LAYOUT 2.5 : 7 : 2.5) */}
-            <div className="relative w-full min-h-[510px] grid grid-cols-12 select-none overflow-hidden rounded-2xl border border-[#30363d] shadow-2xl">
-              
-              {/* CỘT 1 (LEFT - 2.5 COLS ~ 25%): PSEUDOCODE & CYBER LED LIVE VARIABLE WATCHER */}
-              <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-4 border-r border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner">
-                <div>
-                  <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5 mb-3">
-                    <div className="flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-cyan-400 animate-pulse" />
-                      <span className="text-xs font-black uppercase tracking-wider text-slate-100">
-                        Mã Giả & Biến Số
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
-                      Merge Sort
-                    </span>
-                  </div>
-
-                  {/* Pseudocode Snippet */}
-                  <div className="space-y-1 font-mono text-[11px] max-h-[220px] overflow-y-auto pr-1">
-                    {currentCodeLines.map((item) => {
-                      const isActive = item.line === activeLine;
-                      return (
-                        <div
-                          key={item.line}
-                          className={`p-1.5 rounded-lg flex items-center gap-2 transition-all ${
-                            isActive
-                              ? "bg-[#1f2937] text-sky-300 font-bold border-l-4 border-sky-400 pl-2 shadow-md"
-                              : "text-slate-400 hover:text-slate-200"
-                          }`}
-                        >
-                          <span className="text-[10px] opacity-40 w-4 text-right font-mono">{item.line}</span>
-                          <span className="truncate whitespace-pre">{item.text}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Live Variables Cyber LED Watch Box */}
-                <div className="pt-3 border-t border-[#30363d] space-y-2">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <Code2 className="w-3.5 h-3.5 text-sky-400" />
-                    <span>Theo dõi biến Cyber LED:</span>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
-                    <div className="p-1.5 bg-[#161b22] rounded-xl border border-[#30363d]">
-                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Trái i</span>
-                      <span className="font-extrabold text-sky-400 text-xs">{currentStepData.pointers?.i ?? "-"}</span>
-                    </div>
-                    <div className="p-1.5 bg-[#161b22] rounded-xl border border-[#30363d]">
-                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Phải j</span>
-                      <span className="font-extrabold text-teal-400 text-xs">{currentStepData.pointers?.j ?? "-"}</span>
-                    </div>
-                    <div className="p-1.5 bg-[#161b22] rounded-xl border border-[#30363d]">
-                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Đích k</span>
-                      <span className="font-extrabold text-emerald-400 text-xs">{currentStepData.pointers?.k ?? "-"}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CỘT 2 (CENTER - 7 COLS ~ 50-60%): 3D DUAL-LEVEL MERGE STAGE */}
-              <div className="col-span-12 lg:col-span-6 bg-gradient-to-b from-[#161b22] via-[#0d1117] to-[#0d1117] p-3 md:p-4 flex flex-col justify-between items-center relative border-r border-[#30363d] overflow-hidden">
-                
-                {/* Status Explanatory Banner */}
-                <div className="w-full flex items-center justify-between z-10 px-2.5 py-1.5 bg-[#161b22]/90 rounded-xl border border-[#30363d] backdrop-blur-md">
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-200">
-                    <Info className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                    <span className="truncate max-w-md">{currentStepData.status}</span>
-                  </div>
-                  {predictScore.total > 0 && (
-                    <div className="text-[11px] font-mono font-bold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
-                      🎯 Quiz: {predictScore.correct}/{predictScore.total}
-                    </div>
-                  )}
-                </div>
-
-                {/* DUAL-LEVEL 3D BARS STAGE */}
-                <div className="relative w-full flex-1 flex flex-col justify-around py-4">
-                  
-                  {/* UPPER LEVEL: Left Subarray L (Soft Sky Blue) & Right Subarray R (Teal) */}
-                  <div className="h-32 w-full flex items-end justify-center gap-2 border-b border-[#30363d] pb-3 relative">
-                    <div className="absolute top-0 left-2 text-[10px] font-mono text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                      <span>● Tầng trên: Mảng con L (Sky Blue) & R (Teal)</span>
-                    </div>
-
-                    {currentStepData.leftSub || currentStepData.rightSub ? (
-                      <div className="flex items-end justify-center gap-6 w-full h-full pt-6">
-                        
-                        {/* Left Subarray L */}
-                        {currentStepData.leftSub && (
-                          <div className="flex items-end gap-1.5 bg-sky-950/40 p-2 rounded-2xl border border-sky-700/40 shadow-inner">
-                            <span className="absolute -top-3 left-3 text-[9px] font-mono text-sky-300 font-bold bg-sky-900 px-1.5 py-0.5 rounded">
-                              L [{currentStepData.leftSub.leftIndex}]
-                            </span>
-                            {currentStepData.leftSub.arr.map((item, idx) => {
-                              const val = typeof item === "object" ? item.value : item;
-                              const tag = typeof item === "object" ? item.tag : item;
-                              const heightPct = Math.max(20, Math.round((val / maxVal) * 100));
-                              const isActive = currentStepData.pointers?.i === idx;
-                              return (
-                                <div key={`L-${idx}`} className="flex flex-col items-center justify-end h-full w-8">
-                                  <div
-                                    style={{ height: `${heightPct}%` }}
-                                    className={`w-full rounded-t-lg border-t border-x flex flex-col items-center justify-center transition-all ${
-                                      isActive
-                                        ? "bg-sky-500 border-sky-300 text-slate-950 font-black shadow-lg shadow-sky-500/50 scale-105"
-                                        : "bg-sky-900/80 border-sky-700 text-sky-200"
-                                    }`}
-                                  >
-                                    <span className="text-[10px] font-bold">{tag}</span>
-                                  </div>
-                                  <span className="text-[9px] font-mono text-sky-400 mt-1">L[{idx}]</span>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-
-                        {/* Right Subarray R */}
-                        {currentStepData.rightSub && (
-                          <div className="flex items-end gap-1.5 bg-teal-950/40 p-2 rounded-2xl border border-teal-700/40 shadow-inner">
-                            <span className="absolute -top-3 right-3 text-[9px] font-mono text-teal-300 font-bold bg-teal-900 px-1.5 py-0.5 rounded">
-                              R [{currentStepData.rightSub.leftIndex}]
-                            </span>
-                            {currentStepData.rightSub.arr.map((item, idx) => {
-                              const val = typeof item === "object" ? item.value : item;
-                              const tag = typeof item === "object" ? item.tag : item;
-                              const heightPct = Math.max(20, Math.round((val / maxVal) * 100));
-                              const isActive = currentStepData.pointers?.j === idx;
-                              return (
-                                <div key={`R-${idx}`} className="flex flex-col items-center justify-end h-full w-8">
-                                  <div
-                                    style={{ height: `${heightPct}%` }}
-                                    className={`w-full rounded-t-lg border-t border-x flex flex-col items-center justify-center transition-all ${
-                                      isActive
-                                        ? "bg-teal-500 border-teal-300 text-slate-950 font-black shadow-lg shadow-teal-500/50 scale-105"
-                                        : "bg-teal-900/80 border-teal-700 text-teal-200"
-                                    }`}
-                                  >
-                                    <span className="text-[10px] font-bold">{tag}</span>
-                                  </div>
-                                  <span className="text-[9px] font-mono text-teal-400 mt-1">R[{idx}]</span>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center text-xs font-mono text-slate-400/60 italic h-full">
-                        ● Chưa ở giai đoạn Trộn (Merge Phase)
-                      </div>
-                    )}
-                  </div>
-
-                  {/* LOWER LEVEL: Main Target Array arr[k] (Cyan / Soft Mint) */}
-                  <div className="h-36 w-full flex items-end justify-center gap-2 pt-4 relative">
-                    <div className="absolute top-1 left-2 text-[10px] font-mono text-cyan-400 uppercase tracking-widest flex items-center gap-2">
-                      <span>● Tầng dưới: Mảng chính arr[k] (Cyan / Soft Mint)</span>
-                    </div>
-
-                    {currentStepData.currentArray.map((item, idx) => {
-                      const val = typeof item === "object" ? item.value : item;
-                      const tag = typeof item === "object" ? item.tag : item;
-                      const heightPct = Math.max(20, Math.round((val / maxVal) * 100));
-                      const isTargetK = currentStepData.pointers?.k === idx;
-                      const isMerged = currentStepData.mergedRanges?.some(r => idx >= r.left && idx <= r.right);
-
-                      let barBg = "bg-[#21262d] border-[#30363d] text-slate-200";
-                      if (isFinished) {
-                        barBg = "bg-emerald-500 border-emerald-300 text-slate-950 font-black shadow-lg shadow-emerald-500/40";
-                      } else if (isTargetK) {
-                        barBg = "bg-cyan-400 border-cyan-200 text-slate-950 font-black shadow-xl shadow-cyan-400/50 animate-bounce";
-                      } else if (isMerged) {
-                        barBg = "bg-emerald-600/80 border-emerald-400 text-white font-bold";
-                      }
-
-                      return (
-                        <div key={`arr-${idx}`} className="flex-1 flex flex-col items-center justify-end h-full max-w-[44px] relative">
-                          <div
-                            style={{ height: `${heightPct}%` }}
-                            className={`w-full rounded-t-xl border-t border-x flex flex-col items-center justify-center transition-all duration-300 ${barBg}`}
-                          >
-                            <span className="text-xs font-extrabold">{tag}</span>
-                          </div>
-                          <span className="text-[10px] font-mono text-slate-400 mt-1">[{idx}]</span>
-                          {isTargetK && <span className="text-[9px] font-mono text-cyan-400 font-bold -bottom-4 absolute">▲ k</span>}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Series Completion Banner if finished */}
-                {isFinished && (
-                  <div className="w-full z-10 p-3 bg-gradient-to-r from-emerald-950 via-slate-900 to-sky-950 rounded-2xl border border-emerald-500/50 shadow-xl flex items-center justify-between gap-3 text-xs">
-                    <div className="flex items-center gap-2 text-emerald-300 font-bold font-mono">
-                      <Trophy className="w-5 h-5 text-amber-400 animate-bounce shrink-0" />
-                      <span>🎉 CHÚC MỪNG HOÀN THÀNH 100% CHUỖI BÀI MÔ PHỎNG THUẬT TOÁN SORT!</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* CỘT 3 (RIGHT - 2.5 COLS ~ 25%): EXECUTION STATS & COMPLEXITY */}
-              <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-4 flex flex-col justify-between overflow-y-auto space-y-4 shadow-inner">
-                <div>
-                  <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5 mb-3">
-                    <span className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-                      <BarChart2 className="w-4 h-4 text-sky-400" />
-                      <span>Thống Kê Thực Thi</span>
-                    </span>
-                    <span className="text-xs font-mono text-cyan-400 font-bold">
-                      {currentStep + 1}/{steps.length}
-                    </span>
-                  </div>
-
-                  {/* Counter Grid */}
-                  <div className="grid grid-cols-1 gap-2 text-center">
-                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
-                      <span className="text-xs font-bold text-slate-400 uppercase">So sánh</span>
-                      <span className="text-lg font-black text-sky-400 font-mono">{currentStepData.comparisons || 0}</span>
-                    </div>
-                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
-                      <span className="text-xs font-bold text-slate-400 uppercase">Ghi mảng (Writes)</span>
-                      <span className="text-lg font-black text-cyan-400 font-mono">{currentStepData.mergeWrites || 0}</span>
-                    </div>
-                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
-                      <span className="text-xs font-bold text-slate-400 uppercase">Độ sâu đệ quy</span>
-                      <span className="text-sm font-black text-emerald-400 font-mono">Depth {currentStepData.depth || 0}</span>
-                    </div>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="space-y-1.5 pt-3">
-                    <div className="flex justify-between text-xs font-bold text-slate-200">
-                      <span>Tiến trình hoàn thành</span>
-                      <span className="font-mono text-cyan-400">{progressPercent}%</span>
-                    </div>
-                    <div className="w-full h-2.5 rounded-full bg-[#161b22] overflow-hidden border border-[#30363d]">
-                      <div
-                        style={{ width: `${progressPercent}%` }}
-                        className="h-full bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-300"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Quick Complexity Card */}
-                <div className="pt-3 border-t border-[#30363d] space-y-2">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-200">
-                    <Activity className="w-4 h-4 text-sky-400" />
-                    <span>Độ phức tạp Merge Sort:</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col justify-between">
-                      <span className="text-slate-400 text-[9px] uppercase font-semibold">Tốt nhất (Best)</span>
-                      <span className="font-mono font-bold text-emerald-400">O(N log N)</span>
-                    </div>
-                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col justify-between">
-                      <span className="text-slate-400 text-[9px] uppercase font-semibold">Bộ nhớ (Space)</span>
-                      <span className="font-mono font-bold text-cyan-400">O(N)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 4. TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC CODE (FULL WIDTH DUAL-LANGUAGE CODE EDITOR) */}
-          <div className="w-full bg-[#0d1117] p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#30363d] pb-3">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-100 leading-tight">
-                    Mã Giả Full & Trình Đọc Mã Nguồn Thuật Toán [MERGE SORT]
-                  </h3>
-                  <p className="text-[11px] text-slate-400 font-mono">
-                    Xem toàn bộ cấu trúc mã nguồn nguyên bản và theo dõi dòng lệnh thi hành thời gian thực
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                {/* Dedicated Playback Toolbar for Tier 2 Code Reader */}
-                <div className="flex items-center gap-1.5 bg-[#161b22] px-2.5 py-1 rounded-xl border border-[#30363d] shadow-md">
-                  <button
-                    onClick={() => setCurrentStep(0)}
-                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-slate-300 transition-colors cursor-pointer"
-                    title="Về bước đầu (Phím R)"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
-                    disabled={currentStep === 0}
-                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer"
-                    title="Lùi 1 bước (Phím ←)"
-                  >
-                    <ChevronLeft className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className={`px-3 py-1 rounded-lg font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
-                      isPlaying
-                        ? "bg-rose-600 hover:bg-rose-500 text-white animate-pulse"
-                        : "bg-sky-600 hover:bg-sky-500 text-white"
-                    }`}
-                    title={isPlaying ? "Tạm dừng" : "Chạy tự động mã nguồn"}
-                  >
-                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                    <span>{isPlaying ? "Tạm Dừng" : "Chạy Code"}</span>
-                  </button>
-                  <button
-                    onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
-                    disabled={currentStep === steps.length - 1}
-                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer"
-                    title="Tiến 1 bước (Phím →)"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                  <span className="text-[10px] font-mono text-slate-400 border-l border-[#30363d] pl-2">
-                    Bước <strong className="text-cyan-400">{currentStep + 1}</strong>/{steps.length}
-                  </span>
-                </div>
-
-                {/* Language Switcher Tabs: Pseudocode | Python | Java */}
-                <div className="flex bg-[#161b22] p-1 rounded-xl border border-[#30363d]">
-                  <button
-                    onClick={() => setLang("EN")}
-                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                      lang === "EN"
-                        ? "bg-sky-600 text-white shadow-md"
-                        : "text-slate-400 hover:text-slate-200"
-                    }`}
-                  >
-                    Mã Giả (Pseudocode)
-                  </button>
-                  <button
-                    onClick={() => setLang("python")}
-                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                      lang === "python"
-                        ? "bg-teal-600 text-white shadow-md"
-                        : "text-slate-400 hover:text-slate-200"
-                    }`}
-                  >
-                    Python
-                  </button>
-                  <button
-                    onClick={() => setLang("java")}
-                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                      lang === "java"
-                        ? "bg-emerald-600 text-white shadow-md"
-                        : "text-slate-400 hover:text-slate-200"
-                    }`}
-                  >
-                    Java
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Code Lines Display */}
-            <div className="font-mono text-xs space-y-1.5 py-2">
-              {currentCodeLines.map((item) => {
-                const isActive = item.line === activeLine;
-                return (
-                  <div
-                    key={item.line}
-                    className={`flex items-center px-4 py-2 rounded-xl transition-all ${
-                      isActive
-                        ? "bg-[#1f2937] text-sky-300 font-extrabold border-l-4 border-sky-400 shadow-lg scale-[1.005]"
-                        : "text-slate-400 hover:text-slate-200 hover:bg-[#161b22]/50"
-                    }`}
-                  >
-                    <span className="w-10 text-[11px] text-slate-500 shrink-0 select-none font-bold">
-                      #{item.line}
-                    </span>
-                    <span className="whitespace-pre flex items-center gap-2">
-                      {isActive && <span className="text-sky-400 text-[10px] animate-pulse">▶</span>}
-                      <span>{item.text}</span>
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="pt-3 border-t border-[#30363d] text-[11px] font-mono text-slate-400 flex justify-between items-center">
-              <span>● Đang thi hành bước {currentStep + 1} / {steps.length}</span>
-              <span className="text-sky-400 font-bold">● Active Line: #{activeLine}</span>
-            </div>
-          </div>
-
-          {/* 5. TẦNG 3: THỐNG KÊ CHI TIẾT & BẢNG ĐỘ PHỨC TẠP BỔ TRỢ */}
-          <div className="w-full bg-[#161124]/80 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-200 uppercase tracking-wider border-b border-[#30363d] pb-3">
-              <Activity className="w-4 h-4 text-sky-400" />
-              <span>Bảng Đánh Giá Độ Phức Tạp Thuật Toán & Phân Tích Chuyên Sâu Merge Sort</span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
-              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-emerald-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
-                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp tốt nhất (Best)</span>
-                <span className="font-mono font-black text-emerald-400 text-lg block">O(N log N)</span>
-                <p className="text-[11px] text-slate-400 leading-snug">Luôn luôn thực hiện chia đôi mảng và trộn đệ quy.</p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-emerald-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
-                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp trung bình (Avg)</span>
-                <span className="font-mono font-black text-emerald-400 text-lg block">O(N log N)</span>
-                <p className="text-[11px] text-slate-400 leading-snug">Số phép so sánh cố định không phụ thuộc thứ tự mảng đầu vào.</p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-emerald-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
-                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp xấu nhất (Worst)</span>
-                <span className="font-mono font-black text-emerald-400 text-lg block">O(N log N)</span>
-                <p className="text-[11px] text-slate-400 leading-snug">Hiệu năng cực kỳ ổn định trong mọi trường hợp.</p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-cyan-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
-                <span className="text-slate-400 font-semibold block text-[11px]">Bộ nhớ sử dụng (Space)</span>
-                <span className="font-mono font-black text-cyan-400 text-lg block">O(N)</span>
-                <p className="text-[11px] text-slate-400 leading-snug">Cần mảng phụ tạm thời để lưu các nửa mảng con khi Trộn.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* MODE 2: Speed Compare vs Bubble Sort */}
-      {mode === "speed-compare" && (
-        <div className="bg-[#161124]/80 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-6">
-          <div className="flex items-center gap-3 border-b border-[#30363d] pb-4">
-            <div className="p-2.5 rounded-2xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
-              <Gauge className="w-6 h-6" />
+      {/* ========================================================================================= */}
+      {/* TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC CODE THUẬT TOÁN (100% INDEPENDENT CODE READER CONTROLS) */}
+      {/* ========================================================================================= */}
+      <div className="w-full bg-[#0d1117] p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
+        
+        {/* Header & Language Tabs */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#30363d] pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              <Code2 className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-100">
-                So sánh hiệu năng: Merge Sort ($O(N \log N)$) vs Bubble Sort ($O(N^2)$)
-              </h2>
-              <p className="text-xs text-slate-400">
-                Chứng minh sự chênh lệch vượt trội về tốc độ xử lý khi kích thước dữ liệu $N$ tăng lên.
+              <h3 className="text-base font-bold text-slate-100 leading-tight flex items-center gap-2">
+                <span>TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC MÃ NGUỒN THUẬT TOÁN (CHẠY ĐỘC LẬP)</span>
+              </h3>
+              <p className="text-[11px] text-slate-400 font-mono">
+                Đọc từng dòng code độc lập hoàn toàn, không ảnh hưởng đến Sân khấu Tầng 1
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-5 rounded-2xl bg-[#0d1117] border border-[#30363d] space-y-4 shadow-xl">
-              <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
-                <div className="flex items-center gap-2 font-bold text-sky-300 text-sm">
-                  <GitBranch className="w-4 h-4 text-cyan-400" />
-                  Merge Sort (Sắp Xếp Trộn)
-                </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#21262d] text-emerald-300 text-[10px] font-mono font-bold border border-[#30363d]">
-                  O(N log N) Nhanh Vượt Trội
-                </span>
-              </div>
-              <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
-                  <span className="text-slate-300">Tổng số bước thực thi:</span>
-                  <span className="font-bold text-emerald-400">{steps.length} bước</span>
-                </div>
-                <p className="text-[11px] font-sans text-slate-400 leading-relaxed pt-1">
-                  💡 Nhờ cơ chế Chia để Trị, số lần thao tác chỉ tỷ lệ thuận với $N \log N$, giúp xử lý dữ liệu lớn trong thời gian ngắn.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#0d1117] border border-[#30363d] space-y-4 shadow-xl">
-              <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
-                <div className="flex items-center gap-2 font-bold text-slate-300 text-sm">
-                  <RefreshCw className="w-4 h-4 text-rose-400" />
-                  Bubble Sort (Sắp Xếp Nổi Bọt)
-                </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#21262d] text-rose-300 text-[10px] font-mono font-bold border border-[#30363d]">
-                  O(N²) Chậm Khi N Lớn
-                </span>
-              </div>
-              <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
-                  <span className="text-slate-300">Ước tính số bước:</span>
-                  <span className="font-bold text-rose-400">{bubbleSortStepCount} bước</span>
-                </div>
-                <p className="text-[11px] font-sans text-slate-400 leading-relaxed pt-1">
-                  💡 Với hai vòng lặp lồng nhau, Bubble Sort có số phép so sánh tăng theo hàm bình phương $N^2$, rất chậm khi dữ liệu lớn.
-                </p>
-              </div>
-            </div>
+          {/* Language Switcher Tabs */}
+          <div className="flex bg-[#161b22] p-1 rounded-xl border border-[#30363d]">
+            <button
+              onClick={() => setLang("pseudocode")}
+              className={`px-3.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                lang === "pseudocode" ? "bg-sky-600 text-white shadow-md" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Pseudocode
+            </button>
+            <button
+              onClick={() => setLang("python")}
+              className={`px-3.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                lang === "python" ? "bg-teal-600 text-white shadow-md" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Python
+            </button>
+            <button
+              onClick={() => setLang("java")}
+              className={`px-3.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                lang === "java" ? "bg-emerald-600 text-white shadow-md" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Java
+            </button>
           </div>
         </div>
-      )}
 
-      {/* Prediction Challenge Modal Dialog */}
-      {predictModalOpen && currentStepData.predictQuestion && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-[#161b22] border border-[#30363d] rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-5 text-slate-100 relative">
-            <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
-              <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
-                <HelpCircle className="w-5 h-5 text-cyan-400 animate-bounce" />
-                Thử Thách Dự Đoán Merge Step
+        {/* DEDICATED TẦNG 2 PLAYBACK CONTROL TOOLBAR (MANAGES codeStep TOTALLY INDEPENDENTLY!) */}
+        <div className="bg-[#161b22] p-3 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-100">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                setIsCodePlaying(false);
+                setCodeStep(0);
+              }}
+              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 transition-colors border border-[#30363d] cursor-pointer"
+              title="Reset đọc mã giả Tầng 2"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+
+            <button
+              onClick={() => {
+                setIsCodePlaying(false);
+                setCodeStep((p) => Math.max(0, p - 1));
+              }}
+              disabled={codeStep === 0}
+              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors border border-[#30363d] cursor-pointer"
+              title="Dòng mã trước"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+
+            {/* AUTO PLAY TẦNG 2: Auto resets to 0 if clicked at the end! */}
+            <button
+              onClick={() => {
+                if (isCodePlaying) {
+                  setIsCodePlaying(false);
+                } else {
+                  if (codeStep >= steps.length - 1) {
+                    setCodeStep(0);
+                  }
+                  setIsCodePlaying(true);
+                }
+              }}
+              className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-md flex items-center gap-1.5 cursor-pointer transition-all active:scale-95"
+            >
+              {isCodePlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 fill-white" />
+                  <span>Tạm dừng</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-white" />
+                  <span>Tự động chạy</span>
+                </>
+              )}
+            </button>
+
+            <button
+              onClick={() => {
+                setIsCodePlaying(false);
+                setCodeStep((p) => Math.min(steps.length - 1, p + 1));
+              }}
+              disabled={codeStep === steps.length - 1}
+              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors border border-[#30363d] cursor-pointer"
+              title="Dòng mã tiếp"
+            >
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Active Line Status Badge for Tầng 2 */}
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 bg-[#0d1117] px-3.5 py-1.5 rounded-xl border border-[#30363d]">
+            <span>Tầng 2 Đang Đọc Dòng #{codeActiveLine}</span>
+            <span className="text-slate-500">|</span>
+            <span className="text-slate-300">Bước Đọc {codeStep + 1}/{steps.length}</span>
+          </div>
+
+          {/* Speed Slider for Code Reader */}
+          <div className="flex items-center gap-2 text-xs font-mono">
+            <span className="text-slate-400 font-bold">Tốc độ:</span>
+            <input
+              type="range"
+              min="200"
+              max="1600"
+              step="50"
+              value={1800 - codeSpeed}
+              onChange={(e) => setCodeSpeed(1800 - parseInt(e.target.value, 10))}
+              className="w-24 accent-sky-400 cursor-pointer"
+            />
+            <span className="text-cyan-400 font-bold w-12 text-right">{codeSpeed}ms</span>
+          </div>
+        </div>
+
+        {/* Code Display Container (Highlights based on INDEPENDENT codeActiveLine!) */}
+        <div ref={fullCodeBoxRef} className="font-mono text-xs space-y-2 py-2 max-h-80 overflow-y-auto scroll-smooth">
+          {currentCodeLines.map((item) => {
+            const isActive = item.line === codeActiveLine;
+            return (
+              <div
+                key={item.line}
+                ref={isActive ? activeFullCodeLineRef : null}
+                className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-4 py-2.5 rounded-xl transition-all ${
+                  isActive
+                    ? "bg-[#1f2937] text-sky-300 font-extrabold border-l-4 border-sky-400 shadow-lg scale-[1.005]"
+                    : "text-slate-300 hover:text-white hover:bg-[#161b22]/70"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-8 text-[11px] text-slate-500 shrink-0 select-none font-bold">
+                    #{item.line}
+                  </span>
+                  <span className="whitespace-pre flex items-center gap-2 text-slate-100 font-bold">
+                    {isActive && <span className="text-sky-400 text-[10px] animate-pulse">▶</span>}
+                    <span>{item.text}</span>
+                  </span>
+                </div>
+
+                {item.explain && (
+                  <span className={`text-[11px] font-mono px-3 py-1 rounded-lg border transition-all shrink-0 ${
+                    isActive
+                      ? "text-amber-300 font-bold bg-amber-950/80 border-amber-500/50 shadow-md"
+                      : "text-[#22d3ee] font-semibold bg-[#161b22] border-[#30363d]"
+                  }`}>
+                    // {item.explain}
+                  </span>
+                )}
               </div>
-            </div>
+            );
+          })}
+        </div>
+      </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed font-sans">
-              Đang so sánh <strong>L[i] ({currentStepData.predictQuestion.leftTag})</strong> vs <strong>R[j] ({currentStepData.predictQuestion.rightTag})</strong>. Phần tử nào sẽ được chép vào vị trí <strong>k</strong> tiếp theo?
+      {/* ========================================================================================= */}
+      {/* TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN (ACCURATE MATH & DESIGN) */}
+      {/* ========================================================================================= */}
+      <div className="w-full bg-[#161b22]/90 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-6 text-slate-100">
+        
+        <div className="flex items-center gap-3 border-b border-[#30363d] pb-3">
+          <div className="p-2 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30">
+            <BarChart2 className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-slate-100 leading-tight uppercase font-mono tracking-wider">
+              TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN
+            </h3>
+            <p className="text-[11px] text-slate-400 font-mono">
+              Phân tích toán học độ phức tạp thuật toán và So sánh số phép toán chuẩn xác với Bubble Sort O(N²)
             </p>
-
-            <div className="grid grid-cols-2 gap-3 font-mono">
-              <button
-                onClick={() => handleSelectPredictAnswer("L", currentStepData.predictQuestion)}
-                disabled={predictFeedback !== null}
-                className="p-3.5 rounded-2xl bg-[#0d1117] hover:bg-[#21262d] border border-[#30363d] text-slate-200 hover:text-white transition-all cursor-pointer shadow-md active:scale-95 text-center flex flex-col items-center gap-1"
-              >
-                <span className="text-[10px] text-sky-400 uppercase font-bold">Nửa Trái (L)</span>
-                <span className="text-lg font-black text-sky-300">{currentStepData.predictQuestion.leftTag}</span>
-              </button>
-
-              <button
-                onClick={() => handleSelectPredictAnswer("R", currentStepData.predictQuestion)}
-                disabled={predictFeedback !== null}
-                className="p-3.5 rounded-2xl bg-[#0d1117] hover:bg-[#21262d] border border-[#30363d] text-slate-200 hover:text-white transition-all cursor-pointer shadow-md active:scale-95 text-center flex flex-col items-center gap-1"
-              >
-                <span className="text-[10px] text-teal-400 uppercase font-bold">Nửa Phải (R)</span>
-                <span className="text-lg font-black text-teal-300">{currentStepData.predictQuestion.rightTag}</span>
-              </button>
-            </div>
-
-            {predictFeedback && (
-              <div className={`p-3.5 rounded-2xl text-xs font-bold font-mono text-center border animate-in zoom-in-95 duration-200 ${
-                predictFeedback.isCorrect
-                  ? "bg-emerald-950/90 border-emerald-500/60 text-emerald-300"
-                  : "bg-rose-950/90 border-rose-500/60 text-rose-300"
-              }`}>
-                {predictFeedback.msg}
-              </div>
-            )}
-
-            <div className="pt-2 flex justify-end">
-              <button
-                onClick={() => {
-                  setPredictModalOpen(false);
-                  setIsPlaying(true);
-                }}
-                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-sky-600 to-teal-600 hover:from-sky-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg cursor-pointer transition-all active:scale-95"
-              >
-                Tiếp tục thuật toán →
-              </button>
-            </div>
           </div>
         </div>
-      )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          {/* CỘT TRÁI (6 COLS): BẢNG PHÂN TÍCH HIỆU NĂNG & NGUYÊN LÝ CHIA ĐỂ TRỊ */}
+          <div className="lg:col-span-6 bg-[#0d1117] p-5 rounded-2xl border border-[#30363d] space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5">
+              <span className="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-cyan-400" />
+                <span>Phân Tích Lý Thuyết Thuật Toán Merge Sort</span>
+              </span>
+              <span className="text-xs font-mono text-emerald-400 font-extrabold bg-[#161b22] px-2.5 py-0.5 rounded border border-[#30363d]">
+                Stable Sort (Ổn định)
+              </span>
+            </div>
+
+            {/* Theoretical Complexity Breakdown Cards */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="p-3.5 rounded-xl bg-[#161b22] border border-sky-500/30 space-y-1">
+                <span className="text-[11px] font-bold text-slate-400 uppercase block">Độ phức tạp thời gian</span>
+                <span className="text-xl font-black text-sky-400 font-mono block">O(N log N)</span>
+                <span className="text-[10px] text-slate-500 block">Tốt nhất, Trung bình & Tệ nhất đều luôn là O(N log N)</span>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-[#161b22] border border-amber-500/30 space-y-1">
+                <span className="text-[11px] font-bold text-slate-400 uppercase block">Bộ nhớ phụ bổ sung</span>
+                <span className="text-xl font-black text-amber-400 font-mono block">O(N)</span>
+                <span className="text-[10px] text-slate-500 block">Cần mảng phụ tạm thời để lưu trữ và trộn 2 nửa</span>
+              </div>
+            </div>
+
+            {/* Divide & Conquer Principle Explanation */}
+            <div className="p-3.5 rounded-xl bg-[#161b22] border border-[#30363d] space-y-2 text-xs">
+              <span className="font-bold text-cyan-300 block text-xs uppercase tracking-wide">
+                🧩 Nguyên Lý 3 Bước "Chia Để Trị" (Divide & Conquer):
+              </span>
+              <ul className="space-y-1 text-slate-300 text-[11px] pl-4 list-disc font-sans">
+                <li><strong className="text-sky-400 font-mono">1. Chia (Divide):</strong> Tìm chỉ số giữa mid để cắt đôi mảng thành 2 nửa bằng nhau ($O(1)$).</li>
+                <li><strong className="text-teal-400 font-mono">2. Trị (Conquer):</strong> Đệ quy gọi `MERGE_SORT` cho từng nửa tới khi còn 1 phần tử ($2 \cdot T(N/2)$).</li>
+                <li><strong className="text-emerald-400 font-mono">3. Kết hợp (Combine):</strong> Trộn 2 mảng con đã sắp xếp thành 1 mảng hoàn chỉnh ($O(N)$).</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* CỘT PHẢI (6 COLS): BẢNG SO SÁNH PHÉP TÍNH THUẬT TOÁN CHUẨN XÁC (VS BUBBLE SORT O(N²)) */}
+          <div className="lg:col-span-6 bg-[#0d1117] p-5 rounded-2xl border border-sky-500/40 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5">
+              <span className="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+                <Trophy className="w-4 h-4 text-amber-400" />
+                <span>So Sánh Phép Tính Thuật Toán: Merge Sort vs Bubble Sort</span>
+              </span>
+              <span className="text-[10px] font-mono text-amber-400 font-bold bg-[#161b22] px-2 py-0.5 rounded border border-[#30363d]">
+                Mảng N = {array.length}
+              </span>
+            </div>
+
+            {/* Accurate Algorithmic Operations Cards */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="p-3.5 rounded-xl bg-[#161b22] border border-sky-500/50 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-sky-400 text-xs uppercase">Merge Sort (Chia Để Trị)</span>
+                  <span className="text-[9px] font-mono bg-sky-950 text-sky-300 px-1.5 py-0.5 rounded">O(N log N)</span>
+                </div>
+                <div className="text-2xl font-black text-sky-300 font-mono">
+                  {mergeSortAlgorithmicOps} <span className="text-xs text-slate-400 font-normal">phép toán</span>
+                </div>
+                <div className="text-[10px] text-slate-400 font-mono space-y-0.5 pt-1 border-t border-[#30363d]">
+                  <div>• So sánh: {step.comparisons || 0} lần</div>
+                  <div>• Gán/Trộn mảng: {step.mergeWrites || 0} lần</div>
+                </div>
+              </div>
+
+              <div className="p-[#161b22] border border-rose-500/50 space-y-2 p-3.5 rounded-xl">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-rose-400 text-xs uppercase">Bubble Sort (Nổi Bọt)</span>
+                  <span className="text-[9px] font-mono bg-rose-950 text-rose-300 px-1.5 py-0.5 rounded">O(N²)</span>
+                </div>
+                <div className="text-2xl font-black text-rose-400 font-mono">
+                  {bubbleSortStats.totalOps} <span className="text-xs text-slate-400 font-normal">phép toán</span>
+                </div>
+                <div className="text-[10px] text-slate-400 font-mono space-y-0.5 pt-1 border-t border-[#30363d]">
+                  <div>• So sánh: {bubbleSortStats.comparisons} lần</div>
+                  <div>• Đổi chỗ (Swap): {bubbleSortStats.swaps} lần ({bubbleSortStats.swaps * 2} gán)</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Speed Ratio Highlight Badge */}
+            <div className="p-3.5 rounded-xl bg-gradient-to-r from-sky-950/90 via-teal-950/90 to-emerald-950/90 border border-teal-500/40 flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-200">
+                🚀 Hiệu năng vượt trội Merge Sort ($N={array.length}$):
+              </span>
+              <span className="text-sm font-mono font-black text-amber-300 bg-[#0d1117] px-3.5 py-1 rounded-lg border border-amber-500/40 shadow-md">
+                Nhanh hơn gấp {speedRatio}x lần!
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   );
 }
