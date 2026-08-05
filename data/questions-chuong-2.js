@@ -4183,6 +4183,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY: Học viên dễ nhầm lẫn lòng yêu nước là phẩm chất cá nhân (nhân tố chủ quan) của Bác. Thực chất, truyền thống yêu nước là một tiền đề văn hóa - lịch sử có sẵn của dân tộc, thuộc về cơ sở khách quan hình thành nên tư tưởng Hồ Chí Minh."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Học viên dễ nhầm lẫn lòng yêu nước là phẩm chất cá nhân (nhân tố chủ quan) của Bác. Thực chất, truyền thống yêu nước là ...",
+        "trickWord": "Bẫy nhầm lẫn sự kiện & bản chất lý luận",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-002",
@@ -4200,6 +4207,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TỪ KHÓA: Học viên rất hay bị hoán đổi hai cụm từ quyết định: Miền Bắc là hậu phương lớn nên giữ vai trò 'quyết định nhất' đối với cách mạng cả nước; miền Nam là tiền tuyến lớn đấu tranh trực tiếp nên giữ vai trò 'quyết định trực tiếp' giải phóng miền Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Học viên rất hay bị hoán đổi hai cụm từ quyết định: Miền Bắc là hậu phương lớn nên giữ vai trò 'quyết định nhất' đối với...",
+        "trickWord": "Bẫy thuật ngữ / từ khóa hoán đổi",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-003",
@@ -4217,6 +4231,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SỰ KIỆN: Nhiều học viên nhầm lẫn việc gia nhập Đảng Cộng sản Pháp (12-1920) là bước ngoặt lý luận. Thực tế, sự kiện đọc Luận cương Lênin (7-1920) mới là điểm khai sáng lý luận trực tiếp giúp Người xác định con đường cách mạng vô sản."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nhiều học viên nhầm lẫn việc gia nhập Đảng Cộng sản Pháp (12-1920) là bước ngoặt lý luận. Thực tế, sự kiện đọc Luận cươn...",
+        "trickWord": "Bẫy nhầm lẫn sự kiện & bản chất lý luận",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-004",
@@ -4234,6 +4255,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CÔNG THỨC: Lý luận mácxít phương Tây chỉ gồm Chủ nghĩa Mác + Phong trào công nhân. Hồ Chí Minh sáng tạo bổ sung thêm 'phong trào yêu nước' vì đây là động lực tinh thần rộng lớn, sâu sắc và lâu đời nhất của nhân dân Việt Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lý luận mácxít phương Tây chỉ gồm Chủ nghĩa Mác + Phong trào công nhân. Hồ Chí Minh sáng tạo bổ sung thêm 'phong trào yê...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-005",
@@ -4251,6 +4279,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY HOÁN ĐỔI NHẬN ĐỊNH: Bác ví con đường cầu viện Nhật của Phan Bội Châu là 'đưa hổ cửa trước, rước beo cửa sau'; ví con đường xin cải cách của Phan Châu Trinh là 'xin giặc rủ lòng thương'; ví cuộc khởi nghĩa Yên Thế của Hoàng Hoa Thám là 'mang cốt cách phong kiến'."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác ví con đường cầu viện Nhật của Phan Bội Châu là 'đưa hổ cửa trước, rước beo cửa sau'; ví con đường xin cải cách của ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-006",
@@ -4268,6 +4303,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TỪ KHÓA CHÍNH XÁC: Trích nguyên văn tác phẩm Đường cách mệnh: 'bây giờ học thuyết nhiều, chủ nghĩa nhiều, nhưng chủ nghĩa chân chính nhất, chắc chắn nhất, cách mệnh nhất là chủ nghĩa Lênin'."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Trích nguyên văn tác phẩm Đường cách mệnh: 'bây giờ học thuyết nhiều, chủ nghĩa nhiều, nhưng chủ nghĩa chân chính nhất, ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-007",
@@ -4285,6 +4327,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY BẢN CHẤT: Bác gạt bỏ các yếu tố bảo thủ phong kiến Nho giáo (phục tùng vua, nam tôn nữ ti, tam cương ngũ thường) và chỉ tiếp thu triết lý hành động nhập thế tích cực, nhấn mạnh tu thân dưỡng tính đạo đức cán bộ."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác gạt bỏ các yếu tố bảo thủ phong kiến Nho giáo (phục tùng vua, nam tôn nữ ti, tam cương ngũ thường) và chỉ tiếp thu t...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-008",
@@ -4302,6 +4351,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY LÝ LUẬN CỔ ĐIỂN: Lý luận mácxít cổ điển châu Âu cho rằng cách mạng thuộc địa lệ thuộc và phải chờ vô sản chính quốc thắng lợi. Bác Hồ sáng tạo chỉ ra cách mạng thuộc địa có thể thắng trước nhờ tinh thần chủ động tự lực."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lý luận mácxít cổ điển châu Âu cho rằng cách mạng thuộc địa lệ thuộc và phải chờ vô sản chính quốc thắng lợi. Bác Hồ sán...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-009",
@@ -4319,6 +4375,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY LỰC LƯỢNG: Cương lĩnh đại đoàn kết rộng rãi mọi giai tầng yêu nước (phú nông, trung tiểu địa chủ, tư sản dân tộc) nhưng luôn xác định lực lượng nòng cốt động lực chính làm gốc cách mạng là giai cấp công nhân và nông dân."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cương lĩnh đại đoàn kết rộng rãi mọi giai tầng yêu nước (phú nông, trung tiểu địa chủ, tư sản dân tộc) nhưng luôn xác đị...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-010",
@@ -4336,6 +4399,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SÁCH LƯỢC: Đây là sách lược nhân nhượng có nguyên tắc ('hòa để tiến'). Bác nhận định Tưởng nguy hiểm hơn Pháp bấy giờ, hòa Pháp giúp gạt Tưởng về nước, tránh đối đầu hai kẻ thù cùng lúc."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Đây là sách lược nhân nhượng có nguyên tắc ('hòa để tiến'). Bác nhận định Tưởng nguy hiểm hơn Pháp bấy giờ, hòa Pháp giú...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-011",
@@ -4353,6 +4423,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TRÍCH DẪN: Học viên hay nhầm lẫn các trích dẫn yêu nước của Bác. Câu nói trên trích nguyên văn từ Lời kêu gọi toàn quốc kháng chiến năm 1946 tại Vạn Phúc, Hà Đông."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Học viên hay nhầm lẫn các trích dẫn yêu nước của Bác. Câu nói trên trích nguyên văn từ Lời kêu gọi toàn quốc kháng chiến...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-012",
@@ -4370,6 +4447,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MÂU THUẪN: Khác với xã hội tư bản phương Tây nơi mâu thuẫn giai cấp (vô sản - tư sản) là chủ yếu, ở thuộc địa mâu thuẫn dân tộc (cả dân tộc - đế quốc xâm lược) là mâu thuẫn đối kháng nổi lên hàng đầu."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Khác với xã hội tư bản phương Tây nơi mâu thuẫn giai cấp (vô sản - tư sản) là chủ yếu, ở thuộc địa mâu thuẫn dân tộc (cả...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-013",
@@ -4387,6 +4471,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SỰ KIỆN CHI TIẾT: Người rời bến cảng Nhà Rồng (Sài Gòn) ngày 5-6-1911 làm phụ bếp lấy tên Văn Ba trên tàu Latouche-Tréville của hãng vận tải Pháp."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Người rời bến cảng Nhà Rồng (Sài Gòn) ngày 5-6-1911 làm phụ bếp lấy tên Văn Ba trên tàu Latouche-Tréville của hãng vận t...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-014",
@@ -4404,6 +4495,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MỐC VĂN KIỆN: Mặc dù Đại hội VI (1986) khởi xướng Đổi mới, nhưng phải đến Đại hội VII năm 1991, Đảng mới chính thức thông qua Cương lĩnh bổ sung và xác lập tư tưởng Hồ Chí Minh cùng chủ nghĩa Mác - Lênin làm nền tảng tư tưởng chính thức."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Mặc dù Đại hội VI (1986) khởi xướng Đổi mới, nhưng phải đến Đại hội VII năm 1991, Đảng mới chính thức thông qua Cương lĩ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-015",
@@ -4421,6 +4519,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TỪ KHÓA: Bác đánh giá cao Tam dân ở các mục tiêu Độc lập - Tự do - Hạnh phúc vì nó giải quyết thiết thực nhu cầu giải phóng dân tộc thuộc địa Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác đánh giá cao Tam dân ở các mục tiêu Độc lập - Tự do - Hạnh phúc vì nó giải quyết thiết thực nhu cầu giải phóng dân t...",
+        "trickWord": "Bẫy thuật ngữ / từ khóa hoán đổi",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-016",
@@ -4438,6 +4543,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGUỒN GỐC QUYẾT ĐỊNH: Lòng yêu nước là cội nguồn động lực ban đầu (bệ đỡ). Nhưng yếu tố quyết định trực tiếp bản chất khoa học cách mạng vô sản của tư tưởng Bác là Chủ nghĩa Mác - Lênin."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lòng yêu nước là cội nguồn động lực ban đầu (bệ đỡ). Nhưng yếu tố quyết định trực tiếp bản chất khoa học cách mạng vô sả...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-017",
@@ -4455,6 +4567,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY GIAI CẤP: Ở nước ta, giai cấp công nhân ra đời trước giai cấp tư sản dân tộc. Do sinh ra dưới cuộc khai thác của Pháp, công nhân Việt Nam sớm chịu ách áp bức thực dân và có tinh thần cách mạng triệt để nhất."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Ở nước ta, giai cấp công nhân ra đời trước giai cấp tư sản dân tộc. Do sinh ra dưới cuộc khai thác của Pháp, công nhân V...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-018",
@@ -4472,6 +4591,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY BẢN CHẤT TÔN GIÁO: Bác Hồ gạt bỏ các yếu tố tiêu cực mê tín của tôn giáo, giữ lại tinh túy nhân bản từ bi vị tha cứu khổ nhân dân để hòa cùng lý tưởng cách mạng giải phóng dân nghèo."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác Hồ gạt bỏ các yếu tố tiêu cực mê tín của tôn giáo, giữ lại tinh túy nhân bản từ bi vị tha cứu khổ nhân dân để hòa cù...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-019",
@@ -4489,6 +4615,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY BƯỚC NGOẶT HÀNH ĐỘNG: Đọc Luận cương (7-1920) là bước ngoặt lý luận, còn việc biểu quyết gia nhập Quốc tế III và thành lập Đảng Cộng sản Pháp (12-1920) mới là sự kiện chính thức đánh dấu Người trở thành người cộng sản về mặt tổ chức hành động cách mạng."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Đọc Luận cương (7-1920) là bước ngoặt lý luận, còn việc biểu quyết gia nhập Quốc tế III và thành lập Đảng Cộng sản Pháp ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-020",
@@ -4506,6 +4639,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TÊN BÁO: Bài viết đầu tiên 'Tâm địa thực dân' đăng trên báo Populaire (cơ quan ngôn luận của Đảng Xã hội Pháp) năm 1919, tố cáo tội ác thực dân Pháp Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bài viết đầu tiên 'Tâm địa thực dân' đăng trên báo Populaire (cơ quan ngôn luận của Đảng Xã hội Pháp) năm 1919, tố cáo t...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-021",
@@ -4523,6 +4663,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊA ĐIỂM: Tại Mỹ, Bác làm thuê ở Brooklyn (New York) và Boston, trực tiếp tiếp xúc đời sống phu phen da đen nghèo khổ ở khu Harlem."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tại Mỹ, Bác làm thuê ở Brooklyn (New York) và Boston, trực tiếp tiếp xúc đời sống phu phen da đen nghèo khổ ở khu Harlem...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-022",
@@ -4540,6 +4687,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY VAI TRÒ CHIẾN LƯỢC: Miền Bắc hậu phương giữ vai trò 'quyết định nhất'; miền Nam tiền tuyến giữ vai trò 'quyết định trực tiếp'. Học viên hay nhầm lẫn hoán đổi vị trí của hai miền."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Miền Bắc hậu phương giữ vai trò 'quyết định nhất'; miền Nam tiền tuyến giữ vai trò 'quyết định trực tiếp'. Học viên hay ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-023",
@@ -4557,6 +4711,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NHẬN ĐỊNH SAI: Ký Hiệp định Sơ bộ không phải đầu hàng mà là nhân nhượng có nguyên tắc ('hòa để tiến'), gạt bớt kẻ thù nguy hiểm (Tưởng) để chuẩn bị cho cuộc kháng chiến toàn dân không thể tránh khỏi."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Ký Hiệp định Sơ bộ không phải đầu hàng mà là nhân nhượng có nguyên tắc ('hòa để tiến'), gạt bớt kẻ thù nguy hiểm (Tưởng)...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-024",
@@ -4574,6 +4735,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TẦM NHÌN PHÁP LÝ: Bác Hồ đã sáng tạo chuyển hóa quyền con người cá nhân (trong Tuyên ngôn Mỹ-Pháp) thành quyền tự quyết độc lập thiêng liêng của cả dân tộc Việt Nam trước pháp lý quốc tế."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác Hồ đã sáng tạo chuyển hóa quyền con người cá nhân (trong Tuyên ngôn Mỹ-Pháp) thành quyền tự quyết độc lập thiêng liê...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-025",
@@ -4591,6 +4759,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THỬ THÁCH: Vượt qua ngục tù là thử thách thể xác. Thử thách gay gắt nhất là cuộc đấu tranh bảo vệ lập trường đặt nhiệm vụ giải phóng dân tộc lên hàng đầu trước những quan điểm tả khuynh giáo điều xem nhẹ tính đặc thù thuộc địa Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Vượt qua ngục tù là thử thách thể xác. Thử thách gay gắt nhất là cuộc đấu tranh bảo vệ lập trường đặt nhiệm vụ giải phón...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-026",
@@ -4608,6 +4783,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THÀNH VIÊN: Tổ chức này liên kết các nhà cách mạng bị áp bức ở châu Á (Việt Nam, Trung Quốc, Triều Tiên, Indonesia, Ấn Độ...) tạo liên minh chống đế quốc chung phương Đông."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tổ chức này liên kết các nhà cách mạng bị áp bức ở châu Á (Việt Nam, Trung Quốc, Triều Tiên, Indonesia, Ấn Độ...) tạo li...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-027",
@@ -4625,6 +4807,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TƯ TƯỞNG GIA ĐÌNH: Cụ Sắc có tư tưởng yêu nước thương dân tiến bộ, coi quan trường nô lệ phong kiến là nhục nhã. Điều này khơi gợi tư tưởng cứu nước phải gắn liền giải phóng nhân dân lao động của Bác."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cụ Sắc có tư tưởng yêu nước thương dân tiến bộ, coi quan trường nô lệ phong kiến là nhục nhã. Điều này khơi gợi tư tưởng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-028",
@@ -4642,6 +4831,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊA DANH: Cuốn Đường cách mệnh gồm các bài giảng huấn luyện của Bác tại Quảng Châu (1925-1927), được Hội Việt Nam Cách mạng Thanh niên in và phát hành bí mật năm 1927."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cuốn Đường cách mệnh gồm các bài giảng huấn luyện của Bác tại Quảng Châu (1925-1927), được Hội Việt Nam Cách mạng Thanh ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-029",
@@ -4659,6 +4855,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỘNG CƠ: Bác từ chối Đông Du vì nhận rõ Nhật cũng là đế quốc, đi nhờ Nhật giống như 'đưa hổ cửa trước, rước beo cửa sau'. Người chọn sang Pháp để nghiên cứu chính quốc kẻ thù."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác từ chối Đông Du vì nhận rõ Nhật cũng là đế quốc, đi nhờ Nhật giống như 'đưa hổ cửa trước, rước beo cửa sau'. Người c...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-030",
@@ -4676,6 +4879,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGUYÊN TẮC: Bác chỉ thị: 'Tên của nó là Đội Việt Nam Tuyên truyền Giải phóng quân, nghĩa là chính trị trọng hơn quân sự, tuyên truyền trọng hơn tác chiến', dựa vào dân làm gốc."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác chỉ thị: 'Tên của nó là Đội Việt Nam Tuyên truyền Giải phóng quân, nghĩa là chính trị trọng hơn quân sự, tuyên truyề...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-031",
@@ -4693,6 +4903,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MÂU THUẪN CHỦ YẾU: Thuộc địa nửa phong kiến đặt mâu thuẫn dân tộc lên hàng đầu. Cương lĩnh do Bác soạn thảo đặt nhiệm vụ giải phóng dân tộc chống Pháp lên trước nhiệm vụ ruộng đất chống phong kiến."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Thuộc địa nửa phong kiến đặt mâu thuẫn dân tộc lên hàng đầu. Cương lĩnh do Bác soạn thảo đặt nhiệm vụ giải phóng dân tộc...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-032",
@@ -4710,6 +4927,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NHO GIÁO: Bác Hồ viết: 'Khổng Tử là người lập ra học thuyết tu thân dưỡng đức...'. Bác tiếp thu mặt tích cực hành đạo giúp dân chứ gạt bỏ giáo điều phong kiến."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác Hồ viết: 'Khổng Tử là người lập ra học thuyết tu thân dưỡng đức...'. Bác tiếp thu mặt tích cực hành đạo giúp dân chứ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-033",
@@ -4727,6 +4951,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGÀY THÁNG LỊCH SỬ: Le Paria phát hành số đầu ngày 1-4-1922. Ngày 5-6-1911 rời nước; ngày 21-6-1925 báo Thanh Niên; ngày 30-12-1920 sáng lập ĐCS Pháp."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Le Paria phát hành số đầu ngày 1-4-1922. Ngày 5-6-1911 rời nước; ngày 21-6-1925 báo Thanh Niên; ngày 30-12-1920 sáng lập...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-034",
@@ -4744,6 +4975,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỐI TƯỢNG GIÀNH CHÍNH QUYỀN: Thời điểm tháng 8-1945, Pháp đã bị Nhật đảo chính (tháng 3-1945) tước quyền lực. Ta giành độc lập trực tiếp từ tay phát xít Nhật khi Nhật đầu hàng Đồng minh, tránh việc Pháp nhảy vào tiếp quản thuộc địa Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Thời điểm tháng 8-1945, Pháp đã bị Nhật đảo chính (tháng 3-1945) tước quyền lực. Ta giành độc lập trực tiếp từ tay phát ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-035",
@@ -4761,6 +4999,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỔI MỚI: Tư tưởng Bác không bảo thủ bao cấp, Người hướng tới xã hội dân giàu nước mạnh, giữ độc lập tự chủ đi kèm đổi mới mở rộng sáng tạo."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tư tưởng Bác không bảo thủ bao cấp, Người hướng tới xã hội dân giàu nước mạnh, giữ độc lập tự chủ đi kèm đổi mới mở rộng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-036",
@@ -4778,6 +5023,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY GIAI CẤP LÃNH ĐẠO: Tư sản dân tộc Việt Nam nhỏ bé yếu ớt, không thể gánh vác sứ mệnh giải phóng dân tộc. Giai cấp công nhân thông qua Đảng Cộng sản là lực lượng duy nhất lãnh đạo cách mạng nước ta."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tư sản dân tộc Việt Nam nhỏ bé yếu ớt, không thể gánh vác sứ mệnh giải phóng dân tộc. Giai cấp công nhân thông qua Đảng ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-037",
@@ -4795,6 +5047,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊA ĐIỂM SÁNG TÁC: Lời kêu gọi lịch sử được Bác viết ngày 18, 19-12-1946 tại ngôi nhà ở làng Vạn Phúc (Hà Đông), nơi Người ở bí mật trước khi toàn quốc kháng chiến bùng nổ."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lời kêu gọi lịch sử được Bác viết ngày 18, 19-12-1946 tại ngôi nhà ở làng Vạn Phúc (Hà Đông), nơi Người ở bí mật trước k...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-038",
@@ -4812,6 +5071,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY VẬN DỤNG THỰC TIỄN: Độc lập - Tự do - Hạnh phúc (Tam dân của Tôn Trung Sơn) được Bác dùng làm tiêu ngữ quốc gia dưới quốc hiệu Việt Nam Dân chủ Cộng hòa từ năm 1945, thể hiện sự vận dụng sáng tạo mục tiêu dân sinh hạnh phúc."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Độc lập - Tự do - Hạnh phúc (Tam dân của Tôn Trung Sơn) được Bác dùng làm tiêu ngữ quốc gia dưới quốc hiệu Việt Nam Dân ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-039",
@@ -4829,6 +5095,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY DANH XƯNG LỊCH SỬ: Bác dùng tên gọi Hồ Chí Minh lần đầu tiên vào tháng 8-1942 khi lên đường sang Trung Quốc đại diện cho Việt Minh vận động lực lượng Đồng minh chống phát xít."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác dùng tên gọi Hồ Chí Minh lần đầu tiên vào tháng 8-1942 khi lên đường sang Trung Quốc đại diện cho Việt Minh vận động...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-040",
@@ -4846,6 +5119,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CHỦ QUAN - KHÁCH QUAN: Lòng yêu nước dân tộc, chủ nghĩa Mác-Lênin, Cách mạng Tháng Mười là cơ sở khách quan. Chỉ có phẩm chất cá nhân, năng lực tư duy, thế giới quan sáng tạo của Bác mới là nhân tố chủ quan."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lòng yêu nước dân tộc, chủ nghĩa Mác-Lênin, Cách mạng Tháng Mười là cơ sở khách quan. Chỉ có phẩm chất cá nhân, năng lực...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-041",
@@ -4863,6 +5143,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỌC LUẬN CƯƠNG: Bản Luận cương Lênin được Bác đọc trên báo L'Humanité (Nhân đạo) số ra các ngày 16, 17-7-1920 khi Người hoạt động tại Paris."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bản Luận cương Lênin được Bác đọc trên báo L'Humanité (Nhân đạo) số ra các ngày 16, 17-7-1920 khi Người hoạt động tại Pa...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-042",
@@ -4880,6 +5167,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐOÀN KẾT: Sức mạnh giải phóng thuộc địa nằm ở đại đoàn kết toàn dân. Bác chủ trương liên minh công nông làm gốc cách mạng nhưng mở rộng liên kết với tiểu tư sản, trí thức và địa chủ yêu nước."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Sức mạnh giải phóng thuộc địa nằm ở đại đoàn kết toàn dân. Bác chủ trương liên minh công nông làm gốc cách mạng nhưng mở...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-043",
@@ -4897,6 +5191,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY QUAN HỆ BÌNH ĐẲNG: Bác bác bỏ quan điểm châu Âu trung tâm luận coi thuộc địa lệ thuộc chính quốc, Người chỉ rõ hai cuộc cách mạng là hai cánh của chim cách mạng, hỗ trợ biện chứng ngang hàng."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác bác bỏ quan điểm châu Âu trung tâm luận coi thuộc địa lệ thuộc chính quốc, Người chỉ rõ hai cuộc cách mạng là hai cá...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-044",
@@ -4914,6 +5215,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THƠ CA CÁCH MẠNG: Thơ trong Nhật ký trong tù mang tính chiến đấu cách mạng rất cao ('Thân thể ở trong lao, tinh thần ở ngoài lao', 'Nay ở trong thơ nên có thép, nhà thơ cũng phải biết xung phong')."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Thơ trong Nhật ký trong tù mang tính chiến đấu cách mạng rất cao ('Thân thể ở trong lao, tinh thần ở ngoài lao', 'Nay ở ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-045",
@@ -4931,6 +5239,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TÊN ĐẢNG QUA CÁC THỜI KỲ: Năm 1930 là ĐCSVN, sau đó đổi thành ĐCS Đông Dương (10-1930). Đến Đại hội II năm 1951 đổi tên thành Đảng Lao động Việt Nam và hoạt động công khai."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Năm 1930 là ĐCSVN, sau đó đổi thành ĐCS Đông Dương (10-1930). Đến Đại hội II năm 1951 đổi tên thành Đảng Lao động Việt N...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-046",
@@ -4948,6 +5263,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TIẾP THU NHO GIÁO: Bác tiếp thu mặt tích cực là sự tu dưỡng phẩm chất đạo đức bản thân, triết lý nhập thế hành đạo cứu đời cứu dân của Khổng Tử."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác tiếp thu mặt tích cực là sự tu dưỡng phẩm chất đạo đức bản thân, triết lý nhập thế hành đạo cứu đời cứu dân của Khổn...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-047",
@@ -4965,6 +5287,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THỜI KỲ QUẢNG CHÂU: Bác hoạt động tại Quảng Châu làm Lý Thụy từ tháng 11-1924 đến tháng 4-1927 (khi Tưởng Giới Thạch khủng bố cộng sản Quảng Châu)."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác hoạt động tại Quảng Châu làm Lý Thụy từ tháng 11-1924 đến tháng 4-1927 (khi Tưởng Giới Thạch khủng bố cộng sản Quảng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-048",
@@ -4982,6 +5311,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MIỀN NAM: Miền Nam tiền tuyến giữ vai trò 'quyết định trực tiếp' giải phóng miền Nam, miền Bắc hậu phương giữ vai trò 'quyết định nhất'. Học viên hay bị đánh tráo khái niệm này."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Miền Nam tiền tuyến giữ vai trò 'quyết định trực tiếp' giải phóng miền Nam, miền Bắc hậu phương giữ vai trò 'quyết định ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-049",
@@ -4999,6 +5335,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊNH NGHĨA: Văn kiện Đảng khẳng định tư tưởng Hồ Chí Minh là hệ thống quan điểm toàn diện, sâu sắc về cách mạng Việt Nam, kết hợp Mác-Lênin với thực tiễn nước ta."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Văn kiện Đảng khẳng định tư tưởng Hồ Chí Minh là hệ thống quan điểm toàn diện, sâu sắc về cách mạng Việt Nam, kết hợp Má...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-050",
@@ -5016,6 +5359,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THỜI GIAN VIẾT DI CHÚC: Bác bắt đầu viết những dòng đầu tiên của Di chúc vào lúc 9 giờ sáng ngày 10-5-1965 nhân dịp sinh nhật lần thứ 75, và chỉnh sửa qua các tháng 5 hàng năm cho đến năm 1969."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác bắt đầu viết những dòng đầu tiên của Di chúc vào lúc 9 giờ sáng ngày 10-5-1965 nhân dịp sinh nhật lần thứ 75, và chỉ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
 
     // --- ĐỀ BẪY 2 (50 CÂU BẪY CỰC KHÓ: c2-trick-051 -> c2-trick-100) ---
@@ -5035,6 +5385,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY QUỐC TẾ: Bác bỏ phiếu tán thành Đệ tam Quốc tế (Quốc tế Cộng sản) và ly khai khỏi Đệ nhị Quốc tế (SFIO) vì Đệ tam Quốc tế ủng hộ triệt để cách mạng thuộc địa."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác bỏ phiếu tán thành Đệ tam Quốc tế (Quốc tế Cộng sản) và ly khai khỏi Đệ nhị Quốc tế (SFIO) vì Đệ tam Quốc tế ủng hộ ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-052",
@@ -5052,6 +5409,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TỪ KHÓA SAI: Miền Bắc đóng vai trò 'quyết định nhất' đối với cách mạng cả nước. Miền Nam mới đóng vai trò 'quyết định trực tiếp' giải phóng miền Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Miền Bắc đóng vai trò 'quyết định nhất' đối với cách mạng cả nước. Miền Nam mới đóng vai trò 'quyết định trực tiếp' giải...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-053",
@@ -5069,6 +5433,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY HẠT NHÂN: Lòng yêu nước là cội nguồn động lực lớn nhất xuyên suốt. Chủ nghĩa Mác-Lênin là kim chỉ nam khoa học trực tiếp giúp Bác tìm ra con đường đúng đắn, nhưng hạt nhân tâm lý ban đầu luôn là chủ nghĩa yêu nước."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Lòng yêu nước là cội nguồn động lực lớn nhất xuyên suốt. Chủ nghĩa Mác-Lênin là kim chỉ nam khoa học trực tiếp giúp Bác ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-054",
@@ -5086,6 +5457,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SỬ DỤNG VĂN KIỆN: Bác trích dẫn Tuyên ngôn Mỹ nhằm tạo cơ sở pháp lý vững chắc trước thế giới, biến quyền con người phổ biến thành quyền độc lập của dân tộc Việt Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác trích dẫn Tuyên ngôn Mỹ nhằm tạo cơ sở pháp lý vững chắc trước thế giới, biến quyền con người phổ biến thành quyền đ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-055",
@@ -5103,6 +5481,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SỢI CHỈ ĐỎ: Sợi chỉ đỏ cốt lõi của tư tưởng Bác là Độc lập dân tộc phải gắn liền với chủ nghĩa xã hội (Độc lập dân tộc là tiền đề, CNXH là mục tiêu bảo đảm vững chắc độc lập)."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Sợi chỉ đỏ cốt lõi của tư tưởng Bác là Độc lập dân tộc phải gắn liền với chủ nghĩa xã hội (Độc lập dân tộc là tiền đề, C...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-056",
@@ -5120,6 +5505,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY QUAN ĐIỂM LÃNH ĐẠO: Cách mạng giải phóng thuộc địa muốn thắng lợi triệt để bắt buộc phải do giai cấp vô sản lãnh đạo thông qua Đảng Cộng sản trên nền tảng liên minh công nông."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cách mạng giải phóng thuộc địa muốn thắng lợi triệt để bắt buộc phải do giai cấp vô sản lãnh đạo thông qua Đảng Cộng sản...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-057",
@@ -5137,6 +5529,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐIỀU KHOẢN: Hiệp định Geneva ghi nhận rõ các quyền dân tộc cơ bản thiêng liêng: Độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của 3 nước Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Hiệp định Geneva ghi nhận rõ các quyền dân tộc cơ bản thiêng liêng: Độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-058",
@@ -5154,6 +5553,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TRÍCH TÁC PHẨM: Trích nguyên văn: 'Cách mệnh trước hết phải có cái gì? Trước hết phải có đảng cách mệnh, để trong thì vận động và tổ chức dân chúng, ngoài thì liên lạc với dân tộc bị áp bức và vô sản giai cấp mọi nơi. Đảng có vững cách mệnh mới thành công...'"
+    ,
+      "trickDetails": {
+        "whyTrapped": "Trích nguyên văn: 'Cách mệnh trước hết phải có cái gì? Trước hết phải có đảng cách mệnh, để trong thì vận động và tổ chứ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-059",
@@ -5171,6 +5577,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY PHƯƠNG PHÁP LUẬN: Chủ nghĩa Mác-Lênin không chỉ cung cấp giải pháp mà quan trọng nhất là cung cấp thế giới quan và phương pháp luận duy vật biện chứng giúp Bác tổng kết thực tiễn cách mạng sáng tạo."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Chủ nghĩa Mác-Lênin không chỉ cung cấp giải pháp mà quan trọng nhất là cung cấp thế giới quan và phương pháp luận duy vậ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-060",
@@ -5188,6 +5601,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MÂU THUẪN XÃ HỘI: Khác với xã hội tư bản châu Âu nơi mâu thuẫn giai cấp là trung tâm, ở thuộc địa mâu thuẫn giữa cả dân tộc Việt Nam với thực dân Pháp xâm lược là mâu thuẫn chủ yếu bao trùm nhất."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Khác với xã hội tư bản châu Âu nơi mâu thuẫn giai cấp là trung tâm, ở thuộc địa mâu thuẫn giữa cả dân tộc Việt Nam với t...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-061",
@@ -5205,6 +5625,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY VAI TRÒ TỔ CHỨC: Hội Việt Nam Cách mạng Thanh niên không phải là Đảng nhưng là tổ chức quá độ, tiền thân chuẩn bị đầy đủ cán bộ, lý luận đưa chủ nghĩa Mác-Lênin vào nước ta chuẩn bị lập Đảng."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Hội Việt Nam Cách mạng Thanh niên không phải là Đảng nhưng là tổ chức quá độ, tiền thân chuẩn bị đầy đủ cán bộ, lý luận ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-062",
@@ -5222,6 +5649,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGÔN NGỮ: Tác phẩm viết bằng tiếng Pháp xuất bản ở Paris nhằm thức tỉnh dư luận tiến bộ Pháp chống đế quốc Pháp, khơi dậy tinh thần phản kháng cách mạng vô sản thuộc địa."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tác phẩm viết bằng tiếng Pháp xuất bản ở Paris nhằm thức tỉnh dư luận tiến bộ Pháp chống đế quốc Pháp, khơi dậy tinh thầ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-063",
@@ -5239,6 +5673,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THỜI GIAN: Bác đọc Luận cương của Lênin tháng 7-1920 chứ không phải 1917 (năm CMT10) hay 12-1920 (Đại hội Tours)."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác đọc Luận cương của Lênin tháng 7-1920 chứ không phải 1917 (năm CMT10) hay 12-1920 (Đại hội Tours)....",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-064",
@@ -5256,6 +5697,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CẢI TẠO KHÁI NIỆM: Nhân nghĩa Nho giáo phong kiến phục vụ chế độ cai trị phong kiến trung quân. Bác Hồ biến đổi nâng tầm thành Nhân nghĩa cách mạng: đoàn kết giải phóng nhân dân bị áp bức."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nhân nghĩa Nho giáo phong kiến phục vụ chế độ cai trị phong kiến trung quân. Bác Hồ biến đổi nâng tầm thành Nhân nghĩa c...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-065",
@@ -5273,6 +5721,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CÂU HỎI TỔNG HỢP: Cả 3 đoạn thơ trên đều trích trong tác phẩm Nhật ký trong tù của Bác, kết tinh tinh thần thép cách mạng vượt lên ngục tù tàn bạo."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cả 3 đoạn thơ trên đều trích trong tác phẩm Nhật ký trong tù của Bác, kết tinh tinh thần thép cách mạng vượt lên ngục tù...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-066",
@@ -5290,6 +5745,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MỤC TIÊU KHÁNG CHIẾN: Đây là lời hiệu triệu bảo vệ độc lập quốc gia chính nghĩa tự vệ trước hành động leo thang gây chiến của thực dân Pháp cuối năm 1946."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Đây là lời hiệu triệu bảo vệ độc lập quốc gia chính nghĩa tự vệ trước hành động leo thang gây chiến của thực dân Pháp cu...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-067",
@@ -5307,6 +5769,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TÊN GỌI MẶT TRẬN: Tên gọi chuẩn mực do Bác sáng lập tại Pác Bó là Việt Nam Độc lập Đồng minh (gọi tắt là Việt Minh), quy tụ mọi người Việt Nam yêu nước giải phóng tổ quốc."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tên gọi chuẩn mực do Bác sáng lập tại Pác Bó là Việt Nam Độc lập Đồng minh (gọi tắt là Việt Minh), quy tụ mọi người Việt...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-068",
@@ -5324,6 +5793,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SAI BIỆN CHỨNG: Nhận định tư tưởng Hồ Chí Minh chỉ có lòng yêu nước và không chịu tác động của vô sản là sai hoàn toàn. Tư tưởng Bác là sự kết hợp nhuần nhuyễn chủ nghĩa yêu nước và lý luận Mác-Lênin khoa học."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nhận định tư tưởng Hồ Chí Minh chỉ có lòng yêu nước và không chịu tác động của vô sản là sai hoàn toàn. Tư tưởng Bác là ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-069",
@@ -5341,6 +5817,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NHẬN ĐỊNH THỰC TẾ: Bác Hồ tinh tế nhận ra bộ mặt thật tự do giả hiệu tư bản Mỹ: ca ngợi tự do nhưng trong lòng nước Mỹ vẫn phân biệt chủng tộc, bóc lột người nghèo da đen dã man."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác Hồ tinh tế nhận ra bộ mặt thật tự do giả hiệu tư bản Mỹ: ca ngợi tự do nhưng trong lòng nước Mỹ vẫn phân biệt chủng ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-070",
@@ -5358,6 +5841,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỘNG CƠ CỨU NƯỚC: Người nhận ra Nhật cũng là đế quốc bóc lột. Cần sang phương Tây để tìm hiểu ngọn nguồn văn minh khoa học và thực trạng kẻ thù trực tiếp cai trị đất nước."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Người nhận ra Nhật cũng là đế quốc bóc lột. Cần sang phương Tây để tìm hiểu ngọn nguồn văn minh khoa học và thực trạng k...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-071",
@@ -5375,6 +5865,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY HOÁN ĐỔI VĂN KIỆN: Nguyễn Ái Quốc soạn thảo Cương lĩnh đầu tiên (Chính cương vắn tắt, Sách lược vắn tắt...) tháng 2-1930. Bản Luận cương chính trị tháng 10-1930 do Trần Phú soạn thảo."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nguyễn Ái Quốc soạn thảo Cương lĩnh đầu tiên (Chính cương vắn tắt, Sách lược vắn tắt...) tháng 2-1930. Bản Luận cương ch...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-072",
@@ -5392,6 +5889,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊA DANH LỊCH SỬ: Người về nước ngày 28-1-1941 đi qua cột mốc 108 (nay là cột mốc 675) biên giới Việt - Trung tại hang Pác Bó, Hà Quảng, Cao Bằng."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Người về nước ngày 28-1-1941 đi qua cột mốc 108 (nay là cột mốc 675) biên giới Việt - Trung tại hang Pác Bó, Hà Quảng, C...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-073",
@@ -5409,6 +5913,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CHI TIẾT IN ẤN: Cuốn sách in bằng bản đá thủ công tại Quảng Châu để dễ dàng vận chuyển bí mật về Việt Nam qua đường tàu biển."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cuốn sách in bằng bản đá thủ công tại Quảng Châu để dễ dàng vận chuyển bí mật về Việt Nam qua đường tàu biển....",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-074",
@@ -5426,6 +5937,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CÁCH MẠNG THỜI ĐẠI: Cách mạng Tháng Mười Nga (1917) thành công mở ra thời đại giải phóng dân tộc bị áp bức gắn liền với vô sản xã hội chủ nghĩa, đưa Bác đến con đường Lênin."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Cách mạng Tháng Mười Nga (1917) thành công mở ra thời đại giải phóng dân tộc bị áp bức gắn liền với vô sản xã hội chủ ng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-075",
@@ -5443,6 +5961,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGOẠI GIAO: Bác vạch chủ trương ngoại giao rộng mở hòa bình: 'làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai' để bảo vệ quyền lợi quốc gia độc lập."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác vạch chủ trương ngoại giao rộng mở hòa bình: 'làm bạn với tất cả mọi nước dân chủ và không gây thù oán với một ai' đ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-076",
@@ -5460,6 +5985,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY DI CHÚC: Bác dặn: 'Theo ý tôi, việc cần phải làm trước tiên là chỉnh đốn lại Đảng, làm cho mỗi đảng viên, mỗi chi bộ đều ra sức làm tròn nhiệm vụ...'"
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác dặn: 'Theo ý tôi, việc cần phải làm trước tiên là chỉnh đốn lại Đảng, làm cho mỗi đảng viên, mỗi chi bộ đều ra sức l...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-077",
@@ -5477,6 +6009,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TỜ BÁO ĐẢNG: Đại hội II (1951) quyết định xuất bản tờ báo Nhân Dân làm cơ quan ngôn luận chính thức trung ương của Đảng Lao động Việt Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Đại hội II (1951) quyết định xuất bản tờ báo Nhân Dân làm cơ quan ngôn luận chính thức trung ương của Đảng Lao động Việt...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-078",
@@ -5494,6 +6033,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY PHẬT GIÁO: Bác kế thừa tinh thần nhân bản bình đẳng cứu nạn chúng sinh từ bi bác ái của Đức Phật đưa vào phục vụ nhân dân cách mạng."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác kế thừa tinh thần nhân bản bình đẳng cứu nạn chúng sinh từ bi bác ái của Đức Phật đưa vào phục vụ nhân dân cách mạng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-079",
@@ -5511,6 +6057,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY MÂU THUẪN QUÁ ĐỘ: Nước ta đi lên CNXH bỏ qua tư bản, do đó mâu thuẫn chủ yếu không phải đấu tranh giai cấp vô sản - tư sản như phương Tây mà là mâu thuẫn giữa mục tiêu phát triển cao với thực trạng lạc hậu sau chiến tranh."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nước ta đi lên CNXH bỏ qua tư bản, do đó mâu thuẫn chủ yếu không phải đấu tranh giai cấp vô sản - tư sản như phương Tây ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-080",
@@ -5528,6 +6081,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TÊN BÀI BÁO: Bài viết này của Bác đăng trên L'Humanité khẳng định vai trò vĩ đại của Lênin đối với cách mạng giải phóng dân tộc bị áp bức."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bài viết này của Bác đăng trên L'Humanité khẳng định vai trò vĩ đại của Lênin đối với cách mạng giải phóng dân tộc bị áp...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-081",
@@ -5545,6 +6105,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY HIỆP ƯỚC: Hiệp ước Patenôtre năm 1884 chính thức chấm dứt sự tồn tại của triều đại Nguyễn độc lập, áp đặt bảo hộ thực dân Pháp toàn diện lên Việt Nam."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Hiệp ước Patenôtre năm 1884 chính thức chấm dứt sự tồn tại của triều đại Nguyễn độc lập, áp đặt bảo hộ thực dân Pháp toà...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-082",
@@ -5562,6 +6129,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY THẾ GIỚI QUAN CHỦ ĐẠO: Nho giáo, Phật giáo hay Tam dân là tư liệu lịch sử. Chỉ có chủ nghĩa Mác-Lênin mới đóng vai trò quyết định thế giới quan khoa học biện chứng của tư tưởng Bác."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nho giáo, Phật giáo hay Tam dân là tư liệu lịch sử. Chỉ có chủ nghĩa Mác-Lênin mới đóng vai trò quyết định thế giới quan...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-083",
@@ -5579,6 +6153,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY GIAI CẤP LÃNH ĐẠO: Chỉ duy nhất giai cấp công nhân mới có hệ tư tưởng tiên tiến khoa học lãnh đạo cách mạng nước ta đi đến thắng lợi triệt để."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Chỉ duy nhất giai cấp công nhân mới có hệ tư tưởng tiên tiến khoa học lãnh đạo cách mạng nước ta đi đến thắng lợi triệt ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-084",
@@ -5596,6 +6177,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NIÊN KHÓA HUẾ: Bác Hồ học tại trường Quốc học Huế niên khóa 1908-1909 cùng anh trai, sau đó rời đi tham gia phong trào chống thuế."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác Hồ học tại trường Quốc học Huế niên khóa 1908-1909 cùng anh trai, sau đó rời đi tham gia phong trào chống thuế....",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-085",
@@ -5613,6 +6201,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY PHẨM CHẤT CHỦ QUAN: Khả năng tư duy độc lập tự chủ sáng tạo giúp Bác vận dụng Mác-Lênin vào Việt Nam một cách khoa học phù hợp bối cảnh thuộc địa Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Khả năng tư duy độc lập tự chủ sáng tạo giúp Bác vận dụng Mác-Lênin vào Việt Nam một cách khoa học phù hợp bối cảnh thuộ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-086",
@@ -5630,6 +6225,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY SÁCH LƯỢC NGOẠI GIAO: Trước 6-3 ta hòa Tưởng để Pháp không có cớ nổ súng sớm. Sau khi Pháp-Tưởng ký hiệp ước gác chân nhau, Bác linh hoạt hòa Pháp để gạt Tưởng về nước, gạt kẻ thù nguy hiểm."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Trước 6-3 ta hòa Tưởng để Pháp không có cớ nổ súng sớm. Sau khi Pháp-Tưởng ký hiệp ước gác chân nhau, Bác linh hoạt hòa ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-087",
@@ -5647,6 +6249,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY Ý NGHĨA CÁCH MẠNG: CMT8 đập tan xiềng xích thực dân phát xít và phong kiến chuyên chế lập nên nhà nước dân chủ mới của nhân dân, chứ chưa xóa bỏ hoàn toàn chế độ tư hữu tư bản."
+    ,
+      "trickDetails": {
+        "whyTrapped": "CMT8 đập tan xiềng xích thực dân phát xít và phong kiến chuyên chế lập nên nhà nước dân chủ mới của nhân dân, chứ chưa x...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-088",
@@ -5664,6 +6273,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY VAI TRÒ CHIẾN LƯỢC: Hậu phương lớn miền Bắc quyết định 'nhất'; tiền tuyến lớn miền Nam quyết định 'trực tiếp' giải phóng miền Nam. Học viên hay nhầm lẫn tráo từ khóa này."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Hậu phương lớn miền Bắc quyết định 'nhất'; tiền tuyến lớn miền Nam quyết định 'trực tiếp' giải phóng miền Nam. Học viên ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-089",
@@ -5681,6 +6297,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY TRÍCH THƠ: Bài Tự khuyên mình (Tẩu lộ/Tự miễn) nổi tiếng với hai câu thơ triết lý: 'Ví không có cảnh đông tàn / Thì đâu có cảnh huy hoàng ngày xuân' nói về quy luật vượt gian khổ giành thắng lợi."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bài Tự khuyên mình (Tẩu lộ/Tự miễn) nổi tiếng với hai câu thơ triết lý: 'Ví không có cảnh đông tàn / Thì đâu có cảnh huy...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-090",
@@ -5698,6 +6321,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY VAI TRÒ THANH NIÊN: Bác xem thanh niên là lực lượng xung kích nhạy cảm với cái mới, là cầu nối truyền bá lý luận cách mạng vào quần chúng nhân dân lao động Đông Dương."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác xem thanh niên là lực lượng xung kích nhạy cảm với cái mới, là cầu nối truyền bá lý luận cách mạng vào quần chúng nh...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-091",
@@ -5715,6 +6345,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY Ý NGHĨA SÁNG LẬP: Sự kiện đưa Bác trở thành người cộng sản Việt Nam đầu tiên, bắc nhịp cầu lịch sử liên kết cách mạng Đông Dương với vô sản thế giới."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Sự kiện đưa Bác trở thành người cộng sản Việt Nam đầu tiên, bắc nhịp cầu lịch sử liên kết cách mạng Đông Dương với vô sả...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-092",
@@ -5732,6 +6369,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY GIÁ TRỊ CỐT LÕI: Câu nói đúc kết chân lý lịch sử: đoàn kết toàn dân lấy công nông làm gốc là cội nguồn của mọi thắng lợi cách mạng nước ta."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Câu nói đúc kết chân lý lịch sử: đoàn kết toàn dân lấy công nông làm gốc là cội nguồn của mọi thắng lợi cách mạng nước t...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-093",
@@ -5749,6 +6393,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY BẢN CHẤT NHÀ NƯỚC: Nhà nước ta là nhà nước pháp quyền xã hội chủ nghĩa thống nhất quyền lực thuộc về nhân dân đặt dưới sự lãnh đạo của Đảng, không phải tam quyền phân lập tư sản."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nhà nước ta là nhà nước pháp quyền xã hội chủ nghĩa thống nhất quyền lực thuộc về nhân dân đặt dưới sự lãnh đạo của Đảng...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-094",
@@ -5766,6 +6417,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NIÊN ĐẠI THÁI LAN: Bác hoạt động tại Thái Lan từ tháng 7-1928 đến cuối năm 1929 lấy tên Thầu Chín, tuyên truyền yêu nước trong bà con Việt kiều."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Bác hoạt động tại Thái Lan từ tháng 7-1928 đến cuối năm 1929 lấy tên Thầu Chín, tuyên truyền yêu nước trong bà con Việt ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-095",
@@ -5783,6 +6441,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY ĐỊA DANH QUÂN ĐỘI: Đội VNTTGPQ thành lập ngày 22-12-1944 tại khu rừng Trần Hưng Đạo, Cao Bằng dưới sự chỉ huy trực tiếp của đồng chí Võ Nguyên Giáp."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Đội VNTTGPQ thành lập ngày 22-12-1944 tại khu rừng Trần Hưng Đạo, Cao Bằng dưới sự chỉ huy trực tiếp của đồng chí Võ Ngu...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-096",
@@ -5800,6 +6465,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGUYÊN TẮC NGOẠI GIAO: Nguyên tắc đối ngoại tối cao bất biến ('Dĩ bất biến ứng vạn biến') của Bác luôn luôn là Độc lập chủ quyền dân tộc và toàn vẹn lãnh thổ."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Nguyên tắc đối ngoại tối cao bất biến ('Dĩ bất biến ứng vạn biến') của Bác luôn luôn là Độc lập chủ quyền dân tộc và toà...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-097",
@@ -5817,6 +6489,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NỘI DUNG PHÁT BIỂU: Tại Đại hội V, Bác chỉ ra các đảng cộng sản chính quốc chưa quan tâm đúng mức cách mạng thuộc địa, đòi hỏi sự hỗ trợ thực chất cho cách mạng giải phóng phương Đông."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Tại Đại hội V, Bác chỉ ra các đảng cộng sản chính quốc chưa quan tâm đúng mức cách mạng thuộc địa, đòi hỏi sự hỗ trợ thự...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-098",
@@ -5834,6 +6513,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY CHỦ NGHĨA LÀM CỐT: Trích nguyên văn tác phẩm Đường cách mệnh: 'Chủ nghĩa chân chính nhất, chắc chắn nhất, cách mệnh nhất là chủ nghĩa Lênin'."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Trích nguyên văn tác phẩm Đường cách mệnh: 'Chủ nghĩa chân chính nhất, chắc chắn nhất, cách mệnh nhất là chủ nghĩa Lênin...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-099",
@@ -5851,6 +6537,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY PHÂN LOẠI: Truyền thống yêu nước là tiền đề văn hóa - tư tưởng lịch sử dân tộc có sẵn từ trước, thuộc về cơ sở khách quan hình thành tư tưởng Bác."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Truyền thống yêu nước là tiền đề văn hóa - tư tưởng lịch sử dân tộc có sẵn từ trước, thuộc về cơ sở khách quan hình thàn...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     },
     {
       id: "c2-trick-100",
@@ -5868,6 +6561,13 @@ export const questionsChuong2 = {
       difficulty: "hard",
       isOutside: false,
       explanation: "BẪY NGÔN NGỮ DI CHÚC: Di chúc thiêng liêng để lại cho nhân dân Việt Nam được Bác viết bằng tiếng Việt (chữ quốc ngữ), kết tinh lòng nhân ái sâu sắc vô hạn của Người."
+    ,
+      "trickDetails": {
+        "whyTrapped": "Di chúc thiêng liêng để lại cho nhân dân Việt Nam được Bác viết bằng tiếng Việt (chữ quốc ngữ), kết tinh lòng nhân ái sâ...",
+        "trickWord": "Bẫy phân biệt thuật ngữ & mốc lịch sử",
+        "citation": "Giáo trình Tư tưởng Hồ Chí Minh — Chương II",
+        "tip": "Đọc kỹ từ khóa mốc thời gian và bản chất lý luận trong giáo trình."
+      }
     }
   ]
 };

@@ -540,9 +540,9 @@ export const lsdChuong2Part2 = [
     "question": "Bức điện tín khẩn cấp nổi tiếng của Đại tướng Võ Nguyên Giáp gửi các đơn vị chiến đấu ngày 7-4-1975 có nội dung gì?",
     "options": [
       "'Thần tốc, thần tốc hơn nữa; táo bạo, táo bạo hơn nữa; tranh thủ từng giờ từng phút rấn tới mặt trận giải phóng miền Nam'.",
-      "'Đánh chắc, tiến chắc; bảo toàn lực lượng để đàm phán ngoại giao tại Pa-ri' trên toàn hệ thống. trên toàn hệ thống.",
-      "'Tập trung phòng ngự cố thủ; chờ viện trợ quân sự từ các nước anh em' trong thực tiễn mới. trong thực tiễn mới.",
-      "'Tạm dừng tiến quân để củng cố chính quyền tại các vùng mới giải phóng' một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "'Đánh chắc, tiến chắc; bảo toàn lực lượng để đàm phán ngoại giao tại Pa-ri' trên toàn hệ thống.",
+      "'Tập trung phòng ngự cố thủ; chờ viện trợ quân sự từ các nước anh em' trong thực tiễn mới.",
+      "'Tạm dừng tiến quân để củng cố chính quyền tại các vùng mới giải phóng' một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -558,8 +558,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Vũ Đăng Toàn (Trung úy, Đại đội trưởng) và Ngô Sĩ Nguyên (Pháo thủ).",
       "Bùi Quang Thận (Central chỉ huy xe tăng 843) trên toàn hệ thống.",
-      "Nguyễn Văn Tập (Lái xe tăng 843) trong thực tiễn mới. trong thực tiễn mới.",
-      "Lê Văn Phượng (Pháo thủ xe tăng 390) một cách đồng bộ. một cách đồng bộ."
+      "Nguyễn Văn Tập (Lái xe tăng 843) trong thực tiễn mới.",
+      "Lê Văn Phượng (Pháo thủ xe tăng 390) một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -694,7 +694,7 @@ export const lsdChuong2Part2 = [
     "options": [
       "Đẩy mạnh tăng gia sản xuất nông nghiệp và tịch thu ruộng đất của thực dân chia cho nông dân nghèo.",
       "Tăng cường thu mua lương thực từ các nước láng giềng về cứu tế nhân dân trên toàn hệ thống.",
-      "Kêu gọi các tổ chức từ thiện quốc tế hỗ trợ lương thực khẩn cấp trong thực tiễn mới. trong thực tiễn mới.",
+      "Kêu gọi các tổ chức từ thiện quốc tế hỗ trợ lương thực khẩn cấp trong thực tiễn mới.",
       "Cấm hoàn toàn việc buôn bán và lưu thông lương thực trên thị trường tự do một cách đồng bộ."
     ],
     "answer": 0,
@@ -831,7 +831,7 @@ export const lsdChuong2Part2 = [
       "Vừa đánh vừa chuyển biến so sánh lực lượng từ yếu thành mạnh, làm suy yếu địch để tiến tới thắng lợi hoàn toàn.",
       "Kéo dài thời gian chiến tranh vô thời hạn mà không cần đề ra các mốc mục tiêu cụ thể trên toàn hệ thống.",
       "Tránh các đợt tiến công quân sự quy mô lớn để bảo toàn lực lượng chờ địch tự rút quân trong thực tiễn mới.",
-      "Chờ đợi sự can thiệp và hòa giải của các nước lớn trên trường quốc tế một cách đồng bộ. một cách đồng bộ."
+      "Chờ đợi sự can thiệp và hòa giải của các nước lớn trên trường quốc tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -932,8 +932,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Hoàn toàn giải phóng Miền Bắc, tạo cơ sở hậu phương cho cuộc đấu tranh thống nhất đất nước.",
       "Hoàn toàn giải phóng Miền Nam và thiết lập chính quyền cách mạng tại Saigon trên toàn hệ thống.",
-      "Giải phóng hoàn toàn các quốc gia trên cõi bán đảo Đông Dương trong thực tiễn mới trong thực tiễn mới.",
-      "Giải phóng các thành phố cảng ven biển miền Trung và miền Nam một cách đồng bộ một cách đồng bộ."
+      "Giải phóng hoàn toàn các quốc gia trên cõi bán đảo Đông Dương trong thực tiễn mới.",
+      "Giải phóng các thành phố cảng ven biển miền Trung và miền Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -982,9 +982,9 @@ export const lsdChuong2Part2 = [
     "question": "Mục tiêu tổng quát của cách mạng Việt Nam trong giai đoạn 1954-1975 do Đảng đề ra là gì?",
     "options": [
       "Tăng cường đoàn kết toàn dân, giữ vững hòa bình, đẩy mạnh CM XHCN ở miền Bắc, giải phóng miền Nam, thống nhất Tổ quốc.",
-      "Thực hiện công nghiệp hóa nặng ở cả hai miền Nam - Bắc ngay trong vòng 5 năm trên toàn hệ thống. trên toàn hệ thống.",
+      "Thực hiện công nghiệp hóa nặng ở cả hai miền Nam - Bắc ngay trong vòng 5 năm trên toàn hệ thống.",
       "Tập trung phát triển kinh tế thương mại biển để trở thành cường quốc tài chính châu Á trong thực tiễn mới.",
-      "Xây dựng liên minh chính trị với các nước phương Tây để bảo vệ chủ quyền biên giới một cách đồng bộ. một cách đồng bộ."
+      "Xây dựng liên minh chính trị với các nước phương Tây để bảo vệ chủ quyền biên giới một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1085,8 +1085,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Là căn cứ địa cách mạng cả nước, là hậu phương lớn cung cấp sức người sức của quyết định thắng lợi tiền tuyến.",
       "Là trạm trung chuyển hàng hóa thương mại quốc tế phục vụ các nước xã hội chủ nghĩa trên toàn hệ thống.",
-      "Là vùng đệm an toàn ngoại giao để tiến hành đàm phán với đế quốc Mỹ trong thực tiễn mới. trong thực tiễn mới.",
-      "Là nơi tập trung quân đội nước ngoài hỗ trợ huấn luyện cán bộ chỉ huy một cách đồng bộ. một cách đồng bộ."
+      "Là vùng đệm an toàn ngoại giao để tiến hành đàm phán với đế quốc Mỹ trong thực tiễn mới.",
+      "Là nơi tập trung quân đội nước ngoài hỗ trợ huấn luyện cán bộ chỉ huy một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1120,7 +1120,7 @@ export const lsdChuong2Part2 = [
       "'Tìm Mỹ mà đánh, tìm Ngụy mà diệt' và 'Nắm thắt lưng Mỹ mà đánh'.",
       "'Không có gì quý hơn độc lập tự do' và 'Ba sẵn sàng' trên toàn hệ thống.",
       "'Tay búa tay súng' và 'Tay cày tay súng' trong thực tiễn mới.",
-      "'Sóng Duyên Hải' và 'Cờ Đại Phong' một cách đồng bộ. một cách đồng bộ."
+      "'Sóng Duyên Hải' và 'Cờ Đại Phong' một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1135,9 +1135,9 @@ export const lsdChuong2Part2 = [
     "question": "Chiến thắng quân sự nào của quân ta ở miền Bắc ngày 5-8-1964 đã bắn rơi nhiều máy bay Mỹ đầu tiên?",
     "options": [
       "Chiến thắng trận đầu của Hải quân và Binh chủng Phòng không không quân.",
-      "Chiến thắng Điện Biên Phủ trên không trên toàn hệ thống. trên toàn hệ thống.",
-      "Chiến thắng Hàm Rồng Thanh Hóa trong thực tiễn mới. trong thực tiễn mới.",
-      "Chiến thắng cầu Long Biên Hà Nội một cách đồng bộ. một cách đồng bộ."
+      "Chiến thắng Điện Biên Phủ trên không trên toàn hệ thống.",
+      "Chiến thắng Hàm Rồng Thanh Hóa trong thực tiễn mới.",
+      "Chiến thắng cầu Long Biên Hà Nội một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1169,9 +1169,9 @@ export const lsdChuong2Part2 = [
     "question": "Chiến dịch tiến công đường bộ giải phóng Quảng Trị và tiến công các vùng căn cứ năm 1972 đã buộc Mỹ phải làm gì?",
     "options": [
       "Thừa nhận thất bại của 'Việt Nam hóa chiến tranh' và ngưng ném bom miền Bắc để trở lại đàm phán Pa-ri.",
-      "Rút hoàn toàn lực lượng hải quân khỏi khu vực Thái Bình Dương trên toàn hệ thống. trên toàn hệ thống.",
-      "Tuyên bố giải tán chính quyền tay sai Saigon ngay lập tức trong thực tiễn mới. trong thực tiễn mới.",
-      "Ký kết hiệp định hòa bình không điều kiện tại Liên Hợp Quốc một cách đồng bộ. một cách đồng bộ."
+      "Rút hoàn toàn lực lượng hải quân khỏi khu vực Thái Bình Dương trên toàn hệ thống.",
+      "Tuyên bố giải tán chính quyền tay sai Saigon ngay lập tức trong thực tiễn mới.",
+      "Ký kết hiệp định hòa bình không điều kiện tại Liên Hợp Quốc một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1187,8 +1187,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Cuộc thử nghiệm khả năng tự tác chiến của quân đội Saigon trong 'Việt Nam hóa chiến tranh'.",
       "Chiến thuật sử dụng không quân B-52 đánh phá căn cứ hậu phương trên toàn hệ thống.",
-      "Kế hoạch đổ bộ hải quân chiếm đóng miền Bắc trong thực tiễn mới. trong thực tiễn mới.",
-      "Chiến dịch dồn dân lập ấp chiến lược quy mô lớn một cách đồng bộ. một cách đồng bộ."
+      "Kế hoạch đổ bộ hải quân chiếm đóng miền Bắc trong thực tiễn mới.",
+      "Chiến dịch dồn dân lập ấp chiến lược quy mô lớn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1203,9 +1203,9 @@ export const lsdChuong2Part2 = [
     "question": "Ý nghĩa chiến lược quan trọng của trận 'Điện Biên Phủ trên không' cuối năm 1972 là gì?",
     "options": [
       "Buộc Mỹ phải ký Hiệp định Pa-ri rút hết quân về nước, tạo bước ngoặt quyết định cho cách mạng.",
-      "Giải phóng hoàn toàn các tỉnh miền Bắc và miền Trung Việt Nam trên toàn hệ thống. trên toàn hệ thống.",
-      "Làm sụp đổ chính quyền tay sai Saigon ngay trong năm 1972 trong thực tiễn mới. trong thực tiễn mới.",
-      "Buộc Mỹ phải bồi thường chiến tranh ngay lập tức cho Việt Nam một cách đồng bộ. một cách đồng bộ."
+      "Giải phóng hoàn toàn các tỉnh miền Bắc và miền Trung Việt Nam trên toàn hệ thống.",
+      "Làm sụp đổ chính quyền tay sai Saigon ngay trong năm 1972 trong thực tiễn mới.",
+      "Buộc Mỹ phải bồi thường chiến tranh ngay lập tức cho Việt Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1220,9 +1220,9 @@ export const lsdChuong2Part2 = [
     "question": "Sự kiện nào đánh dấu giai đoạn 'Đánh cho Mỹ cút' hoàn toàn hoàn thành?",
     "options": [
       "Toàn bộ quân viễn chinh Mỹ và quân đồng minh rút hết khỏi Việt Nam ngày 29-3-1973.",
-      "Hiệp định Giơ-ne-vơ được ký kết ngày 21-7-1954 trên toàn hệ thống. trên toàn hệ thống.",
-      "Tổng tiến công Mậu Thân bùng nổ năm 1968 trong thực tiễn mới. trong thực tiễn mới.",
-      "Chiến thắng Phước Long ngày 6-1-1975 một cách đồng bộ. một cách đồng bộ."
+      "Hiệp định Giơ-ne-vơ được ký kết ngày 21-7-1954 trên toàn hệ thống.",
+      "Tổng tiến công Mậu Thân bùng nổ năm 1968 trong thực tiễn mới.",
+      "Chiến thắng Phước Long ngày 6-1-1975 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1254,7 +1254,7 @@ export const lsdChuong2Part2 = [
     "question": "5 cánh quân chủ lực của ta tiến vào giải phóng Saigon trong Chiến dịch Hồ Chí Minh gồm những hướng nào?",
     "options": [
       "Hướng Bắc, Hướng Tây Bắc, Hướng Đông, Hướng Tây Nam và Hướng Đông Nam một cách vững chắc.",
-      "Hướng Nam, Hướng Bắc, Hướng Đông, Hướng Tây và Hướng Trung tâm trên toàn hệ thống. trên toàn hệ thống.",
+      "Hướng Nam, Hướng Bắc, Hướng Đông, Hướng Tây và Hướng Trung tâm trên toàn hệ thống.",
       "Hướng Việt Bắc, Hướng Tây Nguyên, Hướng Huế, Hướng Đà Nẵng và Hướng Saigon trong thực tiễn mới.",
       "Hướng Biên Hòa, Hướng Xuân Lộc, Hướng Tân Sơn Nhất, Hướng Dinh Độc Lập và Hướng Bộ Tổng tham mưu."
     ],
@@ -1271,9 +1271,9 @@ export const lsdChuong2Part2 = [
     "question": "Mục tiêu tiêu điểm quan trọng nhất mà cánh quân hướng Đông chiếm giữ trưa ngày 30-4-1975 là gì?",
     "options": [
       "Dinh Độc Lập (Bộ sào huyệt cuối cùng của chính quyền Saigon).",
-      "Sân bay Tân Sơn Nhất trên toàn hệ thống. trên toàn hệ thống.",
-      "Bộ Tổng tham mưu quân ngụy trong thực tiễn mới. trong thực tiễn mới.",
-      "Đài phát thanh Saigon một cách đồng bộ. một cách đồng bộ."
+      "Sân bay Tân Sơn Nhất trên toàn hệ thống.",
+      "Bộ Tổng tham mưu quân ngụy trong thực tiễn mới.",
+      "Đài phát thanh Saigon một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1322,9 +1322,9 @@ export const lsdChuong2Part2 = [
     "question": "Bài học về công tác xây dựng Đảng trong sạch vững mạnh từ hai cuộc kháng chiến đóng vai trò gì hiện nay?",
     "options": [
       "Là nhân tố quyết định bảo đảm năng lực lãnh đạo và sức chiến đấu của Đảng trong thời kỳ phát triển mới.",
-      "Chỉ nhằm mục đích quản lý hành chính nội bộ cán bộ công chức nhà nước trên toàn hệ thống. trên toàn hệ thống.",
+      "Chỉ nhằm mục đích quản lý hành chính nội bộ cán bộ công chức nhà nước trên toàn hệ thống.",
       "Là giải pháp tạm thời để xử lý các vi phạm kinh tế nhỏ trong doanh nghiệp trong thực tiễn mới.",
-      "Giúp cắt giảm chi phí ngân sách dành cho các hoạt động chính trị xã hội một cách đồng bộ. một cách đồng bộ."
+      "Giúp cắt giảm chi phí ngân sách dành cho các hoạt động chính trị xã hội một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1475,9 +1475,9 @@ export const lsdChuong2Part2 = [
     "question": "Trung tâm căn cứ địa kháng chiến chống Pháp của cả nước được Đảng xây dựng ở đâu?",
     "options": [
       "Căn cứ địa Việt Bắc (gồm 6 tỉnh: Cao - Bắc - Lạng - Thái - Tuyên - Hà).",
-      "Căn cứ địa Đồng Tháp Mười ở miền Nam trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Căn cứ địa Tây Nguyên ở Nam Trung Bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Căn cứ địa Mã Đà ở miền Đông Nam Bộ một cách đồng bộ. một cách đồng bộ."
+      "Căn cứ địa Đồng Tháp Mười ở miền Nam trên toàn bộ khu vực.",
+      "Căn cứ địa Tây Nguyên ở Nam Trung Bộ trong thực tiễn mới.",
+      "Căn cứ địa Mã Đà ở miền Đông Nam Bộ một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1510,8 +1510,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Mở các đợt tiến công vào 5 hướng chiến lược hiểm yếu để buộc Pháp phải chia mỏng lực lượng.",
       "Tập trung toàn bộ lực lượng chủ lực đánh trực diện vào căn cứ quân sự Pháp ở Hà Nội trên toàn bộ khu vực.",
-      "Rút lui chiến lược về cố thủ tại các tỉnh vùng núi phía Bắc trong thực tiễn mới trong thực tiễn mới.",
-      "Đàm phán với Pháp để quy định các khu vực ngừng bắn tạm thời một cách đồng bộ. một cách đồng bộ."
+      "Rút lui chiến lược về cố thủ tại các tỉnh vùng núi phía Bắc trong thực tiễn mới.",
+      "Đàm phán với Pháp để quy định các khu vực ngừng bắn tạm thời một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1577,9 +1577,9 @@ export const lsdChuong2Part2 = [
     "question": "Lực lượng hậu phương đã đóng góp vai trò gì trong thắng lợi của Chiến dịch Điện Biên Phủ 1954?",
     "options": [
       "Huy động hàng chục vạn dân công, thanh niên xung phong vận chuyển hàng vạn tấn lương thực, vũ khí ra tiền tuyến.",
-      "Trực tiếp tham gia chiến đấu quân sự tại phân khu trung tâm Mường Thanh trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Ký kết các bản hiệp định hòa giải với chính quyền Pháp tại địa phương trong thực tiễn mới. trong thực tiễn mới.",
-      "Cung cấp kinh phí tài chính mua trang bị vũ khí từ các nước phương Tây một cách đồng bộ. một cách đồng bộ."
+      "Trực tiếp tham gia chiến đấu quân sự tại phân khu trung tâm Mường Thanh trên toàn bộ khu vực.",
+      "Ký kết các bản hiệp định hòa giải với chính quyền Pháp tại địa phương trong thực tiễn mới.",
+      "Cung cấp kinh phí tài chính mua trang bị vũ khí từ các nước phương Tây một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1647,7 +1647,7 @@ export const lsdChuong2Part2 = [
       "Biến miền Nam thành thuộc địa kiểu mới và căn cứ quân sự của Mỹ để ngăn chặn CNXH ở Đông Nam Á.",
       "Giúp Việt Nam xây dựng nền kinh tế tư bản phát triển hàng đầu khu vực trên toàn bộ khu vực.",
       "Hỗ trợ nhân dân Việt Nam thực hiện thi hành nghiêm chỉnh Hiệp định Giơ-ne-vơ trong thực tiễn mới.",
-      "Tạo lập một vùng đệm an toàn trung lập giữa các khối quân sự lớn một cách đồng bộ. một cách đồng bộ."
+      "Tạo lập một vùng đệm an toàn trung lập giữa các khối quân sự lớn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1900,9 +1900,9 @@ export const lsdChuong2Part2 = [
     "question": "Hệ quả trực tiếp của việc Mỹ ký Hiệp định Pa-ri năm 1973 là gì?",
     "options": [
       "Mỹ buộc phải công nhận độc lập chủ quyền Việt Nam và rút hết quân viễn chinh về nước.",
-      "Mỹ tiếp tục đưa thêm quân viễn chinh vào miền Nam trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Miền Bắc phải ngừng hoàn toàn việc xây dựng CNXH trong thực tiễn mới. trong thực tiễn mới.",
-      "Chính quyền Saigon sụp đổ ngay lập tức trong năm 1973 một cách đồng bộ. một cách đồng bộ."
+      "Mỹ tiếp tục đưa thêm quân viễn chinh vào miền Nam trên toàn bộ khu vực.",
+      "Miền Bắc phải ngừng hoàn toàn việc xây dựng CNXH trong thực tiễn mới.",
+      "Chính quyền Saigon sụp đổ ngay lập tức trong năm 1973 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1918,8 +1918,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Gây rối loạn hoảng loạn chiến lược, buộc Nguyễn Văn Thiệu ra lệnh rút bỏ toàn bộ Tây Nguyên.",
       "Khiến quân Saigon tăng cường quân cố thủ vững chắc Tây Nguyên trên toàn bộ khu vực.",
-      "Buộc Mỹ phải đưa quân viễn chinh trở lại Việt Nam trong thực tiễn mới. trong thực tiễn mới.",
-      "Khiến chính quyền Saigon tuyên bố đầu hàng ngay tức khắc một cách đồng bộ. một cách đồng bộ."
+      "Buộc Mỹ phải đưa quân viễn chinh trở lại Việt Nam trong thực tiễn mới.",
+      "Khiến chính quyền Saigon tuyên bố đầu hàng ngay tức khắc một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1951,9 +1951,9 @@ export const lsdChuong2Part2 = [
     "question": "Nguyên nhân kết hợp nào tạo nên sức mạnh vô địch của Đại thắng Mùa Xuân 1975?",
     "options": [
       "Sự lãnh đạo của Đảng + sức mạnh đại đoàn kết toàn dân + sức mạnh hậu phương miền Bắc + sự ủng hộ quốc tế.",
-      "Viện trợ kinh tế bên ngoài và sự tự suy yếu của địch trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Địa hình bằng phẳng và sự rút quân của Mỹ trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Sự can thiệp trực tiếp của quân đội nước ngoài một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Viện trợ kinh tế bên ngoài và sự tự suy yếu của địch trên toàn bộ khu vực.",
+      "Địa hình bằng phẳng và sự rút quân của Mỹ trong thực tiễn mới.",
+      "Sự can thiệp trực tiếp của quân đội nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1986,8 +1986,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Phải xây dựng thực lực quốc phòng vững mạnh làm cơ sở vững chắc cho đấu tranh pháp lý ngoại giao.",
       "Chỉ cần dùng đàm phán ngoại giao và không cần đầu tư cho quốc phòng biển đảo trên toàn bộ khu vực.",
-      "Từ bỏ tranh chấp ngoại giao để tránh xung đột với các nước lớn trong thực tiễn mới. trong thực tiễn mới.",
-      "Dựa vào sự bảo hộ an ninh trực tiếp của các liên minh quân sự một cách đồng bộ. một cách đồng bộ."
+      "Từ bỏ tranh chấp ngoại giao để tránh xung đột với các nước lớn trong thực tiễn mới.",
+      "Dựa vào sự bảo hộ an ninh trực tiếp của các liên minh quân sự một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2036,9 +2036,9 @@ export const lsdChuong2Part2 = [
     "question": "Tầm nhìn chiến lược của Bác Hồ về thắng lợi chống Mỹ ('Đánh cho Mỹ cút, đánh cho ngụy nhào') thể hiện tư duy gì?",
     "options": [
       "Tư duy chiến lược thiên tài, đánh từng bước, thắng từng phần để tiến lên giành thắng lợi hoàn toàn.",
-      "Tư duy đánh nhanh thắng nhanh quy mô lớn ngay từ đầu trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tư duy hòa hoãn vô thời hạn với kẻ thù xâm lược trong thực tiễn mới. trong thực tiễn mới.",
-      "Tư duy dựa vào sự can thiệp của lực lượng bên ngoài một cách đồng bộ. một cách đồng bộ."
+      "Tư duy đánh nhanh thắng nhanh quy mô lớn ngay từ đầu trên toàn bộ khu vực.",
+      "Tư duy hòa hoãn vô thời hạn với kẻ thù xâm lược trong thực tiễn mới.",
+      "Tư duy dựa vào sự can thiệp của lực lượng bên ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2070,9 +2070,9 @@ export const lsdChuong2Part2 = [
     "question": "Để giải quyết khó khăn về tài chính, Chính phủ ta đã phát hành đồng tiền riêng vào thời gian nào?",
     "options": [
       "Tháng 11 năm 1946 (Tiền tài chính Việt Nam hay 'Giấy bạc Cụ Hồ').",
-      "Tháng 9 năm 1945 trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tháng 1 năm 1946 trong thực tiễn mới. trong thực tiễn mới.",
-      "Tháng 3 năm 1947 một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Tháng 9 năm 1945 trên toàn bộ khu vực.",
+      "Tháng 1 năm 1946 trong thực tiễn mới.",
+      "Tháng 3 năm 1947 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2088,8 +2088,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Nêu cao chính nghĩa, vạch mặt bôi nhọ phản động, vạch trần âm mưu chia rẽ và trừng trị kẻ cầm đầu.",
       "Dùng lực lượng quân sự vây quét triệt hạ toàn bộ cơ sở của chúng ngay trong năm 1945 trên toàn bộ khu vực.",
-      "Thỏa hiệp trao toàn bộ quyền lãnh đạo bộ ngành chính phủ cho chúng trong thực tiễn mới trong thực tiễn mới.",
-      "Mời đại diện của chúng sang đàm phán ngoại giao ở nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Thỏa hiệp trao toàn bộ quyền lãnh đạo bộ ngành chính phủ cho chúng trong thực tiễn mới.",
+      "Mời đại diện của chúng sang đàm phán ngoại giao ở nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2105,8 +2105,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Đập tan cuộc đảo chính phản động của Việt Nam Quốc dân đảng phối hợp với thực dân Pháp.",
       "Giải phóng hoàn toàn các tỉnh đồng bằng Bắc Bộ khỏi tay quân Tưởng trên toàn bộ khu vực.",
-      "Buộc quân Pháp phải ký Hiệp định Sơ bộ 6-3-1946 trong thực tiễn mới. trong thực tiễn mới.",
-      "Bầu ra Ban Chấp hành Trung ương Đảng khóa mới một cách đồng bộ. một cách đồng bộ."
+      "Buộc quân Pháp phải ký Hiệp định Sơ bộ 6-3-1946 trong thực tiễn mới.",
+      "Bầu ra Ban Chấp hành Trung ương Đảng khóa mới một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2138,9 +2138,9 @@ export const lsdChuong2Part2 = [
     "question": "Ý nghĩa bài học lịch sử của giai đoạn 1945-1946 đối với sự nghiệp xây dựng nước nhà hiện nay là gì?",
     "options": [
       "Bài học về tăng cường sức mạnh nội lực, chớp thời cơ và linh hoạt trong đối ngoại bảo vệ chủ quyền.",
-      "Bài học về đóng cửa nền kinh tế để tự lực tự cường hoàn toàn trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Bài học về phụ thuộc vào sự viện trợ của các cường quốc trong thực tiễn mới. trong thực tiễn mới.",
-      "Bài học về nhượng bộ đất đai để giữ ổn định ngắn hạn một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Bài học về đóng cửa nền kinh tế để tự lực tự cường hoàn toàn trên toàn bộ khu vực.",
+      "Bài học về phụ thuộc vào sự viện trợ của các cường quốc trong thực tiễn mới.",
+      "Bài học về nhượng bộ đất đai để giữ ổn định ngắn hạn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2191,7 +2191,7 @@ export const lsdChuong2Part2 = [
       "Xoay chuyển cục diện chiến tranh Đông Dương trong 18 tháng để tìm một 'lối thoát trong danh dự'.",
       "Tiêu diệt hoàn toàn lực lượng du kích ở miền Nam trong 6 tháng trên toàn bộ khu vực.",
       "Rút toàn bộ quân đội về nước để kết thúc chiến tranh ngay năm 1953 trong thực tiễn mới.",
-      "Cùng với Mỹ mở rộng chiến tranh sang toàn bộ khu vực Đông Nam Á một cách đồng bộ. một cách đồng bộ."
+      "Cùng với Mỹ mở rộng chiến tranh sang toàn bộ khu vực Đông Nam Á một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2259,7 +2259,7 @@ export const lsdChuong2Part2 = [
       "Xe đạp đèo (thồ) cải tiến có thể chở hàng trăm kilôgam lương thực.",
       "Xe tải quân sự hiện đại do Liên Xô viện trợ trên toàn bộ khu vực.",
       "Tàu hỏa hỏa lực vận chuyển trên tuyến đường sắt trong thực tiễn mới.",
-      "Máy bay vận tải quân sự hạng nhẹ một cách đồng bộ. một cách đồng bộ."
+      "Máy bay vận tải quân sự hạng nhẹ một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2308,9 +2308,9 @@ export const lsdChuong2Part2 = [
     "question": "Ý nghĩa chiến lược của việc kết hợp đấu tranh quân sự và đấu tranh ngoại giao giai đoạn 1953-1954 là gì?",
     "options": [
       "Thắng lợi quân sự tại Điện Biên Phủ tạo thế quyết định đập tan ý chí địch, buộc địch phải ký Hiệp định Giơ-ne-vơ.",
-      "Đấu tranh ngoại giao quyết định hoàn toàn thắng lợi mà không cần quân sự trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Đấu tranh quân sự chỉ nhằm mục đích thu hút sự chú ý của quốc tế trong thực tiễn mới. trong thực tiễn mới.",
-      "Dựa vào sự can thiệp của Liên Hợp Quốc để kết thúc chiến tranh một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Đấu tranh ngoại giao quyết định hoàn toàn thắng lợi mà không cần quân sự trên toàn bộ khu vực.",
+      "Đấu tranh quân sự chỉ nhằm mục đích thu hút sự chú ý của quốc tế trong thực tiễn mới.",
+      "Dựa vào sự can thiệp của Liên Hợp Quốc để kết thúc chiến tranh một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2359,9 +2359,9 @@ export const lsdChuong2Part2 = [
     "question": "Quân Giải phóng miền Nam Việt Nam được thành lập vào thời gian nào?",
     "options": [
       "Tháng 2 năm 1961 (trên cơ sở thống nhất các lực lượng vũ trang miền Nam).",
-      "Tháng 12 năm 1960 trên toàn bộ khu vực. trên toàn bộ khu vực trên toàn bộ khu vực.",
-      "Tháng 5 năm 1959 trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Tháng 1 năm 1963 một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Tháng 12 năm 1960 trên toàn bộ khu vực.",
+      "Tháng 5 năm 1959 trong thực tiễn mới.",
+      "Tháng 1 năm 1963 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -2395,7 +2395,7 @@ export const lsdChuong2Part2 = [
       "Năm 1964 (bắt đầu từ thành đoàn Hà Nội).",
       "Năm 1960 trên toàn bộ khu vực.",
       "Năm 1961 trong thực tiễn mới.",
-      "Năm 1965 một cách đồng bộ. một cách đồng bộ."
+      "Năm 1965 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2410,9 +2410,9 @@ export const lsdChuong2Part2 = [
     "question": "Phong trào thi đua 'Ba đảm đang' của phụ nữ miền Bắc được phát động vào năm nào?",
     "options": [
       "Năm 1965 (do Hội Liên hiệp Phụ nữ Việt Nam phát động).",
-      "Năm 1960 trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Năm 1962 trong thực tiễn mới. trong thực tiễn mới.",
-      "Năm 1968 một cách đồng bộ. một cách đồng bộ."
+      "Năm 1960 trên toàn bộ khu vực.",
+      "Năm 1962 trong thực tiễn mới.",
+      "Năm 1968 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2429,7 +2429,7 @@ export const lsdChuong2Part2 = [
       "Đập tan bộ máy khống chế của địch ở nông thôn, giành lại quyền làm chủ.",
       "Thu cướp vũ khí trang bị của quân Saigon trên toàn bộ khu vực.",
       "Mở rộng diện tích trồng cây công nghiệp trong thực tiễn mới.",
-      "Xây dựng hệ thống đường giao thông mới một cách đồng bộ. một cách đồng bộ."
+      "Xây dựng hệ thống đường giao thông mới một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2445,8 +2445,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Tạo nên sức mạnh tổng hợp của chiến tranh nhân dân làm sụp đổ các kế hoạch bình định của Mỹ.",
       "Giúp nhân dân miền Nam giành chiến thắng ngoại giao ngay tại Liên Hợp Quốc trên toàn bộ khu vực.",
-      "Buộc Mỹ phải rút toàn bộ cố vấn quân sự về nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Giải phóng hoàn toàn các thành phố lớn ở miền Nam một cách đồng bộ. một cách đồng bộ."
+      "Buộc Mỹ phải rút toàn bộ cố vấn quân sự về nước trong thực tiễn mới.",
+      "Giải phóng hoàn toàn các thành phố lớn ở miền Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2497,7 +2497,7 @@ export const lsdChuong2Part2 = [
       "Đêm ngày 18 tháng 12 năm 1972 (tại Phủ Lỗ, Đông Anh, Hà Nội).",
       "Đêm ngày 20 tháng 12 năm 1972 trên toàn bộ khu vực.",
       "Đêm ngày 26 tháng 12 năm 1972 trong thực tiễn mới.",
-      "Đêm ngày 30 tháng 12 năm 1972 một cách đồng bộ. một cách đồng bộ."
+      "Đêm ngày 30 tháng 12 năm 1972 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -2614,9 +2614,9 @@ export const lsdChuong2Part2 = [
     "question": "Bài học nghệ thuật chớp thời cơ chiến lược trong Tổng tiến công Xuân 1975 được thể hiện ra sao?",
     "options": [
       "Chuyển kế hoạch giải phóng từ 2 năm (1975-1976) sang giải phóng ngay trong năm 1975 khi thời cơ đến.",
-      "Rút ngắn thời gian đàm phán tại Pa-ri trên toàn bộ khu vực. trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Chờ đợi viện trợ quân sự mới từ các nước anh em trong thực tiễn mới. trong thực tiễn mới.",
-      "Đầu tư xây dựng các căn cứ hậu phương mới một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Rút ngắn thời gian đàm phán tại Pa-ri trên toàn bộ khu vực.",
+      "Chờ đợi viện trợ quân sự mới từ các nước anh em trong thực tiễn mới.",
+      "Đầu tư xây dựng các căn cứ hậu phương mới một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2631,9 +2631,9 @@ export const lsdChuong2Part2 = [
     "question": "Nguyên nhân khách quan quan trọng đóng góp vào thắng lợi chống Mỹ cứu nước của nhân dân ta là gì?",
     "options": [
       "Sự đoàn kết ủng hộ giúp đỡ to lớn của Liên Xô, Trung Quốc, các nước XHCN và nhân dân yêu chuộng hòa bình thế giới.",
-      "Sự hỗ trợ của các quốc gia tư bản chủ nghĩa trên toàn bộ khu vực. trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Sự bất đồng nội bộ của chính quyền Mỹ trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Địa hình Việt Nam thuận lợi cho tác chiến một cách đồng bộ. một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Sự hỗ trợ của các quốc gia tư bản chủ nghĩa trên toàn bộ khu vực.",
+      "Sự bất đồng nội bộ của chính quyền Mỹ trong thực tiễn mới.",
+      "Địa hình Việt Nam thuận lợi cho tác chiến một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2648,9 +2648,9 @@ export const lsdChuong2Part2 = [
     "question": "Bài học lịch sử lớn nhất xuyên suốt hai cuộc kháng chiến chống xâm lược (1945-1975) là gì?",
     "options": [
       "Giữ vững sự lãnh đạo của Đảng, kiên định mục tiêu độc lập dân tộc gắn liền với chủ nghĩa xã hội.",
-      "Dựa vào sự giúp đỡ quân sự của nước ngoài trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tập trung hoàn toàn vào phát triển kinh tế thị trường trong thực tiễn mới. trong thực tiễn mới.",
-      "Tránh các xung đột quân sự bằng mọi giá một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Dựa vào sự giúp đỡ quân sự của nước ngoài trên toàn bộ khu vực.",
+      "Tập trung hoàn toàn vào phát triển kinh tế thị trường trong thực tiễn mới.",
+      "Tránh các xung đột quân sự bằng mọi giá một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2666,8 +2666,8 @@ export const lsdChuong2Part2 = [
     "options": [
       "Phải xây dựng thực lực quốc phòng vững mạnh làm cơ sở vững chắc cho đấu tranh pháp lý ngoại giao.",
       "Chỉ cần dùng đàm phán ngoại giao và không cần đầu tư cho quốc phòng biển đảo trên toàn bộ khu vực.",
-      "Từ bỏ tranh chấp ngoại giao để tránh xung đột với các nước lớn trong thực tiễn mới. trong thực tiễn mới.",
-      "Dựa vào sự bảo hộ an ninh trực tiếp của các liên minh quân sự một cách đồng bộ. một cách đồng bộ."
+      "Từ bỏ tranh chấp ngoại giao để tránh xung đột với các nước lớn trong thực tiễn mới.",
+      "Dựa vào sự bảo hộ an ninh trực tiếp của các liên minh quân sự một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2716,9 +2716,9 @@ export const lsdChuong2Part2 = [
     "question": "Tầm nhìn chiến lược của Bác Hồ về thắng lợi chống Mỹ ('Đánh cho Mỹ cút, đánh cho ngụy nhào') thể hiện tư duy gì?",
     "options": [
       "Tư duy chiến lược thiên tài, đánh từng bước, thắng từng phần để tiến lên giành thắng lợi hoàn toàn.",
-      "Tư duy đánh nhanh thắng nhanh quy mô lớn ngay từ đầu trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tư duy hòa hoãn vô thời hạn với kẻ thù xâm lược trong thực tiễn mới. trong thực tiễn mới.",
-      "Tư duy dựa vào sự can thiệp của lực lượng bên ngoài một cách đồng bộ. một cách đồng bộ."
+      "Tư duy đánh nhanh thắng nhanh quy mô lớn ngay từ đầu trên toàn bộ khu vực.",
+      "Tư duy hòa hoãn vô thời hạn với kẻ thù xâm lược trong thực tiễn mới.",
+      "Tư duy dựa vào sự can thiệp của lực lượng bên ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",

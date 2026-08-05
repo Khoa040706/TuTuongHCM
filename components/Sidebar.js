@@ -447,14 +447,14 @@ export default function Sidebar({
                         isAlgoSimActive ? "text-white" : "text-slate-800 group-hover:text-indigo-600"
                       }`}
                     >
-                      Bộ Mô Phỏng Giải Thuật
+                      🚀 Bộ Mô Phỏng CNTT
                     </div>
                     <div 
                       className={`text-[11px] font-medium leading-tight mt-0.5 transition-colors ${
                         isAlgoSimActive ? "text-white/85" : "text-slate-500 group-hover:text-slate-600"
                       }`}
                     >
-                      Trực quan hóa từng bước
+                      Kho mô phỏng thuật toán & bộ nhớ
                     </div>
                   </div>
                 </div>

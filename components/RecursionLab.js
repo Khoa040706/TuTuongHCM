@@ -20,7 +20,9 @@ import {
   TrendingDown,
   Info,
   Trophy,
-  ArrowUpRight
+  ArrowUpRight,
+  Code2,
+  BookOpen
 } from "lucide-react";
 
 // ==========================================
@@ -603,11 +605,59 @@ export default function RecursionLab({ onBack }) {
     }
   };
 
+  const activeCodeRef = useRef(null);
+
+  useEffect(() => {
+    if (activeCodeRef.current) {
+      activeCodeRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentStep, problem]);
+
   const currentStepData = steps[currentStep] || {};
   const currentPseudocode = PROBLEM_PSEUDOCODES[problem] || PROBLEM_PSEUDOCODES.hanoi;
 
   return (
     <div className="w-full flex flex-col gap-6 animate-in fade-in duration-300 pb-12">
+      <style>{`
+        @keyframes hanoiLiftY {
+          0% {
+            transform: translateY(0px) scale(1);
+            animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+          }
+          30% {
+            transform: translateY(-225px) scale(1.06);
+            animation-timing-function: linear;
+          }
+          70% {
+            transform: translateY(-225px) scale(1.06);
+            animation-timing-function: cubic-bezier(0.4, 0, 0.8, 1);
+          }
+          100% {
+            transform: translateY(0px) scale(1);
+          }
+        }
+
+        @keyframes hanoiSlideX {
+          0% {
+            transform: translateX(var(--arc-start-x));
+            animation-timing-function: linear;
+          }
+          30% {
+            transform: translateX(var(--arc-start-x));
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          70% {
+            transform: translateX(0px);
+            animation-timing-function: linear;
+          }
+          100% {
+            transform: translateX(0px);
+          }
+        }
+      `}</style>
       {/* TIER 1: HEADER & PROBLEM SELECTION BAR */}
       <div className="bg-white/90 backdrop-blur-md p-5 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col gap-4">
         {/* Top Header */}
@@ -722,61 +772,185 @@ export default function RecursionLab({ onBack }) {
         </div>
       </div>
 
-      {/* TIER 2: DUAL CANVAS (GRAPHIC STAGE & CALL STACK MEMORY) */}
-      <div className="w-full bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden flex flex-col">
-        {/* Canvas Header */}
-        <div className="px-6 py-4 bg-slate-100/90 text-slate-800 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/80">
+        {/* TIER 2: MAIN SIDE-BY-SIDE 3-PANEL NO-SCROLL LAYOUT */}
+      <div className="w-full bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200/80 shadow-md overflow-hidden flex flex-col">
+        {/* Playback Controls & Status Toolbar */}
+        <div className="px-5 py-3 bg-slate-100/90 text-slate-800 flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold tracking-wider uppercase text-purple-600 flex items-center gap-1.5">
-              <RotateCcw className="w-4 h-4" />
-              <span>Canvas Mô Phỏng Đệ Quy Kép</span>
+            <span className="text-xs font-black uppercase tracking-wider text-purple-600 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4" />
+              <span>Bảng Mô Phỏng Ngang Hàng (Side-by-Side Grid)</span>
             </span>
 
             {problem !== "game" && (
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-xs font-mono font-bold bg-white text-indigo-700 px-2.5 py-0.5 rounded-lg border border-slate-200 shadow-2xs">
                 Bước {currentStep + 1} / {steps.length || 1}
               </span>
             )}
           </div>
 
-          {/* Active Pseudocode Line Badge */}
+          {/* Active Controls Toolbar */}
           {problem !== "game" && (
-            <div className="flex items-center gap-2 bg-slate-900 px-3.5 py-1.5 rounded-xl border border-slate-800 max-w-xl overflow-hidden shadow-sm">
-              <span className="text-[11px] font-mono text-slate-400 shrink-0">💻 Code:</span>
-              <span className="text-xs font-mono font-semibold text-cyan-300 truncate">
-                {currentPseudocode.find((p) => p.line === currentStepData.activeLine)?.text ||
-                  "Sẵn sàng..."}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleReset}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors shadow-2xs cursor-pointer"
+                title="Khởi tạo lại"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={handleStepBack}
+                disabled={currentStep === 0}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 disabled:opacity-40 text-slate-700 transition-colors shadow-2xs cursor-pointer"
+                title="Lùi lại 1 bước"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={handleTogglePlay}
+                className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="w-3.5 h-3.5 fill-white" />
+                    <span>Tạm dừng</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-3.5 h-3.5 fill-white" />
+                    <span>Chạy tự động</span>
+                  </>
+                )}
+              </button>
+              <button
+                onClick={handleStepForward}
+                disabled={currentStep >= steps.length - 1}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 disabled:opacity-40 text-slate-700 transition-colors shadow-2xs cursor-pointer"
+                title="Bước tiếp theo"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={handleSkipToEnd}
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors shadow-2xs cursor-pointer"
+                title="Nhảy đến kết thúc"
+              >
+                <SkipForward className="w-3.5 h-3.5" />
+              </button>
+
+              <div className="h-4 w-px bg-slate-300 mx-1" />
+
+              <span className="text-[11px] font-semibold text-slate-600">Tốc độ:</span>
+              <input
+                type="range"
+                min="200"
+                max="1500"
+                step="100"
+                value={1700 - speed}
+                onChange={(e) => setSpeed(1700 - Number(e.target.value))}
+                className="w-24 accent-purple-600 cursor-pointer"
+              />
+              <span className="text-[11px] font-mono font-bold text-purple-600 w-10 text-right">
+                {speed}ms
               </span>
             </div>
           )}
         </div>
 
-        {/* Visual Workspace Canvas */}
-        <div className="relative w-full h-[460px] bg-slate-50 overflow-hidden grid grid-cols-12 select-none border-b border-slate-200/60">
-          {/* Subtle Grid Dot Background */}
-          <div
-            className="absolute inset-0 opacity-40 pointer-events-none"
-            style={{
-              backgroundImage: "radial-gradient(#cbd5e1 1.2px, transparent 1.2px)",
-              backgroundSize: "24px 24px",
-            }}
-          />
+        {/* Visual Workspace Canvas (SIDE-BY-SIDE 3-PANEL GRID) */}
+        <div className="relative w-full h-[460px] grid grid-cols-12 select-none overflow-hidden">
+          
+          {/* PANEL 1 (LEFT - 3.5 COLS): PSEUDOCODE INSPECTOR */}
+          <div className="col-span-12 lg:col-span-4 xl:col-span-3 bg-slate-900 text-slate-100 p-4 border-r border-slate-800 flex flex-col justify-between overflow-hidden shadow-inner">
+            <div>
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                <div className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-amber-400 animate-pulse" />
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-100">
+                    Mã Giả [{problem.toUpperCase()}]
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800/80 font-bold">
+                  Pseudocode
+                </span>
+              </div>
 
-          {/* LEFT STAGE (7 Cols): GRAPHICAL STAGE (Pegs & Disks or Recursive Call Graph) */}
-          <div className="col-span-8 p-6 flex flex-col items-center justify-center relative border-r border-slate-200/80">
+              {/* Code Lines Container */}
+              <div className="space-y-1 font-mono text-xs max-h-[250px] overflow-y-auto pr-1">
+                {currentPseudocode.map((item) => {
+                  const isActive = currentStepData.activeLine === item.line;
+                  return (
+                    <div
+                      key={item.line}
+                      ref={isActive ? activeCodeRef : null}
+                      className={`p-1.5 rounded-lg flex items-center gap-2.5 transition-all ${
+                        isActive
+                          ? "bg-gradient-to-r from-purple-900/90 to-indigo-900/90 text-amber-300 border-l-4 border-amber-400 pl-2 font-bold shadow-md scale-[1.01]"
+                          : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
+                      }`}
+                    >
+                      <span className="text-[10px] opacity-50 w-5 text-right font-mono">{item.line}</span>
+                      <span className="truncate">{item.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Step Explanation & Mini Variables Inspector */}
+            <div className="mt-3 pt-3 border-t border-slate-800 space-y-2">
+              <div className="p-2.5 bg-slate-800/90 rounded-xl border border-slate-700 text-xs font-sans text-slate-200 flex items-start gap-2">
+                <Sparkles className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                <span className="leading-snug text-[11px]">{currentStepData.status || "Sẵn sàng chạy đệ quy."}</span>
+              </div>
+
+              {/* Mini Variables Inspector */}
+              <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-mono">
+                <div className="p-1.5 bg-slate-950/80 rounded-lg border border-slate-800">
+                  <span className="text-slate-400 block">Số bước</span>
+                  <span className="font-bold text-indigo-400">{currentStepData.moveCount ?? currentStep + 1}</span>
+                </div>
+                <div className="p-1.5 bg-slate-950/80 rounded-lg border border-slate-800">
+                  <span className="text-slate-400 block">Max Stack</span>
+                  <span className="font-bold text-purple-400">{currentStepData.stackFrames?.length || 0}</span>
+                </div>
+                <div className="p-1.5 bg-slate-950/80 rounded-lg border border-slate-800">
+                  <span className="text-slate-400 block">Trả về</span>
+                  <span className="font-bold text-emerald-400">{currentStepData.returnValue ?? "—"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* PANEL 2 (CENTER - 5.5 COLS): GRAPHICAL STAGE CANVAS */}
+          <div className="col-span-12 lg:col-span-5 xl:col-span-6 p-5 bg-gradient-to-b from-slate-50 via-indigo-50/30 to-slate-100/80 flex flex-col items-center justify-between relative border-r border-slate-200/80 overflow-hidden">
+            {/* Subtle Soft Dot Grid Background */}
+            <div
+              className="absolute inset-0 opacity-35 pointer-events-none"
+              style={{
+                backgroundImage: "radial-gradient(#94a3b8 1.2px, transparent 1.2px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+
             {problem === "hanoi" || problem === "game" ? (
               /* TOWER OF HANOI STAGE */
-              <div className="w-full h-full flex flex-col items-center justify-between">
-                <div className="w-full text-center mb-2">
-                  <span className="text-xs font-semibold text-slate-500">
-                    {problem === "game"
-                      ? "Click chọn cọc nguồn rồi click cọc đích để di chuyển đĩa"
-                      : "Trực quan hóa di chuyển đĩa giữa 3 cọc A, B, C"}
+              <div className="w-full h-full flex flex-col items-center justify-between relative z-10">
+                <div className="w-full flex items-center justify-between px-2 mb-1">
+                  <span className="text-xs font-mono font-bold text-slate-700 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
+                    <span>{problem === "game" ? "🎮 Chế độ Tự Giải: Click cọc nguồn ➔ Click cọc đích" : "🗼 Trực quan hóa Di chuyển 3D trên 3 Cọc A, B, C"}</span>
                   </span>
+                  {currentStepData?.movedDisk && (
+                    <span className="text-[11px] font-mono font-black bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-full animate-pulse flex items-center gap-1 shadow-xs">
+                      <span>⚡ Đĩa {currentStepData.movedDisk.disk}: Cọc {currentStepData.movedDisk.from} ➔ Cọc {currentStepData.movedDisk.to}</span>
+                    </span>
+                  )}
                 </div>
 
                 {/* 3 Pegs Container */}
-                <div className="w-full flex-1 grid grid-cols-3 gap-6 items-end pb-6 px-4">
+                <div className="w-full flex-1 grid grid-cols-3 gap-6 items-end pb-2 px-2">
                   {["A", "B", "C"].map((pegName) => {
                     const currentPegDisks =
                       problem === "game"
@@ -793,44 +967,89 @@ export default function RecursionLab({ onBack }) {
                         onClick={() => problem === "game" && handleGamePegClick(pegName)}
                         className={`flex flex-col items-center justify-end h-full relative cursor-pointer group p-2 rounded-2xl transition-all ${
                           isSelected
-                            ? "bg-indigo-50/80 ring-2 ring-indigo-500 shadow-md"
-                            : "hover:bg-slate-100/60"
+                            ? "bg-indigo-50/90 ring-2 ring-indigo-500 shadow-md"
+                            : "hover:bg-slate-200/40"
                         }`}
                       >
-                        {/* Vertical Wood Peg Stand */}
-                        <div className="w-3.5 h-[200px] bg-slate-300 rounded-t-full shadow-inner relative z-0 flex flex-col justify-end items-center">
-                          {/* Render Stacked Disks on Peg */}
-                          <div className="w-full flex flex-col-reverse items-center gap-1 mb-1 relative z-10">
+                        {/* 1. Metallic Peg Tracing Stage */}
+                        <div className="relative w-full h-[230px] flex flex-col items-center justify-end">
+                          {/* Silver-White Chrome Rod Stand */}
+                          <div className="absolute bottom-0 w-4 h-[210px] bg-gradient-to-r from-slate-300 via-white to-slate-400 rounded-t-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] z-0 flex flex-col justify-start items-center pt-1.5 border border-slate-300/80">
+                            {/* Glowing Gem at Peg Top */}
+                            <div className={`w-2.5 h-2.5 rounded-full ${isSelected ? "bg-indigo-600 shadow-[0_0_10px_#6366f1] animate-ping" : "bg-indigo-500 shadow-[0_0_6px_#6366f1]"}`} />
+                          </div>
+
+                          {/* 2. Stacked 3D Disks (Centered on Peg Container) */}
+                          <div className="w-full flex flex-col-reverse items-center gap-1.5 mb-1 relative z-10">
                             {currentPegDisks.map((diskVal) => {
-                              // Disk Width ratio
-                              const widthPercent = 30 + (diskVal / diskCount) * 65;
-                              // Colorful disk gradients
-                              const colors = [
-                                "from-pink-500 to-rose-600",
-                                "from-cyan-400 to-blue-600",
-                                "from-emerald-400 to-teal-600",
-                                "from-amber-400 to-orange-500",
-                                "from-purple-500 to-indigo-600",
-                                "from-fuchsia-500 to-pink-600",
+                              // Disk Width ratio in pixels
+                              const widthPx = 45 + (diskVal / diskCount) * 120;
+                              
+                              // Vibrant Light 3D Color Palette
+                              const diskPalettes = [
+                                { bg: "from-rose-500 via-rose-400 to-pink-500", shadow: "shadow-[0_4px_14px_rgba(244,63,94,0.35)]", border: "border-white/60" },
+                                { bg: "from-sky-500 via-blue-500 to-indigo-600", shadow: "shadow-[0_4px_14px_rgba(14,165,233,0.35)]", border: "border-white/60" },
+                                { bg: "from-emerald-500 via-teal-500 to-emerald-600", shadow: "shadow-[0_4px_14px_rgba(16,185,129,0.35)]", border: "border-white/60" },
+                                { bg: "from-amber-500 via-orange-400 to-amber-600", shadow: "shadow-[0_4px_14px_rgba(245,158,11,0.35)]", border: "border-white/60" },
+                                { bg: "from-purple-500 via-violet-500 to-purple-600", shadow: "shadow-[0_4px_14px_rgba(168,85,247,0.35)]", border: "border-white/60" },
+                                { bg: "from-indigo-500 via-blue-600 to-cyan-600", shadow: "shadow-[0_4px_14px_rgba(99,102,241,0.35)]", border: "border-white/60" },
                               ];
-                              const diskBg = colors[(diskVal - 1) % colors.length];
+                              const style = diskPalettes[(diskVal - 1) % diskPalettes.length];
+
+                              const isMoved = currentStepData?.movedDisk?.disk === diskVal;
+                              let startDeltaX = 0;
+                              if (isMoved && currentStepData?.movedDisk) {
+                                const pegMap = { A: 0, B: 1, C: 2 };
+                                const fromI = pegMap[currentStepData.movedDisk.from] ?? 0;
+                                const toI = pegMap[currentStepData.movedDisk.to] ?? 0;
+                                startDeltaX = (fromI - toI) * 180; // calculate offset in pixels
+                              }
+
+                              // Calculate smooth animation duration scaled to speed (e.g. 1.1s)
+                              const animDurationSec = Math.max(0.75, Math.min(1.35, (speed * 0.82) / 1000)).toFixed(2);
 
                               return (
                                 <div
                                   key={diskVal}
-                                  style={{ width: `${widthPercent}%` }}
-                                  className={`h-7 rounded-xl bg-gradient-to-r ${diskBg} text-white font-mono font-extrabold text-xs flex items-center justify-center shadow-md border border-white/40 transition-all duration-300 animate-in fade-in zoom-in-75`}
+                                  style={{
+                                    width: `${widthPx}px`,
+                                    "--arc-start-x": `${startDeltaX}px`,
+                                    animation: isMoved ? `hanoiSlideX ${animDurationSec}s linear forwards` : undefined,
+                                    willChange: "transform"
+                                  }}
+                                  className="relative z-10 select-none"
                                 >
-                                  <span>{diskVal}</span>
+                                  <div
+                                    style={{
+                                      animation: isMoved ? `hanoiLiftY ${animDurationSec}s linear forwards` : undefined,
+                                      willChange: "transform"
+                                    }}
+                                    className={`w-full h-7 rounded-xl bg-gradient-to-r ${style.bg} ${style.shadow} ${style.border} border text-white font-mono font-black text-xs flex items-center justify-between px-2.5 relative transition-all duration-300 transform hover:scale-105 ${
+                                      isMoved ? "ring-2 ring-amber-400 shadow-[0_0_20px_#f59e0b] z-30" : ""
+                                    }`}
+                                  >
+                                    {/* Left Bevel Indicator */}
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/80 shadow-inner" />
+                                    
+                                    {/* Center Disk Label */}
+                                    <span className="drop-shadow-sm tracking-wider text-[11px] font-black">
+                                      ĐĨA {diskVal}
+                                    </span>
+
+                                    {/* Right Bevel Indicator */}
+                                    <span className="w-1.5 h-1.5 rounded-full bg-white/80 shadow-inner" />
+                                  </div>
                                 </div>
                               );
                             })}
                           </div>
                         </div>
 
-                        {/* Base Wooden Base */}
-                        <div className="w-full h-4 bg-slate-700 rounded-xl shadow-md mt-1 flex items-center justify-center">
-                          <span className="text-[10px] font-mono font-bold text-white uppercase">
+                        {/* 3. Sleek Glassmorphic Light Base Platform */}
+                        <div className="w-full h-8 bg-white/95 border border-slate-200/90 rounded-xl shadow-md backdrop-blur-md mt-1 flex items-center justify-center relative overflow-hidden group-hover:border-indigo-400 transition-colors">
+                          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50/50 via-purple-50/50 to-pink-50/50" />
+                          <span className="text-xs font-mono font-black text-slate-800 uppercase tracking-widest relative z-10 flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse shadow-[0_0_6px_#6366f1]" />
                             CỌC {pegName}
                           </span>
                         </div>
@@ -841,13 +1060,13 @@ export default function RecursionLab({ onBack }) {
 
                 {/* Victory Banner for Game Mode */}
                 {problem === "game" && gameWon && (
-                  <div className="absolute inset-0 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center p-6 z-30 animate-in zoom-in-95">
-                    <Trophy className="w-16 h-16 text-amber-500 animate-bounce mb-3" />
-                    <h2 className="text-xl font-extrabold text-slate-900">
+                  <div className="absolute inset-0 bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 z-30 animate-in zoom-in-95 border border-indigo-100 shadow-2xl">
+                    <Trophy className="w-16 h-16 text-amber-500 animate-bounce mb-3 shadow-sm" />
+                    <h2 className="text-2xl font-black text-slate-900 uppercase tracking-wider">
                       CHIẾN THẮNG RỰC RỠ!
                     </h2>
-                    <p className="text-xs text-slate-600 mt-1 font-mono">
-                      Bạn đã hoàn thành Tháp Hà Nội {diskCount} đĩa sau {gameMoveCount} bước!
+                    <p className="text-xs text-slate-600 mt-2 font-mono">
+                      Bạn đã hoàn thành Tháp Hà Nội {diskCount} đĩa trong {gameMoveCount} bước!
                     </p>
                     <button
                       onClick={() => {
@@ -859,26 +1078,25 @@ export default function RecursionLab({ onBack }) {
                         setGameMoveCount(0);
                         setGameWon(false);
                       }}
-                      className="mt-4 px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-xs font-bold shadow-md hover:bg-indigo-700 transition-colors"
+                      className="mt-5 px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl text-xs font-black shadow-lg hover:brightness-110 transition-all cursor-pointer"
                     >
-                      Chơi lại
+                      Chơi lại ngay
                     </button>
                   </div>
                 )}
               </div>
             ) : (
               /* RECURSION TREE & STATS STAGE (For Fibonacci, Factorial, Pascal) */
-              <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                <div className="p-6 bg-white rounded-2xl border border-slate-200/90 shadow-md text-center max-w-md w-full">
-                  <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl inline-block mb-3 border border-purple-100">
+              <div className="w-full h-full flex flex-col items-center justify-center p-4 relative z-10">
+                <div className="p-6 bg-white/95 rounded-2xl border border-slate-200/90 shadow-md text-center max-w-md w-full backdrop-blur-md">
+                  <div className="p-3 bg-indigo-50 text-indigo-600 rounded-2xl inline-block mb-3 border border-indigo-100">
                     <Sparkles className="w-8 h-8" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 uppercase tracking-wide">
+                  <h3 className="text-base font-black text-slate-900 uppercase tracking-wider">
                     {problem.toUpperCase()} (N = {nValue})
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    Đang theo dõi bộ nhớ Call Stack và tiến trình truyền giá trị trả về bên cột
-                    bên phải.
+                    Đang theo dõi bộ nhớ Call Stack và tiến trình truyền giá trị trả về ở cột bên phải.
                   </p>
 
                   <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-around">
@@ -907,39 +1125,39 @@ export default function RecursionLab({ onBack }) {
             )}
           </div>
 
-          {/* RIGHT STAGE (4 Cols): CALL STACK MEMORY VISUALIZER */}
-          <div className="col-span-4 p-5 bg-slate-100/60 flex flex-col justify-between relative overflow-hidden">
+          {/* PANEL 3 (RIGHT - 3.0 COLS): CALL STACK RAM VISUALIZER */}
+          <div className="col-span-12 lg:col-span-3 xl:col-span-3 p-4 bg-slate-100/80 border-l border-slate-200 flex flex-col justify-between relative overflow-hidden backdrop-blur-md">
             <div>
               <div className="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
-                <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-indigo-600" />
-                  <span>Call Stack Memory</span>
+                <span className="text-xs font-black text-slate-800 uppercase tracking-widest flex items-center gap-1.5">
+                  <Layers className="w-4 h-4 text-indigo-600 animate-pulse" />
+                  <span>Call Stack RAM</span>
                 </span>
-                <span className="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-md border border-indigo-100">
-                  RAM
+                <span className="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-md border border-indigo-100 font-bold">
+                  BỘ NHỚ LƯU TRỮ
                 </span>
               </div>
 
               {/* Stack Frames Container (Bottom-to-Top Stack) */}
-              <div className="w-full flex flex-col-reverse gap-2 max-h-[340px] overflow-y-auto pr-1">
+              <div className="w-full flex flex-col-reverse gap-2 max-h-[350px] overflow-y-auto pr-1">
                 {currentStepData.stackFrames?.length > 0 ? (
                   currentStepData.stackFrames.map((frame, idx) => {
                     const isTop = idx === currentStepData.stackFrames.length - 1;
                     return (
                       <div
                         key={frame.id + idx}
-                        className={`p-3 rounded-xl border text-xs font-mono font-bold flex items-center justify-between transition-all duration-300 shadow-xs ${
+                        className={`p-2.5 rounded-xl border text-xs font-mono font-bold flex items-center justify-between transition-all duration-300 shadow-xs ${
                           isTop
-                            ? "bg-indigo-600 text-white border-indigo-700 scale-[1.02] shadow-md ring-2 ring-indigo-300"
-                            : "bg-white text-slate-700 border-slate-200 opacity-80"
+                            ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-indigo-700 shadow-md scale-[1.02] ring-2 ring-indigo-300"
+                            : "bg-white text-slate-700 border-slate-200/90 opacity-95"
                         }`}
                       >
                         <div className="flex items-center gap-2">
                           <span className="text-[10px] opacity-70">[{idx}]</span>
-                          <span>{frame.name}</span>
+                          <span className="tracking-tight">{frame.name}</span>
                         </div>
                         {isTop && (
-                          <span className="text-[9px] bg-cyan-400 text-slate-950 px-1.5 py-0.5 rounded font-bold uppercase animate-pulse">
+                          <span className="text-[9px] bg-cyan-400 text-slate-950 px-1.5 py-0.5 rounded font-black uppercase tracking-wider animate-pulse shadow-xs">
                             TOP
                           </span>
                         )}
@@ -947,217 +1165,173 @@ export default function RecursionLab({ onBack }) {
                     );
                   })
                 ) : (
-                  <div className="text-center py-12 text-slate-400 italic text-xs font-mono">
-                    (Bộ nhớ Call Stack rỗng)
+                  <div className="text-center py-14 text-slate-400 italic text-xs font-mono border border-dashed border-slate-300/80 rounded-xl bg-white/50">
+                    (Bộ nhớ Call Stack rỗng — sẵn sàng thực thi)
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="mt-3 pt-2 border-t border-slate-200 text-center">
-              <span className="text-[10px] text-slate-400 font-mono uppercase tracking-wider">
+            <div className="mt-3 pt-2 border-t border-slate-200/80 text-center">
+              <span className="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-wider">
                 ⬇️ Đáy Stack (Main) ➔ Đỉnh Stack (Top) ⬆️
               </span>
             </div>
           </div>
         </div>
-
-        {/* Step Explanation Status Banner */}
-        {problem !== "game" && (
-          <div className="px-6 py-3 bg-purple-50/70 border-t border-purple-100 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5">
-              <div className="p-1.5 rounded-lg bg-purple-600 text-white">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <p className="text-xs font-medium text-purple-950">
-                {currentStepData.status || "Sẵn sàng chạy đệ quy."}
-              </p>
-            </div>
-
-            {currentStepData.isCompleted && (
-              <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full border border-emerald-200 flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                Hoàn tất Đệ Quy!
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Playback Controls Toolbar */}
-        {problem !== "game" && (
-          <div className="px-6 py-3.5 bg-slate-50 text-slate-700 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200">
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleReset}
-                className="p-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors shadow-2xs cursor-pointer"
-                title="Khởi tạo lại"
-              >
-                <RotateCcw className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleStepBack}
-                disabled={currentStep === 0}
-                className="p-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 disabled:opacity-40 text-slate-700 transition-colors shadow-2xs cursor-pointer"
-                title="Lùi lại 1 bước"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleTogglePlay}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-2 shadow-md transition-all cursor-pointer"
-              >
-                {isPlaying ? (
-                  <>
-                    <Pause className="w-4 h-4 fill-white" />
-                    <span>Tạm dừng</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-4 h-4 fill-white" />
-                    <span>Chạy tự động</span>
-                  </>
-                )}
-              </button>
-              <button
-                onClick={handleStepForward}
-                disabled={currentStep >= steps.length - 1}
-                className="p-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 disabled:opacity-40 text-slate-700 transition-colors shadow-2xs cursor-pointer"
-                title="Tất cả bước tiếp theo"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleSkipToEnd}
-                className="p-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors shadow-2xs cursor-pointer"
-                title="Nhảy đến kết thúc"
-              >
-                <SkipForward className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Speed Slider */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold text-slate-600">Tốc độ:</span>
-              <input
-                type="range"
-                min="200"
-                max="1500"
-                step="100"
-                value={1700 - speed}
-                onChange={(e) => setSpeed(1700 - Number(e.target.value))}
-                className="w-32 accent-purple-600 cursor-pointer"
-              />
-              <span className="text-xs font-mono font-bold text-purple-600 w-12 text-right">
-                {speed}ms
-              </span>
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* TIER 3: BOTTOM SPLIT GRID (VARIABLES & LOG VS PSEUDOCODE PANEL) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* LEFT COLUMN (6 Cols): METRICS & LOG */}
-        <div className="lg:col-span-6 flex flex-col gap-5">
-          <div className="bg-white/90 backdrop-blur-md p-5 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600 border border-indigo-100">
-                  <Layers className="w-4 h-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">Thống kê Bộ nhớ & Tiến trình</h3>
-              </div>
+      {/* TIER 2: FULL PSEUDOCODE BLOCK & LINE-BY-LINE EXPLANATION (MIDDLE SECTION) */}
+      <div className="w-full bg-slate-900 text-slate-100 p-6 rounded-3xl border border-slate-800 shadow-xl flex flex-col gap-4 mt-6">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30">
+              <Code2 className="w-5 h-5" />
             </div>
+            <div>
+              <h3 className="text-base font-bold text-white leading-tight">
+                Bộ Mã Giả Full & Giải Thích Chi Tiết [{problem.toUpperCase()}]
+              </h3>
+              <p className="text-[11px] text-slate-400 font-mono">
+                Bản mã giả chuẩn giáo trình kèm lời dịch nghĩa từng câu lệnh
+              </p>
+            </div>
+          </div>
+          <span className="text-[11px] font-mono text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800 font-bold">
+            Full Pseudocode & Explanation
+          </span>
+        </div>
 
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
-                <span className="text-[10px] font-mono text-slate-500 block">Số bước di chuyển</span>
-                <span className="text-sm font-mono font-bold text-indigo-600">
-                  {currentStepData.moveCount !== undefined
-                    ? currentStepData.moveCount
-                    : currentStep + 1}
-                </span>
-              </div>
-              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
-                <span className="text-[10px] font-mono text-slate-500 block">Độ sâu Stack max</span>
-                <span className="text-sm font-mono font-bold text-purple-600">
-                  {currentStepData.stackFrames?.length || 0}
-                </span>
-              </div>
-              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl">
-                <span className="text-[10px] font-mono text-slate-500 block">
-                  Giá trị trả về
-                </span>
-                <span className="text-sm font-mono font-bold text-emerald-600">
-                  {currentStepData.returnValue !== undefined
-                    ? currentStepData.returnValue
-                    : "—"}
-                </span>
-              </div>
+        {/* AUTHENTIC VS CODE CODE EDITOR WITH INLINE GREEN COMMENTS */}
+        <div className="bg-[#0d1117] rounded-3xl border border-slate-800/90 overflow-hidden font-mono text-xs flex flex-col shadow-2xl">
+          {/* VS Code Window Header Bar */}
+          <div className="bg-[#161b22] px-5 py-3 border-b border-slate-800 flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="w-3.5 h-3.5 rounded-full bg-red-500/80 inline-block" />
+              <span className="w-3.5 h-3.5 rounded-full bg-yellow-500/80 inline-block" />
+              <span className="w-3.5 h-3.5 rounded-full bg-green-500/80 inline-block" />
+              <span className="text-xs text-slate-300 font-mono ml-3 flex items-center gap-2 bg-[#0d1117] px-4 py-1.5 rounded-t-xl border-t border-x border-slate-800 font-bold">
+                <Code2 className="w-4 h-4 text-amber-400" />
+                <span>{problem}.js — Code & Comment Chuẩn VS Code</span>
+              </span>
+            </div>
+            <span className="text-[11px] text-emerald-400 font-mono bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-800/80 font-bold">
+              VS Code Comment Mode
+            </span>
+          </div>
+
+          {/* Code Lines with Green Inline Comments */}
+          <div className="p-6 space-y-2.5 leading-relaxed overflow-x-auto">
+            {currentPseudocode.map((item) => {
+              // Strip out any existing "// ..." from item.text if present to prevent duplication
+              const cleanText = item.text.split("//")[0].trimEnd();
+              
+              const commentText = 
+                item.line === 1
+                  ? "// Khai báo hàm đệ quy với N đĩa và 3 cọc vai trò (Nguồn, Phụ, Đích)"
+                  : item.line === 2
+                  ? "// Điều kiện dừng (Base Case): Khi chỉ còn 1 đĩa duy nhất"
+                  : item.line === 3
+                  ? "// Thực thi bước cơ sở: Chuyển trực tiếp 1 đĩa từ Nguồn sang Đích"
+                  : item.line === 4
+                  ? "// Thoát khỏi nhánh đệ quy hiện tại"
+                  : item.line === 5
+                  ? "// Gọi đệ quy 1 (Bước 1): Chuyển N-1 đĩa trên cùng từ Nguồn sang Phụ"
+                  : item.line === 6
+                  ? "// Bước 2 (Chốt đáy): Di chuyển đĩa lớn nhất còn lại (đĩa thứ N) từ Nguồn sang Đích"
+                  : item.line === 7
+                  ? "// Gọi đệ quy 2 (Bước 3): Chuyển N-1 đĩa từ Phụ về Đích"
+                  : "// Kết thúc giải thuật";
+
+              return (
+                <div key={item.line} className="flex items-baseline gap-4 hover:bg-slate-800/40 px-2 py-1 rounded transition-colors group">
+                  {/* Line Number */}
+                  <span className="text-xs text-slate-500 w-6 text-right font-mono select-none shrink-0 group-hover:text-slate-300">
+                    {item.line}
+                  </span>
+
+                  {/* Code Line Text */}
+                  <span className="text-amber-300 font-bold whitespace-pre font-mono shrink-0">
+                    {cleanText}
+                  </span>
+
+                  {/* Green Comment Text like VS Code */}
+                  <span className="text-emerald-400 font-semibold italic text-xs font-mono">
+                    {commentText}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* TIER 3: ALGORITHM METRICS & THEORETICAL ANALYSIS (BOTTOM SECTION BENTO CARDS) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {/* CARD 1: REALTIME METRICS */}
+        <div className="bg-white/90 backdrop-blur-md p-5 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-3 mb-3">
+            <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600 border border-indigo-100">
+              <Layers className="w-4 h-4" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">Thống Kê Tiến Trình Realtime</h3>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 text-center font-mono">
+            <div className="p-2.5 bg-slate-50 border border-slate-200/80 rounded-2xl">
+              <span className="text-[10px] text-slate-500 block">Số bước</span>
+              <span className="text-sm font-bold text-indigo-600">
+                {currentStepData.moveCount !== undefined ? currentStepData.moveCount : currentStep + 1}
+              </span>
+            </div>
+            <div className="p-2.5 bg-slate-50 border border-slate-200/80 rounded-2xl">
+              <span className="text-[10px] text-slate-500 block">Max Stack</span>
+              <span className="text-sm font-bold text-purple-600">
+                {currentStepData.stackFrames?.length || 0}
+              </span>
+            </div>
+            <div className="p-2.5 bg-slate-50 border border-slate-200/80 rounded-2xl">
+              <span className="text-[10px] text-slate-500 block">Trả về</span>
+              <span className="text-sm font-bold text-emerald-600">
+                {currentStepData.returnValue !== undefined ? currentStepData.returnValue : "—"}
+              </span>
             </div>
           </div>
         </div>
 
-        {/* RIGHT COLUMN (6 Cols): PSEUDOCODE PANEL (DARK MODE ONLY) */}
-        <div className="lg:col-span-6 bg-slate-900 text-slate-100 p-5 rounded-3xl border border-slate-800 shadow-xl flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-              <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30">
-                  <Zap className="w-4 h-4" />
-                </div>
-                <h3 className="text-sm font-bold text-white">
-                  Mã Giả Đệ Quy [{problem.toUpperCase()}]
-                </h3>
-              </div>
-              <span className="text-[11px] font-mono text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded-full border border-cyan-800">
-                Pseudocode
-              </span>
+        {/* CARD 2: THEORETICAL COMPLEXITY */}
+        <div className="bg-white/90 backdrop-blur-md p-5 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-3 mb-3">
+            <div className="p-1.5 rounded-lg bg-purple-50 text-purple-600 border border-purple-100">
+              <Award className="w-4 h-4" />
             </div>
-
-            {/* Line-by-Line Pseudocode Rendering */}
-            <div className="flex flex-col gap-1 font-mono text-xs">
-              {currentPseudocode.map((item) => {
-                const isActive = item.line === currentStepData.activeLine;
-                return (
-                  <div
-                    key={item.line}
-                    className={`px-3 py-1.5 rounded-xl transition-all duration-200 flex items-center justify-between ${
-                      isActive
-                        ? "bg-purple-600/90 text-white font-extrabold border-l-4 border-cyan-400 scale-[1.02] shadow-md"
-                        : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] text-slate-500 w-4 text-right">
-                        {item.line}
-                      </span>
-                      <span>{item.text}</span>
-                    </div>
-                    {isActive && (
-                      <span className="text-[10px] bg-cyan-400 text-slate-950 px-2 py-0.5 rounded-md font-bold uppercase tracking-wider animate-pulse">
-                        Đang chạy
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+            <h3 className="text-sm font-bold text-slate-900">Độ Phức Tạp Lý Thuyết</h3>
           </div>
 
-          {/* Theoretical Complexity Summary Badge */}
-          <div className="mt-6 border-t border-slate-800 pt-4 grid grid-cols-2 gap-3 text-xs font-mono">
-            <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800">
-              <span className="text-slate-500 text-[10px] block">Độ phức tạp thời gian:</span>
-              <span className="text-cyan-400 font-bold">
-                {problem === "hanoi" || problem === "fibonacci" ? "O(2ⁿ)" : "O(n)"}
-              </span>
+          <div className="grid grid-cols-2 gap-2 font-mono text-xs">
+            <div className="p-2.5 bg-purple-50/80 border border-purple-100 rounded-xl">
+              <span className="text-[10px] text-slate-500 block font-bold">Thời gian (Time)</span>
+              <span className="font-bold text-purple-700">T(n) = 2ⁿ - 1 ➔ O(2ⁿ)</span>
             </div>
-            <div className="p-2.5 bg-slate-950 rounded-xl border border-slate-800">
-              <span className="text-slate-500 text-[10px] block">Độ phức tạp không gian (Stack):</span>
-              <span className="text-purple-400 font-bold">O(n)</span>
+            <div className="p-2.5 bg-indigo-50/80 border border-indigo-100 rounded-xl">
+              <span className="text-[10px] text-slate-500 block font-bold">Không gian (Space)</span>
+              <span className="font-bold text-indigo-700">Stack Depth ➔ O(n)</span>
             </div>
           </div>
+        </div>
+
+        {/* CARD 3: DIVIDE & CONQUER STRATEGY */}
+        <div className="bg-white/90 backdrop-blur-md p-5 rounded-3xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-3 mb-3">
+            <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100">
+              <BookOpen className="w-4 h-4" />
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">Tư Duy Chia Để Trị</h3>
+          </div>
+
+          <p className="text-[11px] font-sans text-slate-600 leading-relaxed">
+            Hạ bậc bài toán kích thước N xuống N-1 đĩa. Khi đụng Base Case (N=1), đĩa được chuyển trực tiếp và thu hồi bộ nhớ Stack.
+          </p>
         </div>
       </div>
     </div>

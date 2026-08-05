@@ -830,8 +830,8 @@ export const lsdChuong2Part1 = [
     "options": [
       "Giành thế chủ động chiến lược trên chiến trường chính Bắc Bộ và khai thông đường biên giới quốc tế một cách vững chắc.",
       "Đập tan hoàn toàn ý chí xâm lược của thực dân Pháp và can thiệp Mỹ trên toàn bộ các khu vực trên toàn hệ thống.",
-      "Buộc Pháp phải công nhận miền Bắc hoàn toàn giải phóng theo đúng định hướng đề ra. theo đúng định hướng đề ra.",
-      "Chấm dứt hoàn toàn sự nghiệp kháng chiến chống ngoại xâm trong tình hình thực tế mới. trong tình hình thực tế mới."
+      "Buộc Pháp phải công nhận miền Bắc hoàn toàn giải phóng theo đúng định hướng đề ra.",
+      "Chấm dứt hoàn toàn sự nghiệp kháng chiến chống ngoại xâm trong tình hình thực tế mới."
     ],
     "answer": 0,
     "difficulty": "medium",

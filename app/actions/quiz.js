@@ -24,7 +24,8 @@ export async function getExamQuestions(subjectId, chapterId, examSetId, isTrickM
     const secureQuestions = pool.map(q => {
       return {
         id: q.id,
-        q: q.q,
+        question: q.question || q.q,
+        q: q.q || q.question,
         options: q.options,
         difficulty: q.difficulty,
         sectionId: q.sectionId,

@@ -115,7 +115,7 @@ export const lsdKetLuanPart1 = [
       "Bảo đảm độc lập dân tộc gắn liền với chủ nghĩa xã hội, đưa đất nước phát triển vững chắc.",
       "Giúp Việt Nam nhận được viện trợ không hoàn lại từ các tập đoàn tài chính trên toàn bộ khu vực.",
       "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong 5 năm tới trong thực tiễn mới.",
-      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ. một cách đồng bộ."
+      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -183,7 +183,7 @@ export const lsdKetLuanPart1 = [
       "Thắng lợi của các cuộc kháng chiến chống xâm lược, bảo vệ độc lập, giải phóng dân tộc.",
       "Thắng lợi của công cuộc cải cách ruộng đất những năm 1953-1956 trên toàn bộ khu vực.",
       "Thắng lợi của việc gia nhập Tổ chức Thương mại Thế giới (WTO) trong thực tiễn mới.",
-      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -199,8 +199,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Thắng lợi của công cuộc Đổi mới và hội nhập quốc tế, đưa đất nước phát triển.",
       "Thắng lợi của phong trào Xô viết Nghệ Tĩnh 1930-1931 trên toàn bộ khu vực.",
-      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới trong thực tiễn mới.",
-      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới.",
+      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -251,7 +251,7 @@ export const lsdKetLuanPart1 = [
       "Đất nước ta chưa bao giờ có được cơ đồ, tiềm lực, vị thế và uy tín quốc tế như ngày nay.",
       "Xóa bỏ hoàn toàn khoảng cách chênh lệch giàu nghèo trong xã hội trên toàn bộ khu vực.",
       "Trở thành nước phát triển có thu nhập cao nhất toàn cầu trong thực tiễn mới.",
-      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -267,8 +267,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Tranh thủ sự ủng hộ quốc tế, nhân lên sức mạnh tổng hợp vượt qua mọi kẻ thù một cách vững chắc.",
       "Giúp Việt Nam phụ thuộc hoàn toàn vào nguồn viện trợ nước ngoài trên toàn bộ khu vực.",
-      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới trong thực tiễn mới.",
-      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ một cách đồng bộ."
+      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới.",
+      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -285,7 +285,7 @@ export const lsdKetLuanPart1 = [
       "Sự lãnh đạo đúng đắn, sáng tạo của Đảng và tinh thần hy sinh anh dũng của nhân dân.",
       "Do sự suy yếu tự nhiên của các lực lượng đế quốc xâm lược trên toàn bộ khu vực.",
       "Do sự hỗ trợ tài chính đơn thuần từ các quỹ quốc tế trong thực tiễn mới.",
-      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ. một cách đồng bộ."
+      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -301,7 +301,7 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Đột phá lý luận sáng tạo của Đảng, phát triển kinh tế gắn với tiến bộ công bằng xã hội.",
       "Rập khuôn theo mô hình kinh tế thị trường tư bản chủ nghĩa trên toàn bộ khu vực.",
-      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới. trong thực tiễn mới.",
+      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới.",
       "Xóa bỏ hoàn toàn sự quản lý của Nhà nước đối với thị trường một cách đồng bộ."
     ],
     "answer": 0,
@@ -317,9 +317,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của 3 thắng lợi vĩ đại đối với tương lai phát triển của dân tộc là gì?",
     "options": [
       "Tạo nền tảng vững chắc, niềm tin và động lực mạnh mẽ để đất nước bứt phá trong kỷ nguyên mới.",
-      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới. trong thực tiễn mới.",
-      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ. một cách đồng bộ."
+      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực.",
+      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới.",
+      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -335,8 +335,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Không có sự lãnh đạo của Đảng thì nhân dân không thể giành được độc lập và xây dựng CNXH.",
       "Cách mạng Việt Nam thắng lợi do sự can thiệp từ bên ngoài trên toàn bộ khu vực.",
-      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới. trong thực tiễn mới.",
-      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ. một cách đồng bộ."
+      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới.",
+      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -385,9 +385,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ ba về sự lãnh đạo của Đảng nhấn mạnh việc củng cố khối nào?",
     "options": [
       "Không ngừng củng cố, tăng cường đoàn kết: Đoàn kết toàn Đảng, đại đoàn kết toàn dân tộc.",
-      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới trong thực tiễn mới.",
-      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực.",
+      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới.",
+      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -403,8 +403,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Kết hợp sức mạnh dân tộc với sức mạnh thời đại, sức mạnh trong nước với sức mạnh quốc tế.",
       "Kết hợp phát triển công nghiệp với khai thác tài nguyên thô trên toàn bộ khu vực.",
-      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới. trong thực tiễn mới.",
-      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới.",
+      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -419,9 +419,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ năm về sự lãnh đạo của Đảng coi yếu tố nào là quyết định?",
     "options": [
       "Sự lãnh đạo đúng đắn của Đảng là nhân tố hàng đầu quyết định thắng lợi của cách mạng Việt Nam.",
-      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực.",
+      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới.",
+      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -436,9 +436,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của bài học 'Dân là gốc' trong giai đoạn phát triển hiện nay là gì?",
     "options": [
       "Mọi đường lối chính sách phải xuất phát từ nguyện vọng và lợi ích chính đáng của nhân dân.",
-      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới trong thực tiễn mới.",
-      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ. một cách đồng bộ."
+      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực.",
+      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới.",
+      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -453,9 +453,9 @@ export const lsdKetLuanPart1 = [
     "question": "Nội dung của bài học về 'Kiên định và phát triển sáng tạo Chủ nghĩa Mác - Lênin' là gì?",
     "options": [
       "Vận dụng sáng tạo lý luận vào thực tiễn Việt Nam, tránh giáo điều xơ cứng và duy tâm chủ quan.",
-      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ. một cách đồng bộ."
+      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực.",
+      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới.",
+      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -470,9 +470,9 @@ export const lsdKetLuanPart1 = [
     "question": "Mối quan hệ giữa 5 bài học lớn về sự lãnh đạo của Đảng là gì?",
     "options": [
       "Là một thể thống nhất hữu cơ, bổ sung cho nhau, tạo nên sức mạnh tổng hợp của Đảng.",
-      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới trong thực tiễn mới.",
-      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ. một cách đồng bộ."
+      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực.",
+      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới.",
+      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -487,9 +487,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của công tác 'Xây dựng, chỉnh đốn Đảng trong sạch, vững mạnh' theo bài học 5 là gì?",
     "options": [
       "Giữ vững bản chất giai cấp công nhân, nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng.",
-      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới trong thực tiễn mới.",
-      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực.",
+      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới.",
+      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -504,9 +504,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về đặt 'Lợi ích quốc gia - dân tộc lên trên hết' đòi hỏi điều gì?",
     "options": [
       "Tối đa hóa lợi ích dân tộc trên cơ sở tôn trọng luật pháp quốc tế và bình đẳng hợp tác.",
-      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ. một cách đồng bộ."
+      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực.",
+      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới.",
+      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -523,7 +523,7 @@ export const lsdKetLuanPart1 = [
       "Lãnh đạo bằng Hiến pháp, pháp luật, bằng nêu gương, không bao biền làm thay chính quyền.",
       "Làm thay toàn bộ công việc chuyên môn của bộ máy nhà nước trên toàn bộ khu vực.",
       "Giảm bớt sự lãnh đạo của Đảng đối với các cơ quan tư pháp trong thực tiễn mới.",
-      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ. một cách đồng bộ."
+      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -538,9 +538,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống bản chất nhất của Đảng Cộng sản Việt Nam được đúc kết là gì?",
     "options": [
       "Truyền thống trung thành vô hạn với lợi ích của dân tộc và giai cấp, kiên định mục tiêu độc lập dân tộc và CNXH.",
-      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực. trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực.",
+      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới.",
+      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -557,7 +557,7 @@ export const lsdKetLuanPart1 = [
       "Đảng từ nhân dân mà ra, vì nhân dân mà chiến đấu, luôn gắn bó mật thiết với nhân dân.",
       "Đảng đứng trên nhân dân để ban hành các mệnh lệnh hành chính trên toàn bộ khu vực.",
       "Đảng tách rời các hoạt động đời sống thường nhật của dân trong thực tiễn mới.",
-      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ. một cách đồng bộ."
+      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -572,9 +572,9 @@ export const lsdKetLuanPart1 = [
     "question": "Sự hy sinh anh dũng của hàng triệu anh hùng liệt sĩ, cán bộ đảng viên nhắc nhở thế hệ hôm nay điều gì?",
     "options": [
       "Giữ gìn thành quả cách mạng, sống cống hiến, có trách nhiệm với sự nghiệp xây dựng và bảo vệ Tổ quốc.",
-      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực.",
+      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới.",
+      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -589,9 +589,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống đoàn kết quốc tế trong sáng của Đảng được thể hiện qua hành động nào?",
     "options": [
       "Thực hiện thủy chung nghĩa vụ quốc tế cao cả, đoàn kết với các lực lượng tiến bộ trên thế giới.",
-      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới. trong thực tiễn mới.",
-      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ. một cách đồng bộ."
+      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực.",
+      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới.",
+      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -606,9 +606,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của truyền thống 'Tự phê bình và phê bình' đối với sự trưởng thành của Đảng là gì?",
     "options": [
       "Giúp Đảng vạch rõ sai lầm khuyết điểm, tự đổi mới, tự chỉnh đốn để ngày càng vững mạnh.",
-      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ. một cách đồng bộ."
+      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực.",
+      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới.",
+      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -623,9 +623,9 @@ export const lsdKetLuanPart1 = [
     "question": "Yêu cầu đối với công tác Xây dựng, chỉnh đốn Đảng trong tình hình hiện nay là gì?",
     "options": [
       "Kiên quyết ngăn chặn, đẩy lùi suy thoái tư tưởng chính trị, đạo đức, lối sống và 'tự diễn biến'.",
-      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực.",
+      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới.",
+      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -640,9 +640,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của việc kiên định nền tảng tư tưởng Chủ nghĩa Mác - Lênin và Tư tưởng Hồ Chí Minh trong kỷ nguyên số là gì?",
     "options": [
       "Bảo vệ bản chất cách mạng của Đảng, chủ động phản bác các quan điểm sai trái trên không gian mạng.",
-      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực.",
+      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới.",
+      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -657,9 +657,9 @@ export const lsdKetLuanPart1 = [
     "question": "Tầm vóc của 'Khát vọng phát triển đất nước phồn vinh, hạnh phúc đến năm 2045' đòi hỏi thế hệ trẻ làm gì?",
     "options": [
       "Nỗ lực học tập, làm chủ khoa học công nghệ, cống hiến trí tuệ xây dựng Việt Nam thành nước phát triển.",
-      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực.",
+      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới.",
+      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -674,9 +674,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về kết hợp 'Ý Đảng - Lòng Dân' trong công cuộc Đổi mới mang lại giá trị gì?",
     "options": [
       "Tạo nên sự đồng thuận xã hội tuyệt đối, biến chủ trương của Đảng thành sức mạnh vật chất của nhân dân.",
-      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực.",
+      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới.",
+      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -795,7 +795,7 @@ export const lsdKetLuanPart1 = [
       "Bảo đảm độc lập dân tộc gắn liền với chủ nghĩa xã hội, đưa đất nước phát triển vững chắc.",
       "Giúp Việt Nam nhận được viện trợ không hoàn lại từ các tập đoàn tài chính trên toàn bộ khu vực.",
       "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong 5 năm tới trong thực tiễn mới.",
-      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ. một cách đồng bộ."
+      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -863,7 +863,7 @@ export const lsdKetLuanPart1 = [
       "Thắng lợi của các cuộc kháng chiến chống xâm lược, bảo vệ độc lập, giải phóng dân tộc.",
       "Thắng lợi của công cuộc cải cách ruộng đất những năm 1953-1956 trên toàn bộ khu vực.",
       "Thắng lợi của việc gia nhập Tổ chức Thương mại Thế giới (WTO) trong thực tiễn mới.",
-      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -879,8 +879,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Thắng lợi của công cuộc Đổi mới và hội nhập quốc tế, đưa đất nước phát triển.",
       "Thắng lợi của phong trào Xô viết Nghệ Tĩnh 1930-1931 trên toàn bộ khu vực.",
-      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới trong thực tiễn mới.",
-      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới.",
+      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -931,7 +931,7 @@ export const lsdKetLuanPart1 = [
       "Đất nước ta chưa bao giờ có được cơ đồ, tiềm lực, vị thế và uy tín quốc tế như ngày nay.",
       "Xóa bỏ hoàn toàn khoảng cách chênh lệch giàu nghèo trong xã hội trên toàn bộ khu vực.",
       "Trở thành nước phát triển có thu nhập cao nhất toàn cầu trong thực tiễn mới.",
-      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -947,8 +947,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Tranh thủ sự ủng hộ quốc tế, nhân lên sức mạnh tổng hợp vượt qua mọi kẻ thù một cách vững chắc.",
       "Giúp Việt Nam phụ thuộc hoàn toàn vào nguồn viện trợ nước ngoài trên toàn bộ khu vực.",
-      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới trong thực tiễn mới.",
-      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ một cách đồng bộ."
+      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới.",
+      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -965,7 +965,7 @@ export const lsdKetLuanPart1 = [
       "Sự lãnh đạo đúng đắn, sáng tạo của Đảng và tinh thần hy sinh anh dũng của nhân dân.",
       "Do sự suy yếu tự nhiên của các lực lượng đế quốc xâm lược trên toàn bộ khu vực.",
       "Do sự hỗ trợ tài chính đơn thuần từ các quỹ quốc tế trong thực tiễn mới.",
-      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ. một cách đồng bộ."
+      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -981,7 +981,7 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Đột phá lý luận sáng tạo của Đảng, phát triển kinh tế gắn với tiến bộ công bằng xã hội.",
       "Rập khuôn theo mô hình kinh tế thị trường tư bản chủ nghĩa trên toàn bộ khu vực.",
-      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới. trong thực tiễn mới.",
+      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới.",
       "Xóa bỏ hoàn toàn sự quản lý của Nhà nước đối với thị trường một cách đồng bộ."
     ],
     "answer": 0,
@@ -997,9 +997,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của 3 thắng lợi vĩ đại đối với tương lai phát triển của dân tộc là gì?",
     "options": [
       "Tạo nền tảng vững chắc, niềm tin và động lực mạnh mẽ để đất nước bứt phá trong kỷ nguyên mới.",
-      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới. trong thực tiễn mới.",
-      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ. một cách đồng bộ."
+      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực.",
+      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới.",
+      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1015,8 +1015,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Không có sự lãnh đạo của Đảng thì nhân dân không thể giành được độc lập và xây dựng CNXH.",
       "Cách mạng Việt Nam thắng lợi do sự can thiệp từ bên ngoài trên toàn bộ khu vực.",
-      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới. trong thực tiễn mới.",
-      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ. một cách đồng bộ."
+      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới.",
+      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1065,9 +1065,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ ba về sự lãnh đạo của Đảng nhấn mạnh việc củng cố khối nào?",
     "options": [
       "Không ngừng củng cố, tăng cường đoàn kết: Đoàn kết toàn Đảng, đại đoàn kết toàn dân tộc.",
-      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới trong thực tiễn mới.",
-      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực.",
+      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới.",
+      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1083,8 +1083,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Kết hợp sức mạnh dân tộc với sức mạnh thời đại, sức mạnh trong nước với sức mạnh quốc tế.",
       "Kết hợp phát triển công nghiệp với khai thác tài nguyên thô trên toàn bộ khu vực.",
-      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới. trong thực tiễn mới.",
-      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới.",
+      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1099,9 +1099,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ năm về sự lãnh đạo của Đảng coi yếu tố nào là quyết định?",
     "options": [
       "Sự lãnh đạo đúng đắn của Đảng là nhân tố hàng đầu quyết định thắng lợi của cách mạng Việt Nam.",
-      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực.",
+      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới.",
+      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1116,9 +1116,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của bài học 'Dân là gốc' trong giai đoạn phát triển hiện nay là gì?",
     "options": [
       "Mọi đường lối chính sách phải xuất phát từ nguyện vọng và lợi ích chính đáng của nhân dân.",
-      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới trong thực tiễn mới.",
-      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ. một cách đồng bộ."
+      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực.",
+      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới.",
+      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1133,9 +1133,9 @@ export const lsdKetLuanPart1 = [
     "question": "Nội dung của bài học về 'Kiên định và phát triển sáng tạo Chủ nghĩa Mác - Lênin' là gì?",
     "options": [
       "Vận dụng sáng tạo lý luận vào thực tiễn Việt Nam, tránh giáo điều xơ cứng và duy tâm chủ quan.",
-      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ. một cách đồng bộ."
+      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực.",
+      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới.",
+      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1150,9 +1150,9 @@ export const lsdKetLuanPart1 = [
     "question": "Mối quan hệ giữa 5 bài học lớn về sự lãnh đạo của Đảng là gì?",
     "options": [
       "Là một thể thống nhất hữu cơ, bổ sung cho nhau, tạo nên sức mạnh tổng hợp của Đảng.",
-      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới trong thực tiễn mới.",
-      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ. một cách đồng bộ."
+      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực.",
+      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới.",
+      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1167,9 +1167,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của công tác 'Xây dựng, chỉnh đốn Đảng trong sạch, vững mạnh' theo bài học 5 là gì?",
     "options": [
       "Giữ vững bản chất giai cấp công nhân, nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng.",
-      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới trong thực tiễn mới.",
-      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực.",
+      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới.",
+      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1184,9 +1184,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về đặt 'Lợi ích quốc gia - dân tộc lên trên hết' đòi hỏi điều gì?",
     "options": [
       "Tối đa hóa lợi ích dân tộc trên cơ sở tôn trọng luật pháp quốc tế và bình đẳng hợp tác.",
-      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ. một cách đồng bộ."
+      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực.",
+      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới.",
+      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1203,7 +1203,7 @@ export const lsdKetLuanPart1 = [
       "Lãnh đạo bằng Hiến pháp, pháp luật, bằng nêu gương, không bao biền làm thay chính quyền.",
       "Làm thay toàn bộ công việc chuyên môn của bộ máy nhà nước trên toàn bộ khu vực.",
       "Giảm bớt sự lãnh đạo của Đảng đối với các cơ quan tư pháp trong thực tiễn mới.",
-      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ. một cách đồng bộ."
+      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1218,9 +1218,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống bản chất nhất của Đảng Cộng sản Việt Nam được đúc kết là gì?",
     "options": [
       "Truyền thống trung thành vô hạn với lợi ích của dân tộc và giai cấp, kiên định mục tiêu độc lập dân tộc và CNXH.",
-      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực. trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực.",
+      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới.",
+      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1237,7 +1237,7 @@ export const lsdKetLuanPart1 = [
       "Đảng từ nhân dân mà ra, vì nhân dân mà chiến đấu, luôn gắn bó mật thiết với nhân dân.",
       "Đảng đứng trên nhân dân để ban hành các mệnh lệnh hành chính trên toàn bộ khu vực.",
       "Đảng tách rời các hoạt động đời sống thường nhật của dân trong thực tiễn mới.",
-      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ. một cách đồng bộ."
+      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1252,9 +1252,9 @@ export const lsdKetLuanPart1 = [
     "question": "Sự hy sinh anh dũng của hàng triệu anh hùng liệt sĩ, cán bộ đảng viên nhắc nhở thế hệ hôm nay điều gì?",
     "options": [
       "Giữ gìn thành quả cách mạng, sống cống hiến, có trách nhiệm với sự nghiệp xây dựng và bảo vệ Tổ quốc.",
-      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực.",
+      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới.",
+      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1269,9 +1269,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống đoàn kết quốc tế trong sáng của Đảng được thể hiện qua hành động nào?",
     "options": [
       "Thực hiện thủy chung nghĩa vụ quốc tế cao cả, đoàn kết với các lực lượng tiến bộ trên thế giới.",
-      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới. trong thực tiễn mới.",
-      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ. một cách đồng bộ."
+      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực.",
+      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới.",
+      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1286,9 +1286,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của truyền thống 'Tự phê bình và phê bình' đối với sự trưởng thành của Đảng là gì?",
     "options": [
       "Giúp Đảng vạch rõ sai lầm khuyết điểm, tự đổi mới, tự chỉnh đốn để ngày càng vững mạnh.",
-      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ. một cách đồng bộ."
+      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực.",
+      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới.",
+      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1303,9 +1303,9 @@ export const lsdKetLuanPart1 = [
     "question": "Yêu cầu đối với công tác Xây dựng, chỉnh đốn Đảng trong tình hình hiện nay là gì?",
     "options": [
       "Kiên quyết ngăn chặn, đẩy lùi suy thoái tư tưởng chính trị, đạo đức, lối sống và 'tự diễn biến'.",
-      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực.",
+      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới.",
+      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1320,9 +1320,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của việc kiên định nền tảng tư tưởng Chủ nghĩa Mác - Lênin và Tư tưởng Hồ Chí Minh trong kỷ nguyên số là gì?",
     "options": [
       "Bảo vệ bản chất cách mạng của Đảng, chủ động phản bác các quan điểm sai trái trên không gian mạng.",
-      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực.",
+      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới.",
+      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1337,9 +1337,9 @@ export const lsdKetLuanPart1 = [
     "question": "Tầm vóc của 'Khát vọng phát triển đất nước phồn vinh, hạnh phúc đến năm 2045' đòi hỏi thế hệ trẻ làm gì?",
     "options": [
       "Nỗ lực học tập, làm chủ khoa học công nghệ, cống hiến trí tuệ xây dựng Việt Nam thành nước phát triển.",
-      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực.",
+      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới.",
+      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1354,9 +1354,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về kết hợp 'Ý Đảng - Lòng Dân' trong công cuộc Đổi mới mang lại giá trị gì?",
     "options": [
       "Tạo nên sự đồng thuận xã hội tuyệt đối, biến chủ trương của Đảng thành sức mạnh vật chất của nhân dân.",
-      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực.",
+      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới.",
+      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1475,7 +1475,7 @@ export const lsdKetLuanPart1 = [
       "Bảo đảm độc lập dân tộc gắn liền với chủ nghĩa xã hội, đưa đất nước phát triển vững chắc.",
       "Giúp Việt Nam nhận được viện trợ không hoàn lại từ các tập đoàn tài chính trên toàn bộ khu vực.",
       "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong 5 năm tới trong thực tiễn mới.",
-      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ. một cách đồng bộ."
+      "Thay thế toàn bộ hệ thống pháp luật nhà nước hiện hành một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1543,7 +1543,7 @@ export const lsdKetLuanPart1 = [
       "Thắng lợi của các cuộc kháng chiến chống xâm lược, bảo vệ độc lập, giải phóng dân tộc.",
       "Thắng lợi của công cuộc cải cách ruộng đất những năm 1953-1956 trên toàn bộ khu vực.",
       "Thắng lợi của việc gia nhập Tổ chức Thương mại Thế giới (WTO) trong thực tiễn mới.",
-      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của việc hoàn thành đường dây 500kV Bắc - Nam một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1559,8 +1559,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Thắng lợi của công cuộc Đổi mới và hội nhập quốc tế, đưa đất nước phát triển.",
       "Thắng lợi của phong trào Xô viết Nghệ Tĩnh 1930-1931 trên toàn bộ khu vực.",
-      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới trong thực tiễn mới.",
-      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ. một cách đồng bộ."
+      "Thắng lợi của cuộc vận động dân chủ 1936-1939 trong thực tiễn mới.",
+      "Thắng lợi của việc ký Hiệp định Pa-ri năm 1973 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1611,7 +1611,7 @@ export const lsdKetLuanPart1 = [
       "Đất nước ta chưa bao giờ có được cơ đồ, tiềm lực, vị thế và uy tín quốc tế như ngày nay.",
       "Xóa bỏ hoàn toàn khoảng cách chênh lệch giàu nghèo trong xã hội trên toàn bộ khu vực.",
       "Trở thành nước phát triển có thu nhập cao nhất toàn cầu trong thực tiễn mới.",
-      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Hoàn thành 100% công nghiệp hóa nặng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1627,8 +1627,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Tranh thủ sự ủng hộ quốc tế, nhân lên sức mạnh tổng hợp vượt qua mọi kẻ thù một cách vững chắc.",
       "Giúp Việt Nam phụ thuộc hoàn toàn vào nguồn viện trợ nước ngoài trên toàn bộ khu vực.",
-      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới trong thực tiễn mới.",
-      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ một cách đồng bộ."
+      "Giảm bớt sự nỗ lực chiến đấu của nhân dân trong nước trong thực tiễn mới.",
+      "Tạo cơ hội để từ bỏ các nguyên tắc độc lập tự chủ một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1645,7 +1645,7 @@ export const lsdKetLuanPart1 = [
       "Sự lãnh đạo đúng đắn, sáng tạo của Đảng và tinh thần hy sinh anh dũng của nhân dân.",
       "Do sự suy yếu tự nhiên của các lực lượng đế quốc xâm lược trên toàn bộ khu vực.",
       "Do sự hỗ trợ tài chính đơn thuần từ các quỹ quốc tế trong thực tiễn mới.",
-      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ. một cách đồng bộ."
+      "Do điều kiện địa lý tự nhiên thuận lợi một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1661,7 +1661,7 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Đột phá lý luận sáng tạo của Đảng, phát triển kinh tế gắn với tiến bộ công bằng xã hội.",
       "Rập khuôn theo mô hình kinh tế thị trường tư bản chủ nghĩa trên toàn bộ khu vực.",
-      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới. trong thực tiễn mới.",
+      "Quay trở lại mô hình kinh tế tập trung bao cấp cũ trong thực tiễn mới.",
       "Xóa bỏ hoàn toàn sự quản lý của Nhà nước đối với thị trường một cách đồng bộ."
     ],
     "answer": 0,
@@ -1677,9 +1677,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của 3 thắng lợi vĩ đại đối với tương lai phát triển của dân tộc là gì?",
     "options": [
       "Tạo nền tảng vững chắc, niềm tin và động lực mạnh mẽ để đất nước bứt phá trong kỷ nguyên mới.",
-      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới. trong thực tiễn mới.",
-      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ. một cách đồng bộ."
+      "Giúp Việt Nam không còn gặp bất kỳ khó khăn thử thách nào trên toàn bộ khu vực.",
+      "Rút ngắn thời gian quá độ lên chủ nghĩa xã hội trong thực tiễn mới.",
+      "Thay thế toàn bộ các bài học kinh nghiệm trong tương lai một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1695,8 +1695,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Không có sự lãnh đạo của Đảng thì nhân dân không thể giành được độc lập và xây dựng CNXH.",
       "Cách mạng Việt Nam thắng lợi do sự can thiệp từ bên ngoài trên toàn bộ khu vực.",
-      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới. trong thực tiễn mới.",
-      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ. một cách đồng bộ."
+      "Sự lãnh đạo của Đảng chỉ đóng vai trò thứ yếu trong thực tiễn mới.",
+      "Thắng lợi cách mạng hoàn toàn mang tính tự phát một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1745,9 +1745,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ ba về sự lãnh đạo của Đảng nhấn mạnh việc củng cố khối nào?",
     "options": [
       "Không ngừng củng cố, tăng cường đoàn kết: Đoàn kết toàn Đảng, đại đoàn kết toàn dân tộc.",
-      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới trong thực tiễn mới.",
-      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Liên minh kinh tế thương mại với các tập đoàn tư nhân trên toàn bộ khu vực.",
+      "Thành lập khối liên minh quân sự cố định với láng giềng trong thực tiễn mới.",
+      "Tập hợp các tổ chức phi chính phủ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1763,8 +1763,8 @@ export const lsdKetLuanPart1 = [
     "options": [
       "Kết hợp sức mạnh dân tộc với sức mạnh thời đại, sức mạnh trong nước với sức mạnh quốc tế.",
       "Kết hợp phát triển công nghiệp với khai thác tài nguyên thô trên toàn bộ khu vực.",
-      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới. trong thực tiễn mới.",
-      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Kết hợp các hình thức thuế thu nhập khác nhau trong thực tiễn mới.",
+      "Kết hợp các mô hình giáo dục phổ thông một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1779,9 +1779,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học lớn thứ năm về sự lãnh đạo của Đảng coi yếu tố nào là quyết định?",
     "options": [
       "Sự lãnh đạo đúng đắn của Đảng là nhân tố hàng đầu quyết định thắng lợi của cách mạng Việt Nam.",
-      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Sự hỗ trợ tài chính từ các tổ chức tín dụng quốc tế trên toàn bộ khu vực.",
+      "Số lượng tài nguyên thiên nhiên của đất nước trong thực tiễn mới.",
+      "Sự can thiệp trực tiếp của lực lượng nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1796,9 +1796,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của bài học 'Dân là gốc' trong giai đoạn phát triển hiện nay là gì?",
     "options": [
       "Mọi đường lối chính sách phải xuất phát từ nguyện vọng và lợi ích chính đáng của nhân dân.",
-      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới trong thực tiễn mới.",
-      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ. một cách đồng bộ."
+      "Tăng cường thu các khoản đóng góp nghĩa vụ của nhân dân trên toàn bộ khu vực.",
+      "Hạn chế sự tham gia ý kiến của nhân dân vào các văn bản luật trong thực tiễn mới.",
+      "Chỉ tập trung phục vụ lợi ích của nhóm doanh nghiệp lớn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1813,9 +1813,9 @@ export const lsdKetLuanPart1 = [
     "question": "Nội dung của bài học về 'Kiên định và phát triển sáng tạo Chủ nghĩa Mác - Lênin' là gì?",
     "options": [
       "Vận dụng sáng tạo lý luận vào thực tiễn Việt Nam, tránh giáo điều xơ cứng và duy tâm chủ quan.",
-      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ. một cách đồng bộ."
+      "Giữ nguyên 100% các luận điểm cũ không thay đổi trên toàn bộ khu vực.",
+      "Từ bỏ hoàn toàn lý luận Mác - Lênin để theo mô hình mới trong thực tiễn mới.",
+      "Chỉ áp dụng các tài liệu lý luận do nước ngoài biên soạn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1830,9 +1830,9 @@ export const lsdKetLuanPart1 = [
     "question": "Mối quan hệ giữa 5 bài học lớn về sự lãnh đạo của Đảng là gì?",
     "options": [
       "Là một thể thống nhất hữu cơ, bổ sung cho nhau, tạo nên sức mạnh tổng hợp của Đảng.",
-      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới trong thực tiễn mới.",
-      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ. một cách đồng bộ."
+      "Tách biệt độc lập không có sự liên quan đến nhau trên toàn bộ khu vực.",
+      "Bài học 5 quan trọng hơn và phủ nhận các bài học khác trong thực tiễn mới.",
+      "Các bài học chỉ áp dụng cho thời kỳ chiến tranh một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1847,9 +1847,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của công tác 'Xây dựng, chỉnh đốn Đảng trong sạch, vững mạnh' theo bài học 5 là gì?",
     "options": [
       "Giữ vững bản chất giai cấp công nhân, nâng cao năng lực lãnh đạo và sức chiến đấu của Đảng.",
-      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới trong thực tiễn mới.",
-      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ. một cách đồng bộ một cách đồng bộ."
+      "Giúp tinh giảm tối đa số lượng đảng viên trong chi bộ trên toàn bộ khu vực.",
+      "Tăng cường thu ngân sách dành cho các hoạt động ngoại giao trong thực tiễn mới.",
+      "Giảm bớt sự kiểm tra giám sát của ủy ban kiểm tra một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1864,9 +1864,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về đặt 'Lợi ích quốc gia - dân tộc lên trên hết' đòi hỏi điều gì?",
     "options": [
       "Tối đa hóa lợi ích dân tộc trên cơ sở tôn trọng luật pháp quốc tế và bình đẳng hợp tác.",
-      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ. một cách đồng bộ."
+      "Chấp nhận mọi thiệt hại kinh tế để giữ hòa hiếu trên toàn bộ khu vực.",
+      "Từ bỏ độc lập chủ quyền để đổi lấy viện trợ trong thực tiễn mới.",
+      "Bảo hộ tuyệt đối các sản phẩm trong nước kém chất lượng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1883,7 +1883,7 @@ export const lsdKetLuanPart1 = [
       "Lãnh đạo bằng Hiến pháp, pháp luật, bằng nêu gương, không bao biền làm thay chính quyền.",
       "Làm thay toàn bộ công việc chuyên môn của bộ máy nhà nước trên toàn bộ khu vực.",
       "Giảm bớt sự lãnh đạo của Đảng đối với các cơ quan tư pháp trong thực tiễn mới.",
-      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ. một cách đồng bộ."
+      "Giao toàn quyền quản lý đất nước cho các tập đoàn tư nhân một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1898,9 +1898,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống bản chất nhất của Đảng Cộng sản Việt Nam được đúc kết là gì?",
     "options": [
       "Truyền thống trung thành vô hạn với lợi ích của dân tộc và giai cấp, kiên định mục tiêu độc lập dân tộc và CNXH.",
-      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực. trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Truyền thống ưu tiên phát triển công nghiệp nặng trên toàn bộ khu vực.",
+      "Truyền thống đóng cửa nền kinh tế tự cung tự cấp trong thực tiễn mới.",
+      "Truyền thống phụ thuộc vào sự giúp đỡ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -1917,7 +1917,7 @@ export const lsdKetLuanPart1 = [
       "Đảng từ nhân dân mà ra, vì nhân dân mà chiến đấu, luôn gắn bó mật thiết với nhân dân.",
       "Đảng đứng trên nhân dân để ban hành các mệnh lệnh hành chính trên toàn bộ khu vực.",
       "Đảng tách rời các hoạt động đời sống thường nhật của dân trong thực tiễn mới.",
-      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ. một cách đồng bộ."
+      "Đảng chỉ thu hút các cá nhân có tài sản lớn tham gia một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1932,9 +1932,9 @@ export const lsdKetLuanPart1 = [
     "question": "Sự hy sinh anh dũng của hàng triệu anh hùng liệt sĩ, cán bộ đảng viên nhắc nhở thế hệ hôm nay điều gì?",
     "options": [
       "Giữ gìn thành quả cách mạng, sống cống hiến, có trách nhiệm với sự nghiệp xây dựng và bảo vệ Tổ quốc.",
-      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ cần tập trung thụ hưởng các thành quả kinh tế hiện có trên toàn bộ khu vực.",
+      "Không cần học tập và rèn luyện bản lĩnh chính trị trong thực tiễn mới.",
+      "Giảm bớt các hoạt động tri ân đền ơn đáp nghĩa một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1949,9 +1949,9 @@ export const lsdKetLuanPart1 = [
     "question": "Truyền thống đoàn kết quốc tế trong sáng của Đảng được thể hiện qua hành động nào?",
     "options": [
       "Thực hiện thủy chung nghĩa vụ quốc tế cao cả, đoàn kết với các lực lượng tiến bộ trên thế giới.",
-      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới. trong thực tiễn mới.",
-      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ. một cách đồng bộ."
+      "Chỉ mở rộng hợp tác với các quốc gia phát triển giàu có trên toàn bộ khu vực.",
+      "Từ bỏ các cam kết hỗ trợ các nước láng giềng trong thực tiễn mới.",
+      "Thành lập liên minh quân sự tiến công các nước khác một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1966,9 +1966,9 @@ export const lsdKetLuanPart1 = [
     "question": "Giá trị của truyền thống 'Tự phê bình và phê bình' đối với sự trưởng thành của Đảng là gì?",
     "options": [
       "Giúp Đảng vạch rõ sai lầm khuyết điểm, tự đổi mới, tự chỉnh đốn để ngày càng vững mạnh.",
-      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ. một cách đồng bộ."
+      "Làm giảm uy tín của Đảng trước quần chúng nhân dân trên toàn bộ khu vực.",
+      "Gây ra sự mất đoàn kết nội bộ trong các chi bộ trong thực tiễn mới.",
+      "Là quy định hình thức không có tác dụng thực tiễn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1983,9 +1983,9 @@ export const lsdKetLuanPart1 = [
     "question": "Yêu cầu đối với công tác Xây dựng, chỉnh đốn Đảng trong tình hình hiện nay là gì?",
     "options": [
       "Kiên quyết ngăn chặn, đẩy lùi suy thoái tư tưởng chính trị, đạo đức, lối sống và 'tự diễn biến'.",
-      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới. trong thực tiễn mới.",
-      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào công tác phát triển kinh tế tư nhân trên toàn bộ khu vực.",
+      "Giảm bớt tiêu chuẩn kiểm tra lý luận đối với cán bộ trong thực tiễn mới.",
+      "Bãi bỏ việc lấy ý kiến nhận xét của cử tri nơi cư trú một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2000,9 +2000,9 @@ export const lsdKetLuanPart1 = [
     "question": "Ý nghĩa của việc kiên định nền tảng tư tưởng Chủ nghĩa Mác - Lênin và Tư tưởng Hồ Chí Minh trong kỷ nguyên số là gì?",
     "options": [
       "Bảo vệ bản chất cách mạng của Đảng, chủ động phản bác các quan điểm sai trái trên không gian mạng.",
-      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Đóng cửa mạng xã hội không cho người dân truy cập internet trên toàn bộ khu vực.",
+      "Cấm các hoạt động chuyển đổi số trong cơ quan nhà nước trong thực tiễn mới.",
+      "Nhập khẩu toàn bộ các học thuyết chính trị nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2017,9 +2017,9 @@ export const lsdKetLuanPart1 = [
     "question": "Tầm vóc của 'Khát vọng phát triển đất nước phồn vinh, hạnh phúc đến năm 2045' đòi hỏi thế hệ trẻ làm gì?",
     "options": [
       "Nỗ lực học tập, làm chủ khoa học công nghệ, cống hiến trí tuệ xây dựng Việt Nam thành nước phát triển.",
-      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới. trong thực tiễn mới. trong thực tiễn mới.",
-      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Chỉ tập trung vào lợi ích cá nhân không quan tâm đến cộng đồng trên toàn bộ khu vực.",
+      "Tìm cơ hội di cư làm việc lâu dài ở nước ngoài trong thực tiễn mới.",
+      "Giảm bớt sự nỗ lực trong lao động sản xuất một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -2034,9 +2034,9 @@ export const lsdKetLuanPart1 = [
     "question": "Bài học về kết hợp 'Ý Đảng - Lòng Dân' trong công cuộc Đổi mới mang lại giá trị gì?",
     "options": [
       "Tạo nên sự đồng thuận xã hội tuyệt đối, biến chủ trương của Đảng thành sức mạnh vật chất của nhân dân.",
-      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Giúp chính quyền dễ dàng ban hành các quyết định thu thuế trên toàn bộ khu vực.",
+      "Giảm bớt sự tham gia của các tổ chức Mặt trận Tổ quốc trong thực tiễn mới.",
+      "Chỉ mang ý nghĩa khẩu hiệu không có tác dụng thực tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",

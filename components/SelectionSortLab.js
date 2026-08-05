@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import confetti from "canvas-confetti";
 import { 
   ArrowLeft, 
   Play, 
@@ -24,7 +25,9 @@ import {
   XCircle,
   Layers,
   ArrowUpDown,
-  Shuffle
+  Shuffle,
+  Keyboard,
+  Activity
 } from "lucide-react";
 
 // Pure function: Step generation for Selection Sort
@@ -37,23 +40,19 @@ function generateSelectionSortSteps(initialArray) {
   let swaps = 0;
   let minUpdates = 0;
   
-  // Heatmap tracker: count of comparisons per index
   const heatmap = {};
   for (let idx = 0; idx < n; idx++) heatmap[idx] = 0;
 
   const swapHistory = [];
 
-  // Helper for generating prediction question
   const createPredictQuestion = (startIndex, currentArr) => {
     const unsortedSlice = currentArr.slice(startIndex);
     const minVal = Math.min(...unsortedSlice);
-    // Unique options
     const optionsSet = new Set([minVal]);
     for (let val of unsortedSlice) {
       optionsSet.add(val);
       if (optionsSet.size >= 4) break;
     }
-    // Fill up if fewer than 4
     let dummy = 1;
     while (optionsSet.size < 4) {
       if (!optionsSet.has(minVal + dummy)) optionsSet.add(minVal + dummy);
@@ -321,6 +320,33 @@ const PSEUDOCODE_EN = [
   { line: 7, text: "    swap(arr[i], arr[minIdx])", tip: "Swap element at i with the minimum element found" },
 ];
 
+const PYTHON_CODE = [
+  { line: 1, text: "def selection_sort(arr):" },
+  { line: 2, text: "    n = len(arr)" },
+  { line: 3, text: "    for i in range(n - 1):" },
+  { line: 4, text: "        min_idx = i" },
+  { line: 5, text: "        for j in range(i + 1, n):" },
+  { line: 6, text: "            if arr[j] < arr[min_idx]:" },
+  { line: 7, text: "                min_idx = j" },
+  { line: 8, text: "        if min_idx != i:" },
+  { line: 9, text: "            arr[i], arr[min_idx] = arr[min_idx], arr[i]" },
+];
+
+const JAVA_CODE = [
+  { line: 1, text: "static void selectionSort(int[] arr) {" },
+  { line: 2, text: "    int n = arr.length;" },
+  { line: 3, text: "    for (int i = 0; i < n - 1; i++) {" },
+  { line: 4, text: "        int minIdx = i;" },
+  { line: 5, text: "        for (int j = i + 1; j < n; j++) {" },
+  { line: 6, text: "            if (arr[j] < arr[minIdx]) minIdx = j;" },
+  { line: 7, text: "        }" },
+  { line: 8, text: "        if (minIdx != i) {" },
+  { line: 9, text: "            int temp = arr[i]; arr[i] = arr[minIdx]; arr[minIdx] = temp;" },
+  { line: 10, text: "        }" },
+  { line: 11, text: "    }" },
+  { line: 12, text: "}" },
+];
+
 export default function SelectionSortLab({ onBack }) {
   // Mode selection: "simulator" | "comparison" | "unstable"
   const [activeMode, setActiveMode] = useState("simulator");
@@ -334,10 +360,8 @@ export default function SelectionSortLab({ onBack }) {
   const [speed, setSpeed] = useState(600); // ms per step
 
   // Extra Features States
-  const [pseudoLang, setPseudoLang] = useState("VI"); // "VI" | "EN"
-  const [hoveredLineTip, setHoveredLineTip] = useState(null);
+  const [lang, setLang] = useState("EN"); // "EN" | "python" | "java"
   const [showHeatmap, setShowHeatmap] = useState(true);
-  const [showTimeline, setShowTimeline] = useState(true);
 
   // Prediction Challenge states
   const [enablePredictMode, setEnablePredictMode] = useState(true);
@@ -373,6 +397,8 @@ export default function SelectionSortLab({ onBack }) {
   const maxVal = useMemo(() => Math.max(...initialArray, 1), [initialArray]);
 
   const step = steps[currentStep] || steps[0];
+  const progressPercent = Math.round(((currentStep + 1) / steps.length) * 100);
+  const isFinished = currentStep === steps.length - 1;
 
   // Auto-play timer
   const timerRef = useRef(null);
@@ -387,7 +413,6 @@ export default function SelectionSortLab({ onBack }) {
           const nextStepIdx = prev + 1;
           const nextStep = steps[nextStepIdx];
           
-          // Trigger Prediction Challenge if enabled and starting a new pass
           if (enablePredictMode && nextStep && nextStep.isNewPass && nextStep.predictQuestion) {
             setIsPlaying(false);
             setPredictModalOpen(true);
@@ -402,6 +427,47 @@ export default function SelectionSortLab({ onBack }) {
     return () => clearInterval(timerRef.current);
   }, [isPlaying, speed, steps, enablePredictMode]);
 
+  // Confetti celebration when finished
+  useEffect(() => {
+    if (isFinished && steps.length > 1) {
+      try {
+        confetti({
+          particleCount: 70,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#38bdf8", "#22d3ee", "#34d399", "#fbbf24", "#f43f5e"]
+        });
+      } catch (e) {}
+    }
+  }, [isFinished, steps.length]);
+
+  // Keyboard Shortcuts Listener (Space, ArrowLeft, ArrowRight, R)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
+        return;
+      }
+      if (e.code === "Space") {
+        e.preventDefault();
+        setIsPlaying((prev) => !prev);
+      } else if (e.code === "ArrowRight") {
+        e.preventDefault();
+        setIsPlaying(false);
+        setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+      } else if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        setIsPlaying(false);
+        setCurrentStep((prev) => Math.max(prev - 1, 0));
+      } else if (e.code === "KeyR") {
+        e.preventDefault();
+        setIsPlaying(false);
+        setCurrentStep(0);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [steps.length]);
+
   // Generators for random array
   const handleGenerateRandom = () => {
     setIsPlaying(false);
@@ -412,7 +478,7 @@ export default function SelectionSortLab({ onBack }) {
     setPredictScore({ correct: 0, total: 0 });
   };
 
-  // Preset: Reverse array (Worst case scenario)
+  // Preset: Reverse array
   const handleGenerateReverse = () => {
     setIsPlaying(false);
     const newArr = Array.from({ length: arraySize }, (_, idx) => (arraySize - idx) * 5 + 3);
@@ -460,67 +526,92 @@ export default function SelectionSortLab({ onBack }) {
     return ((step.swaps / step.comparisons) * 100).toFixed(1) + "%";
   }, [step.comparisons, step.swaps]);
 
-  const activePseudocode = pseudoLang === "VI" ? PSEUDOCODE_VI : PSEUDOCODE_EN;
+  // Determine active code line
+  const activeLine =
+    lang === "VI"
+      ? step.activeLineVI
+      : lang === "EN"
+      ? step.activeLineEN
+      : lang === "python"
+      ? step.activeLineVI
+      : step.activeLineVI;
+
+  const currentCodeLines =
+    lang === "VI"
+      ? PSEUDOCODE_VI
+      : lang === "EN"
+      ? PSEUDOCODE_EN
+      : lang === "python"
+      ? PYTHON_CODE
+      : JAVA_CODE;
+
+  // Maximum heatmap count
+  const maxHeatmapCount = useMemo(() => {
+    const vals = Object.values(step.heatmap || {});
+    return Math.max(...vals, 1);
+  }, [step.heatmap]);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-300">
-      {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-sm">
+    <div className="w-full min-h-screen bg-[#0d1117] text-slate-100 p-3 sm:p-5 md:p-6 font-sans space-y-6 select-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#161b22] via-[#0d1117] to-[#0d1117]">
+      
+      {/* 1. HEADER BAR (FULL WIDTH TOPBAR - MIDNIGHT SLATE & ELECTRIC CYAN) */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-2xl">
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="p-2 rounded-xl text-stone-600 hover:bg-stone-100 transition-colors flex items-center gap-2 text-sm font-semibold"
+            className="px-3.5 py-1.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-200 hover:text-white transition-all flex items-center gap-2 text-xs font-bold cursor-pointer shadow-md border border-[#30363d] active:scale-95"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Dashboard
+            <ArrowLeft className="w-4 h-4 text-sky-400" />
+            <span>← Quay về Kho Mô Phỏng</span>
           </button>
-          <div className="h-5 w-px bg-stone-200" />
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-amber-500 text-white shadow-md shadow-amber-500/20">
-              <Crown className="w-5 h-5" />
+
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[11px] font-extrabold text-sky-400 uppercase tracking-widest bg-[#21262d] border border-[#30363d] px-3.5 py-1 rounded-full shadow-inner flex items-center gap-1.5">
+                <Crown className="w-3.5 h-3.5 text-amber-400" />
+                <span>Selection Sort Lab 3D</span>
+              </span>
             </div>
-            <div>
-              <h1 className="text-lg font-bold text-stone-800 leading-tight">
-                Selection Sort Lab (Sắp Xếp Chọn)
-              </h1>
-              <p className="text-xs text-stone-500 font-medium">
-                Mô phỏng trực quan • Tìm phần tử nhỏ nhất & đưa về đúng vị trí
-              </p>
-            </div>
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400 font-mono uppercase">
+              SELECTION SORT — SẮP XẾP CHỌN 3D
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+              Quét tìm phần tử nhỏ nhất (Min) trong đoạn chưa sắp xếp và đưa về vị trí cố định.
+            </p>
           </div>
         </div>
 
         {/* Mode Switcher Tabs */}
-        <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200 text-xs font-semibold">
+        <div className="flex items-center gap-1.5 bg-[#0d1117] p-1.5 rounded-2xl border border-[#30363d] text-xs font-semibold shadow-inner">
           <button
             onClick={() => setActiveMode("simulator")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
               activeMode === "simulator"
-                ? "bg-white text-amber-600 shadow-sm font-bold"
-                : "text-stone-600 hover:text-stone-900"
+                ? "bg-sky-600 text-white font-bold shadow-lg shadow-sky-950/60"
+                : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            1. Mô phỏng từng bước
+            1. Mô phỏng 3D từng bước
           </button>
           <button
             onClick={() => setActiveMode("comparison")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
               activeMode === "comparison"
-                ? "bg-white text-indigo-600 shadow-sm font-bold"
-                : "text-stone-600 hover:text-stone-900"
+                ? "bg-teal-600 text-white font-bold shadow-lg shadow-teal-950/60"
+                : "text-slate-400 hover:text-slate-200"
             }`}
           >
             2. So sánh vs Bubble Sort
           </button>
           <button
             onClick={() => setActiveMode("unstable")}
-            className={`px-3 py-1.5 rounded-lg transition-all ${
+            className={`px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
               activeMode === "unstable"
-                ? "bg-white text-rose-600 shadow-sm font-bold"
-                : "text-stone-600 hover:text-stone-900"
+                ? "bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-950/60"
+                : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            3. Demo Không Ổn Định
+            3. Demo Tính Ổn Định
           </button>
         </div>
       </div>
@@ -528,19 +619,21 @@ export default function SelectionSortLab({ onBack }) {
       {/* MODE 1: Step-by-Step Simulator */}
       {activeMode === "simulator" && (
         <div className="space-y-6">
-          {/* Controls & Config Row */}
-          <div className="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+          {/* 2. CONFIGURATION CONTROLS */}
+          <div className="bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-xl space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
+              <Sliders className="w-4 h-4 text-sky-400" />
+              <span>Cấu hình dữ liệu & Chế độ thử thách:</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
               {/* Array Size Slider */}
-              <div className="flex items-center gap-3">
-                <label className="text-xs font-bold text-stone-600 flex items-center gap-1.5">
-                  <Sliders className="w-3.5 h-3.5 text-stone-500" />
-                  Kích thước ({arraySize}):
-                </label>
+              <div className="md:col-span-4 flex items-center gap-3 bg-[#0d1117] px-4 py-2.5 rounded-2xl border border-[#30363d]">
+                <span className="text-xs font-bold text-slate-300 shrink-0">Kích thước:</span>
                 <input
                   type="range"
                   min="4"
-                  max="18"
+                  max="16"
                   value={arraySize}
                   onChange={(e) => {
                     const sz = parseInt(e.target.value, 10);
@@ -549,160 +642,80 @@ export default function SelectionSortLab({ onBack }) {
                     setInitialArray(newArr);
                     setCurrentStep(0);
                     setIsPlaying(false);
-                    setManualInput(newArr.join(", "));
+                    setPredictScore({ correct: 0, total: 0 });
                   }}
-                  className="w-28 accent-amber-500 cursor-pointer"
+                  className="w-full accent-cyan-400 cursor-pointer"
                 />
+                <span className="text-xs font-mono font-extrabold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
+                  {arraySize}
+                </span>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-2">
+              <div className="md:col-span-4 flex items-center gap-2">
                 <button
                   onClick={handleGenerateRandom}
-                  className="px-3 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
                 >
-                  <Shuffle className="w-3.5 h-3.5" />
-                  Mảng Ngẫu Nhiên
+                  <Shuffle className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>Ngẫu Nhiên</span>
                 </button>
                 <button
                   onClick={handleGenerateReverse}
-                  className="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-amber-200"
+                  className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
                 >
-                  <ArrowUpDown className="w-3.5 h-3.5 text-amber-600" />
-                  Trường Hợp Xấu (Ngược)
+                  <ArrowUpDown className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Mảng Ngược</span>
                 </button>
               </div>
 
-              {/* Prediction Toggle */}
-              <button
-                onClick={() => setEnablePredictMode(!enablePredictMode)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border ${
-                  enablePredictMode
-                    ? "bg-amber-500 text-white border-amber-600 shadow-sm shadow-amber-500/20"
-                    : "bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100"
-                }`}
-              >
-                <HelpCircle className="w-3.5 h-3.5" />
-                Thử thách dự đoán: {enablePredictMode ? "BẬT 🎯" : "TẮT"}
-              </button>
+              {/* Prediction Toggle Button */}
+              <div className="md:col-span-4">
+                <button
+                  onClick={() => setEnablePredictMode(!enablePredictMode)}
+                  className={`w-full py-2.5 px-4 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-95 ${
+                    enablePredictMode
+                      ? "bg-gradient-to-r from-sky-600 to-teal-600 text-white shadow-sky-950/50"
+                      : "bg-[#0d1117] text-slate-400 border border-[#30363d] hover:text-slate-200"
+                  }`}
+                >
+                  <HelpCircle className="w-3.5 h-3.5" />
+                  <span>Thử thách dự đoán: {enablePredictMode ? "BẬT 🎯" : "TẮT"}</span>
+                </button>
+              </div>
             </div>
 
-            {/* Custom Input Field */}
-            <form onSubmit={handleApplyManual} className="flex items-center gap-2 pt-2 border-t border-stone-100">
-              <span className="text-xs font-bold text-stone-700 shrink-0">Mảng hiện tại:</span>
+            {/* Custom Input Form */}
+            <form onSubmit={handleApplyManual} className="flex items-center gap-2 pt-2 border-t border-[#30363d]">
+              <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
               <input
                 type="text"
                 value={manualInput}
                 onChange={(e) => setManualInput(e.target.value)}
-                placeholder="Ví dụ: 29, 10, 14, 37, 13..."
-                className="flex-1 px-3 py-1.5 rounded-xl border border-stone-200 text-xs font-mono font-bold text-stone-800 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 shadow-xs"
+                placeholder="Ví dụ: 29, 10, 14, 37, 13, 22..."
+                className="flex-1 px-4 py-2 rounded-2xl bg-[#0d1117] border border-[#30363d] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
               />
               <button
                 type="submit"
-                className="px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition-colors cursor-pointer shrink-0 shadow-xs"
+                className="px-4 py-2 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
               >
-                Cập Nhật Mảng
+                Áp Dụng
               </button>
             </form>
           </div>
 
-          {/* Main Visual Canvas & Control Toolbar */}
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6 relative overflow-hidden">
-            {/* Status Explanatory Banner */}
-            <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80 flex items-start gap-3">
-              <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-              <div className="flex-1 min-w-0">
-                <div className="text-xs font-bold text-amber-900">
-                  {step.status}
-                </div>
-                {predictScore.total > 0 && (
-                  <div className="text-[11px] font-medium text-amber-700 mt-0.5">
-                    🎯 Điểm thử thách dự đoán: <span className="font-bold text-amber-900">{predictScore.correct}/{predictScore.total}</span> ({(predictScore.correct / predictScore.total * 100).toFixed(0)}%)
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Bars Visualization Window */}
-            <div className="relative h-64 w-full bg-slate-900/95 rounded-2xl p-4 flex items-end justify-center gap-2 md:gap-3 border border-slate-800 overflow-visible pt-10">
-              {/* Crown Header Legend */}
-              <div className="absolute top-3 left-4 flex items-center gap-4 text-[11px] font-medium text-slate-400">
-                <div className="flex items-center gap-1.5">
-                  <Crown className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
-                  <span>Min Candidate</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
-                  <span>Scanning j</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                  <span>Sorted i</span>
-                </div>
-              </div>
-
-              {/* Bars Mapping */}
-              {step.array.map((val, idx) => {
-                const heightPercent = Math.max(15, Math.round((val / maxVal) * 100));
-                const isMin = idx === step.minIdx;
-                const isScanning = idx === step.j;
-                const isI = idx === step.i;
-                const isLocked = step.locked.includes(idx);
-                const isSwapping = step.swapping.includes(idx);
-
-                let barBg = "bg-slate-700/80 border-slate-600 text-slate-200";
-                if (isLocked) barBg = "bg-emerald-500 border-emerald-400 text-white font-bold";
-                else if (isSwapping) barBg = "bg-rose-500 border-rose-400 text-white font-black animate-bounce shadow-lg shadow-rose-500/50";
-                else if (isMin) barBg = "bg-amber-400 border-amber-300 text-slate-950 font-extrabold shadow-lg shadow-amber-400/40 ring-2 ring-amber-300";
-                else if (isScanning) barBg = "bg-cyan-400 border-cyan-300 text-slate-950 font-bold shadow-md shadow-cyan-400/30";
-
-                return (
-                  <div
-                    key={idx}
-                    className="flex-1 flex flex-col items-center justify-end h-full max-w-[48px] relative group transition-all duration-300"
-                  >
-                    {/* 👑 Bouncing Crown Icon above current min element */}
-                    {isMin && (
-                      <div className="absolute -top-7 text-amber-400 animate-bounce z-20 flex flex-col items-center">
-                        <Crown className="w-5 h-5 drop-shadow-[0_2px_8px_rgba(251,191,36,0.8)]" />
-                        <Sparkles className="w-3 h-3 text-amber-300 animate-spin -mt-1" />
-                      </div>
-                    )}
-
-                    {/* Numeric Bar */}
-                    <div
-                      style={{ height: `${heightPercent}%` }}
-                      className={`w-full rounded-t-xl border-t border-x flex flex-col items-center justify-between py-1 transition-all duration-300 ${barBg}`}
-                    >
-                      <span className="text-xs font-extrabold tracking-tight">
-                        {val}
-                      </span>
-                    </div>
-
-                    {/* Index Label */}
-                    <div className="text-[10px] font-mono font-bold text-slate-400 mt-1.5">
-                      [{idx}]
-                    </div>
-
-                    {/* Pointer Arrows below */}
-                    <div className="absolute -bottom-6 flex flex-col items-center gap-0.5 text-[9px] font-extrabold">
-                      {isI && <span className="text-indigo-400">▼ i</span>}
-                      {isScanning && <span className="text-cyan-400">▲ j</span>}
-                      {isMin && <span className="text-amber-400">▲ min</span>}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Playback Controls Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-stone-100">
+          {/* 3. TẦNG 1: BỘ MÔ PHỎNG NỔI BẬT CHIA 3 CỘT (LAYOUT 2.5 : 7 : 2.5) */}
+          <div className="w-full bg-[#161124]/80 backdrop-blur-md rounded-3xl border border-[#30363d] shadow-2xl overflow-hidden flex flex-col p-4 space-y-4">
+            
+            {/* Playback Controls & Speed Toolbar & Keyboard Shortcuts Hint */}
+            <div className="bg-[#0d1117] p-3.5 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-100">
+              {/* Buttons Group */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setCurrentStep(0)}
                   disabled={currentStep === 0}
-                  className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-stone-700 transition-colors"
-                  title="Về bước đầu"
+                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+                  title="Về bước đầu (Phím R)"
                 >
                   <RotateCcw className="w-4 h-4" />
                 </button>
@@ -710,23 +723,25 @@ export default function SelectionSortLab({ onBack }) {
                 <button
                   onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
                   disabled={currentStep === 0}
-                  className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-stone-700 transition-colors"
-                  title="Bước trước"
+                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+                  title="Bước trước (Phím ←)"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs shadow-md shadow-amber-500/20 flex items-center gap-1.5 transition-all transform active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-500 hover:from-sky-500 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg shadow-sky-950/60 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
                 >
                   {isPlaying ? (
                     <>
-                      <Pause className="w-4 h-4" /> Tạm Dừng
+                      <Pause className="w-4 h-4 fill-white" />
+                      <span>Tạm dừng</span>
                     </>
                   ) : (
                     <>
-                      <Play className="w-4 h-4" /> Phát Tự Động
+                      <Play className="w-4 h-4 fill-white" />
+                      <span>Tự động chạy</span>
                     </>
                   )}
                 </button>
@@ -734,8 +749,8 @@ export default function SelectionSortLab({ onBack }) {
                 <button
                   onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
                   disabled={currentStep === steps.length - 1}
-                  className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-stone-700 transition-colors"
-                  title="Bước tiếp"
+                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+                  title="Bước tiếp (Phím →)"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -743,139 +758,238 @@ export default function SelectionSortLab({ onBack }) {
                 <button
                   onClick={() => setCurrentStep(steps.length - 1)}
                   disabled={currentStep === steps.length - 1}
-                  className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-stone-700 transition-colors"
-                  title="Đến cuối"
+                  className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+                  title="Xem kết quả cuối cùng"
                 >
                   <SkipForward className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Progress & Speed Slider */}
-              <div className="flex items-center gap-4">
-                <div className="text-xs font-mono font-bold text-stone-600">
-                  Bước {currentStep + 1} / {steps.length}
+              {/* Keyboard Shortcut Hint Tag */}
+              <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-[#21262d] px-3 py-1.5 rounded-xl border border-[#30363d]">
+                <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
+                <span>[Space] Tạm dừng/Chạy | [←] Lùi | [→] Tiến | [R] Đặt lại</span>
+              </div>
+
+              {/* Speed Slider */}
+              <div className="flex items-center gap-3 w-full sm:w-auto bg-[#21262d] px-4 py-2 rounded-xl border border-[#30363d] shadow-xs">
+                <span className="text-xs font-bold text-slate-300 shrink-0">Tốc độ:</span>
+                <input
+                  type="range"
+                  min="150"
+                  max="1500"
+                  step="50"
+                  value={1650 - speed}
+                  onChange={(e) => setSpeed(1650 - parseInt(e.target.value, 10))}
+                  className="w-28 sm:w-36 accent-cyan-400 cursor-pointer"
+                />
+                <span className="text-xs font-mono font-bold text-cyan-400 shrink-0 w-14 text-right">
+                  {speed}ms
+                </span>
+              </div>
+            </div>
+
+            {/* SIDE-BY-SIDE 3-PANEL GRID WORKSPACE (LAYOUT 2.5 : 7 : 2.5) */}
+            <div className="relative w-full min-h-[490px] grid grid-cols-12 select-none overflow-hidden rounded-2xl border border-[#30363d] shadow-2xl">
+              
+              {/* CỘT 1 (LEFT - 2.5 COLS ~ 25%): PSEUDOCODE & CYBER LED LIVE VARIABLE WATCHER */}
+              <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-4 border-r border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5 mb-3">
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-cyan-400 animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-wider text-slate-100">
+                        Mã Giả & Biến Số
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
+                      Selection Sort
+                    </span>
+                  </div>
+
+                  {/* Pseudocode Snippet */}
+                  <div className="space-y-1 font-mono text-[11px] max-h-[220px] overflow-y-auto pr-1">
+                    {currentCodeLines.map((item) => {
+                      const isActive = item.line === activeLine;
+                      return (
+                        <div
+                          key={item.line}
+                          className={`p-1.5 rounded-lg flex items-center gap-2 transition-all ${
+                            isActive
+                              ? "bg-[#1f2937] text-sky-300 font-bold border-l-4 border-sky-400 pl-2 shadow-md"
+                              : "text-slate-400 hover:text-slate-200"
+                          }`}
+                        >
+                          <span className="text-[10px] opacity-40 w-4 text-right font-mono">{item.line}</span>
+                          <span className="truncate whitespace-pre">{item.text}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-stone-500">Tốc độ:</span>
-                  <input
-                    type="range"
-                    min="150"
-                    max="1500"
-                    step="50"
-                    value={1650 - speed}
-                    onChange={(e) => setSpeed(1650 - parseInt(e.target.value, 10))}
-                    className="w-24 accent-amber-500 cursor-pointer"
-                  />
+                {/* Live Variables Cyber LED Watch Box */}
+                <div className="pt-3 border-t border-[#30363d] space-y-2">
+                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <Code2 className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Theo dõi biến Cyber LED:</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-center text-[10px] font-mono">
+                    <div className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] shadow-inner">
+                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Lượt Pass (i)</span>
+                      <span className="font-extrabold text-slate-200 text-xs">i = {step.i >= 0 ? step.i : 0}</span>
+                    </div>
+                    <div className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] shadow-inner">
+                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Đang Quét (j)</span>
+                      <span className="font-extrabold text-teal-400 text-xs">{step.j >= 0 ? `j = ${step.j}` : "-"}</span>
+                    </div>
+                    <div className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] shadow-inner">
+                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Vương Miện Min</span>
+                      <span className="font-extrabold text-amber-400 text-xs">{step.minIdx >= 0 ? `[${step.minIdx}] = ${step.array[step.minIdx]}` : "-"}</span>
+                    </div>
+                    <div className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] shadow-inner">
+                      <span className="text-slate-400 block text-[9px] uppercase font-semibold">Hoán Đổi?</span>
+                      <span className={`font-extrabold text-xs ${step.swapping.length > 0 ? "text-rose-400 animate-pulse" : "text-emerald-400"}`}>
+                        {step.swapping.length > 0 ? "✓ SWAP" : "SCAN"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Step Progress Line */}
-            <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
-              <div
-                style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-                className="h-full bg-gradient-to-r from-amber-400 to-amber-600 transition-all duration-300"
-              />
-            </div>
-          </div>
-
-          {/* 5 Metrics Cards Dashboard */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1.5">
-                <BarChart2 className="w-3.5 h-3.5 text-cyan-600" />
-                So sánh
-              </div>
-              <div className="text-2xl font-black text-cyan-600 mt-1">
-                {step.comparisons}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1.5">
-                <RefreshCw className="w-3.5 h-3.5 text-amber-600" />
-                Hoán đổi
-              </div>
-              <div className="text-2xl font-black text-amber-600 mt-1">
-                {step.swaps}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-600" />
-                Lượt (Pass i)
-              </div>
-              <div className="text-2xl font-black text-indigo-600 mt-1">
-                {step.pass} / {initialArray.length - 1}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between">
-              <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Crown className="w-3.5 h-3.5 text-rose-600" />
-                Min Đổi
-              </div>
-              <div className="text-2xl font-black text-rose-600 mt-1">
-                {step.minUpdates}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between col-span-2 md:col-span-1">
-              <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-emerald-600" />
-                Tỉ lệ Swap/Comp
-              </div>
-              <div className="text-2xl font-black text-emerald-600 mt-1">
-                {swapRatio}
-              </div>
-            </div>
-          </div>
-
-          {/* Dual Panel Grid: Heatmap + Timeline & Interactive Pseudocode */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left: Heatmap & Timeline Panel */}
-            <div className="space-y-6">
-              {/* 🔥 Heatmap Panel */}
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-2">
-                    <Flame className="w-4 h-4 text-rose-500" />
-                    Bản đồ nhiệt so sánh (Heatmap)
-                  </h3>
-                  <button
-                    onClick={() => setShowHeatmap(!showHeatmap)}
-                    className="text-[11px] text-stone-500 hover:text-stone-800 font-semibold"
-                  >
-                    {showHeatmap ? "Ẩn" : "Hiện"}
-                  </button>
+              {/* CỘT 2 (CENTER - 7 COLS ~ 50-60%): 3D SELECTION SORT STAGE WITH CROWN & SCANNER BEAM */}
+              <div className="col-span-12 lg:col-span-6 bg-gradient-to-b from-[#161b22] via-[#0d1117] to-[#0d1117] p-3 md:p-4 flex flex-col justify-between items-center relative border-r border-[#30363d] overflow-hidden">
+                
+                {/* Status Explanatory Banner */}
+                <div className="w-full flex items-center justify-between z-10 px-2 py-1 bg-[#161b22]/90 rounded-xl border border-[#30363d] backdrop-blur-md">
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-200">
+                    <Info className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                    <span className="truncate max-w-md">{step.status}</span>
+                  </div>
+                  {predictScore.total > 0 && (
+                    <div className="text-[11px] font-mono font-bold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
+                      🎯 Quiz: {predictScore.correct}/{predictScore.total}
+                    </div>
+                  )}
                 </div>
 
+                {/* 3D BARS VISUALIZATION STAGE */}
+                <div className="relative h-64 w-full flex items-end justify-center gap-2 md:gap-3 overflow-visible pt-10 my-auto">
+                  
+                  {/* Legend Header */}
+                  <div className="absolute top-2 left-2 flex flex-wrap items-center gap-3 text-[10px] font-mono text-slate-400 bg-[#21262d] px-2.5 py-1 rounded-lg border border-[#30363d]">
+                    <div className="flex items-center gap-1">
+                      <Crown className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+                      <span>Min Candidate</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 rounded-full bg-teal-400" />
+                      <span>Scanner Beam j</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span>Sorted i</span>
+                    </div>
+                  </div>
+
+                  {/* Bars Mapping */}
+                  {step.array.map((val, idx) => {
+                    const heightPercent = Math.max(15, Math.round((val / maxVal) * 100));
+                    const isMin = idx === step.minIdx;
+                    const isScanning = idx === step.j;
+                    const isI = idx === step.i;
+                    const isLocked = step.locked.includes(idx);
+                    const isSwapping = step.swapping.includes(idx);
+
+                    let barBg = "bg-[#21262d] border-[#30363d] text-slate-200";
+                    if (isFinished) {
+                      barBg = "bg-emerald-500 border-emerald-400 text-slate-950 font-black shadow-lg shadow-emerald-500/40";
+                    } else if (isLocked) {
+                      barBg = "bg-emerald-600/80 border-emerald-400 text-white font-bold";
+                    } else if (isSwapping) {
+                      barBg = "bg-rose-500 border-rose-300 text-white font-black animate-bounce shadow-xl shadow-rose-500/50";
+                    } else if (isMin) {
+                      barBg = "bg-gradient-to-t from-amber-500 to-amber-300 border-amber-200 text-slate-950 font-black shadow-xl shadow-amber-400/40 ring-2 ring-amber-300";
+                    } else if (isScanning) {
+                      barBg = "bg-gradient-to-t from-teal-600 to-teal-400 border-teal-300 text-slate-950 font-extrabold shadow-lg shadow-teal-400/30";
+                    }
+
+                    return (
+                      <div
+                        key={idx}
+                        className="flex-1 flex flex-col items-center justify-end h-full max-w-[48px] relative group transition-all duration-300"
+                      >
+                        {/* 👑 Amber Crown Icon above current min element */}
+                        {isMin && !isFinished && (
+                          <div className="absolute -top-7 text-amber-400 animate-bounce z-20 flex flex-col items-center">
+                            <Crown className="w-5 h-5 drop-shadow-[0_2px_10px_rgba(251,191,36,0.9)]" />
+                            <Sparkles className="w-3 h-3 text-amber-300 animate-spin -mt-1" />
+                          </div>
+                        )}
+
+                        {/* Gold Crown when finished */}
+                        {isFinished && idx === 0 && (
+                          <div className="absolute -top-7 text-amber-400 animate-bounce z-20 flex flex-col items-center">
+                            <Crown className="w-5 h-5 drop-shadow-[0_2px_10px_rgba(251,191,36,0.9)]" />
+                          </div>
+                        )}
+
+                        {/* Neon Teal Scanner Beam effect above scanning index j */}
+                        {isScanning && !isFinished && (
+                          <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-teal-400 via-cyan-400 to-transparent shadow-[0_0_12px_#2dd4bf] animate-pulse z-10" />
+                        )}
+
+                        {/* Numeric Bar */}
+                        <div
+                          style={{ height: `${heightPercent}%` }}
+                          className={`w-full rounded-t-xl border-t border-x flex flex-col items-center justify-between py-1 transition-all duration-300 ${barBg}`}
+                        >
+                          <span className="text-xs font-extrabold tracking-tight">
+                            {val}
+                          </span>
+                        </div>
+
+                        {/* Index Label */}
+                        <div className="text-[10px] font-mono font-bold text-slate-400 mt-1.5">
+                          [{idx}]
+                        </div>
+
+                        {/* Pointer Arrows below */}
+                        <div className="absolute -bottom-6 flex flex-col items-center gap-0.5 text-[9px] font-extrabold font-mono">
+                          {isI && <span className="text-slate-300">▼ i</span>}
+                          {isScanning && <span className="text-teal-400">▲ j</span>}
+                          {isMin && <span className="text-amber-400">▲ min</span>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Bottom Heatmap Bar (Soft Mint -> Coral Pink) */}
                 {showHeatmap && (
-                  <div className="space-y-2 pt-1">
-                    <p className="text-[11px] text-stone-500">
-                      Tần suất bị so sánh của từng vị trí trong mảng. Vị trí cuối mảng bị so sánh ít nhất vì đoạn chưa sắp ngắn dần.
-                    </p>
-                    <div className="flex items-center gap-1.5 pt-2">
-                      {step.array.map((val, idx) => {
+                  <div className="w-full pt-4 border-t border-[#30363d] space-y-1 z-10">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <span className="flex items-center gap-1">
+                        <Flame className="w-3 h-3 text-amber-400" />
+                        <span>Mật độ so sánh (Heatmap):</span>
+                      </span>
+                      <span>Max: {maxHeatmapCount} lần</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      {step.array.map((_, idx) => {
                         const count = step.heatmap[idx] || 0;
-                        const maxCount = Math.max(...Object.values(step.heatmap), 1);
-                        const opacity = Math.min(1, 0.15 + (count / maxCount) * 0.85);
-
+                        const opacity = Math.min(1, Math.max(0.15, count / maxHeatmapCount));
                         return (
                           <div
-                            key={idx}
-                            className="flex-1 flex flex-col items-center gap-1"
-                          >
-                            <div
-                              style={{ backgroundColor: `rgba(244, 63, 94, ${opacity})` }}
-                              className="w-full h-8 rounded-lg flex items-center justify-center text-xs font-black text-stone-900 border border-rose-200 transition-all duration-300"
-                            >
-                              {count}
-                            </div>
-                            <span className="text-[10px] font-mono text-stone-400">[{idx}]</span>
-                          </div>
+                            key={`hm-${idx}`}
+                            className="flex-1 h-2 rounded-full transition-all duration-300"
+                            style={{
+                              backgroundColor: `rgba(56, 189, 248, ${opacity})`,
+                              boxShadow: opacity > 0.5 ? "0 0 8px rgba(56, 189, 248, 0.6)" : "none"
+                            }}
+                            title={`Index [${idx}]: ${count} lần so sánh`}
+                          />
                         );
                       })}
                     </div>
@@ -883,341 +997,403 @@ export default function SelectionSortLab({ onBack }) {
                 )}
               </div>
 
-              {/* 📊 Swap Timeline Panel */}
-              <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-3">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-amber-500" />
-                    Lịch sử Hoán đổi (Swap Timeline)
-                  </h3>
-                  <button
-                    onClick={() => setShowTimeline(!showTimeline)}
-                    className="text-[11px] text-stone-500 hover:text-stone-800 font-semibold"
-                  >
-                    {showTimeline ? "Ẩn" : "Hiện"}
-                  </button>
+              {/* CỘT 3 (RIGHT - 2.5 COLS ~ 25%): EXECUTION STATS & COMPLEXITY */}
+              <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-4 flex flex-col justify-between overflow-y-auto space-y-4 shadow-inner">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5 mb-3">
+                    <span className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                      <BarChart2 className="w-4 h-4 text-sky-400" />
+                      <span>Thống Kê Thực Thi</span>
+                    </span>
+                    <span className="text-xs font-mono text-cyan-400 font-bold">
+                      {currentStep + 1}/{steps.length}
+                    </span>
+                  </div>
+
+                  {/* Counter Grid */}
+                  <div className="grid grid-cols-1 gap-2 text-center">
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
+                      <span className="text-xs font-bold text-slate-400 uppercase">So sánh</span>
+                      <span className="text-lg font-black text-sky-400 font-mono">{step.comparisons}</span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
+                      <span className="text-xs font-bold text-slate-400 uppercase">Hoán đổi</span>
+                      <span className="text-lg font-black text-amber-400 font-mono">{step.swaps}</span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
+                      <span className="text-xs font-bold text-slate-400 uppercase">Đổi Min</span>
+                      <span className="text-lg font-black text-teal-400 font-mono">{step.minUpdates}</span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between px-3">
+                      <span className="text-xs font-bold text-slate-400 uppercase">Tỷ lệ Swap/Comp</span>
+                      <span className="text-sm font-black text-emerald-400 font-mono">{swapRatio}</span>
+                    </div>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="space-y-1.5 pt-3">
+                    <div className="flex justify-between text-xs font-bold text-slate-200">
+                      <span>Tiến trình hoàn thành</span>
+                      <span className="font-mono text-cyan-400">{progressPercent}%</span>
+                    </div>
+                    <div className="w-full h-2.5 rounded-full bg-[#161b22] overflow-hidden border border-[#30363d]">
+                      <div
+                        style={{ width: `${progressPercent}%` }}
+                        className="h-full bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-300"
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                {showTimeline && (
-                  <div className="space-y-2 pt-1">
-                    {step.swapHistory.length === 0 ? (
-                      <div className="text-xs text-stone-400 italic py-2">
-                        Chưa có phép hoán đổi nào được thực hiện.
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
-                        {step.swapHistory.map((item, hIdx) => (
-                          <button
-                            key={hIdx}
-                            onClick={() => setCurrentStep(item.stepIndex)}
-                            className="px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-left shrink-0 transition-all group"
-                          >
-                            <div className="text-[10px] font-bold text-amber-800 group-hover:text-amber-900">
-                              Pass {item.pass}: arr[{item.i}] ↔ arr[{item.minIdx}]
-                            </div>
-                            <div className="text-[11px] font-mono font-semibold text-amber-600">
-                              {item.valI} ↔ {item.valMin}
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    )}
+                {/* Quick Complexity Card */}
+                <div className="pt-3 border-t border-[#30363d] space-y-2">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-200">
+                    <Activity className="w-4 h-4 text-sky-400" />
+                    <span>Độ phức tạp Selection Sort:</span>
                   </div>
-                )}
+                  <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col justify-between">
+                      <span className="text-slate-400 text-[9px] uppercase font-semibold">Tốt nhất (Best)</span>
+                      <span className="font-mono font-bold text-amber-400">O(n²)</span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex flex-col justify-between">
+                      <span className="text-slate-400 text-[9px] uppercase font-semibold">Bộ nhớ (Space)</span>
+                      <span className="font-mono font-bold text-emerald-400">O(1)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 4. TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC CODE (FULL WIDTH DUAL-LANGUAGE CODE EDITOR) */}
+          <div className="w-full bg-[#0d1117] p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#30363d] pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                  <Code2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-100 leading-tight">
+                    Mã Giả Full & Trình Đọc Mã Nguồn Thuật Toán [SELECTION SORT]
+                  </h3>
+                  <p className="text-[11px] text-slate-400 font-mono">
+                    Xem toàn bộ cấu trúc mã nguồn nguyên bản và theo dõi dòng lệnh thi hành thời gian thực
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Dedicated Playback Toolbar for Tier 2 Code Reader */}
+                <div className="flex items-center gap-1.5 bg-[#161b22] px-2.5 py-1 rounded-xl border border-[#30363d] shadow-md">
+                  <button
+                    onClick={() => setCurrentStep(0)}
+                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] text-slate-300 transition-colors cursor-pointer"
+                    title="Về bước đầu (Phím R)"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
+                    disabled={currentStep === 0}
+                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer"
+                    title="Lùi 1 bước (Phím ←)"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className={`px-3 py-1 rounded-lg font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
+                      isPlaying
+                        ? "bg-rose-600 hover:bg-rose-500 text-white animate-pulse"
+                        : "bg-sky-600 hover:bg-sky-500 text-white"
+                    }`}
+                    title={isPlaying ? "Tạm dừng" : "Chạy tự động mã nguồn"}
+                  >
+                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                    <span>{isPlaying ? "Tạm Dừng" : "Chạy Code"}</span>
+                  </button>
+                  <button
+                    onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
+                    disabled={currentStep === steps.length - 1}
+                    className="p-1.5 rounded-lg bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer"
+                    title="Tiến 1 bước (Phím →)"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                  <span className="text-[10px] font-mono text-slate-400 border-l border-[#30363d] pl-2">
+                    Bước <strong className="text-cyan-400">{currentStep + 1}</strong>/{steps.length}
+                  </span>
+                </div>
+
+                {/* Language Switcher Tabs: Pseudocode | Python | Java */}
+                <div className="flex bg-[#161b22] p-1 rounded-xl border border-[#30363d]">
+                  <button
+                    onClick={() => setLang("EN")}
+                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                      lang === "EN"
+                        ? "bg-sky-600 text-white shadow-md"
+                        : "text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    Mã Giả (Pseudocode)
+                  </button>
+                  <button
+                    onClick={() => setLang("python")}
+                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                      lang === "python"
+                        ? "bg-teal-600 text-white shadow-md"
+                        : "text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    Python
+                  </button>
+                  <button
+                    onClick={() => setLang("java")}
+                    className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                      lang === "java"
+                        ? "bg-emerald-600 text-white shadow-md"
+                        : "text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    Java
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Right: Bilingual Interactive Pseudocode Panel */}
-            <div className="bg-slate-900 text-slate-100 p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-                    <Code2 className="w-4 h-4 text-cyan-400" />
-                    Mã Giả (Pseudocode)
+            {/* Code Lines Display */}
+            <div className="font-mono text-xs space-y-1.5 py-2">
+              {currentCodeLines.map((item) => {
+                const isActive = item.line === activeLine;
+                return (
+                  <div
+                    key={item.line}
+                    className={`flex items-center px-4 py-2 rounded-xl transition-all ${
+                      isActive
+                        ? "bg-[#1f2937] text-sky-300 font-extrabold border-l-4 border-sky-400 shadow-lg scale-[1.005]"
+                        : "text-slate-400 hover:text-slate-200 hover:bg-[#161b22]/50"
+                    }`}
+                  >
+                    <span className="w-10 text-[11px] text-slate-500 shrink-0 select-none font-bold">
+                      #{item.line}
+                    </span>
+                    <span className="whitespace-pre flex items-center gap-2">
+                      {isActive && <span className="text-sky-400 text-[10px] animate-pulse">▶</span>}
+                      <span>{item.text}</span>
+                    </span>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Language Toggle */}
-                  <div className="flex items-center gap-1 bg-slate-800 p-1 rounded-lg border border-slate-700 text-[11px] font-bold">
-                    <button
-                      onClick={() => setPseudoLang("VI")}
-                      className={`px-2 py-0.5 rounded transition-all ${
-                        pseudoLang === "VI" ? "bg-amber-500 text-white" : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      Tiếng Việt
-                    </button>
-                    <button
-                      onClick={() => setPseudoLang("EN")}
-                      className={`px-2 py-0.5 rounded transition-all ${
-                        pseudoLang === "EN" ? "bg-amber-500 text-white" : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      English
-                    </button>
-                  </div>
-                </div>
+            <div className="pt-3 border-t border-[#30363d] text-[11px] font-mono text-slate-400 flex justify-between items-center">
+              <span>● Đang thi hành bước {currentStep + 1} / {steps.length}</span>
+              <span className="text-sky-400 font-bold">● Active Line: #{activeLine}</span>
+            </div>
+          </div>
 
-                {/* Pseudocode Lines List */}
-                <div className="space-y-1.5 pt-4 font-mono text-xs">
-                  {activePseudocode.map((item) => {
-                    const isActive = 
-                      (pseudoLang === "VI" && item.line === step.activeLineVI) ||
-                      (pseudoLang === "EN" && item.line === step.activeLineEN);
+          {/* 5. TẦNG 3: THỐNG KÊ CHI TIẾT & BẢNG ĐỘ PHỨC TẠP BỔ TRỢ */}
+          <div className="w-full bg-[#161124]/80 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-200 uppercase tracking-wider border-b border-[#30363d] pb-3">
+              <Activity className="w-4 h-4 text-sky-400" />
+              <span>Bảng Đánh Giá Độ Phức Tạp Thuật Toán & Phân Tích Chuyên Sâu Selection Sort</span>
+            </div>
 
-                    return (
-                      <div
-                        key={item.line}
-                        onMouseEnter={() => setHoveredLineTip(item.tip)}
-                        onMouseLeave={() => setHoveredLineTip(null)}
-                        className={`px-3 py-2 rounded-xl transition-all flex items-center justify-between cursor-pointer ${
-                          isActive
-                            ? "bg-amber-500/20 border-l-4 border-amber-400 text-amber-200 font-bold scale-[1.01]"
-                            : "text-slate-400 hover:bg-slate-800/60 hover:text-slate-200"
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-[10px] text-slate-500 w-4">{item.line}</span>
-                          <span className="whitespace-pre">{item.text}</span>
-                        </div>
-                        {isActive && <span className="text-[10px] text-amber-400 font-extrabold uppercase">Executing</span>}
-                      </div>
-                    );
-                  })}
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-amber-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
+                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp tốt nhất (Best)</span>
+                <span className="font-mono font-black text-amber-400 text-lg block">O(n²)</span>
+                <p className="text-[11px] text-slate-400 leading-snug">Dù mảng đã sắp xếp vẫn phải quét hết để xác nhận min.</p>
               </div>
 
-              {/* Tooltip Explanation Line */}
-              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs text-amber-300/90 font-sans italic min-h-[44px] flex items-center">
-                {hoveredLineTip ? (
-                  <span>💡 {hoveredLineTip}</span>
-                ) : (
-                  <span className="text-slate-500">Rê chuột vào từng dòng pseudocode để xem giải thích chi tiết.</span>
-                )}
+              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-amber-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
+                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp trung bình (Avg)</span>
+                <span className="font-mono font-black text-amber-400 text-lg block">O(n²)</span>
+                <p className="text-[11px] text-slate-400 leading-snug">Luôn cần thực hiện cố định n(n-1)/2 phép so sánh.</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-rose-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
+                <span className="text-slate-400 font-semibold block text-[11px]">Độ phức tạp xấu nhất (Worst)</span>
+                <span className="font-mono font-black text-rose-400 text-lg block">O(n²)</span>
+                <p className="text-[11px] text-slate-400 leading-snug">Số phép so sánh luôn luôn không đổi O(n²).</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] hover:border-cyan-500/40 transition-all hover:-translate-y-1 space-y-1 shadow-md">
+                <span className="text-slate-400 font-semibold block text-[11px]">Bộ nhớ sử dụng (Space)</span>
+                <span className="font-mono font-black text-cyan-400 text-lg block">O(1)</span>
+                <p className="text-[11px] text-slate-400 leading-snug">Sắp xếp tại chỗ (In-place sort), tối đa n-1 phép hoán đổi.</p>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* MODE 2: Speed & Swap Count Comparison vs Bubble Sort */}
+      {/* MODE 2: Comparison vs Bubble Sort */}
       {activeMode === "comparison" && (
-        <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6 animate-in fade-in">
-          <div>
-            <h2 className="text-base font-bold text-stone-800 flex items-center gap-2">
-              <BarChart2 className="w-5 h-5 text-indigo-600" />
-              So Sánh Trực Quan: Selection Sort vs Bubble Sort
-            </h2>
-            <p className="text-xs text-stone-500 mt-1">
-              Thực thi trên cùng một mảng ngẫu nhiên gồm {initialArray.length} phần tử. Quan sát sự khác biệt vượt trội về số phép hoán đổi (Swaps).
-            </p>
+        <div className="bg-[#161124]/80 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-6">
+          <div className="flex items-center gap-3 border-b border-[#30363d] pb-4">
+            <div className="p-2.5 rounded-2xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              <BarChart2 className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-slate-100">
+                So sánh hiệu năng: Selection Sort vs Bubble Sort
+              </h2>
+              <p className="text-xs text-slate-400">
+                So sánh số phép so sánh và số lần hoán đổi bộ nhớ thực tế trên cùng một mảng đầu vào.
+              </p>
+            </div>
           </div>
 
-          {/* Comparison Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Selection Sort Card */}
-            <div className="p-5 rounded-2xl bg-amber-50/50 border border-amber-200 space-y-4">
-              <div className="flex items-center justify-between border-b border-amber-200/60 pb-3">
-                <div className="font-bold text-amber-900 text-sm flex items-center gap-2">
-                  <Crown className="w-4 h-4 text-amber-600" />
-                  Selection Sort
+            <div className="p-5 rounded-2xl bg-[#0d1117] border border-[#30363d] space-y-4 shadow-xl">
+              <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
+                <div className="flex items-center gap-2 font-bold text-sky-300 text-sm">
+                  <Crown className="w-4 h-4 text-amber-400" />
+                  Selection Sort (Sắp Xếp Chọn)
                 </div>
-                <span className="text-xs font-mono font-bold px-2 py-0.5 bg-amber-200 text-amber-900 rounded-md">
-                  O(N²) time | O(N) swaps
+                <span className="px-2.5 py-0.5 rounded-full bg-[#21262d] text-sky-300 text-[10px] font-mono font-bold border border-[#30363d]">
+                  Tối đa O(n) Swaps
                 </span>
               </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-stone-600 font-semibold">Phép So Sánh (Comparisons):</span>
-                  <span className="font-bold text-stone-900">{step.comparisons}</span>
+              <div className="space-y-3 font-mono text-xs">
+                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
+                  <span className="text-slate-300">Tổng số phép so sánh:</span>
+                  <span className="font-bold text-sky-400">{steps[steps.length - 1]?.comparisons || 0}</span>
                 </div>
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-stone-600 font-semibold">Phép Hoán Đổi (Swaps):</span>
-                  <span className="font-bold text-amber-700 text-sm">{step.swaps} (Tối đa N-1)</span>
+                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
+                  <span className="text-slate-300">Tổng số lần hoán đổi:</span>
+                  <span className="font-bold text-emerald-400">{steps[steps.length - 1]?.swaps || 0}</span>
                 </div>
-
-                {/* Progress Visual */}
-                <div className="space-y-1">
-                  <div className="text-[10px] text-stone-500 font-semibold">Mức độ hoán đổi (Càng ít càng tối ưu):</div>
-                  <div className="w-full h-3 bg-amber-100 rounded-full overflow-hidden">
-                    <div
-                      style={{ width: `${Math.min(100, (step.swaps / Math.max(bubbleStats.swaps, 1)) * 100)}%` }}
-                      className="h-full bg-amber-500 rounded-full transition-all duration-500"
-                    />
-                  </div>
-                </div>
+                <p className="text-[11px] font-sans text-slate-400 leading-relaxed pt-1">
+                  💡 Selection Sort quét để tìm giá trị nhỏ nhất rồi mới hoán đổi 1 lần ở cuối mỗi Lượt Pass. Do đó số lần hoán đổi ghi bộ nhớ rất ít (tối đa $n-1$).
+                </p>
               </div>
             </div>
 
             {/* Bubble Sort Card */}
-            <div className="p-5 rounded-2xl bg-indigo-50/50 border border-indigo-200 space-y-4">
-              <div className="flex items-center justify-between border-b border-indigo-200/60 pb-3">
-                <div className="font-bold text-indigo-900 text-sm flex items-center gap-2">
-                  <RefreshCw className="w-4 h-4 text-indigo-600" />
-                  Bubble Sort
+            <div className="p-5 rounded-2xl bg-[#0d1117] border border-[#30363d] space-y-4 shadow-xl">
+              <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
+                <div className="flex items-center gap-2 font-bold text-sky-300 text-sm">
+                  <RefreshCw className="w-4 h-4 text-sky-400" />
+                  Bubble Sort (Sắp Xếp Nổi Bọt)
                 </div>
-                <span className="text-xs font-mono font-bold px-2 py-0.5 bg-indigo-200 text-indigo-900 rounded-md">
-                  O(N²) time | O(N²) swaps
+                <span className="px-2.5 py-0.5 rounded-full bg-[#21262d] text-rose-300 text-[10px] font-mono font-bold border border-[#30363d]">
+                  Nhiều Swaps liên tục
                 </span>
               </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-stone-600 font-semibold">Phép So Sánh (Comparisons):</span>
-                  <span className="font-bold text-stone-900">{bubbleStats.comparisons}</span>
+              <div className="space-y-3 font-mono text-xs">
+                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
+                  <span className="text-slate-300">Tổng số phép so sánh:</span>
+                  <span className="font-bold text-sky-400">{bubbleStats.comparisons}</span>
                 </div>
-                <div className="flex justify-between items-center text-xs">
-                  <span className="text-stone-600 font-semibold">Phép Hoán Đổi (Swaps):</span>
-                  <span className="font-bold text-rose-600 text-sm">{bubbleStats.swaps} (Có thể tới N(N-1)/2)</span>
+                <div className="flex justify-between p-3 rounded-xl bg-[#161b22] border border-[#30363d]">
+                  <span className="text-slate-300">Tổng số lần hoán đổi:</span>
+                  <span className="font-bold text-rose-400">{bubbleStats.swaps}</span>
                 </div>
-
-                {/* Progress Visual */}
-                <div className="space-y-1">
-                  <div className="text-[10px] text-stone-500 font-semibold">Mức độ hoán đổi:</div>
-                  <div className="w-full h-3 bg-indigo-100 rounded-full overflow-hidden">
-                    <div
-                      style={{ width: `100%` }}
-                      className="h-full bg-rose-500 rounded-full transition-all duration-500"
-                    />
-                  </div>
-                </div>
+                <p className="text-[11px] font-sans text-slate-400 leading-relaxed pt-1">
+                  💡 Bubble Sort liên tục hoán đổi ngay khi phát hiện $a[j] &gt; a[j+1]$, dẫn đến số phép hoán đổi bộ nhớ lớn hơn nhiều so với Selection Sort.
+                </p>
               </div>
             </div>
-          </div>
-
-          {/* Educational Insight Box */}
-          <div className="p-4 rounded-xl bg-slate-900 text-slate-200 space-y-2">
-            <div className="text-xs font-bold text-amber-400 flex items-center gap-2">
-              💡 Insight cốt lõi: Tại sao Selection Sort ít hoán đổi hơn Bubble Sort?
-            </div>
-            <p className="text-xs leading-relaxed text-slate-300">
-              Cả hai đều có độ phức tạp thời gian <code className="text-amber-300">O(N²)</code>, nhưng <strong>Selection Sort chỉ hoán đổi tối đa N-1 lần</strong> (mỗi lượt duyệt chỉ hoán đổi 1 lần sau khi đã tìm thấy min). Trong khi đó, Bubble Sort hoán đổi liên tục mỗi khi thấy cặp sai thứ tự (có thể lên tới <code className="text-rose-400">N(N-1)/2</code> lần). Vì vậy, nếu chi phí ghi/hoán đổi bộ nhớ đắt đỏ, Selection Sort sẽ vượt trội hơn hẳn.
-            </p>
           </div>
         </div>
       )}
 
       {/* MODE 3: Unstable Sort Demo */}
       {activeMode === "unstable" && (
-        <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6 animate-in fade-in">
-          <div>
-            <h2 className="text-base font-bold text-stone-800 flex items-center gap-2">
-              <XCircle className="w-5 h-5 text-rose-500" />
-              Minh Họa Tính KHÔNG ỔN ĐỊNH (Unstable Algorithm)
-            </h2>
-            <p className="text-xs text-stone-500 mt-1">
-              Thuật toán ổn định (Stable) giữ nguyên thứ tự tương đối của các phần tử có giá trị bằng nhau. Selection Sort KHÔNG ổn định.
-            </p>
+        <div className="bg-[#161124]/80 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-6">
+          <div className="flex items-center gap-3 border-b border-[#30363d] pb-4">
+            <div className="p-2.5 rounded-2xl bg-rose-500/20 text-rose-300 border border-rose-500/30">
+              <Zap className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-slate-100">
+                Demo Tính Không Ổn Định (Unstable Sort Feature)
+              </h2>
+              <p className="text-xs text-slate-400">
+                Giải thích lý do tại sao Selection Sort là thuật toán sắp xếp KHÔNG ỔN ĐỊNH (Unstable).
+              </p>
+            </div>
           </div>
 
-          {/* Before & After Duplicate Display */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Before Sort */}
-            <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-3">
-              <div className="text-xs font-bold text-stone-700">Mảng ban đầu (3 phần tử giá trị 5 có ký hiệu a, b, c):</div>
+          <div className="space-y-4 text-xs leading-relaxed text-slate-300">
+            <p>
+              Thuật toán được gọi là <strong>Ổn định (Stable)</strong> nếu thứ tự tương đối giữa các phần tử có giá trị bằng nhau được giữ nguyên sau khi sắp xếp.
+            </p>
+
+            <div className="p-4 rounded-2xl bg-[#0d1117] border border-[#30363d] space-y-3 font-mono">
+              <div className="text-xs font-bold text-sky-300 uppercase">Mảng ví dụ ban đầu:</div>
               <div className="flex items-center gap-2">
                 {unstableArray.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex-1 h-14 rounded-xl bg-white border border-stone-300 flex flex-col items-center justify-center font-bold text-sm shadow-sm"
-                  >
+                  <div key={idx} className="px-3 py-2 rounded-xl bg-[#21262d] border border-[#30363d] font-bold flex items-center gap-1 text-slate-200">
                     <span>{item.val}</span>
-                    {item.tag && <span className="text-[10px] text-indigo-600 font-extrabold">{item.tag}</span>}
+                    {item.tag && <span className="text-[10px] text-amber-400 font-bold">({item.tag})</span>}
                   </div>
                 ))}
               </div>
-              <div className="text-[11px] text-stone-500 italic">
-                Thứ tự ban đầu của các số 5: <span className="font-bold text-indigo-600">5a</span> đứng trước <span className="font-bold text-emerald-600">5b</span> đứng trước <span className="font-bold text-rose-600">5c</span>.
-              </div>
-            </div>
-
-            {/* After Selection Sort */}
-            <div className="p-5 rounded-2xl bg-rose-50/60 border border-rose-200 space-y-3">
-              <div className="text-xs font-bold text-rose-900">Sau khi Selection Sort hoàn tất:</div>
-              <div className="flex items-center gap-2">
-                {[
-                  { val: 1, tag: "" },
-                  { val: 2, tag: "" },
-                  { val: 3, tag: "" },
-                  { val: 5, tag: "c" },
-                  { val: 5, tag: "b" },
-                  { val: 5, tag: "a" }
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex-1 h-14 rounded-xl bg-white border border-rose-300 flex flex-col items-center justify-center font-bold text-sm shadow-sm"
-                  >
-                    <span>{item.val}</span>
-                    {item.tag && <span className="text-[10px] text-rose-600 font-extrabold">{item.tag}</span>}
-                  </div>
-                ))}
-              </div>
-              <div className="text-[11px] text-rose-700 font-bold">
-                ⚠️ Thứ tự bị đảo ngược: 5c → 5b → 5a! Phép hoán đổi nhảy cóc qua khoảng cách xa đã làm vỡ thứ tự ban đầu.
-              </div>
+              <p className="text-[11px] font-sans text-slate-400 pt-2">
+                Trong ví dụ trên có ba số 5: $5_a, 5_b, 5_c$. Khi Selection Sort hoán đổi phần tử nhỏ nhất $1$ ở cuối với phần tử đầu tiên $5_a$, vị trí tương đối của $5_a$ bị đẩy xuống đằng sau $5_b$ và $5_c$, làm đảo lộn thứ tự ban đầu của các số 5.
+              </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* Prediction Challenge Modal */}
+      {/* Prediction Challenge Modal Dialog */}
       {predictModalOpen && step.predictQuestion && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-white max-w-md w-full rounded-2xl p-6 border border-stone-200 shadow-2xl space-y-5">
-            <div className="flex items-center gap-3 border-b border-stone-100 pb-3">
-              <div className="p-2 rounded-xl bg-amber-500 text-white font-black">
-                <HelpCircle className="w-5 h-5" />
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-[#161b22] border border-[#30363d] rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-5 text-slate-100 relative">
+            <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
+              <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm">
+                <HelpCircle className="w-5 h-5 text-cyan-400 animate-bounce" />
+                Thử Thách Dự Đoán Min (Lượt {step.pass})
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-stone-800">
-                  Thử Thách Dự Đoán — Lượt {step.pass}
-                </h3>
-                <p className="text-xs text-stone-500 font-medium">
-                  Kiểm tra khả năng tư duy trước khi thuật toán quét
-                </p>
-              </div>
+              <span className="text-xs font-mono text-slate-400">
+                Đoạn {step.predictQuestion.rangeText}
+              </span>
             </div>
 
-            <div className="space-y-2">
-              <p className="text-xs text-stone-700 leading-relaxed">
-                Phần tử nào có giá trị <strong className="text-amber-600">nhỏ nhất</strong> trong đoạn chưa sắp xếp <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono">{step.predictQuestion.rangeText}</code>?
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 leading-relaxed font-sans">
+              Trước khi thuật toán tiến hành quét, theo bạn giá trị <strong>nhỏ nhất (Min)</strong> trong đoạn chưa sắp xếp {step.predictQuestion.rangeText} sẽ là bao nhiêu?
+            </p>
 
-            {/* Answer Options Grid */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3 font-mono">
               {step.predictQuestion.options.map((optVal, oIdx) => (
                 <button
                   key={oIdx}
                   onClick={() => handleSelectPredictAnswer(optVal, step.predictQuestion)}
                   disabled={predictFeedback !== null}
-                  className="p-3 rounded-xl bg-stone-50 hover:bg-amber-50 border border-stone-200 hover:border-amber-300 font-bold text-sm text-stone-800 transition-all text-center disabled:opacity-80"
+                  className="p-3 rounded-2xl bg-[#0d1117] hover:bg-[#21262d] border border-[#30363d] text-base font-extrabold text-slate-200 hover:text-white transition-all cursor-pointer shadow-md active:scale-95 text-center"
                 >
                   {optVal}
                 </button>
               ))}
             </div>
 
-            {/* Feedback & Continue Button */}
             {predictFeedback && (
-              <div className="space-y-3 pt-2">
-                <div className={`p-3 rounded-xl text-xs font-bold ${
-                  predictFeedback.isCorrect ? "bg-emerald-50 text-emerald-800 border border-emerald-200" : "bg-rose-50 text-rose-800 border border-rose-200"
-                }`}>
-                  {predictFeedback.msg}
-                </div>
-
-                <button
-                  onClick={() => {
-                    setPredictModalOpen(false);
-                    setIsPlaying(true);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2"
-                >
-                  Tiếp Tục Mô Phỏng <ChevronRight className="w-4 h-4" />
-                </button>
+              <div className={`p-3.5 rounded-2xl text-xs font-bold font-mono text-center border animate-in zoom-in-95 duration-200 ${
+                predictFeedback.isCorrect
+                  ? "bg-emerald-950/90 border-emerald-500/60 text-emerald-300"
+                  : "bg-rose-950/90 border-rose-500/60 text-rose-300"
+              }`}>
+                {predictFeedback.msg}
               </div>
             )}
+
+            <div className="pt-2 flex justify-end">
+              <button
+                onClick={() => {
+                  setPredictModalOpen(false);
+                  setIsPlaying(true);
+                }}
+                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-sky-600 to-teal-600 hover:from-sky-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg cursor-pointer transition-all active:scale-95"
+              >
+                Tiếp tục thuật toán →
+              </button>
+            </div>
           </div>
         </div>
       )}

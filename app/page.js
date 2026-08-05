@@ -2590,6 +2590,8 @@ export default function Page() {
 
   const handleSubjectSelect = (subjId) => {
     setSelectedSubjectId(subjId);
+    setIsAlgoSimActive(false);
+    setIsQuizMode(false);
     setScrollY(0);
     setShowHero(true);
     setIsTransitioning(false);
@@ -3458,7 +3460,7 @@ export default function Page() {
 
 
           {/* Layout wrapper for Sidebar and Content */}
-          <div className="flex flex-col md:flex-row w-full min-h-screen gap-6 px-4 md:px-6 py-4 relative z-10 main-study-content">
+          <div className={`flex flex-col md:flex-row w-full min-h-screen relative z-10 main-study-content ${isAlgoSimActive ? "p-0 gap-0 bg-[#0b0f17]" : "gap-6 px-4 md:px-6 py-4"}`}>
             {/* Sidebar Navigation */}
             <Sidebar
               chapters={chapters}
@@ -3469,7 +3471,7 @@ export default function Page() {
               isOpen={isSidebarOpen}
               setIsOpen={setIsSidebarOpen}
               onNavigate={handleNavigate}
-              forceHide={showHero}
+              forceHide={isAlgoSimActive}
               onChangeSubject={() => setAppStep("subject-select")}
               onLogout={handleLogout}
               onOpenProfile={() => setShowProfileModal(true)}
@@ -3497,74 +3499,53 @@ export default function Page() {
 
             {/* Main Content Area */}
             <div
-              className="flex-grow flex flex-col min-w-0 bg-[#faf8f4]"
+              className={`flex-grow flex flex-col min-w-0 ${isAlgoSimActive ? "bg-[#0b0f17]" : "bg-[#faf8f4]"}`}
             >
-              {/* Header Bar */}
-              <header
-                className={`sticky top-0 z-30 flex items-center px-4 md:px-12 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
-                  !showHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-                }`}
-              >
-                <div className="w-full flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={() => setIsSidebarOpen(true)}
-                      className="p-2 -ml-2 rounded-lg text-stone-600 hover:bg-stone-200 md:hidden"
-                      aria-label="Mở menu"
-                    >
-                      <Menu size={20} />
-                    </button>
-                    <div className="text-sm font-semibold flex items-center gap-2 text-stone-500 select-none">
-                      <span>{currentSubject.title}</span>
-                      <span className="text-stone-300">/</span>
-                      <span>{currentChapterTitle || (chapters[0] ? chapters[0].title : "")}</span>
-                      {currentSectionRoman && !isQuizMode && !isAlgoSimActive && (
-                        <>
-                          <span className="text-stone-300">/</span>
-                          <span className="text-stone-700 font-semibold font-mono">{currentSectionRoman}</span>
-                        </>
-                      )}
-                      {currentSubTitle && !isQuizMode && !isAlgoSimActive && (
-                        <>
-                          <span className="text-stone-300">/</span>
-                          <span className="text-stone-850 font-bold max-w-[200px] md:max-w-[450px] truncate" title={currentSubTitle}>
-                            {currentSubTitle}
-                          </span>
-                        </>
-                      )}
-                      {isQuizMode && (
-                        <>
-                          <span className="text-stone-300">/</span>
-                          <span className="text-stone-850 font-bold">Bài kiểm tra trắc nghiệm</span>
-                        </>
-                      )}
-                      {isAlgoSimActive && (
-                        <>
-                          <span className="text-stone-300">/</span>
-                          <span 
-                            onClick={() => setSelectedAlgoId(null)}
-                            className={`hover:text-indigo-600 transition-colors ${selectedAlgoId ? "cursor-pointer underline decoration-dotted text-stone-600" : "text-stone-850 font-bold"}`}
-                          >
-                            Bộ mô phỏng giải thuật
-                          </span>
-                          {selectedAlgoId === "bubble-sort" && (
-                            <>
-                              <span className="text-stone-300">/</span>
-                              <span className="text-stone-850 font-bold">Bubble Sort</span>
-                            </>
-                          )}
-                          {selectedAlgoId === "binary-search" && (
-                            <>
-                              <span className="text-stone-300">/</span>
-                              <span className="text-stone-850 font-bold">Binary Search</span>
-                            </>
-                          )}
-                        </>
-                      )}
+              {/* Header Bar (Hidden when in standalone Visualizer Portal mode) */}
+              {!isAlgoSimActive && (
+                <header
+                  className={`sticky top-0 z-30 flex items-center px-4 md:px-12 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
+                    !showHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+                  }`}
+                >
+                  <div className="w-full flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <button
+                        onClick={() => setIsSidebarOpen(true)}
+                        className="p-2 -ml-2 rounded-lg text-stone-600 hover:bg-stone-200 md:hidden"
+                        aria-label="Mở menu"
+                      >
+                        <Menu size={20} />
+                      </button>
+                      <div className="text-sm font-semibold flex items-center gap-2 text-stone-500 select-none">
+                        <span>{currentSubject.title}</span>
+                        <span className="text-stone-300">/</span>
+                        <span>{currentChapterTitle || (chapters[0] ? chapters[0].title : "")}</span>
+                        {currentSectionRoman && !isQuizMode && !isAlgoSimActive && (
+                          <>
+                            <span className="text-stone-300">/</span>
+                            <span className="text-stone-700 font-semibold font-mono">{currentSectionRoman}</span>
+                          </>
+                        )}
+                        {currentSubTitle && !isQuizMode && !isAlgoSimActive && (
+                          <>
+                            <span className="text-stone-300">/</span>
+                            <span className="text-stone-850 font-bold max-w-[200px] md:max-w-[450px] truncate" title={currentSubTitle}>
+                              {currentSubTitle}
+                            </span>
+                          </>
+                        )}
+                        {isQuizMode && (
+                          <>
+                            <span className="text-stone-300">/</span>
+                            <span className="text-stone-850 font-bold">Bài kiểm tra trắc nghiệm</span>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </header>
+                </header>
+              )}
 
               {/* Dynamic Content Panel */}
               <div
@@ -3573,11 +3554,12 @@ export default function Page() {
                 }`}
               >
                 {isAlgoSimActive ? (
-                  <div className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 animate-in">
+                  <div className="flex-1 w-full max-w-[1550px] mx-auto px-2 sm:px-4 md:px-6 py-4 animate-in">
                     <ErrorBoundary>
                       {selectedAlgoId === "bubble-sort" ? (
                         <BubbleSortLab 
                           onBack={() => setSelectedAlgoId(null)}
+                          onBackToSubject={() => setIsAlgoSimActive(false)}
                         />
                       ) : selectedAlgoId === "binary-search" ? (
                         <BinarySearchLab 
@@ -3614,6 +3596,8 @@ export default function Page() {
                             }
                           }}
                           onClose={() => setIsAlgoSimActive(false)}
+                          onBackToSubjectSelect={() => setAppStep("subject-select")}
+                          subjectTitle={currentSubject.title}
                         />
                       )}
                     </ErrorBoundary>

@@ -1649,7 +1649,7 @@ export const tricksPart3 = [
     subsectionId: "c3-trick",
     question: "Nguy cơ sinh tử đe dọa trực tiếp sự tồn vong của Đảng và chế độ hiện nay được Đảng ta xác định là tình trạng:",
     options: [
-      "Suy thoái về tư tưởng chính trị, đạo đức, lối sống, các biểu hiện \"tự diễn biến\", \"tự chuyển hóa\" trong nội bộ cán bộ đảng viên",
+      "Suy thoái về tư tưởng chính trị, đạo đức, lối sống, các biểu hiện \"tự diễn biến\", \"tự chuyển hóa\"trong nội bộ cán bộ đảng viên",
       "Sự biến động các chỉ số chứng khoán trên thị trường tài chính toàn cầu",
       "Sự thiếu thốn lao động kỹ thuật cao vùng biên giới hải đảo",
       "Sự sụt giảm tạm thời các dòng vốn đầu tư FDI nước ngoài"

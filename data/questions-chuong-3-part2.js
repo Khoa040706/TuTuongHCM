@@ -1137,7 +1137,7 @@ export const insidePart2 = [
     subsectionId: "hcm-c3-app-steadfast-sub",
     question: "Vận dụng tư tưởng Hồ Chí Minh đòi hỏi toàn Đảng phải kiên quyết đấu tranh chống lại khuynh hướng nguy hại nào về mặt tư tưởng chính trị?",
     options: [
-      "Sự phai nhạt lý tưởng cách mạng, mơ hồ về định hướng XHCN và chệch hướng tư tưởng chính trị chính trị",
+      "Sự phai nhạt lý tưởng cách mạng, mơ hồ về định hướng XHCN và chệch hướng tư tưởng chính trị",
       "Việc tăng cường học hỏi tri thức quản lý kinh tế quốc tế hiện đại",
       "Các chương trình giao lưu văn hóa hữu nghị vùng biên giới",
       "Việc đa dạng hóa các hình thức học thuật đại học giảng dạy"
@@ -1620,7 +1620,7 @@ export const insidePart2 = [
     subsectionId: "hcm-c3-transition-sub",
     question: "Phương châm học hỏi kinh nghiệm quốc tế trong xây dựng chủ nghĩa xã hội của Hồ Chí Minh là:",
     options: [
-      "Học tập có chọn lọc kinh nghiệm tiên tiến của các nước, tránh giáo điều máy móc rập khuôn rập khuôn",
+      "Học tập có chọn lọc kinh nghiệm tiên tiến của các nước, tránh giáo điều máy móc rập khuôn",
       "Nhập khẩu nguyên vẹn mô hình tổ chức hành chính Đông Âu",
       "Không cần học hỏi kinh nghiệm ngoại quốc vì nội lực dân tộc là tuyệt đối",
       "Chỉ sao chép mô hình phát triển đô thị công nghiệp nặng"

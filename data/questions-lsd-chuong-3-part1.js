@@ -215,7 +215,7 @@ export const lsdChuong3Part1 = [
     "question": "Nghị quyết 10-NQ/TW của Bộ Chính trị (tháng 4-1988) về kinh tế nông nghiệp thường được gọi tên là gì?",
     "options": [
       "Khoán 10 (giao khoán đất nông nghiệp cho hộ gia đình).",
-      "Khoán 100 trên toàn bộ khu vực. trên toàn bộ khu vực.",
+      "Khoán 100 trên toàn bộ khu vực.",
       "Cải cách ruộng đất đợt hai trong thực tiễn mới.",
       "Chương trình lương thực thực phẩm một cách đồng bộ."
     ],
@@ -232,9 +232,9 @@ export const lsdChuong3Part1 = [
     "question": "Mốc lịch sử đánh dấu Việt Nam từ nước thiếu ăn trở thành nước xuất khẩu gạo đứng thứ 2 thế giới là năm nào?",
     "options": [
       "Năm 1989 (xuất khẩu được 1,4 triệu tấn gạo).",
-      "Năm 1986 trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Năm 1991 trong thực tiễn mới. trong thực tiễn mới.",
-      "Năm 1995 một cách đồng bộ. một cách đồng bộ."
+      "Năm 1986 trên toàn bộ khu vực.",
+      "Năm 1991 trong thực tiễn mới.",
+      "Năm 1995 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "easy",
@@ -249,9 +249,9 @@ export const lsdChuong3Part1 = [
     "question": "Đại hội đại biểu toàn quốc lần thứ VII của Đảng (tháng 6-1991) đã thông qua văn kiện Cương lĩnh quan trọng nào?",
     "options": [
       "Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH (Cương lĩnh 1991).",
-      "Chính cương của Đảng Lao động Việt Nam trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Luận cương chính trị thời kỳ đổi mới trong thực tiễn mới. trong thực tiễn mới.",
-      "Cương lĩnh bổ sung và phát triển năm 2011 một cách đồng bộ. một cách đồng bộ."
+      "Chính cương của Đảng Lao động Việt Nam trên toàn bộ khu vực.",
+      "Luận cương chính trị thời kỳ đổi mới trong thực tiễn mới.",
+      "Cương lĩnh bổ sung và phát triển năm 2011 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -300,9 +300,9 @@ export const lsdChuong3Part1 = [
     "question": "Sự kiện bình thường hóa quan hệ ngoại giao giữa Việt Nam và Hoa Kỳ diễn ra vào thời gian nào?",
     "options": [
       "Tháng 7 năm 1995 (Tổng thống Bill Clinton tuyên bố bình thường hóa).",
-      "Tháng 11 năm 1991 trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tháng 12 năm 1986 trong thực tiễn mới. trong thực tiễn mới.",
-      "Tháng 1 năm 2000 một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Tháng 11 năm 1991 trên toàn bộ khu vực.",
+      "Tháng 12 năm 1986 trong thực tiễn mới.",
+      "Tháng 1 năm 2000 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -421,7 +421,7 @@ export const lsdChuong3Part1 = [
       "Đổi mới là một cuộc chuyển biến sâu sắc, toàn diện, đất nước đạt được những thành tựu to lớn, có ý nghĩa lịch sử.",
       "Đổi mới đã giúp Việt Nam trở thành quốc gia phát triển có thu nhập cao nhất thế giới trên toàn bộ khu vực.",
       "Đổi mới đã hoàn thành xong giai đoạn quá độ và bắt đầu bước vào thời kỳ cộng sản chủ nghĩa trong thực tiễn mới.",
-      "Đổi mới đã xóa bỏ hoàn toàn khoảng cách giàu nghèo giữa các vùng miền trong nước một cách đồng bộ. một cách đồng bộ."
+      "Đổi mới đã xóa bỏ hoàn toàn khoảng cách giàu nghèo giữa các vùng miền trong nước một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -453,9 +453,9 @@ export const lsdChuong3Part1 = [
     "question": "Điểm bổ sung quan trọng về bản chất của Đảng trong Cương lĩnh năm 2011 là gì?",
     "options": [
       "Đảng là đội tiên phong của giai cấp công nhân, đồng thời là đội tiên phong của nhân dân lao động và của dân tộc Việt Nam.",
-      "Đảng là đại biểu duy nhất của tầng lớp trí thức và doanh nhân Việt Nam trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Đảng là tổ chức liên minh chính trị đại diện cho các tập đoàn kinh tế trong thực tiễn mới. trong thực tiễn mới.",
-      "Đảng là cơ quan quản lý hành chính nhà nước cao nhất của hệ thống một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Đảng là đại biểu duy nhất của tầng lớp trí thức và doanh nhân Việt Nam trên toàn bộ khu vực.",
+      "Đảng là tổ chức liên minh chính trị đại diện cho các tập đoàn kinh tế trong thực tiễn mới.",
+      "Đảng là cơ quan quản lý hành chính nhà nước cao nhất của hệ thống một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -489,7 +489,7 @@ export const lsdChuong3Part1 = [
       "Bảo đảm cho công cuộc Đổi mới đi đúng hướng, không sa vào chệch hướng tư bản chủ nghĩa.",
       "Giúp Việt Nam nhận được viện trợ không hoàn lại từ các tổ chức tài chính trên toàn bộ khu vực.",
       "Tránh được các tác động tiêu cực của các đợt khủng hoảng tài chính toàn cầu trong thực tiễn mới.",
-      "Rút ngắn thời gian quá độ xuống còn 5 năm xây dựng cơ sở CNXH một cách đồng bộ một cách đồng bộ."
+      "Rút ngắn thời gian quá độ xuống còn 5 năm xây dựng cơ sở CNXH một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -540,7 +540,7 @@ export const lsdChuong3Part1 = [
       "Đổi mới phải vì lợi ích của nhân dân, dựa vào nhân dân, phát huy vai trò chủ thể của nhân dân.",
       "Đổi mới phải ưu tiên phát triển kinh tế cho các tập đoàn doanh nghiệp lớn trên toàn bộ khu vực.",
       "Đổi mới phải tập trung mở rộng quy mô ngân sách nhà nước trước tiên trong thực tiễn mới.",
-      "Đổi mới phải hạn chế bớt quyền tự do kinh doanh của các cá nhân một cách đồng bộ. một cách đồng bộ."
+      "Đổi mới phải hạn chế bớt quyền tự do kinh doanh của các cá nhân một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -591,7 +591,7 @@ export const lsdChuong3Part1 = [
       "Chủ động và tích cực hội nhập quốc tế để tranh thủ nguồn lực bên ngoài cho phát triển đất nước.",
       "Tự lực cánh sinh hoàn toàn và không tiếp nhận đầu tư trực tiếp nước ngoài trên toàn bộ khu vực.",
       "Dựa vào sự viện trợ không hoàn lại của các tổ chức thương mại đa quốc gia trong thực tiễn mới.",
-      "Chờ đợi các chính sách hỗ trợ công nghệ từ các nước tiên tiến một cách đồng bộ. một cách đồng bộ."
+      "Chờ đợi các chính sách hỗ trợ công nghệ từ các nước tiên tiến một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -642,7 +642,7 @@ export const lsdChuong3Part1 = [
       "Củng cố niềm tin của nhân dân đối với Đảng, bảo đảm sự ổn định và phát triển bền vững của đất nước.",
       "Chỉ mang tính chất xử lý vi phạm hành chính nội bộ của bộ máy nhà nước trên toàn bộ khu vực.",
       "Làm giảm tốc độ tăng trưởng kinh tế do tâm lý e ngại của các doanh nghiệp trong thực tiễn mới.",
-      "Giúp cắt giảm bớt khối lượng cán bộ quản lý tại các địa phương một cách đồng bộ. một cách đồng bộ."
+      "Giúp cắt giảm bớt khối lượng cán bộ quản lý tại các địa phương một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -659,7 +659,7 @@ export const lsdChuong3Part1 = [
       "Nỗ lực học tập, đổi mới sáng tạo, làm chủ khoa học công nghệ và xung kích xây dựng đất nước phồn vinh.",
       "Chỉ tập trung tìm kiếm các cơ hội việc làm có thu nhập cao ở nước ngoài trên toàn bộ khu vực.",
       "Rập khuôn theo các mô hình phát triển văn hóa kinh tế của các quốc gia khác trong thực tiễn mới.",
-      "Thụ động chờ đợi các chính sách hỗ trợ việc làm từ phía Nhà nước một cách đồng bộ. một cách đồng bộ."
+      "Thụ động chờ đợi các chính sách hỗ trợ việc làm từ phía Nhà nước một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -676,7 +676,7 @@ export const lsdChuong3Part1 = [
       "Tranh thủ tri thức, công nghệ hiện đại và nguồn vốn để bứt phá phát triển nhanh và bền vững.",
       "Chấp nhận phụ thuộc hoàn toàn vào dây chuyền sản xuất của các tập đoàn đa quốc gia.",
       "Mở cửa hoàn toàn thị trường nội địa cho các sản phẩm hàng hóa nhập khẩu trong thực tiễn mới.",
-      "Giảm bớt chi phí đầu tư cho nghiên cứu khoa học trong nước một cách đồng bộ. một cách đồng bộ."
+      "Giảm bớt chi phí đầu tư cho nghiên cứu khoa học trong nước một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -776,9 +776,9 @@ export const lsdChuong3Part1 = [
     "question": "Chiến dịch quân sự cứu nhân dân Campuchia thoát khỏi thảm họa diệt chủng Khmer Đỏ diễn ra năm nào?",
     "options": [
       "Năm 1979 (giải phóng thủ đô Phnôm Pênh ngày 7-1-1979).",
-      "Năm 1975 trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Năm 1982 trong thực tiễn mới. trong thực tiễn mới.",
-      "Năm 1985 một cách đồng bộ. một cách đồng bộ."
+      "Năm 1975 trên toàn bộ khu vực.",
+      "Năm 1982 trong thực tiễn mới.",
+      "Năm 1985 một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -794,8 +794,8 @@ export const lsdChuong3Part1 = [
     "options": [
       "Coi nông nghiệp là mặt trận hàng đầu, kết hợp nông nghiệp với công nghiệp hàng tiêu dùng.",
       "Ưu tiên phát triển công nghiệp nặng làm nền tảng cho nông nghiệp trên toàn bộ khu vực.",
-      "Xóa bỏ hoàn toàn các hợp tác xã nông nghiệp địa phương trong thực tiễn mới. trong thực tiễn mới.",
-      "Cho phép tự do xuất khẩu lương thực ra nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Xóa bỏ hoàn toàn các hợp tác xã nông nghiệp địa phương trong thực tiễn mới.",
+      "Cho phép tự do xuất khẩu lương thực ra nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -982,7 +982,7 @@ export const lsdChuong3Part1 = [
       "Xây dựng và phát triển nền văn hóa Việt Nam tiên tiến, đậm đà bản sắc dân tộc.",
       "Đổi mới căn bản và toàn diện giáo dục đào tạo trên toàn bộ khu vực.",
       "Phát triển kinh tế biển và bảo vệ chủ quyền hải đảo trong thực tiễn mới.",
-      "Đẩy mạnh công nghiệp hóa nông nghiệp nông thôn một cách đồng bộ. một cách đồng bộ."
+      "Đẩy mạnh công nghiệp hóa nông nghiệp nông thôn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1016,7 +1016,7 @@ export const lsdChuong3Part1 = [
       "Đưa nước ta ra khỏi tình trạng kém phát triển, tạo tiền đề đến 2020 trở thành nước công nghiệp.",
       "Đưa nước ta trở thành nước phát triển có thu nhập cao ngay năm 2010 trên toàn bộ khu vực.",
       "Hoàn thành xây dựng cơ sở hạ tầng giao thông đường sắt tốc độ cao trong thực tiễn mới.",
-      "Hoàn thành quá trình đô thị hóa toàn bộ các tỉnh đồng bằng một cách đồng bộ. một cách đồng bộ."
+      "Hoàn thành quá trình đô thị hóa toàn bộ các tỉnh đồng bằng một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1065,9 +1065,9 @@ export const lsdChuong3Part1 = [
     "question": "Bản Hiến pháp năm 2013 được Quốc hội khóa XIII thông qua có ý nghĩa thế nào đối với công cuộc Đổi mới?",
     "options": [
       "Thể chế hóa Cương lĩnh 2011, khẳng định quyền con người, quyền công dân và Nhà nước pháp quyền XHCN.",
-      "Tuyên bố kết thúc thời kỳ quá độ tiến lên chủ nghĩa xã hội trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Xóa bỏ thành phần kinh tế nhà nước trong nền kinh tế trong thực tiễn mới. trong thực tiễn mới.",
-      "Thay đổi toàn bộ cấu trúc của hệ thống chính trị địa phương một cách đồng bộ. một cách đồng bộ."
+      "Tuyên bố kết thúc thời kỳ quá độ tiến lên chủ nghĩa xã hội trên toàn bộ khu vực.",
+      "Xóa bỏ thành phần kinh tế nhà nước trong nền kinh tế trong thực tiễn mới.",
+      "Thay đổi toàn bộ cấu trúc của hệ thống chính trị địa phương một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1082,9 +1082,9 @@ export const lsdChuong3Part1 = [
     "question": "Đại hội XII của Đảng (1-2016) xác định nhiệm vụ trọng tâm hàng đầu của nhiệm kỳ là gì?",
     "options": [
       "Tăng cường xây dựng, chỉnh đốn Đảng; ngăn chặn, đẩy lùi sự suy thoái về tư tưởng chính trị, đạo đức.",
-      "Tập trung cổ phần hóa toàn bộ doanh nghiệp nhà nước trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Mở rộng các dự án khai thác khoáng sản tài nguyên trong thực tiễn mới. trong thực tiễn mới.",
-      "Tăng cường thu phí dịch vụ công ở tất cả các ngành một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Tập trung cổ phần hóa toàn bộ doanh nghiệp nhà nước trên toàn bộ khu vực.",
+      "Mở rộng các dự án khai thác khoáng sản tài nguyên trong thực tiễn mới.",
+      "Tăng cường thu phí dịch vụ công ở tất cả các ngành một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1099,9 +1099,9 @@ export const lsdChuong3Part1 = [
     "question": "Tính chất của nền Kinh tế thị trường định hướng XHCN ở nước ta được khẳng định như thế nào?",
     "options": [
       "Là nền kinh tế vận hành theo quy luật KTTT đồng thời bảo đảm định hướng XHCN vì mục tiêu dân giàu nước mạnh.",
-      "Là nền kinh tế tư bản chủ nghĩa hoàn toàn dưới sự quản lý của tư nhân trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Là nền kinh tế kế hoạch hóa tập trung bao cấp do nhà nước quyết định giá trong thực tiễn mới. trong thực tiễn mới.",
-      "Là nền kinh tế khép kín tự cung tự cấp không giao thương quốc tế một cách đồng bộ. một cách đồng bộ."
+      "Là nền kinh tế tư bản chủ nghĩa hoàn toàn dưới sự quản lý của tư nhân trên toàn bộ khu vực.",
+      "Là nền kinh tế kế hoạch hóa tập trung bao cấp do nhà nước quyết định giá trong thực tiễn mới.",
+      "Là nền kinh tế khép kín tự cung tự cấp không giao thương quốc tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1135,7 +1135,7 @@ export const lsdChuong3Part1 = [
       "Kinh tế tư nhân là một động lực quan trọng của nền kinh tế thị trường định hướng XHCN.",
       "Kinh tế tư nhân giữ vai trò chủ đạo toàn bộ nền kinh tế trên toàn bộ khu vực.",
       "Kinh tế tư nhân là thành phần kinh tế phụ trợ ngắn hạn trong thực tiễn mới.",
-      "Kinh tế tư nhân bị hạn chế quy mô mở rộng doanh nghiệp một cách đồng bộ. một cách đồng bộ."
+      "Kinh tế tư nhân bị hạn chế quy mô mở rộng doanh nghiệp một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1167,9 +1167,9 @@ export const lsdChuong3Part1 = [
     "question": "Ý nghĩa của việc giữ vững môi trường hòa bình, ổn định chính trị đối với công cuộc Đổi mới là gì?",
     "options": [
       "Là điều kiện tiên quyết và bảo đảm hàng đầu để phát triển kinh tế xã hội và nâng cao đời sống nhân dân.",
-      "Giúp giảm bớt sự cạnh tranh thương mại từ các doanh nghiệp ngoại trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Tạo cơ hội để tăng mức thuế thu nhập doanh nghiệp nội địa trong thực tiễn mới. trong thực tiễn mới.",
-      "Rút ngắn thời hạn hoàn thành các dự án đầu tư công một cách đồng bộ. một cách đồng bộ. một cách đồng bộ."
+      "Giúp giảm bớt sự cạnh tranh thương mại từ các doanh nghiệp ngoại trên toàn bộ khu vực.",
+      "Tạo cơ hội để tăng mức thuế thu nhập doanh nghiệp nội địa trong thực tiễn mới.",
+      "Rút ngắn thời hạn hoàn thành các dự án đầu tư công một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1203,7 +1203,7 @@ export const lsdChuong3Part1 = [
       "Đổi mới không phải là thay đổi mục tiêu XHCN mà là làm cho mục tiêu đó được thực hiện hiệu quả hơn.",
       "Đổi mới là từ bỏ các nguyên tắc chủ nghĩa Mác - Lênin để theo mô hình khác trên toàn bộ khu vực.",
       "Đổi mới là thay đổi hoàn toàn hệ thống chính trị và thể chế nhà nước trong thực tiễn mới.",
-      "Đổi mới là tạm ngưng phát triển kinh tế để tập trung cải cách một cách đồng bộ. một cách đồng bộ."
+      "Đổi mới là tạm ngưng phát triển kinh tế để tập trung cải cách một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1218,9 +1218,9 @@ export const lsdChuong3Part1 = [
     "question": "Bài học về sự chủ động, sáng tạo trong chỉ đạo thực tiễn của Đảng đòi hỏi điều gì?",
     "options": [
       "Phải nhạy bén với cái mới, bám sát thực tiễn, coi trọng tổng kết thực tiễn và nghiên cứu lý luận.",
-      "Rập khuôn theo các sách vở lý thuyết mà không cần thử nghiệm trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Chờ đợi các mô hình thành công từ các nước khác rồi áp dụng trong thực tiễn mới. trong thực tiễn mới.",
-      "Tránh thay đổi các chỉ tiêu đã đề ra dù bối cảnh thực tiễn biến động một cách đồng bộ một cách đồng bộ."
+      "Rập khuôn theo các sách vở lý thuyết mà không cần thử nghiệm trên toàn bộ khu vực.",
+      "Chờ đợi các mô hình thành công từ các nước khác rồi áp dụng trong thực tiễn mới.",
+      "Tránh thay đổi các chỉ tiêu đã đề ra dù bối cảnh thực tiễn biến động một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1235,9 +1235,9 @@ export const lsdChuong3Part1 = [
     "question": "Hạn chế về mặt văn hóa - xã hội trong quá trình Đổi mới được Đảng nhận diện là gì?",
     "options": [
       "Khoảng cách giàu nghèo có xu hướng gia tăng, đạo đức xã hội ở một bộ phận có dấu hiệu xuống cấp.",
-      "Số lượng trường học và bệnh viện bị giảm sút trên toàn quốc trên toàn bộ khu vực. trên toàn bộ khu vực.",
-      "Người dân không được tiếp cận các dịch vụ y tế cơ bản trong thực tiễn mới. trong thực tiễn mới.",
-      "Các di sản văn hóa truyền thống bị hủy hoại hoàn toàn một cách đồng bộ. một cách đồng bộ."
+      "Số lượng trường học và bệnh viện bị giảm sút trên toàn quốc trên toàn bộ khu vực.",
+      "Người dân không được tiếp cận các dịch vụ y tế cơ bản trong thực tiễn mới.",
+      "Các di sản văn hóa truyền thống bị hủy hoại hoàn toàn một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1254,7 +1254,7 @@ export const lsdChuong3Part1 = [
       "Giúp Đảng chủ động ứng phó với các biến động phức tạp của tình hình thế giới và trong nước.",
       "Giúp cắt giảm ngân sách đầu tư cho lĩnh vực nghiên cứu khoa học trên toàn bộ khu vực.",
       "Giúp các doanh nghiệp dự báo chính xác giá cả hàng hóa hàng ngày trong thực tiễn mới.",
-      "Giúp giảm bớt số lượng các hội nghị trung ương hàng năm một cách đồng bộ. một cách đồng bộ."
+      "Giúp giảm bớt số lượng các hội nghị trung ương hàng năm một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "medium",
@@ -1303,9 +1303,9 @@ export const lsdChuong3Part1 = [
     "question": "Ý nghĩa của việc ứng dụng Chuyển đổi số quốc gia đối với việc nâng cao hiệu quả quản lý nhà nước hiện nay là gì?",
     "options": [
       "Xây dựng chính phủ số, đơn giản hóa thủ tục hành chính, minh bạch hóa và phục vụ người dân tốt hơn.",
-      "Thay thế hoàn toàn lực lượng cán bộ công chức bằng trí tuệ nhân tạo trên toàn bộ khu vực trên toàn bộ khu vực.",
-      "Tăng cường thu phí dịch vụ công đối với các giao dịch trực tuyến trong thực tiễn mới. trong thực tiễn mới.",
-      "Hạn chế sự tham gia giám sát của nhân dân vào các hoạt động công một cách đồng bộ. một cách đồng bộ."
+      "Thay thế hoàn toàn lực lượng cán bộ công chức bằng trí tuệ nhân tạo trên toàn bộ khu vực.",
+      "Tăng cường thu phí dịch vụ công đối với các giao dịch trực tuyến trong thực tiễn mới.",
+      "Hạn chế sự tham gia giám sát của nhân dân vào các hoạt động công một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1321,8 +1321,8 @@ export const lsdChuong3Part1 = [
     "options": [
       "Gốc vững, thân chắc, cành uyển chuyển; kiên định nguyên tắc độc lập nhưng linh hoạt về sách lược.",
       "Cứng rắn trong mọi tình huống đàm phán và không nhượng bộ ngoại giao trên toàn bộ khu vực.",
-      "Mềm dẻo phụ thuộc vào ý muốn của các quốc gia lớn trên thế giới trong thực tiễn mới. trong thực tiễn mới.",
-      "Đóng cửa hạn chế tham gia các diễn đàn đa phương quốc tế một cách đồng bộ. một cách đồng bộ."
+      "Mềm dẻo phụ thuộc vào ý muốn của các quốc gia lớn trên thế giới trong thực tiễn mới.",
+      "Đóng cửa hạn chế tham gia các diễn đàn đa phương quốc tế một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1338,8 +1338,8 @@ export const lsdChuong3Part1 = [
     "options": [
       "Chủ động nhận diện, đấu tranh phản bác các quan điểm sai trái, thù địch và lan tỏa thông tin tích cực.",
       "Cắt đứt hoàn toàn kết nối internet quốc tế để bảo vệ thông tin nội bộ trên toàn bộ khu vực.",
-      "Cấm người dân sử dụng các mạng xã hội phổ biến trên thế giới trong thực tiễn mới. trong thực tiễn mới.",
-      "Chỉ tập trung xử lý các sai phạm kinh tế trên môi trường số một cách đồng bộ. một cách đồng bộ."
+      "Cấm người dân sử dụng các mạng xã hội phổ biến trên thế giới trong thực tiễn mới.",
+      "Chỉ tập trung xử lý các sai phạm kinh tế trên môi trường số một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
@@ -1355,8 +1355,8 @@ export const lsdChuong3Part1 = [
     "options": [
       "Chuyển đổi năng lượng sạch, bảo vệ môi trường sinh thái và không đánh đổi môi trường lấy tăng trưởng.",
       "Tăng cường khai thác than đá và tài nguyên hóa thạch để phát triển điện trên toàn bộ khu vực.",
-      "Ngừng phát triển các ngành công nghiệp chế tạo sản xuất trong nước trong thực tiễn mới. trong thực tiễn mới.",
-      "Nhập khẩu toàn bộ thiết bị năng lượng đã qua sử dụng từ nước ngoài một cách đồng bộ. một cách đồng bộ."
+      "Ngừng phát triển các ngành công nghiệp chế tạo sản xuất trong nước trong thực tiễn mới.",
+      "Nhập khẩu toàn bộ thiết bị năng lượng đã qua sử dụng từ nước ngoài một cách đồng bộ."
     ],
     "answer": 0,
     "difficulty": "hard",
