@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import * as THREE from "three";
 import confetti from "canvas-confetti";
 import {
   ArrowLeft,
@@ -13,23 +14,22 @@ import {
   SkipForward,
   Shuffle,
   GitBranch,
-  CheckCircle2,
   Sparkles,
   Zap,
   BarChart2,
   ArrowDown,
   Code2,
   Info,
-  Sliders,
-  Keyboard,
-  Activity,
-  HelpCircle,
-  Trophy,
-  Award,
+  Compass,
+  Box,
+  Volume2,
+  VolumeX,
+  Maximize2,
   Layers,
   Flame,
-  Scissors,
-  Check
+  CheckCircle2,
+  Activity,
+  Trophy
 } from "lucide-react";
 
 // Standardized English Pseudocode with Prominent Vietnamese Explanations
@@ -69,52 +69,124 @@ const JAVA_CODE = [
   { line: 7, text: "}", explain: "Kết thúc phương thức mergeSort" },
 ];
 
-// STAGE GEOMETRY (VIEWBOX 800 x 480)
-const STAGE_W = 800;
-const STAGE_H = 480;
-const BALL_R = 18;
-
-// Dynamic Tier Y spacing based on max recursion depth (Safely avoids top clipping)
-function getTierY(depth, maxDepth = 3) {
-  if (maxDepth >= 4) {
-    const topMargin = 100;
-    const tierGap = 70;
-    return topMargin + depth * tierGap;
+// WEB AUDIO SYNTHESIZER SOUND FX (AUTOPLAY RESUME & FUTURISTIC AUDIO CHORDS)
+let sharedAudioCtx = null;
+const getAudioContext = () => {
+  if (typeof window === "undefined") return null;
+  if (!sharedAudioCtx) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (AudioCtx) sharedAudioCtx = new AudioCtx();
   }
-  const topMargin = 110;
-  const tierGap = 85;
-  return topMargin + depth * tierGap;
-}
+  if (sharedAudioCtx && sharedAudioCtx.state === "suspended") {
+    sharedAudioCtx.resume().catch(() => {});
+  }
+  return sharedAudioCtx;
+};
 
-// Master Step Generator
-function generateDetailedMergeSortSteps(initialArr) {
+const playSoundFX = (type, soundEnabled = true) => {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    if (type === "crack") {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(600, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.22);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.23);
+    } else if (type === "whoosh" || type === "descend") {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(400, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3);
+      gain.gain.setValueAtTime(0.07, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.31);
+    } else if (type === "zap") {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(700, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1600, ctx.currentTime + 0.14);
+      gain.gain.setValueAtTime(0.05, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.15);
+    } else if (type === "chime" || type === "ascend") {
+      // Emerald Fusion Chord (C5 - E5 - G5 - C6)
+      [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.04);
+        gain.gain.setValueAtTime(0.04, ctx.currentTime + idx * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.04 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + idx * 0.04);
+        osc.stop(ctx.currentTime + idx * 0.04 + 0.36);
+      });
+    } else if (type === "victory") {
+      [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.06);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime + idx * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.06 + 0.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + idx * 0.06);
+        osc.stop(ctx.currentTime + idx * 0.06 + 0.52);
+      });
+    }
+  } catch (err) {
+    // Autoplay restrictions
+  }
+};
+
+// Master Step Generator - 7 Phụ Pha Kịch Bản Cô Đọng & Chuẩn Xác 100%
+function generateSkyBlocksSteps(initialArr) {
   const steps = [];
   let comparisons = 0;
   let mergeWrites = 0;
-
   const n = initialArr.length;
 
-  let balls = initialArr.map((val, idx) => ({
-    id: `ball-${idx}-${typeof val === "object" ? val.value : val}`,
+  let cubes = initialArr.map((val, idx) => ({
+    id: `cube-${idx}-${typeof val === "object" ? val.value : val}`,
     val: typeof val === "object" ? val.value : val,
     tag: `${typeof val === "object" ? val.value : val}`,
     originalIdx: idx,
     depth: 0,
     slotIdx: idx,
     sideOffset: 0,
+    state: "idle", // idle | scanning | flying | sorted
   }));
 
   const treeNodes = [];
   let nodeCounter = 0;
 
-  const cloneBalls = (bList) => bList.map((b) => ({ ...b }));
+  const cloneCubes = (cList) => cList.map((c) => ({ ...c }));
 
-  // 0. ENTRY_DROP
+  // 1. PHA 1: INIT_FLOAT (Khởi tạo mảng Cubes lơ lửng tại Tầng 0)
   steps.push({
     activeLine: 1,
-    phase: "ENTRY_DROP",
-    status: `🎬 Khởi tạo mảng gồm ${n} phần tử tại Tầng 0. Chuẩn bị chia để trị!`,
-    balls: cloneBalls(balls),
+    phase: "INIT_FLOAT",
+    status: `🎬 Khởi tạo mảng gồm ${n} khối Cube 3D Pha Lê tại Tầng 0. Chuẩn bị phân tầng đệ quy!`,
+    cubes: cloneCubes(cubes),
     depth: 0,
     comparisons: 0,
     mergeWrites: 0,
@@ -128,16 +200,17 @@ function generateDetailedMergeSortSteps(initialArr) {
     treeNodes.push(currentNode);
 
     for (let i = left; i <= right; i++) {
-      const b = balls.find((ball) => ball.slotIdx === i && ball.depth <= depth);
-      if (b) b.depth = depth;
+      const c = cubes.find((cube) => cube.slotIdx === i && cube.depth <= depth);
+      if (c) c.depth = depth;
     }
 
     if (left >= right) {
+      // 4. PHA 4: ATOM_PULSE (Base case 1 phần tử)
       steps.push({
         activeLine: 2,
-        phase: "ATOMIC_PULSE",
-        status: `⚡ [CƠ SỞ] Mảng con [${left}..${right}] chỉ có 1 phần tử tại Tầng ${depth} — Đã đạt kích thước tối thiểu!`,
-        balls: cloneBalls(balls),
+        phase: "ATOM_PULSE",
+        status: `⚡ [BASE CASE] Khối [${left}..${right}] chỉ có 1 phần tử tại Tầng ${depth} — Đã đạt kích thước tối thiểu!`,
+        cubes: cloneCubes(cubes),
         left,
         right,
         depth,
@@ -151,120 +224,53 @@ function generateDetailedMergeSortSteps(initialArr) {
 
     const mid = Math.floor((left + right) / 2);
 
-    // 1. SPLIT_RUN_UP (Giương kiếm cao)
-    steps.push({
-      activeLine: 3,
-      phase: "SPLIT_RUN_UP",
-      status: `🏃 [THE SPLITTER] Splitter giương cao kiếm Laser Cyan tại ranh giới mid = ${mid}!`,
-      balls: cloneBalls(balls),
-      left,
-      right,
-      mid,
-      depth,
-      activeTreeNodeId: nodeId,
-      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-      comparisons,
-      mergeWrites,
-    });
-
-    // 2. LEAP_SOMERSAULT_SLASH (CHẶT XUỐNG CỰC MẠNH NGAY CHÍNH GIỮA)
-    steps.push({
-      activeLine: 3,
-      phase: "LEAP_SOMERSAULT_SLASH",
-      status: `⚔️ [NHÁT CHÉM CHẶT XUỐNG] Splitter vung kiếm chém thẳng xuống khoảng giữa bệ mặt đất!`,
-      balls: cloneBalls(balls),
-      left,
-      right,
-      mid,
-      depth,
-      laserSlash: { mid, depth },
-      activeTreeNodeId: nodeId,
-      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-      comparisons,
-      mergeWrites,
-    });
-
-    // 2.5 RIFT_GROUND_CRACK (ĐẤT NỨT RẠN PHÁT SÁNG NGAY CHÍNH GIỮA)
-    steps.push({
-      activeLine: 3,
-      phase: "RIFT_GROUND_CRACK",
-      status: `💥 [MẶT ĐẤT NỨT TOÁC] Nhát chém làm bệ nứt rạn rạng đông ngay chính giữa trước khi tách làm đôi!`,
-      balls: cloneBalls(balls),
-      left,
-      right,
-      mid,
-      depth,
-      activeTreeNodeId: nodeId,
-      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-      comparisons,
-      mergeWrites,
-    });
-
-    // 3. RIFT_OPEN_HOP_BACK (TÁCH BỆ BẺ LÀM ĐÔI)
-    for (let i = left; i <= mid; i++) {
-      const b = balls.find((ball) => ball.slotIdx === i && ball.depth === depth);
-      if (b) {
-        b.depth = depth + 1;
-        b.sideOffset = -24;
+    // 2. PHA 2: SUBARRAY_SPLIT (Trượt mượt 2 mảng con xuống Tầng depth + 1 trong 1 chuyển động duy nhất)
+    for (let idx = left; idx <= mid; idx++) {
+      const c = cubes.find((cube) => cube.slotIdx === idx && cube.depth === depth);
+      if (c) {
+        c.depth = depth + 1;
+        c.sideOffset = -28;
       }
     }
-    for (let i = mid + 1; i <= right; i++) {
-      const b = balls.find((ball) => ball.slotIdx === i && ball.depth === depth);
-      if (b) {
-        b.depth = depth + 1;
-        b.sideOffset = 24;
+    for (let idx = mid + 1; idx <= right; idx++) {
+      const c = cubes.find((cube) => cube.slotIdx === idx && cube.depth === depth);
+      if (c) {
+        c.depth = depth + 1;
+        c.sideOffset = 28;
       }
     }
 
     steps.push({
       activeLine: 3,
-      phase: "RIFT_OPEN_HOP_BACK",
-      status: `🌌 [TÁCH BỆ SÂN KHẤU] Vết nứt đứt đôi! Bệ Nửa trái [${left}..${mid}] và Bệ Nửa phải [${mid + 1}..${right}] tách rời ở Tầng ${depth + 1}.`,
-      balls: cloneBalls(balls),
+      phase: "SUBARRAY_SPLIT",
+      status: `🌌 [TÁCH MẢNG] Phân tách mảng [${left}..${right}] thành 2 mảng con [${left}..${mid}] và [${mid + 1}..${right}] tại Tầng ${depth + 1}.`,
+      cubes: cloneCubes(cubes),
       left,
       right,
       mid,
-      depth,
-      riftAt: mid,
+      depth: depth + 1,
       activeTreeNodeId: nodeId,
       treeNodes: JSON.parse(JSON.stringify(treeNodes)),
       comparisons,
       mergeWrites,
     });
 
-    // Recursion Left & Right
+    // Gọi đệ quy Left & Right
     mergeSortHelper(left, mid, depth + 1, nodeId);
     mergeSortHelper(mid + 1, right, depth + 1, nodeId);
 
-    // MERGE PREPARATION
+    // TRỘN 2 NỬA ĐÃ SẮP XẾP
     const leftSub = [];
     for (let idx = left; idx <= mid; idx++) {
-      const b = balls.find((ball) => ball.slotIdx === idx && ball.depth === depth + 1);
-      if (b) leftSub.push(b);
+      const c = cubes.find((cube) => cube.slotIdx === idx && cube.depth === depth + 1);
+      if (c) leftSub.push(c);
     }
 
     const rightSub = [];
     for (let idx = mid + 1; idx <= right; idx++) {
-      const b = balls.find((ball) => ball.slotIdx === idx && ball.depth === depth + 1);
-      if (b) rightSub.push(b);
+      const c = cubes.find((cube) => cube.slotIdx === idx && cube.depth === depth + 1);
+      if (c) rightSub.push(c);
     }
-
-    // 4. MERGE_LANE_MARK
-    steps.push({
-      activeLine: 6,
-      phase: "MERGE_LANE_MARK",
-      status: `🎬 [BẮT ĐẦU TRỘN] Dựng bệ hợp nhất tại Tầng Cha ${depth} [${left}..${right}]. Cặp Runner phất cờ chuẩn bị so sánh!`,
-      balls: cloneBalls(balls),
-      left,
-      mid,
-      right,
-      depth,
-      targetRange: { left, right },
-      activeTreeNodeId: nodeId,
-      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-      comparisons,
-      mergeWrites,
-    });
 
     let i = 0;
     let j = 0;
@@ -273,49 +279,50 @@ function generateDetailedMergeSortSteps(initialArr) {
     while (i < leftSub.length && j < rightSub.length) {
       comparisons++;
       const isLessEqual = leftSub[i].val <= rightSub[j].val;
-      const winningBall = isLessEqual ? leftSub[i] : rightSub[j];
-      const winningSide = isLessEqual ? "L" : "R";
+      const winningCube = isLessEqual ? leftSub[i] : rightSub[j];
+      const winningSide = isLessEqual ? "Trái" : "Phải";
       const compareOp = isLessEqual ? "≤" : ">";
 
-      // 5. COMPARE_BEAM_LOCK
+      // 5. PHA 5: LASER_SCAN (Trạm Comparator chiếu laser scan 2 Cube đang so sánh)
       steps.push({
         activeLine: 9,
-        phase: "COMPARE_BEAM_LOCK",
-        status: `👐 [2 NGƯỜI QUE NHẮC BÓNG LÊN TAY] L-Runner & R-Runner NHẮC BÓNG LÊN TAY so sánh trực tiếp! (${leftSub[i].tag} ${compareOp} ${rightSub[j].tag}) ➔ Bóng ${winningBall.tag} (${winningSide}) THẮNG!`,
-        balls: cloneBalls(balls),
+        phase: "LASER_SCAN",
+        status: `⚡ [TRẠM COMPARATOR SCAN] Laser scan 2 Khối Cube (${leftSub[i].tag} ${compareOp} ${rightSub[j].tag}) ➔ Khối ${winningCube.tag} bên ${winningSide} THẮNG!`,
+        cubes: cloneCubes(cubes),
         left,
         mid,
         right,
-        depth,
+        depth: depth + 1,
         pointerI: leftSub[i].slotIdx,
         pointerJ: rightSub[j].slotIdx,
         pointerK: k,
         winnerSide: winningSide,
         compareOp,
-        comparingBallIds: [leftSub[i].id, rightSub[j].id],
+        comparingIds: [leftSub[i].id, rightSub[j].id],
         activeTreeNodeId: nodeId,
         treeNodes: JSON.parse(JSON.stringify(treeNodes)),
         comparisons,
         mergeWrites,
       });
 
-      // 6. TOSS_CATCH_SLAM
-      winningBall.depth = depth;
-      winningBall.slotIdx = k;
-      winningBall.sideOffset = 0;
+      // 6. PHA 6: CUBE_ASCEND (Cube thắng bay sao chổi về bệ Tầng Cha)
+      winningCube.depth = depth;
+      winningCube.slotIdx = k;
+      winningCube.sideOffset = 0;
+      winningCube.state = "flying";
       mergeWrites++;
 
       steps.push({
         activeLine: isLessEqual ? 10 : 11,
-        phase: "TOSS_CATCH_SLAM",
-        status: `☄️ [QUĂNG BÓNG & CATCHER ÚP RỔ] Runner bên ${winningSide} quăng bóng ${winningBall.tag} bay cầu vồng lên Tầng ${depth} ➔ Catcher BẮT & ÚP BÓNG RỔ vào ô k=${k}!`,
-        balls: cloneBalls(balls),
+        phase: "CUBE_ASCEND",
+        status: `☄️ [BAY VÚT LÊN TẦNG CHA] Khối Cube ${winningCube.tag} được kéo vút về ô k = ${k} tại Tầng ${depth}!`,
+        cubes: cloneCubes(cubes),
         left,
         mid,
         right,
         depth,
         pointerK: k,
-        flyingBallId: winningBall.id,
+        flyingCubeId: winningCube.id,
         targetK: k,
         activeTreeNodeId: nodeId,
         treeNodes: JSON.parse(JSON.stringify(treeNodes)),
@@ -326,44 +333,28 @@ function generateDetailedMergeSortSteps(initialArr) {
       if (isLessEqual) i++;
       else j++;
       k++;
-
-      // 7. POINTER_STEP_WALK
-      steps.push({
-        activeLine: 12,
-        phase: "POINTER_STEP_WALK",
-        status: `🚶 [RUNNER BƯỚC] Runner bên ${winningSide} bước tới 1 bước, phất cờ kiêu hãnh.`,
-        balls: cloneBalls(balls),
-        left,
-        mid,
-        right,
-        depth,
-        pointerK: k,
-        activeTreeNodeId: nodeId,
-        treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-        comparisons,
-        mergeWrites,
-      });
     }
 
-    // Remaining Left elements
+    // Phần tử dư bên Trái
     while (i < leftSub.length) {
       const selected = leftSub[i];
       selected.depth = depth;
       selected.slotIdx = k;
       selected.sideOffset = 0;
+      selected.state = "flying";
       mergeWrites++;
 
       steps.push({
         activeLine: 12,
-        phase: "RUNWAY_CLEAR_CASCADE",
-        status: `💫 [SAO CHỔI DƯ TRÁI] Nửa phải cạn bóng ➔ Bóng L[${i}] (${selected.tag}) tự bay sao chổi Teal về Tầng Cha ô k=${k}!`,
-        balls: cloneBalls(balls),
+        phase: "CUBE_ASCEND",
+        status: `💫 [CUBE DƯ TRÁI] Khối dư ${selected.tag} tự động bay về ô k = ${k} tại Tầng ${depth}!`,
+        cubes: cloneCubes(cubes),
         left,
         mid,
         right,
         depth,
         pointerK: k,
-        flyingBallId: selected.id,
+        flyingCubeId: selected.id,
         targetK: k,
         activeTreeNodeId: nodeId,
         treeNodes: JSON.parse(JSON.stringify(treeNodes)),
@@ -375,25 +366,26 @@ function generateDetailedMergeSortSteps(initialArr) {
       k++;
     }
 
-    // Remaining Right elements
+    // Phần tử dư bên Phải
     while (j < rightSub.length) {
       const selected = rightSub[j];
       selected.depth = depth;
       selected.slotIdx = k;
       selected.sideOffset = 0;
+      selected.state = "flying";
       mergeWrites++;
 
       steps.push({
         activeLine: 12,
-        phase: "RUNWAY_CLEAR_CASCADE",
-        status: `💫 [SAO CHỔI DƯ PHẢI] Nửa trái cạn bóng ➔ Bóng R[${j}] (${selected.tag}) tự bay sao chổi Teal về Tầng Cha ô k=${k}!`,
-        balls: cloneBalls(balls),
+        phase: "CUBE_ASCEND",
+        status: `💫 [CUBE DƯ PHẢI] Khối dư ${selected.tag} tự động bay về ô k = ${k} tại Tầng ${depth}!`,
+        cubes: cloneCubes(cubes),
         left,
         mid,
         right,
         depth,
         pointerK: k,
-        flyingBallId: selected.id,
+        flyingCubeId: selected.id,
         targetK: k,
         activeTreeNodeId: nodeId,
         treeNodes: JSON.parse(JSON.stringify(treeNodes)),
@@ -405,38 +397,31 @@ function generateDetailedMergeSortSteps(initialArr) {
       k++;
     }
 
-    // 9. LEVEL_SEAL_RETURN
-    steps.push({
-      activeLine: 7,
-      phase: "LEVEL_SEAL_RETURN",
-      status: `🔒 [KHÉP VẾT NỨT] Hoàn tất trộn đoạn [${left}..${right}] ➔ Vết nứt khép lại, nhận Run Glow Teal, chuyển góc nhìn lên Tầng Cha ${depth}!`,
-      balls: cloneBalls(balls),
-      left,
-      right,
-      depth,
-      sealedRange: { left, right },
-      activeTreeNodeId: nodeId,
-      treeNodes: JSON.parse(JSON.stringify(treeNodes)),
-      comparisons,
-      mergeWrites,
-    });
+    // CHỈ ĐỔI MÀU XANH LÁ EMERALD KHI KHỐI CUBE ĐÃ MERGE XONG HOÀN CHỈNH LÊN TỚI TẦNG 0 (DEPTH === 0)
+    for (let idx = left; idx <= right; idx++) {
+      let mergedCube = cubes.find((c) => c.slotIdx === idx && c.depth === depth);
+      if (mergedCube) {
+        mergedCube.state = depth === 0 ? "sorted" : "idle";
+      }
+    }
 
     currentNode.status = "merged";
   }
 
   mergeSortHelper(0, n - 1, 0, null);
 
-  // 10. EMERALD_FINALE
-  for (let b of balls) {
-    b.depth = 0;
-    b.sideOffset = 0;
+  // 7. PHA 7: EMERALD_SEAL (Hoàn thành mảng & bùng nổ sóng Emerald)
+  for (let c of cubes) {
+    c.depth = 0;
+    c.sideOffset = 0;
+    c.state = "sorted";
   }
 
   steps.push({
     activeLine: 7,
-    phase: "EMERALD_FINALE",
-    status: `🎉 [FINALE BÙNG NỔ] Sóng Emerald xanh lá vĩnh viễn quét mảng ➔ Tất cả Người Que xếp hàng cúi chào khán giả!`,
-    balls: cloneBalls(balls),
+    phase: "EMERALD_SEAL",
+    status: `🎉 [FINALE BÙNG NỔ] Sóng Emerald Xanh Lá Vĩnh Viễn quét qua mảng ➔ Hoàn thành Merge Sort!`,
+    cubes: cloneCubes(cubes),
     depth: 0,
     isCompleted: true,
     treeNodes: JSON.parse(JSON.stringify(treeNodes)),
@@ -470,41 +455,466 @@ function computeBubbleSortAlgorithmicOps(initialArr) {
   return { comparisons, swaps, totalOps };
 }
 
+// =========================================================================================
+// COMPONENT KHỐI CUBE PHA LÊ 3D CHÂN THỰC (TRUE 3D CUBE WITH TOP, SIDE SHADING & GLOW)
+// =========================================================================================
+const GlassCube3D = ({ val, state, isFlying, isComparing, cubeWidth = 56 }) => {
+  const halfSize = Math.round(cubeWidth / 2);
+  const fontSizeClass = cubeWidth < 38 ? "text-xs font-black" : cubeWidth < 45 ? "text-sm font-black" : "text-base font-black";
+
+  // 3D Volumetric Chiaroscuro Shading (Top = Bright Highlight, Front = Medium, Right = Dark Shadow)
+  let frontBg = "linear-gradient(135deg, rgba(14, 116, 144, 0.95), rgba(15, 23, 42, 0.98))";
+  let topBg = "linear-gradient(135deg, rgba(186, 230, 253, 0.98), rgba(56, 189, 248, 0.75))";
+  let sideBg = "linear-gradient(135deg, rgba(3, 105, 161, 0.95), rgba(12, 74, 110, 0.98))";
+  let borderColor = "rgba(125, 211, 252, 0.95)";
+  let textColor = "#ffffff";
+  let floorGlow = "shadow-[0_0_20px_rgba(56,189,248,0.6)]";
+  let transformScale = "scale-100";
+
+  if (state === "sorted") {
+    // GREEN SORTED 3D CRYSTAL
+    frontBg = "linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(6, 78, 59, 0.98))";
+    topBg = "linear-gradient(135deg, rgba(167, 243, 208, 0.98), rgba(52, 211, 153, 0.8))";
+    sideBg = "linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(4, 120, 87, 0.98))";
+    borderColor = "rgba(110, 231, 183, 1)";
+    textColor = "#ffffff";
+    floorGlow = "shadow-[0_0_30px_rgba(52,211,153,0.9)]";
+  } else if (isFlying) {
+    // TEAL FLYING 3D CRYSTAL
+    frontBg = "linear-gradient(135deg, rgba(20, 184, 166, 0.95), rgba(15, 23, 42, 0.98))";
+    topBg = "linear-gradient(135deg, rgba(153, 246, 228, 0.98), rgba(45, 212, 191, 0.8))";
+    sideBg = "linear-gradient(135deg, rgba(13, 148, 136, 0.95), rgba(17, 94, 89, 0.98))";
+    borderColor = "rgba(153, 246, 228, 1)";
+    textColor = "#ffffff";
+    floorGlow = "shadow-[0_0_35px_rgba(45,212,191,0.95)]";
+    transformScale = "scale-105";
+  } else if (isComparing) {
+    // AMBER GOLD COMPARING 3D CRYSTAL
+    frontBg = "linear-gradient(135deg, rgba(217, 119, 6, 0.95), rgba(120, 53, 15, 0.98))";
+    topBg = "linear-gradient(135deg, rgba(254, 240, 138, 0.98), rgba(251, 191, 36, 0.88))";
+    sideBg = "linear-gradient(135deg, rgba(180, 83, 9, 0.95), rgba(69, 26, 3, 0.98))";
+    borderColor = "rgba(254, 240, 138, 1)";
+    textColor = "#ffffff";
+    floorGlow = "shadow-[0_0_45px_rgba(251,191,36,0.98)]";
+    transformScale = "scale-110";
+  }
+
+  return (
+    <div 
+      className={`relative transition-transform duration-500 cursor-pointer will-change-transform ${transformScale}`}
+      style={{ 
+        width: `${cubeWidth}px`,
+        height: `${cubeWidth}px`,
+        transformStyle: "preserve-3d",
+        transform: "rotateX(-24deg) rotateY(-34deg)"
+      }}
+    >
+      {/* 1. TOP FACE (WITH TOP HOLOGRAM NUMBER) */}
+      <div 
+        className={`absolute inset-0 rounded-md flex items-center justify-center border-2 ${fontSizeClass} transition-all duration-300`}
+        style={{
+          background: topBg,
+          borderColor: borderColor,
+          color: textColor,
+          transform: `rotateX(90deg) translateZ(${halfSize}px)`,
+          textShadow: "0 0 10px currentColor, 0 2px 4px rgba(0,0,0,0.85)",
+          boxShadow: "inset 0 0 8px rgba(255,255,255,0.5)"
+        }}
+      >
+        {val}
+      </div>
+
+      {/* 2. RIGHT SIDE FACE (WITH RIGHT HOLOGRAM NUMBER) */}
+      <div 
+        className={`absolute inset-0 rounded-md flex items-center justify-center border-2 opacity-95 ${fontSizeClass} transition-all duration-300`}
+        style={{
+          background: sideBg,
+          borderColor: borderColor,
+          color: textColor,
+          transform: `rotateY(90deg) translateZ(${halfSize}px)`,
+          textShadow: "0 0 10px currentColor, 0 2px 4px rgba(0,0,0,0.85)"
+        }}
+      >
+        {val}
+      </div>
+
+      {/* 3. LEFT SIDE FACE */}
+      <div 
+        className="absolute inset-0 rounded-md border-2 opacity-75 transition-all duration-300"
+        style={{
+          background: sideBg,
+          borderColor: borderColor,
+          transform: `rotateY(-90deg) translateZ(${halfSize}px)`
+        }}
+      />
+
+      {/* 4. FRONT FACE (WITH FRONT HOLOGRAM NUMBER) */}
+      <div 
+        className={`absolute inset-0 rounded-md flex items-center justify-center border-2 ${fontSizeClass} transition-all duration-300 shadow-md`}
+        style={{
+          background: frontBg,
+          borderColor: borderColor,
+          color: textColor,
+          transform: `translateZ(${halfSize}px)`,
+          textShadow: "0 0 10px currentColor, 0 2px 4px rgba(0,0,0,0.9)"
+        }}
+      >
+        {val}
+      </div>
+
+      {/* 5. BACK FACE */}
+      <div 
+        className="absolute inset-0 rounded-md border-2 opacity-60"
+        style={{
+          background: frontBg,
+          borderColor: borderColor,
+          transform: `rotateY(180deg) translateZ(${halfSize}px)`
+        }}
+      />
+
+      {/* 6. BOTTOM FACE SHADOW CAST ON GLASS FLOOR SURFACE */}
+      <div 
+        className={`absolute inset-0 rounded-md bg-cyan-950/90 blur-xs border border-cyan-400/40 ${floorGlow}`}
+        style={{
+          transform: `rotateX(90deg) translateZ(-${halfSize}px) scale(1.05)`
+        }}
+      />
+    </div>
+  );
+};
+
+// =========================================================================================
+// THREE.JS WEBGL 3D CANVAS ENGINE COMPONENT (SKILL: threejs-skills, genjutsu, motion-design)
+// =========================================================================================
+// =========================================================================================
+// THREE.JS WEBGL 3D CANVAS ENGINE COMPONENT (CLEAN, ELEGANT & ULTRA-READABLE 3D)
+// =========================================================================================
+// =========================================================================================
+// THREE.JS WEBGL 3D CANVAS ENGINE COMPONENT (SMOOTH 60FPS LERP INTERPOLATION)
+// =========================================================================================
+function ThreeMergeSortCanvas({ step, array, stepCubes, slotWidth }) {
+  const mountRef = useRef(null);
+  const [hoveredCube, setHoveredCube] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const sceneRef = useRef(null);
+  const cameraRef = useRef(null);
+  const rendererRef = useRef(null);
+  const pedestalsGroupRef = useRef(null);
+  const cubeMeshesRef = useRef(new Map());
+  const targetPositionsRef = useRef(new Map());
+  const activeDepthRef = useRef(0);
+
+  // 1. Initial Scene Setup (Runs Once)
+  useEffect(() => {
+    const container = mountRef.current;
+    if (!container) return;
+
+    const width = container.clientWidth || 780;
+    const height = container.clientHeight || 460;
+
+    const scene = new THREE.Scene();
+    sceneRef.current = scene;
+
+    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 2000);
+    camera.position.set(0, 0, 520);
+    camera.lookAt(0, 0, 0);
+    cameraRef.current = camera;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    rendererRef.current = renderer;
+
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    container.appendChild(renderer.domElement);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0x0f172a, 2.8);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0x38bdf8, 2.5);
+    dirLight.position.set(100, 200, 200);
+    scene.add(dirLight);
+
+    const cyanLight = new THREE.PointLight(0x22d3ee, 3, 500);
+    cyanLight.position.set(-100, 100, 150);
+    scene.add(cyanLight);
+
+    const pedestalsGroup = new THREE.Group();
+    scene.add(pedestalsGroup);
+    pedestalsGroupRef.current = pedestalsGroup;
+
+    // Raycaster for Hover
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const handleMouseMove = (e) => {
+      const rect = container.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / height) * 2 + 1;
+      setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(Array.from(cubeMeshesRef.current.values()));
+
+      if (intersects.length > 0) {
+        const hit = intersects[0].object;
+        setHoveredCube(hit.userData);
+      } else {
+        setHoveredCube(null);
+      }
+    };
+
+    container.addEventListener("mousemove", handleMouseMove);
+
+    // 60fps Smooth Lerp Animation Loop
+    let animId;
+    const animate = () => {
+      animId = requestAnimationFrame(animate);
+
+      // Smooth Camera Pan
+      const targetCamY = 115 - activeDepthRef.current * 115 - 20;
+      camera.position.y += (targetCamY - camera.position.y) * 0.08;
+
+      // Smooth Mesh Position Lerp (Zero Stutter!)
+      cubeMeshesRef.current.forEach((mesh, id) => {
+        const target = targetPositionsRef.current.get(id);
+        if (target) {
+          mesh.position.x += (target.x - mesh.position.x) * 0.12;
+          mesh.position.y += (target.y - mesh.position.y) * 0.12;
+          mesh.position.z += (target.z - mesh.position.z) * 0.12;
+
+          const s = target.scale || 1.0;
+          mesh.scale.x += (s - mesh.scale.x) * 0.15;
+          mesh.scale.y += (s - mesh.scale.y) * 0.15;
+          mesh.scale.z += (s - mesh.scale.z) * 0.15;
+        }
+      });
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      container.removeEventListener("mousemove", handleMouseMove);
+      renderer.dispose();
+    };
+  }, []);
+
+  // 2. Smooth State & Target Update (No Component Re-creation)
+  useEffect(() => {
+    const scene = sceneRef.current;
+    const pedestalsGroup = pedestalsGroupRef.current;
+    if (!scene || !pedestalsGroup) return;
+
+    activeDepthRef.current = step.depth || 0;
+
+    // Helper: Create Texture
+    const createNumberTexture = (val, state, isComparing, isWinner) => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext("2d");
+
+      let bgColor = "#071326";
+      let borderColor = "#38bdf8";
+      let textColor = "#7dd3fc";
+
+      if (state === "sorted") {
+        bgColor = "#064e3b";
+        borderColor = "#34d399";
+        textColor = "#6ee7b7";
+      } else if (isWinner) {
+        bgColor = "#047857";
+        borderColor = "#10b981";
+        textColor = "#a7f3d0";
+      } else if (isComparing) {
+        bgColor = "#0284c7";
+        borderColor = "#fde047";
+        textColor = "#ffffff";
+      }
+
+      ctx.fillStyle = bgColor;
+      ctx.beginPath();
+      ctx.roundRect(12, 12, 232, 232, 28);
+      ctx.fill();
+
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = 12;
+      ctx.shadowColor = borderColor;
+      ctx.shadowBlur = 20;
+      ctx.stroke();
+
+      ctx.font = "900 115px monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = textColor;
+      ctx.shadowColor = borderColor;
+      ctx.shadowBlur = 25;
+      ctx.fillText(String(val), 128, 128);
+
+      return new THREE.CanvasTexture(canvas);
+    };
+
+    // Rebuild Pedestals
+    while (pedestalsGroup.children.length > 0) {
+      const child = pedestalsGroup.children.pop();
+      if (child.geometry) child.geometry.dispose();
+    }
+
+    [0, 1, 2, 3].forEach((dTier) => {
+      const tierY = 115 - dTier * 115;
+      const tierCubes = stepCubes.filter((c) => c.depth === dTier);
+      tierCubes.sort((a, b) => a.slotIdx - b.slotIdx);
+
+      const subArrayGroups = [];
+      let currentGroup = [];
+
+      tierCubes.forEach((c) => {
+        if (currentGroup.length === 0) {
+          currentGroup.push(c);
+        } else {
+          const prevSlot = currentGroup[currentGroup.length - 1].slotIdx;
+          if (c.slotIdx === prevSlot + 1 && c.sideOffset === currentGroup[currentGroup.length - 1].sideOffset) {
+            currentGroup.push(c);
+          } else {
+            subArrayGroups.push(currentGroup);
+            currentGroup = [c];
+          }
+        }
+      });
+      if (currentGroup.length > 0) subArrayGroups.push(currentGroup);
+
+      subArrayGroups.forEach((group) => {
+        const startSlot = group[0].slotIdx;
+        const endSlot = group[group.length - 1].slotIdx;
+        const count = endSlot - startSlot + 1;
+        const pedestalWidth = count * slotWidth + 24;
+        const sideOffset = group[0].sideOffset || 0;
+        const centerX = (startSlot + (count - 1) / 2 - (array.length - 1) / 2) * slotWidth + sideOffset;
+
+        const pedGeo = new THREE.BoxGeometry(pedestalWidth, 6, 50);
+        const pedMat = new THREE.MeshPhysicalMaterial({
+          color: (step.depth || 0) === dTier ? 0x0284c7 : 0x0f2744,
+          metalness: 0.1,
+          roughness: 0.2,
+          transmission: 0.8,
+          transparent: true,
+          opacity: 0.7,
+          emissive: (step.depth || 0) === dTier ? 0x0284c7 : 0x03284c,
+          emissiveIntensity: (step.depth || 0) === dTier ? 0.4 : 0.1,
+        });
+
+        const pedMesh = new THREE.Mesh(pedGeo, pedMat);
+        pedMesh.position.set(centerX, tierY - 32, 0);
+        pedestalsGroup.add(pedMesh);
+      });
+    });
+
+    // Update Cubes Targets & Meshes (Smooth Persistent Update)
+    const cubeGeo = new THREE.BoxGeometry(50, 50, 40);
+
+    stepCubes.forEach((c) => {
+      const isComparing = step.phase === "LASER_SCAN" && step.comparingIds?.includes(c.id);
+      const isWinner = step.phase === "CUBE_ASCEND" && step.flyingCubeId === c.id;
+
+      const targetX = (c.slotIdx - (array.length - 1) / 2) * slotWidth + (c.sideOffset || 0);
+      const targetY = 115 - c.depth * 115 + (isComparing ? 18 : 0);
+      const targetZ = 15 + (isComparing ? 25 : 0);
+      const scale = isWinner ? 1.15 : isComparing ? 1.08 : 1.0;
+
+      targetPositionsRef.current.set(c.id, { x: targetX, y: targetY, z: targetZ, scale });
+
+      let mesh = cubeMeshesRef.current.get(c.id);
+      if (!mesh) {
+        const numTexture = createNumberTexture(c.tag, c.state, isComparing, isWinner);
+        const glassMat = new THREE.MeshStandardMaterial({ color: 0x0b2545, roughness: 0.2, metalness: 0.1 });
+        const frontFaceMat = new THREE.MeshStandardMaterial({ map: numTexture, transparent: true });
+        const materials = [glassMat, glassMat, glassMat, glassMat, frontFaceMat, glassMat];
+
+        mesh = new THREE.Mesh(cubeGeo, materials);
+        mesh.position.set(targetX, targetY, targetZ);
+        mesh.userData = { id: c.id, val: c.tag, slotIdx: c.slotIdx, depth: c.depth, state: c.state };
+
+        scene.add(mesh);
+        cubeMeshesRef.current.set(c.id, mesh);
+      } else {
+        // Update texture if state changed
+        const numTexture = createNumberTexture(c.tag, c.state, isComparing, isWinner);
+        mesh.material[4].map = numTexture;
+        mesh.material[4].needsUpdate = true;
+        mesh.userData = { id: c.id, val: c.tag, slotIdx: c.slotIdx, depth: c.depth, state: c.state };
+      }
+    });
+  }, [step, array, stepCubes, slotWidth]);
+
+  return (
+    <div className="relative w-full h-[460px] rounded-3xl overflow-hidden bg-[#040711] border border-[#1e293b]">
+      <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
+
+      {/* 3D HOVER TOOLTIP OVERLAY */}
+      {hoveredCube && (
+        <div
+          className="absolute z-50 pointer-events-none px-4 py-2.5 rounded-2xl bg-cyan-950/95 border border-cyan-400 text-cyan-100 font-mono text-xs shadow-xl backdrop-blur-md flex flex-col gap-1 transition-all duration-150"
+          style={{
+            left: `${Math.min(mousePos.x + 15, 600)}px`,
+            top: `${Math.min(mousePos.y - 60, 360)}px`,
+          }}
+        >
+          <div className="flex items-center gap-2 font-black text-cyan-300 border-b border-cyan-500/40 pb-1">
+            <Box className="w-3.5 h-3.5 text-cyan-400" />
+            <span>KHỐI CUBE #{hoveredCube.val}</span>
+          </div>
+          <div className="text-[10px] text-slate-300 flex justify-between gap-4">
+            <span>Vị Trí Mảng: <b className="text-white">[{hoveredCube.slotIdx}]</b></span>
+            <span>Tầng Đệ Quy: <b className="text-cyan-300">Tầng {hoveredCube.depth}</b></span>
+          </div>
+        </div>
+      )}
+
+      {/* HUD OVERLAY BADGE */}
+      <div className="absolute top-4 left-4 z-40 px-3.5 py-1.5 rounded-full bg-[#091122]/90 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-bold flex items-center gap-2 backdrop-blur-md shadow-md">
+        <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+        <span>THREE.JS WEBGL 3D (SMOOTH 60FPS LERP INTERPOLATION)</span>
+      </div>
+    </div>
+  );
+}
+
 export default function MergeSortLab({ onBack }) {
   const [arraySize, setArraySize] = useState(8);
   const [array, setArray] = useState([38, 27, 43, 3, 9, 82, 10, 19]);
   const [customInput, setCustomInput] = useState("");
+  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [viewMode, setViewMode] = useState("3d-iso"); // "3d-iso" | "3d-webgl" | "2d-front"
 
-  // Tầng 1 Simulator Playback State (Independent)
+  // Tầng 1 Playback State
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(900);
 
-  // Ref for currentStep to keep keydown useEffect dependency array constant []
-  const currentStepRef = useRef(currentStep);
-  currentStepRef.current = currentStep;
-
-  // Tầng 2 Full Code Reader State (100% INDEPENDENT State!)
+  // Tầng 2 Code Reader State (Độc lập 100%)
   const [codeStep, setCodeStep] = useState(0);
   const [lang, setLang] = useState("pseudocode");
   const [isCodePlaying, setIsCodePlaying] = useState(false);
   const [codeSpeed, setCodeSpeed] = useState(800);
 
-  // Easter Eggs State
-  const [splitterSpin, setSplitterSpin] = useState(false);
-  const [catcherJuggle, setCatcherJuggle] = useState(false);
-
   const timerRef = useRef(null);
   const codeTimerRef = useRef(null);
 
-  // Refs for Auto-Scrolling Pseudocode & Recursion Tree
+  // Auto-scroll refs
   const codeBoxRef = useRef(null);
-  const treeBoxRef = useRef(null);
   const fullCodeBoxRef = useRef(null);
-
   const activeCodeLineRef = useRef(null);
-  const activeTreeNodeRef = useRef(null);
   const activeFullCodeLineRef = useRef(null);
+
+  const currentStepRef = useRef(currentStep);
+  currentStepRef.current = currentStep;
 
   useEffect(() => {
     const text = array.map((v) => (typeof v === "object" ? v.value : v)).join(", ");
@@ -512,20 +922,80 @@ export default function MergeSortLab({ onBack }) {
   }, [array]);
 
   const steps = useMemo(() => {
-    return generateDetailedMergeSortSteps(array);
+    return generateSkyBlocksSteps(array);
   }, [array]);
 
-  // Tầng 1 Step Object
   const step = steps[currentStep] || steps[0] || {};
   const isFinished = currentStep === steps.length - 1;
   const progressPercent = Math.round(((currentStep + 1) / steps.length) * 100);
   const activeLine = step.activeLine || 1;
 
-  // Tầng 2 Code Step Object (INDEPENDENT FROM TẦNG 1!)
   const codeStepObj = steps[codeStep] || steps[0] || {};
   const codeActiveLine = codeStepObj.activeLine || 1;
 
-  // Algorithmic Operations for Merge Sort vs Bubble Sort
+  // Max recursion depth for dynamic camera panning
+  const maxDepth = useMemo(() => {
+    return Math.ceil(Math.log2(array.length || 1));
+  }, [array.length]);
+
+  // Stage Stage Calculations
+  const stageWidth = 840;
+  const slotWidth = Math.min(75, (stageWidth - 40) / (array.length || 1));
+
+  // Dynamic 3D Camera Tracking Engine (Zoom & Pan follow action)
+  const cameraTransform = useMemo(() => {
+    const activeDepth = step.depth || 0;
+    const tierGap = (array.length || 8) > 8 ? 125 : 155;
+    const activeTierY = -170 + activeDepth * tierGap;
+    
+    // Midpoint X calculation
+    const midX = step.mid !== undefined ? (step.mid - (array.length - 1) / 2) * slotWidth : 0;
+    
+    // Dynamic Zoom & Y Pan for Deep Tiers (Tier 3 & 4)
+    const zoom = activeDepth >= 4 ? 0.85 : activeDepth >= 3 ? 0.92 : step.phase === "LASER_SCAN" ? 1.08 : 1.0;
+
+    return {
+      x: -midX * 0.35,
+      y: -activeTierY * 0.82,
+      zoom
+    };
+  }, [step.depth, step.mid, step.phase, array.length, slotWidth]);
+
+  // Sound FX Triggers on Step Changes
+  useEffect(() => {
+    if (step.phase === "GLASS_CRACK") {
+      playSoundFX("crack", soundEnabled);
+    } else if (step.phase === "RIFT_DESCEND") {
+      playSoundFX("whoosh", soundEnabled);
+    } else if (step.phase === "LASER_SCAN") {
+      playSoundFX("zap", soundEnabled);
+    } else if (step.phase === "CUBE_ASCEND") {
+      playSoundFX("chime", soundEnabled);
+    } else if (step.phase === "EMERALD_SEAL") {
+      playSoundFX("victory", soundEnabled);
+    }
+  }, [currentStep, step.phase, soundEnabled]);
+
+  // AUTO SCROLL CODE SNIPPETS
+  useEffect(() => {
+    if (activeCodeLineRef.current) {
+      activeCodeLineRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentStep, activeLine]);
+
+  useEffect(() => {
+    if (activeFullCodeLineRef.current) {
+      activeFullCodeLineRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [codeStep, codeActiveLine, lang]);
+
+  // Algorithmic Operations Math
   const mergeSortAlgorithmicOps = useMemo(() => {
     const lastStep = steps[steps.length - 1] || {};
     const totalComparisons = lastStep.comparisons || 0;
@@ -543,50 +1013,59 @@ export default function MergeSortLab({ onBack }) {
     return Math.max(1, Math.round(ratio * 10) / 10);
   }, [bubbleSortStats, mergeSortAlgorithmicOps]);
 
-  // Max recursion depth for dynamic spacing and camera panning
-  const maxDepth = useMemo(() => {
-    return Math.ceil(Math.log2(array.length || 1));
-  }, [array.length]);
-
-  // Smooth SVG Camera Vertical Auto-Pan
-  const cameraY = useMemo(() => {
-    const currentDepth = step.depth || 0;
-    if (maxDepth >= 4 && currentDepth >= 2) {
-      return -(currentDepth - 1) * 65;
-    } else if (currentDepth >= 2) {
-      return -(currentDepth - 1) * 45;
-    }
-    return 0;
-  }, [step.depth, maxDepth]);
-
-  // AUTO SCROLL CODE SNIPPET (TẦNG 1) & TREE CONTAINER
+  // Main Playback Loop (Tầng 1)
   useEffect(() => {
-    if (activeCodeLineRef.current) {
-      activeCodeLineRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+    if (isPlaying) {
+      timerRef.current = setInterval(() => {
+        setCurrentStep((prev) => {
+          if (prev >= steps.length - 1) {
+            setIsPlaying(false);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, speed);
+    } else {
+      if (timerRef.current) clearInterval(timerRef.current);
     }
-  }, [currentStep, activeLine]);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPlaying, speed, steps]);
 
+  // Code Reader Playback Loop (Tầng 2 Độc lập)
   useEffect(() => {
-    if (activeTreeNodeRef.current) {
-      activeTreeNodeRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+    if (isCodePlaying) {
+      codeTimerRef.current = setInterval(() => {
+        setCodeStep((prev) => {
+          if (prev >= steps.length - 1) {
+            setIsCodePlaying(false);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, codeSpeed);
+    } else {
+      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
     }
-  }, [currentStep, step.activeTreeNodeId]);
+    return () => {
+      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
+    };
+  }, [isCodePlaying, codeSpeed, steps]);
 
-  // AUTO SCROLL FULL CODE READER (TẦNG 2) — USES INDEPENDENT codeStep & codeActiveLine!
+  // Confetti on completion
   useEffect(() => {
-    if (activeFullCodeLineRef.current) {
-      activeFullCodeLineRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
+    if (isFinished && steps.length > 1) {
+      try {
+        confetti({
+          particleCount: 150,
+          spread: 120,
+          origin: { y: 0.6 },
+          colors: ["#38bdf8", "#22d3ee", "#34d399", "#fbbf24", "#10b981"],
+        });
+      } catch (e) {}
     }
-  }, [codeStep, codeActiveLine, lang]);
+  }, [isFinished, steps.length]);
 
   const handleRandomArray = () => {
     const newArr = Array.from(
@@ -609,95 +1088,6 @@ export default function MergeSortLab({ onBack }) {
     setIsPlaying(false);
     setIsCodePlaying(false);
   };
-
-  // Tầng 1 Main Theater Auto-Play Loop (Updates currentStep)
-  useEffect(() => {
-    if (isPlaying) {
-      timerRef.current = setInterval(() => {
-        setCurrentStep((prev) => {
-          if (prev >= steps.length - 1) {
-            setIsPlaying(false);
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, speed);
-    } else {
-      if (timerRef.current) clearInterval(timerRef.current);
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isPlaying, speed, steps]);
-
-  // Tầng 2 Dedicated Pseudocode Reader Auto-Play Loop (Updates codeStep INDEPENDENTLY!)
-  useEffect(() => {
-    if (isCodePlaying) {
-      codeTimerRef.current = setInterval(() => {
-        setCodeStep((prev) => {
-          if (prev >= steps.length - 1) {
-            setIsCodePlaying(false);
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, codeSpeed);
-    } else {
-      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
-    }
-    return () => {
-      if (codeTimerRef.current) clearInterval(codeTimerRef.current);
-    };
-  }, [isCodePlaying, codeSpeed, steps]);
-
-  useEffect(() => {
-    if (isFinished && steps.length > 1) {
-      try {
-        confetti({
-          particleCount: 100,
-          spread: 90,
-          origin: { y: 0.6 },
-          colors: ["#38bdf8", "#22d3ee", "#34d399", "#fbbf24", "#f43f5e"]
-        });
-      } catch (e) {}
-    }
-  }, [isFinished, steps.length]);
-
-  const stepsLengthRef = useRef(steps.length);
-  stepsLengthRef.current = steps.length;
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName)) {
-        return;
-      }
-      if (e.code === "Space") {
-        e.preventDefault();
-        setIsPlaying((prev) => {
-          if (!prev && currentStepRef.current >= stepsLengthRef.current - 1) {
-            setCurrentStep(0);
-          }
-          return !prev;
-        });
-      } else if (e.code === "ArrowRight") {
-        e.preventDefault();
-        setIsPlaying(false);
-        setCurrentStep((prev) => Math.min(prev + 1, stepsLengthRef.current - 1));
-      } else if (e.code === "ArrowLeft") {
-        e.preventDefault();
-        setIsPlaying(false);
-        setCurrentStep((prev) => Math.max(prev - 1, 0));
-      } else if (e.code === "KeyR") {
-        e.preventDefault();
-        setIsPlaying(false);
-        setIsCodePlaying(false);
-        setCurrentStep(0);
-        setCodeStep(0);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   const handleCustomInputSubmit = (e) => {
     e.preventDefault();
@@ -724,91 +1114,36 @@ export default function MergeSortLab({ onBack }) {
       ? JAVA_CODE
       : PSEUDOCODE;
 
-  const totalBars = array.length;
-  const slotW = (STAGE_W - 140) / (totalBars || 1);
-  
-  const getXPos = (slotIdx, sideOffset = 0) => {
-    return 70 + slotIdx * slotW + slotW / 2 + sideOffset;
+  const stepCubes = step.cubes || [];
+
+  // Group Cubes by Depth Tier for Dynamic Multi-tier Glass Shelves Render!
+  const depthGroupedCubes = useMemo(() => {
+    const groups = {};
+    stepCubes.forEach((c) => {
+      const d = c.depth || 0;
+      if (!groups[d]) groups[d] = [];
+      groups[d].push(c);
+    });
+    return groups;
+  }, [stepCubes]);
+
+  const getCubeX = (slotIdx, sideOffset = 0) => {
+    return (slotIdx - (array.length - 1) / 2) * slotWidth + sideOffset;
   };
 
-  const stepBalls = step.balls || [];
-
-  // Calculate exact current active segment's sideOffset for Splitter centering!
-  const currentSegmentSideOffset = useMemo(() => {
-    if (step.left !== undefined) {
-      const b = stepBalls.find((ball) => ball.slotIdx === step.left && ball.depth === step.depth);
-      if (b) return b.sideOffset;
-    }
-    return 0;
-  }, [stepBalls, step.left, step.depth]);
-
-  // Exact Splitter X position (Centers perfectly on current segment split boundary at ANY depth)
-  const splitterX = useMemo(() => {
-    if (step.mid !== undefined) {
-      const leftX = getXPos(step.mid, currentSegmentSideOffset);
-      const rightX = getXPos(step.mid + 1, currentSegmentSideOffset);
-      return (leftX + rightX) / 2;
-    }
-    if (step.left !== undefined && step.right !== undefined) {
-      const leftX = getXPos(step.left, currentSegmentSideOffset);
-      const rightX = getXPos(step.right, currentSegmentSideOffset);
-      return (leftX + rightX) / 2;
-    }
-    return STAGE_W / 2;
-  }, [step.mid, step.left, step.right, currentSegmentSideOffset]);
-
-  const platformSegmentsByDepth = useMemo(() => {
-    const depthMap = {};
-    stepBalls.forEach((b) => {
-      if (!depthMap[b.depth]) depthMap[b.depth] = [];
-      depthMap[b.depth].push(b);
-    });
-
-    const segments = [];
-    Object.keys(depthMap).forEach((dStr) => {
-      const d = parseInt(dStr, 10);
-      const ballsInDepth = depthMap[d];
-
-      const offsetGroupMap = {};
-      ballsInDepth.forEach((b) => {
-        const offKey = `${b.sideOffset}`;
-        if (!offsetGroupMap[offKey]) offsetGroupMap[offKey] = [];
-        offsetGroupMap[offKey].push(b);
-      });
-
-      Object.keys(offsetGroupMap).forEach((offKey) => {
-        const group = offsetGroupMap[offKey];
-        if (group.length === 0) return;
-        const minSlot = Math.min(...group.map((g) => g.slotIdx));
-        const maxSlot = Math.max(...group.map((g) => g.slotIdx));
-        const sideOffset = group[0].sideOffset;
-
-        const startX = getXPos(minSlot, sideOffset) - BALL_R - 14;
-        const endX = getXPos(maxSlot, sideOffset) + BALL_R + 14;
-        const width = Math.max(65, endX - startX);
-
-        segments.push({
-          depth: d,
-          startX,
-          width,
-          sideOffset,
-          isActive: (step.depth || 0) === d,
-        });
-      });
-    });
-
-    return segments;
-  }, [stepBalls, step.depth]);
+  const getTierYPos = (depth) => {
+    return -170 + depth * 165;
+  };
 
   return (
-    <div className="w-full min-h-screen bg-[#0d1117] text-slate-100 p-3 sm:p-5 md:p-6 font-sans space-y-6 select-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#161b22] via-[#0d1117] to-[#0d1117]">
+    <div className="w-full min-h-screen bg-[#040711] text-slate-100 p-3 sm:p-5 md:p-6 font-sans space-y-6 select-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#0b1426] via-[#040711] to-[#020308]">
       
       {/* HEADER TOOLBAR */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-2xl">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-[#091122]/90 backdrop-blur-md p-5 rounded-3xl border border-[#1e293b] shadow-2xl">
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="px-3.5 py-1.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-200 hover:text-white transition-all flex items-center gap-2 text-xs font-bold cursor-pointer shadow-md border border-[#30363d] active:scale-95"
+            className="px-3.5 py-1.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-200 hover:text-white transition-all flex items-center gap-2 text-xs font-bold cursor-pointer shadow-md border border-[#334155] active:scale-95"
           >
             <ArrowLeft className="w-4 h-4 text-sky-400" />
             <span>← Quay về Kho Mô Phỏng</span>
@@ -816,26 +1151,39 @@ export default function MergeSortLab({ onBack }) {
 
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[11px] font-extrabold text-sky-400 uppercase tracking-widest bg-[#21262d] border border-[#30363d] px-3.5 py-1 rounded-full shadow-inner flex items-center gap-1.5">
-                <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Merge Sort Theater</span>
+              <span className="text-[11px] font-extrabold text-sky-400 uppercase tracking-widest bg-[#1e293b] border border-[#334155] px-3.5 py-1 rounded-full shadow-inner flex items-center gap-1.5">
+                <Box className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Sky Blocks 3D Hybrid</span>
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400 font-mono uppercase">
-              MERGE SORT — KIẾN TRÚC 3 TẦNG CHUẨN DỰ ÁN
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400 font-mono uppercase">
+              MERGE SORT 3D — BẢN SỬA LỖI TRỰC QUAN & KHỐI 3D CHUẨN
             </h1>
             <p className="text-xs sm:text-sm text-slate-400 mt-0.5 font-medium">
-              Tầng 1: Bộ Mô Phỏng Sân Khấu 3D | Tầng 2: Trình Đọc Mã Độc Lập | Tầng 3: Bảng Thông Số
+              Khối 3D Đa Chiều Chân Thực | Pha Nứt & Tách Bệ Sân Khấu Hiển Thị Rõ Ràng | Góc Nhìn Cố Định
             </p>
           </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {/* Sound Toggle */}
+          <button
+            onClick={() => setSoundEnabled(!soundEnabled)}
+            className={`p-2.5 rounded-2xl border text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-md active:scale-95 ${
+              soundEnabled ? "bg-[#1e293b] border-cyan-500/50 text-cyan-300" : "bg-[#1e293b]/50 border-[#334155] text-slate-500"
+            }`}
+            title="Bật/Tắt âm thanh SFX"
+          >
+            {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+          </button>
         </div>
       </div>
 
       {/* CONFIGURATION TOOLBAR */}
-      <div className="bg-[#161b22]/90 backdrop-blur-md p-5 rounded-3xl border border-[#30363d] shadow-xl space-y-3">
+      <div className="bg-[#091122]/90 backdrop-blur-md p-5 rounded-3xl border border-[#1e293b] shadow-xl space-y-3">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           {/* Array Size Slider */}
-          <div className="md:col-span-6 flex items-center gap-3 bg-[#0d1117] px-4 py-2.5 rounded-2xl border border-[#30363d]">
+          <div className="md:col-span-6 flex items-center gap-3 bg-[#040711] px-4 py-2.5 rounded-2xl border border-[#1e293b]">
             <span className="text-xs font-bold text-slate-300 shrink-0">Kích thước mảng:</span>
             <input
               type="range"
@@ -854,7 +1202,7 @@ export default function MergeSortLab({ onBack }) {
               }}
               className="w-full accent-cyan-400 cursor-pointer"
             />
-            <span className="text-xs font-mono font-extrabold text-cyan-400 shrink-0 bg-[#21262d] px-2.5 py-0.5 rounded-lg border border-[#30363d]">
+            <span className="text-xs font-mono font-extrabold text-cyan-400 shrink-0 bg-[#1e293b] px-2.5 py-0.5 rounded-lg border border-[#334155]">
               {arraySize}
             </span>
           </div>
@@ -863,14 +1211,14 @@ export default function MergeSortLab({ onBack }) {
           <div className="md:col-span-6 flex items-center gap-2">
             <button
               onClick={handleRandomArray}
-              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#1e293b] hover:bg-[#334155] border border-[#334155] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
             >
               <Shuffle className="w-3.5 h-3.5 text-cyan-400" />
               <span>Mảng Ngẫu Nhiên</span>
             </button>
             <button
               onClick={handleReverseArray}
-              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#21262d] hover:bg-[#30363d] border border-[#30363d] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-[#1e293b] hover:bg-[#334155] border border-[#334155] text-slate-200 text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md cursor-pointer active:scale-95"
             >
               <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
               <span>Mảng Ngược</span>
@@ -879,14 +1227,14 @@ export default function MergeSortLab({ onBack }) {
         </div>
 
         {/* Custom Input Form */}
-        <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2 pt-2 border-t border-[#30363d]">
+        <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2 pt-2 border-t border-[#1e293b]">
           <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
           <input
             type="text"
             value={customInput}
             onChange={(e) => setCustomInput(e.target.value)}
             placeholder="Ví dụ: 38, 27, 43, 3, 9, 82..."
-            className="flex-1 px-4 py-2 rounded-2xl bg-[#0d1117] border border-[#30363d] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+            className="flex-1 px-4 py-2 rounded-2xl bg-[#040711] border border-[#1e293b] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
           />
           <button
             type="submit"
@@ -898,29 +1246,28 @@ export default function MergeSortLab({ onBack }) {
       </div>
 
       {/* ========================================================================================= */}
-      {/* TẦNG 1: BỘ MÔ PHỎNG SÂN KHẤU TRỰC QUAN 3D (3-COLUMN THEATER: 2.5 : 7 : 2.5) */}
+      {/* TẦNG 1: BỘ MÔ PHỎNG SÂN KHẤU TRỰC QUAN 3D PERSPECTIVE (CỐ ĐỊNH GÓC NHÌN XUẤT SẮC) */}
       {/* ========================================================================================= */}
-      <div className="w-full bg-[#161124]/80 backdrop-blur-md rounded-3xl border border-[#30363d] shadow-2xl overflow-hidden flex flex-col p-4 space-y-4">
+      <div className="w-full bg-[#091122]/90 backdrop-blur-md rounded-3xl border border-[#1e293b] shadow-2xl overflow-hidden flex flex-col p-4 space-y-4">
         
-        <div className="flex items-center justify-between border-b border-[#30363d] pb-2">
+        <div className="flex items-center justify-between border-b border-[#1e293b] pb-2">
           <div className="flex items-center gap-2 text-sm font-black uppercase text-sky-400 font-mono tracking-wider">
             <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span>TẦNG 1: BỘ MÔ PHỎNG SÂN KHẤU TRỰC QUAN 3D (CẤU TRÚC 3 CỘT chuẩn)</span>
+            <span>SÂN KHẤU 3D STAGE THEATER (GÓC NHÌN CỐ ĐỊNH PHỐI CẢNH 3D CHÂN THỰC)</span>
           </div>
-          <span className="text-xs font-mono text-slate-400 bg-[#0d1117] px-3 py-1 rounded-xl border border-[#30363d]">
+          <span className="text-xs font-mono text-slate-400 bg-[#040711] px-3 py-1 rounded-xl border border-[#1e293b]">
             Bước {currentStep + 1} / {steps.length}
           </span>
         </div>
 
-        {/* Playback Controls Toolbar (Tầng 1) */}
-        <div className="bg-[#0d1117] p-3.5 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-100">
-          {/* Buttons Group */}
+        {/* Playback Controls Toolbar */}
+        <div className="bg-[#040711] p-3.5 rounded-2xl border border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-100">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setCurrentStep(0)}
               disabled={currentStep === 0}
-              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-              title="Về bước đầu (Phím R)"
+              className="p-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#334155] shadow-xs"
+              title="Về bước đầu"
             >
               <RotateCcw className="w-4 h-4" />
             </button>
@@ -928,13 +1275,12 @@ export default function MergeSortLab({ onBack }) {
             <button
               onClick={() => setCurrentStep((p) => Math.max(0, p - 1))}
               disabled={currentStep === 0}
-              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-              title="Bước trước (Phím ←)"
+              className="p-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 disabled:opacity-30 transition-colors cursor-pointer border border-[#334155] shadow-xs"
+              title="Bước trước"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            {/* AUTO PLAY TẦNG 1: Auto resets to 0 if clicked at the end! */}
             <button
               onClick={() => {
                 if (isPlaying) {
@@ -946,7 +1292,7 @@ export default function MergeSortLab({ onBack }) {
                   setIsPlaying(true);
                 }
               }}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-500 hover:from-sky-500 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg shadow-sky-950/60 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-500 hover:from-sky-500 hover:to-emerald-400 text-white font-extrabold text-xs shadow-lg shadow-sky-950/60 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
             >
               {isPlaying ? (
                 <>
@@ -964,8 +1310,8 @@ export default function MergeSortLab({ onBack }) {
             <button
               onClick={() => setCurrentStep((p) => Math.min(steps.length - 1, p + 1))}
               disabled={currentStep === steps.length - 1}
-              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
-              title="Bước tiếp (Phím →)"
+              className="p-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#334155] shadow-xs"
+              title="Bước tiếp"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -973,21 +1319,20 @@ export default function MergeSortLab({ onBack }) {
             <button
               onClick={() => setCurrentStep(steps.length - 1)}
               disabled={currentStep === steps.length - 1}
-              className="p-2.5 rounded-xl bg-[#21262d] hover:bg-[#30363d] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#30363d] shadow-xs"
+              className="p-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] disabled:opacity-30 text-slate-300 transition-colors cursor-pointer border border-[#334155] shadow-xs"
               title="Xem kết quả cuối cùng"
             >
               <SkipForward className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Keyboard Shortcut Hint Tag */}
-          <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-[#21262d] px-3 py-1.5 rounded-xl border border-[#30363d]">
-            <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
-            <span>[Space] Chạy/Dừng | [←] Lùi | [→] Tiến | [R] Reset</span>
+          <div className="hidden lg:flex items-center gap-2 text-[11px] font-mono text-slate-400 bg-[#1e293b] px-3 py-1.5 rounded-xl border border-[#334155]">
+            <Compass className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Góc nhìn 3D Iso cố định chuẩn xác — Tự động căn giữa theo tầng đệ quy</span>
           </div>
 
           {/* Speed Slider */}
-          <div className="flex items-center gap-3 w-full sm:w-auto bg-[#21262d] px-4 py-2 rounded-xl border border-[#30363d] shadow-xs">
+          <div className="flex items-center gap-3 w-full sm:w-auto bg-[#1e293b] px-4 py-2 rounded-xl border border-[#334155] shadow-xs">
             <span className="text-xs font-bold text-slate-300 shrink-0">Tốc độ:</span>
             <input
               type="range"
@@ -1004,554 +1349,280 @@ export default function MergeSortLab({ onBack }) {
           </div>
         </div>
 
-        {/* WORKSPACE GRID: 3 COLUMNS (CỘT TRÁI 2.5 : CỘT GIỮA 7 : CỘT PHẢI 2.5) */}
-        <div className="relative w-full min-h-[520px] grid grid-cols-12 select-none overflow-hidden rounded-2xl border border-[#30363d] shadow-2xl">
-          
-          {/* CỘT TRÁI (2.5 COLUMNS -> lg:col-span-3): PSEUDOCODE SNIPPET & RECURSION TREE MAP */}
-          <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-3.5 border-r border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner space-y-4">
-            <div>
-              <div className="flex items-center justify-between border-b border-[#30363d] pb-2 mb-2.5">
-                <div className="flex items-center gap-1.5">
-                  <Zap className="w-4 h-4 text-cyan-400 animate-pulse" />
-                  <span className="text-xs font-black uppercase tracking-wider text-slate-100">
-                    Pseudocode (EN) & Đệ Quy
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
-                  Depth {step.depth || 0}
-                </span>
-              </div>
-
-              {/* Pseudocode Snippet Container */}
-              <div ref={codeBoxRef} className="space-y-1 font-mono text-[11px] max-h-[220px] overflow-y-auto pr-1 scroll-smooth">
-                {PSEUDOCODE.map((item) => {
-                  const isActive = item.line === activeLine;
-                  return (
-                    <div
-                      key={item.line}
-                      ref={isActive ? activeCodeLineRef : null}
-                      className={`p-1.5 rounded-lg flex items-center gap-2 transition-all ${
-                        isActive
-                          ? "bg-[#1f2937] text-sky-300 font-bold border-l-4 border-sky-400 pl-2 shadow-md"
-                          : "text-slate-400 hover:text-slate-200"
-                      }`}
-                    >
-                      <span className="text-[10px] opacity-40 w-4 text-right font-mono">{item.line}</span>
-                      <span className="truncate whitespace-pre">{item.text}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Recursion Map Mini-Panel */}
-            <div className="pt-3 border-t border-[#30363d] space-y-2">
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5 justify-between">
-                <div className="flex items-center gap-1.5">
-                  <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Cây Đệ Quy Mini Map:</span>
-                </div>
-                <span className="text-[9px] font-mono text-cyan-400">Click node để nhảy</span>
-              </div>
-
-              <div ref={treeBoxRef} className="p-2 bg-[#161b22] rounded-xl border border-[#30363d] max-h-36 overflow-y-auto space-y-1.5 font-mono text-[10px] scroll-smooth">
-                {step.treeNodes && step.treeNodes.length > 0 ? (
-                  step.treeNodes.map((node) => {
-                    const isActive = node.id === step.activeTreeNodeId;
-                    return (
-                      <div
-                        key={node.id}
-                        ref={isActive ? activeTreeNodeRef : null}
-                        onClick={() => {
-                          const targetStepIdx = steps.findIndex((s) => s.activeTreeNodeId === node.id);
-                          if (targetStepIdx !== -1) {
-                            setIsPlaying(false);
-                            setCurrentStep(targetStepIdx);
-                          }
-                        }}
-                        className={`p-1.5 rounded-lg flex items-center justify-between cursor-pointer transition-all ${
-                          isActive
-                            ? "bg-sky-950/80 border border-sky-400 text-cyan-300 font-bold shadow-md"
-                            : "bg-[#0d1117] border border-[#30363d] text-slate-400 hover:text-slate-200"
-                        }`}
-                      >
-                        <span>[${node.left}..${node.right}] (d=${node.depth})</span>
-                        <span className={`text-[9px] px-1.5 py-0.2 rounded ${node.status === 'merged' ? 'bg-emerald-950 text-emerald-400' : 'bg-cyan-950 text-cyan-400'}`}>
-                          {node.status === 'merged' ? '✓ Trộn' : '▶ Active'}
-                        </span>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <span className="text-slate-500 text-[10px] italic">Đang cập nhật cây đệ quy...</span>
-                )}
-              </div>
-            </div>
+        {/* STATUS BANNER */}
+        <div className="w-full flex items-center justify-between px-4 py-2 bg-[#040711] rounded-2xl border border-[#1e293b]">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-200">
+            <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span className="truncate font-semibold text-slate-100">{step.status}</span>
           </div>
+          <span className="text-[10px] font-bold text-sky-400 bg-[#1e293b] px-2.5 py-0.5 rounded-lg border border-[#334155] shrink-0">
+            Pha: {step.phase}
+          </span>
+        </div>
 
-          {/* CỘT GIỮA (7 COLUMNS -> lg:col-span-6): PERFECT SVG STAGE THEATER (VIEWBOX 800x480) */}
-          <div className="col-span-12 lg:col-span-6 bg-gradient-to-b from-[#0b1329] via-[#0d1117] to-[#0d1117] p-3 flex flex-col justify-between items-center relative overflow-hidden">
-            
-            {/* Status Explanatory Banner */}
-            <div className="w-full flex items-center justify-between z-10 px-3 py-1.5 bg-[#161b22]/90 rounded-xl border border-[#30363d] backdrop-blur-md">
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-200">
-                <Info className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="truncate max-w-sm font-semibold">{step.status}</span>
-              </div>
-              <span className="text-[10px] font-bold text-sky-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] shrink-0">
-                Stage 3D
-              </span>
-            </div>
+        {/* 3D PERSPECTIVE STAGE VIEWPORT (3D ISOMETRIC MASTERPIECE DỰA TRÊN IMAGE 2) */}
+        <div className="relative w-full h-[580px] bg-gradient-to-b from-[#091326] via-[#040711] to-[#020308] rounded-2xl border border-[#1e293b] overflow-hidden flex items-center justify-center shadow-inner">
+          <div 
+            style={{
+              perspective: "1100px",
+              perspectiveOrigin: "50% 35%",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            {/* DYNAMIC 3D CAMERA TRACKING STAGE CONTAINER */}
+            <div
+              style={{
+                transformStyle: "preserve-3d",
+                transform: `translate3d(${cameraTransform.x}px, ${cameraTransform.y}px, 0px) scale(${cameraTransform.zoom}) rotateX(-12deg) rotateY(0deg)`,
+                transition: "transform 0.75s cubic-bezier(0.34, 1.25, 0.64, 1)",
+                width: "780px",
+                height: "450px",
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
 
-            {/* STAGE CANVAS VIEWBOX 800x480 */}
-            <div className="relative w-full h-[420px] flex items-center justify-center overflow-visible my-auto">
-              <svg className="w-full h-full select-none" viewBox="0 0 800 480">
-                <defs>
-                  <filter id="cyanLaserBeam" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
+              {/* RENDER DYNAMIC MULTI-TIER SUB-ARRAY 3D GLASS PEDESTALS */}
+              {Array.from({ length: Math.min(6, maxDepth + 1) }, (_, i) => i).map((dTier) => {
+                const isCurrentActiveTier = (step.depth || 0) === dTier;
+                const tierGap = (array.length || 8) > 8 ? 125 : 155;
+                const tierY = -170 + dTier * tierGap;
+                const tierCubes = stepCubes.filter((c) => c.depth === dTier);
 
-                  <filter id="riftSparkGlow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
+                // Group contiguous cubes into individual sub-array pedestals
+                tierCubes.sort((a, b) => a.slotIdx - b.slotIdx);
+                const subArrayGroups = [];
+                let currentGroup = [];
 
-                  <linearGradient id="platformGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#1e293b" />
-                    <stop offset="100%" stopColor="#0f172a" />
-                  </linearGradient>
+                tierCubes.forEach((c) => {
+                  if (currentGroup.length === 0) {
+                    currentGroup.push(c);
+                  } else {
+                    const prevSlot = currentGroup[currentGroup.length - 1].slotIdx;
+                    if (c.slotIdx === prevSlot + 1 && c.sideOffset === currentGroup[currentGroup.length - 1].sideOffset) {
+                      currentGroup.push(c);
+                    } else {
+                      subArrayGroups.push(currentGroup);
+                      currentGroup = [c];
+                    }
+                  }
+                });
+                if (currentGroup.length > 0) subArrayGroups.push(currentGroup);
 
-                  <linearGradient id="activePlatformGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#0284c7" />
-                    <stop offset="100%" stopColor="#0f172a" />
-                  </linearGradient>
+                // Option A3: Hide empty tiers completely when no cubes exist
+                if (subArrayGroups.length === 0) return null;
 
-                  <linearGradient id="riftBladeGradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#0284c7" />
-                    <stop offset="50%" stopColor="#22d3ee" />
-                    <stop offset="100%" stopColor="#ffffff" />
-                  </linearGradient>
-                </defs>
+                // Render physical sub-array glass pedestals for each group
+                return (
+                  <React.Fragment key={`tier-pedestals-${dTier}`}>
+                    {subArrayGroups.map((group, grpIdx) => {
+                      const startSlot = group[0].slotIdx;
+                      const endSlot = group[group.length - 1].slotIdx;
+                      const count = endSlot - startSlot + 1;
+                      const pedestalWidth = count * slotWidth + 24;
+                      const sideOffset = group[0].sideOffset || 0;
+                      const centerX = (startSlot + (count - 1) / 2 - (array.length - 1) / 2) * slotWidth + sideOffset;
 
-                {/* DYNAMIC SVG CAMERA PAN GROUP */}
-                <g transform={`translate(0, ${cameraY})`} style={{ transition: "transform 0.5s ease-out" }}>
-                  
-                  {/* RENDER DYNAMICALLY SPLIT PHYSICAL PLATFORM SHELVES */}
-                  {platformSegmentsByDepth.map((seg, idx) => {
-                    const tierY = getTierY(seg.depth, maxDepth);
-                    return (
-                      <g key={`plat-seg-${seg.depth}-${idx}`} opacity={seg.isActive ? 1 : 0.45} style={{ transition: "all 0.5s ease" }}>
-                        <rect 
-                          x={seg.startX} 
-                          y={tierY} 
-                          width={seg.width} 
-                          height="14" 
-                          fill={seg.isActive ? "url(#activePlatformGrad)" : "url(#platformGradient)"} 
-                          stroke={seg.isActive ? "#38bdf8" : "#334155"} 
-                          strokeWidth="1.5" 
-                          rx="4" 
-                        />
-                        <line x1={seg.startX} y1={tierY} x2={seg.startX + seg.width} y2={tierY} stroke={seg.isActive ? "#7dd3fc" : "#475569"} strokeWidth="2" />
-                        <text x={seg.startX + 6} y={tierY + 11} fill={seg.isActive ? "#38bdf8" : "#64748b"} fontSize="9" fontFamily="monospace" fontWeight="bold">
-                          Tầng {seg.depth} {seg.isActive ? "★" : ""}
-                        </text>
-                      </g>
-                    );
-                  })}
-
-                  {/* GROUND CRACK & IMPACT SPARK FLARING EFFECT UNDER EXACT CENTER SWORD IMPACT (x=0) */}
-                  {(step.phase === "RIFT_GROUND_CRACK" || step.phase === "LEAP_SOMERSAULT_SLASH") && (
-                    <g transform={`translate(${splitterX}, ${getTierY(step.depth || 0, maxDepth)})`}>
-                      {/* Clean Jagged crack path right down the center */}
-                      <path 
-                        d="M 0 0 L -5 4 L 5 8 L 0 14"
-                        stroke="#22d3ee" 
-                        strokeWidth="3.5" 
-                        fill="none"
-                        filter="url(#riftSparkGlow)"
-                      />
-                      {/* Impact Spark Flare */}
-                      <circle cx="0" cy="10" r="7" fill="#38bdf8" opacity="0.9" filter="url(#cyanLaserBeam)" />
-                      <circle cx="-6" cy="5" r="2.5" fill="#ffffff" />
-                      <circle cx="6" cy="5" r="2.5" fill="#ffffff" />
-                    </g>
-                  )}
-
-                  {/* COMPARE BEAM & COMPARISON SYMBOL BADGE */}
-                  {step.phase?.includes("BEAM") && step.comparingBallIds && step.comparingBallIds.length === 2 && (
-                    (() => {
-                      const b1 = stepBalls.find((b) => b.id === step.comparingBallIds[0]);
-                      const b2 = stepBalls.find((b) => b.id === step.comparingBallIds[1]);
-                      if (!b1 || !b2) return null;
-                      const x1 = getXPos(b1.slotIdx, b1.sideOffset);
-                      const y1 = getTierY(b1.depth, maxDepth) - BALL_R - 25;
-                      const x2 = getXPos(b2.slotIdx, b2.sideOffset);
-                      const y2 = getTierY(b2.depth, maxDepth) - BALL_R - 25;
                       return (
-                        <g>
-                          <line 
-                            x1={x1} 
-                            y1={y1} 
-                            x2={x2} 
-                            y2={y2} 
-                            stroke="#0284c7" 
-                            strokeWidth="4" 
-                            filter="url(#cyanLaserBeam)" 
-                            strokeDasharray="6-3"
-                          />
-                          <g transform={`translate(${(x1 + x2) / 2}, ${(y1 + y2) / 2 - 10})`}>
-                            <rect x="-24" y="-12" width="48" height="24" fill="#0d1117" stroke="#38bdf8" strokeWidth="2" rx="12" filter="url(#cyanLaserBeam)" />
-                            <text x="0" y="4" fill="#38bdf8" fontSize="14" fontWeight="900" fontFamily="monospace" textAnchor="middle">
-                              {step.compareOp || "≤"}
-                            </text>
-                          </g>
-                        </g>
-                      );
-                    })()
-                  )}
-
-                  {/* CHARACTERS */}
-                  
-                  {/* THE SPLITTER (PERFECT 100% CENTERED SLASH & SWORD POSES) */}
-                  {(step.phase?.includes("SPLIT") || step.phase?.includes("SLASH") || step.phase?.includes("CRACK") || splitterSpin) && (
-                    (() => {
-                      const isSlashingDown = step.phase === "LEAP_SOMERSAULT_SLASH" || step.phase === "RIFT_GROUND_CRACK";
-                      return (
-                        <g 
-                          transform={`translate(${splitterX}, ${getTierY(step.depth || 0, maxDepth)})`}
-                          onClick={() => {
-                            setSplitterSpin(true);
-                            setTimeout(() => setSplitterSpin(false), 1000);
+                        <div
+                          key={`sub-pedestal-${dTier}-${grpIdx}`}
+                          className={`absolute h-16 rounded-2xl transition-all duration-500 flex items-center justify-between px-4 font-mono text-xs will-change-transform ${
+                            isCurrentActiveTier ? "opacity-100 scale-[1.01] z-20" : "opacity-90 scale-100 z-10"
+                          }`}
+                          style={{
+                            transformStyle: "preserve-3d",
+                            width: `${pedestalWidth}px`,
+                            transform: `translate3d(${centerX}px, ${tierY}px, ${dTier * -25}px)`
                           }}
-                          className="cursor-pointer"
                         >
-                          {/* Head */}
-                          <circle cx="0" cy={isSlashingDown ? "-68" : "-75"} r="11" fill="none" stroke="#ffffff" strokeWidth="3.5" />
-                          
-                          {/* Torso */}
-                          <line x1="0" y1={isSlashingDown ? "-57" : "-64"} x2="0" y2="-25" stroke="#ffffff" strokeWidth="3.5" />
-                          
-                          {/* Legs */}
-                          {isSlashingDown ? (
-                            <>
-                              <line x1="0" y1="-25" x2="-18" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                              <line x1="0" y1="-25" x2="18" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                            </>
-                          ) : (
-                            <>
-                              <line x1="0" y1="-25" x2="-16" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                              <line x1="0" y1="-25" x2="16" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                            </>
-                          )}
+                          {/* 3D TOP SURFACE GLASS PLANE */}
+                          <div
+                            className={`absolute inset-0 rounded-2xl border transition-all duration-500 ${
+                              isCurrentActiveTier
+                                ? "bg-gradient-to-r from-sky-600/45 via-cyan-500/50 to-emerald-600/45 border-cyan-300 shadow-[0_0_35px_rgba(56,189,248,0.45)] ring-2 ring-cyan-400/60"
+                                : "bg-gradient-to-r from-[#071120] via-[#0a172e] to-[#071120] border-sky-500/40 shadow-[0_0_15px_rgba(14,165,233,0.15)]"
+                            }`}
+                            style={{
+                              transform: "rotateX(55deg) translateZ(12px)",
+                              backgroundImage: "linear-gradient(rgba(56, 189, 248, 0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.25) 1px, transparent 1px)",
+                              backgroundSize: "18px 18px"
+                            }}
+                          />
 
-                          {/* Sword & Arms Dynamic Poses */}
-                          {isSlashingDown ? (
-                            <>
-                              {/* Arms holding hilt at center */}
-                              <line x1="0" y1="-48" x2="-6" y2="-34" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                              <line x1="0" y1="-48" x2="6" y2="-34" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                              {/* SWORD BLADE SLASHING STRAIGHT DOWN INTO EXACT CENTER GAP (x=0) */}
-                              <line x1="0" y1="-34" x2="0" y2="10" stroke="url(#riftBladeGradient)" strokeWidth="4.5" strokeLinecap="round" filter="url(#riftSparkGlow)" />
-                            </>
-                          ) : (
-                            <>
-                              {/* SWORD RAISED HIGH PREPARING TO SLASH */}
-                              <line x1="0" y1="-50" x2="38" y2="-90" stroke="url(#riftBladeGradient)" strokeWidth="4" strokeLinecap="round" filter="url(#riftSparkGlow)" />
-                              <line x1="0" y1="-50" x2="26" y2="-72" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                              <line x1="0" y1="-50" x2="-14" y2="-32" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                            </>
+                          {/* 3D FRONT EDGE BEVEL THICKNESS */}
+                          <div
+                            className={`absolute inset-x-0 bottom-0 h-6 rounded-b-2xl border-x border-b flex items-center justify-between px-3 transition-all duration-500 ${
+                              isCurrentActiveTier
+                                ? "bg-sky-700/80 border-cyan-300 text-cyan-100 shadow-md font-black"
+                                : "bg-[#040711] border-sky-500/40 text-slate-300 font-bold"
+                            }`}
+                            style={{
+                              transform: "translateZ(24px)",
+                              textShadow: isCurrentActiveTier ? "0 0 12px #38bdf8" : "0 0 5px rgba(56,189,248,0.5)"
+                            }}
+                          >
+                            <div className="flex items-center gap-1.5 truncate">
+                              <div className={`w-2 h-2 rounded-full shrink-0 ${isCurrentActiveTier ? "bg-cyan-400 animate-ping shadow-[0_0_10px_#22d3ee]" : "bg-cyan-500/70"}`} />
+                              <span className="font-extrabold tracking-wider text-[11px] truncate">
+                                BỆ TẦNG {dTier} [{startSlot}..{endSlot}]
+                              </span>
+                            </div>
+
+                            <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border shrink-0 ${
+                              isCurrentActiveTier ? "bg-black/60 text-cyan-300 border-cyan-400" : "bg-black/40 text-slate-400 border-slate-700"
+                            }`}>
+                              {dTier === 0 ? "Gốc" : `Mảng Con (${count})`}
+                            </span>
+                          </div>
+
+                          {/* 3D LEFT SIDE BEVEL CAP */}
+                          <div
+                            className="absolute left-0 top-0 bottom-0 w-6 rounded-l-2xl border-l border-y bg-sky-900/60"
+                            style={{ transform: "rotateY(-90deg) translateZ(12px)" }}
+                          />
+
+                          {/* 3D RIGHT SIDE BEVEL CAP */}
+                          <div
+                            className="absolute right-0 top-0 bottom-0 w-6 rounded-r-2xl border-r border-y bg-sky-900/60"
+                            style={{ transform: "rotateY(90deg) translateZ(12px)" }}
+                          />
+
+                          {/* 3D BOTTOM DROP SHADOW */}
+                          <div
+                            className="absolute inset-x-2 -bottom-4 h-6 rounded-full bg-black/80 blur-lg"
+                            style={{ transform: "translateZ(-20px) scale(0.95)" }}
+                          />
+
+                          {/* GLASS CRACK RIFT EFFECT */}
+                          {step.phase === "GLASS_CRACK" && step.depth === dTier && step.mid !== undefined && step.mid >= startSlot && step.mid < endSlot && (
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
+                              <div className="w-1.5 h-full bg-cyan-400 shadow-[0_0_20px_#22d3ee] animate-pulse rounded-full" />
+                            </div>
                           )}
-                        </g>
+                        </div>
                       );
-                    })()
-                  )}
+                    })}
+                  </React.Fragment>
+                );
+              })}
 
-                  {/* L-RUNNER & R-RUNNER */}
-                  {(step.phase?.includes("BEAM") || step.phase?.includes("STEP") || step.phase?.includes("MARK")) && step.pointerI !== undefined && step.pointerJ !== undefined && (
-                    <>
-                      {/* L-Runner */}
-                      <g transform={`translate(${getXPos(step.pointerI, currentSegmentSideOffset ? -24 : 0) - 32}, ${getTierY(step.depth + 1, maxDepth)})`}>
-                        <circle cx="0" cy="-65" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-56" x2="0" y2="-20" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="-8" y1="-95" x2="-8" y2="-20" stroke="#38bdf8" strokeWidth="2.5" />
-                        <polygon points="-8,-95 10,-86 -8,-77" fill="#38bdf8" />
-                        {step.phase?.includes("BEAM") ? (
-                          <>
-                            <line x1="0" y1="-45" x2="28" y2="-45" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                            <line x1="0" y1="-45" x2="28" y2="-38" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                          </>
-                        ) : (
-                          <line x1="0" y1="-45" x2="12" y2="-40" stroke="#ffffff" strokeWidth="3" />
-                        )}
-                        <line x1="0" y1="-20" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-20" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
+              {/* RENDER KHỐI CUBE 3D NẰM CHÍNH XÁC TRONG TRỌNG TÂM LÒNG MẶT LƯỚI BỆ KÍNH */}
+              {stepCubes.map((c) => {
+                const isComparing = step.phase === "LASER_SCAN" && step.comparingIds?.includes(c.id);
+                const isFlying = (step.phase === "CUBE_ASCEND") && step.flyingCubeId === c.id;
 
-                      {/* R-Runner */}
-                      <g transform={`translate(${getXPos(step.pointerJ, currentSegmentSideOffset ? 24 : 0) + 32}, ${getTierY(step.depth + 1, maxDepth)})`}>
-                        <circle cx="0" cy="-65" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-56" x2="0" y2="-20" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="8" y1="-95" x2="8" y2="-20" stroke="#34d399" strokeWidth="2.5" />
-                        <polygon points="8,-95 -10,-86 8,-77" fill="#34d399" />
-                        {step.phase?.includes("BEAM") ? (
-                          <>
-                            <line x1="0" y1="-45" x2="-28" y2="-45" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                            <line x1="0" y1="-45" x2="-28" y2="-38" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
-                          </>
-                        ) : (
-                          <line x1="0" y1="-45" x2="-12" y2="-40" stroke="#ffffff" strokeWidth="3" />
-                        )}
-                        <line x1="0" y1="-20" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-20" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
-                    </>
-                  )}
+                const tierGap = (array.length || 8) > 8 ? 125 : 155;
+                const posX = getCubeX(c.slotIdx, c.sideOffset);
+                const posY = (-170 + c.depth * tierGap) - 48 - (isComparing ? 12 : 0);
+                const posZ = c.depth * -25 + (isFlying ? 85 : isComparing ? 65 : 45);
+                const cubeWidth = Math.max(28, Math.min(52, Math.round(slotWidth - 8)));
 
-                  {/* THE CATCHER */}
-                  {(step.phase?.includes("SLAM") || step.phase?.includes("CASCADE") || catcherJuggle) && (
-                    <g 
-                      transform={`translate(${step.targetK !== undefined ? getXPos(step.targetK, 0) : STAGE_W / 2}, ${getTierY(step.depth || 0, maxDepth)})`}
-                      onClick={() => {
-                        setCatcherJuggle(true);
-                        setTimeout(() => setCatcherJuggle(false), 1200);
-                      }}
-                      className="cursor-pointer"
-                    >
-                      <circle cx="0" cy="-75" r="11" fill="none" stroke="#ffffff" strokeWidth="3.5" />
-                      <line x1="0" y1="-64" x2="0" y2="-25" stroke="#ffffff" strokeWidth="3.5" />
-                      <line x1="0" y1="-50" x2="-22" y2="-82" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                      <line x1="0" y1="-50" x2="22" y2="-82" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                      <line x1="0" y1="-25" x2="-15" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                      <line x1="0" y1="-25" x2="15" y2="0" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-                    </g>
-                  )}
-
-                  {/* FINALE: STICKMEN BOWING */}
-                  {step.phase === "EMERALD_FINALE" && (
-                    <g transform={`translate(400, ${getTierY(0, maxDepth)})`}>
-                      <g transform="translate(-120, 0)">
-                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
-
-                      <g transform="translate(-40, 0)">
-                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
-
-                      <g transform="translate(40, 0)">
-                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
-
-                      <g transform="translate(120, 0)">
-                        <circle cx="0" cy="-50" r="9" fill="none" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-41" x2="-10" y2="-18" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="-10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                        <line x1="0" y1="-18" x2="10" y2="0" stroke="#ffffff" strokeWidth="3" />
-                      </g>
-                    </g>
-                  )}
-
-                  {/* RENDER N EXCLUSIVE DATA BALLS */}
-                  {stepBalls.map((b) => {
-                    const isCompleted = step.phase === "EMERALD_FINALE" || step.isCompleted;
-                    const isFlying = (step.phase?.includes("SLAM") || step.phase?.includes("CASCADE")) && step.flyingBallId === b.id;
-                    const isComparing = step.phase?.includes("BEAM") && step.comparingBallIds?.includes(b.id);
-
-                    const tierY = getTierY(b.depth, maxDepth);
-                    let bx = getXPos(b.slotIdx, b.sideOffset);
-                    let by = tierY - BALL_R;
-
-                    if (isComparing) {
-                      by = tierY - BALL_R - 25;
-                    } else if (isFlying) {
-                      by = tierY - BALL_R - 85;
-                    }
-
-                    let ballFill = "#334155";
-                    let ballStroke = "#475569";
-                    let textColor = "#f1f5f9";
-                    let glowFilter = undefined;
-
-                    if (isCompleted) {
-                      ballFill = "#166534";
-                      ballStroke = "#4ade80";
-                      textColor = "#f0fdf4";
-                    } else if (isComparing) {
-                      ballFill = "#0284c7";
-                      ballStroke = "#7dd3fc";
-                      textColor = "#ffffff";
-                      glowFilter = "url(#cyanLaserBeam)";
-                    } else if (isFlying) {
-                      ballFill = "#0d9488";
-                      ballStroke = "#5eead4";
-                      textColor = "#ffffff";
-                    } else if (step.sealedRange && b.slotIdx >= step.sealedRange.left && b.slotIdx <= step.sealedRange.right && b.depth === step.depth) {
-                      ballFill = "#115e59";
-                      ballStroke = "#2dd4bf";
-                      textColor = "#ffffff";
-                    }
-
-                    return (
-                      <g
-                        key={b.id}
-                        transform={`translate(${bx}, ${by})`}
-                        style={{ transition: "transform 0.5s cubic-bezier(0.34, 1.25, 0.64, 1)" }}
-                      >
-                        <ellipse
-                          cx="0"
-                          cy={BALL_R + (by < tierY - BALL_R ? (tierY - BALL_R - by) : 1)}
-                          rx={BALL_R * (by < tierY - BALL_R ? 0.35 : 0.85)}
-                          ry="3"
-                          fill="#000000"
-                          opacity={by < tierY - BALL_R ? 0.2 : 0.6}
-                        />
-
-                        <circle
-                          cx="0"
-                          cy="0"
-                          r={BALL_R}
-                          fill={ballFill}
-                          stroke={ballStroke}
-                          strokeWidth="2.5"
-                          filter={glowFilter}
-                        />
-
-                        <ellipse cx={-BALL_R * 0.3} cy={-BALL_R * 0.3} rx={BALL_R * 0.35} ry={BALL_R * 0.2} fill="#ffffff" opacity="0.35" />
-
-                        <text
-                          x="0"
-                          y="5"
-                          fill={textColor}
-                          fontSize="13"
-                          fontWeight="900"
-                          fontFamily="monospace"
-                          textAnchor="middle"
-                          className="drop-shadow-md"
-                        >
-                          {b.tag}
-                        </text>
-                      </g>
-                    );
-                  })}
-
-                </g>
-
-              </svg>
-            </div>
-
-            {/* Bottom Platform Base */}
-            <div className="w-full h-2.5 bg-[#21262d] rounded-full border border-[#30363d]" />
-          </div>
-
-          {/* CỘT PHẢI (2.5 COLUMNS -> lg:col-span-3): EXECUTION STATS & COMPLEXITY CARD AT TIER 1 */}
-          <div className="col-span-12 lg:col-span-3 bg-[#0d1117] text-slate-100 p-3.5 border-l border-[#30363d] flex flex-col justify-between overflow-hidden shadow-inner space-y-3">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-[#30363d] pb-2">
-                <div className="flex items-center gap-1.5">
-                  <BarChart2 className="w-4 h-4 text-cyan-400" />
-                  <span className="text-xs font-black uppercase tracking-wider text-slate-100">
-                    Thông Số Tầng 1
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-cyan-400 bg-[#21262d] px-2 py-0.5 rounded border border-[#30363d] font-bold">
-                  N = {array.length}
-                </span>
-              </div>
-
-              {/* Realtime Stat Cards */}
-              <div className="space-y-2">
-                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-400">Số phép so sánh:</span>
-                  <span className="text-base font-black text-sky-400 font-mono">{step.comparisons || 0}</span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-400">Số lần gán/trộn:</span>
-                  <span className="text-base font-black text-teal-400 font-mono">{step.mergeWrites || 0}</span>
-                </div>
-
-                <div className="p-2.5 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-400">Độ sâu đệ quy:</span>
-                  <span className="text-base font-black text-amber-400 font-mono">Tầng {step.depth || 0}</span>
-                </div>
-              </div>
-
-              {/* Live Progress Bar */}
-              <div className="space-y-1.5 pt-1 border-t border-[#30363d]">
-                <div className="flex justify-between text-[11px] font-bold text-slate-300">
-                  <span>Tiến trình (%)</span>
-                  <span className="font-mono text-emerald-400 font-extrabold">{progressPercent}%</span>
-                </div>
-                <div className="w-full h-2.5 rounded-full bg-[#161b22] overflow-hidden border border-[#30363d]">
+                return (
                   <div
-                    style={{ width: `${progressPercent}%` }}
-                    className="h-full bg-gradient-to-r from-sky-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-300"
-                  />
-                </div>
-              </div>
+                    key={c.id}
+                    className="absolute"
+                    style={{
+                      transform: `translate3d(${posX}px, ${posY}px, ${posZ}px)`,
+                      transition: "transform 0.55s cubic-bezier(0.34, 1.25, 0.64, 1)",
+                      zIndex: isFlying ? 60 : isComparing ? 50 : 40
+                    }}
+                  >
+                    <GlassCube3D
+                      val={c.tag}
+                      state={c.depth === 0 ? "sorted" : c.state}
+                      isFlying={isFlying}
+                      isComparing={isComparing}
+                      cubeWidth={cubeWidth}
+                    />
+                  </div>
+                );
+              })}
 
-              {/* Complexity Summary Cards */}
-              <div className="space-y-1.5 pt-1">
-                <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
-                  <span className="text-[10px] text-slate-400 font-semibold">Thời gian:</span>
-                  <span className="font-mono font-bold text-sky-400 text-[10px] bg-sky-950 px-2 py-0.5 rounded border border-sky-800">
-                    O(N log N)
-                  </span>
-                </div>
-                <div className="p-2 rounded-xl bg-[#161b22] border border-[#30363d] flex items-center justify-between">
-                  <span className="text-[10px] text-slate-400 font-semibold">Bộ nhớ phụ:</span>
-                  <span className="font-mono font-bold text-amber-400 text-[10px] bg-amber-950 px-2 py-0.5 rounded border border-amber-800">
-                    O(N)
-                  </span>
-                </div>
-              </div>
+              {/* RENDER 3D FLOATING COMPARISON POP-UP BADGE WHEN IN LASER_SCAN PHASE */}
+              {step.phase === "LASER_SCAN" && step.comparingIds && step.comparingIds.length >= 2 && (() => {
+                const compCubes = stepCubes.filter((c) => step.comparingIds.includes(c.id));
+                if (compCubes.length < 2) return null;
+
+                const cubeA = compCubes[0];
+                const cubeB = compCubes[1];
+                const valA = cubeA.tag;
+                const valB = cubeB.tag;
+                const operator = valA < valB ? "<" : valA > valB ? ">" : "=";
+                const winnerVal = valA <= valB ? valA : valB;
+
+                const tierGap = (array.length || 8) > 8 ? 125 : 155;
+                const posXA = getCubeX(cubeA.slotIdx, cubeA.sideOffset);
+                const posXB = getCubeX(cubeB.slotIdx, cubeB.sideOffset);
+                const midX = (posXA + posXB) / 2;
+                const posY = (-170 + cubeA.depth * tierGap) - 105;
+                const posZ = cubeA.depth * -25 + 95;
+
+                return (
+                  <div
+                    key="comparison-popup"
+                    className="absolute pointer-events-none z-50 transition-all duration-300"
+                    style={{
+                      transform: `translate3d(${midX}px, ${posY}px, ${posZ}px)`,
+                    }}
+                  >
+                    <div className="relative -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-2xl bg-[#040914]/95 border-2 border-amber-400 text-amber-100 shadow-[0_0_35px_rgba(251,191,36,0.85)] animate-bounce font-mono text-xs font-black backdrop-blur-md">
+                      <span className="px-2 py-0.5 rounded-lg bg-amber-950/90 text-amber-300 border border-amber-500/60 font-black">
+                        {valA}
+                      </span>
+                      <span className="text-amber-300 font-extrabold text-sm px-0.5">
+                        {operator}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-lg bg-amber-950/90 text-amber-300 border border-amber-500/60 font-black">
+                        {valB}
+                      </span>
+                      <span className="ml-1 text-[10px] text-emerald-300 bg-emerald-950/90 px-2 py-0.5 rounded-md border border-emerald-500/60 flex items-center gap-1 font-bold">
+                        ✓ Chọn {winnerVal}
+                      </span>
+
+                      {/* POPUP DOWN ARROW INDICATOR */}
+                      <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-amber-400" />
+                    </div>
+                  </div>
+                );
+              })()}
+
             </div>
-
-            {/* Quick Speed Comparison Hint Card */}
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-sky-950/60 via-[#161b22] to-[#0d1117] border border-cyan-500/30 text-center space-y-1">
-              <span className="text-[10px] font-bold text-cyan-300 block uppercase">VS BUBBLE SORT O(N²)</span>
-              <span className="text-xs font-mono font-black text-amber-300 block">
-                Nhanh hơn ~{speedRatio}x
-              </span>
-            </div>
-
           </div>
-
         </div>
       </div>
 
       {/* ========================================================================================= */}
-      {/* TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC CODE THUẬT TOÁN (100% INDEPENDENT CODE READER CONTROLS) */}
+      {/* TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC MÃ NGUỒN THUẬT TOÁN (CARD FULL-WIDTH ĐỘC LẬP) */}
       {/* ========================================================================================= */}
-      <div className="w-full bg-[#0d1117] p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-4 text-slate-100">
+      <div className="w-full bg-[#091122] p-6 rounded-3xl border border-[#1e293b] shadow-2xl space-y-4 text-slate-100">
         
         {/* Header & Language Tabs */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#30363d] pb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#1e293b] pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30">
-              <Code2 className="w-5 h-5" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#040711] border border-[#1e293b]">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-100 leading-tight flex items-center gap-2">
-                <span>TẦNG 2: MÃ GIẢ FULL & TRÌNH ĐỌC MÃ NGUỒN THUẬT TOÁN (CHẠY ĐỘC LẬP)</span>
+              <h3 className="text-base font-bold text-slate-100 leading-tight font-mono uppercase tracking-wider flex items-center gap-2">
+                <Code2 className="w-4 h-4 text-sky-400" />
+                <span>TẦNG 2: VS CODE IDE TERMINAL — TRÌNH ĐỌC MÃ NGUỒN (CHẠY ĐỘC LẬP)</span>
               </h3>
-              <p className="text-[11px] text-slate-400 font-mono">
-                Đọc từng dòng code độc lập hoàn toàn, không ảnh hưởng đến Sân khấu Tầng 1
+              <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                Đọc từng dòng mã độc lập hoàn toàn với Sân khấu Tầng 1 | Tự động cuộn theo dòng active
               </p>
             </div>
           </div>
 
           {/* Language Switcher Tabs */}
-          <div className="flex bg-[#161b22] p-1 rounded-xl border border-[#30363d]">
+          <div className="flex bg-[#040711] p-1 rounded-xl border border-[#1e293b]">
             <button
               onClick={() => setLang("pseudocode")}
               className={`px-3.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -1579,15 +1650,15 @@ export default function MergeSortLab({ onBack }) {
           </div>
         </div>
 
-        {/* DEDICATED TẦNG 2 PLAYBACK CONTROL TOOLBAR (MANAGES codeStep TOTALLY INDEPENDENTLY!) */}
-        <div className="bg-[#161b22] p-3 rounded-2xl border border-[#30363d] flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-100">
+        {/* DEDICATED TẦNG 2 PLAYBACK CONTROL TOOLBAR */}
+        <div className="bg-[#040711] p-3 rounded-2xl border border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-100">
           <div className="flex items-center gap-2">
             <button
               onClick={() => {
                 setIsCodePlaying(false);
                 setCodeStep(0);
               }}
-              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 transition-colors border border-[#30363d] cursor-pointer"
+              className="p-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 transition-colors border border-[#334155] cursor-pointer"
               title="Reset đọc mã giả Tầng 2"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -1599,21 +1670,18 @@ export default function MergeSortLab({ onBack }) {
                 setCodeStep((p) => Math.max(0, p - 1));
               }}
               disabled={codeStep === 0}
-              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors border border-[#30363d] cursor-pointer"
+              className="p-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 disabled:opacity-30 transition-colors border border-[#334155] cursor-pointer"
               title="Dòng mã trước"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
 
-            {/* AUTO PLAY TẦNG 2: Auto resets to 0 if clicked at the end! */}
             <button
               onClick={() => {
                 if (isCodePlaying) {
                   setIsCodePlaying(false);
                 } else {
-                  if (codeStep >= steps.length - 1) {
-                    setCodeStep(0);
-                  }
+                  if (codeStep >= steps.length - 1) setCodeStep(0);
                   setIsCodePlaying(true);
                 }
               }}
@@ -1627,7 +1695,7 @@ export default function MergeSortLab({ onBack }) {
               ) : (
                 <>
                   <Play className="w-3.5 h-3.5 fill-white" />
-                  <span>Tự động chạy</span>
+                  <span>Tự động đọc mã</span>
                 </>
               )}
             </button>
@@ -1638,15 +1706,14 @@ export default function MergeSortLab({ onBack }) {
                 setCodeStep((p) => Math.min(steps.length - 1, p + 1));
               }}
               disabled={codeStep === steps.length - 1}
-              className="p-2 rounded-xl bg-[#21262d] hover:bg-[#30363d] text-slate-300 disabled:opacity-30 transition-colors border border-[#30363d] cursor-pointer"
+              className="p-2 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-300 disabled:opacity-30 transition-colors border border-[#334155] cursor-pointer"
               title="Dòng mã tiếp"
             >
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {/* Active Line Status Badge for Tầng 2 */}
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan-400 bg-[#0d1117] px-3.5 py-1.5 rounded-xl border border-[#30363d]">
+          <div className="flex items-center gap-3 text-xs font-mono font-bold text-cyan-400 bg-[#1e293b] px-4 py-1.5 rounded-xl border border-[#334155]">
             <span>Tầng 2 Đang Đọc Dòng #{codeActiveLine}</span>
             <span className="text-slate-500">|</span>
             <span className="text-slate-300">Bước Đọc {codeStep + 1}/{steps.length}</span>
@@ -1662,14 +1729,14 @@ export default function MergeSortLab({ onBack }) {
               step="50"
               value={1800 - codeSpeed}
               onChange={(e) => setCodeSpeed(1800 - parseInt(e.target.value, 10))}
-              className="w-24 accent-sky-400 cursor-pointer"
+              className="w-28 accent-sky-400 cursor-pointer"
             />
             <span className="text-cyan-400 font-bold w-12 text-right">{codeSpeed}ms</span>
           </div>
         </div>
 
-        {/* Code Display Container (Highlights based on INDEPENDENT codeActiveLine!) */}
-        <div ref={fullCodeBoxRef} className="font-mono text-xs space-y-2 py-2 max-h-80 overflow-y-auto scroll-smooth">
+        {/* Code Display Container */}
+        <div ref={fullCodeBoxRef} className="font-mono text-xs space-y-1 py-1 max-h-72 overflow-y-auto scroll-smooth bg-[#040711] p-4 rounded-2xl border border-[#1e293b]">
           {currentCodeLines.map((item) => {
             const isActive = item.line === codeActiveLine;
             return (
@@ -1678,12 +1745,12 @@ export default function MergeSortLab({ onBack }) {
                 ref={isActive ? activeFullCodeLineRef : null}
                 className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-4 py-2.5 rounded-xl transition-all ${
                   isActive
-                    ? "bg-[#1f2937] text-sky-300 font-extrabold border-l-4 border-sky-400 shadow-lg scale-[1.005]"
+                    ? "bg-[#1e293b] text-sky-300 font-extrabold border-l-4 border-sky-400 shadow-lg scale-[1.005]"
                     : "text-slate-300 hover:text-white hover:bg-[#161b22]/70"
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-8 text-[11px] text-slate-500 shrink-0 select-none font-bold">
+                  <span className="w-8 text-[11px] text-slate-500 shrink-0 font-bold">
                     #{item.line}
                   </span>
                   <span className="whitespace-pre flex items-center gap-2 text-slate-100 font-bold">
@@ -1696,7 +1763,7 @@ export default function MergeSortLab({ onBack }) {
                   <span className={`text-[11px] font-mono px-3 py-1 rounded-lg border transition-all shrink-0 ${
                     isActive
                       ? "text-amber-300 font-bold bg-amber-950/80 border-amber-500/50 shadow-md"
-                      : "text-[#22d3ee] font-semibold bg-[#161b22] border-[#30363d]"
+                      : "text-[#22d3ee] font-semibold bg-[#091122] border-[#1e293b]"
                   }`}>
                     // {item.explain}
                   </span>
@@ -1708,121 +1775,118 @@ export default function MergeSortLab({ onBack }) {
       </div>
 
       {/* ========================================================================================= */}
-      {/* TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN (ACCURATE MATH & DESIGN) */}
+      {/* TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN (CARD FULL-WIDTH ĐỘC LẬP) */}
       {/* ========================================================================================= */}
-      <div className="w-full bg-[#161b22]/90 backdrop-blur-md p-6 rounded-3xl border border-[#30363d] shadow-2xl space-y-6 text-slate-100">
+      <div className="w-full bg-[#091122] p-6 rounded-3xl border border-[#1e293b] shadow-2xl space-y-5 text-slate-100">
         
-        <div className="flex items-center gap-3 border-b border-[#30363d] pb-3">
-          <div className="p-2 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30">
-            <BarChart2 className="w-5 h-5" />
+        <div className="flex items-center justify-between border-b border-[#1e293b] pb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30">
+              <BarChart2 className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-slate-100 leading-tight uppercase font-mono tracking-wider">
+                TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN
+              </h3>
+              <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                Phân tích toán học độ phức tạp thuật toán và So sánh số phép toán chuẩn xác với Bubble Sort $O(N^2)$
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-base font-bold text-slate-100 leading-tight uppercase font-mono tracking-wider">
-              TẦNG 3: BẢNG THÔNG SỐ THỰC THI & SO SÁNH HIỆU NĂNG THUẬT TOÁN
-            </h3>
-            <p className="text-[11px] text-slate-400 font-mono">
-              Phân tích toán học độ phức tạp thuật toán và So sánh số phép toán chuẩn xác với Bubble Sort O(N²)
-            </p>
-          </div>
+          <span className="text-xs font-mono text-emerald-400 font-bold bg-[#040711] px-3 py-1 rounded-xl border border-[#1e293b]">
+            Mảng N = {array.length} phần tử
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           
-          {/* CỘT TRÁI (6 COLS): BẢNG PHÂN TÍCH HIỆU NĂNG & NGUYÊN LÝ CHIA ĐỂ TRỊ */}
-          <div className="lg:col-span-6 bg-[#0d1117] p-5 rounded-2xl border border-[#30363d] space-y-4 shadow-xl">
-            <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5">
-              <span className="text-xs font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+          {/* CỘT TRÁI (6 COLS): THÔNG SỐ THỰC THI & PHÂN TÍCH CHIA ĐỂ TRỊ */}
+          <div className="lg:col-span-6 bg-[#040711] p-5 rounded-2xl border border-[#1e293b] space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[#1e293b] pb-2.5">
+              <span className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
                 <Activity className="w-4 h-4 text-cyan-400" />
-                <span>Phân Tích Lý Thuyết Thuật Toán Merge Sort</span>
+                <span>Thông Số Thực Thi Thời Gian Thực</span>
               </span>
-              <span className="text-xs font-mono text-emerald-400 font-extrabold bg-[#161b22] px-2.5 py-0.5 rounded border border-[#30363d]">
-                Stable Sort (Ổn định)
+              <span className="text-xs font-mono text-emerald-400 font-extrabold bg-[#091122] px-2.5 py-0.5 rounded border border-[#1e293b]">
+                Stable Sort
               </span>
             </div>
 
-            {/* Theoretical Complexity Breakdown Cards */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-3.5 rounded-xl bg-[#161b22] border border-sky-500/30 space-y-1">
-                <span className="text-[11px] font-bold text-slate-400 uppercase block">Độ phức tạp thời gian</span>
-                <span className="text-xl font-black text-sky-400 font-mono block">O(N log N)</span>
-                <span className="text-[10px] text-slate-500 block">Tốt nhất, Trung bình & Tệ nhất đều luôn là O(N log N)</span>
+              <div className="p-3.5 rounded-xl bg-[#091122] border border-sky-500/30 space-y-1">
+                <span className="text-[10px] font-bold text-slate-400 uppercase block">Số phép so sánh</span>
+                <span className="text-xl font-black text-sky-400 font-mono">{step.comparisons || 0}</span>
+                <span className="text-[9px] text-slate-500 block">Số lần so sánh $L[i] \le R[j]$</span>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#161b22] border border-amber-500/30 space-y-1">
-                <span className="text-[11px] font-bold text-slate-400 uppercase block">Bộ nhớ phụ bổ sung</span>
-                <span className="text-xl font-black text-amber-400 font-mono block">O(N)</span>
-                <span className="text-[10px] text-slate-500 block">Cần mảng phụ tạm thời để lưu trữ và trộn 2 nửa</span>
+              <div className="p-3.5 rounded-xl bg-[#091122] border border-teal-500/30 space-y-1">
+                <span className="text-[10px] font-bold text-slate-400 uppercase block">Số lần gán/trộn</span>
+                <span className="text-xl font-black text-teal-400 font-mono">{step.mergeWrites || 0}</span>
+                <span className="text-[9px] text-slate-500 block">Số lần gán Cube thắng về $arr[k]$</span>
               </div>
             </div>
 
-            {/* Divide & Conquer Principle Explanation */}
-            <div className="p-3.5 rounded-xl bg-[#161b22] border border-[#30363d] space-y-2 text-xs">
-              <span className="font-bold text-cyan-300 block text-xs uppercase tracking-wide">
-                🧩 Nguyên Lý 3 Bước "Chia Để Trị" (Divide & Conquer):
+            {/* DIVIDE & CONQUER PRINCIPLE EXPLANATION */}
+            <div className="p-3.5 rounded-2xl bg-[#091122] border border-[#1e293b] space-y-1.5 text-xs">
+              <span className="font-bold text-cyan-300 block text-xs uppercase font-mono">
+                🧩 Nguyên Lý 3 Bước Chia Để Trị:
               </span>
-              <ul className="space-y-1 text-slate-300 text-[11px] pl-4 list-disc font-sans">
-                <li><strong className="text-sky-400 font-mono">1. Chia (Divide):</strong> Tìm chỉ số giữa mid để cắt đôi mảng thành 2 nửa bằng nhau ($O(1)$).</li>
-                <li><strong className="text-teal-400 font-mono">2. Trị (Conquer):</strong> Đệ quy gọi `MERGE_SORT` cho từng nửa tới khi còn 1 phần tử ($2 \cdot T(N/2)$).</li>
-                <li><strong className="text-emerald-400 font-mono">3. Kết hợp (Combine):</strong> Trộn 2 mảng con đã sắp xếp thành 1 mảng hoàn chỉnh ($O(N)$).</li>
-              </ul>
+              <div className="text-[11px] text-slate-300 space-y-1 font-sans">
+                <div>• <strong className="text-sky-400 font-mono">Chia (Divide):</strong> Cắt mảng thành 2 nửa tại $mid = (l+r)/2$.</div>
+                <div>• <strong className="text-teal-400 font-mono">Trị (Conquer):</strong> Đệ quy sắp xếp 2 nửa tới khi còn 1 phần tử.</div>
+                <div>• <strong className="text-emerald-400 font-mono">Kết hợp (Combine):</strong> Trộn 2 nửa đã sắp xếp bằng Trạm Scan Laser.</div>
+              </div>
             </div>
           </div>
 
-          {/* CỘT PHẢI (6 COLS): BẢNG SO SÁNH PHÉP TÍNH THUẬT TOÁN CHUẨN XÁC (VS BUBBLE SORT O(N²)) */}
-          <div className="lg:col-span-6 bg-[#0d1117] p-5 rounded-2xl border border-sky-500/40 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between border-b border-[#30363d] pb-2.5">
-              <span className="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+          {/* CỘT PHẢI (6 COLS): SO SÁNH HIỆU NĂNG VỚI BUBBLE SORT */}
+          <div className="lg:col-span-6 bg-[#040711] p-5 rounded-2xl border border-sky-500/30 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-[#1e293b] pb-2.5">
+              <span className="text-xs font-bold text-teal-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
                 <Trophy className="w-4 h-4 text-amber-400" />
-                <span>So Sánh Phép Tính Thuật Toán: Merge Sort vs Bubble Sort</span>
+                <span>So Sánh Hiệu Năng: Merge Sort vs Bubble Sort</span>
               </span>
-              <span className="text-[10px] font-mono text-amber-400 font-bold bg-[#161b22] px-2 py-0.5 rounded border border-[#30363d]">
-                Mảng N = {array.length}
+              <span className="text-[10px] font-mono text-amber-400 font-bold bg-[#091122] px-2 py-0.5 rounded border border-[#1e293b]">
+                N = {array.length}
               </span>
             </div>
 
-            {/* Accurate Algorithmic Operations Cards */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-3.5 rounded-xl bg-[#161b22] border border-sky-500/50 space-y-2">
+              <div className="p-3.5 rounded-xl bg-[#091122] border border-sky-500/50 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-sky-400 text-xs uppercase">Merge Sort (Chia Để Trị)</span>
+                  <span className="font-bold text-sky-400 text-xs uppercase font-mono">Merge Sort 3D</span>
                   <span className="text-[9px] font-mono bg-sky-950 text-sky-300 px-1.5 py-0.5 rounded">O(N log N)</span>
                 </div>
-                <div className="text-2xl font-black text-sky-300 font-mono">
-                  {mergeSortAlgorithmicOps} <span className="text-xs text-slate-400 font-normal">phép toán</span>
-                </div>
-                <div className="text-[10px] text-slate-400 font-mono space-y-0.5 pt-1 border-t border-[#30363d]">
-                  <div>• So sánh: {step.comparisons || 0} lần</div>
-                  <div>• Gán/Trộn mảng: {step.mergeWrites || 0} lần</div>
+                <div className="text-xl font-black text-sky-300 font-mono">
+                  {mergeSortAlgorithmicOps} <span className="text-[10px] text-slate-400 font-normal">phép toán</span>
                 </div>
               </div>
 
-              <div className="p-[#161b22] border border-rose-500/50 space-y-2 p-3.5 rounded-xl">
+              <div className="p-3.5 rounded-xl bg-[#091122] border border-rose-500/50 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-rose-400 text-xs uppercase">Bubble Sort (Nổi Bọt)</span>
+                  <span className="font-bold text-rose-400 text-xs uppercase font-mono">Bubble Sort</span>
                   <span className="text-[9px] font-mono bg-rose-950 text-rose-300 px-1.5 py-0.5 rounded">O(N²)</span>
                 </div>
-                <div className="text-2xl font-black text-rose-400 font-mono">
-                  {bubbleSortStats.totalOps} <span className="text-xs text-slate-400 font-normal">phép toán</span>
-                </div>
-                <div className="text-[10px] text-slate-400 font-mono space-y-0.5 pt-1 border-t border-[#30363d]">
-                  <div>• So sánh: {bubbleSortStats.comparisons} lần</div>
-                  <div>• Đổi chỗ (Swap): {bubbleSortStats.swaps} lần ({bubbleSortStats.swaps * 2} gán)</div>
+                <div className="text-xl font-black text-rose-400 font-mono">
+                  {bubbleSortStats.totalOps} <span className="text-[10px] text-slate-400 font-normal">phép toán</span>
                 </div>
               </div>
             </div>
 
-            {/* Speed Ratio Highlight Badge */}
-            <div className="p-3.5 rounded-xl bg-gradient-to-r from-sky-950/90 via-teal-950/90 to-emerald-950/90 border border-teal-500/40 flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-200">
-                🚀 Hiệu năng vượt trội Merge Sort ($N={array.length}$):
-              </span>
-              <span className="text-sm font-mono font-black text-amber-300 bg-[#0d1117] px-3.5 py-1 rounded-lg border border-amber-500/40 shadow-md">
-                Nhanh hơn gấp {speedRatio}x lần!
+            {/* BUBBLE SORT COMPARISON HIGHLIGHT */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-sky-950/70 via-cyan-950/70 to-emerald-950/70 border border-cyan-500/40 flex items-center justify-between">
+              <div className="space-y-0.5">
+                <span className="text-xs font-bold text-slate-200 block">Tốc độ so với Bubble Sort $O(N^2)$:</span>
+                <span className="text-[10px] text-slate-400 block font-mono">Merge Sort luôn ổn định $O(N \log N)$</span>
+              </div>
+              <span className="text-sm font-mono font-black text-amber-300 bg-[#040711] px-3.5 py-1.5 rounded-xl border border-amber-500/40 shadow-md">
+                Nhanh hơn ~{speedRatio}x lần!
               </span>
             </div>
           </div>
 
         </div>
+
       </div>
 
     </div>
