@@ -890,6 +890,7 @@ export default function MergeSortLab({ onBack }) {
   const [arraySize, setArraySize] = useState(8);
   const [array, setArray] = useState([38, 27, 43, 3, 9, 82, 10, 19]);
   const [customInput, setCustomInput] = useState("");
+  const [customInputError, setCustomInputError] = useState("");
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [viewMode, setViewMode] = useState("3d-iso"); // "3d-iso" | "3d-webgl" | "2d-front"
 
@@ -1091,20 +1092,35 @@ export default function MergeSortLab({ onBack }) {
 
   const handleCustomInputSubmit = (e) => {
     e.preventDefault();
+    setCustomInputError("");
     if (!customInput.trim()) return;
-    const parsed = customInput
-      .split(/[,;\s]+/)
-      .map(Number)
-      .filter((v) => !isNaN(v) && v > 0 && v <= 999);
 
-    if (parsed.length >= 4 && parsed.length <= 16) {
-      setArray(parsed);
-      setArraySize(parsed.length);
-      setCurrentStep(0);
-      setCodeStep(0);
-      setIsPlaying(false);
-      setIsCodePlaying(false);
+    if (/[^0-9,\s]/.test(customInput)) {
+      setCustomInputError("Mảng chứa ký tự không hợp lệ! Vui lòng chỉ nhập số không âm (0 - 999), phân cách bằng dấu phẩy.");
+      return;
     }
+
+    const tokens = customInput.split(/[, \s]+/).filter(Boolean);
+    const parsed = tokens.map(Number);
+
+    const hasInvalidNumber = parsed.some((v) => isNaN(v) || v < 0 || v > 999);
+    if (hasInvalidNumber) {
+      setCustomInputError("Số không hợp lệ! Mỗi phần tử phải có giá trị từ 0 đến 999.");
+      return;
+    }
+
+    if (parsed.length < 4 || parsed.length > 16) {
+      setCustomInputError(`Số lượng phần tử phải từ 4 đến 16 (hiện tại có ${parsed.length} phần tử).`);
+      return;
+    }
+
+    setCustomInputError("");
+    setArray(parsed);
+    setArraySize(parsed.length);
+    setCurrentStep(0);
+    setCodeStep(0);
+    setIsPlaying(false);
+    setIsCodePlaying(false);
   };
 
   const currentCodeLines =
@@ -1227,22 +1243,35 @@ export default function MergeSortLab({ onBack }) {
         </div>
 
         {/* Custom Input Form */}
-        <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2 pt-2 border-t border-[#1e293b]">
-          <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
-          <input
-            type="text"
-            value={customInput}
-            onChange={(e) => setCustomInput(e.target.value)}
-            placeholder="Ví dụ: 38, 27, 43, 3, 9, 82..."
-            className="flex-1 px-4 py-2 rounded-2xl bg-[#040711] border border-[#1e293b] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
-          >
-            Áp Dụng
-          </button>
-        </form>
+        <div className="pt-2 border-t border-[#1e293b] space-y-1.5">
+          <form onSubmit={handleCustomInputSubmit} className="flex items-center gap-2">
+            <span className="text-xs font-bold text-slate-300 shrink-0">Mảng tùy chỉnh:</span>
+            <input
+              type="text"
+              value={customInput}
+              onChange={(e) => {
+                setCustomInput(e.target.value);
+                if (customInputError) setCustomInputError("");
+              }}
+              placeholder="Ví dụ: 38, 27, 43, 3, 9, 82..."
+              className={`flex-1 px-4 py-2 rounded-2xl bg-[#040711] border text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none transition-colors ${
+                customInputError ? "border-rose-500/80 focus:border-rose-400" : "border-[#1e293b] focus:border-cyan-400"
+              }`}
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
+            >
+              Áp Dụng
+            </button>
+          </form>
+          {customInputError && (
+            <div className="flex items-center gap-1.5 text-[11px] font-medium text-rose-400 pl-24 animate-fadeIn">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+              <span>{customInputError}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* ========================================================================================= */}

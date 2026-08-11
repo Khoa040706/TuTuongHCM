@@ -296,6 +296,7 @@ export default function BubbleSortLab({ onBack }) {
   // Array State (Max elements set to 13 so pillars & 3D square caps remain wide & proportional!)
   const [arraySize, setArraySize] = useState(8);
   const [manualInputText, setManualInputText] = useState("2, 3, 4, 1, 5, 6, 7, 8");
+  const [manualInputError, setManualInputError] = useState("");
   const [initialArray, setInitialArray] = useState([2, 3, 4, 1, 5, 6, 7, 8]);
   
   // Execution Control State (Main 3D Visualizer Stage)
@@ -482,17 +483,33 @@ export default function BubbleSortLab({ onBack }) {
 
   const handleApplyManualInput = (e) => {
     e.preventDefault();
-    const parsed = manualInputText
-      .split(/[\s,]+/)
-      .map((v) => parseInt(v.trim(), 10))
-      .filter((v) => !isNaN(v) && v > 0 && v <= 99);
+    setManualInputError("");
+    if (!manualInputText.trim()) return;
 
-    if (parsed.length >= 3 && parsed.length <= 13) {
-      setIsPlaying(false);
-      setArraySize(parsed.length);
-      setInitialArray(parsed);
-      setCurrentStep(0);
+    if (/[^0-9,\s]/.test(manualInputText)) {
+      setManualInputError("Mảng chứa ký tự không hợp lệ! Vui lòng chỉ nhập số không âm (0 - 99), phân cách bằng dấu phẩy.");
+      return;
     }
+
+    const tokens = manualInputText.split(/[, \s]+/).filter(Boolean);
+    const parsed = tokens.map(Number);
+
+    const hasInvalidNumber = parsed.some((v) => isNaN(v) || v < 0 || v > 99);
+    if (hasInvalidNumber) {
+      setManualInputError("Số không hợp lệ! Giá trị mỗi phần tử phải nằm trong khoảng từ 0 đến 99.");
+      return;
+    }
+
+    if (parsed.length < 3 || parsed.length > 13) {
+      setManualInputError(`Số lượng phần tử phải từ 3 đến 13 (hiện có ${parsed.length} phần tử).`);
+      return;
+    }
+
+    setManualInputError("");
+    setIsPlaying(false);
+    setArraySize(parsed.length);
+    setInitialArray(parsed);
+    setCurrentStep(0);
   };
 
   // Crane Arm position math (fallback to index 0 & 1 if not comparing)
@@ -634,21 +651,34 @@ export default function BubbleSortLab({ onBack }) {
           </div>
 
           {/* Custom Input Form */}
-          <form onSubmit={handleApplyManualInput} className="md:col-span-5 flex items-center gap-2">
-            <input
-              type="text"
-              value={manualInputText}
-              onChange={(e) => setManualInputText(e.target.value)}
-              placeholder="Ví dụ: 2, 3, 4, 1, 5, 6, 7, 8..."
-              className="w-full px-4 py-2.5 rounded-2xl bg-[#0d1117] border border-[#30363d] text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
-            >
-              Áp Dụng
-            </button>
-          </form>
+          <div className="md:col-span-5 flex flex-col space-y-1">
+            <form onSubmit={handleApplyManualInput} className="flex items-center gap-2">
+              <input
+                type="text"
+                value={manualInputText}
+                onChange={(e) => {
+                  setManualInputText(e.target.value);
+                  if (manualInputError) setManualInputError("");
+                }}
+                placeholder="Ví dụ: 2, 3, 4, 1, 5, 6, 7, 8..."
+                className={`w-full px-4 py-2.5 rounded-2xl bg-[#0d1117] border text-xs font-mono font-semibold text-slate-100 placeholder-slate-500 focus:outline-none transition-colors ${
+                  manualInputError ? "border-rose-500/80 focus:border-rose-400" : "border-[#30363d] focus:border-cyan-400"
+                }`}
+              />
+              <button
+                type="submit"
+                className="px-4 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shrink-0 transition-all cursor-pointer shadow-md active:scale-95"
+              >
+                Áp Dụng
+              </button>
+            </form>
+            {manualInputError && (
+              <div className="flex items-center gap-1.5 text-[11px] font-medium text-rose-400 pl-2 animate-fadeIn">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                <span>{manualInputError}</span>
+              </div>
+            )}
+          </div>
 
           {/* Random Button */}
           <div className="md:col-span-3">

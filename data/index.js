@@ -2710,214 +2710,386 @@ export const subjects = {
     },
     icon: "📊",
     chapters: [
-  {
-    "id": "dsa",
-    "title": "Cấu trúc dữ liệu và giải thuật",
-    "subtitle": "Các cấu trúc dữ liệu kinh điển và kỹ thuật thiết kế giải thuật: Sắp xếp, Tìm kiếm, Đồ thị.",
-    "sections": [
       {
-        "id": "dsa-section-adt",
-        "roman": "I",
-        "title": "Kiểu dữ liệu trừu tượng (Abstract Data Type - ADT)",
-        "subsections": [
+        id: "dsa-b1",
+        title: "Bài 1",
+        subtitle: "Abstract Data Type (ADT)",
+        sections: [
           {
-            "id": "dsa-sub-adt-se-issues",
-            "number": "1",
-            "title": "Các vấn đề trong Kỹ nghệ Phần mềm (Software Engineering Issues)"
+            id: "dsa-b1-sec1",
+            roman: "I",
+            title: "Software Engineering Issues & ADT Motivation",
+            subsections: [
+              {
+                id: "dsa-b1-sub-1-1",
+                number: "1.1",
+                title: "Program Design Principles"
+              },
+              {
+                id: "dsa-b1-sub-1-2",
+                number: "1.2",
+                title: "Information Hiding - Chi tiết"
+              },
+              {
+                id: "dsa-b1-sub-1-3",
+                number: "1.3",
+                title: "Pre-conditions & Post-conditions"
+              },
+              {
+                id: "dsa-b1-sub-1-4",
+                number: "1.4",
+                title: "Data Abstraction & ADT"
+              },
+              {
+                id: "dsa-b1-sub-summary-1",
+                number: "📌",
+                title: "Cần nhớ Phần I"
+              }
+            ]
           },
           {
-            "id": "dsa-sub-adt-definition",
-            "number": "2",
-            "title": "Kiểu Dữ liệu Trừu tượng (Abstract Data Type - ADT)"
+            id: "dsa-b1-sec2",
+            roman: "II",
+            title: "Abstract Data Type (ADT) - Deep Dive & Examples",
+            subsections: [
+              {
+                id: "dsa-b1-sub-2-1",
+                number: "2.1",
+                title: "Data Structure (Mảng vs Class Employee)"
+              },
+              {
+                id: "dsa-b1-sub-2-2",
+                number: "2.2",
+                title: "Khái niệm ADT (Data + Specification)"
+              },
+              {
+                id: "dsa-b1-sub-2-3",
+                number: "2.3",
+                title: "Ví dụ: Máy lọc nước (Water Dispenser)"
+              },
+              {
+                id: "dsa-b1-sub-2-4",
+                number: "2.4",
+                title: "Wall of ADT Operations & Interface"
+              },
+              {
+                id: "dsa-b1-sub-2-5",
+                number: "2.5",
+                title: "Kiểu nguyên thủy & 3 loại Operations"
+              },
+              {
+                id: "dsa-b1-sub-2-6",
+                number: "2.6",
+                title: "Ví dụ: Complex Number ADT (Cartesian & Polar)"
+              },
+              {
+                id: "dsa-b1-sub-summary-2",
+                number: "📌",
+                title: "Cần nhớ Phần II"
+              }
+            ]
           },
           {
-            "id": "dsa-sub-adt-java-interface",
-            "number": "3",
-            "title": "Java Interface (Giao diện trong Java)"
+            id: "dsa-b1-sec3",
+            roman: "III",
+            title: "Java Interface",
+            subsections: [
+              {
+                id: "dsa-b1-sub-3-1",
+                number: "3.1",
+                title: "Khái niệm Java Interface"
+              },
+              {
+                id: "dsa-b1-sub-3-2",
+                number: "3.2",
+                title: "Ví dụ #1: Comparable & Shape"
+              },
+              {
+                id: "dsa-b1-sub-3-3",
+                number: "3.3",
+                title: "Ví dụ #2: Complex Interface"
+              },
+              {
+                id: "dsa-b1-sub-3-4",
+                number: "3.4",
+                title: "ComplexCart & Bẫy toString()"
+              },
+              {
+                id: "dsa-b1-sub-3-5",
+                number: "3.5",
+                title: "ComplexPolar (Polar)"
+              },
+              {
+                id: "dsa-b1-sub-3-6",
+                number: "3.6",
+                title: "TestComplex & Output"
+              },
+              {
+                id: "dsa-b1-sub-3-7",
+                number: "3.7",
+                title: "Lưu ý: equals(), EPSILON & instanceof"
+              },
+              {
+                id: "dsa-b1-sub-summary-3",
+                number: "📌",
+                title: "Cần nhớ Phần III"
+              }
+            ]
           },
           {
-            "id": "dsa-sub-adt-fraction-practice",
-            "number": "4",
-            "title": "Bài tập thực hành: Phân số (Fraction) như một ADT"
+            id: "dsa-b1-sec4",
+            roman: "IV",
+            title: "Fraction as ADT (Practice Exercises)",
+            subsections: [
+              {
+                id: "dsa-b1-sub-4-1",
+                number: "4.1",
+                title: "Thiết kế ADT cho Fraction"
+              },
+              {
+                id: "dsa-b1-sub-4-2",
+                number: "4.2",
+                title: "Interface FractionI"
+              },
+              {
+                id: "dsa-b1-sub-4-3",
+                number: "4.3",
+                title: "Hai cách implement FractionI"
+              },
+              {
+                id: "dsa-b1-sub-4-4",
+                number: "4.4",
+                title: "PracEx#26: Fraction (2 int)"
+              },
+              {
+                id: "dsa-b1-sub-4-5",
+                number: "4.5",
+                title: "PracEx#27: FractionArr (int[2])"
+              },
+              {
+                id: "dsa-b1-sub-summary-4",
+                number: "📌",
+                title: "Cần nhớ Phần IV"
+              }
+            ]
           },
           {
-            "id": "dsa-sub-adt-summary",
-            "number": "5",
-            "title": "Tổng kết bài học và Định hướng kiến thức nâng cao"
+            id: "dsa-b1-sec5",
+            roman: "V",
+            title: "Summary (Tổng kết bài học)",
+            subsections: [
+              {
+                id: "dsa-b1-sub-5-1",
+                number: "5.1",
+                title: "Tổng quan bài học"
+              },
+              {
+                id: "dsa-b1-sub-summary-5",
+                number: "📌",
+                title: "Cần nhớ tổng quát cả bài"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "dsa-section-linkedlist",
-        "roman": "II",
-        "title": "Danh sách liên kết (Linked List)",
-        "subsections": [
+        id: "dsa-b2",
+        title: "Bài 2",
+        subtitle: "Linked List",
+        sections: [
           {
-            "id": "dsa-sub-linkedlist",
-            "number": "1",
-            "title": "Cấu trúc danh sách liên kết đơn, kép và vòng"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-stackqueue",
-        "roman": "III",
-        "title": "Ngăn xếp & Hàng đợi (Stack & Queue)",
-        "subsections": [
+            id: "dsa-b2-sec1",
+            roman: "I–III",
+            title: "Use of a List, List ADT & Array Implementation",
+            subsections: [
+              {
+                id: "dsa-b2-sub-1-1",
+                number: "1.1",
+                title: "1. Use of a List (Motivation)"
+              },
+              {
+                id: "dsa-b2-sub-2-1",
+                number: "2.1",
+                title: "2.1 Khái niệm List ADT"
+              },
+              {
+                id: "dsa-b2-sub-2-2",
+                number: "2.2",
+                title: "2.2 ListInterface.java"
+              },
+              {
+                id: "dsa-b2-sub-2-3",
+                number: "2.3",
+                title: "2.3 Hai cách hiện thực (Implementation)"
+              },
+              {
+                id: "dsa-b2-sub-3-1",
+                number: "3.1",
+                title: "3.1 Khái niệm Array Implementation"
+              },
+              {
+                id: "dsa-b2-sub-3-2",
+                number: "3.2",
+                title: "3.2 Class ListUsingArray & Code"
+              },
+              {
+                id: "dsa-b2-sub-3-3",
+                number: "3.3",
+                title: "3.3 Shift Right / Shift Left Mechanics"
+              },
+              {
+                id: "dsa-b2-sub-3-4",
+                number: "3.4",
+                title: "3.4 Time/Space Complexity & So sánh"
+              },
+              {
+                id: "dsa-b2-sub-summary-1",
+                number: "📌",
+                title: "Cần nhớ Tổng hợp Phần I, II & III"
+              }
+            ]
+          },
           {
-            "id": "dsa-sub-stackqueue",
-            "number": "1",
-            "title": "Nguyên lý hoạt động LIFO và FIFO"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-recursion",
-        "roman": "IV",
-        "title": "Thuật toán Đệ quy (Recursion)",
-        "subsections": [
+            id: "dsa-b2-sec2",
+            roman: "IV–VI",
+            title: "Linked List Implementation, ListNode & Forming",
+            subsections: [
+              {
+                id: "dsa-b2-sub-4-1",
+                number: "4.1",
+                title: "4.1 So sánh trực quan: Array vs Linked List"
+              },
+              {
+                id: "dsa-b2-sub-4-2",
+                number: "4.2",
+                title: "4.2 Ý tưởng (Idea) của Linked List"
+              },
+              {
+                id: "dsa-b2-sub-4-3",
+                number: "4.3",
+                title: "4.3 Ôn lại Object References & =="
+              },
+              {
+                id: "dsa-b2-sub-5-1",
+                number: "5.1",
+                title: "5. ListNode & Code ListNode.java"
+              },
+              {
+                id: "dsa-b2-sub-6-1",
+                number: "6.1",
+                title: "6. Forming a Linked List (2 cách tạo)"
+              },
+              {
+                id: "dsa-b2-sub-summary-2",
+                number: "📌",
+                title: "Cần nhớ Tổng hợp Phần IV, V & VI"
+              }
+            ]
+          },
           {
-            "id": "dsa-sub-recursion",
-            "number": "1",
-            "title": "Thiết lập hàm đệ quy và cơ chế Stack Frame"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-analysis",
-        "roman": "V",
-        "title": "Phân tích thuật toán (Analysis of Algorithms)",
-        "subsections": [
+            id: "dsa-b2-sec3",
+            roman: "VII",
+            title: "Basic Linked List (BasicLinkedList)",
+            subsections: [
+              {
+                id: "dsa-b2-sub-7-1",
+                number: "7.1",
+                title: "7.1 - 7.2 Khái niệm & Code cơ bản"
+              },
+              {
+                id: "dsa-b2-sub-7-2",
+                number: "7.2",
+                title: "7.3 addFirst() & Boundary Cases"
+              },
+              {
+                id: "dsa-b2-sub-7-3",
+                number: "7.3",
+                title: "7.4 removeFirst() & Boundary Cases"
+              },
+              {
+                id: "dsa-b2-sub-7-4",
+                number: "7.4",
+                title: "7.5 - 7.6 print() & Test Client"
+              },
+              {
+                id: "dsa-b2-sub-7-5",
+                number: "7.5",
+                title: "7.7 Time Complexity & Quy tắc vàng"
+              },
+              {
+                id: "dsa-b2-sub-summary-3",
+                number: "📌",
+                title: "Cần nhớ Tổng hợp Phần VII"
+              }
+            ]
+          },
           {
-            "id": "dsa-sub-analysis",
-            "number": "1",
-            "title": "Độ phức tạp thời gian Big-O và không gian"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-sorting",
-        "roman": "VI",
-        "title": "Thuật toán Sắp xếp (Sorting)",
-        "subsections": [
+            id: "dsa-b2-sec4",
+            roman: "VIII.1–2",
+            title: "Enhanced Linked List (ELL)",
+            subsections: [
+              {
+                id: "dsa-b2-sub-8-1",
+                number: "8.1",
+                title: "8.1 Sơ đồ tổng quan các biến thể"
+              },
+              {
+                id: "dsa-b2-sub-8-2",
+                number: "8.2",
+                title: "8.2 Khái niệm ELL & Interface"
+              },
+              {
+                id: "dsa-b2-sub-8-3",
+                number: "8.3",
+                title: "8.2 addAfter() & removeAfter()"
+              },
+              {
+                id: "dsa-b2-sub-8-4",
+                number: "8.4",
+                title: "8.2 remove(item) & Test Client"
+              },
+              {
+                id: "dsa-b2-sub-summary-4",
+                number: "📌",
+                title: "Cần nhớ Enhanced Linked List"
+              }
+            ]
+          },
           {
-            "id": "dsa-sub-sorting",
-            "number": "1",
-            "title": "Các phương pháp sắp xếp thông dụng và chia để trị"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-hashing",
-        "roman": "VII",
-        "title": "Bảng băm (Hashing)",
-        "subsections": [
-          {
-            "id": "dsa-sub-hashing",
-            "number": "1",
-            "title": "Hàm băm và cơ chế giải quyết đụng độ"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-bst",
-        "roman": "VIII",
-        "title": "Cây tìm kiếm nhị phân (Binary Search Tree - BST)",
-        "subsections": [
-          {
-            "id": "dsa-sub-bst",
-            "number": "1",
-            "title": "Cấu trúc cây nhị phân và các phép toán trên BST"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-avl",
-        "roman": "IX",
-        "title": "Cây AVL (AVL Tree)",
-        "subsections": [
-          {
-            "id": "dsa-sub-avl",
-            "number": "1",
-            "title": "Kỹ thuật tự cân bằng qua các phép quay cây"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-priorityheap",
-        "roman": "X",
-        "title": "Hàng đợi ưu tiên & Cấu trúc Heap (Priority Queue & Binary Max Heap)",
-        "subsections": [
-          {
-            "id": "dsa-sub-priorityheap",
-            "number": "1",
-            "title": "Biểu diễn và các thao tác trên Binary Max Heap"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-graphbasic",
-        "roman": "XI",
-        "title": "Cấu trúc Đồ thị cơ bản (Graph Basics)",
-        "subsections": [
-          {
-            "id": "dsa-sub-graphbasic",
-            "number": "1",
-            "title": "Ma trận kề, danh sách kề và biểu diễn đồ thị"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-bfsdfs",
-        "roman": "XII",
-        "title": "Thuật toán Duyệt đồ thị (BFS & DFS)",
-        "subsections": [
-          {
-            "id": "dsa-sub-bfsdfs",
-            "number": "1",
-            "title": "Duyệt đồ thị theo chiều rộng và chiều sâu"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-mst",
-        "roman": "XIII",
-        "title": "Cây khung tối tiểu (Minimum Spanning Tree - MST)",
-        "subsections": [
-          {
-            "id": "dsa-sub-mst",
-            "number": "1",
-            "title": "Các thuật toán tìm cây khung nhỏ nhất (Kruskal, Prim)"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-bellmanford",
-        "roman": "XIV",
-        "title": "Giải thuật Bellman-Ford (Bellman-Ford)",
-        "subsections": [
-          {
-            "id": "dsa-sub-bellmanford",
-            "number": "1",
-            "title": "Đường đi ngắn nhất từ một nguồn có trọng số âm"
-          }
-        ]
-      },
-      {
-        "id": "dsa-section-dijkstra",
-        "roman": "XV",
-        "title": "Giải thuật Dijkstra (Dijkstra)",
-        "subsections": [
-          {
-            "id": "dsa-sub-dijkstra",
-            "number": "1",
-            "title": "Đường đi ngắn nhất có trọng số không âm"
+            id: "dsa-b2-sec5",
+            roman: "VIII.3–4",
+            title: "Tailed Linked List (TLL) & Complexity",
+            subsections: [
+              {
+                id: "dsa-b2-sub-8-5",
+                number: "8.5",
+                title: "8.3 Khái niệm TLL & Con trỏ tail"
+              },
+              {
+                id: "dsa-b2-sub-8-6",
+                number: "8.6",
+                title: "8.3 addLast() O(1) & Dual Pointer"
+              },
+              {
+                id: "dsa-b2-sub-8-7",
+                number: "8.7",
+                title: "8.3 Ma trận 4 Boundary Cases"
+              },
+              {
+                id: "dsa-b2-sub-8-8",
+                number: "8.8",
+                title: "8.4 Time Complexity so sánh BLL vs TLL"
+              },
+              {
+                id: "dsa-b2-sub-summary-5",
+                number: "📌",
+                title: "Cần nhớ Tailed Linked List"
+              }
+            ]
           }
         ]
       }
-    ]
-  }
-],
+    ],
     questionsMap: {},
     isActive: true
   },

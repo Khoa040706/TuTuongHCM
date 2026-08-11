@@ -1,537 +1,762 @@
 /* ============================================================
-   DỮ LIỆU CƠ BẢN: Môn Cấu trúc dữ liệu và giải thuật (DSA)
+   DỮ LIỆU MÔN HỌC: Cấu trúc dữ liệu và giải thuật (DSA)
+   BÀI 1: ABSTRACT DATA TYPE (ADT) - PHẦN I, II, III, IV & V
    ============================================================ */
 
 export const dsaData = {
   id: "dsa",
   title: "Cấu trúc dữ liệu và giải thuật",
-  subtitle: "Các cấu trúc dữ liệu kinh điển và kỹ thuật thiết kế giải thuật: Sắp xếp, Tìm kiếm, Đồ thị.",
-  sections: [
+  subtitle: "Bài 1: Abstract Data Type (ADT)",
+  chapters: [
     {
-      id: "dsa-section-adt",
-      roman: "I",
-      title: "Kiểu dữ liệu trừu tượng (Abstract Data Type - ADT)",
-      subsections: [
+      id: "dsa-b1",
+      title: "Bài 1",
+      subtitle: "Abstract Data Type (ADT)",
+      sections: [
+        /* PHẦN I LA MÃ */
         {
-          id: "dsa-sub-adt-se-issues",
-          number: "1",
-          title: "Các vấn đề trong Kỹ nghệ Phần mềm (Software Engineering Issues)",
-          parts: [
+          id: "dsa-b1-sec1",
+          roman: "I",
+          title: "Software Engineering Issues (Motivation) & Abstract Data Type (ADT)",
+          subsections: [
             {
-              id: "dsa-part-adt-principles",
-              label: "a",
-              title: "Bốn nguyên lý thiết kế chương trình cốt lõi",
-              content: [
+              id: "dsa-b1-sub-1-1",
+              number: "1.1",
+              title: "Program Design Principles (Bốn nguyên lý thiết kế chương trình)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Trong phát triển phần mềm quy mô lớn, việc quản lý sự phức tạp của mã nguồn là thách thức hàng đầu. Để xây dựng hệ thống bền vững, dễ bảo trì và mở rộng, các kỹ sư phải tuân thủ bốn nguyên lý thiết kế chương trình (Program Design Principles) cốt lõi:"
-                },
-                {
-                  type: "table",
-                  headers: ["Nguyên lý (Principle)", "Định nghĩa và Ý nghĩa chuyên sâu"],
-                  rows: [
-                    [
-                      "<b>Abstraction (Sự trừu tượng hóa)</b>",
-                      "Tập trung hoàn toàn vào việc một thành phần phần mềm có thể <i>làm được gì (what it can do)</i> thay vì nó <i>làm điều đó như thế nào (how it does it)</i>. Việc tách biệt hành vi ra khỏi mã thực thi cụ thể giúp giảm tải áp lực tư duy cho lập trình viên khi gọi hàm. Ví dụ kinh điển là việc sử dụng <b>Java Interface</b> để định nghĩa tập hợp hành vi mà không cần quan tâm đến logic bên trong."
-                    ],
-                    [
-                      "<b>Coupling (Sự liên kết / Phụ thuộc)</b>",
-                      "Đo lường mức độ phụ thuộc lẫn nhau giữa các lớp (classes) hoặc module trong chương trình. Mục tiêu tối thượng của thiết kế là đạt được <b>Loose coupling (Liên kết lỏng lẻo)</b>, nghĩa là hạn chế mối quan hệ phụ thuộc giữa các lớp xuống mức tối thiểu. Khi các lớp ít phụ thuộc vào nhau, việc chỉnh sửa mã nguồn ở lớp này sẽ không gây ra lỗi dây chuyền (ripple effect) ở lớp khác."
-                    ],
-                    [
-                      "<b>Cohesion (Sự kết dính)</b>",
-                      "Đo lường mức độ tập trung vào một nhiệm vụ duy nhất của một lớp. Một lớp được coi là có độ kết dính cao (High cohesion) khi nó chỉ đại diện cho một thực thể duy nhất (a single entity) và tất cả cả các phương thức bên trong nó phải có sự gắn kết logic chặt chẽ nhằm phục vụ thực thể đó. Điều này giúp mã nguồn dễ hiểu, dễ kiểm thử và tái sử dụng."
-                    ],
-                    [
-                      "<b>Information Hiding (Che giấu thông tin)</b>",
-                      "Nguyên lý chỉ phơi bày (expose) những thông tin thực sự cần thiết ra môi trường bên ngoài và giữ bí mật toàn bộ chi tiết cài đặt bên trong. Bằng cách giới hạn quyền truy cập vào dữ liệu và logic nội bộ, thông tin được bảo vệ an toàn khỏi các tác động ngoài ý muốn."
-                    ]
-                  ]
-                }
-              ]
-            },
-            {
-              id: "dsa-part-adt-information-hiding",
-              label: "b",
-              title: "Cơ chế Che giấu thông tin và Bức tường chắn (The Walls)",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Trong giáo trình nổi tiếng \"Walls & Mirrors\", khái niệm <b>Information Hiding</b> được ví như việc xây dựng những bức tường gạch kiên cố xung quanh các lớp của chương trình."
-                },
-                {
-                  type: "paragraph",
-                  text: "Bức tường bao quanh lớp T ngăn cản hoàn toàn các lớp khác (ví dụ lớp Q) nhìn thấy cách thức hoạt động bên trong của T. Do đó, nếu lớp Q sử dụng hoặc phụ thuộc vào lớp T, và sau này giải thuật hoặc cấu trúc dữ liệu bên trong lớp T thay thế bằng giải pháp tối ưu hơn, lớp Q hoàn toàn không bị ảnh hưởng và không cần phải thay đổi một dòng mã nào. Cơ chế này giúp việc thay thế, nâng cấp các phiên bản cải tiến (improved versions) của một tác vụ trở nên vô cùng dễ dàng và an toàn."
-                },
-                {
-                  type: "paragraph",
-                  text: "Tuy nhiên, che giấu thông tin không đồng nghĩa với sự cô lập hoàn toàn (complete isolation). Mối quan hệ giữa các lớp tuân theo nguyên tắc <i>\"cần mới biết\" (need-to-know basis)</i>. Lớp Q không cần biết T làm việc ra sao, nhưng nó cần biết cách thức kích hoạt T (phương thức gọi) và kết quả mà T sẽ trả về."
-                },
-                {
-                  type: "paragraph",
-                  text: `<div class="flex justify-center my-6">
-  <svg width="400" height="150" class="overflow-visible select-none">
-    <!-- Client Program Box -->
-    <rect x="10" y="35" width="100" height="80" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" />
-    <text x="60" y="70" fill="#4c1d95" font-size="11" font-weight="bold" text-anchor="middle">Client Program</text>
-    <text x="60" y="88" fill="#6d28d9" font-size="10" text-anchor="middle">(Lớp sử dụng Q)</text>
-    
-    <!-- The Interface Wall -->
-    <g>
-      <!-- Brick pattern wall -->
-      <rect x="160" y="15" width="24" height="120" rx="3" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5" />
-      <line x1="160" y1="35" x2="184" y2="35" stroke="#b91c1c" stroke-width="1" />
-      <line x1="160" y1="55" x2="184" y2="55" stroke="#b91c1c" stroke-width="1" />
-      <line x1="160" y1="75" x2="184" y2="75" stroke="#b91c1c" stroke-width="1" />
-      <line x1="160" y1="95" x2="184" y2="95" stroke="#b91c1c" stroke-width="1" />
-      <line x1="160" y1="115" x2="184" y2="115" stroke="#b91c1c" stroke-width="1" />
-      <text x="172" y="75" fill="#ffffff" font-size="10" font-weight="extrabold" text-anchor="middle" transform="rotate(90 172 75)">THE WALL</text>
-    </g>
-
-    <!-- Data Structure Box (Hidden) -->
-    <rect x="230" y="35" width="160" height="80" rx="8" fill="#fafaf9" stroke="#78716c" stroke-width="2" stroke-dasharray="4,4" />
-    <text x="310" y="65" fill="#44403c" font-size="11" font-weight="bold" text-anchor="middle">Data Structure & Logic</text>
-    <text x="310" y="80" fill="#78716c" font-size="10" text-anchor="middle">(Cấu trúc dữ liệu ẩn T)</text>
-    <text x="310" y="95" fill="#ef4444" font-size="9" font-weight="semibold" text-anchor="middle">Che giấu / Hidden 🔒</text>
-
-    <!-- Communication arrows -->
-    <!-- Request arrow -->
-    <path d="M 115 55 L 150 55" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow)" />
-    <text x="132" y="48" fill="#7c3aed" font-size="8" font-weight="bold" text-anchor="middle">Request</text>
-    
-    <!-- Response arrow -->
-    <path d="M 150 95 L 115 95" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow)" />
-    <text x="132" y="110" fill="#059669" font-size="8" font-weight="bold" text-anchor="middle">Result</text>
-
-    <!-- Internal access arrow from wall to implementation -->
-    <path d="M 185 75 L 225 75" fill="none" stroke="#44403c" stroke-width="1.5" stroke-dasharray="2,2" />
-
-    <!-- SVG Markers for arrow heads -->
-    <defs>
-      <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1.5 L 6 5 L 0 8.5 z" fill="context-stroke" />
-      </marker>
-    </defs>
-  </svg>
-</div>`
-                },
-                {
-                  type: "highlight",
-                  text: "<b>Ví dụ thực tế trong Java:</b> Các lập trình viên thiết kế lớp Math (ví dụ hàm <code>Math.sqrt()</code>) hay lớp Scanner đã che giấu hoàn toàn chi tiết mã nguồn hiện thực giải thuật toán học hay xử lý luồng dữ liệu đầu vào. Tuy nhiên, họ cung cấp cho chúng ta các chữ ký hàm (method headers) và tài liệu giải thích rõ ràng để ta có thể ứng dụng chúng mà không cần phải viết lại giải thuật từ đầu."
-                }
-              ]
-            },
-            {
-              id: "dsa-part-adt-contract",
-              label: "c",
-              title: "Hợp đồng lập trình: Pre-conditions và Post-conditions",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Mối quan hệ giao tiếp qua lại giữa các lớp được ràng buộc bởi một \"hợp đồng\" kỹ thuật thông qua tài liệu tài liệu hóa (documentation) gồm hai điều kiện:"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "<b>Pre-conditions (Điều kiện tiên quyết):</b> Là những điều kiện bắt buộc phải đúng <i>trước khi</i> một phương thức được gọi. Đây là thông điệp: \"Đây là những gì tôi kỳ vọng ở bạn\". Người lập trình gọi hàm có trách nhiệm đảm bảo các điều kiện này được thỏa mãn đầy đủ.",
-                    "<b>Post-conditions (Điều kiện sau thực hiện):</b> Là những trạng thái chắc chắn phải đúng <i>sau khi</i> phương thức kết thúc xử lý thành công. Đây là lời hứa: \"Đây là những gì tôi cam kết sẽ hoàn thành cho bạn\"."
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Ví dụ minh họa bằng mã nguồn:</b>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `// Pre-cond: x >= 0 (Giá trị truyền vào không được âm)
-// Post-cond: Trả về căn bậc hai hình học của x (Return the square root of x)
-public static double squareRoot(double x) {
-    // Chi tiết xử lý thuật toán phức tạp được ẩn đi tại đây
-    return Math.sqrt(x);
-}`
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: "dsa-sub-adt-definition",
-          number: "2",
-          title: "Kiểu Dữ liệu Trừu tượng (Abstract Data Type - ADT)",
-          parts: [
-            {
-              id: "dsa-part-adt-vs-ds",
-              label: "a",
-              title: "Phân biệt Data Structure và Abstract Data Type (ADT)",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nguyên lý che giấu thông tin hoàn toàn có thể áp dụng trực tiếp lên dữ liệu. Từ đó, ngành khoa học máy tính phân tách rõ ràng hai khái niệm: Cấu trúc dữ liệu và Kiểu dữ liệu trừu tượng."
-                },
-                {
-                  type: "definition",
-                  text: "<b>Data Abstraction (Trừu tượng hóa dữ liệu)</b> yêu cầu lập trình viên suy nghĩ về những gì có thể thực hiện trên một tập hợp dữ liệu một cách độc lập hoàn toàn với cách thức lưu trữ hay hiện thực nó."
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "<b>Data Structure (Cấu trúc dữ liệu):</b> Là một cấu trúc cụ thể được định nghĩa trong phạm vi một ngôn ngữ lập trình cụ thể nhằm lưu trữ vật lý một tập hợp dữ liệu. Ví dụ: Mảng (Arrays) là cấu trúc dữ liệu được tích hợp sẵn trong Java.",
-                    "<b>Abstract Data Type - ADT (Kiểu dữ liệu trừu tượng):</b> Là một khái niệm toán học, bao gồm một tập hợp các dữ liệu kết hợp với một <i>bản đặc tả kỹ thuật (specification)</i> về tập hợp các thao tác/phương thức trên dữ liệu đó. Bản đặc tả này chỉ rõ thao tác đó làm gì nhưng tuyệt đối không chỉ ra cách thức lập trình chi tiết."
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: "Các thao tác điển hình trên một ADT thường xoay quanh quản lý dữ liệu toàn diện bao gồm: thêm dữ liệu (add), xóa dữ liệu (remove), và truy vấn dữ liệu (query)."
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Ví dụ về việc lựa chọn cấu trúc dữ liệu lưu trữ thông tin nhân viên (Tên và Lương):</b>"
-                },
-                {
-                  type: "paragraph",
-                  text: "<i>Cách tiếp cận 1 (Sử dụng mảng song song - Kỹ thuật sơ khai):</i>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `static final int MAX_NUMBER = 500; // Định nghĩa hằng số dung lượng tối đa
-String[] names = new String[MAX_NUMBER];
-double[] salaries = new double[MAX_NUMBER];
-// Tên nhân viên tại vị trí names[i] sẽ tương ứng với mức lương tại salaries[i]`
-                },
-                {
-                  type: "paragraph",
-                  text: "<i>Cách tiếp cận 2 (Sử dụng Hướng đối tượng - Lựa chọn tối ưu hơn về mặt cấu trúc):</i>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `class Employee {
-    static final int MAX_NUMBER = 500;
-    private String name;
-    private double salary;
-}
-// ...
-Employee[] workers = new Employee[Employee.MAX_NUMBER];`
-                }
-              ]
-            },
-            {
-              id: "dsa-part-adt-dispenser",
-              label: "b",
-              title: "Ẩn dụ thực tế: Cây nước tự động (Water Dispenser) và Quy trình hoạt động của ADT",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Sử dụng một ADT tương tự như việc vận hành một cây nước tự động hoặc máy bán hàng tự động:"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "<b>Data (Dữ liệu):</b> Nước bên trong máy.",
-                    "<b>Operations (Các thao tác):</b> chill (làm lạnh), crush (làm đá bào), cube (làm đá viên), và isEmpty (kiểm tra hết nước).",
-                    "<b>Data Structure (Cấu trúc dữ liệu nội bộ):</b> Hệ thống đường ống, máy nén khí, mạch điện phức tạp bên trong máy.",
-                    "<b>The Walls (Bức tường bảo vệ):</b> Vỏ bọc bằng thép kiên cố bên ngoài của cây nước. Người dùng chỉ tương tác qua giao diện (nút bấm nhận đá bào, đầu vào cấp nước, đầu ra nhận nước). Chúng ta hoàn toàn không quan tâm viên đá được bào bằng cơ chế cơ học nào, chỉ cần biết nút bấm hoạt động chính xác."
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Mô hình hoạt động chuẩn của ADT:</b> Chương trình (Program) gửi một yêu cầu thực hiện thao tác (Request to perform operation) đến Bức tường thao tác ADT (Wall of ADT operations - gồm các cổng hàm công khai như add, remove, find, display). Yêu cầu này đi qua một <b>Interface (Giao diện)</b> được định nghĩa rõ ràng. Giao diện này sẽ chuyển đối tác vụ xuống Cấu trúc dữ liệu (Data Structure) vật lý bên dưới, nhận về kết quả dữ liệu thô rồi trả ngược lại kết quả đã tinh chỉnh (Result of operation) cho chương trình."
-                },
-                {
-                  type: "highlight",
-                  text: "<b>Cảnh báo vi phạm nguyên tắc thiết kế:</b> Bất kỳ hành vi nào từ Chương trình cố tình vượt mặt (bypass) giao diện công khai để truy cập hoặc can thiệp trực tiếp vào cấu trúc dữ liệu lưu trữ vật lý bên trong đều bị coi là hành vi phá vỡ Bức tường bảo vệ của ADT, gây mất an toàn hệ thống trầm trọng."
-                }
-              ]
-            },
-            {
-              id: "dsa-part-adt-operation-types",
-              label: "c",
-              title: "Phân loại các thao tác trong ADT và Kiểu nguyên thủy (Primitive Types)",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Bản thân các kiểu dữ liệu nguyên thủy tích hợp sẵn trong Java (như int, boolean, double) chính là các ADT được thiết kế hoàn hảo. Chi tiết biểu diễn nhị phân trên RAM bị ẩn đi, giúp mã nguồn có tính tương thích (portability) rất cao giữa các hệ điều hành. Ví dụ, kiểu int đi kèm các toán tử định sẵn (+, -, *, /), kiểu boolean đi kèm toán tử logic (&&, ||, !)."
-                },
-                {
-                  type: "paragraph",
-                  text: "Nói một cách tổng quát, các phương thức trong một ADT được phân chia thành ba nhóm chiến lược:"
-                },
-                {
-                  type: "numbered-group",
-                  items: [
+                  id: "dsa-b1-part-principles",
+                  label: "NGUYÊN LÝ THIẾT KẾ",
+                  title: "4 Nguyên lý thiết kế phần mềm cốt lõi",
+                  content: [
                     {
-                      number: 1,
-                      title: "<b>Constructors (Hàm khởi tạo):</b> Dùng để cấp phát vùng nhớ và tạo lập, thêm mới dữ liệu ban đầu. Ví dụ: <code>int[] z = new int[4];</code> hoặc <code>int[] x = { 2, 4, 6, 8 };</code>."
+                      type: "paragraph",
+                      text: "Trong phát triển phần mềm quy mô lớn, việc quản lý sự phức tạp của mã nguồn là thách thức hàng đầu. Để xây dựng hệ thống bền vững, dễ bảo trì và mở rộng, các kỹ sư phần mềm phải tuân thủ 4 nguyên lý thiết kế (Program Design Principles) cốt lõi:"
                     },
                     {
-                      number: 2,
-                      title: "<b>Mutators (Hàm biến đổi / Setter):</b> Dùng để sửa đổi, cập nhật trạng thái dữ liệu bên trong cấu trúc. Ví dụ thao tác gán: <code>x[3] = 10;</code>."
-                    },
-                    {
-                      number: 3,
-                      title: "<b>Accessors (Hàm truy vấn / Getter):</b> Dùng để hỏi hoặc truy xuất thông tin về trạng thái hoặc giá trị của dữ liệu mà không làm thay đổi cấu trúc ban đầu. Ví dụ: <code>int y = x[3] + x[2];</code>."
+                      type: "table",
+                      headers: ["Nguyên lý (Principle)", "Định nghĩa & Bản chất cốt lõi"],
+                      rows: [
+                        [
+                          "<b>Abstraction (Trừu tượng hóa)</b>",
+                          "Chỉ tập trung vào <b>cái gì (what)</b> nó làm được, không quan tâm <b>làm như thế nào (how)</b>. <br/><i>Ví dụ:</i> Sử dụng <code>Java Interface</code>."
+                        ],
+                        [
+                          "<b>Coupling (Tính kết dính giữa các lớp)</b>",
+                          "Hạn chế tối thiểu mối quan hệ phụ thuộc lẫn nhau giữa các class (Liên kết lỏng lẻo - Loose Coupling)."
+                        ],
+                        [
+                          "<b>Cohesion (Tính có kết nội bộ)</b>",
+                          "Một class chỉ nên đại diện cho <b>một thực thể (entity)</b> duy nhất. Phải có sự phân nhóm chức năng (functionalities) rõ ràng, logic."
+                        ],
+                        [
+                          "<b>Information Hiding (Che giấu thông tin)</b>",
+                          "Chỉ để lộ ra bên ngoài những thông tin cần thiết."
+                        ]
+                      ]
                     }
                   ]
                 }
               ]
             },
             {
-              id: "dsa-part-adt-complex-number",
-              label: "d",
-              title: "Phân tích Case-Study: Số phức (Complex Number) như một ADT",
-              content: [
+              id: "dsa-b1-sub-1-2",
+              number: "1.2",
+              title: "Information Hiding - Chi tiết & Bức tường (Walls & Mirrors)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Một số phức gồm hai phần: phần thực (real part) $a$ và phần ảo (imaginary part) $b$, viết dưới dạng toán học: $a + bi$ (với $i^2 = -1$). Trên mặt phẳng phức hai chiều (Complex Plane), số phức được biểu diễn trực quan như một vectơ có tọa độ $(a, b)$, trong đó trục hoành đại diện cho phần thực (Real) và trục tung đại diện cho phần ảo (Imag)."
-                },
-                {
-                  type: "paragraph",
-                  text: "Khi tổ chức Số phức thành một ADT (Complex ADT), chúng ta định nghĩa giao diện bên ngoài gồm các phương thức chính:"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "<code>Complex(r, i)</code>: Khởi tạo số phức từ tọa độ thực ảo truyền vào.",
-                    "<code>realpart()</code> và <code>imagpart()</code>: Truy xuất phần thực, phần ảo (Accessors).",
-                    "<code>add(c)</code>, <code>minus(c)</code>, <code>times(c)</code>: Các phép toán cộng, trừ, nhân thực hiện biến đổi trực tiếp lên đối tượng hiện tại (<code>this = this [toán tử] c</code>)."
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: "Nhờ có tính trừu tượng của ADT, chúng ta có thể hiện thực hóa mô hình này bằng hai phương án cấu trúc dữ liệu vật lý hoàn toàn khác biệt nhau nhưng đem lại kết quả đầu ra tương đương đối với chương trình client:"
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Phương án 1: Hiện thực theo Hệ tọa độ Đề-các (Cartesian Implementation)</b><br/>Lưu trữ trực tiếp hai biến số thực độc lập: <code>private double real;</code> và <code>private double imag;</code>. Giải thuật đại số được áp dụng trực tiếp dựa trên công thức toán học:"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "Phép cộng: $(a + bi) + (c + di) = (a + c) + (b + d)i$",
-                    "Phép trừ: $(a + bi) - (c + di) = (a - c) + (b - d)i$",
-                    "Phép nhân phức tạp: $(a + bi) * (c + di) = (ac - bd) + (ad + bc)i$"
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Phương án 2: Hiện thực theo Hệ tọa độ Cực (Polar Implementation)</b><br/>Thay vì lưu thực ảo, cấu trúc dữ liệu lưu trữ độ dài vectơ <code>private double mag;</code> (magnitude - mô-đun) và góc định hướng <code>private double ang;</code> (angle - độ dốc góc biên độ / Argand). Trong hệ tọa độ cực, phép nhân số phức trở nên đơn giản vô cùng: độ dài nhân với nhau và góc cộng lại với nhau (<code>mag *= c.mag(); ang += c.angle();</code>)."
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Mối quan hệ toán học chuyển đổi qua lại giữa hai hệ tọa độ:</b>"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "Từ Hệ Cực sang Đề-các: $real = mag * cos(ang); imag = mag * sin(ang);$",
-                    "Từ Đề-các sang Hệ Cực: $ang = tan^{-1}(imag / real); mag = sqrt(real^2 + imag^2);$ hoặc $mag = real / cos(ang);$"
-                  ]
-                },
-                {
-                  type: "paragraph",
-                  text: `<div class="flex justify-center my-6">
-  <svg width="240" height="200" class="overflow-visible select-none">
-    <!-- Grid & Axes -->
-    <line x1="20" y1="180" x2="220" y2="180" stroke="#a8a29e" stroke-width="1.5" />
-    <line x1="20" y1="180" x2="20" y2="20" stroke="#a8a29e" stroke-width="1.5" />
-    <!-- Vector -->
-    <line x1="20" y1="180" x2="160" y2="60" stroke="#7c3aed" stroke-width="2.5" />
-    <circle cx="160" cy="60" r="4" fill="#ef4444" />
-    <!-- Dashed lines -->
-    <line x1="160" y1="60" x2="160" y2="180" stroke="#a8a29e" stroke-width="1" stroke-dasharray="3,3" />
-    <line x1="20" y1="60" x2="160" y2="60" stroke="#a8a29e" stroke-width="1" stroke-dasharray="3,3" />
-    <!-- Angle arc -->
-    <path d="M 50 180 A 30 30 0 0 0 44 159" fill="none" stroke="#f59e0b" stroke-width="1.5" />
-    <!-- Labels -->
-    <text x="225" y="184" fill="#57534e" font-size="10" font-family="serif" font-style="italic">Re (real)</text>
-    <text x="12" y="15" fill="#57534e" font-size="10" font-family="serif" font-style="italic">Im (imag)</text>
-    <text x="165" y="55" fill="#1c1917" font-size="11" font-weight="bold">z = a + bi</text>
-    <text x="165" y="70" fill="#78716c" font-size="10">z = r&ang;&theta;</text>
-    <text x="160" y="194" fill="#57534e" font-size="10" text-anchor="middle">a</text>
-    <text x="8" y="64" fill="#57534e" font-size="10">bi</text>
-    <text x="80" y="110" fill="#7c3aed" font-size="11" font-weight="bold">r (mag)</text>
-    <text x="54" y="174" fill="#d97706" font-size="11">&theta; (ang)</text>
-  </svg>
-</div>`
-                },
-                {
-                  type: "dsa-complex-visualizer"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: "dsa-sub-adt-java-interface",
-          number: "3",
-          title: "Java Interface (Giao diện trong Java)",
-          parts: [
-            {
-              id: "dsa-part-adt-interface-characteristics",
-              label: "a",
-              title: "Đặc trưng kỹ thuật của Java Interface",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Java Interface là một công cụ ngôn ngữ lập trình hoàn hảo để định nghĩa bản đặc tả kỹ thuật của một ADT. Nó cho phép nâng cao tính trừu tượng hóa và tổng quát hóa mã nguồn."
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "Sử dụng từ khóa <code>interface</code> thay vì từ khóa <code>class</code>.",
-                    "Là một tập hợp các phương thức liên quan nhưng có thân hàm rỗng (empty bodies) - áp dụng từ Java 7 trở về trước. Từ Java 8, interface cho phép khai báo thêm <b>\"default methods\"</b> có sẵn code mặc định, cho phép các lớp hiện thực ghi đè (override) tùy chọn.",
-                    "Có thể chứa các định nghĩa hằng số (các thuộc tính này mặc nhiên được hiểu là <code>public static final</code>).",
-                    "Một lớp cụ thể muốn sử dụng giao diện phải dùng từ khóa <code>implements</code> và bắt buộc phải lập trình mã xử lý chi tiết cho <b>TẤT CẢ</b> các phương thức đã khai báo trong giao diện đó.",
-                    "Mỗi giao diện sau khi biên dịch sẽ tạo ra một file bytecode cụ thể độc lập (đuôi <code>.class</code>).",
-                    "Không thể dùng từ khóa <code>new</code> để tạo thực thể trực tiếp từ interface, nhưng hoàn toàn có thể dùng tên interface làm kiểu dữ liệu cho biến, tạo điều kiện cho cơ chế Ép kiểu (Casting) và Đa hình (Polymorphism)."
+                  id: "dsa-b1-part-infohiding",
+                  label: "CHE GIẤU THÔNG TIN",
+                  title: "Cơ chế Bức tường (Walls) & Nguyên tắc Need-to-Know",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>Information Hiding</b> giống như xây <b>\"bức tường\" (walls)</b> quanh mỗi class:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Tường quanh class T ngăn các class khác thấy được T hoạt động <b>như thế nào (how)</b>.",
+                        "Nếu class Q sử dụng (phụ thuộc) T, và cách T thực hiện công việc thay đổi &rarr; Q <b>không bị ảnh hưởng</b>.",
+                        "Giáo trình chính thức của môn học có tên là <b>\"Walls & Mirrors\"</b>."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "success",
+                      title: "💡 Lợi ích cốt lõi",
+                      text: "Dễ dàng thay thế bằng phiên bản mới, cải tiến hơn cho cách thực hiện một tác vụ, mà không ảnh hưởng đến những nơi khác trong chương trình."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Information Hiding <b>không phải</b> là cô lập hoàn toàn các class:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Thông tin được tiết lộ theo nguyên tắc <b>need-to-know</b> (cần mới biết).",
+                        "Class Q không biết T làm việc như thế nào, nhưng cần biết <b>cách gọi T (invoke)</b> và <b>T trả về gì (produces)</b>.",
+                        "<i>Ví dụ:</i> Các class <code>Math</code>, <code>Scanner</code> &mdash; người thiết kế giấu chi tiết cài đặt (implementation), chỉ cung cấp method header + mô tả đủ để dùng."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Những gì đưa vào (input) và lấy ra (output) được quy định bởi <b>specification</b> của method: <i>\"Nếu bạn dùng method này theo cách này, đây chính xác là những gì nó sẽ làm cho bạn\"</i> &rarr; <b>pre-condition & post-condition</b>."
+                    }
                   ]
                 }
               ]
             },
             {
-              id: "dsa-part-adt-interface-complex-code",
-              label: "b",
-              title: "Mã nguồn toàn diện hiện thực Complex ADT qua Giao diện",
-              content: [
+              id: "dsa-b1-sub-1-3",
+              number: "1.3",
+              title: "Pre-conditions và Post-conditions (Hợp đồng cho tài liệu)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Dưới đây là mã nguồn phân tích chi tiết quy trình xây dựng hệ thống mã nguồn đa hình cho Số phức:"
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Mã nguồn 1: Khai báo Giao diện chung (Complex.java)</b>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `public interface Complex {
-    public double realpart(); // Lấy phần thực
-    public double imagpart(); // Lấy phần ảo
-    public double angle();    // Lấy góc độ (độ lệch pha)
-    public double mag();      // Lấy độ dài (mô-đun)
-    public void add(Complex c); // Biến đổi: this = this + c
-    public void minus(Complex c); // Biến đổi: this = this - c
-    public void times(Complex c); // Biến đổi: this = this * c
+                  id: "dsa-b1-part-prepost",
+                  label: "HỢP ĐỒNG PHƯƠNG THỨC",
+                  title: "Pre-condition & Post-condition trong Documentation",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Trong lập trình phần mềm chuyên nghiệp, mối quan hệ giữa người gọi hàm và hàm được thiết lập thông qua hợp đồng Pre-condition và Post-condition:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Thuật ngữ", "Ý nghĩa & Trách nhiệm"],
+                      rows: [
+                        [
+                          "<b>Pre-condition (Điều kiện tiên quyết)</b>",
+                          "• Điều kiện phải đúng <b>trước khi</b> method được gọi.<br/>• Thông điệp: <i>\"Đây là những gì tôi mong đợi ở bạn\"</i>.<br/>• <b>Lập trình viên (người gọi method)</b> có trách nhiệm đảm bảo pre-condition được thỏa mãn."
+                        ],
+                        [
+                          "<b>Post-condition (Điều kiện hậu quyết)</b>",
+                          "• Điều kiện phải đúng <b>sau khi</b> method hoàn tất.<br/>• Thông điệp: <i>\"Đây là những gì tôi hứa sẽ làm cho bạn\"</i>.<br/>• <b>Tác giả (người cài đặt method)</b> có trách nhiệm đảm bảo post-condition được thực thi."
+                        ]
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Ví dụ về Pre-condition và Post-condition trong Java documentation",
+                      code: `// Pre-cond: x >= 0
+// Post-cond: Return the square root of x
+public static double squareRoot(double x) {
+    // Chi tiết cài đặt ẩn bên trong bức tường
+    return Math.sqrt(x);
 }`
-                },
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-1-4",
+              number: "1.4",
+              title: "Data Abstraction & Abstract Data Type (ADT)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "<b>Mã nguồn 2: Hiện thực theo tọa độ Đề-các (ComplexCart.java)</b>"
-                },
+                  id: "dsa-b1-part-data-abstraction",
+                  label: "TRỪU TƯỢNG HÓA DỮ LIỆU",
+                  title: "Định nghĩa ADT & So sánh với Data Structure",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "Information Hiding <b>cũng áp dụng được cho dữ liệu (data)</b>.",
+                        "<b>Data abstraction:</b> suy nghĩ về việc bạn có thể làm gì với một tập hợp dữ liệu, <b>độc lập</b> với cách làm nó như thế nào.",
+                        "<b>Data structure:</b> một cấu trúc được định nghĩa trong ngôn ngữ lập trình để lưu trữ một tập hợp dữ liệu.",
+                        "<b>Abstract Data Type (ADT):</b> tập hợp dữ liệu (data) <b>cùng với</b> một đặc tả (specification) về tập các phép toán/phương thức (operations/methods) trên dữ liệu đó."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "📌 Đặc điểm của ADT Operations",
+                      text: "• Các phép toán điển hình: add, remove, query (nói chung là quản lý dữ liệu).<br/>• Specification chỉ ra ADT operations <b>làm gì (what)</b>, chứ không nói <b>làm như thế nào (how)</b> để cài đặt (implement)."
+                    },
+                    {
+                      type: "component",
+                      componentName: "InterfaceDataAbstractionAdt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-summary-1",
+              number: "📌",
+              title: "📌 Cần nhớ Phần I",
+              parts: [
                 {
-                  type: "highlight",
-                  text: "<b>Lưu ý giải thuật trong phương thức angle():</b> Khi tính toán góc dựa trên hàm vô hướng <code>Math.atan(imag/real)</code>, chúng ta phải xử lý các điều kiện biên của hệ trục tọa độ 2D. Nếu phần thực âm (nằm ở góc phần tư số II và III), ta phải cộng thêm hằng số $\\pi$ (<code>Math.PI</code>) để điều chỉnh hướng vectơ chính xác. Nếu phần thực bằng 0, tùy thuộc vào phần ảo dương hay âm mà góc trả về sẽ là $\\pi/2$ hoặc $-\\pi/2$."
-                },
+                  id: "dsa-b1-part-summary-1",
+                  label: "TỔNG KẾT PHẦN I",
+                  title: "Những điểm cốt lõi bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 TÓM TẮT TRỌNG TÂM PHẦN I",
+                      text: "1. <b>4 nguyên lý thiết kế:</b> Abstraction, Coupling, Cohesion, Information Hiding.<br/>2. <b>Information Hiding = nguyên tắc need-to-know</b>, không phải cô lập hoàn toàn.<br/>3. <b>Pre-condition</b> = điều kiện trước khi gọi (trách nhiệm người gọi); <b>Post-condition</b> = điều kiện sau khi hoàn tất (lời hứa của method).<br/>4. <b>Data structure ≠ ADT:</b> Data structure là cách lưu trữ dữ liệu; ADT = dữ liệu + specification của operations.<br/>5. <b>Specification chỉ nói what, không nói how.</b>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        /* PHẦN II LA MÃ */
+        {
+          id: "dsa-b1-sec2",
+          roman: "II",
+          title: "Abstract Data Type (ADT) - Chuyên sâu & Các Ví dụ Thực tế",
+          subsections: [
+            {
+              id: "dsa-b1-sub-2-1",
+              number: "2.1",
+              title: "Data Structure & Ví dụ Lưu trữ Nhân viên (Employee)",
+              parts: [
                 {
-                  type: "code",
-                  language: "java",
-                  code: `class ComplexCart implements Complex {
+                  id: "dsa-b1-part-ds-employee",
+                  label: "DATA STRUCTURE",
+                  title: "Khái niệm Data Structure & So sánh 2 cách lưu trữ Nhân viên",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>Data structure:</b> Cấu trúc định nghĩa trong ngôn ngữ lập trình để lưu một tập hợp dữ liệu. Mảng (Array) &mdash; có sẵn (built-in) trong Java &mdash; chính là một data structure."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>Ví dụ:</b> Cần lưu tên và lương của một tập nhân viên (employees):"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Cách 1: Dùng 2 mảng song song (Hạn chế)", "Cách 2: Dùng Class Employee (Lựa chọn tốt hơn - Better choice)"],
+                      rows: [
+                        [
+                          `<b>Mã nguồn Cách 1:</b>
+<pre><code class="language-java">static final int MAX_NUMBER = 500;
+String[] names = new String[MAX_NUMBER];
+double[] salaries = new double[MAX_NUMBER];
+// employee names[i] has salary salaries[i]</code></pre>
+<i>Hạn chế:</i> Dễ lệch chỉ số i khi sắp xếp hoặc xóa dữ liệu.`,
+                          `<b>Mã nguồn Cách 2:</b>
+<pre><code class="language-java">class Employee {
+    static final int MAX_NUMBER = 500;
+    private String names;
+    private double salaries;
+}
+Employee[] workers = new Employee[Employee.MAX_NUMBER];</code></pre>
+<i>Ưu điểm:</i> Đóng gói thông tin nhân viên vào 1 đối tượng duy nhất.`
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-2-2",
+              number: "2.2",
+              title: "Abstract Data Type (ADT) – Khái niệm Cốt lõi",
+              parts: [
+                {
+                  id: "dsa-b1-part-adt-concept",
+                  label: "KHÁI NIỆM ADT",
+                  title: "Công thức ADT = Data + Specification of Operations",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "primary",
+                      title: "🔑 Định nghĩa gộp cốt lõi",
+                      text: "<b>ADT = Collection of data + set of operations on the data</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>ADT</b> là một tập hợp dữ liệu (data) <b>cùng với</b> một đặc tả (specification) của tập các phép toán trên dữ liệu đó.",
+                        "Specification chỉ ra ADT operations <b>làm gì (what)</b>, không phải <b>cách cài đặt (how)</b>.",
+                        "<b>Data structures</b> là một phần của việc <b>implementation</b> của ADT.",
+                        "Khi chương trình cần các phép toán dữ liệu mà ngôn ngữ không hỗ trợ trực tiếp &rarr; cần tự tạo ADT riêng.",
+                        "Nên <b>thiết kế ADT trước</b> (đặc tả cẩn thận các operations) rồi mới implement."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-2-3",
+              number: "2.3",
+              title: "Ví dụ trực quan – Máy lọc nước (Water Dispenser) như một ADT",
+              parts: [
+                {
+                  id: "dsa-b1-part-water-dispenser",
+                  label: "VÍ DỤ TRỰC QUAN",
+                  title: "Mô hình Máy lọc nước & Máy bán hàng tự động (Vending Machine)",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "<b>Data:</b> nước (water).",
+                        "<b>Operations:</b> <code>chill</code> (làm lạnh), <code>crush</code> (làm đá bào), <code>cube</code> (làm đá viên), <code>isEmpty</code>.",
+                        "<b>Data structure:</b> cấu trúc bên trong máy lọc.",
+                        "<b>Walls:</b> làm bằng thép (steel).",
+                        "<b>Khe hở duy nhất trên tường:</b> Input (nước) & Output (nước lạnh, đá bào, hoặc đá viên).",
+                        "Dùng ADT giống như dùng <b>máy bán hàng tự động (vending machine)</b>. Đá bào có thể được làm theo nhiều cách khác nhau &mdash; ta <b>không quan tâm</b> nó được làm như thế nào."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      componentName: "WaterDispenserAdt"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-2-4",
+              number: "2.4",
+              title: "Wall of ADT Operations & Interface",
+              parts: [
+                {
+                  id: "dsa-b1-part-wall-interface",
+                  label: "INTERFACE & WALL",
+                  title: "Ranh giới cô lập giữa Program và Data Structure",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "Một <b>WALL</b> của các ADT operations <b>cô lập (isolates)</b> data structure khỏi chương trình sử dụng nó.",
+                        "<b>Interface:</b> những gì một chương trình/module/class cần hiểu để sử dụng ADT.",
+                        "Nếu chương trình <b>bỏ qua interface</b> để truy cập trực tiếp data structure &rarr; <b>vi phạm</b> bức tường (wall) của ADT operations."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-2-5",
+              number: "2.5",
+              title: "Ví dụ: Kiểu nguyên thủy (Primitive Types) như ADT & Phân loại Operations",
+              parts: [
+                {
+                  id: "dsa-b1-part-primitive-operations",
+                  label: "PHÂN LOẠI OPERATIONS",
+                  title: "3 Loại Phép toán ADT (Constructors, Mutators, Accessors)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Các kiểu dữ liệu định sẵn (predefined) của Java <b>cũng là ADT</b>. Chi tiết biểu diễn (representation) được ẩn đi &rarr; giúp tính <b>khả chuyển (portability)</b>. Ví dụ: <code>int</code>, <code>boolean</code>, <code>double</code>."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<code>int</code> là một type với các operations: <code>--</code>, <code>++</code>, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, ...",
+                        "<code>boolean</code> là một type với các operations: <code>&&</code>, <code>||</code>, <code>!</code>"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>Phân loại operations (ví dụ dùng Array ADT):</b>"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Loại Phép toán (Operation Type)", "Chức năng & Ví dụ mã nguồn Java"],
+                      rows: [
+                        [
+                          "<b>1. Constructors (Tạo dữ liệu)</b>",
+                          "Tạo mới và khởi tạo dữ liệu:<br/><pre><code class=\"language-java\">int[] z = new int[4];\nint[] x = { 2, 4, 6, 8 };</code></pre>"
+                        ],
+                        [
+                          "<b>2. Mutators (Thay đổi dữ liệu)</b>",
+                          "Thay đổi giá trị hoặc trạng thái bên trong dữ liệu:<br/><pre><code class=\"language-java\">x[3] = 10;</code></pre>"
+                        ],
+                        [
+                          "<b>3. Accessors (Truy vấn dữ liệu)</b>",
+                          "Đọc/truy vấn trạng thái mà không làm thay đổi dữ liệu gốc:<br/><pre><code class=\"language-java\">int y = x[3] + x[2];</code></pre>"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-2-6",
+              number: "2.6",
+              title: "Ví dụ: Complex Number (Số phức) như ADT",
+              parts: [
+                {
+                  id: "dsa-b1-part-complex-adt",
+                  label: "BÀI TOÁN SỐ PHỨC",
+                  title: "Khái niệm, Thiết kế Specification và 2 Bản Cài đặt (Cartesian & Polar)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>a) Khái niệm:</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Số phức gồm phần thực <b>a</b> và phần ảo <b>b</b>, viết là <b>a + bi</b>.",
+                        "<b>i</b> là giá trị sao cho <b>i² = -1</b>.",
+                        "<i>Ví dụ:</i> 12 + 3i, 15 - 9i, -5 + 4i, -23, 18i.",
+                        "Biểu diễn trực quan: cặp số (a, b) &mdash; một vector trên mặt phẳng số phức 2 chiều (Trục ngang Real, Trục dọc Imag)."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>b) Thiết kế ADT \"Complex\":</b> Kiểu dữ liệu do người dùng định nghĩa (user-defined) cũng có thể tổ chức thành ADT. Các operations: <code>Complex(r,i)</code> (constructor), <code>add(c)</code>, <code>minus(c)</code>, <code>times(c)</code>, <code>realpart()</code>, <code>imagpart()</code>."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "c) Class Complex (bản khai báo – chỉ có specification)",
+                      code: `class Complex {
+    private ...                                 // data members (hidden)
+    public Complex(double r, double i) { ... }  // create a new object
+    public void add(Complex c) { ... }          // this = this + c
+    public void minus(Complex c) { ... }        // this = this - c
+    public void times(Complex c) { ... }        // this = this * c
+    public double realpart() { ... }            // returns this.real
+    public double imagpart() { ... }            // returns this.imag
+}`
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Cách dùng (Client Program):",
+                      code: `Complex c = new Complex(1,2);      // c = (1,2)
+Complex d = new Complex(3,5);      // d = (3,5)
+c.add(d);                          // c = c + d
+d.minus(new Complex(1,1));         // d = d - (1,1)
+c.times(d);                        // c = c * d`
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>d) Implementation #1 &mdash; Cartesian (Đề các):</b><br/>Công thức số phức:<br/>• (a + bi) + (c + di) = (a + c) + (b + d)i<br/>• (a + bi) - (c + di) = (a - c) + (b - d)i<br/>• (a + bi)(c + di) = (ac - bd) + (ad + bc)i"
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Mã nguồn Implementation #1 (Cartesian):",
+                      code: `class Complex {
     private double real;
     private double imag;
 
-    // Hàm khởi tạo (Constructor)
-    public ComplexCart(double r, double i) {
-        this.real = r;
-        this.imag = i;
+    // CONSTRUCTOR
+    public Complex(double r, double i) { real = r; imag = i; }
+
+    // ACCESSORS
+    public double realpart() { return real; }
+    public double imagpart() { return imag; }
+
+    // MUTATORS
+    public void add(Complex c) {    // this = this + c
+        real += c.realpart();
+        imag += c.imagpart();
     }
+    public void minus(Complex c) {  // this = this - c
+        real -= c.realpart();
+        imag -= c.imagpart();
+    }
+    public void times(Complex c) {  // this = this * c
+        double r = real * c.realpart() - imag * c.imagpart();
+        double i = real * c.imagpart() + imag * c.realpart();
+        real = r;
+        imag = i;
+    }
+}`
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "e) Implementation #2 &mdash; Polar (Cực):",
+                      code: `class Complex {
+    private double ang; // the angle of the vector
+    private double mag; // the magnitude of the vector
 
-    // Nhóm hàm truy vấn (Accessors)
-    public double realpart() { return this.real; }
-    public double imagpart() { return this.imag; }
-    public double mag() { return Math.sqrt(real * real + imag * imag); }
+    public void times(Complex c) { // this = this * c (nhân cực rất nhanh!)
+        ang += c.angle();
+        mag *= c.mag();
+    }
+}`
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>f) Quan hệ giữa Cartesian và Polar:</b><br/>• Từ Polar &rarr; Cartesian: <code>real = mag * cos(ang)</code>, <code>imag = mag * sin(ang)</code><br/>• Từ Cartesian &rarr; Polar: <code>ang = tan⁻¹(imag/real)</code>, <code>mag = real / cos(ang)</code> hoặc <code>mag = √(real² + imag²)</code><br/><br/><i>Ví dụ:</i> Số phức 2 + i &rarr; real = 2, imag = 1 &rarr; mag = √(2² + 1²) = 2.236, ang = tan⁻¹(1/2) = 0.464 rad."
+                    },
+                    {
+                      type: "component",
+                      componentName: "ComplexNumberPlane"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-summary-2",
+              number: "📌",
+              title: "📌 Cần nhớ Phần II",
+              parts: [
+                {
+                  id: "dsa-b1-part-summary-2",
+                  label: "TỔNG KẾT PHẦN II",
+                  title: "Những điểm nòng nốt của Phần II",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 TÓM TẮT TRỌNG TÂM PHẦN II",
+                      text: "1. <b>ADT = Data + Specification của operations trên data.</b><br/>2. <b>Data structure là 1 phần</b> trong việc implement ADT.<br/>3. <b>\"Wall\" của ADT operations cô lập</b> data structure khỏi chương trình dùng nó; <b>Interface</b> = những gì chương trình cần biết để dùng ADT.<br/>4. <b>Kiểu nguyên thủy Java</b> (<code>int</code>, <code>boolean</code>, <code>double</code>) cũng là ADT.<br/>5. <b>3 loại operations:</b> Constructors (tạo), Mutators (sửa), Accessors (truy vấn).<br/>6. <b>Một ADT (VD: Complex) có thể có nhiều implementation khác nhau</b> (Cartesian, Polar) nhưng cùng 1 tập operations.<br/>7. <b>Công thức đổi Cartesian ↔ Polar cần nhớ để làm bài tập.</b>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
 
+        /* PHẦN III LA MÃ */
+        {
+          id: "dsa-b1-sec3",
+          roman: "III",
+          title: "Java Interface",
+          subsections: [
+            {
+              id: "dsa-b1-sub-3-1",
+              number: "3.1",
+              title: "Khái niệm Java Interface",
+              parts: [
+                {
+                  id: "dsa-b1-part-interface-concept",
+                  label: "KHÁI NIỆM INTERFACE",
+                  title: "Đặc tả hành vi chung (Common Behaviour) & Quy tắc trong Java",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "Java interface cho phép đặc tả <b>hành vi chung (common behaviour)</b> cho một tập các class (có thể không liên quan nhau).",
+                        "Java interface <b>có thể dùng để định nghĩa ADT</b>.",
+                        "Cho phép trừu tượng hóa/khái quát hóa (abstraction/generalization) sâu hơn.",
+                        "Dùng từ khóa <b><code>interface</code></b> thay vì <code>class</code>.",
+                        "Đặc tả (specify) các method cần được implement.",
+                        "Interface là nhóm các method <b>có phần thân rỗng (empty bodies)</b>.",
+                        "Có thể có định nghĩa hằng số (constant) &mdash; mặc định là <code>public static final</code>.",
+                        "Một class được gọi là <b>implement interface</b> nếu nó cung cấp implementation cho <b>TẤT CẢ</b> method trong interface."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-3-2",
+              number: "3.2",
+              title: "Ví dụ #1 – Interface Comparable<T> và Class Shape",
+              parts: [
+                {
+                  id: "dsa-b1-part-comparable-shape",
+                  label: "VÍ DỤ 1: COMPARABLE",
+                  title: "Định nghĩa Interface Comparable<T> & Cài đặt trong Class Shape",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Interface Comparable<T> chuẩn trong java.lang:",
+                      code: `// package in java.lang;
+public interface Comparable <T> {
+    int compareTo(T other);
+}`
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Class Shape cài đặt interface Comparable<Shape>:",
+                      code: `class Shape implements Comparable <Shape> {
+    static final double PI = 3.14;
+    double area() { ... };
+    double circumference() { ... };
+    
+    int compareTo(Shape x) {
+        if (this.area() == x.area())
+            return 0;
+        else if (this.area() > x.area())
+            return 1;
+        else
+            return -1;
+    }
+}`
+                    },
+                    {
+                      type: "component",
+                      componentName: "ShapeComparableVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-3-3",
+              number: "3.3",
+              title: "Ví dụ #2 – Complex Interface (Java 7 vs Java 8+ Default Methods)",
+              parts: [
+                {
+                  id: "dsa-b1-part-complex-interface",
+                  label: "COMPLEX INTERFACE",
+                  title: "Giao diện Complex.java & Tiến hóa Java 8 Default Methods",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Complex.java (Dành cho cả Cartesian và Polar):",
+                      code: `// Complex.java
+public interface Complex {
+    public double realpart();     // returns this.real
+    public double imagpart();     // returns this.imag
+    public double angle();        // returns this.ang
+    public double mag();          // returns this.mag
+    public void add(Complex c);   // this = this + c
+    public void minus(Complex c); // this = this - c
+    public void times(Complex c); // this = this * c
+}`
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "💡 Sự tiến hóa của Java Interface",
+                      text: "• <b>Java 7 trở về trước:</b> Method trong interface chỉ có <b>signature (header)</b>, tuyệt đối không có implementation.<br/>• <b>Java 8 trở đi:</b> Cho phép định nghĩa <b>default methods</b> &mdash; cung cấp implementation mặc định, có thể bị override bởi class implement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-3-4",
+              number: "3.4",
+              title: "Implementation – ComplexCart (Cartesian) & Câu hỏi mở toString()",
+              parts: [
+                {
+                  id: "dsa-b1-part-complex-cart",
+                  label: "COMPLEX CARTESIAN",
+                  title: "Lớp ComplexCart.java & Giải đáp Bẫy ép kiểu trong toString()",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "ComplexCart.java:",
+                      code: `// ComplexCart.java
+class ComplexCart implements Complex {
+    private double real;
+    private double imag;
+
+    // CONSTRUCTOR
+    public ComplexCart(double r, double i) { real = r; imag = i; }
+
+    // ACCESSORS
+    public double realpart() { return real; }
+    public double imagpart() { return imag; }
+    public double mag() { return Math.sqrt(real*real + imag*imag); }
     public double angle() {
         if (real != 0) {
-            if (real < 0) return (Math.PI + Math.atan(imag / real));
-            else return Math.atan(imag / real);
+            if (real < 0) return (Math.PI + Math.atan(imag/real));
+            else return Math.atan(imag/real);
         }
         else if (imag == 0) return 0;
-        else if (imag > 0) return Math.PI / 2;
-        else return -Math.PI / 2;
+        else if (imag > 0) return Math.PI/2;
+        else return -Math.PI/2;
     }
 
-    // Nhóm hàm biến đổi trạng thái (Mutators)
+    // MUTATORS
     public void add(Complex c) {
         this.real += c.realpart();
         this.imag += c.imagpart();
     }
-
     public void minus(Complex c) {
         this.real -= c.realpart();
         this.imag -= c.imagpart();
     }
-
     public void times(Complex c) {
-        // Phải dùng biến tạm để tránh việc sử dụng giá trị phần thực mới thay đổi để tính phần ảo
         double tempReal = real * c.realpart() - imag * c.imagpart();
         imag = real * c.imagpart() + imag * c.realpart();
         real = tempReal;
     }
-
-    // Ghi đè phương thức hiển thị chuỗi ký tự
     public String toString() {
         if (imag == 0) return (real + "");
         else if (imag < 0) return (real + "" + imag + "i");
         else return (real + "+" + imag + "i");
     }
 }`
-                },
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "❓ GIẢI ĐÁP CÂU HỎI MỞ TRONG SLIDE",
+                      text: "<b>Tại sao KHÔNG THỂ viết <code>if (imag == 0) return (real);</code> trong <code>toString()</code>?</b><br/><br/>👉 <b>Trả lời:</b> Phương thức <code>toString()</code> bắt buộc phải trả về kiểu <b>String</b>. Nhưng biến <code>real</code> được khai báo là kiểu <code>double</code>. Nếu viết <code>return (real);</code>, Java sẽ báo lỗi biên dịch mismatch type. Việc nối thêm chuỗi rỗng <code>real + \"\"</code> giúp tự động chuyển kiểu <code>double</code> sang <code>String</code> hợp lệ!"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-3-5",
+              number: "3.5",
+              title: "Implementation – ComplexPolar (Polar)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "<b>Giải đáp câu hỏi thảo luận trên slide:</b> Tại sao tại hàm <code>toString()</code> không thể viết trực tiếp câu lệnh <code>if (imag == 0) return (real);</code>? Bởi vì biến <code>real</code> được khai báo là kiểu dữ liệu số thực nguyên thủy <code>double</code>, trong khi kiểu trả về yêu cầu của hàm <code>toString()</code> bắt buộc phải là một chuỗi ký tự đối tượng <code>String</code>. Việc nối thêm chuỗi rỗng <code>+ \"\"</code> là thủ thuật ép kiểu tự động (string concatenation coercion) phổ biến trong Java."
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Mã nguồn 3: Hiện thực theo tọa độ Cực (ComplexPolar.java)</b>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `class ComplexPolar implements Complex {
-    private double mag; // Mô-đun (độ lớn)
-    private double ang; // Góc định hướng (Argand)
+                  id: "dsa-b1-part-complex-polar",
+                  label: "COMPLEX POLAR",
+                  title: "Lớp ComplexPolar.java",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "ComplexPolar.java:",
+                      code: `// ComplexPolar.java
+class ComplexPolar implements Complex {
+    private double mag; // magnitude
+    private double ang; // angle
 
-    public ComplexPolar(double m, double a) {
-        this.mag = m;
-        this.ang = a;
-    }
+    // CONSTRUCTOR
+    public ComplexPolar(double m, double a) { mag = m; ang = a; }
 
+    // ACCESSORS
     public double realpart() { return mag * Math.cos(ang); }
     public double imagpart() { return mag * Math.sin(ang); }
-    public double mag() { return this.mag; }
-    public double angle() { return this.ang; }
+    public double mag() { return mag; }
+    public double angle() { return ang; }
 
-    public void add(Complex c) {
-        // Phải chuyển đổi tạm thời sang hệ tọa độ Đề các để thực hiện phép toán cộng đại số
+    // MUTATORS
+    public void add(Complex c) { // this = this + c
         double real = this.realpart() + c.realpart();
         double imag = this.imagpart() + c.imagpart();
-        mag = Math.sqrt(real * real + imag * imag);
+        mag = Math.sqrt(real*real + imag*imag);
         if (real != 0) {
-            if (real < 0) ang = (Math.PI + Math.atan(imag / real));
-            else ang = Math.atan(imag / real);
+            if (real < 0) ang = (Math.PI + Math.atan(imag/real));
+            else ang = Math.atan(imag/real);
         }
         else if (imag == 0) ang = 0;
-        else if (imag > 0) ang = Math.PI / 2;
-        else ang = -Math.PI / 2;
+        else if (imag > 0) ang = Math.PI/2;
+        else ang = -Math.PI/2;
     }
 
-    public void minus(Complex c) {
-        double real = this.realpart() - c.realpart();
-        double imag = this.imagpart() - c.imagpart();
-        mag = Math.sqrt(real * real + imag * imag);
+    public void minus(Complex c) { // this = this - c
+        double real = mag * Math.cos(ang) - c.realpart();
+        double imag = mag * Math.sin(ang) - c.imagpart();
+        mag = Math.sqrt(real*real + imag*imag);
         if (real != 0) {
-            if (real < 0) ang = (Math.PI + Math.atan(imag / real));
-            else ang = Math.atan(imag / real);
+            if (real < 0) ang = (Math.PI + Math.atan(imag/real));
+            else ang = Math.atan(imag/real);
         }
         else if (imag == 0) ang = 0;
-        else if (imag > 0) ang = Math.PI / 2;
-        else ang = -Math.PI / 2;
+        else if (imag > 0) ang = Math.PI/2;
+        else ang = -Math.PI/2;
     }
 
-    public void times(Complex c) {
-        // Trong hệ cực, phép nhân tối ưu hóa cực cao về mặt hiệu năng tính toán
+    public void times(Complex c) { // this = this * c
         mag *= c.mag();
         ang += c.angle();
     }
@@ -542,144 +767,243 @@ Employee[] workers = new Employee[Employee.MAX_NUMBER];`
         else return (realpart() + "+" + imagpart() + "i");
     }
 }`
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Mã nguồn 4: Chương trình kiểm thử đa hình kết hợp dữ liệu (TestComplex.java)</b>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `public class TestComplex {
-    public static void main(String[] args) {
-        // Thử nghiệm các thao tác trên cấu trúc tọa độ Đề các
-        Complex a = new ComplexCart(10.0, 12.0);
-        Complex b = new ComplexCart(1.0, 2.0);
-        System.out.println("Testing ComplexCart:");
-        a.add(b);
-        System.out.println("a=a+b is " + a); // Output mong đợi: 11.0+14.0i
-        a.minus(b);
-        System.out.println("a-b (gốc) is " + a); // Output mong đợi: 10.0+12.0i
-
-        // Thử nghiệm trên cấu trúc tọa độ Cực
-        Complex c = new ComplexPolar(10.0, Math.PI / 6.0);
-        Complex d = new ComplexPolar(1.0, Math.PI / 3.0);
-        System.out.println("\\nTesting ComplexPolar:");
-        c.add(d);
-        System.out.println("c=c+d is " + c);
-    }
-}`
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Phương thức Equals xử lý an toàn toán học đối với số thực dấu phẩy động:</b>"
-                },
-                {
-                  type: "paragraph",
-                  text: "Do máy tính lưu trữ số thực dấu phẩy động có thể phát sinh sai số làm tròn nhỏ, việc so sánh bằng toán tử <code>==</code> trực tiếp giữa hai số thực là vô cùng nguy hiểm. Giải pháp kỹ thuật chuẩn mực là sử dụng một độ lệch cực nhỏ gọi là hằng số hằng số <code>EPSILON</code>."
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `public static final double EPSILON = 0.0000001;
-
-public boolean equals(Object cl) {
-    if (cl instanceof Complex) {
-        Complex temp = (Complex) cl; // Thao tác Ép kiểu (Casting) an toàn sau khi kiểm tra loại thực thể
-        return (Math.abs(realpart() - temp.realpart()) < EPSILON
-            && Math.abs(imagpart() - temp.imagpart()) < EPSILON);
-    }
-    return false;
-}`
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: "dsa-sub-adt-fraction-practice",
-          number: "4",
-          title: "Bài tập thực hành: Phân số (Fraction) như một ADT",
-          parts: [
-            {
-              id: "dsa-part-fraction-analysis",
-              label: "a",
-              title: "Bản phân tích thiết kế hành vi đối tượng",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nhằm củng cố vững chắc kiến thức lý thuyết về ADT, bài tập thực hành yêu cầu chúng ta phân tích và xây dựng một kiểu dữ liệu trừu tượng hoàn toàn mới để quản lý cấu trúc dữ liệu của một Phân số (Fraction)."
-                },
-                {
-                  type: "paragraph",
-                  text: "Khi đứng ở góc độ thiết kế trừu tượng thuần túy, một thực thể phân số sẽ được cấu thành bởi hai thông tin dữ liệu cốt lõi độc lập với ngôn ngữ máy:"
-                },
-                {
-                  type: "bullets",
-                  items: [
-                    "<b>Dữ liệu thành viên (Data members / Attributes):</b> Numerator (Tử số) và Denominator (Mẫu số).",
-                    "<b>Hành vi nghiệp vụ mong đợi (Behaviors / Methods):</b> Phép cộng (Add), phép trừ (Minus), phép nhân (Times), và tối giản phân số (Simplify). Để tinh giản bài toán, phép chia tạm thời được lược bỏ ở giai đoạn này."
+                    }
                   ]
                 }
               ]
             },
             {
-              id: "dsa-part-fraction-interface",
-              label: "b",
-              title: "Xây dựng Giao diện đặc tả kỹ thuật (FractionI.java)",
-              content: [
+              id: "dsa-b1-sub-3-6",
+              number: "3.6",
+              title: "Test Complex & Kết quả thực thi Console Output",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Trái ngược với thiết kế lớp Số phức (các hàm biến đổi làm thay đổi chính trạng thái vùng nhớ <code>this</code>), đối với thiết kế giao diện phân số dưới đây, các phép toán toán học được yêu cầu trả về một đối tượng phân số độc lập hoàn toàn mới chứa kết quả (Immutable-style design)."
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `public interface FractionI {
-    public int getNumer(); // Lấy giá trị tử số
-    public int getDenom(); // Lấy giá trị mẫu số
-    public void setNumer(int numer); // Thiết lập lại giá trị tử số
-    public void setDenom(int denom); // Thiết lập lại giá trị mẫu số
-    public FractionI add(FractionI f); // Trả về phân số mới bằng phép tính: this + f
-    public FractionI minus(FractionI f); // Trả về phân số mới bằng phép tính: this - f
-    public FractionI times(FractionI f); // Trả về phân số mới bằng phép tính: this * f
-    public FractionI simplify(); // Trả về phân số mới sau khi đã được tối giản hóa
-}`
+                  id: "dsa-b1-part-test-complex",
+                  label: "WORKBENCH KHỞI THỰC THI",
+                  title: "TestComplex.java & Kết quả Console Terminal",
+                  content: [
+                    {
+                      type: "component",
+                      componentName: "ComplexIdeWorkbench"
+                    }
+                  ]
                 }
               ]
             },
             {
-              id: "dsa-part-fraction-implementations",
-              label: "c",
-              title: "Hai phương án thiết kế cấu trúc dữ liệu vật lý",
-              content: [
+              id: "dsa-b1-sub-3-7",
+              number: "3.7",
+              title: "Lưu ý thêm về Interface (Bytecode, Casting, instanceof & EPSILON)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Để chứng minh triết lý của ADT, sinh viên cần hiện thực hóa giao diện trên bằng hai lớp có mô hình lưu trữ khác biệt nhau:"
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Phương án A: Lớp Fraction truyền thống (Sử dụng hai thuộc tính số nguyên độc lập)</b>"
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `class Fraction implements FractionI {
-    private int numer; // Thuộc tính lưu tử số độc lập
-    private int denom; // Thuộc tính lưu mẫu số độc lập
+                  id: "dsa-b1-part-interface-tips",
+                  label: "LƯU Ý QUAN TRỌNG",
+                  title: "Bản chất Bytecode, Ép kiểu Casting và So sánh số thực với EPSILON",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "Mỗi interface được biên dịch (compiled) thành một file bytecode <code>.class</code> riêng, giống như class thông thường.",
+                        "<b>KHÔNG THỂ</b> tạo instance (đối tượng) trực tiếp từ interface (ví dụ: <code>new Complex()</code> sẽ bị lỗi).",
+                        "<b>NHƯNG CÓ THỂ</b> dùng interface làm <b>kiểu dữ liệu (data type)</b> cho biến, hoặc làm kết quả của <b>casting (ép kiểu)</b>."
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Ví dụ cài đặt phương thức equals() an toàn:",
+                      code: `public static final double EPSILON = 0.0000001;
 
-    public Fraction() { this(1, 1); }
+public boolean equals(Object cl) {
+    if (cl instanceof Complex) {
+        Complex temp = (Complex) cl; // result of casting
+        return (Math.abs(realpart() - temp.realpart()) < EPSILON
+                && Math.abs(imagpart() - temp.imagpart()) < EPSILON);
+    }
+    return false;
+}`
+                    },
+                    {
+                      type: "component",
+                      componentName: "FloatEpsilonPrecisionSandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-summary-3",
+              number: "📌",
+              title: "📌 Cần nhớ Phần III",
+              parts: [
+                {
+                  id: "dsa-b1-part-summary-3",
+                  label: "TỔNG KẾT PHẦN III",
+                  title: "Những điểm nòng nốt của Java Interface",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 TÓM TẮT TRỌNG TÂM PHẦN III",
+                      text: "1. <b>Class implement interface phải cài đặt TẤT CẢ method</b> của interface.<br/>2. <b>Java 7-:</b> Interface chỉ có signature; <b>Java 8+:</b> Có <b>default methods</b>.<br/>3. <b>Không tạo được instance trực tiếp của interface</b>, nhưng dùng được làm <b>kiểu dữ liệu</b> hoặc kết quả <b>casting</b>.<br/>4. <b>So sánh 2 số thực (double) nên dùng EPSILON</b> thay vì so sánh <code>==</code> trực tiếp (do sai số dấu phẩy động).<br/>5. <b><code>instanceof</code></b> dùng để kiểm tra kiểu trước khi ép kiểu (casting)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        /* PHẦN IV LA MÃ */
+        {
+          id: "dsa-b1-sec4",
+          roman: "IV",
+          title: "Fraction as ADT (Practice Exercises)",
+          subsections: [
+            {
+              id: "dsa-b1-sub-4-1",
+              number: "4.1",
+              title: "Thiết kế ADT cho Fraction (Phân số)",
+              parts: [
+                {
+                  id: "dsa-b1-part-fraction-design",
+                  label: "THIẾT KẾ FRACTION ADT",
+                  title: "Xác định Data members & Behaviors trước khi cài đặt",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Trước khi tiến hành viết mã nguồn (implement), quy trình chuẩn của kỹ sư phần mềm là xác định trước các thành phần của ADT:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Thành phần ADT", "Chi tiết thiết kế Phân số (Fraction)"],
+                      rows: [
+                        [
+                          "<b>Data members (Thuộc tính)</b>",
+                          "• <b>Numerator</b> (tử số)<br/>• <b>Denominator</b> (mẫu số)"
+                        ],
+                        [
+                          "<b>Behaviors (Phương thức / Operations)</b>",
+                          "• <b>Add</b> (phép cộng)<br/>• <b>Minus</b> (phép trừ)<br/>• <b>Times</b> (phép nhân)<br/>• <b>Simplify</b> (rút gọn tối giản)"
+                        ]
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "📌 Ghi chú thiết kế",
+                      text: "Tạm thời <b>bỏ qua</b> phép toán <code>divide</code> (chia) trong phạm vi bài tập thực hành này."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-4-2",
+              number: "4.2",
+              title: "Interface FractionI",
+              parts: [
+                {
+                  id: "dsa-b1-part-fraction-interface",
+                  label: "FRACTION INTERFACE",
+                  title: "Khai báo Interface FractionI.java & Quy tắc Immutable",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "success",
+                      title: "💡 Quy tắc Immutable trả về đối tượng mới",
+                      text: "Các phương thức <code>add()</code>, <code>minus()</code>, <code>times()</code>, <code>simplify()</code> phải <b>trả về một đối tượng FractionI mới</b> (khác hoàn toàn với Complex ADT chỉ thay đổi trực tiếp biến <code>this</code>)."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Mã nguồn FractionI.java:",
+                      code: `// FractionI.java
+public interface FractionI {
+    public int getNumer();           // returns numerator part
+    public int getDenom();           // returns denominator part
+    public void setNumer(int numer); // sets new numerator
+    public void setDenom(int denom); // sets new denominator
+
+    public FractionI add(FractionI f);     // returns this + f
+    public FractionI minus(FractionI f);   // returns this - f
+    public FractionI times(FractionI f);   // returns this * f
+    public FractionI simplify();          // returns this simplified
+}`
+                    },
+                    {
+                      type: "component",
+                      componentName: "FractionAdtSandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-4-3",
+              number: "4.3",
+              title: "Hai cách implement FractionI",
+              parts: [
+                {
+                  id: "dsa-b1-part-fraction-implementations",
+                  label: "2 CÁCH IMPLEMENTATION",
+                  title: "Đối chiếu 2 phương pháp lưu trữ dữ liệu Phân số",
+                  content: [
+                    {
+                      type: "table",
+                      headers: ["Implementation Class", "Cách lưu dữ liệu bên trong (Data Structure)"],
+                      rows: [
+                        [
+                          "<b>Fraction</b> (PracEx#26)",
+                          "Dùng <b>2 biến <code>int</code> riêng</b> cho <code>numerator</code> và <code>denominator</code>."
+                        ],
+                        [
+                          "<b>FractionArr</b> (PracEx#27)",
+                          "Dùng <b>1 mảng <code>int[2]</code></b> chứa <code>numerator</code> và <code>denominator</code>."
+                        ]
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Cả 2 lớp cài đặt đều phải ghi đè (override) thêm 2 phương thức chuẩn: <code>toString()</code> và <code>equals()</code>."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-4-4",
+              number: "4.4",
+              title: "PracEx#26 – Fraction (dùng 2 biến int)",
+              parts: [
+                {
+                  id: "dsa-b1-part-pracex26",
+                  label: "BÀI TẬP PRACEX#26",
+                  title: "Khung sườn Fraction.java & Chương trình Kiểm thử Client TestFraction.java",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Skeleton sườn bài tập PracEx#26 (Fraction.java):",
+                      code: `class Fraction implements FractionI {
+    // Data members
+    private int numer;
+    private int denom;
+
+    // Constructors
+    public Fraction() { this(1,1); }
+
     public Fraction(int numer, int denom) {
         setNumer(numer);
         setDenom(denom);
     }
 
-    public int getNumer() { return this.numer; }
-    public int getDenom() { return this.denom; }
-    public void setNumer(int numer) { this.numer = numer; }
-    public void setDenom(int denom) { this.denom = denom; }
+    // Mutators
+    public void setNumer(int numer) { // fill in the code }
+    public void setDenom(int denom) { // fill in the code }
 
-    // Hàm nội bộ tìm Ước chung lớn nhất theo giải thuật Euclid phục vụ hàm rút gọn
+    // Returns greatest common divisor of a and b
+    // private method as this is not accessible to clients
     private static int gcd(int a, int b) {
         int rem;
         while (b > 0) {
@@ -687,77 +1011,189 @@ public boolean equals(Object cl) {
             a = b;
             b = rem;
         }
-        return Math.abs(a);
+        return a;
     }
 
-    public FractionI simplify() {
-        int common = gcd(this.numer, this.denom);
-        return new Fraction(this.numer / common, this.denom / common);
-    }
+    // Fill in the code for all the methods below
+    public FractionI simplify() { // fill in the code }
+    public FractionI add(FractionI f) { // fill in the code }
+    public FractionI minus(FractionI f) { // fill in the code }
+    public FractionI times(FractionI f) { // fill in the code }
 
-    public FractionI add(FractionI f) {
-        // Công thức quy đồng: (a/b) + (c/d) = (ad + bc) / (bd)
-        int newNumer = this.numer * f.getDenom() + this.denom * f.getNumer();
-        int newDenom = this.denom * f.getDenom();
-        return new Fraction(newNumer, newDenom).simplify();
-    }
-
-    // Các hàm toán học khác hiện thực tương tự...
+    // Overriding methods toString() and equals()
+    public String toString() { // fill in the code }
+    public boolean equals() { // fill in the code }
 }`
-                },
-                {
-                  type: "paragraph",
-                  text: "<b>Phương án B: Lớp FractionArr tân tiến (Đóng gói dữ liệu vào trong một Mảng số nguyên)</b><br/>Thay vì dùng biến rời, giải pháp này lưu trữ toàn bộ dữ liệu trạng thái bên trong một mảng số nguyên gồm chính xác 2 phần tử: <code>private int[] members;</code>, trong đó quy ước chỉ số cấu trúc: <code>members[0]</code> đại diện cho Tử số, và <code>members[1]</code> đại diện cho Mẫu số."
-                },
-                {
-                  type: "code",
-                  language: "java",
-                  code: `class FractionArr implements FractionI {
-    private int[] members; // Đóng gói dữ liệu vật lý vào cấu trúc mảng
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Client test program – TestFraction.java:",
+                      code: `// To test out Fraction class
+import java.util.*;
+public class TestFraction {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-    public FractionArr() { this(1, 1); }
+        System.out.print("Enter 1st fraction: ");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        FractionI f1 = new Fraction(a, b);
+
+        System.out.print("Enter 2nd fraction: ");
+        a = sc.nextInt();
+        b = sc.nextInt();
+        FractionI f2 = new Fraction(a, b);
+
+        System.out.println("1st fraction is " + f1);
+        System.out.println("2nd fraction is " + f2);
+
+        if (f1.equals(f2))
+            System.out.println("The fractions are the same.");
+        else
+            System.out.println("The fractions are not the same.");
+
+        FractionI sum = f1.add(f2);
+        System.out.println("Sum is " + sum);
+
+        FractionI diff = f1.minus(f2);
+        System.out.println("Difference is " + diff);
+
+        FractionI prod = f1.times(f2);
+        System.out.println("Product is " + prod);
+    }
+}`
+                    },
+                    {
+                      type: "code",
+                      language: "text",
+                      caption: "Kết quả chạy mẫu (Console Terminal Output):",
+                      code: `Enter 1st fraction: 2 4
+Enter 2nd fraction: 2 3
+1st fraction is 2/4
+2nd fraction is 2/3
+The fractions are not the same.
+Sum is 7/6
+Difference is -1/6
+Product is 1/3`
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-4-5",
+              number: "4.5",
+              title: "PracEx#27 – FractionArr (dùng mảng int[2])",
+              parts: [
+                {
+                  id: "dsa-b1-part-pracex27",
+                  label: "BÀI TẬP PRACEX#27",
+                  title: "Khung sườn FractionArr.java & Tính bất biến của Client Code",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      caption: "Skeleton sườn bài tập PracEx#27 (FractionArr.java):",
+                      code: `class FractionArr implements FractionI {
+    // Data members
+    private int[] members;
+
+    // Constructors
+    public FractionArr() { this(1,1); }
+
     public FractionArr(int numer, int denom) {
-        members = new int[2]; // Cấp phát động không gian mảng cố định
+        members = new int[2];
         setNumer(numer);
         setDenom(denom);
     }
 
-    public int getNumer() { return this.members[0]; }
-    public int getDenom() { return this.members[1]; }
-    public void setNumer(int numer) { this.members[0] = numer; }
-    public void setDenom(int denom) { this.members[1] = denom; }
+    // Accessors
+    public int getNumer() { // fill in the code }
+    public int getDenom() { // fill in the code }
 
-    // Tất cả các logic tính toán nghiệp vụ toán học bên dưới hoàn toàn kế thừa cấu trúc từ giao diện
+    // Mutators
+    public void setNumer(int numer) { // fill in the code }
+    public void setDenom(int denom) { // fill in the code }
+
+    // The rest are omitted here
 }`
-                },
+                    },
+                    {
+                      type: "component",
+                      componentName: "FractionPracticeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-summary-4",
+              number: "📌",
+              title: "📌 Cần nhớ Phần IV",
+              parts: [
                 {
-                  type: "dsa-fraction-visualizer"
+                  id: "dsa-b1-part-summary-4",
+                  label: "TỔNG KẾT PHẦN IV",
+                  title: "Những điểm nòng nốt của Phần IV",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 TÓM TẮT TRỌNG TÂM PHẦN IV",
+                      text: "1. <b>Thiết kế ADT trước khi implement:</b> Xác định data members + behaviors trước.<br/>2. <b><code>FractionI</code>:</b> Các operation <code>add/minus/times/simplify</code> phải <b>trả về FractionI mới</b>, không sửa trực tiếp <code>this</code> (khác Complex).<br/>3. <b><code>gcd()</code> là private method</b> &mdash; không cho client truy cập, dùng nội bộ để <code>simplify()</code>.<br/>4. <b>Cùng 1 interface <code>FractionI</code> có thể có nhiều cách implement khác nhau</b> (2 biến int vs mảng int[2]) &mdash; client dùng qua interface, không cần biết implementation nào.<br/>5. <b>Điểm mấu chốt:</b> Client code (<code>TestFraction</code> / <code>TestFractionArr</code>) <b>hầu như giống hệt nhau</b> dù dùng implementation nào &mdash; đây chính là lợi ích của ADT/interface."
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
+
+        /* PHẦN V LA MÃ */
         {
-          id: "dsa-sub-adt-summary",
-          number: "5",
-          title: "Tổng kết bài học và Định hướng kiến thức nâng cao",
-          parts: [
+          id: "dsa-b1-sec5",
+          roman: "V",
+          title: "Summary (Tổng kết bài học)",
+          subsections: [
             {
-              id: "dsa-part-adt-summary-content",
-              label: "a",
-              title: "Tóm tắt tư duy kỹ thuật nền tảng",
-              content: [
+              id: "dsa-b1-sub-5-1",
+              number: "5.1",
+              title: "Tổng quan bài học",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Thông qua nội dung phân tích chi tiết toàn diện của bài giảng số 1, chúng ta đã nắm giữ vững chắc bản chất cốt lõi của việc quản lý cấu trúc phần mềm:"
-                },
+                  id: "dsa-b1-part-lesson-summary",
+                  label: "TỔNG KẾT BÀI HỌC",
+                  title: "3 Trụ cột Kiến thức cốt lõi Bài 1",
+                  content: [
+                    {
+                      type: "list",
+                      items: [
+                        "Hiểu được sự cần thiết của <b>data abstraction</b> trong kỹ thuật phần mềm.",
+                        "Học cách dùng <b>Java Interface</b> để định nghĩa một <b>ADT</b> chuẩn mực.",
+                        "Nền tảng này sẽ được dùng để học và định nghĩa các loại <b>ADT/data structure</b> nâng cao hơn trong các bài học tiếp theo (List, Stack, Queue, Tree, Graph)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b1-sub-summary-5",
+              number: "📌",
+              title: "📌 Cần nhớ tổng quát cả bài",
+              parts: [
                 {
-                  type: "bullets",
-                  items: [
-                    "Hiểu rõ tầm quan trọng sống còn của <b>Data Abstraction</b> và nguyên lý <b>Information Hiding</b> để xây dựng hệ thống bền vững.",
-                    "Làm chủ kỹ thuật sử dụng công cụ <b>Java Interface</b> như một vũ khí sắc bén để định nghĩa ranh giới kỹ thuật rõ ràng của một Kiểu dữ liệu trừu tượng (ADT).",
-                    "Chứng minh thực nghiệm qua mã nguồn rằng một ADT duy nhất có thể được bảo vệ toàn vẹn trước chương trình Client bất kể chúng ta có thay thế hay thay đổi hoàn toàn Cấu trúc dữ liệu vật lý bên dưới (như cách chuyển đổi từ Cartesian sang Polar hay từ biến nguyên thủy sang Array).",
-                    "Đây chính là nền móng tư duy kỹ thuật nền tảng vô cùng quan trọng trước khi chúng ta tiến hành nghiên cứu sâu rộng các kiểu dữ liệu trừu tượng kinh điển phức tạp hơn trong toàn bộ học phần như: Danh sách liên kết (Linked List), Ngăn xếp (Stack), Hàng đợi (Queue), Cây nhị phân (Binary Tree) và Đồ thị (Graph)."
+                  id: "dsa-b1-part-grand-summary",
+                  label: "TỔNG KẾT TOÀN BỘ BÀI 1",
+                  title: "5 Nguyên tắc vàng bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ 5 NGUYÊN TẮC VÀNG BẮT BUỘC GHI NHỚ TOÀN BỘ BÀI 1 (ADT)",
+                      text: "1. <b>ADT = Data + Specification of operations</b> (chỉ quan tâm WHAT, không quan tâm HOW/implementation).<br/>2. <b>Interface trong Java là công cụ để định nghĩa ADT:</b> Chỉ có method signature, class implement phải cài đặt đủ tất cả method.<br/>3. <b>Một ADT có thể có nhiều implementation:</b> (VD: Complex &rarr; Cartesian/Polar; Fraction &rarr; 2 int / mảng int[2]), nhưng client code dùng qua interface <b>không cần thay đổi</b>.<br/>4. <b>Ghi nhớ 3 loại operations:</b> Constructor (tạo), Mutator (thay đổi), Accessor (truy vấn).<br/>5. <b>Ghi nhớ pre-condition / post-condition</b> khi viết đặc tả tài liệu phương thức."
+                    }
                   ]
                 }
               ]
@@ -766,349 +1202,1010 @@ public boolean equals(Object cl) {
         }
       ]
     },
+
+    /* ============================================================
+       BÀI 2: LINKED LIST - PHẦN I, II & III
+       ============================================================ */
     {
-      id: "dsa-section-linkedlist",
-      roman: "II",
-      title: "Danh sách liên kết (Linked List)",
-      subsections: [
+      id: "dsa-b2",
+      title: "Bài 2",
+      subtitle: "Linked List",
+      sections: [
+        /* PHẦN I – III LA MÃ: LIST, LIST ADT & ARRAY IMPLEMENTATION */
         {
-          id: "dsa-sub-linkedlist",
-          number: "1",
-          title: "Cấu trúc danh sách liên kết đơn, kép và vòng",
-          parts: [
+          id: "dsa-b2-sec1",
+          roman: "I–III",
+          title: "Use of a List, List ADT & Array Implementation",
+          subsections: [
+            /* SUBSECTION 1.1: PHẦN I - MOTIVATION */
             {
-              id: "dsa-part-linkedlist",
-              label: "a",
-              title: "Bài học 2: Linked List",
-              content: [
+              id: "dsa-b2-sub-1-1",
+              number: "1.1",
+              title: "1. Use of a List (Motivation)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-1-motivation",
+                  label: "PHẦN I - MOTIVATION",
+                  title: "Khái niệm List & 3 Thao tác Cốt lõi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>List</b> là một trong những kiểu tập hợp dữ liệu (data collection) cơ bản nhất."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<i>Ví dụ:</i> list nhóm bạn bè, list môn học, list đi chợ...",
+                        "Thường ta lưu các phần tử <b>cùng loại (class)</b> trong 1 list."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Các thao tác điển hình (Typical Operations) trên 1 data collection:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>Add</b> data (thêm)",
+                        "<b>Remove</b> data (xoá)",
+                        "<b>Query</b> data (truy vấn)"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Chi tiết thao tác khác nhau tuỳ ứng dụng, nhưng chủ đề chung là <b>quản lý dữ liệu</b>."
+                    },
+                    {
+                      type: "callout",
+                      variant: "tip",
+                      title: "📌 CẦN NHỚ PHẦN I",
+                      text: "• <b>List</b> = collection động tuyến tính (dynamic linear data structure).<br/>• <b>3 nhóm thao tác cốt lõi:</b> Add - Remove - Query."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 2.1: PHẦN II - KHÁI NIỆM LIST ADT */
+            {
+              id: "dsa-b2-sub-2-1",
+              number: "2.1",
+              title: "2.1 Khái niệm List ADT (Abstract Data Type)",
+              parts: [
+                {
+                  id: "dsa-b2-part-2-concept",
+                  label: "PHẦN II - KHÁI NIỆM",
+                  title: "Đặc tả Trừu tượng của List ADT",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>List ADT</b> là 1 cấu trúc dữ liệu tuyến tính, động (dynamic linear)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Là tập hợp các phần tử, có thể truy cập lần lượt (accessible one after another) bắt đầu từ <b>đầu danh sách (head)</b>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Các thao tác ví dụ của List ADT:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Tạo list rỗng (create empty list)",
+                        "Kiểm tra list rỗng hay không (isEmpty)",
+                        "Đếm số phần tử (size)",
+                        "Thêm phần tử tại 1 vị trí (add tại vị trí)",
+                        "Xoá phần tử tại 1 vị trí (remove tại vị trí)",
+                        "Xoá toàn bộ (remove all)",
+                        "Đọc phần tử tại 1 vị trí (read)"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 2.2: PHẦN II - LISTINTERFACE.JAVA */
+            {
+              id: "dsa-b2-sub-2-2",
+              number: "2.2",
+              title: "2.2 ListInterface.java",
+              parts: [
+                {
+                  id: "dsa-b2-part-2-interface",
+                  label: "PHẦN II - INTERFACE",
+                  title: "Khai báo Interface chuẩn trong Java",
+                  content: [
+                    {
+                      type: "code",
+                      language: "java",
+                      code: `import java.util.*;
+
+public interface ListInterface <E> {
+    public boolean isEmpty();
+    public int     size();
+    public E       getFirst() throws NoSuchElementException;
+    public boolean contains(E item);
+    public void    addFirst(E item);
+    public E       removeFirst() throws NoSuchElementException;
+    public void    print();
+}`
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<code>ListInterface</code> chỉ là <b>1 mẫu nhỏ</b> các operations; List ADT thực tế thường có nhiều method hơn."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 2.3: PHẦN II - IMPLEMENTATIONS & CẦN NHỚ */
+            {
+              id: "dsa-b2-sub-2-3",
+              number: "2.3",
+              title: "2.3 Hai cách hiện thực (Implementation) List ADT",
+              parts: [
+                {
+                  id: "dsa-b2-part-2-implementations",
+                  label: "PHẦN II - HỢP ĐỒNG & CÀI ĐẶT",
+                  title: "Phân biệt ADT (Contract) & Implementations",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <b>ADT (hợp đồng / contract):</b> List ADT – create empty list, xác định..., add item, ..."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Implementations (cách hiện thực cụ thể):</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>Java Arrays</b> &rarr; mục 3",
+                        "<b>Linked Lists</b> &rarr; mục 4 (BasicLinkedList)"
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "tip",
+                      title: "📌 CẦN NHỚ PHẦN II",
+                      text: "• <b>List ADT</b> = \"hợp đồng\" (chỉ định operations); <b>Implementation</b> = cách hiện thực hợp đồng đó (Array hoặc Linked List).<br/>• Cả 2 cách hiện thực đều dùng chung <code>ListInterface</code>."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 3.1: PHẦN III - KHÁI NIỆM ARRAY IMPLEMENTATION */
+            {
+              id: "dsa-b2-sub-3-1",
+              number: "3.1",
+              title: "3.1 Khái niệm List Implementation via Array (Fixed-size list)",
+              parts: [
+                {
+                  id: "dsa-b2-part-3-concept",
+                  label: "PHẦN III - KHÁI NIỆM",
+                  title: "Hiện thực List ADT bằng Mảng cố định (Fixed-size)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dùng Java array chứa dãy n phần tử liên tiếp (contiguous)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Biến <code>num_nodes</code> = n = số phần tử hiện có; mảng có kích thước m (m &ge; n), phần còn lại <code>unused</code>."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 3.2: PHẦN III - CLASS LISTUSINGARRAY & WORKBENCH IDE */
+            {
+              id: "dsa-b2-sub-3-2",
+              number: "3.2",
+              title: "3.2 Class ListUsingArray & Full Source Code",
+              parts: [
+                {
+                  id: "dsa-b2-part-3-code",
+                  label: "PHẦN III - IDE WORKBENCH",
+                  title: "Mã nguồn cài đặt Class ListUsingArray",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<code>ListUsingArray&lt;E&gt;</code> implements <code>ListInterface&lt;E&gt;</code>."
+                    },
+                    {
+                      type: "component",
+                      component: "ListArrayIdeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 3.3: PHẦN III - SHIFT MECHANICS & VISUALIZER */
+            {
+              id: "dsa-b2-sub-3-3",
+              number: "3.3",
+              title: "3.3 Cách hoạt động: addFirst() / removeFirst()",
+              parts: [
+                {
+                  id: "dsa-b2-part-3-shift-visualizer",
+                  label: "PHẦN III - MÔ PHỎNG THUẬT TOÁN",
+                  title: "Cơ chế Dịch chuyển Phần tử (Shift Right / Shift Left)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <b>addFirst(item):</b> chèn vào vị trí đầu &rarr; phải <b>dịch phải (shift right)</b> tất cả phần tử (bắt đầu từ phần tử cuối) để tạo chỗ trống.<br/><i>Ví dụ <code>addFirst(\"it\")</code>:</i><br/>1. Shift right toàn bộ phần tử<br/>2. Ghi giá trị mới vào chỗ trống (vị trí 0)<br/>3. Cập nhật <code>num_nodes</code>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>removeFirst():</b> xoá phần tử đầu &rarr; phải <b>dịch trái (shift left)</b> (bắt đầu từ phần tử đầu) để đóng khoảng trống.<br/><i>Ví dụ <code>removeFirst()</code>:</i><br/>1. Close gap (dịch trái)<br/>2. Cập nhật <code>num_nodes</code>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Phải duy trì <code>num_nodes</code> để chương trình không truy cập vượt quá vùng dữ liệu hợp lệ."
+                    },
+                    {
+                      type: "component",
+                      component: "ArrayShiftVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 3.4: PHẦN III - COMPLEXITY & ARRAY VS LINKED LIST */
+            {
+              id: "dsa-b2-sub-3-4",
+              number: "3.4",
+              title: "3.4 Time / Space Complexity & So sánh Array vs Linked List",
+              parts: [
+                {
+                  id: "dsa-b2-part-3-complexity",
+                  label: "PHẦN III - ĐÁNH GIÁ & SO SÁNH",
+                  title: "Phân tích Hiệu năng & Khi nào dùng Array?",
+                  content: [
+                    {
+                      type: "component",
+                      component: "ArrayVsLinkedListCards"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION SUMMARY: TỔNG KẾT PHẦN I + II + III */
+            {
+              id: "dsa-b2-sub-summary-1",
+              number: "📌",
+              title: "Cần nhớ Tổng hợp Phần I, II & III",
+              parts: [
+                {
+                  id: "dsa-b2-part-summary-all",
+                  label: "TỔNG KẾT BÀI 2 (PHẦN I - III)",
+                  title: "5 Điểm nóng bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ 5 ĐIỂM NÓNG BẮT BUỘC GHI NHỚ (PHẦN I → III)",
+                      text: "1. <b>List ADT:</b> Tập hợp phần tử tuyến tính động, truy cập bắt đầu từ <b>head</b>. 3 thao tác cốt lõi: Add - Remove - Query.<br/>2. <b>ListInterface:</b> Định nghĩa hợp đồng chung; class <code>ListUsingArray</code> phải cài đặt đầy đủ tất cả phương thức.<br/>3. <b>Array Implementation (ListUsingArray):</b> Lưu n phần tử liên tiếp (contiguous) trong mảng cố định <code>MAXSIZE</code>, phần dư là <code>unused</code>.<br/>4. <b>Hiệu năng Array:</b> <code>getFirst()</code> cực nhanh O(1), nhưng <code>addFirst()</code> / <code>removeFirst()</code> rất chậm <b>O(n)</b> do phải dịch chuyển (shift) toàn bộ phần tử.<br/>5. <b>Nhược điểm cố định:</b> Kích thước mảng bị giới hạn bởi <code>MAXSIZE</code>. Vì vậy đối với tập hợp biến đổi linh hoạt và chèn/xóa thường xuyên, ta nên dùng <b>Linked List</b> ở phần tiếp theo."
+                    }
+                  ]
                 }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-stackqueue",
-      roman: "III",
-      title: "Ngăn xếp & Hàng đợi (Stack & Queue)",
-      subsections: [
+        },
+
+        /* PHẦN IV – VI LA MÃ: LINKED LIST IMPLEMENTATION, LISTNODE & FORMING */
         {
-          id: "dsa-sub-stackqueue",
-          number: "1",
-          title: "Nguyên lý hoạt động LIFO và FIFO",
-          parts: [
+          id: "dsa-b2-sec2",
+          roman: "IV–VI",
+          title: "Linked List Implementation, ListNode & Forming",
+          subsections: [
+            /* SUBSECTION 4.1: PHẦN IV - SO SÁNH TRỰC QUAN */
             {
-              id: "dsa-part-stackqueue",
-              label: "a",
-              title: "Bài học 3: Stack & Queue",
-              content: [
+              id: "dsa-b2-sub-4-1",
+              number: "4.1",
+              title: "4.1 So sánh trực quan: Array vs Linked List",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-4-vis-compare",
+                  label: "PHẦN IV - SO SÁNH TRỰC QUAN",
+                  title: "Khác biệt bản chất giữa Array & Linked List",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <b>Array:</b> thêm/xoá phần tử ở giữa cần dịch chuyển (shift) các phần tử khác."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Linked List:</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>Add:</b> chỉ cần tạo node mới và <b>nối con trỏ (pointer)</b>, không cần dịch chuyển.",
+                        "<b>Remove:</b> chỉ cần <b>ngắt</b> node ra khỏi chuỗi liên kết &rarr; node đó trở thành <b>garbage</b>, sẽ được dọn bởi garbage collection."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 4.2: PHẦN IV - Ý TƯỞNG LINKED LIST & VISUALIZER */
+            {
+              id: "dsa-b2-sub-4-2",
+              number: "4.2",
+              title: "4.2 Ý tưởng (Idea) của Linked List",
+              parts: [
+                {
+                  id: "dsa-b2-part-4-idea",
+                  label: "PHẦN IV - MÔ PHỎNG NODE & NEXT",
+                  title: "Cấu trúc Node & Vùng nhớ Không liền tiếp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Mỗi phần tử được lưu trong 1 <b>node</b>, gồm:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<code>element</code>: dữ liệu",
+                        "<code>next</code>: con trỏ tới node kế tiếp"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Cho phép các phần tử nằm ở vùng nhớ <b>không liền tiếp</b> (non-contiguous memory)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Các node được sắp thứ tự bằng cách liên kết (associate) mỗi node với node lân cận."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Node cuối cùng có <code>next = null</code> &rarr; không còn node kế tiếp."
+                    },
+                    {
+                      type: "component",
+                      component: "LinkedListVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 4.3: PHẦN IV - OBJECT REFERENCES & MEMORY VISUALIZER */
+            {
+              id: "dsa-b2-sub-4-3",
+              number: "4.3",
+              title: "4.3 Ôn lại Object References (Reference data type)",
+              parts: [
+                {
+                  id: "dsa-b2-part-4-references",
+                  label: "PHẦN IV - CHỦ ĐỀ THAM CHIẾU",
+                  title: "Biến Tham chiếu & Phép so sánh ==",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Phân biệt <b>kiểu dữ liệu nguyên thuỷ (primitive)</b> và <b>kiểu tham chiếu (reference)</b>:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<code>int x = 20;</code> &rarr; biến <code>x</code> chứa trực tiếp giá trị 20.",
+                        "<code>Integer y = new Integer(20);</code> &rarr; biến <code>y</code> chỉ chứa <b>tham chiếu (reference/pointer)</b> tới object <code>Integer(20)</code>.",
+                        "<code>String z = new String(\"hi th\");</code> &rarr; tương tự, <code>z</code> là tham chiếu tới object String."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Một instance (object) của 1 class chỉ được tạo ra (constructed) khi toán tử <code>new</code> được áp dụng.</b>"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Biến tham chiếu (reference variable) chỉ chứa 1 reference/pointer tới object</b>, không chứa chính object đó."
+                    },
+                    {
+                      type: "component",
+                      component: "ReferenceMemoryVisualizer"
+                    },
+                    {
+                      type: "callout",
+                      variant: "tip",
+                      title: "📌 CẦN NHỚ PHẦN IV.3",
+                      text: "• <code>==</code> giữa 2 reference so sánh <b>địa chỉ (identity)</b>, không so sánh giá trị nội dung.<br/>• Đây là kiến thức nền quan trọng để hiểu con trỏ <code>next</code> trong linked list."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 5.1 & 5.2: PHẦN V - LISTNODE & CODE WORKBENCH */
+            {
+              id: "dsa-b2-sub-5-1",
+              number: "5.1",
+              title: "5. ListNode – Đơn vị cơ bản của Linked List",
+              parts: [
+                {
+                  id: "dsa-b2-part-5-listnode",
+                  label: "PHẦN V - LISTNODE",
+                  title: "Khái niệm & Mã nguồn Class ListNode",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<code>ListNode&lt;E&gt;</code> gồm 2 thuộc tính:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<code>element</code>: dữ liệu kiểu generic <code>E</code>",
+                        "<code>next</code>: tham chiếu tới <code>ListNode&lt;E&gt;</code> kế tiếp"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "ListIdeWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "tip",
+                      title: "📌 CẦN NHỚ PHẦN V",
+                      text: "• <b>ListNode</b> là \"viên gạch\" xây nên mọi loại linked list ở các phần sau (BasicLinkedList, EnhancedLinkedList, TailedLinkedList...).<br/>• 3 method quan trọng: <code>getNext()</code>, <code>getElement()</code>, <code>setNext()</code>."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 6.1: PHẦN VI - FORMING A LINKED LIST & COMPARISON */
+            {
+              id: "dsa-b2-sub-6-1",
+              number: "6.1",
+              title: "6. Forming a Linked List (Tạo 1 Linked List)",
+              parts: [
+                {
+                  id: "dsa-b2-part-6-forming",
+                  label: "PHẦN VI - KHỞI TẠO LINKED LIST",
+                  title: "Biến head & 2 Cách khởi tạo Linked List",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>Cần 1 head:</b> Với dãy 4 phần tử <code>&lt;a0, a1, a2, a3&gt;</code>, cần biến <b><code>head</code></b> để biết node đầu tiên nằm ở đâu. Từ <code>head</code>, ta duyệt được tới các node còn lại."
+                    },
+                    {
+                      type: "component",
+                      component: "FormingLinkedListComparison"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION SUMMARY: TỔNG KẾT PHẦN IV + V + VI */
+            {
+              id: "dsa-b2-sub-summary-2",
+              number: "📌",
+              title: "Cần nhớ Tổng hợp Phần IV, V & VI",
+              parts: [
+                {
+                  id: "dsa-b2-part-summary-456",
+                  label: "TỔNG KẾT BÀI 2 (PHẦN IV - VI)",
+                  title: "5 Điểm nóng bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ 5 ĐIỂM NÓNG BẮT BUỘC GHI NHỚ (PHẦN IV → VI)",
+                      text: "1. <b>Linked List Idea:</b> Lưu trữ các phần tử trong các Node nằm ở vùng nhớ <b>không liền tiếp (non-contiguous)</b>, liên kết nhau bằng con trỏ <code>next</code>.<br/>2. <b>Node cuối:</b> Luôn có <code>next = null</code> để báo hiệu kết thúc danh sách.<br/>3. <b>Reference == Identity:</b> Phép <code>==</code> so sánh địa chỉ bộ nhớ (identity), không so sánh nội dung. <code>w = y</code> sẽ khiến w trỏ cùng địa chỉ với y.<br/>4. <b>ListNode Class:</b> Gồm <code>element</code> + <code>next</code> với 3 getter/setter: <code>getElement()</code>, <code>getNext()</code>, <code>setNext()</code>.<br/>5. <b>Head Pointer:</b> Linked List bắt buộc cần biến <code>head</code> để quản lý Node đầu tiên. Cách dùng <code>addFirst()</code> là cách khởi tạo hướng đối tượng (đóng gói) gọn gàng và thực tế hơn tạo thủ công."
+                    }
+                  ]
                 }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-recursion",
-      roman: "IV",
-      title: "Thuật toán Đệ quy (Recursion)",
-      subsections: [
+        },
+
+        /* PHẦN VII LA MÃ: BASIC LINKED LIST (BASICLINKEDLIST) */
         {
-          id: "dsa-sub-recursion",
-          number: "1",
-          title: "Thiết lập hàm đệ quy và cơ chế Stack Frame",
-          parts: [
+          id: "dsa-b2-sec3",
+          roman: "VII",
+          title: "Basic Linked List (BasicLinkedList)",
+          subsections: [
+            /* SUBSECTION 7.1: KHÁI NIỆM & CODE CƠ BẢN */
             {
-              id: "dsa-part-recursion",
-              label: "a",
-              title: "Bài học 4: Recursion",
-              content: [
+              id: "dsa-b2-sub-7-1",
+              number: "7.1",
+              title: "7.1 - 7.2 Khái niệm & Code cơ bản BasicLinkedList",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-7-concept",
+                  label: "PHẦN VII - KHÁI NIỆM & KHỞI TẠO",
+                  title: "Class BasicLinkedList & Cấu trúc Thuộc tính",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <code>BasicLinkedList&lt;E&gt;</code> implements <code>ListInterface&lt;E&gt;</code>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• Thuộc tính: <code>head</code> (ListNode đầu), <code>num_nodes</code> (số phần tử)."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: `import java.util.*;
+
+class BasicLinkedList <E> implements ListInterface <E> {
+    private ListNode <E> head = null;
+    private int num_nodes = 0;
+
+    public boolean isEmpty() { return (num_nodes == 0); }
+    public int size()       { return num_nodes; }
+
+    public E getFirst() throws NoSuchElementException {
+        if (head == null)
+            throw new NoSuchElementException("can't get from an empty list");
+        else return head.getElement();
+    }
+
+    public boolean contains(E item) {
+        for (ListNode <E> n = head; n != null; n = n.getNext())
+            if (n.getElement().equals(item)) return true;
+        return false;
+    }
+}`
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 7.2: ADDFIRST() & BOUNDARY CASES */
+            {
+              id: "dsa-b2-sub-7-2",
+              number: "7.2",
+              title: "7.3 addFirst() – Cách hoạt động & Boundary Cases",
+              parts: [
+                {
+                  id: "dsa-b2-part-7-addfirst",
+                  label: "PHẦN VII - THAO TÁC ADDFIRST",
+                  title: "Phân tích addFirst() & Các trường hợp biên",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>Cách hoạt động:</b> tạo node mới có <code>next</code> trỏ tới <code>head</code> cũ, sau đó cập nhật <code>head</code> = node mới."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>Các trường hợp (case) cần xét (boundary cases):</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>0 phần tử:</b> <code>head</code> từ <code>null</code> &rarr; trỏ tới node mới (<code>num_nodes: 0&rarr;1</code>)",
+                        "<b>1 phần tử:</b> node mới trở thành <code>head</code>, <code>next</code> trỏ tới node cũ (<code>num_nodes: 1&rarr;2</code>)",
+                        "<b>&ge;2 phần tử:</b> tương tự, node mới chèn vào đầu"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BasicLinkedListBoundaryVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 7.3: REMOVEFIRST() & BOUNDARY CASES */
+            {
+              id: "dsa-b2-sub-7-3",
+              number: "7.3",
+              title: "7.4 removeFirst() – Cách hoạt động & Boundary Cases",
+              parts: [
+                {
+                  id: "dsa-b2-part-7-removefirst",
+                  label: "PHẦN VII - THAO TÁC REMOVEFIRST",
+                  title: "Phân tích removeFirst() & Ném Exception",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>Cách hoạt động:</b> lưu tạm <code>head</code> hiện tại vào <code>ln</code>, cập nhật <code>head = head.getNext()</code>, giảm <code>num_nodes</code>, trả về phần tử đã xoá."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<b>Các trường hợp cần xét (boundary cases):</b>"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "<b>0 phần tử:</b> không remove được &rarr; ném <code>NoSuchElementException</code>",
+                        "<b>1 phần tử:</b> <code>head</code> &rarr; <code>null</code>, <code>num_nodes</code> &rarr; 0",
+                        "<b>&ge;2 phần tử:</b> <code>head</code> chuyển sang node kế tiếp"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 7.4: PRINT() & TEST CLIENT WORKBENCH */
+            {
+              id: "dsa-b2-sub-7-4",
+              number: "7.4",
+              title: "7.5 - 7.6 print() & Ví dụ sử dụng (Test Client)",
+              parts: [
+                {
+                  id: "dsa-b2-part-7-print-test",
+                  label: "PHẦN VII - IDE WORKBENCH & TEST",
+                  title: "Mã nguồn print() & Chương trình Test Client",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Toàn bộ mã nguồn <code>BasicLinkedList.java</code> và chương trình test <code>BasicLinkedListTest.java</code> kèm màn hình console chạy thực tế:"
+                    },
+                    {
+                      type: "component",
+                      component: "ListIdeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 7.5: TIME COMPLEXITY & CẦN NHỚ */
+            {
+              id: "dsa-b2-sub-7-5",
+              number: "7.5",
+              title: "7.7 Time Complexity & 📌 Cần nhớ",
+              parts: [
+                {
+                  id: "dsa-b2-part-7-complexity",
+                  label: "PHẦN VII - ĐÁNH GIÁ & QUY TẮC",
+                  title: "Độ phức tạp Thời gian & 3 Quy tắc Vàng Con trỏ",
+                  content: [
+                    {
+                      type: "component",
+                      component: "BasicLinkedListComplexityCards"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION SUMMARY: TỔNG KẾT PHẦN VII */
+            {
+              id: "dsa-b2-sub-summary-3",
+              number: "📌",
+              title: "Cần nhớ Tổng hợp Phần VII",
+              parts: [
+                {
+                  id: "dsa-b2-part-summary-7",
+                  label: "TỔNG KẾT BÀI 2 (PHẦN VII)",
+                  title: "3 Quy tắc vàng bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ 3 QUY TẮC VÀNG BẮT BUỘC GHI NHỚ (PHẦN VII - BASICLINKEDLIST)",
+                      text: "1. <b>Ưu điểm lớn nhất so với Array:</b> <code>addFirst()</code> và <code>removeFirst()</code> đạt độ phức tạp <b>O(1)</b> tuyệt đối, không cần shift bất kỳ phần tử nào.<br/>2. <b>Luôn xét đủ Boundary Cases:</b> 0 phần tử (ném Exception khi remove), 1 phần tử, và &ge;2 phần tử khi cài đặt các thao tác cập nhật.<br/>3. <b>Thứ tự câu lệnh gán con trỏ RẤT QUAN TRỌNG:</b> Sai thứ tự sẽ làm mất địa chỉ node cũ hoặc gãy chuỗi liên kết (ví dụ: phải lưu <code>head</code> cũ trước khi gán <code>head</code> mới)."
+                    }
+                  ]
                 }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-analysis",
-      roman: "V",
-      title: "Phân tích thuật toán (Analysis of Algorithms)",
-      subsections: [
+        },
+
+        /* PHẦN VIII.1 - VIII.2: ENHANCED LINKED LIST (ELL) */
         {
-          id: "dsa-sub-analysis",
-          number: "1",
-          title: "Độ phức tạp thời gian Big-O và không gian",
-          parts: [
+          id: "dsa-b2-sec4",
+          roman: "VIII.1–2",
+          title: "Enhanced Linked List (ELL)",
+          subsections: [
+            /* SUBSECTION 8.1: SƠ ĐỒ TỔNG QUAN */
             {
-              id: "dsa-part-analysis",
-              label: "a",
-              title: "Bài học 5: Analysis of Algorithms",
-              content: [
+              id: "dsa-b2-sub-8-1",
+              number: "8.1",
+              title: "8.1 Sơ đồ tổng quan các biến thể Linked List",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-8-overview",
+                  label: "PHẦN VIII - TỔNG QUAN BIẾN THỂ",
+                  title: "So sánh Cấu trúc BLL vs ELL vs TLL",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <code>BasicLinkedList</code> (<code>head</code>, <code>num_nodes</code>) &rarr; implements <code>ListInterface</code>; <b>has-a</b> <code>ListNode</code>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <code>EnhancedLinkedList</code> (<code>head</code>, <code>num_nodes</code>) &rarr; implements <code>EnhancedListInterface</code>; <b>has-a</b> <code>ListNode</code>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <code>TailedLinkedList</code> (<code>head</code>, <code>tail</code>, <code>num_nodes</code>) &rarr; implements <code>EnhancedListInterface</code>; <b>has-a</b> <code>ListNode</code>."
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 KHÓ KHĂN CHUNG (DIFFICULTY)",
+                      text: "Khi cài đặt các hàm cập nhật, người lập trình bắt buộc phải xử lý tất cả <b>boundary cases</b> (0, 1, 2, 3+ phần tử) để tránh đứt gãy chuỗi con trỏ hoặc NullPointerException."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 8.2: KHÁI NIỆM ELL & INTERFACE */
+            {
+              id: "dsa-b2-sub-8-2",
+              number: "8.2",
+              title: "8.2 Khái niệm Enhanced Linked List & EnhancedListInterface",
+              parts: [
+                {
+                  id: "dsa-b2-part-8-ell-concept",
+                  label: "PHẦN VIII - KHÁI NIỆM ELL",
+                  title: "Lý do ra đời & Interface mở rộng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <code>BasicLinkedList</code> (BLL) chỉ hỗ trợ chèn ở <b>đầu</b> danh sách &rarr; không đủ nếu cần chèn vào <b>giữa</b> (ví dụ: danh sách cần giữ thứ tự sắp xếp theo key)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>EnhancedLinkedList (ELL):</b> mở rộng BLL với các method mới, hiện thực từ đầu theo interface mới <code>EnhancedListInterface</code>."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: `import java.util.*;
+
+public interface EnhancedListInterface <E> {
+    public boolean isEmpty();
+    public int     size();
+    public E       getFirst() throws NoSuchElementException;
+    public boolean contains(E item);
+    public void    addFirst(E item);
+    public E       removeFirst() throws NoSuchElementException;
+    public void    print();
+
+    public ListNode <E> getHead();
+    public void addAfter(ListNode <E> current, E item);
+    public E    removeAfter(ListNode <E> current) throws NoSuchElementException;
+    public E    remove(E item) throws NoSuchElementException;
+}`
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Các method mới so với <code>ListInterface</code>:</b> <code>getHead()</code>, <code>addAfter()</code>, <code>removeAfter()</code>, <code>remove()</code>."
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 8.3: ADDAFTER & REMOVEAFTER VISUALIZER */
+            {
+              id: "dsa-b2-sub-8-3",
+              number: "8.3",
+              title: "8.2 addAfter() & removeAfter() – Cách hoạt động & Quy ước",
+              parts: [
+                {
+                  id: "dsa-b2-part-8-ell-ops",
+                  label: "PHẦN VIII - MÔ PHỎNG ADDAFTER & REMOVEAFTER",
+                  title: "Chèn & Xóa ở giữa Danh sách với con trỏ current",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <b>addAfter(current, item):</b><br/>- Nếu <code>current != null</code>: tạo node mới <code>p</code>, nối <code>p.next = current.next</code>, rồi <code>current.next = p</code> (chèn ngay sau <code>current</code>).<br/>- Nếu <code>current == null</code>: quy ước là chèn vào <b>đầu</b> danh sách (giống <code>addFirst</code>)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>removeAfter(current):</b><br/>- Nếu <code>current != null</code>: xoá node <b>ngay sau</b> <code>current</code> (nối <code>current.next</code> với <code>nextPtr.next</code>, bỏ qua <code>nextPtr</code>).<br/>- Nếu <code>current == null</code>: quy ước xoá <b>head</b> (giống <code>removeFirst</code>).<br/>- Nếu không còn node để xoá &rarr; ném <code>NoSuchElementException</code>."
+                    },
+                    {
+                      type: "component",
+                      component: "EnhancedLinkedListVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION 8.4: REMOVE(ITEM) & TEST CLIENT WORKBENCH */
+            {
+              id: "dsa-b2-sub-8-4",
+              number: "8.4",
+              title: "8.2 remove(item) & Chương trình Test ELL",
+              parts: [
+                {
+                  id: "dsa-b2-part-8-ell-test",
+                  label: "PHẦN VIII - TÁI SỬ DỤNG CODE & TEST",
+                  title: "Ý tưởng remove(item) & Mã nguồn IDE Workbench",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<b>remove(item) – Bài tập tự viết:</b> Ý tưởng là tìm <code>item</code> trong list (giữ 2 con trỏ <code>prev</code> và <code>curr</code> để duyệt), sau đó gọi <code>removeAfter(prev)</code> để xoá."
+                    },
+                    {
+                      type: "component",
+                      component: "ListIdeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+
+            /* SUBSECTION SUMMARY 4: TỔNG KẾT ELL */
+            {
+              id: "dsa-b2-sub-summary-4",
+              number: "📌",
+              title: "Cần nhớ Tổng hợp Enhanced LinkedList (ELL)",
+              parts: [
+                {
+                  id: "dsa-b2-part-summary-ell",
+                  label: "TỔNG KẾT ENHANCED LINKED LIST",
+                  title: "2 Điểm nốt bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "tip",
+                      title: "📌 CẦN NHỚ ENHANCED LINKED LIST (ELL)",
+                      text: "• <code>current == null</code> là quy ước đặc biệt: <code>addAfter(null, item)</code> = chèn đầu, <code>removeAfter(null)</code> = xoá đầu.<br/>• <code>remove(item)</code> nên tận dụng lại <code>removeAfter()</code> (nguyên tắc re-use code)."
+                    }
+                  ]
                 }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-sorting",
-      roman: "VI",
-      title: "Thuật toán Sắp xếp (Sorting)",
-      subsections: [
+        },
+
+        /* PHẦN VIII.3 - VIII.4: TAILED LINKED LIST (TLL) & SO SÁNH */
         {
-          id: "dsa-sub-sorting",
-          number: "1",
-          title: "Các phương pháp sắp xếp thông dụng và chia để trị",
-          parts: [
+          id: "dsa-b2-sec5",
+          roman: "VIII.3–4",
+          title: "Tailed Linked List (TLL) & Complexity Comparison",
+          subsections: [
+            /* SUBSECTION 8.5: KHÁI NIỆM TLL & CON TRỎ TAIL */
             {
-              id: "dsa-part-sorting",
-              label: "a",
-              title: "Bài học 6: Sorting",
-              content: [
+              id: "dsa-b2-sub-8-5",
+              number: "8.5",
+              title: "8.3 Khái niệm Tailed Linked List (TLL)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-8-tll-concept",
+                  label: "PHẦN VIII - KHÁI NIỆM TLL",
+                  title: "Lý do thêm con trỏ tail & Nguyên tắc No Free Lunch",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• Cải tiến thêm từ ELL: thêm thuộc tính <b><code>tail</code></b> (con trỏ tới node cuối) để <b>thêm vào cuối (addLast)</b> nhanh hơn, không cần duyệt hết list."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>\"No free lunch\":</b> có thêm <code>tail</code> thì phải <b>bảo trì (maintain) <code>tail</code></b> trong mọi thao tác cập nhật."
+                    },
+                    {
+                      type: "code",
+                      language: "java",
+                      code: `class TailedLinkedList <E> implements EnhancedListInterface <E> {
+    private ListNode <E> head = null;
+    private ListNode <E> tail = null;
+    private int num_nodes = 0;
+
+    public ListNode <E> getTail() { return tail; }
+
+    public void addFirst(E item) {
+        head = new ListNode <E> (item, head);
+        num_nodes++;
+        if (num_nodes == 1)
+            tail = head; // nếu là phần tử đầu tiên, tail cũng trỏ vào đây
+    }
+}`
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-hashing",
-      roman: "VII",
-      title: "Bảng băm (Hashing)",
-      subsections: [
-        {
-          id: "dsa-sub-hashing",
-          number: "1",
-          title: "Hàm băm và cơ chế giải quyết đụng độ",
-          parts: [
+            },
+
+            /* SUBSECTION 8.6: ADDLAST() O(1) & DUAL POINTER VISUALIZER */
             {
-              id: "dsa-part-hashing",
-              label: "a",
-              title: "Bài học 7: Hashing",
-              content: [
+              id: "dsa-b2-sub-8-6",
+              number: "8.6",
+              title: "8.3 addLast(item) O(1) & Con trỏ Dual Pointer (head & tail)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-8-addlast-vis",
+                  label: "PHẦN VIII - MÔ PHỎNG DUAL POINTER",
+                  title: "Thao tác addLast() O(1) nhờ con trỏ tail",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "• <b>Case 1 (<code>head != null</code>):</b> nối node mới vào sau <code>tail</code>, cập nhật <code>tail</code> trỏ tới node mới."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "• <b>Case 2 (<code>head == null</code>, list rỗng):</b> node mới vừa là <code>head</code> vừa là <code>tail</code>."
+                    },
+                    {
+                      type: "component",
+                      component: "TailedLinkedListVisualizer"
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-bst",
-      roman: "VIII",
-      title: "Cây tìm kiếm nhị phân (Binary Search Tree - BST)",
-      subsections: [
-        {
-          id: "dsa-sub-bst",
-          number: "1",
-          title: "Cấu trúc cây nhị phân và các phép toán trên BST",
-          parts: [
+            },
+
+            /* SUBSECTION 8.7: MA TRẬN 4 TRƯỜNG HỢP BIÊN TLL */
             {
-              id: "dsa-part-bst",
-              label: "a",
-              title: "Bài học 8: BST",
-              content: [
+              id: "dsa-b2-sub-8-7",
+              number: "8.7",
+              title: "8.3 Ma trận 4 Trường hợp Biên của TLL (addAfter & removeAfter)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-8-tll-matrix",
+                  label: "PHẦN VIII - MA TRẬN BOUNDARY CASES",
+                  title: "4 Cases bảo trì con trỏ tail trong addAfter()",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Khi cài đặt <code>addAfter()</code> và <code>removeAfter()</code> trong TailedLinkedList, ta bắt buộc phải xét đủ 4 trường hợp để cập nhật con trỏ <code>tail</code> chính xác:"
+                    },
+                    {
+                      type: "component",
+                      component: "TllBoundaryMatrixCard"
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-avl",
-      roman: "IX",
-      title: "Cây AVL (AVL Tree)",
-      subsections: [
-        {
-          id: "dsa-sub-avl",
-          number: "1",
-          title: "Kỹ thuật tự cân bằng qua các phép quay cây",
-          parts: [
+            },
+
+            /* SUBSECTION 8.8: TIME COMPLEXITY SO SÁNH BLL VS TLL */
             {
-              id: "dsa-part-avl",
-              label: "a",
-              title: "Bài học 9: AVL",
-              content: [
+              id: "dsa-b2-sub-8-8",
+              number: "8.8",
+              title: "8.4 Time / Space Complexity so sánh (BasicLinkedList vs TailedLinkedList)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-8-complexity-comp",
+                  label: "PHẦN VIII - BẢNG SO SÁNH COMPLEXITY",
+                  title: "Đánh giá Hiệu năng BLL vs TLL & Re-use Code",
+                  content: [
+                    {
+                      type: "component",
+                      component: "TailedVsBasicComplexityCards"
+                    }
+                  ]
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-priorityheap",
-      roman: "X",
-      title: "Hàng đợi ưu tiên & Cấu trúc Heap (Priority Queue & Binary Max Heap)",
-      subsections: [
-        {
-          id: "dsa-sub-priorityheap",
-          number: "1",
-          title: "Biểu diễn và các thao tác trên Binary Max Heap",
-          parts: [
+            },
+
+            /* SUBSECTION SUMMARY 5: TỔNG KẾT TLL */
             {
-              id: "dsa-part-priorityheap",
-              label: "a",
-              title: "Bài học 10: Priority Queue & Binary Max Heap",
-              content: [
+              id: "dsa-b2-sub-summary-5",
+              number: "📌",
+              title: "Cần nhớ Tổng hợp Tailed LinkedList (TLL)",
+              parts: [
                 {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-graphbasic",
-      roman: "XI",
-      title: "Cấu trúc Đồ thị cơ bản (Graph Basics)",
-      subsections: [
-        {
-          id: "dsa-sub-graphbasic",
-          number: "1",
-          title: "Ma trận kề, danh sách kề và biểu diễn đồ thị",
-          parts: [
-            {
-              id: "dsa-part-graphbasic",
-              label: "a",
-              title: "Bài học 11: Graph Basics",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-bfsdfs",
-      roman: "XII",
-      title: "Thuật toán Duyệt đồ thị (BFS & DFS)",
-      subsections: [
-        {
-          id: "dsa-sub-bfsdfs",
-          number: "1",
-          title: "Duyệt đồ thị theo chiều rộng và chiều sâu",
-          parts: [
-            {
-              id: "dsa-part-bfsdfs",
-              label: "a",
-              title: "Bài học 12: BFS & DFS",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-mst",
-      roman: "XIII",
-      title: "Cây khung tối tiểu (Minimum Spanning Tree - MST)",
-      subsections: [
-        {
-          id: "dsa-sub-mst",
-          number: "1",
-          title: "Các thuật toán tìm cây khung nhỏ nhất (Kruskal, Prim)",
-          parts: [
-            {
-              id: "dsa-part-mst",
-              label: "a",
-              title: "Bài học 13: MST",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-bellmanford",
-      roman: "XIV",
-      title: "Giải thuật Bellman-Ford (Bellman-Ford)",
-      subsections: [
-        {
-          id: "dsa-sub-bellmanford",
-          number: "1",
-          title: "Đường đi ngắn nhất từ một nguồn có trọng số âm",
-          parts: [
-            {
-              id: "dsa-part-bellmanford",
-              label: "a",
-              title: "Bài học 14: Bellman-Ford",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: "dsa-section-dijkstra",
-      roman: "XV",
-      title: "Giải thuật Dijkstra (Dijkstra)",
-      subsections: [
-        {
-          id: "dsa-sub-dijkstra",
-          number: "1",
-          title: "Đường đi ngắn nhất có trọng số không âm",
-          parts: [
-            {
-              id: "dsa-part-dijkstra",
-              label: "a",
-              title: "Bài học 15: Dijkstra",
-              content: [
-                {
-                  type: "paragraph",
-                  text: "Nội dung chi tiết của bài học đang được cập nhật. Tài liệu lý thuyết và ví dụ minh họa của bài học này sẽ được bổ sung sau."
+                  id: "dsa-b2-part-summary-tll",
+                  label: "TỔNG KẾT TAILED LINKED LIST",
+                  title: "3 Điểm nóng bắt buộc ghi nhớ",
+                  content: [
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ 3 ĐIỂM NÓNG BẮT BUỘC GHI NHỚ (PHẦN VIII - TAILED LINKED LIST)",
+                      text: "1. <b>Lý do thêm <code>tail</code>:</b> giúp <code>addLast()</code> giảm từ <b>O(n)</b> (duyệt hết list) xuống <b>O(1)</b>.<br/>2. <b>Cái giá phải trả (\"No free lunch\"):</b> phải cập nhật <code>tail</code> cẩn thận trong <b>mọi</b> hàm cập nhật (addAfter, removeAfter...) – rất dễ sai ở các boundary case.<br/>3. <b>Tái sử dụng code:</b> <code>removeFirst() = removeAfter(null)</code> – ví dụ điển hình của việc tái sử dụng code trong lập trình."
+                    }
+                  ]
                 }
               ]
             }

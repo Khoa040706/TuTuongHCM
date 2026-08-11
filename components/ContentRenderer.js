@@ -4,6 +4,7 @@ import { findSubsectionContent, lessonsData } from "../data/lessons";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { highlightJavaVsCode } from "../utils/javaSyntaxHighlighter";
 import BubbleSortVisualizer from "./BubbleSortVisualizer";
 import QuickSortVisualizer from "./QuickSortVisualizer";
 import QuickSortFlowchart from "./QuickSortFlowchart";
@@ -299,6 +300,26 @@ import InterfaceDesignPrinciples from "./InterfaceDesignPrinciples";
 import InterfaceInformationHiding from "./InterfaceInformationHiding";
 import InterfacePrePostConditions from "./InterfacePrePostConditions";
 import InterfaceDataAbstractionAdt from "./InterfaceDataAbstractionAdt";
+import WaterDispenserAdt from "./WaterDispenserAdt";
+import ComplexNumberPlane from "./ComplexNumberPlane";
+import ShapeComparableVisualizer from "./ShapeComparableVisualizer";
+import ComplexIdeWorkbench from "./ComplexIdeWorkbench";
+import FloatEpsilonPrecisionSandbox from "./FloatEpsilonPrecisionSandbox";
+import FractionAdtSandbox from "./FractionAdtSandbox";
+import FractionPracticeWorkbench from "./FractionPracticeWorkbench";
+import ArrayShiftVisualizer from "./ArrayShiftVisualizer";
+import ListArrayIdeWorkbench from "./ListArrayIdeWorkbench";
+import ListIdeWorkbench from "./ListIdeWorkbench";
+import ArrayVsLinkedListCards from "./ArrayVsLinkedListCards";
+import LinkedListVisualizer from "./LinkedListVisualizer";
+import ReferenceMemoryVisualizer from "./ReferenceMemoryVisualizer";
+import FormingLinkedListComparison from "./FormingLinkedListComparison";
+import BasicLinkedListBoundaryVisualizer from "./BasicLinkedListBoundaryVisualizer";
+import BasicLinkedListComplexityCards from "./BasicLinkedListComplexityCards";
+import EnhancedLinkedListVisualizer from "./EnhancedLinkedListVisualizer";
+import TailedLinkedListVisualizer from "./TailedLinkedListVisualizer";
+import TllBoundaryMatrixCard from "./TllBoundaryMatrixCard";
+import TailedVsBasicComplexityCards from "./TailedVsBasicComplexityCards";
 import InterfaceEmployeeCohesion from "./InterfaceEmployeeCohesion";
 import InterfaceWaterDispenserAdt from "./InterfaceWaterDispenserAdt";
 import InterfaceAdtOperationsTable from "./InterfaceAdtOperationsTable";
@@ -810,7 +831,7 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
                           {(part.label || part.title) && (
                             <div className="card-bookmark-tag mb-4 border-b border-stone-200/50 pb-2 flex items-center gap-1 text-sm font-bold text-stone-850">
                               {part.label && (
-                                <span className="text-accent font-mono mr-1">{part.label} /</span>
+                                <span className="text-white/80 font-mono mr-1">{part.label} /</span>
                               )}
                               <span>{part.title}</span>
                             </div>
@@ -2326,6 +2347,26 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
       );
 
     case "component":
+      if (block.component === "WaterDispenserAdt" || block.componentName === "WaterDispenserAdt") return <WaterDispenserAdt key={path} />;
+      if (block.component === "ComplexNumberPlane" || block.componentName === "ComplexNumberPlane") return <ComplexNumberPlane key={path} />;
+      if (block.component === "ShapeComparableVisualizer" || block.componentName === "ShapeComparableVisualizer") return <ShapeComparableVisualizer key={path} />;
+      if (block.component === "ComplexIdeWorkbench" || block.componentName === "ComplexIdeWorkbench") return <ComplexIdeWorkbench key={path} />;
+      if (block.component === "FloatEpsilonPrecisionSandbox" || block.componentName === "FloatEpsilonPrecisionSandbox") return <FloatEpsilonPrecisionSandbox key={path} />;
+      if (block.component === "FractionAdtSandbox" || block.componentName === "FractionAdtSandbox") return <FractionAdtSandbox key={path} />;
+      if (block.component === "FractionPracticeWorkbench" || block.componentName === "FractionPracticeWorkbench") return <FractionPracticeWorkbench key={path} />;
+      if (block.component === "ArrayShiftVisualizer" || block.componentName === "ArrayShiftVisualizer") return <ArrayShiftVisualizer key={path} />;
+      if (block.component === "ListArrayIdeWorkbench" || block.componentName === "ListArrayIdeWorkbench") return <ListArrayIdeWorkbench key={path} />;
+      if (block.component === "ListIdeWorkbench" || block.componentName === "ListIdeWorkbench") return <ListIdeWorkbench key={path} />;
+      if (block.component === "ArrayVsLinkedListCards" || block.componentName === "ArrayVsLinkedListCards") return <ArrayVsLinkedListCards key={path} />;
+      if (block.component === "LinkedListVisualizer" || block.componentName === "LinkedListVisualizer") return <LinkedListVisualizer key={path} />;
+      if (block.component === "ReferenceMemoryVisualizer" || block.componentName === "ReferenceMemoryVisualizer") return <ReferenceMemoryVisualizer key={path} />;
+      if (block.component === "FormingLinkedListComparison" || block.componentName === "FormingLinkedListComparison") return <FormingLinkedListComparison key={path} />;
+      if (block.component === "BasicLinkedListBoundaryVisualizer" || block.componentName === "BasicLinkedListBoundaryVisualizer") return <BasicLinkedListBoundaryVisualizer key={path} />;
+      if (block.component === "BasicLinkedListComplexityCards" || block.componentName === "BasicLinkedListComplexityCards") return <BasicLinkedListComplexityCards key={path} />;
+      if (block.component === "EnhancedLinkedListVisualizer" || block.componentName === "EnhancedLinkedListVisualizer") return <EnhancedLinkedListVisualizer key={path} />;
+      if (block.component === "TailedLinkedListVisualizer" || block.componentName === "TailedLinkedListVisualizer") return <TailedLinkedListVisualizer key={path} />;
+      if (block.component === "TllBoundaryMatrixCard" || block.componentName === "TllBoundaryMatrixCard") return <TllBoundaryMatrixCard key={path} />;
+      if (block.component === "TailedVsBasicComplexityCards" || block.componentName === "TtailedVsBasicComplexityCards" || block.componentName === "TailedVsBasicComplexityCards") return <TailedVsBasicComplexityCards key={path} />;
       if (block.component === "hcm-culture-pillars-visualizer") return <HcmCulturePillarsVisualizer key={path} />;
       if (block.component === "hcm-culture-acculturation-visualizer") return <HcmCultureAcculturationVisualizer key={path} />;
       if (block.component === "hcm-culture-history-timeline") return <HcmCultureHistoryTimeline key={path} />;
@@ -3200,7 +3241,11 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
 
 function highlightCode(code, language) {
   if (!code) return "";
-  
+
+  if (language === "java" || language === "text" || !language) {
+    return highlightJavaVsCode(code);
+  }
+
   let escaped = code
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

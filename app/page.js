@@ -41,6 +41,7 @@ import BstLab from "../components/BstLab";
 import RecursionLab from "../components/RecursionLab";
 import MergeSortLab from "../components/MergeSortLab";
 import SelectionSortLab from "../components/SelectionSortLab";
+import InsertionSortLab from "../components/InsertionSortLab";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
@@ -3585,10 +3586,14 @@ export default function Page() {
                         <SelectionSortLab 
                           onBack={() => setSelectedAlgoId(null)}
                         />
+                      ) : selectedAlgoId === "insertion-sort" ? (
+                        <InsertionSortLab 
+                          onBack={() => setSelectedAlgoId(null)}
+                        />
                       ) : (
                         <AlgoSimDashboard 
                           onSelectAlgorithm={(algoId) => {
-                            if (algoId === "bubble-sort" || algoId === "binary-search" || algoId === "bfs" || algoId === "bst" || algoId === "binary-tree" || algoId === "recursion" || algoId === "merge-sort" || algoId === "selection-sort") {
+                            if (algoId === "bubble-sort" || algoId === "binary-search" || algoId === "bfs" || algoId === "bst" || algoId === "binary-tree" || algoId === "recursion" || algoId === "merge-sort" || algoId === "selection-sort" || algoId === "insertion-sort") {
                               setSelectedAlgoId(algoId);
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             } else {
