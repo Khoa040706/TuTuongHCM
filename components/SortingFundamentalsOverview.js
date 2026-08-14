@@ -26,17 +26,21 @@ export default function SortingFundamentalsOverview() {
     { id: 5, name: "Khánh Linh", score: 9.8, age: 20 }
   ];
 
-  const [students, setStudents] = useState(initialStudents);
+  const getSortedStudents = (key) => {
+    if (!key || key === "raw") return initialStudents;
+    return [...initialStudents].sort((a, b) => {
+      if (typeof a[key] === "string") return a[key].localeCompare(b[key]);
+      return a[key] - b[key];
+    });
+  };
+
   const [activeKey, setActiveKey] = useState("score");
+  const [students, setStudents] = useState(() => getSortedStudents("score"));
   const [activeTab, setActiveTab] = useState("applications");
 
   const handleSortBy = (key) => {
     setActiveKey(key);
-    const sorted = [...initialStudents].sort((a, b) => {
-      if (typeof a[key] === "string") return a[key].localeCompare(b[key]);
-      return a[key] - b[key];
-    });
-    setStudents(sorted);
+    setStudents(getSortedStudents(key));
   };
 
   const algorithmDimensions = [
@@ -148,7 +152,17 @@ export default function SortingFundamentalsOverview() {
           </div>
 
           {/* Sort Key Selector */}
-          <div className="flex items-center gap-1.5 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200">
+          <div className="flex items-center gap-1.5 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200 flex-wrap">
+            <button
+              onClick={() => handleSortBy("raw")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition cursor-pointer ${
+                activeKey === "raw"
+                  ? "bg-slate-800 text-white font-black shadow-xs"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+              }`}
+            >
+              Gốc (Chưa Sort)
+            </button>
             <button
               onClick={() => handleSortBy("score")}
               className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition cursor-pointer ${
