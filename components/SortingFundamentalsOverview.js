@@ -26,10 +26,19 @@ export default function SortingFundamentalsOverview() {
     { id: 5, name: "Khánh Linh", score: 9.8, age: 20 }
   ];
 
+  const getFirstName = (fullName) => {
+    const parts = fullName.trim().split(/\s+/);
+    return parts[parts.length - 1]; // Tên chính (An, Hân, Huy, Linh, Tuấn)
+  };
+
   const getSortedStudents = (key) => {
     if (!key || key === "raw") return initialStudents;
     return [...initialStudents].sort((a, b) => {
-      if (typeof a[key] === "string") return a[key].localeCompare(b[key]);
+      if (key === "name") {
+        const nameA = getFirstName(a.name);
+        const nameB = getFirstName(b.name);
+        return nameA.localeCompare(nameB, "vi") || a.name.localeCompare(b.name, "vi");
+      }
       return a[key] - b[key];
     });
   };
@@ -207,7 +216,15 @@ export default function SortingFundamentalsOverview() {
                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
                   #{idx + 1}
                 </span>
-                <span className="text-xs font-bold text-slate-900">{st.name}</span>
+                <span
+                  className={`text-xs font-bold transition px-2 py-0.5 rounded-lg ${
+                    activeKey === "name"
+                      ? "text-indigo-900 bg-indigo-100 border border-indigo-300 font-black shadow-2xs"
+                      : "text-slate-900"
+                  }`}
+                >
+                  {st.name}
+                </span>
               </div>
 
               <div className="space-y-1.5 text-xs font-mono">
