@@ -1,6 +1,15 @@
 /**
- * High-quality VS Code One Dark Pro Java Syntax Highlighter
- * 100% Single-Pass Tokenizer (Bulletproof - Zero Regex/HTML Collision)
+ * Authentic VS Code Dark+ Java Extension Syntax Highlighter
+ * 100% Single-Pass Tokenizer (Zero Regex/HTML Collision & Zero Callback Shift Bugs)
+ * Matches exact VS Code Dark+ Java theme colors:
+ * - Storage/Modifiers (public, private, class, int, boolean): #569CD6 (Blue)
+ * - Control keywords (if, else, return, new, throws): #C586C0 (Purple)
+ * - Classes / Types / Generics (StackArr, Object, E, String): #4EC9B0 (Teal)
+ * - Method Calls & Constructors (empty(), peek(), pop()): #DCDCAA (Yellow)
+ * - Variables & Fields (top, arr, maxSize): #9CDCFE (Soft Blue)
+ * - Numbers (1000, 0, -1): #B5CEA8 (Mint Green)
+ * - Strings ("..."): #CE9178 (Terracotta Orange)
+ * - Comments (// ...): #6A9955 (Green Italic)
  */
 export function highlightJavaVsCode(code) {
   if (!code) return "";
@@ -20,82 +29,95 @@ export function highlightJavaVsCode(code) {
     return `___STRING_PH_${strings.length - 1}___`;
   });
 
-  // Token Sets
-  const KEYWORDS = new Set([
+  const CONTROL_KEYWORDS = new Set([
+    "if", "else", "switch", "case", "default", "break", "continue",
+    "for", "while", "do", "try", "catch", "finally", "return", "throw", "throws",
+    "new", "import", "package"
+  ]);
+
+  const STORAGE_KEYWORDS = new Set([
     "public", "private", "protected", "static", "final", "class",
-    "interface", "implements", "extends", "void", "int", "double",
-    "boolean", "return", "if", "else", "while", "for", "new",
-    "this", "instanceof", "import", "package", "try", "catch", "throw", "throws"
+    "interface", "implements", "extends", "enum", "void", "int", "double",
+    "boolean", "float", "long", "byte", "char", "short", "abstract",
+    "synchronized", "transient", "volatile", "native", "super", "this", "instanceof"
   ]);
 
-  const TYPES = new Set([
-    "Complex", "ComplexCart", "ComplexPolar", "Shape", "Comparable",
-    "FractionI", "Fraction", "FractionArr", "String", "Math", "Scanner",
-    "Object", "System", "T", "Override", "ListInterface", "ListUsingArray",
-    "NoSuchElementException", "IndexOutOfBoundsException", "ListNode", "Integer",
-    "LinkedList", "BasicLinkedList", "EnhancedLinkedList", "TailedLinkedList",
-    "EnhancedListInterface"
-  ]);
+  const BUILTIN_VALS = new Set(["true", "false", "null"]);
 
-  const METHODS = new Set([
-    "realpart", "imagpart", "angle", "mag", "add", "minus", "times",
-    "simplify", "gcd", "toString", "equals", "compareTo", "main",
-    "println", "print", "nextInt", "sqrt", "atan", "cos", "sin", "abs",
-    "getNumer", "getDenom", "setNumer", "setDenom", "area", "circumference",
-    "isEmpty", "size", "getFirst", "contains", "addFirst", "removeFirst",
-    "getNext", "getElement", "setNext", "getHead", "getTail", "addAfter",
-    "removeAfter", "remove", "addLast"
-  ]);
+  // Regex tokenizing:
+  // 1. Comments & Strings placeholders
+  // 2. Annotations (@Override)
+  // 3. Method calls (words followed by '(')
+  // 4. Class / Type names (Capitalized words)
+  // 5. Normal words / identifiers
+  // 6. Numbers
+  // 7. Operators & HTML special chars
+  const tokenRegex = /(___COMMENT_PH_\d+___|___STRING_PH_\d+___|@[a-zA-Z_$][a-zA-Z0-9_$]*|\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*\()|\b[A-Z][a-zA-Z0-9_$]*\b|\b[a-zA-Z_$][a-zA-Z0-9_$]*\b|\b\d+(\.\d+)?(E[+-]?\d+)?[fFlLdD]?\b|&|<|>|[^a-zA-Z0-9_$\s])/g;
 
-  const CONSTANTS = new Set(["EPSILON", "PI", "MAX_NUMBER", "MAXSIZE"]);
+  return text.replace(tokenRegex, (token, ...restArgs) => {
+    // In String.prototype.replace callback:
+    // last arg is the original fullText string, 2nd-to-last arg is the numeric offset index
+    const fullStr = typeof restArgs[restArgs.length - 1] === "string" ? restArgs[restArgs.length - 1] : text;
+    const offset = typeof restArgs[restArgs.length - 2] === "number" ? restArgs[restArgs.length - 2] : 0;
 
-  // Token Regex: matches placeholders, words, numbers, or special chars
-  const tokenRegex = /(___COMMENT_PH_\d+___|___STRING_PH_\d+___|\b[a-zA-Z_$][a-zA-Z0-9_$]*\b|\b\d+(\.\d+)?(E[+-]?\d+)?\b|&|<|>|[^a-zA-Z0-9_$\s])/g;
-
-  // Single-pass replacement - ZERO double replacement possible
-  return text.replace(tokenRegex, (token) => {
-    // Comment Placeholder
+    // Comment Placeholder -> VS Code Green #6A9955 (italic)
     if (token.startsWith("___COMMENT_PH_")) {
       const idx = parseInt(token.replace("___COMMENT_PH_", "").replace("___", ""), 10);
       const commentText = comments[idx] || "";
-      const escapedComment = commentText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      return `<span style="color: #7f848e; font-style: italic;">${escapedComment}</span>`;
+      const escaped = commentText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return `<span style="color: #6a9955; font-style: italic;">${escaped}</span>`;
     }
 
-    // String Placeholder
+    // String Placeholder -> VS Code Terracotta #CE9178
     if (token.startsWith("___STRING_PH_")) {
       const idx = parseInt(token.replace("___STRING_PH_", "").replace("___", ""), 10);
       const stringText = strings[idx] || "";
-      const escapedString = stringText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      return `<span style="color: #ce9178;">${escapedString}</span>`;
+      const escaped = stringText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return `<span style="color: #ce9178; font-weight: 500;">${escaped}</span>`;
     }
 
-    // Keywords (One Dark Pro Pink/Purple: #c678dd)
-    if (KEYWORDS.has(token)) {
-      return `<span style="color: #c678dd; font-weight: 600;">${token}</span>`;
+    // Annotation (@Override) -> VS Code Yellow #DCDCAA
+    if (token.startsWith("@")) {
+      return `<span style="color: #dcdcaa;">${token}</span>`;
     }
 
-    // Types (One Dark Pro Gold: #e5c07b)
-    if (TYPES.has(token)) {
-      return `<span style="color: #e5c07b; font-weight: 600;">${token}</span>`;
+    // Control Keywords (if, else, return, new, throws) -> VS Code Magenta/Purple #C586C0
+    if (CONTROL_KEYWORDS.has(token)) {
+      return `<span style="color: #c586c0; font-weight: 600;">${token}</span>`;
     }
 
-    // Methods (One Dark Pro Blue: #61afef)
-    if (METHODS.has(token)) {
-      return `<span style="color: #61afef;">${token}</span>`;
+    // Storage Keywords & Primitive Types (public, private, class, int, boolean, void) -> VS Code Blue #569CD6
+    if (STORAGE_KEYWORDS.has(token)) {
+      return `<span style="color: #569cd6; font-weight: 600;">${token}</span>`;
     }
 
-    // Constants (One Dark Pro Coral: #e06c75)
-    if (CONSTANTS.has(token)) {
-      return `<span style="color: #e06c75; font-weight: bold;">${token}</span>`;
+    // Builtin Values (true, false, null) -> VS Code Blue #569CD6
+    if (BUILTIN_VALS.has(token)) {
+      return `<span style="color: #569cd6; font-weight: 600;">${token}</span>`;
     }
 
-    // Numbers (One Dark Pro Orange: #d19a66)
-    if (/^\d+(\.\d+)?(E[+-]?\d+)?$/.test(token)) {
-      return `<span style="color: #d19a66;">${token}</span>`;
+    // Class / Interface / Type Names (Capitalized words like StackArr, Object, String, E, StackADT) -> VS Code Teal #4EC9B0
+    if (/^[A-Z][a-zA-Z0-9_$]*$/.test(token)) {
+      return `<span style="color: #4ec9b0; font-weight: 600;">${token}</span>`;
     }
 
-    // Escape HTML special characters for other symbols
+    // Method Calls / Declarations -> check if token is followed by '(' in original text
+    const tailStr = fullStr.slice(offset + token.length).trimStart();
+    if (tailStr.startsWith("(") && /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(token)) {
+      return `<span style="color: #dcdcaa;">${token}</span>`;
+    }
+
+    // Numbers -> VS Code Mint Green #B5CEA8
+    if (/^\d+(\.\d+)?(E[+-]?\d+)?[fFlLdD]?$/.test(token)) {
+      return `<span style="color: #b5cea8; font-weight: 500;">${token}</span>`;
+    }
+
+    // Variables / Fields / Identifiers -> VS Code Soft Blue #9CDCFE
+    if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(token)) {
+      return `<span style="color: #9cdcfe;">${token}</span>`;
+    }
+
+    // Escape HTML special characters for operators & symbols
     if (token === "&") return "&amp;";
     if (token === "<") return "&lt;";
     if (token === ">") return "&gt;";

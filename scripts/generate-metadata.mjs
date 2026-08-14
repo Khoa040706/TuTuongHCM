@@ -9,7 +9,7 @@ import { lichSuDangMoDau } from "../legacy_data/lich-su-dang-mo-dau.js";
 import { lichSuDangChuong1 } from "../legacy_data/lich-su-dang.js";
 import { oopData } from "../data/oop.js";
 import { analysisDesignData } from "../legacy_data/analysis-design.js";
-import { dsaData } from "../legacy_data/dsa.js";
+import { dsaData } from "../data/dsa.js";
 import { databaseData } from "../legacy_data/database.js";
 import { basicAlgorithmsData } from "../legacy_data/basic-algorithms.js";
 import { basicConceptsData } from "../legacy_data/basic-concepts.js";
@@ -168,7 +168,7 @@ export const subjects = {
       accentRgb: "124, 92, 237"
     },
     icon: "📊",
-    chapters: ${JSON.stringify([dsaMeta], null, 2)},
+    chapters: ${JSON.stringify(dsaMeta.chapters, null, 2)},
     questionsMap: {},
     isActive: true
   },

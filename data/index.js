@@ -4,29 +4,8 @@
 import { questionsChuong1 } from "./questions-chuong-1";
 import { questionsChuong2 } from "./questions-chuong-2";
 import { questionsChuong3 } from "./questions-chuong-3";
-import { questionsChuong4 } from "./questions-chuong-4";
-import { questionsChuong5 } from "./questions-chuong-5";
-import { questionsChuong6 } from "./questions-chuong-6";
 import { questionsLsdChuong1 } from "./questions-lich-su-dang-chuong-1";
-import { questionsLsdChuong2 } from "./questions-lich-su-dang-chuong-2";
-import { questionsLsdChuong3 } from "./questions-lich-su-dang-chuong-3";
-import { questionsLsdKetLuan } from "./questions-lich-su-dang-ket-luan";
 import { questionsLsdMoDau } from "./questions-lich-su-dang-mo-dau";
-import { basicGeneralData } from "./basic-general";
-import { questionsDh1 } from "./questions-dh-1";
-import { questionsDh2 } from "./questions-dh-2";
-import { questionsDh3 } from "./questions-dh-3";
-import { questionsDh4 } from "./questions-dh-4";
-import { questionsDh5 } from "./questions-dh-5";
-import { questionsDh6 } from "./questions-dh-6";
-import { questionsDh7 } from "./questions-dh-7";
-import { questionsDh8 } from "./questions-dh-8";
-import { questionsDh9 } from "./questions-dh-9";
-import { questionsDh10 } from "./questions-dh-10";
-import { questionsOopDeOnTap } from "./questions-oop-on-tap";
-import { questionsOopNestedDesignPatterns } from "./questions-oop-nested-design-patterns";
-import { questionsOopTrickFundamentals } from "./questions-oop-trick-fundamentals";
-import { questionsOopTrickAdvanced } from "./questions-oop-trick-advanced";
 
 export const subjects = {
   "tu-tuong-hcm": {
@@ -284,285 +263,12 @@ export const subjects = {
         ]
       }
     ]
-  },
-  {
-    "id": "chuong-4",
-    "title": "Chương IV",
-    "subtitle": "Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam và Nhà nước của nhân dân, do nhân dân, vì nhân dân",
-    "sections": [
-      {
-        "id": "hcm-c4-goals",
-        "roman": "",
-        "title": "Mục tiêu chương IV",
-        "subsections": [
-          {
-            "id": "hcm-c4-sub-goals",
-            "number": "",
-            "title": ""
-          }
-        ]
-      },
-      {
-        "id": "hcm-ve-dang-csvn-sec",
-        "roman": "I",
-        "title": "Tư tưởng Hồ Chí Minh về Đảng Cộng sản Việt Nam",
-        "subsections": [
-          {
-            "id": "tinh-tat-yeu-vai-tro-dang-sub",
-            "number": "1",
-            "title": "Tính tất yếu và vai trò lãnh đạo của Đảng Cộng sản Việt Nam"
-          },
-          {
-            "id": "dang-trong-sach-vung-manh-sub",
-            "number": "2",
-            "title": "Đảng phải trong sạch, vững mạnh"
-          }
-        ]
-      },
-      {
-        "id": "hcm-ve-nha-nuoc-sec",
-        "roman": "II",
-        "title": "Tư tưởng Hồ Chí Minh về Nhà nước của nhân dân, do nhân dân, vì nhân dân",
-        "subsections": [
-          {
-            "id": "nha-nuoc-dan-chu-sub",
-            "number": "1",
-            "title": "Nhà nước dân chủ"
-          },
-          {
-            "id": "nha-nuoc-phap-quyen-sub",
-            "number": "2",
-            "title": "Nhà nước pháp quyền"
-          },
-          {
-            "id": "nha-nuoc-trong-sach-sub",
-            "number": "3",
-            "title": "Nhà nước trong sạch, vững mạnh"
-          }
-        ]
-      },
-      {
-        "id": "hcm-van-dung-sec",
-        "roman": "III",
-        "title": "Vận dụng tư tưởng Hồ Chí Minh vào công tác xây dựng Đảng và xây dựng Nhà nước",
-        "subsections": [
-          {
-            "id": "xay-dung-dang-trong-sach-sub",
-            "number": "1",
-            "title": "Xây dựng Đảng thật sự trong sạch, vững mạnh"
-          },
-          {
-            "id": "xay-dung-nha-nuoc-sub",
-            "number": "2",
-            "title": "Xây dựng Nhà nước"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "chuong-5",
-    "title": "Chương V",
-    "subtitle": "Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế",
-    "sections": [
-      {
-        "id": "hcm-c5-goals",
-        "roman": "",
-        "title": "Mục tiêu chương V",
-        "subsections": [
-          {
-            "id": "hcm-c5-sub-goals",
-            "number": "",
-            "title": ""
-          }
-        ]
-      },
-      {
-        "id": "hcm-great-unity-sec",
-        "roman": "I",
-        "title": "Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc",
-        "subsections": [
-          {
-            "id": "hcm-great-unity-role-sub",
-            "number": "1",
-            "title": "Vai trò của đại đoàn kết toàn dân tộc"
-          },
-          {
-            "id": "hcm-great-unity-force-sub",
-            "number": "2",
-            "title": "Lực lượng của khối đại đoàn kết toàn dân tộc"
-          },
-          {
-            "id": "hcm-great-unity-conditions-sub",
-            "number": "3",
-            "title": "Điều kiện để xây dựng khối đại đoàn kết toàn dân tộc"
-          },
-          {
-            "id": "hcm-front-organization-sub",
-            "number": "4",
-            "title": "Hình thức, nguyên tắc tổ chức của khối đại đoàn kết toàn dân tộc - Mặt trận dân tộc thống nhất"
-          },
-          {
-            "id": "hcm-great-unity-methods-sub",
-            "number": "5",
-            "title": "Phương thức xây dựng khối đại đoàn kết toàn dân tộc"
-          }
-        ]
-      },
-      {
-        "id": "hcm-international-unity-sec",
-        "roman": "II",
-        "title": "Tư tưởng Hồ Chí Minh về đoàn kết quốc tế",
-        "subsections": [
-          {
-            "id": "hcm-international-need-sub",
-            "number": "1",
-            "title": "Sự cần thiết phải đoàn kết quốc tế"
-          },
-          {
-            "id": "hcm-international-forces-sub",
-            "number": "2",
-            "title": "Lực lượng đoàn kết quốc tế và hình thức tổ chức"
-          },
-          {
-            "id": "hcm-international-principles-sub",
-            "number": "3",
-            "title": "Nguyên tắc đoàn kết quốc tế"
-          }
-        ]
-      },
-      {
-        "id": "hcm-applying-sec",
-        "roman": "III",
-        "title": "Vận dụng tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế trong giai đoạn hiện nay",
-        "subsections": [
-          {
-            "id": "hcm-applying-party-lines-sub",
-            "number": "1",
-            "title": "Quán triệt tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc và đoàn kết quốc tế trong hoạch định chủ trương, đường lối của Đảng"
-          },
-          {
-            "id": "hcm-applying-alliance-sub",
-            "number": "2",
-            "title": "Xây dựng khối đại đoàn kết toàn dân tộc trên nền tảng liên minh công - nông - trí dưới sự lãnh đạo của Đảng"
-          },
-          {
-            "id": "hcm-applying-international-sub",
-            "number": "3",
-            "title": "Đại đoàn kết toàn dân tộc phải kết hợp với đoàn kết quốc tế"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "chuong-6",
-    "title": "Chương VI",
-    "subtitle": "Tư tưởng Hồ Chí Minh về văn hóa, đạo đức và con người",
-    "sections": [
-      {
-        "id": "tu-tuong-hcm-ve-van-hoa",
-        "roman": "I",
-        "title": "Tư tưởng Hồ Chí Minh về văn hóa",
-        "subsections": [
-          {
-            "id": "mo-dau-van-hoa",
-            "number": "",
-            "title": "Mở đầu"
-          },
-          {
-            "id": "nhan-thuc-chung-van-hoa",
-            "number": "1",
-            "title": "Một số nhận thức chung về văn hóa và quan hệ giữa văn hóa với các lĩnh vực khác"
-          },
-          {
-            "id": "vai-tro-cua-van-hoa",
-            "number": "2",
-            "title": "Quan điểm của Hồ Chí Minh về vai trò của văn hóa"
-          },
-          {
-            "id": "xay-dung-nen-van-hoa-moi",
-            "number": "3",
-            "title": "Quan điểm Hồ Chí Minh về xây dựng nền văn hóa mới"
-          }
-        ]
-      },
-      {
-        "id": "tu-tuong-hcm-ve-dao-duc",
-        "roman": "II",
-        "title": "Tư tưởng Hồ Chí Minh về đạo đức",
-        "subsections": [
-          {
-            "id": "dao-duc-la-goc",
-            "number": "1",
-            "title": "Đạo đức là gốc, là nền tảng tinh thần của xã hội, của người cách mạng"
-          },
-          {
-            "id": "chuan-muc-dao-duc-cach-mang",
-            "number": "2",
-            "title": "Quan điểm của Hồ Chí Minh về những chuẩn mực đạo đức cách mạng"
-          },
-          {
-            "id": "nguyen-tac-xay-dung-dao-duc",
-            "number": "3",
-            "title": "Quan điểm của Hồ Chí Minh về những nguyên tắc xây dựng đạo đức cách mạng"
-          }
-        ]
-      },
-      {
-        "id": "tu-tuong-hcm-ve-con-nguoi",
-        "roman": "III",
-        "title": "Tư tưởng Hồ Chí Minh về con người",
-        "subsections": [
-          {
-            "id": "quan-niem-ve-con-nguoi",
-            "number": "1",
-            "title": "Quan niệm của Hồ Chí Minh về con người"
-          },
-          {
-            "id": "vai-tro-cua-con-nguoi",
-            "number": "2",
-            "title": "Quan điểm của Hồ Chí Minh về vai trò của con người"
-          },
-          {
-            "id": "xay-dung-con-nguoi",
-            "number": "3",
-            "title": "Quan điểm của Hồ Chí Minh về xây dựng con người"
-          }
-        ]
-      },
-      {
-        "id": "xay-dung-van-hoa-dao-duc-con-nguoi-hien-nay",
-        "roman": "IV",
-        "title": "Xây dựng văn hóa, đạo đức, con người Việt Nam hiện nay theo tư tưởng Hồ Chí Minh",
-        "subsections": [
-          {
-            "id": "boi-canh-chung-van-hoa-hien-nay",
-            "number": "",
-            "title": "Bối cảnh chung"
-          },
-          {
-            "id": "xay-dung-phat-trien-van-hoa-con-nguoi",
-            "number": "1",
-            "title": "Xây dựng và phát triển văn hóa, con người"
-          },
-          {
-            "id": "xay-dung-dao-duc-cach-mang",
-            "number": "2",
-            "title": "Xây dựng đạo đức cách mạng"
-          }
-        ]
-      }
-    ]
   }
 ],
     questionsMap: {
       "chuong-1": questionsChuong1,
       "chuong-2": questionsChuong2,
-      "chuong-3": questionsChuong3,
-      "chuong-4": questionsChuong4,
-      "chuong-5": questionsChuong5,
-      "chuong-6": questionsChuong6
+      "chuong-3": questionsChuong3
     }
   },
   "lich-su-dang": {
@@ -725,213 +431,11 @@ export const subjects = {
         ]
       }
     ]
-  },
-  {
-    "id": "lich-su-dang-chuong-2",
-    "title": "Chương II",
-    "subtitle": "Đảng lãnh đạo hai cuộc kháng chiến chống ngoại xâm, hoàn thành giải phóng dân tộc, thống nhất đất nước (1945 - 1975)",
-    "sections": [
-      {
-        "id": "lsd2-section-1",
-        "roman": "I",
-        "title": "Lãnh đạo xây dựng, bảo vệ chính quyền cách mạng, kháng chiến chống thực dân Pháp xâm lược 1945-1954",
-        "subsections": [
-          {
-            "id": "lsd2-sub-1-1",
-            "number": "1",
-            "title": "Xây dựng và bảo vệ chính quyền cách mạng 1945-1946"
-          },
-          {
-            "id": "lsd2-sub-1-2",
-            "number": "2",
-            "title": "Đường lối kháng chiến toàn quốc và quá trình tổ chức thực hiện từ năm 1946 đến năm 1950"
-          },
-          {
-            "id": "lsd2-sub-1-3",
-            "number": "3",
-            "title": "Đẩy mạnh cuộc kháng chiến đến thắng lợi 1951-1954"
-          },
-          {
-            "id": "lsd2-sub-1-4",
-            "number": "4",
-            "title": "Ý nghĩa lịch sử và kinh nghiệm của Đảng trong lãnh đạo kháng chiến chống Pháp và can thiệp Mỹ 1945-1954"
-          }
-        ]
-      },
-      {
-        "id": "lsd2-section-2",
-        "roman": "II",
-        "title": "Lãnh đạo xây dựng chủ nghĩa xã hội ở miền Bắc và kháng chiến chống đế quốc Mỹ xâm lược, giải phóng miền Nam, thống nhất đất nước 1954-1975",
-        "subsections": [
-          {
-            "id": "lsd2-sub-2-1-a",
-            "number": "1.a",
-            "title": "Khôi phục kinh tế, cải tạo xã hội chủ nghĩa ở miền Bắc, chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công 1954-1960"
-          },
-          {
-            "id": "lsd2-sub-2-1-b",
-            "number": "1.b",
-            "title": "Xây dựng chủ nghĩa xã hội ở miền Bắc, phát triển thế tiến công của cách mạng miền Nam 1961-1965"
-          },
-          {
-            "id": "lsd2-sub-2-2",
-            "number": "2",
-            "title": "Lãnh đạo cách mạng cả nước 1965-1975"
-          },
-          {
-            "id": "lsd2-sub-2-3",
-            "number": "3",
-            "title": "Ý nghĩa lịch sử và kinh nghiệm lãnh đạo của Đảng thời kỳ 1954-1975"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "lich-su-dang-chuong-3",
-    "title": "Chương III",
-    "subtitle": "Đảng lãnh đạo cả nước quá độ lên chủ nghĩa xã hội và tiến hành công cuộc đổi mới (1975 - nay)",
-    "sections": [
-      {
-        "id": "lsd3-section-1",
-        "roman": "I",
-        "title": "Lãnh đạo cả nước xây dựng chủ nghĩa xã hội và bảo vệ Tổ quốc 1975-1986",
-        "subsections": [
-          {
-            "id": "lsd3-sub-3-1-a",
-            "number": "1.a-b",
-            "title": "Xây dựng chủ nghĩa xã hội và bảo vệ Tổ quốc 1975-1981"
-          },
-          {
-            "id": "lsd3-sub-3-1-b",
-            "number": "1.2",
-            "title": "Đại hội V của Đảng và các bước đột phá tiếp tục đổi mới kinh tế 1982-1986"
-          }
-        ]
-      },
-      {
-        "id": "lsd3-section-2",
-        "roman": "II",
-        "title": "Lãnh đạo công cuộc đổi mới, đẩy mạnh công nghiệp hóa, hiện đại hóa và hội nhập quốc tế (1986 - 2018)",
-        "subsections": [
-          {
-            "id": "lsd3-sub-3-2-a",
-            "number": "2.1",
-            "title": "Đổi mới toàn diện, đưa đất nước ra khỏi khủng hoảng kinh tế - xã hội (1986-1996)"
-          },
-          {
-            "id": "lsd3-sec2-part-2-congress8-a",
-            "number": "2.2.a",
-            "title": "Đại hội VIII và bước đầu đẩy mạnh công nghiệp hoá, hiện đại hoá (1996 - 2001)"
-          },
-          {
-            "id": "lsd3-sec2-part-2-congress9-b",
-            "number": "2.2.b",
-            "title": "Đại hội IX -- tiếp tục đẩy mạnh công nghiệp hoá, hiện đại hoá đất nước (2001 - 2006)"
-          },
-          {
-            "id": "lsd3-sec2-part-2-congress10-c",
-            "number": "2.2.c",
-            "title": "Đại hội X và quá trình thực hiện (2006 - 2011)"
-          },
-          {
-            "id": "lsd3-sec2-part-2-congress11-d",
-            "number": "2.2.d",
-            "title": "Đại hội XI và Cương lĩnh bổ sung 2011 (2011 - 2016)"
-          }
-        ]
-      },
-      {
-        "id": "lsd3-section-3",
-        "roman": "III",
-        "title": "Thành tựu, kinh nghiệm của công cuộc đổi mới",
-        "subsections": [
-          {
-            "id": "lsd3-sec3-part-a-achievements",
-            "number": "3.a",
-            "title": "Thành tựu của sự nghiệp đổi mới"
-          },
-          {
-            "id": "lsd3-sec3-part-b-limitations",
-            "number": "3.b",
-            "title": "Một số hạn chế và nguyên nhân"
-          },
-          {
-            "id": "lsd3-sec3-part-c-lessons",
-            "number": "3.c",
-            "title": "Một số kinh nghiệm của Đảng trong công cuộc đổi mới"
-          },
-          {
-            "id": "lsd3-sec3-part-d-recap",
-            "number": "3.d",
-            "title": "Bảng số liệu, từ khóa ghi nhớ & 5 câu hỏi ôn tập giáo trình"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "lich-su-dang-ket-luan",
-    "title": "Kết Luận",
-    "subtitle": "Kết luận -- Lịch sử Đảng Cộng sản Việt Nam",
-    "sections": [
-      {
-        "id": "lsd-conclusion-sec-1",
-        "roman": "I",
-        "title": "Khái quát các thời kỳ lịch sử của Đảng",
-        "subsections": [
-          {
-            "id": "lsd-conclusion-part-1-a",
-            "number": "1.a",
-            "title": "Khái quát các thời kỳ lịch sử của Đảng"
-          }
-        ]
-      },
-      {
-        "id": "lsd-conclusion-sec-2",
-        "roman": "II",
-        "title": "Những thắng lợi vĩ đại của cách mạng Việt Nam",
-        "subsections": [
-          {
-            "id": "lsd-conclusion-part-2-a",
-            "number": "2.a",
-            "title": "Những thắng lợi vĩ đại của cách mạng Việt Nam"
-          }
-        ]
-      },
-      {
-        "id": "lsd-conclusion-sec-3",
-        "roman": "III",
-        "title": "Những bài học lớn về sự lãnh đạo của Đảng",
-        "subsections": [
-          {
-            "id": "lsd-conclusion-part-3-a",
-            "number": "3.a",
-            "title": "Những bài học lớn về sự lãnh đạo của Đảng"
-          }
-        ]
-      },
-      {
-        "id": "lsd-conclusion-sec-4",
-        "roman": "IV",
-        "title": "Truyền thống vẻ vang và Tổng ôn toàn môn",
-        "subsections": [
-          {
-            "id": "lsd-conclusion-part-4-a",
-            "number": "4.a",
-            "title": "Truyền thống vẻ vang của Đảng và Tổng ôn toàn môn"
-          }
-        ]
-      }
-    ]
   }
 ],
     questionsMap: {
       "lich-su-dang-mo-dau": questionsLsdMoDau,
-      "lich-su-dang-chuong-1": questionsLsdChuong1,
-      "lich-su-dang-chuong-2": questionsLsdChuong2,
-      "lich-su-dang-chuong-3": questionsLsdChuong3,
-      "lich-su-dang-ket-luan": questionsLsdKetLuan
+      "lich-su-dang-chuong-1": questionsLsdChuong1
     },
     isActive: true
   },
@@ -947,19 +451,82 @@ export const subjects = {
       accentRgb: "219, 39, 119"
     },
     icon: "📚",
-    chapters: basicGeneralData.chapters,
-    questionsMap: {
-      "dh-1": questionsDh1,
-      "dh-2": questionsDh2,
-      "dh-3": questionsDh3,
-      "dh-4": questionsDh4,
-      "dh-5": questionsDh5,
-      "dh-6": questionsDh6,
-      "dh-7": questionsDh7,
-      "dh-8": questionsDh8,
-      "dh-9": questionsDh9,
-      "dh-10": questionsDh10
-    },
+    chapters: [
+  {
+    "id": "basic-general",
+    "title": "Kiến thức cơ bản môn Đại cương",
+    "subtitle": "Tìm hiểu các kiến thức nền tảng đại cương, trọng tâm là lịch sử 14 kỳ Đại hội Đại biểu Toàn quốc của Đảng Cộng sản Việt Nam (1935 – 2026).",
+    "sections": [
+      {
+        "id": "dh-section-1",
+        "roman": "I",
+        "title": "Đại hội Đảng giai đoạn Đấu tranh giải phóng dân tộc và xây dựng đầu tiên (1930 - 1982)",
+        "subsections": [
+          {
+            "id": "dh-sub-1",
+            "number": "1",
+            "title": "Đại hội I (1935) và Đại hội II (1951) — Khôi phục tổ chức và Kháng chiến"
+          },
+          {
+            "id": "dh-sub-2",
+            "number": "2",
+            "title": "Đại hội III (1960), IV (1976) và V (1982) — Hai nhiệm vụ chiến lược, thống nhất đất nước và xây dựng CNXH"
+          },
+          {
+            "id": "dh-sub-1-compare",
+            "number": "3",
+            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương I"
+          }
+        ]
+      },
+      {
+        "id": "dh-section-2",
+        "roman": "II",
+        "title": "Đại hội Đảng thời kỳ Đổi mới đất nước (1986 - 2006)",
+        "subsections": [
+          {
+            "id": "dh-sub-3",
+            "number": "1",
+            "title": "Đại hội VI (1986) và VII (1991) — Khởi xướng Đổi mới và xây dựng Cương lĩnh"
+          },
+          {
+            "id": "dh-sub-4",
+            "number": "2",
+            "title": "Đại hội VIII (1996), IX (2001) và X (2006) — Công nghiệp hóa, hiện đại hóa và hội nhập quốc tế"
+          },
+          {
+            "id": "dh-sub-2-compare",
+            "number": "3",
+            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương II"
+          }
+        ]
+      },
+      {
+        "id": "dh-section-3",
+        "roman": "III",
+        "title": "Đại hội Đảng thời kỳ Hội nhập quốc tế sâu rộng và Phát triển bền vững (2011 - nay)",
+        "subsections": [
+          {
+            "id": "dh-sub-5",
+            "number": "1",
+            "title": "Đại hội XI (2011) và XII (2016) — Cương lĩnh bổ sung và phòng chống tham nhũng"
+          },
+          {
+            "id": "dh-sub-6",
+            "number": "2",
+            "title": "Đại hội XIII (2021) và XIV (2026) — Khát vọng phồn vinh và Kỷ nguyên vươn mình"
+          },
+          {
+            "id": "dh-sub-3-compare",
+            "number": "3",
+            "title": "Bảng so sánh tổng hợp các kỳ Đại hội Chương III"
+          }
+        ]
+      }
+    ]
+  }
+],
+    questionsMap: {},
     isActive: true
   },
   "oop": {
@@ -967,7 +534,6 @@ export const subjects = {
     title: "Lập trình hướng đối tượng (OOP)",
     description: "Khái niệm đối tượng, lớp, tính kế thừa, tính đa hình, tính đóng gói và trừu tượng hóa.",
     category: "Môn chuyên ngành",
-    hasAlgoSim: true,
     quote: "“Viết mã nguồn rõ ràng, dễ bảo trì là nghệ thuật của lập trình viên.”",
     themeColors: {
       accent: "#2563eb",
@@ -976,31 +542,7 @@ export const subjects = {
     },
     icon: "💻",
     chapters: [
-      {
-        "id": "de-on-tap",
-        "title": "Đề ôn tập",
-        "subtitle": "Đề kiểm tra ôn tập Lập trình hướng đối tượng OOP (29 câu)",
-        "sections": []
-      },
-      {
-        "id": "nested-design-patterns",
-        "title": "Nested Class & Design Patterns",
-        "subtitle": "Bộ 40 câu hỏi trắc nghiệm Nested Class & Design Patterns (Dễ -> Khó)",
-        "sections": []
-      },
-      {
-        "id": "trick-fundamentals",
-        "title": "Đề bẫy Java Fundamentals",
-        "subtitle": "Bộ 40 câu trắc nghiệm bẫy Vận dụng cao (If-else, Loop, Inc/Dec, String, Array)",
-        "sections": []
-      },
-      {
-        "id": "trick-oop-advanced",
-        "title": "Đề bẫy OOP Nâng cao",
-        "subtitle": "Bộ 50 câu trắc nghiệm bẫy Vận dụng cao (Chương 2 -> 8: OOP, Kế thừa, Đa hình, Generics, Exception, UML)",
-        "sections": []
-      },
-      {
+  {
     "id": "oop-intro-to-java",
     "title": "Bài 1 & 2",
     "subtitle": "Intro to Java",
@@ -2368,7 +1910,7 @@ export const subjects = {
     "id": "oop-file",
     "title": "Bài 12",
     "subtitle": "File I/O",
-        "sections": [
+    "sections": [
       {
         "id": "oop-file-goals-sec",
         "roman": "",
@@ -2640,12 +2182,7 @@ export const subjects = {
     ]
   }
 ],
-    questionsMap: {
-      "de-on-tap": questionsOopDeOnTap,
-      "nested-design-patterns": questionsOopNestedDesignPatterns,
-      "trick-fundamentals": questionsOopTrickFundamentals,
-      "trick-oop-advanced": questionsOopTrickAdvanced
-    },
+    questionsMap: {},
     isActive: true
   },
   "analysis-design": {
@@ -2701,7 +2238,6 @@ export const subjects = {
     title: "Cấu trúc dữ liệu và giải thuật",
     description: "Mảng, Danh sách liên kết, Ngăn xếp, Hàng đợi, Cây, Đồ thị và các thuật toán tìm kiếm, sắp xếp kinh điển.",
     category: "Môn chuyên ngành",
-    hasAlgoSim: true,
     quote: "“Cấu trúc dữ liệu tốt giúp thuật toán chạy nhanh và hiệu quả hơn.”",
     themeColors: {
       accent: "#7c3aed",
@@ -2710,386 +2246,1504 @@ export const subjects = {
     },
     icon: "📊",
     chapters: [
+  {
+    "id": "dsa-b1",
+    "title": "Bài 1",
+    "subtitle": "Abstract Data Type (ADT)",
+    "sections": [
       {
-        id: "dsa-b1",
-        title: "Bài 1",
-        subtitle: "Abstract Data Type (ADT)",
-        sections: [
+        "id": "dsa-b1-sec1",
+        "roman": "I",
+        "title": "Software Engineering Issues (Motivation) & Abstract Data Type (ADT)",
+        "subsections": [
           {
-            id: "dsa-b1-sec1",
-            roman: "I",
-            title: "Software Engineering Issues & ADT Motivation",
-            subsections: [
-              {
-                id: "dsa-b1-sub-1-1",
-                number: "1.1",
-                title: "Program Design Principles"
-              },
-              {
-                id: "dsa-b1-sub-1-2",
-                number: "1.2",
-                title: "Information Hiding - Chi tiết"
-              },
-              {
-                id: "dsa-b1-sub-1-3",
-                number: "1.3",
-                title: "Pre-conditions & Post-conditions"
-              },
-              {
-                id: "dsa-b1-sub-1-4",
-                number: "1.4",
-                title: "Data Abstraction & ADT"
-              },
-              {
-                id: "dsa-b1-sub-summary-1",
-                number: "📌",
-                title: "Cần nhớ Phần I"
-              }
-            ]
+            "id": "dsa-b1-sub-1-1",
+            "number": "1.1",
+            "title": "Program Design Principles (Bốn nguyên lý thiết kế chương trình)"
           },
           {
-            id: "dsa-b1-sec2",
-            roman: "II",
-            title: "Abstract Data Type (ADT) - Deep Dive & Examples",
-            subsections: [
-              {
-                id: "dsa-b1-sub-2-1",
-                number: "2.1",
-                title: "Data Structure (Mảng vs Class Employee)"
-              },
-              {
-                id: "dsa-b1-sub-2-2",
-                number: "2.2",
-                title: "Khái niệm ADT (Data + Specification)"
-              },
-              {
-                id: "dsa-b1-sub-2-3",
-                number: "2.3",
-                title: "Ví dụ: Máy lọc nước (Water Dispenser)"
-              },
-              {
-                id: "dsa-b1-sub-2-4",
-                number: "2.4",
-                title: "Wall of ADT Operations & Interface"
-              },
-              {
-                id: "dsa-b1-sub-2-5",
-                number: "2.5",
-                title: "Kiểu nguyên thủy & 3 loại Operations"
-              },
-              {
-                id: "dsa-b1-sub-2-6",
-                number: "2.6",
-                title: "Ví dụ: Complex Number ADT (Cartesian & Polar)"
-              },
-              {
-                id: "dsa-b1-sub-summary-2",
-                number: "📌",
-                title: "Cần nhớ Phần II"
-              }
-            ]
+            "id": "dsa-b1-sub-1-2",
+            "number": "1.2",
+            "title": "Information Hiding - Chi tiết & Bức tường (Walls & Mirrors)"
           },
           {
-            id: "dsa-b1-sec3",
-            roman: "III",
-            title: "Java Interface",
-            subsections: [
-              {
-                id: "dsa-b1-sub-3-1",
-                number: "3.1",
-                title: "Khái niệm Java Interface"
-              },
-              {
-                id: "dsa-b1-sub-3-2",
-                number: "3.2",
-                title: "Ví dụ #1: Comparable & Shape"
-              },
-              {
-                id: "dsa-b1-sub-3-3",
-                number: "3.3",
-                title: "Ví dụ #2: Complex Interface"
-              },
-              {
-                id: "dsa-b1-sub-3-4",
-                number: "3.4",
-                title: "ComplexCart & Bẫy toString()"
-              },
-              {
-                id: "dsa-b1-sub-3-5",
-                number: "3.5",
-                title: "ComplexPolar (Polar)"
-              },
-              {
-                id: "dsa-b1-sub-3-6",
-                number: "3.6",
-                title: "TestComplex & Output"
-              },
-              {
-                id: "dsa-b1-sub-3-7",
-                number: "3.7",
-                title: "Lưu ý: equals(), EPSILON & instanceof"
-              },
-              {
-                id: "dsa-b1-sub-summary-3",
-                number: "📌",
-                title: "Cần nhớ Phần III"
-              }
-            ]
+            "id": "dsa-b1-sub-1-3",
+            "number": "1.3",
+            "title": "Pre-conditions và Post-conditions (Hợp đồng cho tài liệu)"
           },
           {
-            id: "dsa-b1-sec4",
-            roman: "IV",
-            title: "Fraction as ADT (Practice Exercises)",
-            subsections: [
-              {
-                id: "dsa-b1-sub-4-1",
-                number: "4.1",
-                title: "Thiết kế ADT cho Fraction"
-              },
-              {
-                id: "dsa-b1-sub-4-2",
-                number: "4.2",
-                title: "Interface FractionI"
-              },
-              {
-                id: "dsa-b1-sub-4-3",
-                number: "4.3",
-                title: "Hai cách implement FractionI"
-              },
-              {
-                id: "dsa-b1-sub-4-4",
-                number: "4.4",
-                title: "PracEx#26: Fraction (2 int)"
-              },
-              {
-                id: "dsa-b1-sub-4-5",
-                number: "4.5",
-                title: "PracEx#27: FractionArr (int[2])"
-              },
-              {
-                id: "dsa-b1-sub-summary-4",
-                number: "📌",
-                title: "Cần nhớ Phần IV"
-              }
-            ]
+            "id": "dsa-b1-sub-1-4",
+            "number": "1.4",
+            "title": "Data Abstraction & Abstract Data Type (ADT)"
           },
           {
-            id: "dsa-b1-sec5",
-            roman: "V",
-            title: "Summary (Tổng kết bài học)",
-            subsections: [
-              {
-                id: "dsa-b1-sub-5-1",
-                number: "5.1",
-                title: "Tổng quan bài học"
-              },
-              {
-                id: "dsa-b1-sub-summary-5",
-                number: "📌",
-                title: "Cần nhớ tổng quát cả bài"
-              }
-            ]
+            "id": "dsa-b1-sub-summary-1",
+            "number": "📌",
+            "title": "📌 Cần nhớ Phần I"
           }
         ]
       },
       {
-        id: "dsa-b2",
-        title: "Bài 2",
-        subtitle: "Linked List",
-        sections: [
+        "id": "dsa-b1-sec2",
+        "roman": "II",
+        "title": "Abstract Data Type (ADT) - Chuyên sâu & Các Ví dụ Thực tế",
+        "subsections": [
           {
-            id: "dsa-b2-sec1",
-            roman: "I–III",
-            title: "Use of a List, List ADT & Array Implementation",
-            subsections: [
-              {
-                id: "dsa-b2-sub-1-1",
-                number: "1.1",
-                title: "1. Use of a List (Motivation)"
-              },
-              {
-                id: "dsa-b2-sub-2-1",
-                number: "2.1",
-                title: "2.1 Khái niệm List ADT"
-              },
-              {
-                id: "dsa-b2-sub-2-2",
-                number: "2.2",
-                title: "2.2 ListInterface.java"
-              },
-              {
-                id: "dsa-b2-sub-2-3",
-                number: "2.3",
-                title: "2.3 Hai cách hiện thực (Implementation)"
-              },
-              {
-                id: "dsa-b2-sub-3-1",
-                number: "3.1",
-                title: "3.1 Khái niệm Array Implementation"
-              },
-              {
-                id: "dsa-b2-sub-3-2",
-                number: "3.2",
-                title: "3.2 Class ListUsingArray & Code"
-              },
-              {
-                id: "dsa-b2-sub-3-3",
-                number: "3.3",
-                title: "3.3 Shift Right / Shift Left Mechanics"
-              },
-              {
-                id: "dsa-b2-sub-3-4",
-                number: "3.4",
-                title: "3.4 Time/Space Complexity & So sánh"
-              },
-              {
-                id: "dsa-b2-sub-summary-1",
-                number: "📌",
-                title: "Cần nhớ Tổng hợp Phần I, II & III"
-              }
-            ]
+            "id": "dsa-b1-sub-2-1",
+            "number": "2.1",
+            "title": "Data Structure & Ví dụ Lưu trữ Nhân viên (Employee)"
           },
           {
-            id: "dsa-b2-sec2",
-            roman: "IV–VI",
-            title: "Linked List Implementation, ListNode & Forming",
-            subsections: [
-              {
-                id: "dsa-b2-sub-4-1",
-                number: "4.1",
-                title: "4.1 So sánh trực quan: Array vs Linked List"
-              },
-              {
-                id: "dsa-b2-sub-4-2",
-                number: "4.2",
-                title: "4.2 Ý tưởng (Idea) của Linked List"
-              },
-              {
-                id: "dsa-b2-sub-4-3",
-                number: "4.3",
-                title: "4.3 Ôn lại Object References & =="
-              },
-              {
-                id: "dsa-b2-sub-5-1",
-                number: "5.1",
-                title: "5. ListNode & Code ListNode.java"
-              },
-              {
-                id: "dsa-b2-sub-6-1",
-                number: "6.1",
-                title: "6. Forming a Linked List (2 cách tạo)"
-              },
-              {
-                id: "dsa-b2-sub-summary-2",
-                number: "📌",
-                title: "Cần nhớ Tổng hợp Phần IV, V & VI"
-              }
-            ]
+            "id": "dsa-b1-sub-2-2",
+            "number": "2.2",
+            "title": "Abstract Data Type (ADT) – Khái niệm Cốt lõi"
           },
           {
-            id: "dsa-b2-sec3",
-            roman: "VII",
-            title: "Basic Linked List (BasicLinkedList)",
-            subsections: [
-              {
-                id: "dsa-b2-sub-7-1",
-                number: "7.1",
-                title: "7.1 - 7.2 Khái niệm & Code cơ bản"
-              },
-              {
-                id: "dsa-b2-sub-7-2",
-                number: "7.2",
-                title: "7.3 addFirst() & Boundary Cases"
-              },
-              {
-                id: "dsa-b2-sub-7-3",
-                number: "7.3",
-                title: "7.4 removeFirst() & Boundary Cases"
-              },
-              {
-                id: "dsa-b2-sub-7-4",
-                number: "7.4",
-                title: "7.5 - 7.6 print() & Test Client"
-              },
-              {
-                id: "dsa-b2-sub-7-5",
-                number: "7.5",
-                title: "7.7 Time Complexity & Quy tắc vàng"
-              },
-              {
-                id: "dsa-b2-sub-summary-3",
-                number: "📌",
-                title: "Cần nhớ Tổng hợp Phần VII"
-              }
-            ]
+            "id": "dsa-b1-sub-2-3",
+            "number": "2.3",
+            "title": "Ví dụ trực quan – Máy lọc nước (Water Dispenser) như một ADT"
           },
           {
-            id: "dsa-b2-sec4",
-            roman: "VIII.1–2",
-            title: "Enhanced Linked List (ELL)",
-            subsections: [
-              {
-                id: "dsa-b2-sub-8-1",
-                number: "8.1",
-                title: "8.1 Sơ đồ tổng quan các biến thể"
-              },
-              {
-                id: "dsa-b2-sub-8-2",
-                number: "8.2",
-                title: "8.2 Khái niệm ELL & Interface"
-              },
-              {
-                id: "dsa-b2-sub-8-3",
-                number: "8.3",
-                title: "8.2 addAfter() & removeAfter()"
-              },
-              {
-                id: "dsa-b2-sub-8-4",
-                number: "8.4",
-                title: "8.2 remove(item) & Test Client"
-              },
-              {
-                id: "dsa-b2-sub-summary-4",
-                number: "📌",
-                title: "Cần nhớ Enhanced Linked List"
-              }
-            ]
+            "id": "dsa-b1-sub-2-4",
+            "number": "2.4",
+            "title": "Wall of ADT Operations & Interface"
           },
           {
-            id: "dsa-b2-sec5",
-            roman: "VIII.3–4",
-            title: "Tailed Linked List (TLL) & Complexity",
-            subsections: [
-              {
-                id: "dsa-b2-sub-8-5",
-                number: "8.5",
-                title: "8.3 Khái niệm TLL & Con trỏ tail"
-              },
-              {
-                id: "dsa-b2-sub-8-6",
-                number: "8.6",
-                title: "8.3 addLast() O(1) & Dual Pointer"
-              },
-              {
-                id: "dsa-b2-sub-8-7",
-                number: "8.7",
-                title: "8.3 Ma trận 4 Boundary Cases"
-              },
-              {
-                id: "dsa-b2-sub-8-8",
-                number: "8.8",
-                title: "8.4 Time Complexity so sánh BLL vs TLL"
-              },
-              {
-                id: "dsa-b2-sub-summary-5",
-                number: "📌",
-                title: "Cần nhớ Tailed Linked List"
-              }
-            ]
+            "id": "dsa-b1-sub-2-5",
+            "number": "2.5",
+            "title": "Ví dụ: Kiểu nguyên thủy (Primitive Types) như ADT & Phân loại Operations"
+          },
+          {
+            "id": "dsa-b1-sub-2-6",
+            "number": "2.6",
+            "title": "Ví dụ: Complex Number (Số phức) như ADT"
+          },
+          {
+            "id": "dsa-b1-sub-summary-2",
+            "number": "📌",
+            "title": "📌 Cần nhớ Phần II"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b1-sec3",
+        "roman": "III",
+        "title": "Java Interface",
+        "subsections": [
+          {
+            "id": "dsa-b1-sub-3-1",
+            "number": "3.1",
+            "title": "Khái niệm Java Interface"
+          },
+          {
+            "id": "dsa-b1-sub-3-2",
+            "number": "3.2",
+            "title": "Ví dụ #1 – Interface Comparable<T> và Class Shape"
+          },
+          {
+            "id": "dsa-b1-sub-3-3",
+            "number": "3.3",
+            "title": "Ví dụ #2 – Complex Interface (Java 7 vs Java 8+ Default Methods)"
+          },
+          {
+            "id": "dsa-b1-sub-3-4",
+            "number": "3.4",
+            "title": "Implementation – ComplexCart (Cartesian) & Câu hỏi mở toString()"
+          },
+          {
+            "id": "dsa-b1-sub-3-5",
+            "number": "3.5",
+            "title": "Implementation – ComplexPolar (Polar)"
+          },
+          {
+            "id": "dsa-b1-sub-3-6",
+            "number": "3.6",
+            "title": "Test Complex & Kết quả thực thi Console Output"
+          },
+          {
+            "id": "dsa-b1-sub-3-7",
+            "number": "3.7",
+            "title": "Lưu ý thêm về Interface (Bytecode, Casting, instanceof & EPSILON)"
+          },
+          {
+            "id": "dsa-b1-sub-summary-3",
+            "number": "📌",
+            "title": "📌 Cần nhớ Phần III"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b1-sec4",
+        "roman": "IV",
+        "title": "Fraction as ADT (Practice Exercises)",
+        "subsections": [
+          {
+            "id": "dsa-b1-sub-4-1",
+            "number": "4.1",
+            "title": "Thiết kế ADT cho Fraction (Phân số)"
+          },
+          {
+            "id": "dsa-b1-sub-4-2",
+            "number": "4.2",
+            "title": "Interface FractionI"
+          },
+          {
+            "id": "dsa-b1-sub-4-3",
+            "number": "4.3",
+            "title": "Hai cách implement FractionI"
+          },
+          {
+            "id": "dsa-b1-sub-4-4",
+            "number": "4.4",
+            "title": "PracEx#26 – Fraction (dùng 2 biến int)"
+          },
+          {
+            "id": "dsa-b1-sub-4-5",
+            "number": "4.5",
+            "title": "PracEx#27 – FractionArr (dùng mảng int[2])"
+          },
+          {
+            "id": "dsa-b1-sub-summary-4",
+            "number": "📌",
+            "title": "📌 Cần nhớ Phần IV"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b1-sec5",
+        "roman": "V",
+        "title": "Summary (Tổng kết bài học)",
+        "subsections": [
+          {
+            "id": "dsa-b1-sub-5-1",
+            "number": "5.1",
+            "title": "Tổng quan bài học"
+          },
+          {
+            "id": "dsa-b1-sub-summary-5",
+            "number": "📌",
+            "title": "📌 Cần nhớ tổng quát cả bài"
           }
         ]
       }
-    ],
+    ]
+  },
+  {
+    "id": "dsa-b2",
+    "title": "Bài 2",
+    "subtitle": "Linked List",
+    "sections": [
+      {
+        "id": "dsa-b2-sec1",
+        "roman": "I–III",
+        "title": "Use of a List, List ADT & Array Implementation",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-1-1",
+            "number": "1.1",
+            "title": "1. Use of a List (Motivation)"
+          },
+          {
+            "id": "dsa-b2-sub-2-1",
+            "number": "2.1",
+            "title": "2.1 Khái niệm List ADT (Abstract Data Type)"
+          },
+          {
+            "id": "dsa-b2-sub-2-2",
+            "number": "2.2",
+            "title": "2.2 ListInterface.java"
+          },
+          {
+            "id": "dsa-b2-sub-2-3",
+            "number": "2.3",
+            "title": "2.3 Hai cách hiện thực (Implementation) List ADT"
+          },
+          {
+            "id": "dsa-b2-sub-3-1",
+            "number": "3.1",
+            "title": "3.1 Khái niệm List Implementation via Array (Fixed-size list)"
+          },
+          {
+            "id": "dsa-b2-sub-3-2",
+            "number": "3.2",
+            "title": "3.2 Class ListUsingArray & Full Source Code"
+          },
+          {
+            "id": "dsa-b2-sub-3-3",
+            "number": "3.3",
+            "title": "3.3 Cách hoạt động: addFirst() / removeFirst()"
+          },
+          {
+            "id": "dsa-b2-sub-3-4",
+            "number": "3.4",
+            "title": "3.4 Time / Space Complexity & So sánh Array vs Linked List"
+          },
+          {
+            "id": "dsa-b2-sub-summary-1",
+            "number": "📌",
+            "title": "Cần nhớ Tổng hợp Phần I, II & III"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec2",
+        "roman": "IV–VI",
+        "title": "Linked List Implementation, ListNode & Forming",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-4-1",
+            "number": "4.1",
+            "title": "4.1 So sánh trực quan: Array vs Linked List"
+          },
+          {
+            "id": "dsa-b2-sub-4-2",
+            "number": "4.2",
+            "title": "4.2 Ý tưởng (Idea) của Linked List"
+          },
+          {
+            "id": "dsa-b2-sub-4-3",
+            "number": "4.3",
+            "title": "4.3 Ôn lại Object References (Reference data type)"
+          },
+          {
+            "id": "dsa-b2-sub-5-1",
+            "number": "5.1",
+            "title": "5. ListNode – Đơn vị cơ bản của Linked List"
+          },
+          {
+            "id": "dsa-b2-sub-6-1",
+            "number": "6.1",
+            "title": "6. Forming a Linked List (Tạo 1 Linked List)"
+          },
+          {
+            "id": "dsa-b2-sub-summary-2",
+            "number": "📌",
+            "title": "Cần nhớ Tổng hợp Phần IV, V & VI"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec3",
+        "roman": "VII",
+        "title": "Basic Linked List (BasicLinkedList)",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-7-1",
+            "number": "7.1",
+            "title": "7.1 - 7.2 Khái niệm & Code cơ bản BasicLinkedList"
+          },
+          {
+            "id": "dsa-b2-sub-7-2",
+            "number": "7.2",
+            "title": "7.3 addFirst() – Cách hoạt động & Boundary Cases"
+          },
+          {
+            "id": "dsa-b2-sub-7-3",
+            "number": "7.3",
+            "title": "7.4 removeFirst() – Cách hoạt động & Boundary Cases"
+          },
+          {
+            "id": "dsa-b2-sub-7-4",
+            "number": "7.4",
+            "title": "7.5 - 7.6 print() & Ví dụ sử dụng (Test Client)"
+          },
+          {
+            "id": "dsa-b2-sub-7-5",
+            "number": "7.5",
+            "title": "7.7 Time Complexity & 📌 Cần nhớ"
+          },
+          {
+            "id": "dsa-b2-sub-summary-3",
+            "number": "📌",
+            "title": "Cần nhớ Tổng hợp Phần VII"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec4",
+        "roman": "VIII.1–2",
+        "title": "Enhanced Linked List (ELL)",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-8-1",
+            "number": "8.1",
+            "title": "8.1 Sơ đồ tổng quan các biến thể Linked List"
+          },
+          {
+            "id": "dsa-b2-sub-8-2",
+            "number": "8.2",
+            "title": "8.2 Khái niệm Enhanced Linked List & EnhancedListInterface"
+          },
+          {
+            "id": "dsa-b2-sub-8-3",
+            "number": "8.3",
+            "title": "8.2 addAfter() & removeAfter() – Cách hoạt động & Quy ước"
+          },
+          {
+            "id": "dsa-b2-sub-8-4",
+            "number": "8.4",
+            "title": "8.2 remove(item) & Chương trình Test ELL"
+          },
+          {
+            "id": "dsa-b2-sub-summary-4",
+            "number": "📌",
+            "title": "Cần nhớ Tổng hợp Enhanced LinkedList (ELL)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec5",
+        "roman": "VIII.3–4",
+        "title": "Tailed Linked List (TLL) & Complexity Comparison",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-8-5",
+            "number": "8.5",
+            "title": "8.3 Khái niệm Tailed Linked List (TLL)"
+          },
+          {
+            "id": "dsa-b2-sub-8-6",
+            "number": "8.6",
+            "title": "8.3 addLast(item) O(1) & Con trỏ Dual Pointer (head & tail)"
+          },
+          {
+            "id": "dsa-b2-sub-8-7",
+            "number": "8.7",
+            "title": "8.3 Ma trận 4 Trường hợp Biên của TLL (addAfter & removeAfter)"
+          },
+          {
+            "id": "dsa-b2-sub-8-8",
+            "number": "8.8",
+            "title": "8.4 Time / Space Complexity so sánh (BasicLinkedList vs TailedLinkedList)"
+          },
+          {
+            "id": "dsa-b2-sub-summary-5",
+            "number": "📌",
+            "title": "Cần nhớ Tổng hợp Tailed LinkedList (TLL)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec6",
+        "roman": "IX",
+        "title": "Other Variants (Circular & Doubly Linked List)",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-9-1",
+            "number": "9.1",
+            "title": "9.1 Circular Linked List (Danh sách Liên kết Vòng)"
+          },
+          {
+            "id": "dsa-b2-sub-9-2",
+            "number": "9.2",
+            "title": "9.2 Doubly Linked List & DListNode.java"
+          },
+          {
+            "id": "dsa-b2-sub-summary-6",
+            "number": "📌",
+            "title": "Cần nhớ Các biến thể Linked List (CLL & DLL)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec7",
+        "roman": "X–XI",
+        "title": "Java API LinkedList & Reinvent the Wheel",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-10-1",
+            "number": "10.1",
+            "title": "10.1 Khái niệm class java.util.LinkedList"
+          },
+          {
+            "id": "dsa-b2-sub-10-2",
+            "number": "10.2",
+            "title": "10.2 Ví dụ sử dụng (TestLinkedListAPI.java)"
+          },
+          {
+            "id": "dsa-b2-sub-11-1",
+            "number": "11.1",
+            "title": "11. Tại sao phải \"reinvent the wheel\"? (Tự viết lại dù đã có API)"
+          },
+          {
+            "id": "dsa-b2-sub-summary-7",
+            "number": "📌",
+            "title": "Cần nhớ Phần X & XI"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b2-sec8",
+        "roman": "XII–XIV",
+        "title": "Summary (Tổng kết), Homework & Công cụ trực quan",
+        "subsections": [
+          {
+            "id": "dsa-b2-sub-12-1",
+            "number": "12.1",
+            "title": "12. Summary (Tổng kết Bài 2: List ADT)"
+          },
+          {
+            "id": "dsa-b2-sub-13-1",
+            "number": "13.1",
+            "title": "13. Homework (Bài tập về nhà)"
+          },
+          {
+            "id": "dsa-b2-sub-14-1",
+            "number": "14.1",
+            "title": "14. Công cụ trực quan hoá (Visualising Data Structures)"
+          },
+          {
+            "id": "dsa-b2-sub-summary-8",
+            "number": "📌",
+            "title": "Cần nhớ (Tổng kết cả bài - Trọng tâm ôn thi)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b3",
+    "title": "Bài 3",
+    "subtitle": "Stack & Queue ADT",
+    "sections": [
+      {
+        "id": "dsa-b3-sec1",
+        "roman": "I",
+        "title": "Stack ADT (Khái niệm, Operations, Ứng dụng & Interface)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-1-0",
+            "number": "1.0",
+            "title": "Giới thiệu Bài 3: Stack & Queue ADT"
+          },
+          {
+            "id": "dsa-b3-sub-1-1",
+            "number": "1.1",
+            "title": "1.1 Khái niệm Stack"
+          },
+          {
+            "id": "dsa-b3-sub-1-2",
+            "number": "1.2",
+            "title": "1.2 Các thao tác chính (Operations)"
+          },
+          {
+            "id": "dsa-b3-sub-1-3",
+            "number": "1.3",
+            "title": "1.3 Ứng dụng của Stack (Uses)"
+          },
+          {
+            "id": "dsa-b3-sub-1-4",
+            "number": "1.4",
+            "title": "1.4 Interface StackADT & 1.5 Ví dụ minh họa (Usage)"
+          },
+          {
+            "id": "dsa-b3-sub-summary-1",
+            "number": "📌",
+            "title": "Cần nhớ Mục 1 (Stack ADT)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec2",
+        "roman": "II",
+        "title": "Cài đặt Stack bằng Array (Stack Implementation: Array)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-2-1",
+            "number": "2.1",
+            "title": "2.1 Cách hoạt động"
+          },
+          {
+            "id": "dsa-b3-sub-2-2",
+            "number": "2.2",
+            "title": "2.2 Code: Khởi tạo, empty(), peek() & pop()"
+          },
+          {
+            "id": "dsa-b3-sub-2-4",
+            "number": "2.4",
+            "title": "2.4 Code: push() và xử lý tràn (enlargeArr)"
+          },
+          {
+            "id": "dsa-b3-sub-2-5",
+            "number": "2.5",
+            "title": "2.5 Time / Space Complexity"
+          },
+          {
+            "id": "dsa-b3-sub-summary-2",
+            "number": "📌",
+            "title": "Cần nhớ Mục 2 (Stack Implementation: Array)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec3",
+        "roman": "III",
+        "title": "Cài đặt Stack bằng Linked List",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-3-1",
+            "number": "3.1",
+            "title": "3.1 Hai cách định nghĩa class (Composition vs Inheritance)"
+          },
+          {
+            "id": "dsa-b3-sub-3-2-3-3",
+            "number": "3.2–3.3",
+            "title": "3.2 & 3.3 Ôn lại ListNode & BasicLinkedList (Bài trước)"
+          },
+          {
+            "id": "dsa-b3-sub-3-4-3-5",
+            "number": "3.4–3.5",
+            "title": "3.4 & 3.5 Cài đặt StackLL (Composition) & StackLLE (Inheritance)"
+          },
+          {
+            "id": "dsa-b3-sub-3-6",
+            "number": "3.6",
+            "title": "3.6 Ví dụ dùng Stack (chọn 1 trong 4 cách cài đặt)"
+          },
+          {
+            "id": "dsa-b3-sub-3-7",
+            "number": "3.7",
+            "title": "3.7 Time / Space Complexity (Linked List)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec4",
+        "roman": "IV",
+        "title": "Lớp java.util.Stack<E>",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-4-1",
+            "number": "4.1",
+            "title": "4.1 Constructor & Method Summary"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec5",
+        "roman": "V",
+        "title": "Ứng dụng 1: Khớp dấu ngoặc (Bracket Matching)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-5-1",
+            "number": "5.1–5.3",
+            "title": "5. Khái niệm, Thuật toán & Trực quan hoá Khớp dấu ngoặc"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec6",
+        "roman": "VI",
+        "title": "Ứng dụng 2: Biểu thức số học (Arithmetic Expression)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-6-1-6-2",
+            "number": "6.1–6.2",
+            "title": "6.1 & 6.2 Thuật ngữ & Dạng Infix - Prefix - Postfix"
+          },
+          {
+            "id": "dsa-b3-sub-6-3",
+            "number": "6.3",
+            "title": "6.3 Thuật toán tính giá trị biểu thức Postfix"
+          },
+          {
+            "id": "dsa-b3-sub-6-4-6-6",
+            "number": "6.4–6.6",
+            "title": "6.4–6.6 Thuật toán & Mã nguồn chuyển Infix ➔ Postfix"
+          },
+          {
+            "id": "dsa-b3-sub-6-7",
+            "number": "6.7",
+            "title": "6.7 Time / Space Complexity & 📌 Cần nhớ Tổng hợp"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec7",
+        "roman": "VII",
+        "title": "Queue ADT (Khái niệm FIFO, Thao tác, Ứng dụng & Interface)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-7-1",
+            "number": "6.1–6.3",
+            "title": "6.1–6.3 Khái niệm FIFO, Thao tác chính & Ứng dụng của Queue"
+          },
+          {
+            "id": "dsa-b3-sub-7-2",
+            "number": "6.4",
+            "title": "6.4 Interface QueueADT<E>"
+          },
+          {
+            "id": "dsa-b3-sub-7-3",
+            "number": "6.5",
+            "title": "6.5 Ví dụ minh họa Usage & Bộ mô phỏng Stepper"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec8",
+        "roman": "VIII",
+        "title": "Cài đặt Queue bằng Array (Circular Array, Full/Empty & Code Java)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-8-1",
+            "number": "7.1–7.2",
+            "title": "7.1 & 7.2 Cách hoạt động cơ bản & Circular Array (Mảng tuần hoàn)"
+          },
+          {
+            "id": "dsa-b3-sub-8-2",
+            "number": "7.3",
+            "title": "7.3 Vấn đề mơ hồ Full/Empty (Ambiguous Full/Empty State)"
+          },
+          {
+            "id": "dsa-b3-sub-8-3",
+            "number": "7.4–7.5",
+            "title": "7.4–7.5 Mã nguồn QueueArr.java (Constructor, peek, poll, offer)"
+          },
+          {
+            "id": "dsa-b3-sub-8-4",
+            "number": "7.6",
+            "title": "7.6 Mã nguồn & Bộ mô phỏng enlargeArr()"
+          },
+          {
+            "id": "dsa-b3-sub-8-5",
+            "number": "7.7",
+            "title": "7.7 Time / Space Complexity & 📌 Cần nhớ Tổng hợp"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec9",
+        "roman": "IX",
+        "title": "Cài đặt Queue bằng Linked List (Composition, Inheritance & Code Java)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-9-1",
+            "number": "8.1",
+            "title": "8.1 Ghi chú quan trọng: TailedLinkedList & Trực quan hoá"
+          },
+          {
+            "id": "dsa-b3-sub-9-2",
+            "number": "8.2–8.3",
+            "title": "8.2–8.3 Hai cách cài đặt: Composition (QueueLL) vs Inheritance (QueueLLE)"
+          },
+          {
+            "id": "dsa-b3-sub-9-3",
+            "number": "8.4",
+            "title": "8.4 Ví dụ sử dụng TestQueue.java & Stepper"
+          },
+          {
+            "id": "dsa-b3-sub-9-4",
+            "number": "8.5",
+            "title": "8.5 Time / Space Complexity & 📌 Cần nhớ"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec10",
+        "roman": "X",
+        "title": "java.util.interface Queue<E> (Thư viện chuẩn Java)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-10-1",
+            "number": "9.1",
+            "title": "9.1 Method Summary & Bảng phân loại bẫy Exception"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec11",
+        "roman": "XI",
+        "title": "Ứng dụng Palindrome (kết hợp Stack và Queue)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-11-1",
+            "number": "10.1–10.5",
+            "title": "10.1–10.5 Khái niệm, Ý tưởng thuật toán, Mã nguồn & Trực quan hoá"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b3-sec12",
+        "roman": "XII",
+        "title": "Tổng kết Toàn diện Bài 3 (Summary Dashboard)",
+        "subsections": [
+          {
+            "id": "dsa-b3-sub-12-1",
+            "number": "11.0",
+            "title": "11. Tổng kết kiến thức Stack & Queue ADT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b4",
+    "title": "Bài 4",
+    "subtitle": "Recursion (Đệ quy)",
+    "sections": [
+      {
+        "id": "dsa-b4-sec0",
+        "roman": "OVERVIEW",
+        "title": "Giới thiệu Bài 4: Recursion (Đệ quy)",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-0-1",
+            "number": "0.1",
+            "title": "Tựa đề & Tổng quan Bài 4"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b4-sec1",
+        "roman": "I",
+        "title": "Basic Idea (Ý tưởng cơ bản)",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-1-1",
+            "number": "1.1",
+            "title": "Khái niệm & Ví dụ minh họa hình ảnh (Pictorial examples)"
+          },
+          {
+            "id": "dsa-b4-sub-1-2",
+            "number": "1.2",
+            "title": "Ví dụ bằng văn bản (Textual examples)"
+          },
+          {
+            "id": "dsa-b4-sub-1-3",
+            "number": "1.3",
+            "title": "Divide-and-Conquer (Chia để trị)"
+          },
+          {
+            "id": "dsa-b4-sub-1-4",
+            "number": "1.4",
+            "title": "Tại sao dùng recursion?"
+          },
+          {
+            "id": "dsa-b4-sub-1-5",
+            "number": "1.5",
+            "title": "📌 Cần nhớ (Mục 1)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b4-sec2",
+        "roman": "II",
+        "title": "How Recursion Works (Recursion hoạt động như thế nào)",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-2-1",
+            "number": "2.1",
+            "title": "Ôn lại recursion cơ bản (Factorial, Fibonacci, GCD)"
+          },
+          {
+            "id": "dsa-b4-sub-2-2",
+            "number": "2.2",
+            "title": "Visualizing Recursion (Trực quan hóa đệ quy)"
+          },
+          {
+            "id": "dsa-b4-sub-2-3",
+            "number": "2.3",
+            "title": "Công thức (Recipe) cho Recursion & Bad Recursion"
+          },
+          {
+            "id": "dsa-b4-sub-2-4",
+            "number": "2.4",
+            "title": "📌 Cần nhớ (Mục 2)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b4-sec3",
+        "roman": "III",
+        "title": "Examples (Các ví dụ ứng dụng Recursion)",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-3-1",
+            "number": "3.1",
+            "title": "Thư viện 10 ví dụ ứng dụng đệ quy kinh điển"
+          },
+          {
+            "id": "dsa-b4-sub-3-2",
+            "number": "3.2",
+            "title": "In Linked List: Thứ tự Xuôi vs Ngược (Ex 3 & 4)"
+          },
+          {
+            "id": "dsa-b4-sub-3-3",
+            "number": "3.3",
+            "title": "Tháp Hà Nội — Towers of Hanoi (Ex 6)"
+          },
+          {
+            "id": "dsa-b4-sub-3-4",
+            "number": "3.4",
+            "title": "Tìm kiếm nhị phân — Binary Search (Ex 8)"
+          },
+          {
+            "id": "dsa-b4-sub-3-5",
+            "number": "3.5",
+            "title": "Sinh tất cả hoán vị — Permutations (Ex 10)"
+          },
+          {
+            "id": "dsa-b4-sub-3-6",
+            "number": "3.6",
+            "title": "Bài tập thảo luận: Eight Queens Problem (8 Quân Hậu)"
+          },
+          {
+            "id": "dsa-b4-sub-3-7",
+            "number": "3.7",
+            "title": "📌 Cần nhớ (Mục 3 — Examples)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b4-sec4",
+        "roman": "IV",
+        "title": "Backtracking & Recursion trong các chủ đề nâng cao",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-4-1",
+            "number": "4.1",
+            "title": "Backtracking (Quay lui & Tìm kiếm toàn bộ)"
+          },
+          {
+            "id": "dsa-b4-sub-4-2",
+            "number": "4.2",
+            "title": "Recursion sẽ còn xuất hiện sau: Quick Sort & Merge Sort"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b4-sec5",
+        "roman": "V",
+        "title": "Summary — Recursion, The Mirrors (Tổng kết)",
+        "subsections": [
+          {
+            "id": "dsa-b4-sub-5-1",
+            "number": "5.1",
+            "title": "Tổng kết: Recursion, The Mirrors"
+          },
+          {
+            "id": "dsa-b4-sub-5-2",
+            "number": "5.2",
+            "title": "📌 Cần nhớ (Tổng kết toàn bài)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b5",
+    "title": "Bài 5",
+    "subtitle": "Analysis of Algorithms (Phân tích thuật toán)",
+    "sections": [
+      {
+        "id": "dsa-b5-sec0",
+        "roman": "OVERVIEW",
+        "title": "Giới thiệu Bài 5: Analysis of Algorithms (Phân tích thuật toán)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-0-1",
+            "number": "0.1",
+            "title": "Tựa đề & Tổng quan Bài 5"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec1",
+        "roman": "I",
+        "title": "Thuật toán (Algorithm) là gì?",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-1-1",
+            "number": "1.1",
+            "title": "Định nghĩa & 4 Tính chất của Algorithm"
+          },
+          {
+            "id": "dsa-b5-sub-1-2",
+            "number": "1.2",
+            "title": "📌 Cần nhớ (Mục 1)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec2",
+        "roman": "II",
+        "title": "Analysis of Algorithms (Phân tích thuật toán)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-2-1",
+            "number": "2.1",
+            "title": "Khái niệm & Mục tiêu của Phân tích thuật toán"
+          },
+          {
+            "id": "dsa-b5-sub-2-2",
+            "number": "2.2",
+            "title": "Xác định hiệu quả của Algorithm (Time & Space)"
+          },
+          {
+            "id": "dsa-b5-sub-2-3",
+            "number": "2.3",
+            "title": "Đo bằng thời gian chạy thực tế (run time)?"
+          },
+          {
+            "id": "dsa-b5-sub-2-4",
+            "number": "2.4",
+            "title": "Exact run time không phải lúc nào cũng cần thiết"
+          },
+          {
+            "id": "dsa-b5-sub-2-5",
+            "number": "2.5",
+            "title": "Khó khăn khi so sánh Program & Tính Độc lập"
+          },
+          {
+            "id": "dsa-b5-sub-2-6",
+            "number": "2.6",
+            "title": "Execution Time của Algorithm — Cách đo thực sự"
+          },
+          {
+            "id": "dsa-b5-sub-2-7",
+            "number": "2.7",
+            "title": "📌 Cần nhớ (Mục 2)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec3",
+        "roman": "III",
+        "title": "Algorithm Growth Rates (Tốc độ tăng trưởng)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-3-1",
+            "number": "3.1",
+            "title": "Khái niệm Tốc độ Tăng trưởng (Growth Rate)"
+          },
+          {
+            "id": "dsa-b5-sub-3-2",
+            "number": "3.2",
+            "title": "Tính chi phí tính toán (Computation Cost)"
+          },
+          {
+            "id": "dsa-b5-sub-3-3",
+            "number": "3.3",
+            "title": "Đếm số lượng câu lệnh (statements)"
+          },
+          {
+            "id": "dsa-b5-sub-3-4",
+            "number": "3.4",
+            "title": "Xấp xỉ kết quả phân tích (Approximation)"
+          },
+          {
+            "id": "dsa-b5-sub-3-5",
+            "number": "3.5",
+            "title": "Phân tích tiệm cận (Asymptotic Analysis)"
+          },
+          {
+            "id": "dsa-b5-sub-3-6",
+            "number": "3.6",
+            "title": "📌 Cần nhớ (Mục 3)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec4",
+        "roman": "IV",
+        "title": "Big O Notation (Ký hiệu Big O)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-4-1",
+            "number": "4.1",
+            "title": "Định nghĩa toán học & Chứng minh Big O"
+          },
+          {
+            "id": "dsa-b5-sub-4-2",
+            "number": "4.2",
+            "title": "Bỏ qua hệ số (coefficient) của mọi term"
+          },
+          {
+            "id": "dsa-b5-sub-4-3",
+            "number": "4.3",
+            "title": "Tìm hằng số c và n₀ (Ví dụ minh họa)"
+          },
+          {
+            "id": "dsa-b5-sub-4-4",
+            "number": "4.4",
+            "title": "Bound có 'chặt' (tight) không?"
+          },
+          {
+            "id": "dsa-b5-sub-4-5",
+            "number": "4.5",
+            "title": "Growth Terms: Order-of-Magnitude"
+          },
+          {
+            "id": "dsa-b5-sub-4-6",
+            "number": "4.6",
+            "title": "Các Ví dụ Tiêu Biểu về Big O"
+          },
+          {
+            "id": "dsa-b5-sub-4-7",
+            "number": "4.7",
+            "title": "Exponential Time vs Quadratic Time (2ⁿ vs 300n²)"
+          },
+          {
+            "id": "dsa-b5-sub-4-8",
+            "number": "4.8",
+            "title": "Ví dụ Thực Tế: Định Luật Moore (Moore's Law)"
+          },
+          {
+            "id": "dsa-b5-sub-4-9",
+            "number": "4.9",
+            "title": "Tổng kết: Order-of-Magnitude & Big O"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec5",
+        "roman": "V",
+        "title": "Cách tìm độ phức tạp (complexity) của chương trình",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-5-1",
+            "number": "5.1",
+            "title": "Một số quy tắc ước lượng nhanh (Rules of Thumb)"
+          },
+          {
+            "id": "dsa-b5-sub-5-2",
+            "number": "5.2",
+            "title": "Các Ví Dụ Điển Hình Tìm Complexity"
+          },
+          {
+            "id": "dsa-b5-sub-5-3",
+            "number": "5.3",
+            "title": "Ví dụ: Phân tích Tháp Hà Nội (Tower of Hanoi)"
+          },
+          {
+            "id": "dsa-b5-sub-5-4",
+            "number": "5.4",
+            "title": "So sánh Sequential Search vs Binary Search"
+          },
+          {
+            "id": "dsa-b5-sub-5-5",
+            "number": "5.5",
+            "title": "Phân tích theo các trường hợp (Worst, Best, Average Case)"
+          },
+          {
+            "id": "dsa-b5-sub-5-6",
+            "number": "5.6",
+            "title": "Giữ góc nhìn đúng đắn (Keeping Your Perspective)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec6",
+        "roman": "VI",
+        "title": "Một số thực nghiệm (Some Experiments)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-6-1",
+            "number": "6.1",
+            "title": "So sánh Running Times & Doubling Test"
+          },
+          {
+            "id": "dsa-b5-sub-6-2",
+            "number": "6.2",
+            "title": "📌 Cần nhớ (Mục 6)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec7",
+        "roman": "VII",
+        "title": "Công thức dùng trong phân tích thuật toán (Formulas)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-7-1",
+            "number": "7.1",
+            "title": "Chuỗi Hình Học (Geometric Series)"
+          },
+          {
+            "id": "dsa-b5-sub-7-2",
+            "number": "7.2",
+            "title": "📌 Cần nhớ (Mục 7)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b5-sec8",
+        "roman": "VIII",
+        "title": "Tổng kết chương (Key Takeaways)",
+        "subsections": [
+          {
+            "id": "dsa-b5-sub-8-1",
+            "number": "8.1",
+            "title": "Luyện Phản Xạ Nhanh Big-O (Flashcards)"
+          },
+          {
+            "id": "dsa-b5-sub-8-2",
+            "number": "8.2",
+            "title": "Master Dashboard Tổng Kết Toàn Diện"
+          },
+          {
+            "id": "dsa-b5-sub-8-3",
+            "number": "8.3",
+            "title": "📌 Tổng Kết Toàn Bài (Key Takeaways)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b6",
+    "title": "Bài 6",
+    "subtitle": "Sorting (Các thuật toán sắp xếp)",
+    "sections": [
+      {
+        "id": "dsa-b6-sec0",
+        "roman": "OVERVIEW",
+        "title": "Giới thiệu Bài 6: Sorting (Các thuật toán sắp xếp)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-0-1",
+            "number": "0.1",
+            "title": "Tựa đề & Tổng quan Bài 6"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec-why",
+        "roman": "0",
+        "title": "Tại sao phải học Sorting?",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-why-1",
+            "number": "0.1",
+            "title": "Tầm quan trọng & Các chiều hướng giải thuật"
+          },
+          {
+            "id": "dsa-b6-sub-why-2",
+            "number": "0.2",
+            "title": "📌 Cần nhớ (Mục 0)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec1",
+        "roman": "I",
+        "title": "Selection Sort (Sắp xếp chọn)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-1-1",
+            "number": "1.1",
+            "title": "Khái niệm & Ví dụ minh họa"
+          },
+          {
+            "id": "dsa-b6-sub-1-2",
+            "number": "1.2",
+            "title": "Mã nguồn Java & Độ phức tạp Time / Space"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec2",
+        "roman": "II",
+        "title": "Bubble Sort (Sắp xếp nổi bọt)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-2-1",
+            "number": "2.1",
+            "title": "Khái niệm, Ví dụ & Bản gốc O(n²)"
+          },
+          {
+            "id": "dsa-b6-sub-2-2",
+            "number": "2.2",
+            "title": "Bản cải tiến với cờ isSorted & Phân tích Best Case O(n)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec3",
+        "roman": "III",
+        "title": "Insertion Sort (Sắp xếp chèn)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-3-1",
+            "number": "3.1",
+            "title": "Khái niệm, Ẩn dụ bài poker & Ví dụ"
+          },
+          {
+            "id": "dsa-b6-sub-3-2",
+            "number": "3.2",
+            "title": "Mã nguồn Java & Độ phức tạp Time / Space"
+          },
+          {
+            "id": "dsa-b6-sub-3-3",
+            "number": "3.3",
+            "title": "Tổng kết Nhóm O(n²) — Ma Trận Đối Chiếu Benchmark"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec4",
+        "roman": "IV",
+        "title": "Merge Sort (Sắp xếp trộn)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-4-1",
+            "number": "4.1",
+            "title": "Khái niệm Divide-and-Conquer & Cây Đệ Quy"
+          },
+          {
+            "id": "dsa-b6-sub-4-2",
+            "number": "4.2",
+            "title": "Thuật toán Merge, Độ phức tạp Time / Space & Nhược điểm"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec5",
+        "roman": "V",
+        "title": "Quick Sort (Sắp xếp nhanh)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-5-1",
+            "number": "5.1",
+            "title": "Khái niệm, Ví dụ & Thuật toán Partition 3 Vùng"
+          },
+          {
+            "id": "dsa-b6-sub-5-2",
+            "number": "5.2",
+            "title": "Phân tích Độ phức tạp & Đối Chiếu Triết Lý"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec6",
+        "roman": "VI",
+        "title": "Radix Sort (Sắp xếp theo cơ số)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-6-1",
+            "number": "6.1",
+            "title": "Khái niệm & Ví dụ minh họa"
+          },
+          {
+            "id": "dsa-b6-sub-6-2",
+            "number": "6.2",
+            "title": "Pseudocode & Độ phức tạp Time / Space"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec7",
+        "roman": "VII",
+        "title": "So sánh các thuật toán Sort",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-7-1",
+            "number": "7.1",
+            "title": "In-Place Sort & Stable Sort"
+          },
+          {
+            "id": "dsa-b6-sub-7-2",
+            "number": "7.2",
+            "title": "Phản ví dụ Non-Stable của Quick Sort & Selection Sort"
+          },
+          {
+            "id": "dsa-b6-sub-7-3",
+            "number": "7.3",
+            "title": "Bảng tổng kết 7 Thuật toán & Ghi chú ranh giới lý thuyết"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec8",
+        "roman": "VIII",
+        "title": "Sử dụng Java Sort Methods",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-8-1",
+            "number": "8.1",
+            "title": "Các phương thức trong class Arrays & Collections"
+          },
+          {
+            "id": "dsa-b6-sub-8-2",
+            "number": "8.2",
+            "title": "Ví dụ đối tượng Person & Interface Comparator"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b6-sec9",
+        "roman": "IX",
+        "title": "Tổng kết bài học (Sorting)",
+        "subsections": [
+          {
+            "id": "dsa-b6-sub-9-1",
+            "number": "9.1",
+            "title": "Hệ thống hóa toàn bộ kiến thức & Cây Quyết Định"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b7",
+    "title": "Bài 7: Hashing (Bảng Băm)",
+    "description": "Cấu trúc dữ liệu bảng băm (Hash Table), hàm băm h(k), các kỹ thuật giải quyết va chạm (Separate Chaining, Linear/Quadratic Probing, Double Hashing), hệ số tải và Rehash.",
+    "sections": [
+      {
+        "id": "dsa-b7-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Bảng Băm Thời Gian Thực",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Phòng Thí Nghiệm Hash Table"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec0",
+        "roman": "0",
+        "title": "Hashing là gì?",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-0-1",
+            "number": "0.1",
+            "title": "Khái niệm Hashing & So sánh ADT Table"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec1",
+        "roman": "I",
+        "title": "Direct Addressing Table",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-1-1",
+            "number": "1.1",
+            "title": "Bài toán SBS Transit & Các Thao Tác"
+          },
+          {
+            "id": "dsa-b7-sub-1-2",
+            "number": "1.2",
+            "title": "Hạn chế của Direct Addressing Table"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec2",
+        "roman": "II",
+        "title": "Hash Table (Bảng Băm)",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-2-1",
+            "number": "2.1",
+            "title": "Nguồn gốc thuật ngữ & Ý tưởng Hashing"
+          },
+          {
+            "id": "dsa-b7-sub-2-2",
+            "number": "2.2",
+            "title": "Hiện tượng Collision & 2 Vấn đề quan trọng"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec3",
+        "roman": "III",
+        "title": "Hash Functions (Các Hàm Băm)",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-3-1",
+            "number": "3.1",
+            "title": "Tiêu chí Hàm Băm Tốt, Bad Hash & Perfect Hash"
+          },
+          {
+            "id": "dsa-b7-sub-3-2",
+            "number": "3.2",
+            "title": "Division Method & Multiplication Method"
+          },
+          {
+            "id": "dsa-b7-sub-3-3",
+            "number": "3.3",
+            "title": "Hashing của Chuỗi (String Hashing)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec4",
+        "roman": "IV",
+        "title": "Collision Resolution (Giải Quyết Đụng Độ)",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-4-0",
+            "number": "4.0",
+            "title": "Xác suất xảy ra Collision – Birthday Paradox"
+          },
+          {
+            "id": "dsa-b7-sub-4-1",
+            "number": "4.1",
+            "title": "Separate Chaining & Hệ Số Tải (Load Factor)"
+          },
+          {
+            "id": "dsa-b7-sub-4-2",
+            "number": "4.2",
+            "title": "Linear Probing & Xóa Lười (Lazy Deletion)"
+          },
+          {
+            "id": "dsa-b7-sub-4-3",
+            "number": "4.3",
+            "title": "Quadratic Probing & Định Lý α < 0.5"
+          },
+          {
+            "id": "dsa-b7-sub-4-4",
+            "number": "4.4",
+            "title": "Double Hashing & Cảnh Báo hash₂(k) = 0"
+          },
+          {
+            "id": "dsa-b7-sub-4-5",
+            "number": "4.5",
+            "title": "Tiêu chí của phương pháp giải quyết Collision tốt"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec5",
+        "roman": "V",
+        "title": "Tổng kết bài học (Hashing)",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-5-1",
+            "number": "5.1",
+            "title": "Hệ thống hóa toàn bộ kiến thức & Ma Trận Master"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b7-sec6",
+        "roman": "VI",
+        "title": "Java HashMap Class & Bài Tập (Exercise)",
+        "subsections": [
+          {
+            "id": "dsa-b7-sub-6-1",
+            "number": "6.1",
+            "title": "Khái niệm Class HashMap<K, V> & Constructors"
+          },
+          {
+            "id": "dsa-b7-sub-6-2",
+            "number": "6.2",
+            "title": "Các phương thức cơ bản & Ví dụ thực hành"
+          },
+          {
+            "id": "dsa-b7-sub-6-3",
+            "number": "6.3",
+            "title": "Bài tập thực hành (Exercise) — Dãy 7 Khóa"
+          }
+        ]
+      }
+    ]
+  }
+],
     questionsMap: {},
     isActive: true
   },
@@ -3261,7 +3915,6 @@ export const subjects = {
     title: "Thuật Toán & Giải Thuật Kinh Điển",
     description: "Các giải thuật sắp xếp, tìm kiếm và đường đi kinh điển kèm mã giả và code Java minh họa.",
     category: "Môn chuyên ngành",
-    hasAlgoSim: true,
     quote: "“Thuật toán là nền tảng, tư duy là chìa khóa của khoa học máy tính.”",
     themeColors: {
       accent: "#4f46e5",

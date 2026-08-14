@@ -76,7 +76,7 @@ export default function InterfaceDataAbstractionAdt() {
                   <span className="text-sm font-bold text-slate-200 uppercase tracking-wider">ADT View (Kiểu trừu tượng)</span>
                 </div>
                 <p className="text-xs text-slate-400 mb-4 leading-relaxed">
-                  Ở góc nhìn ADT, kiểu <code className="text-emerald-300">int</code> được định nghĩa bởi tập giá trị từ \( -2^{31} \) đến \( 2^{31}-1 \) và các phép toán cơ bản. Bạn chỉ cần dùng, không cần biết chip xử lý ra sao.
+                  Ở góc nhìn ADT, kiểu <code className="text-emerald-300">int</code> được định nghĩa bởi tập giá trị từ -2³¹ đến 2³¹ - 1 và các phép toán cơ bản. Bạn chỉ cần dùng, không cần biết chip xử lý ra sao.
                 </p>
                 
                 <span className="text-[10px] text-slate-500 font-bold block mb-2">DANH SÁCH PHÉP TOÁN (Click để xem chi tiết)</span>
