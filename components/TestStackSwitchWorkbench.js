@@ -117,7 +117,7 @@ export default function TestStackSwitchWorkbench() {
 
         {/* Code Content */}
         <div className="p-4 font-mono text-xs overflow-x-auto text-slate-200 leading-relaxed">
-          <div className="text-slate-500">// TestStack.java</div>
+          <div className="text-slate-500">{"// TestStack.java"}</div>
           <div><span className="text-purple-400">import</span> java.util.*;</div>
           <br />
           <div><span className="text-purple-400">public class</span> <span className="text-amber-300">TestStack</span> &#123;</div>
@@ -126,7 +126,7 @@ export default function TestStackSwitchWorkbench() {
           </div>
           <br />
 
-          <div className="pl-8 text-slate-500">// Có thể dùng 1 trong 4 cách cài đặt Stack sau</div>
+          <div className="pl-8 text-slate-500">{"// Có thể dùng 1 trong 4 cách cài đặt Stack sau"}</div>
 
           {/* Render 4 lines with active highlight */}
           {implementations.map((impl) => {

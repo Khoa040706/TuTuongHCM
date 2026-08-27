@@ -1938,6 +1938,10 @@ class BasicLinkedList <E> implements ListInterface <E> {
                       variant: "warning",
                       title: "📌 KHÓ KHĂN CHUNG (DIFFICULTY)",
                       text: "Khi cài đặt các hàm cập nhật, người lập trình bắt buộc phải xử lý tất cả <b>boundary cases</b> (0, 1, 2, 3+ phần tử) để tránh đứt gãy chuỗi con trỏ hoặc NullPointerException."
+                    },
+                    {
+                      type: "component",
+                      component: "LinkedListArchitectureHierarchyStudio"
                     }
                   ]
                 }
@@ -2587,6 +2591,10 @@ public interface EnhancedListInterface <E> {
                       variant: "warning",
                       title: "⭐ CẦN NHỚ (TỔNG KẾT CẢ BÀI — TRỌNG TÂM ÔN THI)",
                       text: "1. <b>3 khó khăn khi tự cài đặt cấu trúc dữ liệu:</b> re-use code, thao tác con trỏ đúng thứ tự, xử lý đủ boundary cases.<br/>2. <b>Nắm vững quan hệ giữa các class:</b> <code>ListNode</code> / <code>DListNode</code> &rarr; <code>BasicLinkedList</code> / <code>EnhancedLinkedList</code> / <code>TailedLinkedList</code> (implements <code>ListInterface</code> / <code>EnhancedListInterface</code>).<br/>3. <b>So sánh Array vs Linked List:</b> Array có <code>getFirst()</code> nhanh nhưng <code>add/removeFirst()</code> chậm (O(n)); Linked List thì ngược lại nhanh ở đầu list (O(1)) nhưng truy cập ngẫu nhiên chậm.<br/>4. <b><code>TailedLinkedList</code></b> tối ưu <code>addLast()</code> thành O(1) nhờ con trỏ <code>tail</code>, đổi lại phải bảo trì <code>tail</code> trong mọi update.<br/>5. <b>Circular Linked List & Doubly Linked List</b> là bài tập về nhà (Homework)."
+                    },
+                    {
+                      type: "component",
+                      component: "LinkedListArchitectureHierarchyStudio"
                     }
                   ]
                 }
@@ -7000,6 +7008,6207 @@ public interface QueueADT <E> {
                     {
                       type: "component",
                       component: "HashingExerciseMultiSolver"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    /* ============================================================
+       BÀI 8: BINARY SEARCH TREE (BST)
+       ============================================================ */
+    {
+      id: "dsa-b8",
+      title: "Bài 8: Binary Search Tree (BST)",
+      subtitle: "Cây Nhị Phân Tìm Kiếm & Động Lực Học Thuật",
+      description: "Cấu trúc dữ liệu cây phi tuyến tính phân cấp, bài toán khảo sát dân số (Census Problem), ADT Table 8 thao tác cốt lõi, so sánh Unsorted vs Sorted Array và động lực ra đời của BST.",
+      sections: [
+        /* SECTION 0: HERO OVERVIEW */
+        {
+          id: "dsa-b8-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Bảng Cây BST Thời Gian Thực",
+          subsections: [
+            {
+              id: "dsa-b8-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Phòng Thí Nghiệm Cây BST Trực Quan",
+              parts: [
+                {
+                  id: "dsa-b8-part-hero",
+                  label: "LIVE BST WORKBENCH",
+                  title: "Phòng Thí Nghiệm Cây Nhị Phân Tìm Kiếm & Mô Phỏng Phép Duyệt",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaBstHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        /* SECTION I: MOTIVATION & CENSUS PROBLEM */
+        {
+          id: "dsa-b8-sec1",
+          roman: "I",
+          title: "Motivation: Census Problem (Bài toán khảo sát dân số) & ADT Table",
+          subsections: [
+            {
+              id: "dsa-b8-sub-1-1",
+              number: "1.1",
+              title: "Bài toán Khảo sát Dân số & Giả định Đơn giản hóa",
+              parts: [
+                {
+                  id: "dsa-b8-part-1-1-census",
+                  label: "ĐỘNG LỰC BÀI TOÁN",
+                  title: "Census Problem & Giả định Tuổi Sinh Viên",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Census (khảo sát dân số)</strong> là hoạt động quan trọng trong quản lý và phân tích hệ thống dữ liệu — dùng để thống kê tuổi, ngành học, quốc tịch, CAP (điểm tích lũy)... của sinh viên. Sau khi census xong, dữ liệu được dùng cho <strong>Data Mining</strong> và <strong>Statistical Analysis</strong>."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Để tập trung vào bản chất cấu trúc dữ liệu, bài toán được rút gọn lại: <strong>quản lý tập dữ liệu Age (tuổi) của sinh viên</strong>."
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "📋 Ba giả định quan trọng để đơn giản hóa bài toán:",
+                      text: "• Tuổi sinh viên nằm trong khoảng <strong>(0 – 100)</strong>.<br/>• Tất cả đều là <strong>số nguyên (integer)</strong>.<br/>• Tất cả đều <strong>phân biệt (distinct)</strong> — không có hai sinh viên trùng tuổi.<br/><em>(Giả định này giúp đơn giản hóa tính chất của BST sau này: quy tắc phân nhánh đổi từ '≥' thành '>')</em>."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-1-2",
+              number: "1.2",
+              title: "Khái niệm ADT Table & 8 Thao tác Cốt lõi",
+              parts: [
+                {
+                  id: "dsa-b8-part-1-2-operations",
+                  label: "ADT TABLE",
+                  title: "Tám thao tác (Operations) cốt lõi cần hỗ trợ trên tập tuổi",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Tập hợp các thao tác quản lý tuổi sinh viên chính là <strong>Abstract Data Type (ADT) Table</strong>: một ADT mô tả <em>\"cần làm được gì\"</em> trên tập dữ liệu, <strong>chưa quan tâm</strong> sẽ cài đặt bằng cấu trúc dữ liệu cụ thể nào (Array, Linked List, Tree...)."
+                    },
+                    {
+                      type: "table",
+                      headers: ["STT", "Thao tác (Operation)", "Mô tả ý nghĩa nghiệp vụ"],
+                      rows: [
+                        ["1", "<code>Search(age)</code>", "Tìm xem có sinh viên nào mang tuổi này trong hệ thống không?"],
+                        ["2", "<code>Insert(age)</code>", "Thêm một sinh viên mới vào hệ thống (chèn tuổi của họ)."],
+                        ["3", "<code>FindOldest() / FindYoungest()</code>", "Xác định sinh viên lớn tuổi nhất / nhỏ tuổi nhất hiện tại."],
+                        ["4", "<code>ListSortedAges()</code>", "Liệt kê danh sách tuổi các sinh viên theo thứ tự đã sắp xếp (sorted order)."],
+                        ["5", "<code>NextOlder(age)</code>", "Tìm sinh viên có tuổi lớn hơn \"sát\" một tuổi cho trước (tức là Inorder Successor)."],
+                        ["6", "<code>Remove(age)</code>", "Xóa một sinh viên đã tồn tại ra khỏi hệ thống (xóa tuổi của họ)."],
+                        ["7", "<code>GetMedian()</code>", "Xác định tuổi trung vị (median) của toàn bộ sinh viên."],
+                        ["8", "<code>NumYounger(age)</code>", "Đếm xem có bao nhiêu sinh viên trẻ hơn một độ tuổi cho trước?"]
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "⭐ Cần nhớ (Mục 1)",
+                      text: "• <strong>ADT (Abstract Data Type) ≠ cấu trúc dữ liệu cụ thể.</strong> ADT Table chỉ liệt kê <strong>hành vi (behavior)</strong> cần có.<br/>• <strong>8 thao tác trên là \"khung tham chiếu\" xuyên suốt cả bài học:</strong> Mọi cấu trúc dữ liệu (Unsorted Array, Sorted Array, BST) đều được đánh giá và so sánh dựa theo đúng 8 thao tác này."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        /* SECTION II: ARRAY IMPLEMENTATION */
+        {
+          id: "dsa-b8-sec2",
+          roman: "II",
+          title: "Giải Census Problem bằng kiến thức CS1020 (Array Implementation)",
+          subsections: [
+            {
+              id: "dsa-b8-sub-2-1",
+              number: "2.1",
+              title: "Unsorted Array (Mảng chưa sắp xếp)",
+              parts: [
+                {
+                  id: "dsa-b8-part-2-1-unsorted",
+                  label: "MẢNG CHƯA SẮP XẾP",
+                  title: "Phân tích 8 thao tác trên Unsorted Array A = [5, 7, 71, 50, 23, 4, 6, 15]",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Giả sử ta lưu trữ dữ liệu khảo sát dân số vào một <strong>mảng chưa sắp xếp (Unsorted Array)</strong> với $n = 8$ phần tử ban đầu:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Index", "0", "1", "2", "3", "4", "5", "6", "7"],
+                      rows: [
+                        ["<strong>Giá trị A</strong>", "5", "7", "71", "50", "23", "4", "6", "15"]
+                      ]
+                    },
+                    {
+                      type: "table",
+                      headers: ["No", "Operation", "Time Complexity", "Giải thích vì sao?"],
+                      rows: [
+                        ["1", "<code>Search(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Phải duyệt tuần tự (linear scan) toàn mảng vì các phần tử nằm không có thứ tự."],
+                        ["2", "<code>Insert(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(1)</span>", "Chỉ cần thêm phần tử mới vào vị trí cuối cùng của mảng (<code>A[n++] = age</code>)."],
+                        ["3", "<code>FindOldest()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Phải duyệt qua hết toàn bộ mảng để tìm phần tử mang giá trị lớn nhất (Max)."],
+                        ["4", "<code>ListSortedAges()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n log n)</span>", "Bắt buộc phải chạy giải thuật sắp xếp (Sort) lại toàn bộ mảng trước khi liệt kê."],
+                        ["5", "<code>NextOlder(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Phải duyệt hết mảng để tìm phần tử nhỏ nhất trong số các phần tử lớn hơn age."],
+                        ["6", "<code>Remove(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Phải tìm trước mất O(n), sau đó xóa rồi dồn mảng lại (hoặc đổi chỗ với phần tử cuối)."],
+                        ["7", "<code>GetMedian()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-amber-100 text-amber-800'>O(n log n) / O(n)</span>", "Cách 1: Sort mảng mất O(n log n) rồi lấy A[n/2]; Cách 2: Dùng Quickselect trung bình mất O(n)."],
+                        ["8", "<code>NumYounger(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n) / O(n log n)</span>", "Thường phải duyệt đếm từng phần tử O(n) hoặc sort mảng trước rồi đếm."]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-2-2",
+              number: "2.2",
+              title: "Sorted Array (Mảng đã sắp xếp) & Chi phí Dời mảng (Shift)",
+              parts: [
+                {
+                  id: "dsa-b8-part-2-2-sorted",
+                  label: "MẢNG ĐÃ SẮP XẾP",
+                  title: "Phân tích 8 thao tác trên Sorted Array A = [4, 5, 6, 7, 15, 23, 50, 71]",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Nếu ta sắp xếp mảng theo thứ tự tăng dần ngay từ đầu:"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Index", "0", "1", "2", "3", "4", "5", "6", "7"],
+                      rows: [
+                        ["<strong>Giá trị A</strong>", "4", "5", "6", "7", "15", "23", "50", "71"]
+                      ]
+                    },
+                    {
+                      type: "table",
+                      headers: ["No", "Operation", "Time Complexity", "Giải thích vì sao?"],
+                      rows: [
+                        ["1", "<code>Search(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(log n)</span>", "Sử dụng <strong>Binary Search</strong> vì mảng đã được sắp xếp."],
+                        ["2", "<code>Insert(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Tìm vị trí chèn mất O(log n), nhưng phải <strong>dời (shift)</strong> các phần tử lớn hơn sang phải."],
+                        ["3", "<code>FindOldest()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(1)</span>", "Chính là phần tử nằm ở cuối mảng (<code>A[n-1]</code>)."],
+                        ["4", "<code>ListSortedAges()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(n)</span>", "Chỉ cần duyệt mảng theo thứ tự có sẵn, không cần sort lại."],
+                        ["5", "<code>NextOlder(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(log n)</span>", "Binary Search ra vị trí, phần tử liền kề kế tiếp (<code>A[index + 1]</code>) chính là NextOlder."],
+                        ["6", "<code>Remove(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-rose-100 text-rose-800'>O(n)</span>", "Tìm vị trí mất O(log n), nhưng xóa phải dời (shift) mảng sang trái &rarr; Tổng O(n)."],
+                        ["7", "<code>GetMedian()</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(1)</span>", "Truy cập trực tiếp phần tử ở giữa mảng (<code>A[n/2]</code>)."],
+                        ["8", "<code>NumYounger(age)</code>", "<span class='px-2 py-0.5 rounded font-mono font-bold bg-emerald-100 text-emerald-800'>O(log n)</span>", "Binary Search ra vị trí chèn, index đó chính là số lượng phần tử nhỏ hơn."]
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "CensusArrayShiftSimulator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-2-3",
+              number: "2.3",
+              title: "So sánh tổng hợp Unsorted vs Sorted Array (Benchmark)",
+              parts: [
+                {
+                  id: "dsa-b8-part-2-3-compare",
+                  label: "SO SÁNH ĐỐI ĐẦU",
+                  title: "Bảng đối đầu trực quan 8 thao tác & Nhận xét then chốt",
+                  content: [
+                    {
+                      type: "component",
+                      component: "CensusTableBenchmark"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "👉 Nhận xét then chốt:",
+                      text: "Sorted Array có vẻ tốt hơn ở nhiều thao tác tìm kiếm và truy xuất (O(log n) hoặc O(1)), <strong>NHƯNG thao tác Insert lại rất chậm O(n)</strong>.<br/>Điều này <strong>rất tệ</strong> nếu hệ thống census liên tục thêm sinh viên mới vào cơ sở dữ liệu (thao tác Insert diễn ra thường xuyên)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-2-4",
+              number: "2.4",
+              title: "Vấn đề Hiệu năng (Performance Issue) & Động lực Học Cây BST",
+              parts: [
+                {
+                  id: "dsa-b8-part-2-4-bridge",
+                  label: "ĐỘNG LỰC HỌC BST",
+                  title: "Tại sao không cấu trúc mảng nào thắng tuyệt đối & Cầu nối sang BST",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tổng kết bài toán hiệu năng:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Không cấu trúc nào</strong> (Unsorted hay Sorted Array) <strong>thắng tuyệt đối</strong> ở mọi thao tác.",
+                        "Nếu $n$ lớn, các truy vấn (query) trở nên chậm ở ít nhất một vài thao tác quan trọng.",
+                        "&rArr; Chúng ta cần một <strong>cấu trúc dữ liệu động (dynamic data structure)</strong> &mdash; vừa <strong>Insert/Remove nhanh</strong>, vừa <strong>Search/Order nhanh</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstMotivationBridge"
+                    },
+                    {
+                      type: "callout",
+                      variant: "success",
+                      title: "⭐ Ghi nhớ cốt lõi (Motivation)",
+                      text: "• <strong>Unsorted Array:</strong> Insert nhanh (O(1)), nhưng mọi thứ liên quan tìm kiếm / thứ tự đều chậm (O(n) / O(n log n)).<br/>• <strong>Sorted Array:</strong> Search / Order-related nhanh (O(log n) hoặc O(1)), nhưng Insert / Remove chậm (O(n)) do phải shift phần tử.<br/>• <strong>ĐÂY CHÍNH LÀ ĐỘNG LỰC ĐỂ HỌC BST:</strong> Kết hợp ưu điểm <em>\"tìm nhanh kiểu sorted\"</em> với <em>\"chèn/xóa nhanh kiểu linked\"</em> bằng một cấu trúc <strong>cây (Tree)</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec3",
+          roman: "III",
+          title: "So sánh trực quan O(n) và O(log n)",
+          subsections: [
+            {
+              id: "dsa-b8-sub-3-1",
+              number: "3.1",
+              title: "So sánh trực quan O(n) vs O(log n) — Lời hứa hẹn của BST",
+              parts: [
+                {
+                  id: "dsa-b8-part-3-1-compare",
+                  label: "SO SÁNH TRỰC QUAN",
+                  title: "Tốc độ tăng trưởng của O(n) và O(log n)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Minh họa sự chênh lệch qua các quy mô dữ liệu:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "• $n = 8 \\implies \\log_2 n = 3$",
+                        "• $n = 16 \\implies \\log_2 n = 4$",
+                        "• $n = 32 \\implies \\log_2 n = 5$",
+                        "• Thử với $n$ lớn hơn nhiều, ví dụ <strong>$n = 1.000.000$ (1 triệu)</strong> $\\implies \\log_2 n$ chỉ khoảng <strong>$20$</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BigOComparisonVisualizer"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Core Takeaway)",
+                      text: "• $O(\\log n)$ tăng <strong>rất chậm</strong> so với $O(n)$ khi $n$ lớn.<br/>• Đây là lý do vì sao các thao tác chạy $O(\\log n)$ (hay $O(h)$ nếu cây cân bằng) trên dữ liệu lớn vẫn nhanh, trong khi $O(n)$ trở nên rất chậm.<br/>• Đây chính là <strong>\"lời hứa hẹn\" của BST</strong> &mdash; <strong>nếu</strong> cây có chiều cao thấp (cân bằng)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec4",
+          roman: "IV",
+          title: "Binary Search Tree (BST) — Cấu trúc & Định nghĩa",
+          subsections: [
+            {
+              id: "dsa-b8-sub-4-1",
+              number: "4.1",
+              title: "Định nghĩa Vertex & Tính chất BST Property",
+              parts: [
+                {
+                  id: "dsa-b8-part-4-1-vertex-def",
+                  label: "CẤU TRÚC ĐỈNH & TÍNH CHẤT",
+                  title: "Định nghĩa Vertex và bất đẳng thức BST Property",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<em>\"A Versatile, Non-Linear Data Structure\"</em> &mdash; Cấu trúc dữ liệu phi tuyến tính (non-linear), đa năng (versatile)."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Với mỗi đỉnh <code>x</code>, định nghĩa các thuộc tính liên kết:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>x.left</code> &mdash; con trái (left child) của <code>x</code>",
+                        "<code>x.right</code> &mdash; con phải (right child) của <code>x</code>",
+                        "<code>x.parent</code> &mdash; cha (parent) của <code>x</code>",
+                        "<code>x.key</code> (hay <code>x.value</code>, <code>x.data</code>) &mdash; giá trị lưu tại <code>x</code>"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>BST Property (Tính chất cốt lõi của cây tìm kiếm nhị phân):</strong>"
+                    },
+                    {
+                      type: "code",
+                      language: "text",
+                      code: "x.left.key < x.key <= x.right.key"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Mọi khóa trong cây con trái của <code>x</code> phải <strong>nhỏ hơn</strong> <code>x.key</code>.",
+                        "Mọi khóa trong cây con phải của <code>x</code> phải <strong>lớn hơn hoặc bằng</strong> <code>x.key</code>.",
+                        "<strong>Giả định đơn giản hóa:</strong> vì các khóa là <strong>duy nhất (unique)</strong>, ta có thể đổi <code>&le;</code> thành <code>&gt;</code>:"
+                      ]
+                    },
+                    {
+                      type: "code",
+                      language: "text",
+                      code: "x.left.key < x.key < x.right.key"
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<em>Tính chất này phải đúng cho <strong>MỌI đỉnh x</strong> trong cây, không chỉ riêng đỉnh root.</em>"
+                    },
+                    {
+                      type: "component",
+                      component: "BstNodeAnatomyValidator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-4-2",
+              number: "4.2",
+              title: "Cây mẫu BST (Ages) — Dùng xuyên suốt bài",
+              parts: [
+                {
+                  id: "dsa-b8-part-4-2-sample-tree",
+                  label: "CÂY MẪU CHUẨN",
+                  title: "Cây BST chuẩn mẫu (Root = 15)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Dưới đây là cây BST mẫu lưu trữ các khóa tuổi (Ages) được sử dụng thống nhất xuyên suốt các phần bài học:"
+                    },
+                    {
+                      type: "component",
+                      component: "BstSampleTreeExplorer"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Đây là cây mẫu sẽ được dùng lại ở <strong>mọi ví dụ minh họa</strong> trong các phần sau (Search, Successor, Insert, Delete, Analysis...).",
+                        "Đây là một <strong>định nghĩa đệ quy (recursive definition)</strong>: cây con trái (gồm 6, 4, 7, 5) và cây con phải (gồm 23, 71, 50) của root cũng đều là các BST hợp lệ.",
+                        "<strong>Internal vertices (đỉnh trong):</strong> đỉnh có ít nhất 1 con &rarr; gồm <code>15, 6, 23, 4, 71</code>.",
+                        "<strong>Leaves (đỉnh lá):</strong> đỉnh không có con nào &rarr; gồm <code>5, 7, 50</code>."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Core Rules)",
+                      text: "• <strong>BST Property</strong> là điều kiện <strong>bắt buộc</strong> phải giữ đúng sau <strong>mọi</strong> thao tác Insert/Delete.<br/>• Vì key duy nhất &rarr; luôn đúng dấu <code>&lt;</code> chặt (strict) khi so sánh (<code>x.left.key &lt; x.key &lt; x.right.key</code>).<br/>• BST là cấu trúc <strong>đệ quy</strong>: cây con trái/phải của một BST cũng là một BST.<br/>• Ghi nhớ hình cây mẫu (root 15, trái 6-4-7-5, phải 23-71-50) &mdash; các phần sau đều dùng lại cây này."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec5",
+          roman: "V",
+          title: "Các thao tác (Operations) trên BST",
+          subsections: [
+            {
+              id: "dsa-b8-sub-5-1",
+              number: "5.1",
+              title: "Search / FindMin / FindMax",
+              parts: [
+                {
+                  id: "dsa-b8-part-5-1-search",
+                  label: "TÌM KIẾM CƠ BẢN",
+                  title: "Thuật toán Search(v), FindMin() và FindMax()",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Khái niệm:</strong> Tìm một giá trị <code>v</code> trong cây, hoặc tìm giá trị nhỏ nhất / lớn nhất."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Cách hoạt động (Search(v)):</strong> Bắt đầu từ root, so sánh <code>v</code> với <code>x.key</code> tại đỉnh hiện tại:",
+                        "&nbsp;&nbsp;• Nếu bằng &rarr; tìm thấy, dừng lại.",
+                        "&nbsp;&nbsp;• Nếu <code>v</code> nhỏ hơn <code>x.key</code> &rarr; đi sang trái (<code>x = x.left</code>).",
+                        "&nbsp;&nbsp;• Nếu <code>v</code> lớn hơn <code>x.key</code> &rarr; đi sang phải (<code>x = x.right</code>).",
+                        "&nbsp;&nbsp;• Lặp lại cho đến khi tìm thấy, hoặc <code>x</code> trở thành <code>NULL</code> (không tồn tại trong cây).",
+                        "<strong>Ví dụ minh họa &mdash; <code>search(5)</code> trên cây mẫu:</strong>",
+                        "&nbsp;&nbsp;• Tại 15: <code>5 < 15</code> &rarr; đi trái đến 6.",
+                        "&nbsp;&nbsp;• Tại 6: <code>5 < 6</code> &rarr; đi trái đến 4.",
+                        "&nbsp;&nbsp;• Tại 4: <code>5 > 4</code> &rarr; đi phải đến 5.",
+                        "&nbsp;&nbsp;• Tại 5: <code>5 == 5</code> &rarr; **tìm thấy!**",
+                        "<strong>FindMin:</strong> từ root, liên tục đi sang trái (<code>x = x.left</code>) đến khi không còn con trái &rarr; đỉnh cuối cùng chính là min. (Trên cây mẫu: 15 &rarr; 6 &rarr; 4 &rarr; <strong>min = 4</strong>).",
+                        "<strong>FindMax:</strong> từ root, liên tục đi sang phải (<code>x = x.right</code>) đến khi không còn con phải &rarr; đỉnh cuối cùng chính là max. (Trên cây mẫu: 15 &rarr; 23 &rarr; 71 &rarr; <strong>max = 71</strong>)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstSearchMinMaxTracer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-5-2",
+              number: "5.2",
+              title: "Successor, Predecessor & Inorder Traversal",
+              parts: [
+                {
+                  id: "dsa-b8-part-5-2-traversal",
+                  label: "ĐIỀU HƯỚNG & DUYỆT CÂY",
+                  title: "Tìm phần tử kế tiếp và Duyệt trung thứ tự",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Khái niệm Successor & Predecessor:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Successor(x):</strong> phần tử <strong>kế tiếp lớn hơn</strong> <code>x</code> theo thứ tự sắp xếp (số nhỏ nhất trong các số lớn hơn <code>x</code>).",
+                        "<strong>Predecessor(x):</strong> phần tử <strong>kế tiếp nhỏ hơn</strong> <code>x</code> theo thứ tự sắp xếp (số lớn nhất trong các số nhỏ hơn <code>x</code>).",
+                        "<strong>Cách hoạt động:</strong>",
+                        "&nbsp;&nbsp;• Nếu <code>x</code> có cây con phải &rarr; <code>Successor(x) = FindMin(cây con phải đó)</code>.",
+                        "&nbsp;&nbsp;• Nếu <code>x</code> <strong>không</strong> có cây con phải &rarr; đi lên (theo <code>x.parent</code>) cho đến khi gặp một <strong>\"rẽ phải\"</strong> (tức là gặp một tổ tiên mà ta đi lên từ nhánh con trái của nó) &rarr; tổ tiên đó chính là successor. Nếu không tìm được &rarr; không có successor (<code>x</code> đã là max).",
+                        "&nbsp;&nbsp;• <em>Predecessor làm ngược lại (đối xứng)</em>: dùng max của cây con trái, hoặc đi lên tìm \"rẽ trái\"."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Inorder Traversal (Duyệt trung thứ tự):</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khái niệm:</strong> Duyệt toàn bộ cây theo thứ tự: <strong>trái &rarr; gốc &rarr; phải (left &rarr; root &rarr; right)</strong>, đệ quy cho mỗi cây con.",
+                        "<strong>Kết quả:</strong> một danh sách các khóa theo <strong>thứ tự tăng dần</strong>: <code>4, 5, 6, 7, 15, 23, 50, 71</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstTraversalPlayground"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-5-3",
+              number: "5.3",
+              title: "Select / Rank (Kiến thức mở rộng)",
+              parts: [
+                {
+                  id: "dsa-b8-part-5-3-select-rank",
+                  label: "MỞ RỘNG",
+                  title: "Thao tác Select(k) và Rank(v)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Khái niệm:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Select(k):</strong> trả về giá trị <code>v</code> của phần tử <strong>nhỏ thứ k</strong> (k-th smallest), đánh số bắt đầu từ 1 (1-based index).",
+                        "<strong>Rank(v):</strong> trả về <strong>thứ hạng (ranking)</strong> <code>k</code> của phần tử <code>v</code> &mdash; tức <code>v</code> là phần tử nhỏ thứ mấy trong cây.",
+                        "<strong>Ví dụ (dựa trên danh sách inorder đã sắp xếp: 4, 5, 6, 7, 15, 23, 50, 71 tương ứng thứ hạng 1-8):</strong>",
+                        "&nbsp;&nbsp;• <code>Select(1) = 4</code>, <code>Select(3) = 6</code>, <code>Select(8) = 71</code>",
+                        "&nbsp;&nbsp;• <code>Rank(4) = 1</code>, <code>Rank(6) = 3</code>, <code>Rank(71) = 8</code>"
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "ℹ️ Ghi chú từ bài giảng",
+                      text: "2 thao tác này <strong>chưa</strong> có trong VisuAlgo tại thời điểm ra slide (sẽ được thêm sau); cách cài đặt chi tiết (cần lưu thêm thông tin kích thước cây con &mdash; subtree size &mdash; tại mỗi đỉnh) sẽ học ở <strong>bài kế tiếp</strong>, không nằm trong nội dung bài này."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-5-4",
+              number: "5.4",
+              title: "Insert & Delete/Remove (3 Trường Hợp Cốt Lõi)",
+              parts: [
+                {
+                  id: "dsa-b8-part-5-4-insert-delete",
+                  label: "CẬP NHẬT CÂY",
+                  title: "Chèn đỉnh mới và Xóa đỉnh với 3 trường hợp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Insert (Chèn đỉnh mới):</strong> Chèn thêm một giá trị mới vào cây mà vẫn giữ đúng BST Property."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Cách hoạt động:</strong> Giống như Search: so sánh giá trị cần chèn với <code>x.key</code> tại từng đỉnh, đi trái/phải tương ứng.",
+                        "Khi gặp một vị trí <code>NULL</code> (không còn đỉnh nào để so sánh tiếp) &rarr; chèn đỉnh mới (chứa giá trị cần thêm) vào đúng vị trí đó (làm con trái hoặc con phải của đỉnh cuối cùng đã đi qua).",
+                        "<strong>Đỉnh mới luôn được chèn làm lá (leaf).</strong>",
+                        "<strong>Ví dụ minh họa &mdash; <code>insert(20)</code> trên cây mẫu:</strong>",
+                        "&nbsp;&nbsp;• Tại 15: <code>20 > 15</code> &rarr; đi phải đến 23.",
+                        "&nbsp;&nbsp;• Tại 23: <code>20 < 23</code> &rarr; đi trái; 23 chưa có con trái &rarr; <strong>chèn 20 làm con trái của 23</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Delete / Remove &mdash; 3 trường hợp (cases):</strong> Xóa một đỉnh khỏi cây mà vẫn giữ đúng BST Property. Có đúng <strong>3 trường hợp</strong> cần xử lý khác nhau tùy số con của đỉnh cần xóa:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. Case 1 &mdash; Xóa lá (leaf), 0 con: <code>remove(5)</code></strong>: 5 là lá (không có con nào) &rarr; chỉ việc gỡ bỏ đỉnh 5 khỏi cây (4 không còn con phải nữa).",
+                        "<strong>2. Case 2 &mdash; Xóa đỉnh có đúng 1 con (one child): <code>remove(23)</code></strong>: 23 chỉ có 1 con (con phải là 71, không có con trái) &rarr; nối 71 trực tiếp vào vị trí của 23 (71 trở thành con phải mới của 15).",
+                        "<strong>3. Case 3 &mdash; Xóa đỉnh có 2 con (two children): <code>remove(6)</code></strong>: 6 có 2 con (4 và 7) &rarr; không thể xóa trực tiếp vì sẽ \"đứt\" 2 nhánh con. Giải pháp: dùng <strong>successor</strong> của 6.",
+                        "&nbsp;&nbsp;• <code>Successor(6) = min của cây con phải của 6 = 7</code> (7 không có con trái).",
+                        "&nbsp;&nbsp;• Thay khóa của 6 bằng 7, rồi xóa đỉnh 7 cũ (lúc này 7 cũ là lá nên xóa dễ dàng &mdash; quy về Case 1)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstInsertDeletePlayground"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Summary & Complexity)",
+                      text: "• <strong>Search / Insert / FindMin / FindMax / Successor / Predecessor</strong> đều đi theo <strong>một đường duy nhất từ root xuống (hoặc lên)</strong> &rarr; độ phức tạp phụ thuộc <strong>chiều cao cây (height, h)</strong>, không phụ thuộc trực tiếp vào $n$.<br/>• <strong>Inorder traversal</strong> cho ra dãy khóa <strong>tăng dần</strong> &rarr; đây là cách <code>ListSortedAges()</code> từ BST.<br/>• <strong>Insert</strong> luôn chèn đỉnh mới làm <strong>lá</strong>.<br/>• <strong>Delete</strong> có <strong>3 case</strong> rõ ràng: 0 con (xóa thẳng), 1 con (nối con lên thay chỗ), 2 con (thay bằng successor rồi xóa successor cũ).<br/>• <strong>Select/Rank</strong> là kiến thức mở rộng, chi tiết cài đặt dành bài sau."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec6",
+          roman: "VI",
+          title: "Phân tích độ phức tạp (Analysis of BST Operations)",
+          subsections: [
+            {
+              id: "dsa-b8-sub-6-1",
+              number: "6.1",
+              title: "Phân tích độ phức tạp theo chiều cao h: Search, Min, Max, Insert",
+              parts: [
+                {
+                  id: "dsa-b8-part-6-1-height-analysis",
+                  label: "PHÂN TÍCH CHIỀU CAO O(h)",
+                  title: "Tại sao các thao tác cơ bản đều chạy trong O(h)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Quy ước:</strong> <code>h == height (chiều cao)</code> của BST = số cạnh trên đường đi dài nhất từ root xuống 1 lá."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.1. Search Analysis &mdash; Ví dụ <code>search(51)</code> trên cây mẫu:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Tại 15: <code>51 > 15</code> &rarr; đi phải đến 23.",
+                        "Tại 23: <code>51 > 23</code> &rarr; đi phải đến 71.",
+                        "Tại 71: <code>51 < 71</code> &rarr; đi trái đến 50.",
+                        "Tại 50: <code>51 > 50</code> &rarr; đi phải; 50 không có con phải &rarr; <strong>51 is not found</strong> (không tồn tại trong cây).",
+                        "<strong>Phân tích nhanh:</strong> Search chạy trong <strong>O(h)</strong> &mdash; vì tại mỗi bước ta chỉ đi xuống đúng 1 tầng (level), và số tầng tối đa có thể đi qua là <code>h</code>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.2. FindMin / FindMax Analysis:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>findMin</code> đi từ root theo nhánh trái liên tục &mdash; số bước tối đa = <code>h</code>.",
+                        "<code>findMax</code> đi từ root theo nhánh phải liên tục &mdash; số bước tối đa = <code>h</code>.",
+                        "<strong>Phân tích nhanh:</strong> cả 2 đều chạy trong <strong>O(h)</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.3. Successor / Predecessor Analysis:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Giả sử đã có sẵn kết quả <code>search(71)</code> chạy O(h) trước đó (tức là ta đã đứng tại đỉnh 71).",
+                        "<code>successor(71)</code>: 71 không có con phải &rarr; đi lên (go up) tìm \"rẽ phải\" đầu tiên; nhưng đi lên hoài (71 &rarr; 23 &rarr; 15) đều là <strong>đi lên từ nhánh con phải</strong> của tổ tiên (không phải \"rẽ phải\" &mdash; tức không có tổ tiên nào mà ta đi lên từ nhánh trái của nó) &rarr; <strong>không tìm được successor cho 71</strong> (71 chính là max của cây).",
+                        "<strong>Phân tích nhanh:</strong> việc đi lên tối đa cũng chỉ dài <code>h</code> bước &rarr; <strong>O(h)</strong>, tương tự cho predecessor."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.5. Insertion Analysis &mdash; Ví dụ <code>insert(50)</code>:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Slide minh họa trên một snapshot <strong>trước khi 50 được chèn vào</strong> (cây lúc này chỉ gồm 15, 6, 23, 4, 7, 71).",
+                        "Tại 15: <code>50 > 15</code> &rarr; đi phải đến 23.",
+                        "Tại 23: <code>50 > 23</code> &rarr; đi phải đến 71.",
+                        "Tại 71: <code>50 < 71</code> &rarr; đi trái; 71 chưa có con trái &rarr; <strong>chèn 50 vào đây, làm con trái của 71</strong>.",
+                        "<strong>Phân tích nhanh:</strong> insert cũng chỉ đi theo 1 đường từ root xuống &rarr; chạy trong <strong>O(h)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstHeightComplexityTracer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-6-2",
+              number: "6.2",
+              title: "Phân tích Inorder Traversal — Kỹ thuật 3 lần chạm (O(n))",
+              parts: [
+                {
+                  id: "dsa-b8-part-6-2-inorder-analysis",
+                  label: "KỸ THUẬT 3 LẦN CHẠM",
+                  title: "Tại sao Inorder Traversal tốn O(n) thay vì O(h)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.4. Inorder Traversal Analysis:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Đây là kỹ thuật phân tích <strong>mới</strong> (khác với đếm số bước đi xuống): đặt câu hỏi &mdash; <em>mỗi đỉnh bị \"chạm\" (touched) bao nhiêu lần trong suốt quá trình duyệt?</em>",
+                        "<strong>Trả lời:</strong> đúng <strong>3 lần</strong> cho mỗi đỉnh: 1 lần từ cha (parent) đi xuống vào đỉnh đó, và 2 lần từ chính đỉnh đó \"hỏi thăm\" 2 con trái & phải (dù con đó có thể rỗng/NULL, vẫn tính là 1 lần \"chạm\" theo lời gọi đệ quy).",
+                        "Với <code>n</code> đỉnh, tổng số lần chạm ~ <code>3n</code> &rarr; <strong>O(3n) = O(n)</strong> (hằng số 3 bị lược bỏ trong ký hiệu Big O).",
+                        "<strong>Lưu ý quan trọng:</strong> Inorder Traversal là <strong>O(n)</strong>, KHÔNG phải O(h) &mdash; vì bắt buộc phải ghé thăm <strong>toàn bộ n đỉnh</strong>, không chỉ 1 đường đi."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstInorder3TouchAnimator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-6-3",
+              number: "6.3",
+              title: "Chứng minh: Successor của x luôn có tối đa 1 con",
+              parts: [
+                {
+                  id: "dsa-b8-part-6-3-successor-proof",
+                  label: "CHỨNG MINH TỰ LUẬN",
+                  title: "4 bước chứng minh Successor của x có tối đa 1 con",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.6. Vì sao dùng Successor để xóa đỉnh có 2 con?</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Claim (Khẳng định):</strong> Successor của <code>x</code> luôn có <strong>nhiều nhất 1 con</strong>.",
+                        "Vì vậy thay <code>x</code> bằng successor rồi xóa successor cũ sẽ <strong>dễ xóa hơn</strong> và <strong>không vi phạm</strong> BST Property."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Chứng minh (Proof) &mdash; từng bước chặt chẽ:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "1. Đỉnh <code>x</code> có 2 con &rarr; do đó <code>x</code> chắc chắn có <strong>con phải (right child)</strong> (vì có 2 con nghĩa là có cả trái lẫn phải).",
+                        "2. Vì <code>x</code> có con phải, nên Successor của <code>x</code> (phần tử kế tiếp lớn hơn x) chính là <strong>phần tử nhỏ nhất (minimum)</strong> của cây con phải đó &mdash; theo cách hoạt động của Successor đã nêu ở mục 5.2.",
+                        "3. Một phần tử nhỏ nhất (minimum) của bất kỳ BST nào <strong>luôn không có con trái</strong> &rarr; vì nếu có con trái, con trái đó còn nhỏ hơn nữa, mâu thuẫn với giả thiết đây là phần tử nhỏ nhất.",
+                        "4. &rarr; Vậy successor của <code>x</code> <strong>không có con trái</strong>, chỉ có thể có (hoặc không có) con phải &rarr; <strong>successor của x có tối đa 1 con</strong>. ∎"
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "info",
+                      title: "ℹ️ Vì sao điều này quan trọng?",
+                      text: "• Đỉnh có tối đa 1 con thì việc xóa nó chỉ rơi vào <strong>Case 1 (0 con)</strong> hoặc <strong>Case 2 (1 con)</strong> &mdash; đều là các trường hợp đơn giản, đã biết cách xử lý O(1).<br/>• Việc thay <code>x.key</code> bằng <code>successor.key</code> rồi xóa successor cũ <strong>không làm vi phạm BST Property</strong>, vì successor vẫn nằm đúng vị trí \"ngay sau x\" trong thứ tự sắp xếp."
+                    },
+                    {
+                      type: "component",
+                      component: "BstSuccessorProofVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-6-4",
+              number: "6.4",
+              title: "Phân tích Deletion — Chi tiết 3 Case & Bảng tổng hợp",
+              parts: [
+                {
+                  id: "dsa-b8-part-6-4-deletion-analysis",
+                  label: "PHÂN TÍCH DELETION",
+                  title: "Chi tiết chi phí 3 trường hợp xóa và Bảng tổng hợp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>6.7. Deletion Analysis &mdash; chi tiết 3 case:</strong> Xóa đỉnh <code>v</code>: Đầu tiên <strong>tìm <code>v</code></strong> trong cây &rarr; <strong>O(h)</strong>, sau đó xét 3 trường hợp:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. <code>v</code> không có con nào (Case 1):</strong> Xóa trực tiếp đỉnh <code>v</code> khỏi cây (chỉ cần cập nhật <code>v.parent</code> để không còn trỏ tới <code>v</code> nữa) &rarr; <strong>O(1)</strong>.",
+                        "<strong>2. <code>v</code> có 1 con, trái hoặc phải (Case 2):</strong> Nối <code>v.left</code> (hoặc <code>v.right</code>, tùy con nào tồn tại) trực tiếp với <code>v.parent</code>, và cập nhật ngược lại <code>v.parent</code> cho con đó &rarr; <strong>O(1)</strong>. Sau đó gỡ bỏ <code>v</code> &rarr; <strong>O(1)</strong>.",
+                        "<strong>3. <code>v</code> có 2 con (Case 3):</strong>",
+                        "&nbsp;&nbsp;• Tìm <code>x = successor(v)</code> &rarr; <strong>O(h)</strong> (theo phân tích mục 6.3).",
+                        "&nbsp;&nbsp;• Thay <code>v.key</code> bằng <code>x.key</code> &rarr; <strong>O(1)</strong>.",
+                        "&nbsp;&nbsp;• Xóa <code>x</code> trong cây con phải của <code>v</code> &rarr; <strong>O(h)</strong> (nhưng thực chất <code>x</code> chỉ có tối đa 1 con theo mục 6.6, nên bước xóa <code>x</code> này lại quay về Case 1 hoặc Case 2, tốn O(1); phần O(h) chủ yếu nằm ở bước \"tìm\" <code>x</code>).",
+                        "&nbsp;&nbsp;• <em>(Lý do phải xóa <code>x</code> chứ không xóa <code>v</code> gốc: nếu không xóa <code>x</code> mà chỉ đổi key thì sẽ có 2 đỉnh cùng giá trị x.key &rarr; trùng lặp (duplicate), vi phạm giả định key duy nhất.)</em>"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "&rArr; <strong>Tổng thời gian chạy (running time) của Delete, tính cả 3 case: O(h).</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "BstDeletionComplexityAnalyzer"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Bảng tổng hợp phân tích)",
+                      text: "• Hầu hết thao tác trên BST đều là <strong>O(h)</strong>, ngoại lệ duy nhất là <strong>Inorder traversal O(n)</strong> (vì bản chất phải duyệt hết mọi đỉnh, không thể \"đi tắt\").<br/>• Chứng minh \"successor có tối đa 1 con\" là <strong>điểm hay bị hỏi thi tự luận</strong> &rarr; cần nhớ đủ 4 bước chứng minh ở mục 6.6.<br/>• 3 case của Delete (0 con / 1 con / 2 con) là kiến thức trọng tâm, cần vẽ được minh họa cho từng case."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec7",
+          roman: "VII",
+          title: "Tổng kết: BST so với Array & Giới hạn Plain BST",
+          subsections: [
+            {
+              id: "dsa-b8-sub-7-1",
+              number: "7.1",
+              title: "Bảng đối đầu 3 cấu trúc (Unsorted vs Sorted vs BST)",
+              parts: [
+                {
+                  id: "dsa-b8-part-7-1-arena",
+                  label: "ĐỐI ĐẦU 3 CHIỀU",
+                  title: "So sánh toàn diện 8 thao tác ADT Table",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bảng so sánh 3 cấu trúc dữ liệu cho 8 thao tác ADT Table:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "BstArrayVsBstArena"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Ô <code>Rank(age)</code> của cột BST được đánh dấu <strong>\"?\"</strong> trong slide &mdash; vì cách cài đặt Rank/Select cụ thể (và độ phức tạp chính xác) sẽ học ở <strong>bài kế tiếp</strong>.",
+                        "So với Sorted Array, <strong>BST đã giải quyết được điểm yếu lớn nhất: Insert từ O(n) xuống O(h)</strong>.",
+                        "<strong>Kết luận của slide:</strong> <strong>mọi thứ bây giờ phụ thuộc vào <code>h</code></strong> (chiều cao cây) &mdash; độ phức tạp thật sự của BST sẽ được phân tích kỹ ở bài kế tiếp (next lecture), vì <code>h</code> có thể khác nhau tùy hình dạng cây."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b8-sub-7-2",
+              number: "7.2",
+              title: "Hiện tượng suy biến Worst-Case Height (h = O(n))",
+              parts: [
+                {
+                  id: "dsa-b8-part-7-2-worst-case",
+                  label: "HIỆN TƯỢNG SUY BIẾN",
+                  title: "Cây lệch (Skewed Tree) và Giới hạn của Plain BST",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>7.1. Worst case height của BST:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Nếu chèn dữ liệu theo thứ tự <strong>đã sắp xếp sẵn</strong> (ví dụ chèn lần lượt: 4, 5, 6, 7, 15, 23, 50, 71), mỗi giá trị mới luôn lớn hơn giá trị trước &rarr; luôn bị chèn làm <strong>con phải</strong> của đỉnh cuối cùng. BST khi đó suy biến thành một <strong>đường thẳng (giống linked list)</strong>.",
+                        "Khi đó: <strong><code>h = O(n)</code></strong> (chiều cao bằng đúng số đỉnh trừ 1) &rarr; BST <strong>mất hết lợi thế</strong>, mọi thao tác O(h) trở thành O(n), không còn hơn gì Unsorted Array!",
+                        "<strong>Câu hỏi mở của slide:</strong> Hãy thử tìm thêm <strong>một kịch bản worst case khác</strong> cùng với tập số này.",
+                        "&nbsp;&nbsp;• <em>Gợi ý logic:</em> chèn theo thứ tự <strong>giảm dần</strong> (71, 50, 23, 15, 7, 6, 5, 4) cũng cho ra cây suy biến tương tự nhưng lệch về bên trái (mỗi giá trị mới luôn nhỏ hơn, bị chèn làm con trái liên tiếp)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstWorstCaseSkewedSimulator"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Giới hạn của Plain BST)",
+                      text: "• BST (thường/plain BST) <strong>không tự cân bằng (not self-balancing)</strong> &rarr; nếu dữ liệu vào theo thứ tự xấu (đã sắp xếp tăng hoặc giảm dần), cây suy biến thành danh sách liên kết, <code>h = O(n)</code>.<br/>• Đây chính là động lực (motivation) để học các cấu trúc <strong>cây cân bằng (balanced BST)</strong> ở các bài sau.<br/>• Do <code>h</code> có thể là O(n) trong trường hợp xấu nhất, nên <strong>plain BST không đảm bảo O(log n)</strong> cho các thao tác &mdash; chỉ đảm bảo <strong>O(h)</strong>, và h chỉ thực sự là O(log n) khi cây \"cân đối\"."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b8-sec8",
+          roman: "VIII",
+          title: "Tóm tắt toàn bài & Dashboard Ôn thi",
+          subsections: [
+            {
+              id: "dsa-b8-sub-8-1",
+              number: "8.1",
+              title: "Master Cheat Sheet & Flashcards Ôn tập",
+              parts: [
+                {
+                  id: "dsa-b8-part-8-1-summary-cheat-sheet",
+                  label: "TỔNG KẾT TOÀN BÀI",
+                  title: "Tóm tắt nhanh toàn bài (Ôn thi)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tổng hợp nhanh 12 điểm cốt lõi của Bài 8: Binary Search Tree (BST) phục vụ ôn tập và thi cử:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "Bai8MasterSummaryDashboard"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. ADT Table:</strong> cần 8 thao tác cơ bản: Search, Insert, FindOldest/Youngest, ListSortedAges, NextOlder, Remove, GetMedian, NumYounger.",
+                        "<strong>2. Unsorted Array:</strong> Insert nhanh (O(1)), còn lại chậm (đa số O(n) hoặc O(n log n)).",
+                        "<strong>3. Sorted Array:</strong> Search/Order-related nhanh (O(log n) hoặc O(1)), nhưng Insert/Remove chậm (O(n)) vì phải shift.",
+                        "<strong>4. BST Property:</strong> <code>x.left.key < x.key < x.right.key</code> (dùng dấu <code>&lt;</code> chặt vì key unique).",
+                        "<strong>5. Cấu trúc BST:</strong> đệ quy, gồm <strong>internal vertices</strong> (có con) và <strong>leaves</strong> (không con).",
+                        "<strong>6. Cây mẫu chuẩn cần nhớ:</strong> root 15; trái 6 (con 4, 7; 4 có con phải 5); phải 23 (con phải 71; 71 có con trái 50).",
+                        "<strong>7. Các thao tác và cách hoạt động căn bản:</strong> Search, FindMin/Max, Successor/Predecessor, Inorder Traversal, Select/Rank (khái niệm), Insert, Delete (3 case).",
+                        "<strong>8. Hầu hết thao tác BST chạy O(h)</strong>; riêng <strong>Inorder Traversal = O(n)</strong> (mỗi đỉnh bị chạm đúng 3 lần).",
+                        "<strong>9. Xóa đỉnh có 2 con:</strong> thay bằng <strong>successor</strong> (chứng minh: successor luôn có tối đa 1 con, gồm 4 bước chứng minh) rồi xóa successor cũ.",
+                        "<strong>10. 3 case xóa:</strong> không con (O(1), gỡ thẳng), 1 con (O(1), nối con lên thay chỗ), 2 con (O(h) do phải tìm successor, phần xóa thực tế chỉ O(1)).",
+                        "<strong>11. Worst case:</strong> BST suy biến thành danh sách liên kết khi dữ liệu chèn vào đã có thứ tự (tăng hoặc giảm dần) &rarr; <code>h = O(n)</code>.",
+                        "<strong>12. Bài học rút ra cuối bài:</strong> hiệu năng BST phụ thuộc hoàn toàn vào chiều cao <code>h</code> &rarr; cần cấu trúc cân bằng (balanced) để đảm bảo <code>h = O(log n)</code>, nội dung này sẽ học ở bài kế tiếp."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b9",
+      title: "Bài 9: AVL Tree — Balancing Act",
+      sections: [
+        {
+          id: "dsa-b9-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Phòng Thí Nghiệm Cây AVL Tự Cân Bằng",
+          subsections: [
+            {
+              id: "dsa-b9-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Live AVL Balancing Workbench",
+              parts: [
+                {
+                  id: "dsa-b9-part-hero",
+                  label: "LIVE AVL WORKBENCH",
+                  title: "Tựa đề & Phòng thí nghiệm cây AVL trực quan",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaAvlHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec1",
+          roman: "I",
+          title: "Binary Search Tree (BST): Ôn nhanh",
+          subsections: [
+            {
+              id: "dsa-b9-sub-1-1",
+              number: "1.1",
+              title: "Khái niệm cơ bản & BST Property",
+              parts: [
+                {
+                  id: "dsa-b9-part-1-1-bst-basics",
+                  label: "CƠ BẢN VỀ BST",
+                  title: "Khái niệm đỉnh & Tính chất BST Property",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mỗi đỉnh (vertex) <code>x</code> trong cây BST có:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Hai con: <code>x.left</code>, <code>x.right</code>.",
+                        "Một cha: <code>x.parent</code>.",
+                        "<code>x.left / x.right / x.parent</code> có thể là <code>null</code> với một số đỉnh.",
+                        "Một khóa: <code>x.key</code>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>BST Property (Tính chất BST):</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>all keys in left sub-tree < x.key < all keys in right sub-tree</code>",
+                        "(Mọi khóa trong cây con trái &lt; khóa của x &lt; mọi khóa trong cây con phải)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-1-2",
+              number: "1.2",
+              title: "Hai thuộc tính bổ sung: Height và Size",
+              parts: [
+                {
+                  id: "dsa-b9-part-1-2-height-size",
+                  label: "HEIGHT & SIZE",
+                  title: "Hai thuộc tính bổ sung & Công thức đệ quy",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Height (chiều cao):</strong> số cạnh (edges) trên đường đi từ đỉnh này đến lá sâu nhất.",
+                        "<strong>Size (kích thước):</strong> số đỉnh của cây con gốc tại đỉnh này."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Công thức đệ quy:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>x.height = -1</code> (nếu x là cây rỗng / null).",
+                        "<code>x.height = max(x.left.height, x.right.height) + 1</code> (các trường hợp còn lại).",
+                        "<code>x.size = 0</code> (nếu x là cây rỗng / null).",
+                        "<code>x.size = x.left.size + x.right.size + 1</code> (các trường hợp còn lại).",
+                        "<strong>Height của cả BST</strong> = <code>root.height</code>.",
+                        "<strong>Size của cả BST</strong> = <code>root.size</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BstHeightSizeInspector"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-1-3",
+              number: "1.3",
+              title: "Tóm tắt độ phức tạp các thao tác BST",
+              parts: [
+                {
+                  id: "dsa-b9-part-1-3-complexity-matrix",
+                  label: "TỔNG KẾT BIG-O",
+                  title: "Phân loại thao tác Modify vs Query & Độ phức tạp",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Phân loại thao tác theo 2 nhóm: Modify (Thay đổi cấu trúc) vs Query (Không đổi cấu trúc):</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "BstModifyVsQueryMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• BST Property: <code>trái < x.key < phải</code>.<br/>• Height tính bằng <strong>số cạnh</strong> (không phải số đỉnh); cây rỗng có height = -1.<br/>• Hầu hết thao tác BST chạy <strong>O(h)</strong>, chỉ có <strong>inorder traversal là O(n)</strong>.<br/>• &rArr; Nếu h lớn (cây lệch) thì các thao tác sẽ chậm &rarr; cần cây <strong>cân bằng (Being Balanced)</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec2",
+          roman: "II",
+          title: "Tầm quan trọng của việc 'Being Balanced' (Cân bằng)",
+          subsections: [
+            {
+              id: "dsa-b9-sub-2-1",
+              number: "2.1",
+              title: "Vì sao cần quan tâm đến h?",
+              parts: [
+                {
+                  id: "dsa-b9-part-2-1-why-h",
+                  label: "TẦM QUAN TRỌNG",
+                  title: "Vì sao cần quan tâm đến chiều cao h",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Hầu hết thao tác trên BST chạy trong <strong>O(h)</strong> &rArr; <strong><code>h</code> càng nhỏ thì hiệu năng càng tốt</strong>."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-2-2",
+              number: "2.2",
+              title: "Cận dưới (Lower bound) của h",
+              parts: [
+                {
+                  id: "dsa-b9-part-2-2-lower-bound",
+                  label: "CẬN DƯỚI",
+                  title: "Chứng minh Cận dưới: h > log₂(n)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Với cây có <code>n</code> đỉnh: $n \\le 1 + 2 + 4 + \\dots + 2^h$",
+                        "Đây là tổng cấp số nhân: $n < 2^{h+1}$",
+                        "Suy ra:",
+                        "&nbsp;&nbsp;• $\\log_2(n) < \\log_2(2^{h+1})$",
+                        "&nbsp;&nbsp;• $\\log_2(n) < (h + 1) \\cdot \\log_2(2)$",
+                        "&nbsp;&nbsp;• $h > \\log_2(n) - 1 \\implies \\mathbf{h > \\log_2(n)}$ (xấp xỉ)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-2-3",
+              number: "2.3",
+              title: "Cận trên (Upper bound) của h",
+              parts: [
+                {
+                  id: "dsa-b9-part-2-3-upper-bound",
+                  label: "CẬN TRÊN",
+                  title: "Trường hợp xấu nhất: Cây suy biến đường thẳng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trường hợp xấu nhất: cây bị lệch hoàn toàn (như danh sách liên kết / linked list).",
+                        "$h \\le n - 1 \\implies \\mathbf{h < n}$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-2-4",
+              number: "2.4",
+              title: "Kết hợp hai cận: log₂(n) < h < n",
+              parts: [
+                {
+                  id: "dsa-b9-part-2-4-combined-bounds",
+                  label: "KHOẢNG KẸP",
+                  title: "Kết hợp hai cận & Định nghĩa Balanced BST",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Khoảng kẹp chiều cao của cây BST:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "$\\mathbf{\\log_2(n) < h < n}$",
+                        "Ví dụ: $n = 500 \\implies \\log_2(n) \\approx 9$; $n = 1000 \\implies \\log_2(n) \\approx 10$ (so với $n$ rất lớn).",
+                        "<strong>Định nghĩa BST cân bằng (balanced):</strong> $\\mathbf{h = O(\\log n)}$, tức $O(c \\cdot \\log n)$.",
+                        "Trên một BST cân bằng, <strong>mọi thao tác chạy trong $O(\\log n)$</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlHeightBoundGauge"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-2-5",
+              number: "2.5",
+              title: "Ví dụ cây cân bằng hoàn hảo & Chiến lược cân bằng",
+              parts: [
+                {
+                  id: "dsa-b9-part-2-5-balancing-strategy",
+                  label: "CHIẾN LƯỢC CÂN BẰNG",
+                  title: "Cây cân bằng hoàn hảo & 4 bước chiến lược",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>2.5. Ví dụ cây cân bằng hoàn hảo (perfectly balanced):</strong> Có tồn tại nhưng <strong>khó đạt được</strong> trong thực tế khi insert/delete liên tục."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>2.6. Chiến lược để có cây cân bằng (4 bước cốt lõi):</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlBalancingStrategyRoadmap"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Balanced BST &hArr; $h = O(\\log n)$ &hArr; mọi thao tác chạy trong $O(\\log n)$.<br/>• Cận: $\\log_2(n) < h < n$.<br/>• Ý tưởng cốt lõi của AVL: định nghĩa invariant \"height-balanced\", sau mỗi insert/delete kiểm tra và fix nếu vi phạm."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec3",
+          roman: "III",
+          title: "Cây AVL [Adelson-Velskii & Landis, 1962]",
+          subsections: [
+            {
+              id: "dsa-b9-sub-3-1",
+              number: "3.1",
+              title: "Step 1 — Augment (Bổ sung thông tin x.height)",
+              parts: [
+                {
+                  id: "dsa-b9-part-3-1-augment",
+                  label: "AUGMENTATION",
+                  title: "Bổ sung thuộc tính x.height & Cập nhật dọc Ancestor Path",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "Ra đời năm 1962 (~61 năm trước so với slide). Cây AVL bổ sung thêm thông tin chiều cao vào từng đỉnh:"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Mỗi đỉnh <code>x</code> lưu thêm: <code>x.height</code> (ngoài <code>x.left, x.right, x.parent, x.key</code> đã có).",
+                        "Trong lúc <strong>insert</strong> và <strong>delete</strong>, phải cập nhật lại height:",
+                        "<code>x.height = max(x.left.height, x.right.height) + 1</code>.",
+                        "<strong>Lưu ý:</strong> chỉ những đỉnh nằm <strong>trên đường đi insertion/deletion (Ancestor path)</strong> mới có thể bị thay đổi height (không phải cả cây) &rarr; tốn tối đa <strong>O(h)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlAugmentationPathAnimator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-3-2",
+              number: "3.2",
+              title: "Step 2 — Định nghĩa Invariant (Bất biến)",
+              parts: [
+                {
+                  id: "dsa-b9-part-3-2-invariant",
+                  label: "ĐỊNH NGHĨA INVARIANT",
+                  title: "Điều kiện Height-balanced tại mọi đỉnh",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Height-balanced tại đỉnh x:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "$\\mathbf{|x.left.height - x.right.height| \\le 1}$",
+                        "<strong>BST height-balanced:</strong> mọi đỉnh trong cây đều height-balanced."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlInvariantValidator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-3-3",
+              number: "3.3",
+              title: "Step 3 — Chứng minh: Height-balanced tree thì cân bằng",
+              parts: [
+                {
+                  id: "dsa-b9-part-3-3-fibonacci-proof",
+                  label: "CHỨNG MINH TOÁN HỌC",
+                  title: "Proof: h < 2·log₂(n) = O(log n) (Không cần sợ!)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Claim (Khẳng định):</strong> Cây height-balanced với $n$ đỉnh có $h < 2 \\cdot \\log_2(n)$."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Proof (không cần sợ):</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Gọi <code>n_h</code> = số đỉnh <strong>tối thiểu</strong> trong một cây height-balanced có chiều cao <code>h</code>.",
+                        "Công thức truy hồi: $n_h = 1 + n_{h-1} + n_{h-2}$",
+                        "Vì $n_{h-1} > n_{h-2}$:",
+                        "&nbsp;&nbsp;• $n_h > 1 + 2 \\cdot n_{h-2}$",
+                        "&nbsp;&nbsp;• $n_h > 2 \\cdot n_{h-2}$ (hiển nhiên)",
+                        "Mỗi bước giảm $h$ đi 2, cần lặp $h/2$ lần để giảm $h$ (giả sử $h$ chẵn) về 0:",
+                        "&nbsp;&nbsp;• $n_h > 2^{h/2} \\cdot n_0$, với $n_0 = 1$ (base case)",
+                        "&nbsp;&nbsp;• $\\implies n_h > 2^{h/2}$",
+                        "Ta có $n \\ge n_h$ (vì $n_h$ là số đỉnh tối thiểu), suy ra:",
+                        "&nbsp;&nbsp;• $n \\ge n_h > 2^{h/2}$",
+                        "&nbsp;&nbsp;• $n > 2^{h/2}$",
+                        "&nbsp;&nbsp;• $\\log_2(n) > \\log_2(2^{h/2})$ (lấy $\\log_2$ hai vế)",
+                        "&nbsp;&nbsp;• $\\log_2(n) > h/2$ (rút gọn)",
+                        "&nbsp;&nbsp;• $2 \\cdot \\log_2(n) > h$ hay $\\mathbf{h < 2 \\cdot \\log_2(n)}$",
+                        "&nbsp;&nbsp;• $\\implies \\mathbf{h = O(\\log n)}$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlFibonacciProofVisualizer"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Invariant AVL: <code>|x.left.height - x.right.height| &le; 1</code> tại <strong>mọi</strong> đỉnh.<br/>• Chứng minh dùng công thức truy hồi $n_h = 1 + n_{h-1} + n_{h-2}$.<br/>• Kết luận: height-balanced &rArr; $h < 2\\log_2(n) \\implies h = O(\\log n)$.<br/>• <code>x.height</code> tính theo <strong>height con</strong>, chỉ cập nhật dọc đường insertion/deletion."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec4",
+          roman: "IV",
+          title: "Step 3 — Duy trì Height-Balance bằng Rotations",
+          subsections: [
+            {
+              id: "dsa-b9-sub-4-1",
+              number: "4.1",
+              title: "Vấn đề: insert có thể làm mất cân bằng",
+              parts: [
+                {
+                  id: "dsa-b9-part-4-1-problem",
+                  label: "VẤN ĐỀ MẤT CÂN BẰNG",
+                  title: "Tại sao cần Rebalance sau khi Insert",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ví dụ:</strong> Cây đang balanced, sau khi <code>insert(37)</code> thì một số đỉnh bị mất cân bằng &rarr; Cần <strong>rebalance</strong>! Nhưng làm sao? &rarr; Dùng <strong>Tree Rotations (Phép xoay cây)</strong>."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-4-2",
+              number: "4.2",
+              title: "Tree Rotations (Phép xoay cây)",
+              parts: [
+                {
+                  id: "dsa-b9-part-4-2-mechanism",
+                  label: "CƠ CHẾ XOAY CÂY",
+                  title: "Xoay quanh 2 đỉnh liền kề P & Q và Bảo toàn BST Property",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Ý tưởng cốt lõi:</strong> Xoay cây quanh 2 đỉnh liền kề (P và Q) để đổi vai trò cha-con, nhưng <strong>vẫn giữ đúng thứ tự BST</strong>."
+                    },
+                    {
+                      type: "component",
+                      component: "AvlRotationMechanismSandbox"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Rotations giữ nguyên thứ tự khóa (ordering of keys):</strong> vẫn duy trì đúng BST Property (ví dụ đỉnh B: $P \\le B \\le Q$).",
+                        "<code>rotateRight</code> yêu cầu phải có <strong>left child</strong>.",
+                        "<code>rotateLeft</code> yêu cầu phải có <strong>right child</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-4-3",
+              number: "4.3",
+              title: "Pseudo code — O(1) Time Complexity",
+              parts: [
+                {
+                  id: "dsa-b9-part-4-3-pseudocode",
+                  label: "MÃ NGUỒN O(1)",
+                  title: "Java Pseudocode rotateLeft và Phiên bản đối xứng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Mã cài đặt Java chuẩn của phép xoay trái <code>rotateLeft(BSTVertex T)</code>:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlRotationCodeWorkbench"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>rotateRight</code> là <strong>phiên bản đối xứng (mirrored)</strong> của <code>rotateLeft</code>.",
+                        "Minh họa: T (gốc cũ) và w = T.right (gốc mới sau xoay); cây con A, B, C được sắp xếp lại đúng vị trí.",
+                        "<strong>Time complexity:</strong> <strong>O(1)</strong> cho mỗi lần rotate (chỉ đổi vài con trỏ + cập nhật height)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-4-4",
+              number: "4.4",
+              title: "Balance Factor & Bốn trường hợp cần Rebalance",
+              parts: [
+                {
+                  id: "dsa-b9-part-4-4-four-cases",
+                  label: "4 TRƯỜNG HỢP",
+                  title: "Phân loại 4 Case: LL, RR, LR, RL & Quy tắc xoay",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Hệ số cân bằng Balance Factor:</strong> <code>bf(x) = x.left.height - x.right.height</code>."
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Từ điểm vừa insert, đi ngược lên <strong>kiểm tra balance factor của từng đỉnh cho đến root</strong>.",
+                        "Nếu gặp đỉnh có <code>bf(x) = +2</code> hoặc <code>bf(x) = -2</code> &rarr; <strong>phải rebalance đỉnh đó</strong>."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bốn trường hợp (Four Possible Cases) cần rebalance:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlFourCasesMasterMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (RẤT hay ra thi)",
+                      text: "• $bf(x) = x.left.height - x.right.height$.<br/>• $bf(x) = +2$ hoặc $-2 \\implies$ mất cân bằng, cần rotate.<br/>• 4 case: <strong>LL</strong> &rarr; <code>rightRotate(x)</code>, <strong>LR</strong> &rarr; <code>leftRotate(x.left)</code> rồi <code>rightRotate(x)</code>, <strong>RR</strong> &rarr; <code>leftRotate(x)</code>, <strong>RL</strong> &rarr; <code>rightRotate(x.right)</code> rồi <code>leftRotate(x)</code>.<br/>• <strong>Case \"lệch cùng phía\" (LL, RR) chỉ cần 1 rotation; case \"lệch khác phía\" (LR, RL) cần 2 rotations.</strong>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-4-5",
+              number: "4.5",
+              title: "Ví dụ minh họa Rebalancing (insert(37))",
+              parts: [
+                {
+                  id: "dsa-b9-part-4-5-walkthrough",
+                  label: "VÍ DỤ MINH HỌA",
+                  title: "Quy trình Rebalance sau khi insert(37) (Case RR)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>4.6. Ví dụ minh họa Rebalancing từ slide:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlInsert37RebalanceWalkthrough"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Rebalancing (1):</strong> Sau khi <code>insert(37)</code>, phát hiện đỉnh 29 có <code>bf = -2</code>, và con phải của nó có <code>bf = -1</code> &rarr; đây là case <strong>-2, -1 (Right Right Case)</strong> &rarr; làm <code>leftRotate(29)</code>.",
+                        "<strong>Rebalancing (2):</strong> Sau khi rotate, tất cả các đỉnh đều cân bằng trở lại."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec5",
+          roman: "V",
+          title: "Insertion vào AVL Tree — Tóm tắt quy trình",
+          subsections: [
+            {
+              id: "dsa-b9-sub-5-1",
+              number: "5.1",
+              title: "3 Bước Insertion & Nguyên lý Trigger tối đa 1 lần",
+              parts: [
+                {
+                  id: "dsa-b9-part-5-1-pipeline",
+                  label: "INSERTION AVL",
+                  title: "Quy trình 3 bước Insertion & Giới hạn tối đa 1 lần xoay",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tóm tắt quy trình 3 bước Insertion vào AVL Tree:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlInsertionPipelineVisualizer"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>1. Insert key giống hệt BST bình thường.</strong>",
+                        "<strong>2. Đi ngược lên (walk up) từ điểm vừa insert đến root:</strong>",
+                        "&nbsp;&nbsp;• Ở mỗi bước: cập nhật height & kiểm tra balance factor.",
+                        "&nbsp;&nbsp;• Nếu một đỉnh mất cân bằng (<code>bf = +2</code> hoặc <code>-2</code>) &rarr; dùng rotation để rebalance.",
+                        "<strong>3. Trong 1 lần insert vào AVL tree, chỉ có thể kích hoạt (trigger) đúng 1 trong 4 case rebalancing ở trên (không hơn).</strong>"
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "Insertion AVL = Insertion BST bình thường + cập nhật height + kiểm tra & fix balance factor trên đường đi lên root. <strong>Chỉ trigger tối đa 1 lần rebalance.</strong>"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec6",
+          roman: "VI",
+          title: "Deletion khỏi AVL Tree — Tóm tắt quy trình & Cascade Effect",
+          subsections: [
+            {
+              id: "dsa-b9-sub-6-1",
+              number: "6.1",
+              title: "Quy trình Deletion & So sánh đối đầu với Insertion",
+              parts: [
+                {
+                  id: "dsa-b9-part-6-1-insert-vs-delete",
+                  label: "ĐỐI ĐẦU TRỌNG TÂM",
+                  title: "Khác biệt cốt lõi: Insertion vs Deletion",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tương tự Insertion:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "1. Xóa key giống như BST bình thường.",
+                        "2. Đi ngược lên (walk up) từ điểm vừa xóa đến root: cập nhật height & kiểm tra balance factor; nếu mất cân bằng &rarr; rotate để rebalance."
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "<strong>Khác biệt chính so với Insertion (Đối đầu trọng tâm):</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlInsertVsDeleteArena"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-6-2",
+              number: "6.2",
+              title: "Mô phỏng chuỗi xoay liên hoàn (Cascade Rebalancing) khi xóa đỉnh 7",
+              parts: [
+                {
+                  id: "dsa-b9-part-6-2-cascade-demo",
+                  label: "CASCADE EFFECT",
+                  title: "Chuỗi xoay lan truyền lên tới O(log n) lần (VisuAlgo Demo)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Hiện tượng chuỗi xoay liên hoàn (Cascade Effect) từ VisuAlgo:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlCascadeDeletionSimulator"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Deletion <strong>có thể trigger nhiều lần</strong> (một trong 4 case) rebalancing, <strong>lên tới $h = O(\\log n)$ lần</strong> (trong khi insertion chỉ trigger tối đa 1 lần).",
+                        "Demo tham khảo: <code>visualgo.net/bst.html?mode=AVL</code> &mdash; thử Remove vertex 7 sẽ trigger 2 lần rebalancing liên tiếp; thử Insert thì chỉ trigger tối đa 1 lần."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Deletion AVL = Deletion BST + cập nhật height + kiểm tra & fix balance factor.<br/>• <strong>Insertion:</strong> tối đa <strong>1 lần</strong> rebalance.<br/>• <strong>Deletion:</strong> có thể <strong>nhiều lần</strong> rebalance, tối đa <strong>O(log n) lần</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec7",
+          roman: "VII",
+          title: "Các loại Balanced Search Tree khác (mở rộng, không đi sâu)",
+          subsections: [
+            {
+              id: "dsa-b9-sub-7-1",
+              number: "7.1",
+              title: "Bảng tổng hợp 7 họ Balanced BST",
+              parts: [
+                {
+                  id: "dsa-b9-part-7-1-family",
+                  label: "HỌ CÂY CÂN BẰNG",
+                  title: "7 Cấu trúc Balanced Search Tree nổi tiếng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tổng quan các loại Balanced Search Tree khác trong Khoa học máy tính:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlBalancedTreesFamilyGallery"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "Chỉ cần nhớ <strong>tên + tác giả/năm + ý tưởng cốt lõi 1 câu</strong> của mỗi loại &mdash; bài này tập trung chính vào AVL Tree."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec8",
+          roman: "VIII",
+          title: "Bảng tổng kết độ phức tạp — Sau khi học Balanced BST (bBST)",
+          subsections: [
+            {
+              id: "dsa-b9-sub-8-1",
+              number: "8.1",
+              title: "Bảng đối đầu 8 thao tác: Unsorted Array vs Sorted Array vs bBST (AVL)",
+              parts: [
+                {
+                  id: "dsa-b9-part-8-1-benchmark",
+                  label: "ĐỐI ĐẦU 8 THAO TÁC",
+                  title: "So sánh toàn diện độ phức tạp 8 thao tác ADT Table",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>So sánh toàn diện độ phức tạp 8 thao tác ADT Table:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlFinalMasterBenchmarkArena"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "bBST (AVL) cho hầu hết thao tác đều <strong>O(log n)</strong> &mdash; cân bằng tốt giữa Search/Insert/Remove so với mảng (array). Câu 8 (NumYounger) chưa có đáp án &rArr; cần cấu trúc/khái niệm khác (order-statistics / rank)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-8-2",
+              number: "8.2",
+              title: "Giải mã ô dấu '?' của NumYounger(age) — Cầu nối Order-Statistics Tree",
+              parts: [
+                {
+                  id: "dsa-b9-part-8-2-order-statistics",
+                  label: "ORDER-STATISTICS",
+                  title: "Tại sao NumYounger(age) cần cấu trúc Order-Statistics Tree",
+                  content: [
+                    {
+                      type: "component",
+                      component: "AvlOrderStatisticsBridgeCard"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b9-sec9",
+          roman: "IX",
+          title: "Tổng kết chương & Các điểm dễ ra thi (Summary)",
+          subsections: [
+            {
+              id: "dsa-b9-sub-9-1",
+              number: "9.1",
+              title: "Tổng kết chương (Summary)",
+              parts: [
+                {
+                  id: "dsa-b9-part-9-1-summary",
+                  label: "TỔNG KẾT BÀI 9",
+                  title: "4 Trụ cột kiến thức cốt lõi của Chương 9",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>4 Trụ cột kiến thức cốt lõi của Chương 9:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Tầm quan trọng của việc 'Being Balanced'</strong> (cân bằng cây).",
+                        "<strong>Height-Balanced Trees</strong> (định nghĩa + chứng minh $h = O(\\log n)$).",
+                        "<strong>Tree Rotations</strong> (<code>rotateLeft</code>, <code>rotateRight</code>, $O(1)$).",
+                        "<strong>AVL Trees:</strong> augment height, invariant balance factor, 4 case rebalancing."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlSummaryDashboard"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-9-2",
+              number: "9.2",
+              title: "Tổng hợp nhanh — Các điểm dễ ra thi (Top 10 Points)",
+              parts: [
+                {
+                  id: "dsa-b9-part-9-2-exam-points",
+                  label: "ĐIỂM DỄ RA THI",
+                  title: "Top 10 Điểm Cốt Lõi Cực Kỳ Dễ Ra Thi Cần Ghi Nhớ Nằm Lòng",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>10 Điểm cốt lõi cực kỳ hay ra thi cần ghi nhớ nằm lòng:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "1. <code>height</code> tính bằng <strong>số cạnh</strong>; cây rỗng có height = <strong>-1</strong>.",
+                        "2. <strong>AVL invariant:</strong> <code>|x.left.height - x.right.height| &le; 1</code> tại <strong>mọi</strong> đỉnh.",
+                        "3. <code>bf(x) = x.left.height - x.right.height</code>; mất cân bằng khi <code>bf(x) = +2</code> hoặc <code>-2</code>.",
+                        "4. <strong>4 case rebalancing:</strong>",
+                        "&nbsp;&nbsp;• LL (+2, +1) &rarr; <code>rightRotate(x)</code>",
+                        "&nbsp;&nbsp;• LR (+2, -1) &rarr; <code>leftRotate(x.left)</code> rồi <code>rightRotate(x)</code>",
+                        "&nbsp;&nbsp;• RR (-2, -1) &rarr; <code>leftRotate(x)</code>",
+                        "&nbsp;&nbsp;• RL (-2, +1) &rarr; <code>rightRotate(x.right)</code> rồi <code>leftRotate(x)</code>",
+                        "5. <code>rotateLeft</code> cần <code>T.right != null</code>; <code>rotateRight</code> cần <code>T.left != null</code>. Mỗi rotation là <strong>O(1)</strong>.",
+                        "6. Rotation <strong>giữ nguyên BST property</strong> (thứ tự khóa không đổi).",
+                        "7. <strong>Insertion:</strong> trigger <strong>tối đa 1 lần</strong> rebalancing.",
+                        "8. <strong>Deletion:</strong> có thể trigger <strong>nhiều lần</strong> rebalancing, tối đa <strong>O(log n)</strong> lần.",
+                        "9. Cây height-balanced &rArr; $h < 2\\log_2(n) \\implies h = O(\\log n) \\implies$ mọi thao tác $O(\\log n)$.",
+                        "10. Tất cả thao tác BST/AVL cơ bản (insert, delete, search, findMin/Max, predecessor/successor) đều <strong>O(h)</strong>; chỉ <strong>inorder traversal là O(n)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "AvlTop10ExamFlashcardsHub"
+                    },
+                    {
+                      type: "component",
+                      component: "AvlMasterExamQuizMiniGame"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b9-sub-9-3",
+              number: "9.3",
+              title: "Bài học kế tiếp — ADT Priority Queues & Binary Heaps",
+              parts: [
+                {
+                  id: "dsa-b9-part-9-3-next-lesson",
+                  label: "BÀI KẾ TIẾP",
+                  title: "Dẫn nhập sang ADT Priority Queues và Binary Heaps",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bài học kế tiếp:</strong> ADT Priority Queues, Binary Heaps."
+                    },
+                    {
+                      type: "component",
+                      component: "AvlNextLessonHeapBridge"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b10",
+      title: "Bài 10: Priority Queue & Binary Max Heap",
+      sections: [
+        {
+          id: "dsa-b10-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Phòng Thí Nghiệm Binary Max Heap",
+          subsections: [
+            {
+              id: "dsa-b10-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Live Max Heap Workbench",
+              parts: [
+                {
+                  id: "dsa-b10-part-0-banner",
+                  label: "TỔNG QUAN",
+                  title: "Khám phá Hàng Đợi Ưu Tiên & Binary Max Heap",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaHeapHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec1",
+          roman: "I",
+          title: "ADT PriorityQueue (PQ)",
+          subsections: [
+            {
+              id: "dsa-b10-sub-1-1",
+              number: "1.1",
+              title: "Ví dụ minh họa (Tình huống Air Traffic Controller)",
+              parts: [
+                {
+                  id: "dsa-b10-part-1-1-atc",
+                  label: "TÌNH HUỐNG THỰC TẾ",
+                  title: "Ví dụ kiểm soát không lưu Air Traffic Controller",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Tình huống Air Traffic Controller (kiểm soát viên không lưu):</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Máy bay X hạ cánh sau 3 phút, máy bay Y hạ cánh sau 6 phút.",
+                        "Cả hai còn đủ nhiên liệu cho ít nhất 15 phút và đều cách sân bay 2 phút.",
+                        "&rarr; Cần một cấu trúc luôn biết <strong>item nào có priority (độ ưu tiên) cao nhất</strong> để xử lý trước."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PqAirTrafficControllerSim"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-1-2",
+              number: "1.2",
+              title: "Các phép toán cơ bản (Important Basic Operations)",
+              parts: [
+                {
+                  id: "dsa-b10-part-1-2-basic-ops",
+                  label: "PHÉP TOÁN CƠ BẢN",
+                  title: "Enqueue, Dequeue và Cơ chế Tie-Breaking (FIFO)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Hai phép toán cơ bản của ADT PriorityQueue:</strong>"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>Enqueue(x)</code>: đưa item mới x vào PQ (theo thứ tự nào đó).",
+                        "<code>y &larr; Dequeue()</code>: trả về item y có priority (key) <strong>cao nhất</strong> trong PQ.",
+                        "Nếu có nhiều item cùng priority cao nhất &rarr; trả về item được insert <strong>đầu tiên</strong> (FIFO tie-breaking).",
+                        "<strong>Lưu ý:</strong> có thể định nghĩa \"priority cao nhất\" = số lớn hơn (Max-PQ), hoặc ngược lại = số nhỏ hơn (Min-PQ)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PqBasicOpsTieBreakingStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-1-3",
+              number: "1.3",
+              title: "Một vài điều cần nhớ về Data Structure (DS)",
+              parts: [
+                {
+                  id: "dsa-b10-part-1-3-ds-notes",
+                  label: "BẢN CHẤT CẤU TRÚC DỮ LIỆU",
+                  title: "Định nghĩa Data Structure & Duy trì tính chất (Maintain Property)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Data Structure là gì?</strong> Cách lưu trữ và tổ chức dữ liệu để hỗ trợ hiệu quả cho: insertions, searches, deletions, queries, và/hoặc updates.",
+                        "Hầu hết DS có (các) <strong>tính chất (property)</strong> riêng.",
+                        "Mỗi phép toán trên DS đó <strong>phải duy trì (maintain)</strong> tính chất đó."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• PQ có 2 thao tác chính: <code>Enqueue(x)</code> và <code>Dequeue()</code> &rarr; trả về phần tử ưu tiên cao nhất.<br/>• Nếu trùng priority &rarr; theo <strong>FIFO (First-In-First-Out)</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec2",
+          roman: "II",
+          title: "Cài đặt PriorityQueue bằng Array (Array-Based Implementation)",
+          subsections: [
+            {
+              id: "dsa-b10-sub-2-1",
+              number: "2.1",
+              title: "Strategy 1 — (Circular) Array-Based PQ, giữ mảng luôn có thứ tự",
+              parts: [
+                {
+                  id: "dsa-b10-part-2-1-strategy1",
+                  label: "CHIẾN LƯỢC 1",
+                  title: "Circular Sorted Array (Enqueue O(n), Dequeue O(1))",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Property:</strong> nội dung mảng luôn ở đúng thứ tự (sorted).",
+                        "<code>Enqueue(x)</code>: tìm đúng vị trí chèn (insertion point) &rarr; <strong>O(n)</strong> (giống insertion sort).",
+                        "<code>Dequeue()</code>: trả về phần tử ở đầu (front-most) &mdash; có priority cao nhất &rarr; <strong>O(1)</strong>.",
+                        "Không cần đóng khoảng trống (close the gap), chỉ cần dịch con trỏ front &rarr; <strong>O(1)</strong>.",
+                        "Mảng là <strong>circular</strong>: chỉ thao tác con trỏ <code>front</code> + <code>back</code> để xác định phần đang dùng của mảng."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PqSortedCircularArraySim"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-2-2",
+              number: "2.2",
+              title: "Strategy 2 — Array-Based PQ, không cần sắp xếp khi enqueue",
+              parts: [
+                {
+                  id: "dsa-b10-part-2-2-strategy2",
+                  label: "CHIẾN LƯỢC 2",
+                  title: "Unsorted Array (Enqueue O(1), Dequeue O(n))",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Property:</strong> chỉ phép Dequeue() trả về đúng item.",
+                        "<code>Enqueue(x)</code>: đưa item mới vào cuối queue &rarr; <strong>O(1)</strong>.",
+                        "<code>Dequeue()</code>: quét (scan) toàn bộ queue, trả về item đầu tiên có priority cao nhất &rarr; <strong>O(n)</strong>.",
+                        "Có thể cần đóng khoảng trống (close the gap) nếu phép toán này gây ra &rarr; cũng <strong>O(n)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PqUnsortedArraySim"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-2-3",
+              number: "2.3",
+              title: "So sánh 2 chiến lược (nếu chỉ dừng ở kiến thức CS1020)",
+              parts: [
+                {
+                  id: "dsa-b10-part-2-3-duel",
+                  label: "ĐỐI ĐẦU 2 CHIẾN LƯỢC",
+                  title: "Thế bế tắc của Mảng & Cầu nối cần cấu trúc Binary Heap",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Bảng đối đầu 2 chiến lược cài đặt PriorityQueue bằng Array:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "PqStrategyDuelArena"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Nếu n lớn &rarr; truy vấn (query) chậm..."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Strategy 1: Enqueue O(n), Dequeue O(1) (mảng luôn sorted).<br/>• Strategy 2: Enqueue O(1), Dequeue O(n) (mảng không sorted, phải scan).<br/>• Cả 2 cách đều có 1 thao tác O(n) &rarr; <strong>cần cấu trúc tốt hơn: Binary Heap</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec3",
+          roman: "III",
+          title: "Complete Binary Tree (Cây Nhị Phân Hoàn Chỉnh)",
+          subsections: [
+            {
+              id: "dsa-b10-sub-3-1",
+              number: "3.1",
+              title: "Khái niệm Complete Binary Tree",
+              parts: [
+                {
+                  id: "dsa-b10-part-3-1-concept",
+                  label: "KHÁI NIỆM",
+                  title: "Định nghĩa Cây Nhị Phân Hoàn Chỉnh (Complete Binary Tree)",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>Complete Binary Tree:</strong> cây nhị phân mà <strong>mọi level đều được lấp đầy hoàn toàn</strong>, trừ level cuối cùng (có thể chưa đầy), và tất cả các node ở level cuối được đặt <strong>càng xa bên trái càng tốt (as far left as possible)</strong>."
+                    },
+                    {
+                      type: "component",
+                      component: "CompleteBinaryTreeValidatorLab"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-3-2",
+              number: "3.2",
+              title: "Chiều cao (Height) của Complete Binary Tree có N items",
+              parts: [
+                {
+                  id: "dsa-b10-part-3-2-height",
+                  label: "CHIỀU CAO O(LOG N)",
+                  title: "Chứng minh chiều cao Complete Binary Tree là O(log N)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Height = số levels - 1 = số <strong>max edges</strong> từ root đến leaf sâu nhất.",
+                        "<strong>Đáp án cần ghi nhớ:</strong> <strong>Height = O(log N)</strong>.",
+                        "Lý do: mỗi level của complete binary tree chứa <strong>gấp đôi</strong> số node so với level trước (level 0 có 1 node, level 1 có 2 node, level 2 có 4 node,...). Vậy với N node thì số level cần thiết chỉ tăng theo <strong>logarit</strong> của N, chứ không tăng tuyến tính.",
+                        "⚠️ Phải <strong>ghi nhớ</strong> đáp án này vì sẽ dùng cho gần như <strong>mọi phân tích độ phức tạp thời gian (time complexity)</strong> của các phép toán trên binary heap."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "Height của complete binary tree N items = <strong>O(log N)</strong> &mdash; kiến thức nền tảng, dùng lại liên tục."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec4",
+          roman: "IV",
+          title: "Lưu trữ Complete Binary Tree bằng Array",
+          subsections: [
+            {
+              id: "dsa-b10-sub-4-1",
+              number: "4.1",
+              title: "Cách lưu (1-based array)",
+              parts: [
+                {
+                  id: "dsa-b10-part-4-1-1based",
+                  label: "1-BASED ARRAY",
+                  title: "Lưu trữ dạng mảng 1-based compact array",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Lưu dưới dạng <strong>1-based compact array</strong>: <code>A[1..size(A)]</code> (không dùng 0-based).",
+                        "Ví dụ mảng: <code>A = [NIL, 90, 19, 36, 17, 3, 25, 1, 2, 7, -, -]</code> (chỉ số 0 &rarr; 11).",
+                        "<code>heapsize &le; size(A)</code>: <code>heapsize</code> là số phần tử <strong>đang thực sự dùng</strong> trong heap."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapArrayTreeMapperSandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-4-2",
+              number: "4.2",
+              title: "Các phép toán điều hướng (Navigation operations)",
+              parts: [
+                {
+                  id: "dsa-b10-part-4-2-nav",
+                  label: "ĐIỀU HƯỚNG",
+                  title: "Công thức parent(i), left(i), right(i) & Kiểm tra biên",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>parent(i) = floor(i/2)</code>, trừ khi <code>i = 1</code> (root, không có parent).",
+                        "<code>left(i) = 2*i</code> (Không có left child khi: <code>left(i) &gt; heapsize</code>).",
+                        "<code>right(i) = 2*i + 1</code> (Không có right child khi: <code>right(i) &gt; heapsize</code>)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapNavigationMathWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Dùng 1-based array để công thức 'parent/left/right' đơn giản, gọn.<br/>• <code>parent(i) = i / 2</code>, <code>left(i) = 2*i</code>, <code>right(i) = 2*i + 1</code>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec5",
+          roman: "V",
+          title: "Binary Heap Property",
+          subsections: [
+            {
+              id: "dsa-b10-sub-5-1",
+              number: "5.1",
+              title: "Định nghĩa tính chất Heap (trừ root)",
+              parts: [
+                {
+                  id: "dsa-b10-part-5-1-prop",
+                  label: "TÍNH CHẤT HEAP",
+                  title: "Max-Heap Property vs Min-Heap Property",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Max Heap:</strong> <code>A[parent(i)] &ge; A[i]</code>.",
+                        "<strong>Min Heap:</strong> <code>A[parent(i)] &le; A[i]</code>.",
+                        "Trong bài này, mặc định dùng <strong>(Binary Max) Heap</strong> cho mọi ví dụ, và giả sử các số là <strong>phân biệt (distinct)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapPropertyRootProofStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-5-2",
+              number: "5.2",
+              title: "Vị trí phần tử lớn nhất",
+              parts: [
+                {
+                  id: "dsa-b10-part-5-2-max-root",
+                  label: "VỊ TRÍ MAX",
+                  title: "Chứng minh phần tử lớn nhất luôn ở Root",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Lý do:</strong> vì heap property yêu cầu <code>A[parent(i)] &ge; A[i]</code> với mọi <code>i &ne; root</code>, nghĩa là đi từ root xuống bất kỳ hướng nào, giá trị <strong>không bao giờ tăng</strong>. Do đó root luôn là giá trị lớn nhất (&ge; mọi node khác) trong toàn bộ heap."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Max Heap: cha &ge; con (ở mọi node trừ root vì root không có cha).<br/>• Phần tử lớn nhất luôn ở <strong>root</strong>, vì giá trị giảm dần (không tăng) khi đi từ root xuống leaf."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec6",
+          roman: "VI",
+          title: "Insert(v) vào Binary Max Heap",
+          subsections: [
+            {
+              id: "dsa-b10-sub-6-1",
+              number: "6.1",
+              title: "Ý tưởng",
+              parts: [
+                {
+                  id: "dsa-b10-part-6-1-idea",
+                  label: "Ý TƯỞNG CHÈN",
+                  title: "Vị trí chèn A[heapsize+1] & Bảo toàn Complete Tree",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Vị trí chèn (insertion point) phù hợp nhất vào Binary Max Heap đang có là <code>A[heapsize]</code> (ngay sau phần tử cuối, giữ đúng tính chất complete binary tree).",
+                        "<strong>Câu hỏi trong slide:</strong> Tại sao lại chọn <code>A[heapsize]</code>?",
+                        "&rarr; <strong>Trả lời:</strong> đây là vị trí <strong>duy nhất</strong> giúp thêm 1 phần tử mà cây vẫn giữ được tính chất <strong>complete binary tree</strong> (không tạo lỗ hổng, không phá vỡ quy tắc 'lấp đầy từ trái sang phải'). Chèn ở vị trí khác sẽ làm cây không còn complete.",
+                        "Nhưng sau khi chèn, <strong>Binary Max Heap property có thể bị vi phạm</strong> &rarr; dùng <code>ShiftUp(i)</code> để sửa lại."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapInsertionPointWhyCard"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-6-2",
+              number: "6.2",
+              title: "Code — Insert(v)",
+              parts: [
+                {
+                  id: "dsa-b10-part-6-2-insert-code",
+                  label: "CODE INSERT",
+                  title: "Mã nguồn Insert(v)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>Insert(v)</code> phụ thuộc vào <code>ShiftUp(i)</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapShiftUpCodeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-6-3",
+              number: "6.3",
+              title: "Code — ShiftUp(i)",
+              parts: [
+                {
+                  id: "dsa-b10-part-6-3-shiftup-code",
+                  label: "CODE SHIFTUP",
+                  title: "Mã nguồn ShiftUp(i) & Điều kiện dừng vòng lặp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Tên khác: ShiftUp / BubbleUp / IncreaseKey / ...",
+                        "Điều kiện dừng vòng lặp: <code>i = 1</code> (đến root) <strong>hoặc</strong> <code>A[parent(i)] &ge; A[i]</code> (không còn vi phạm) &rarr; không swap nữa."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-6-4",
+              number: "6.4",
+              title: "Time Complexity",
+              parts: [
+                {
+                  id: "dsa-b10-part-6-4-complexity",
+                  label: "ĐỘ PHỨC TẠP",
+                  title: "Phân tích độ phức tạp thời gian Insert(v) = O(log N)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>ShiftUp(i)</code>: <strong>O(log n)</strong> (do height của complete binary tree là O(log n), tối đa đi từ leaf lên root).",
+                        "&rarr; <code>Insert(v)</code>: <strong>O(log n)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapShiftUpComplexityGauge"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-6-5",
+              number: "6.5",
+              title: "Ví dụ minh họa: Insert(26) (VisuAlgo demo)",
+              parts: [
+                {
+                  id: "dsa-b10-part-6-5-demo",
+                  label: "VÍ DỤ VISUALGO",
+                  title: "Từng bước thực hiện Insert(26) vào Heap Mẫu",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Heap mẫu (1-based array, từ mục 4.1): <code>A = [_, 90, 19, 36, 17, 3, 25, 1, 2, 7]</code>, <code>heapsize = 9</code>.",
+                        "<strong>Bước 1:</strong> <code>heapsize = 10</code>, <code>A[10] = 26</code> &rarr; 26 trở thành <strong>right child của node 5</strong> (tức con của giá trị 3).",
+                        "<strong>Bước 2 (ShiftUp(10)):</strong>",
+                        "• So sánh <code>A[10]=26</code> với <code>A[parent(10)=5]=3</code> &rarr; <code>26 &gt; 3</code> &rarr; <strong>swap</strong> &rarr; 26 lên vị trí 5, i = 5.",
+                        "• So sánh <code>A[5]=26</code> với <code>A[parent(5)=2]=19</code> &rarr; <code>26 &gt; 19</code> &rarr; <strong>swap</strong> &rarr; 26 lên vị trí 2, i = 2.",
+                        "• So sánh <code>A[2]=26</code> với <code>A[parent(2)=1]=90</code> &rarr; <code>26 &lt; 90</code> &rarr; <strong>dừng</strong> (không vi phạm nữa).",
+                        "<strong>Kết quả:</strong> 26 dừng lại ở vị trí node 2 (ngay dưới root)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapInsert26Walkthrough"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Insert = chèn vào cuối mảng (<code>A[heapsize]</code>) rồi <strong>ShiftUp</strong> để phục hồi tính chất heap.<br/>• ShiftUp: so sánh với parent, nếu con &gt; cha thì swap, đi lên tiếp cho đến root hoặc không còn vi phạm.<br/>• <code>Insert(v)</code> = <strong>O(log n)</strong> &mdash; số bước swap tối đa = height của heap = O(log n)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec7",
+          roman: "VII",
+          title: "ExtractMax() — Xóa phần tử lớn nhất",
+          subsections: [
+            {
+              id: "dsa-b10-sub-7-1",
+              number: "7.1",
+              title: "Ý tưởng",
+              parts: [
+                {
+                  id: "dsa-b10-part-7-1-idea",
+                  label: "Ý TƯỞNG EXTRACTMAX",
+                  title: "Lựa chọn lá cuối A[heapsize] thay thế Root",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Max element luôn ở <strong>root</strong>.",
+                        "Nhưng nếu chỉ đơn giản lấy root ra &rarr; làm <strong>đứt (disconnect)</strong> complete binary tree &rarr; không được.",
+                        "<strong>Câu hỏi:</strong> node nào là ứng viên tốt nhất để thay thế root mà vẫn giữ tính chất complete binary tree?",
+                        "&rarr; <strong>Trả lời:</strong> <strong>leaf cuối cùng</strong> trong compact array (tức <code>A[heapsize]</code>) &mdash; vì đây là phần tử duy nhất có thể <strong>loại bỏ khỏi cây</strong> mà không phá vỡ tính chất complete binary tree (giống lý do ngược lại của phép Insert).",
+                        "Sau khi thay, heap property vẫn có thể bị vi phạm &rarr; dùng <code>ShiftDown(1)</code> để sửa."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapExtractMaxCandidateVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-7-2",
+              number: "7.2",
+              title: "Code — ExtractMax()",
+              parts: [
+                {
+                  id: "dsa-b10-part-7-2-extract-code",
+                  label: "CODE EXTRACTMAX",
+                  title: "Mã nguồn ExtractMax()",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>ExtractMax()</code> phụ thuộc vào <code>ShiftDown()</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapShiftDownCodeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-7-3",
+              number: "7.3",
+              title: "Code — ShiftDown(i)",
+              parts: [
+                {
+                  id: "dsa-b10-part-7-3-shiftdown-code",
+                  label: "CODE SHIFTDOWN",
+                  title: "Mã nguồn ShiftDown(i) & Điều kiện dừng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Tên khác: ShiftDown / BubbleDown / Heapify / ...",
+                        "<strong>Ý tưởng:</strong> so sánh node <code>i</code> với <strong>cả 2 con</strong>, tìm phần tử lớn nhất trong 3 (node, left, right); nếu node không phải lớn nhất thì swap với con lớn hơn rồi tiếp tục đi xuống; nếu đã là lớn nhất thì dừng (break)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapShiftDownTerminationCard"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-7-4",
+              number: "7.4",
+              title: "Time Complexity",
+              parts: [
+                {
+                  id: "dsa-b10-part-7-4-complexity",
+                  label: "ĐỘ PHỨC TẠP",
+                  title: "Phân tích độ phức tạp thời gian ExtractMax() = O(log N)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>ShiftDown(i)</code>: <strong>O(log n)</strong>.",
+                        "&rarr; <code>ExtractMax()</code>: <strong>O(log n)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapExtractMaxComplexityGauge"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-7-5",
+              number: "7.5",
+              title: "Ví dụ minh họa: ExtractMax() (VisuAlgo demo)",
+              parts: [
+                {
+                  id: "dsa-b10-part-7-5-demo",
+                  label: "VÍ DỤ VISUALGO",
+                  title: "Từng bước thực hiện ExtractMax() rút gốc 90",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dùng lại heap mẫu gốc (mục 4.1): <code>A = [_, 90, 19, 36, 17, 3, 25, 1, 2, 7]</code>, <code>heapsize = 9</code>.",
+                        "<strong>Bước 1:</strong> <code>maxV = A[1] = 90</code> (giá trị sẽ trả về).",
+                        "<strong>Bước 2:</strong> <code>A[1] = A[heapsize=9] = 7</code> &rarr; đưa phần tử cuối lên root; <code>heapsize = 8</code>.",
+                        "<strong>Bước 3 (ShiftDown(1)):</strong>",
+                        "• <code>i=1</code>: <code>A[1]=7</code>. So <code>left(1)=2 &rarr; A[2]=19</code> (lớn hơn) và <code>right(1)=3 &rarr; A[3]=36</code> (lớn hơn nữa) &rarr; <code>max_id = 3</code>. Vì <code>max_id != 1</code> &rarr; <strong>swap</strong> <code>A[1]</code> và <code>A[3]</code> &rarr; 36 lên root, 7 xuống vị trí 3. <code>i = 3</code>.",
+                        "• <code>i=3</code>: <code>A[3]=7</code>. So <code>left(3)=6 &rarr; A[6]=25</code> (lớn hơn) và <code>right(3)=7 &rarr; A[7]=1</code> (nhỏ hơn 25) &rarr; <code>max_id = 6</code>. Vì <code>max_id != 3</code> &rarr; <strong>swap</strong> <code>A[3]</code> và <code>A[6]</code> &rarr; 25 lên vị trí 3, 7 xuống vị trí 6. <code>i = 6</code>.",
+                        "• <code>i=6</code>: <code>left(6)=12 &gt; heapsize(8)</code> &rarr; không còn con &rarr; <strong>break</strong>.",
+                        "<strong>Kết quả:</strong> <code>maxV = 90</code> được trả về; heap còn lại (<code>heapsize = 8</code>): <code>[_, 36, 19, 25, 17, 3, 7, 1, 2]</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapExtractMax90Walkthrough"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• ExtractMax = lấy root ra, đưa phần tử cuối (<code>A[heapsize]</code>) lên root, giảm heapsize, rồi <strong>ShiftDown(1)</strong> để phục hồi heap.<br/>• ShiftDown: so sánh node với 2 con, swap với con lớn hơn, đi xuống tiếp; dừng khi node đã lớn nhất trong 3 hoặc hết heap (hết con để so sánh).<br/>• <code>ExtractMax()</code> = <strong>O(log n)</strong> &mdash; số bước swap tối đa = height của heap = O(log n)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec8",
+          roman: "VIII",
+          title: "So sánh lại các cách cài đặt PriorityQueue",
+          subsections: [
+            {
+              id: "dsa-b10-sub-8-1",
+              number: "8.1",
+              title: "Bảng so sánh tổng kết các chiến lược cài đặt",
+              parts: [
+                {
+                  id: "dsa-b10-part-8-1-summary-table",
+                  label: "TỔNG KẾT CHIẾN LƯỢC",
+                  title: "So sánh hiệu năng 3 cách cài đặt PriorityQueue",
+                  content: [
+                    {
+                      type: "paragraph",
+                      text: "<strong>So sánh tổng kết hiệu năng các phương pháp cài đặt PriorityQueue:</strong>"
+                    },
+                    {
+                      type: "component",
+                      component: "HeapPqUltimateShowdownArena"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Tóm tắt:</strong> Heap là DS hiệu quả &mdash; cả enqueue lẫn dequeue đều <strong>O(log n)</strong> &mdash; để cài đặt ADT PriorityQueue, trong đó 'key' biểu diễn 'priority' của mỗi item."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "Binary Heap cân bằng tốt hơn 2 cách array thuần: cả 2 thao tác đều <strong>O(log n)</strong>, thay vì một thao tác O(n)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-8-2",
+              number: "8.2",
+              title: "Tổng kết bài học & Flashcards cốt lõi ôn thi",
+              parts: [
+                {
+                  id: "dsa-b10-part-8-2-flashcards",
+                  label: "ÔN THI CỐT LÕI",
+                  title: "Dashboard 4 Trụ Cột & 10 Flashcards Ôn Thi",
+                  content: [
+                    {
+                      type: "component",
+                      component: "HeapMasterSummaryFlashcards"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec9",
+          roman: "IX",
+          title: "Xây dựng Heap từ mảng (BuildHeap & HeapSort)",
+          subsections: [
+            {
+              id: "dsa-b10-sub-9-0",
+              number: "9.0",
+              title: "Ôn lại: MergeSort (câu hỏi khởi động trước khi học HeapSort)",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-0-warmup",
+                  label: "KHỞI ĐỘNG MERGESORT",
+                  title: "Ôn lại mốc chuẩn O(n log n) trước khi học HeapSort",
+                  content: [
+                    {
+                      type: "component",
+                      component: "HeapSortWarmupQuizCard"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "Mục đích: ôn lại mốc <strong>O(n log n)</strong> để so sánh với <strong>HeapSort</strong> &mdash; cả hai đều đạt độ phức tạp O(n log n) khi sắp xếp."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-9-1",
+              number: "9.1",
+              title: "HeapSort — ý tưởng chung",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-1-heapsort-idea",
+                  label: "Ý TƯỞNG HEAPSORT",
+                  title: "Quy trình sắp xếp HeapSort 2 giai đoạn",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Có max heap rồi thì sort được: chỉ cần gọi <code>ExtractMax()</code> n lần.",
+                        "Nếu chưa có max heap &rarr; <strong>build một cái!</strong>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BuildHeapSlowVsPipelineArena"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-9-2",
+              number: "9.2",
+              title: "BuildHeap phiên bản chậm — O(n log n)",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-2-buildheap-slow",
+                  label: "BUILDHEAP CHẬM",
+                  title: "Dựng Heap ngây thơ bằng n lần chèn Insert(v)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Ý tưởng: chèn (Insert) từng phần tử một, y hệt insert bình thường vào heap.",
+                        "Rõ ràng chạy trong <strong>O(n log n)</strong>.",
+                        "&rarr; Câu hỏi đặt ra: <strong>Có thể làm nhanh hơn không?</strong>"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-9-3",
+              number: "9.3",
+              title: "BuildHeap phiên bản nhanh — O(n)",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-3-buildheap-fast",
+                  label: "BUILDHEAP NHANH",
+                  title: "Chiến lược Bottom-Up duyệt từ ⌊n/2⌋ về 1",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Ý tưởng: copy toàn bộ mảng vào A trước (chưa cần đúng heap property), sau đó chỉ gọi <strong>ShiftDown</strong> một cách chiến lược, bắt đầu từ node <strong>không phải leaf cuối cùng</strong> đi ngược lên root.",
+                        "Chỉ cần ShiftDown các <strong>internal node</strong> (từ <code>parent(heapsize)</code> xuống 1), vì các leaf tự động thỏa heap property (không có con để so sánh)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BuildHeapFastO1NStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-9-4",
+              number: "9.4",
+              title: "Phân tích tại sao BuildHeap nhanh (Faster) là O(n)",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-4-math-proof",
+                  label: "CHỨNG MINH TOÁN HỌC",
+                  title: "Phân tích chuỗi vô hạn chứng minh tổng chi phí O(n)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Nhắc lại: height của complete binary tree kích thước n là O(log n).",
+                        "Nhắc lại: chi phí chạy ShiftDown(i) tại 1 node là O(height của node đó).",
+                        "Số node ở height h trong cây nhị phân đầy (full binary tree): khoảng n / 2^(h+1).",
+                        "Tổng chi phí BuildHeap: &Sigma; (h=0 &rarr; floor(lg n)) [n / 2^(h+1)] * O(h) = O(n * &Sigma; h / 2^h) = <strong>O(2n) = O(n)</strong>.",
+                        "Áp dụng công thức chuỗi: &Sigma; (k=0 &rarr; &infin;) k * x^k = x / (1-x)^2, với x = 1/2 &rarr; kết quả = 2.",
+                        "Minh họa bằng số: 0 + 0.5 + 0.5 + 0.375 + 0.25 + 0.15625 + 0.09375 + ... &lt; 2.",
+                        "<strong>Kết luận:</strong> Cost của BuildHeap() (phiên bản nhanh) = <strong>O(2n) = O(n)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BuildHeapMathProofVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b10-sub-9-5",
+              number: "9.5",
+              title: "Phân tích lại HeapSort với BuildHeap O(n)",
+              parts: [
+                {
+                  id: "dsa-b10-part-9-5-heapsort-analysis",
+                  label: "PHÂN TÍCH HEAPSORT",
+                  title: "Đối đầu HeapSort vs MergeSort: In-place & Cache Locality",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "HeapSort <strong>không cần thêm mảng phụ</strong> như Merge Sort &rarr; gọi là <strong>'in-place sorting'</strong> &rarr; tiết kiệm bộ nhớ hơn (memory friendly).",
+                        "Nhưng HeapSort <strong>không 'cache friendly'</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapSortVsMergeSortArena"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• BuildHeap kiểu chèn từng phần tử (Insert n lần) = <strong>O(n log n)</strong>.<br/>• BuildHeap kiểu ShiftDown từ giữa mảng lên = <strong>O(n)</strong> (nhanh hơn hẳn) &mdash; đây là điểm hay bị hỏi thi.<br/>• HeapSort = BuildHeap (O(n)) + n lần ExtractMax (O(log n) mỗi lần) = <strong>O(n log n)</strong> tổng thể.<br/>• HeapSort: in-place (không cần mảng phụ) nhưng không cache-friendly."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec10",
+          roman: "X",
+          title: "Cài đặt Java (Java Implementation)",
+          subsections: [
+            {
+              id: "dsa-b10-sub-10-1",
+              number: "10.1",
+              title: "Cấu trúc lớp Heap Java (OOP Heap Class)",
+              parts: [
+                {
+                  id: "dsa-b10-part-10-1-java-oop",
+                  label: "KIẾN TRÚC JAVA OOP",
+                  title: "Thiết kế lớp Heap.java cho bài tập thực hành PS1",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Theo slide, cài đặt PriorityQueue ADT bằng <strong>Heap Class</strong> (file Java được cung cấp sẵn, dùng cho PS1), theo phong cách <strong>OOP</strong>, gồm các hàm: <code>ShiftUp(i)</code>, <code>Insert(v)</code>, <code>ShiftDown(i)</code>, <code>ExtractMax()</code>, <code>BuildHeapSlow(array)</code>, <code>BuildHeap(array)</code>, <code>HeapSort()</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapJavaOopArchitectureCard"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "Slide chỉ liệt kê danh sách các hàm cần cài đặt theo OOP, không có code Java chi tiết trong bài này (file Java được cấp riêng)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b10-sec11",
+          roman: "SUMMARY",
+          title: "Tổng kết chương & Bảng vàng Time Complexity",
+          subsections: [
+            {
+              id: "dsa-b10-sub-11-1",
+              number: "11.1",
+              title: "Tổng kết chương (Summary) & Mini-Quiz Tốt Nghiệp",
+              parts: [
+                {
+                  id: "dsa-b10-part-11-1-summary",
+                  label: "TỔNG KẾT BÀI HỌC",
+                  title: "Bảng Vàng Độ Phức Tạp & Mini-Quiz Tốt Nghiệp Bài 10",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Heap DS và ứng dụng của nó làm <strong>PriorityQueue</strong> hiệu quả.",
+                        "Lưu heap dưới dạng <strong>compact array</strong> và các phép toán trên đó.",
+                        "Luôn phải duy trì <strong>complete binary tree</strong> và <strong>heap property</strong> trong mọi phép toán!",
+                        "Xây dựng heap từ tập số cho trước trong <strong>O(n)</strong>.",
+                        "Ứng dụng đơn giản của Heap DS: <strong>O(n log n) HeapSort</strong>.",
+                        "PriorityQueue sẽ được dùng tiếp trong phần 2 của CS2010."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "HeapChapterFinalMasterMatrix"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b11",
+      title: "Bài 11: The Foundations — Union-Find, Bitmask & Graph Basic",
+      description: "Bộ ba kiến trúc nền tảng CS2010: Quản lý tập hợp rời rạc Union-Find Disjoint Sets (DSU) gần như O(1), Thao tác Bitmasking nén trạng thái siêu tốc, và Các cấu trúc biểu diễn đồ thị chuẩn mực (Adjacency Matrix, List, Edge List).",
+      sections: [
+        {
+          id: "dsa-b11-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Bộ Ba Vũ Khí Nền Tảng",
+          subsections: [
+            {
+              id: "dsa-b11-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Live Foundations Workbench",
+              parts: [
+                {
+                  id: "dsa-b11-part-0-banner",
+                  label: "TỔNG QUAN NỀN TẢNG",
+                  title: "Phòng Thí Nghiệm Union-Find, Bitmask & Graph Basics",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaUnionFindHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b11-sec1",
+          roman: "I",
+          title: "Union-Find Disjoint Sets (UFDS)",
+          subsections: [
+            {
+              id: "dsa-b11-sub-1-1",
+              number: "1.1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-1-concept",
+                  label: "KHÁI NIỆM UFDS",
+                  title: "Tập Hợp Rời Nhau & Mô Hình Rừng Cây",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Cho trước nhiều <strong>tập rời nhau (disjoint sets)</strong> ban đầu.",
+                        "2 thao tác chính:",
+                        "• <strong>Union:</strong> hợp nhất (union) hai tập rời khi cần.",
+                        "• <strong>Find:</strong> tìm xem một phần tử (item) thuộc tập nào.",
+                        "Cách dùng phổ biến nhất: kiểm tra xem <strong>2 item có thuộc cùng một tập hay không</strong>.",
+                        "<strong>Ý tưởng chính:</strong>",
+                        "• Mỗi tập (set) được mô hình hóa như một <strong>cây (tree)</strong>.",
+                        "• Vậy một tập hợp các disjoint sets tạo thành một <strong>rừng cây (forest of trees)</strong>.",
+                        "• Mỗi tập được đại diện bởi <strong>representative item</strong> &mdash; <strong>gốc (root)</strong> của cây tương ứng của tập đó."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-1-2",
+              number: "1.2",
+              title: "Ví dụ với 3 tập rời nhau",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-2-example",
+                  label: "VÍ DỤ 3 TẬP",
+                  title: "Mô hình 3 cây tập hợp rời nhau",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "3 disjoint sets (cây) trong ví dụ:",
+                        "1. Tập chứa <code>{0, 1, 2, 3, 4}</code> &mdash; representative item = <strong>vertex 3</strong> (in đậm + gạch dưới), là gốc của cây con này.",
+                        "2. Tập chứa <code>{5, 6, 7}</code>.",
+                        "3. Tập chứa <code>{8}</code>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-1-3",
+              number: "1.3",
+              title: "Cách biểu diễn (Representation) UFDS",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-3-repr",
+                  label: "BIỂU DIỄN UFDS",
+                  title: "Mảng parent p[i] & Điều kiện Root",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Dùng mảng <code>p</code> để ghi lại rừng cây này:",
+                        "• <code>p[i]</code> lưu <strong>parent</strong> của item <code>i</code>.",
+                        "• Nếu <code>p[i] == i</code> &rarr; <code>i</code> là <strong>root</strong>, đồng thời là <strong>representative item</strong> của tập đó.",
+                        "• Ví dụ: <code>p = [2, 3, 3, 3, 3, 6, 6, 6, 8]</code> cho các item <code>0, 1, 2, 3, 4, 5, 6, 7, 8</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsForestRepresentationSandbox"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-1-4",
+              number: "1.4",
+              title: "Thao tác FindSet",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-4-findset",
+                  label: "THAO TÁC FINDSET",
+                  title: "Đệ quy tìm Root & Nén đường đi (Path Compression)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a) Cách hoạt động:</strong> Với mỗi item <code>i</code>, tìm representative item của tập chứa <code>i</code> bằng cách <strong>đệ quy</strong> thăm <code>p[i]</code> cho đến khi <code>p[i] == i</code>. Sau đó thực hiện <strong>path compression (nén đường đi)</strong> để các lần find sau này (rất) nhanh, tức <strong>O(1)</strong>.",
+                        "<strong>b) Ví dụ:</strong> <code>findSet(0)</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsFindSetCompressionStudio"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>c) Code Java:</strong>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsJavaVectorPitfallCard"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Lưu ý quan trọng",
+                      text: "Phải <strong>set giá trị mới của p[i] trước</strong> rồi mới return, vì method <code>set()</code> của Java <code>Vector</code> trả về <strong>phần tử cũ</strong> tại vị trí đó &rarr; Vì vậy <strong>không thể</strong> viết: <code>return p.set(i, findSet(p.get(i)));</code>"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-1-5",
+              number: "1.5",
+              title: "Thao tác UnionSet",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-5-unionset",
+                  label: "THAO TÁC UNIONSET",
+                  title: "Heuristic Union-by-Rank & Hoạt Họa Chuỗi Slide",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a) Cách hoạt động:</strong> Nếu 2 item A và B hiện đang thuộc 2 tập khác nhau, hợp nhất (union) chúng bằng cách: Đặt representative item của cây <strong>cao hơn (higher)</strong> làm representative item mới của tập hợp nhất.",
+                        "<strong>b) Ví dụ:</strong> <code>unionSet(5, 8)</code>.",
+                        "<strong>c) Heuristic 'Union-by-Rank':</strong>",
+                        "• Giúp cây kết quả sau khi hợp nhất <strong>ngắn hơn (shorter)</strong> (nếu làm ngược lại &rarr; cây kết quả sẽ cao hơn &mdash; không mong muốn).",
+                        "• Nếu 2 cây <strong>cao bằng nhau</strong> &rarr; không dùng heuristic này (tùy chọn gắn vào cây nào cũng được, và rank tăng thêm 1).",
+                        "• Dùng thêm mảng <code>rank[i]</code> để lưu <strong>cận trên (upper bound)</strong> của chiều cao (sub)tree gốc tại <code>i</code>. Đây chỉ là <strong>cận trên</strong>, vì path compression có thể làm (sub)tree thấp hơn upper bound này, và ta <strong>không muốn tốn công</strong> để duy trì tính chính xác tuyệt đối của <code>rank[i]</code>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsUnionByRankWorkbench"
+                    },
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>d) Code — Constructor & unionSet()</strong>",
+                        "• <code>unionSet(0, 1)</code> rồi <code>unionSet(2, 3)</code> &rarr; <code>unionSet(4, 3)</code> &rarr; <code>unionSet(0, 3)</code>.",
+                        "<strong>e) Code — isSameSet():</strong> <code>public Boolean isSameSet(int i, int j) { return findSet(i) == findSet(j); }</code>",
+                        "• Ví dụ: <code>isSameSet(0, 4)</code> &mdash; nếu representative item của tập chứa 0 và của tập chứa 4 khác nhau &rarr; 0 và 4 <strong>không</strong> cùng tập."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsSlideSequenceAnimator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-1-6",
+              number: "1.6",
+              title: "Độ phức tạp (Time Complexity)",
+              parts: [
+                {
+                  id: "dsa-b11-part-1-6-complexity",
+                  label: "ĐỘ PHỨC TẠP",
+                  title: "Hàm Ngược Ackermann O(α(V)) & Điểm Cốt Lõi Cần Nhớ",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Nếu UFDS được cài đặt với <strong>cả 2</strong> heuristic 'union-by-rank' <strong>và</strong> 'path-compression':",
+                        "• Các thao tác UFDS chạy trong <strong>O(&alpha;(V))</strong>.",
+                        "• <code>&alpha;(V)</code> gọi là <strong>inverse Ackermann function</strong>.",
+                        "• Hàm này tăng <strong>rất chậm</strong> &mdash; có thể xem là <strong>'hằng số'</strong>, tức <strong>O(1)</strong> với các giá trị V thực tế (&lt; 1M). (Phần chứng minh khá khó, không thuộc phạm vi môn học ở mức này)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UfdsInverseAckermannGauge"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• UFDS mô hình mỗi tập như 1 <strong>cây</strong>; <strong>representative item = root</strong>.<br/>• Mảng <code>p[i]</code>: parent của <code>i</code>; <code>p[i] == i</code> &rarr; <code>i</code> là root/representative.<br/>• <strong>FindSet:</strong> đệ quy theo <code>p[i]</code> đến root + <strong>path compression</strong>.<br/>• <strong>UnionSet:</strong> gắn root của cây thấp hơn vào root của cây cao hơn (<strong>union-by-rank</strong>), nếu bằng nhau thì rank tăng thêm 1.<br/>• Time complexity: <strong>O(&alpha;(V)) &approx; O(1)</strong> thực tế, khi có cả union-by-rank + path compression.<br/>• Trong code Java, <strong>không</strong> viết <code>return p.set(i, findSet(p.get(i)))</code> vì <code>Vector.set()</code> trả về giá trị <strong>cũ</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b11-sec2",
+          roman: "II",
+          title: "Bitmask Data Structure",
+          subsections: [
+            {
+              id: "dsa-b11-sub-2-1",
+              number: "2.1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "dsa-b11-part-2-1-concept",
+                  label: "KHÁI NIỆM BITMASK",
+                  title: "Biểu Diễn Tập Boolean Nhẹ Bằng Số Nguyên Nhị Phân",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Một số nguyên (integer) được lưu ở dạng <strong>nhị phân (binary)</strong> trong bộ nhớ máy tính:",
+                        "• <code>int x = 7₁₀</code> thực chất là <code>111₂</code>",
+                        "• <code>int y = 12₁₀</code> là <code>1100₂</code>",
+                        "• <code>int z = 83₁₀</code> là <code>1010011₂</code>",
+                        "Có thể dùng dãy các bit 0/1 này để biểu diễn một <strong>tập Boolean nhỏ, nhẹ (lightweight/small set of Booleans)</strong> rất hiệu quả.",
+                        "• Số nguyên <strong>N-bit</strong> có thể biểu diễn <strong>N đối tượng Boolean</strong>.",
+                        "• Về lý thuyết, tối đa <strong>32 đối tượng Boolean</strong> cho 1 số nguyên 32-bit.",
+                        "• Nếu bit thứ <strong>i = 1</strong> &rarr; object <code>i</code> <strong>có trong tập / active / used</strong>.",
+                        "• Ngược lại (bit = 0) &rarr; object <code>i</code> <strong>không có trong tập / not active / not used</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-2-2",
+              number: "2.2",
+              title: "Các phép toán bit (Bit Operations)",
+              parts: [
+                {
+                  id: "dsa-b11-part-2-2-operations",
+                  label: "CÁC PHÉP TOÁN BIT",
+                  title: "Kiểm Tra Bit, Bật Bit & Bật Tất Cả n Bits",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>a) Kiểm tra bit i bật hay tắt:</strong> <code>x & (1 << i)</code>",
+                        "• Ví dụ 1: <code>x = 25₁₀ (11001₂)</code>, kiểm tra bit <code>i = 2</code> (tính từ phải, đánh số từ 0):<br/><code>x & (1 << 2) = 25₁₀ & 4₁₀ = 11001₂ & 00100₂ = 00000₂ = 0</code> &rarr; Kết quả = 0 &rarr; bit <code>i = 2</code> (từ phải) <strong>tắt (off)</strong>.",
+                        "• Ví dụ 2: <code>x = 25₁₀ (11001₂)</code>, kiểm tra bit <code>i = 3</code>:<br/><code>x & (1 << 3) = 25₁₀ & 8₁₀ = 11001₂ & 01000₂ = 01000₂ = 8₁₀</code> &rarr; Kết quả = 8₁₀ &rarr; bit <code>i = 3</code> (từ phải) <strong>bật (on)</strong>.",
+                        "<strong>b) Bật (turn on) bit i của x:</strong> <code>x = x | (1 << i)</code>",
+                        "• Ví dụ 1: <code>x = 25₁₀ (11001₂)</code>, bật bit <code>i = 2</code>:<br/><code>x = x | (1 << 2) = 25₁₀ | 4₁₀ = 11001₂ | 00100₂ = 11101₂ = 29₁₀</code> &rarr; bit 2 (từ phải) giờ đã <strong>bật</strong>.",
+                        "• Ví dụ 2: <code>x = 25₁₀ (11001₂)</code>, bật bit <code>i = 3</code>:<br/><code>x = x | (1 << 3) = 25₁₀ | 8₁₀ = 11001₂ | 01000₂ = 11001₂ = 25₁₀</code> &rarr; <strong>không đổi</strong> vì bit 3 (từ phải) <strong>đã bật sẵn</strong>.",
+                        "<strong>c) Bật tất cả bit của tập Boolean kích thước n:</strong> <code>x = (1 << n) - 1</code>",
+                        "• Ví dụ: <code>n = 4</code> &rarr; <code>1 << 4 = 16₁₀ (10000₂)</code> &rarr; <code>x = (1 << 4) - 1 = 15₁₀ (1111₂)</code> &rarr; Cả 4 bit (n=4) đều được bật."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BitmaskOperationsLiveSandbox"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Bitmask)",
+                      text: "• N-bit integer biểu diễn được N Boolean; 32-bit &rarr; tối đa 32 phần tử.<br/>• <strong>Check bit i:</strong> <code>x & (1 << i)</code> (khác 0 &rarr; bật; = 0 &rarr; tắt).<br/>• <strong>Turn on bit i:</strong> <code>x = x | (1 << i)</code>.<br/>• <strong>Turn on tất cả n bit:</strong> <code>x = (1 << n) - 1</code>.<br/>• Slide còn nhắc tới (không đi sâu, tự khám phá qua VisuAlgo): <strong>Toggle / Clear / Least Significant bit</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b11-sec3",
+          roman: "III",
+          title: "Giới thiệu về Graph (Đồ thị)",
+          subsections: [
+            {
+              id: "dsa-b11-sub-3-1",
+              number: "3.1",
+              title: "Thuật ngữ Graph (1) — mở rộng từ (Binary) Tree",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-1-terminology1",
+                  label: "MỞ RỘNG TỪ CÂY",
+                  title: "Kế Thừa Từ Tree & Các Khái Niệm Mất Đi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Các khái niệm kế thừa từ Tree: <strong>Vertex (đỉnh), Edge (cạnh), Direction of Edge (hướng cạnh), Weight of Edge (trọng số cạnh)</strong>.",
+                        "Nhưng trong graph tổng quát, <strong>không có</strong> khái niệm: Root (gốc), Parent/Child (cha/con), Ancestor/Descendant (tổ tiên/hậu duệ)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-2",
+              number: "3.2",
+              title: "Graph là gì?",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-2-whatisgraph",
+                  label: "ĐỊNH NGHĨA GRAPH",
+                  title: "Simple Graph, Cạnh Có Hướng & Đỉnh Kề Nhau",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "(Simple) Graph = tập hợp các <strong>vertices (đỉnh)</strong>, trong đó một số cặp đỉnh trong <code>[0 .. NC2]</code> cặp được nối bởi <strong>edges (cạnh)</strong>.",
+                        "Slide <strong>bỏ qua 'multi graph'</strong> (trường hợp có nhiều hơn 1 cạnh giữa cùng một cặp đỉnh).",
+                        "Một vertex thường được đánh nhãn (labeled) từ <strong>0 đến V-1</strong>.",
+                        "Có 2 loại cạnh:",
+                        "• <strong>Directed Edge (cạnh có hướng)</strong>.",
+                        "• <strong>Undirected Edge (cạnh vô hướng)</strong> &mdash; nếu có cạnh vô hướng nối đỉnh 0 và đỉnh 3 &rarr; gọi đỉnh 0 và đỉnh 3 là <strong>'adjacent' (kề nhau)</strong>.",
+                        "• <strong>Weighted Undirected Edge</strong> = cạnh vô hướng có trọng số."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphTreeInheritanceBridgeStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-3",
+              number: "3.3",
+              title: "Thuật ngữ Graph (2)",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-3-terminology2",
+                  label: "MẬT ĐỘ & BẬC",
+                  title: "Sparse vs Dense, Complete Graph & In/Out Degree",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Sparse / Dense (thưa/dày):</strong>",
+                        "• Sparse = <strong>không có nhiều</strong> cạnh.",
+                        "• Dense = <strong>nhiều</strong> cạnh.",
+                        "• Không có quy định chính xác 'bao nhiêu là nhiều'.",
+                        "<strong>Complete Graph (đồ thị đầy đủ):</strong>",
+                        "• Simple graph với <strong>N vertices</strong> và <strong>NC2 edges</strong> (tức mọi cặp đỉnh đều có cạnh nối).",
+                        "• Ví dụ: Complete Graph 7 vertices &rarr; 7C2 = <strong>21 edges</strong>.",
+                        "<strong>In/Out Degree của một vertex:</strong>",
+                        "• Số cạnh đi vào/đi ra (in/out edges) từ một vertex.",
+                        "• Ví dụ: in/out degree của vertex 5 = 3."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphSparseDenseDegreeWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-4",
+              number: "3.4",
+              title: "Thuật ngữ Graph (3)",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-4-terminology3",
+                  label: "ĐƯỜNG ĐI & CHU TRÌNH",
+                  title: "Simple Path, Simple Cycle & Mạng Giao Thông MRT/LRT",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>(Simple) Path (đường đi đơn):</strong> Dãy các vertex kề nhau liên tiếp. 'Simple' nghĩa là <strong>không lặp lại vertex</strong> nào.",
+                        "<strong>Path Length/Cost (độ dài/chi phí đường đi):</strong>",
+                        "• Đồ thị không trọng số (unweighted): thường tính bằng <strong>số cạnh</strong> trong đường đi.",
+                        "• Đồ thị có trọng số (weighted): thường tính bằng <strong>tổng trọng số</strong> các cạnh trong đường đi.",
+                        "<strong>(Simple) Cycle (chu trình đơn):</strong> Path bắt đầu và kết thúc tại <strong>cùng một vertex</strong>. Không lặp lại vertex nào, <strong>ngoại trừ</strong> đỉnh đầu/cuối.",
+                        "<strong>Ví dụ minh họa (Transportation Network):</strong>",
+                        "• Simple cycle: Sengkang LRT, west loop.",
+                        "• Simple path: từ Clementi đến Outram Park MRT với length = 7 (tính theo số 'hops')."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphTransitPathCycleStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-5",
+              number: "3.5",
+              title: "Ứng dụng thực tế của Graph (theo slide)",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-5-applications",
+                  label: "ỨNG DỤNG THỰC TẾ",
+                  title: "5 Trụ Cột Ứng Dụng Trong Xã Hội & Công Nghệ",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Social Network</strong> (mạng xã hội).",
+                        "• <strong>Transportation Network</strong> (mạng giao thông).",
+                        "• <strong>Internet / Computer Networks</strong> (mạng máy tính).",
+                        "• <strong>Communication Network</strong> (mạng truyền thông).",
+                        "• <strong>Optimization</strong> (tối ưu hóa): Euler Path, PageRank, Movie Rating."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphRealWorldApplicationsHub"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-6",
+              number: "3.6",
+              title: "Thuật ngữ Graph (4)",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-6-terminology4",
+                  label: "LIÊN THÔNG & REACHABILITY",
+                  title: "Connected Components, Tính Đến Được & Sub Graph",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Component (thành phần liên thông):</strong> Một nhóm các vertex trong đồ thị vô hướng có thể <strong>thăm lẫn nhau</strong> thông qua một đường đi (path) nào đó.",
+                        "<strong>Connected graph (đồ thị liên thông):</strong> Graph chỉ có <strong>đúng 1 component</strong>.",
+                        "<strong>Disconnected graph:</strong> Graph có <strong>> 1 component</strong>.",
+                        "<strong>Reachable / Unreachable Vertex (đỉnh có thể/không thể đến được):</strong> Ví dụ: vertices 1-2-3-4 <strong>reachable</strong> từ vertex 0; vertices 5, 6-7-8 <strong>unreachable</strong> từ vertex 0.",
+                        "<strong>Sub Graph (đồ thị con):</strong> Tập con các vertex (và các edge tương ứng) của đồ thị gốc. Ví dụ: <code>{7-6-8}</code> là một sub graph của đồ thị.",
+                        "<strong>Ví dụ theo slide:</strong> đồ thị có <strong>3 components</strong> &rarr; là đồ thị <strong>disconnected</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphComponentsReachabilityLab"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-3-7",
+              number: "3.7",
+              title: "Thuật ngữ Graph (5)",
+              parts: [
+                {
+                  id: "dsa-b11-part-3-7-terminology5",
+                  label: "ĐỒ THỊ ĐẶC BIỆT & TỔNG KẾT",
+                  title: "DAG, Tree, Bipartite Graph & Flashcards Cốt Lõi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Directed Acyclic Graph (DAG):</strong> Đồ thị có hướng <strong>không có chu trình (no cycle)</strong>.",
+                        "<strong>Tree (cây):</strong> Đồ thị liên thông (connected graph), số cạnh <strong>E = V - 1</strong>, có <strong>duy nhất một đường đi</strong> giữa bất kỳ cặp đỉnh nào.",
+                        "<strong>Bipartite Graph (đồ thị hai phía):</strong> Nếu có thể chia (partition) các vertex thành <strong>2 tập</strong> sao cho <strong>không có cạnh</strong> nào nối 2 đỉnh cùng nằm trong 1 tập.",
+                        "<strong>Ví dụ trong slide:</strong> Out degree của vertex 0 = 2; In degree của vertex 2 = 2."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphSpecialTopologiesMasterCard"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• Graph <strong>kế thừa</strong> Vertex/Edge/Direction/Weight từ Tree, nhưng <strong>không</strong> có Root/Parent-Child/Ancestor-Descendant.<br/>• <strong>Complete Graph:</strong> N vertices, NC2 edges.<br/>• <strong>Simple Path:</strong> không lặp vertex; <strong>Simple Cycle:</strong> path khép kín, không lặp vertex trừ đầu-cuối.<br/>• <strong>Connected:</strong> 1 component; <strong>Disconnected:</strong> >1 component.<br/>• <strong>DAG:</strong> directed + no cycle; <strong>Tree:</strong> connected + E = V - 1 + đường đi duy nhất giữa mọi cặp đỉnh; <strong>Bipartite:</strong> chia được 2 tập không có cạnh nội bộ."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b11-sec4",
+          roman: "IV",
+          title: "Ba loại Graph Data Structures",
+          subsections: [
+            {
+              id: "dsa-b11-sub-4-1",
+              number: "4.1",
+              title: "Adjacency Matrix (Ma trận kề)",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-1-adjmatrix",
+                  label: "MA TRẬN KỀ",
+                  title: "Mảng 2 Chiều AdjMatrix[V][V] & Độ Phức Tạp O(V²)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khái niệm:</strong>",
+                        "• Định dạng: mảng 2 chiều <code>AdjMatrix</code>.",
+                        "• Ô <code>AdjMatrix[i][j]</code> chứa giá trị <strong>1</strong> nếu tồn tại cạnh $ij$ trong $G$, ngược lại chứa <strong>0</strong>.",
+                        "• Với đồ thị có trọng số (weighted graph): <code>AdjMatrix[i][j]</code> chứa <strong>trọng số (weight)</strong> của cạnh $ij$, không chỉ là giá trị nhị phân {1, 0}."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphAdjMatrixVisualizer"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-4-2",
+              number: "4.2",
+              title: "Adjacency List (Danh sách kề)",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-2-adjlist",
+                  label: "DANH SÁCH KỀ",
+                  title: "Mảng Vector<Vector<IntegerPair>> & Không Gian O(V + E)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khái niệm:</strong>",
+                        "• Định dạng: mảng <code>AdjList</code> gồm $V$ danh sách (list), mỗi danh sách cho 1 vertex.",
+                        "• Với mỗi vertex $i$, <code>AdjList[i]</code> lưu danh sách các <strong>hàng xóm (neighbors)</strong> của $i$.",
+                        "• Với weighted graph: lưu các cặp <strong>(neighbor, weight)</strong>.",
+                        "• Với unweighted graph: có thể dùng cùng chiến lược (neighbor, weight), nhưng weight đặt là <strong>0 (unused)</strong> hoặc <strong>1 (unit weight)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphAdjListStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-4-3",
+              number: "4.3",
+              title: "Edge List (Danh sách cạnh)",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-3-edgelist",
+                  label: "DANH SÁCH CẠNH",
+                  title: "Mảng E Cạnh & Bộ Ba Số Nguyên {w, u, v}",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khái niệm:</strong>",
+                        "• Định dạng: mảng <code>EdgeList</code> gồm $E$ cạnh (edges).",
+                        "• Với mỗi cạnh $i$, <code>EdgeList[i]</code> lưu một <strong>bộ ba số nguyên (integer triple)</strong>: <code>{w(u, v), u, v}</code>.",
+                        "• Với unweighted graph: weight có thể lưu là 0 (hoặc 1), hoặc đơn giản chỉ lưu một <strong>cặp (pair)</strong> số nguyên."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphEdgeListWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-4-4",
+              number: "4.4",
+              title: "So sánh nhanh 3 Graph Data Structures",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-4-comparison",
+                  label: "SO SÁNH 3 CẤU TRÚC",
+                  title: "Bảng Đối Chiếu Không Gian Bộ Nhớ & Thời Gian Thao Tác",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Bảng so sánh Không gian bộ nhớ (Space Complexity):</strong>",
+                        "• Adjacency Matrix: <strong>O(V²)</strong>",
+                        "• Adjacency List: <strong>O(V+E)</strong>",
+                        "• Edge List: <strong>O(E)</strong>",
+                        "<em>Ghi chú của giảng viên (PS trong slide):</em> đây là cách implement của tác giả, <strong>có thể có cách khác</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphRepresentationsTriDuelArena"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-4-5",
+              number: "4.5",
+              title: "Java Implementation chi tiết — class IntegerPair",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-5-integerpair",
+                  label: "JAVA INTEGERPAIR",
+                  title: "Kiến Trúc Lớp Đối Tượng & Cạm Bẫy So Sánh Tham Chiếu",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Lớp IntegerPair:</strong> cài đặt interface <code>Comparable<IntegerPair></code> để phục vụ sắp xếp.",
+                        "<strong>📌 Lưu ý quan trọng:</strong> so sánh <code>Integer</code> phải dùng <code>.equals()</code>, <strong>không</strong> dùng <code>!=</code> (vì <code>!=</code> so sánh reference/địa chỉ bộ nhớ, không so sánh giá trị)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-4-6",
+              number: "4.6",
+              title: "Vì sao chọn Vector<Vector<IntegerPair>> cho AdjList?",
+              parts: [
+                {
+                  id: "dsa-b11-part-4-6-whyvector",
+                  label: "TẠI SAO CHỌN ADJLIST",
+                  title: "Bộ 3 Lý Do Cốt Lõi Chọn Vector Lồng Nhau",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong CS2010, <strong>AdjList được dùng cho hầu hết các graph problem</strong>.",
+                        "• <strong>Vì sao dùng IntegerPair?:</strong> Cần lưu cặp thông tin cho mỗi cạnh: <strong>(neighbor number, weight)</strong>; weight = 0/unused với unweighted graph.",
+                        "• <strong>Vì sao dùng Vector của IntegerPair?:</strong> Nhờ tính năng <strong>tự resize (auto-resize)</strong> của Vector: nếu vertex có $k$ neighbor, chỉ cần <code>add</code> $k$ lần vào Vector rỗng ban đầu. Có thể thay bằng <code>List</code> hoặc <code>ArrayList</code> của Java nếu muốn.",
+                        "• <strong>Vì sao dùng Vector của Vector của IntegerPair?:</strong> Nhờ tính năng <strong>đánh chỉ số (indexing)</strong> của Vector: muốn liệt kê (enumerate) các neighbor của vertex $u$ &rarr; dùng <code>AdjList.get(u)</code> để truy cập đúng Vector IntegerPair tương ứng."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphJavaIntegerPairCard"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ",
+                      text: "• 3 cấu trúc lưu đồ thị: <strong>Adjacency Matrix O(V²)</strong>, <strong>Adjacency List O(V+E)</strong>, <strong>Edge List O(E)</strong>.<br/>• <strong>AdjList là lựa chọn chính dùng trong môn học cho hầu hết bài toán graph</strong>.<br/>• So sánh <code>Integer</code> (kiểu Object) phải dùng <code>.equals()</code>, không dùng <code>!=</code>/<code>==</code> (so sánh reference).<br/>• Cấu trúc <code>Vector<Vector<IntegerPair>></code>: tầng ngoài để <strong>index theo vertex</strong>, tầng trong để <strong>auto-resize danh sách neighbor</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b11-sec5",
+          roman: "V",
+          title: "Summary (Tổng kết bài học)",
+          subsections: [
+            {
+              id: "dsa-b11-sub-5-1",
+              number: "5.1",
+              title: "Roadmap Liên Kết Các Học Phần CS2010",
+              parts: [
+                {
+                  id: "dsa-b11-part-5-1-roadmap",
+                  label: "ROADMAP CS2010",
+                  title: "Bản Đồ Ứng Dụng UFDS, Bitmask & Graph",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Union-Find Disjoint Sets (UFDS):</strong> sẽ dùng lại ở <strong>Week 07</strong> (bài MST).",
+                        "• <strong>Bitmask Data Structure:</strong> sẽ dùng lại ở <strong>Week 11</strong> (bài TSP).",
+                        "• <strong>Graph terminologies + lý do phải học Graph:</strong> dùng cho <strong>Week 06–13</strong>.",
+                        "• <strong>Cách lưu trữ thông tin đồ thị trong bộ nhớ máy tính:</strong> 3 cấu trúc: Adjacency Matrix, Adjacency List, Edge List."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphCs2010CurriculumRoadmap"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b11-sub-5-2",
+              number: "5.2",
+              title: "Tổng Kết Toàn Bộ Bài 11 & Mini-Quiz Tốt Nghiệp",
+              parts: [
+                {
+                  id: "dsa-b11-part-5-2-finalquiz",
+                  label: "TỔNG KẾT & QUIZ",
+                  title: "4 Trụ Cột Nền Tảng & Bài Trắc Nghiệm Tốt Nghiệp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>📌 Cần nhớ tổng quát cả bài:</strong>",
+                        "• <strong>UFDS:</strong> cây đại diện tập hợp, root = representative; FindSet dùng path compression; UnionSet dùng union-by-rank; độ phức tạp <strong>O(&alpha;(V)) &approx; O(1)</strong>.",
+                        "• <strong>Bitmask:</strong> dùng số nguyên nhị phân biểu diễn tập Boolean; check bit <code>x & (1<<i)</code>; turn on bit <code>x = x | (1<<i)</code>; turn on n bit đầu <code>x = (1<<n) - 1</code>.",
+                        "• <strong>Graph:</strong> không có Root/Parent-Child như Tree; các thuật ngữ quan trọng: Sparse/Dense, Complete Graph, Degree, Path/Cycle, Component, Connected/Disconnected, DAG, Tree, Bipartite.",
+                        "• <strong>3 cách lưu đồ thị:</strong> Adjacency Matrix O(V²), Adjacency List O(V+E) (dùng chính trong môn học), Edge List O(E)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "Chapter11FinalMasterMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "🏆 Tốt Nghiệp Bài 11",
+                      text: "Bạn đã nắm vững trọn vẹn bộ ba kiến trúc nền tảng CS2010 (DSU, Bitmask, Graph Basics). Đây là bệ phóng vững chắc để chinh phục toàn bộ các thuật toán đồ thị nâng cao (DFS, BFS, Kruskal, Dijkstra, Bellman-Ford, Max Flow)!"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b12",
+      title: "Bài 12: Duyệt đồ thị (Graph Traversal) – BFS & DFS",
+      description: "Hai thuật toán duyệt đồ thị kinh điển CS2010: BFS khám phá không gian trạng thái theo tầng sóng (Queue FIFO) tìm đường đi ngắn nhất unweighted O(V+E); DFS đâm sâu tận cùng (Call Stack LIFO) phát hiện chu trình, phân loại cạnh và Topological Sort O(V+E).",
+      sections: [
+        {
+          id: "dsa-b12-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Bộ Đôi Thuật Toán Duyệt Đồ Thị",
+          subsections: [
+            {
+              id: "dsa-b12-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Live Traversal Dual-Workbench",
+              parts: [
+                {
+                  id: "dsa-b12-part-0-banner",
+                  label: "TỔNG QUAN DUYỆT ĐỒ THỊ",
+                  title: "Phòng Thí Nghiệm Breadth-First Search (BFS) & Depth-First Search (DFS)",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaGraphTraversalHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b12-sec1",
+          roman: "I",
+          title: "Một số ứng dụng của cấu trúc dữ liệu đồ thị (Graph DS Applications)",
+          subsections: [
+            {
+              id: "dsa-b12-sub-1-1",
+              number: "1.1",
+              title: "Đếm số đỉnh V (Counting V)",
+              parts: [
+                {
+                  id: "dsa-b12-part-1-1-countv",
+                  label: "ĐẾM SỐ ĐỈNH",
+                  title: "Thao Tác Đếm Số Đỉnh V",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Rất đơn giản với cả <strong>Adjacency Matrix</strong> và <strong>Adjacency List</strong>: $V = \\text{số dòng (rows) của cấu trúc}$.",
+                        "• Đôi khi giá trị này được lưu sẵn trong 1 biến riêng để <strong>không phải tính lại mỗi lần</strong> &rarr; độ phức tạp <strong>O(1)</strong>, đặc biệt hữu ích khi đồ thị không thay đổi."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-1-2",
+              number: "1.2",
+              title: "Liệt kê các đỉnh kề của đỉnh v (Enumerating neighbors)",
+              parts: [
+                {
+                  id: "dsa-b12-part-1-2-neighbors",
+                  label: "LIỆT KÊ ĐỈNH KỀ",
+                  title: "Thao Tác Quét Láng Giềng Kề Trực Tiếp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Adjacency Matrix:</strong> <strong>O(V)</strong> &mdash; quét <code>AdjMatrix[v][j]</code> với $j \\in [0..V-1]$.",
+                        "• <strong>Adjacency List:</strong> <strong>O(k)</strong> &mdash; quét <code>AdjList[v]</code>, với $k$ là số đỉnh kề (neighbor) của $v$ (thuật toán <strong>output-sensitive</strong>).",
+                        "• Đây là <strong>khác biệt quan trọng</strong> giữa AdjMatrix và AdjList, ảnh hưởng lớn đến hiệu năng của nhiều thuật toán đồ thị &rarr; <strong>cần nhớ</strong>!"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-1-3",
+              number: "1.3",
+              title: "Đếm số cạnh E (Counting E)",
+              parts: [
+                {
+                  id: "dsa-b12-part-1-3-counte",
+                  label: "ĐẾM SỐ CẠNH",
+                  title: "Thao Tác Đếm Tổng Số Cạnh E",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Adjacency Matrix:</strong> <strong>O(V²)</strong> &mdash; đếm số phần tử khác 0 trong ma trận.",
+                        "• <strong>Adjacency List:</strong> <strong>O(V+E)</strong> &mdash; cộng dồn độ dài của tất cả $V$ danh sách.",
+                        "• Cũng có thể lưu sẵn trong 1 biến riêng &rarr; <strong>O(1)</strong>, nếu đồ thị không đổi."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-1-4",
+              number: "1.4",
+              title: "Kiểm tra sự tồn tại của cạnh (u, v)",
+              parts: [
+                {
+                  id: "dsa-b12-part-1-4-checkedge",
+                  label: "KIỂM TRA CẠNH",
+                  title: "Thao Tác Kiểm Tra Cạnh (u, v)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Adjacency Matrix:</strong> <strong>O(1)</strong> &mdash; kiểm tra <code>AdjMatrix[u][v]</code> khác 0 hay không.",
+                        "• <strong>Adjacency List:</strong> <strong>O(k)</strong> &mdash; kiểm tra xem <code>AdjList[u]</code> có chứa $v$ hay không."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-1-5",
+              number: "1.5",
+              title: "Trade-off giữa Adjacency Matrix và Adjacency List",
+              parts: [
+                {
+                  id: "dsa-b12-part-1-5-tradeoff",
+                  label: "TRADE-OFF MA TRẬN VS DANH SÁCH",
+                  title: "Bảng So Sánh Toàn Diện Ưu & Nhược Điểm",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Trade-off giữa Adjacency Matrix và Adjacency List:</strong>",
+                        "• <strong>Adjacency Matrix:</strong>",
+                        "&nbsp;&nbsp;+ <em>Ưu điểm (Pros):</em> Kiểm tra tồn tại cạnh $i-j$: <strong>O(1)</strong>; phù hợp với đồ thị dày (dense graph) / thuật toán Floyd-Warshall.",
+                        "&nbsp;&nbsp;+ <em>Nhược điểm (Cons):</em> Liệt kê đỉnh kề: <strong>O(V)</strong>; không gian lưu trữ <strong>O(V²)</strong>.",
+                        "• <strong>Adjacency List:</strong>",
+                        "&nbsp;&nbsp;+ <em>Ưu điểm (Pros):</em> Liệt kê $k$ đỉnh kề: <strong>O(k)</strong>; phù hợp đồ thị thưa (sparse graph) / Dijkstra / DFS / BFS; không gian lưu trữ <strong>O(V+E)</strong>.",
+                        "&nbsp;&nbsp;+ <em>Nhược điểm (Cons):</em> Kiểm tra tồn tại cạnh $i-j$: <strong>O(k)</strong>; có overhead nhỏ khi bảo trì danh sách (với đồ thị thưa)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphOperationsBenchmarkStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 1)",
+                      text: "• <strong>AdjMatrix</strong> mạnh về <strong>kiểm tra cạnh O(1)</strong>, yếu về <strong>liệt kê đỉnh kề O(V)</strong> và <strong>tốn bộ nhớ O(V²)</strong>.<br/>• <strong>AdjList</strong> mạnh về <strong>liệt kê đỉnh kề O(k)</strong> và <strong>tiết kiệm bộ nhớ O(V+E)</strong>, yếu về <strong>kiểm tra cạnh O(k)</strong>.<br/>• <strong>AdjList phù hợp hơn cho DFS/BFS/Dijkstra</strong> vì các thuật toán này cần duyệt liên tục các đỉnh kề."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b12-sec2",
+          roman: "II",
+          title: "Thuật toán duyệt đồ thị (Graph Traversal Algorithms)",
+          subsections: [
+            {
+              id: "dsa-b12-sub-2-1",
+              number: "2.1",
+              title: "Ôn lại: Duyệt cây nhị phân (Binary Tree Traversal)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-1-tree",
+                  label: "ÔN TẬP CÂY NHỊ PHÂN",
+                  title: "3 Cách Duyệt Cây Nhị Phân & Level-Order Traversal",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong cây nhị phân, có 3 cách duyệt, xuất phát từ <strong>root</strong>:",
+                        "• <strong>Preorder:</strong> <code>visit(u); pre(u->left); pre(u->right);</code>",
+                        "• <strong>Inorder:</strong> <code>in(u->left); visit(u); in(u->right);</code>",
+                        "• <strong>Postorder:</strong> <code>post(u->left); post(u->right); visit(u);</code>",
+                        "• <strong>Lưu ý:</strong> \"level order\" (duyệt theo tầng) chính là <strong>BFS</strong> sẽ học ngay sau đây.",
+                        "• <strong>Ví dụ:</strong> cây có root = 0, con trái = 1, con phải = 2, con của 2 là 3 và 4:",
+                        "&nbsp;&nbsp;+ <code>pre</code> = 0, 1, 2, 3, 4",
+                        "&nbsp;&nbsp;+ <code>in</code> = 1, 0, 3, 2, 4",
+                        "&nbsp;&nbsp;+ <code>post</code> = 1, 3, 4, 2, 0"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-2",
+              number: "2.2",
+              title: "Duyệt một đồ thị tổng quát (Traversing a Graph)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-2-graph",
+                  label: "DUYỆT ĐỒ THỊ TỔNG QUÁT",
+                  title: "2 Thành Phần Của Phép Duyệt & Cơ Chế Cờ Đánh Dấu",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Một phép duyệt (traversal) cần 2 thành phần:",
+                        "<strong>1. Điểm bắt đầu (The start):</strong>",
+                        "• Trong cây: ta thường bắt đầu từ root. Lưu ý: không phải cây nào cũng có root (rooted tree)! Khi đó phải tự chọn 1 đỉnh làm \"source\".",
+                        "• Trong đồ thị tổng quát: <strong>không có khái niệm root</strong>. Thay vào đó ta chọn 1 đỉnh đặc biệt gọi là <strong>\"source s\"</strong>.",
+                        "<strong>2. Cách di chuyển (The movement):</strong>",
+                        "• Trong cây nhị phân: chỉ có tối đa 2 lựa chọn &mdash; đi sang cây con trái hoặc cây con phải. Cây nhị phân <strong>không có chu trình (cycle)</strong>.",
+                        "• Trong đồ thị tổng quát: có nhiều lựa chọn hơn &mdash; nếu đỉnh $u$ và $v$ kề nhau qua cạnh $(u, v)$, và đang ở $u$ thì có thể di chuyển sang $v$. Đồ thị tổng quát <strong>có thể có chu trình</strong> (trivial/non-trivial) &rarr; cần có cách tránh việc duyệt lặp vô hạn $u \\to v \\to u \\to v \\to \\dots$",
+                        "• <strong>Giải pháp:</strong> BFS và DFS dùng cờ đánh dấu (visited flag)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "TreeToGraphTraversalBridgeStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 2.1-2.2)",
+                      text: "• Duyệt đồ thị = chọn <strong>điểm bắt đầu (source s)</strong> + <strong>cách di chuyển</strong>.<br/>• Đồ thị không có root, không giống cây; có thể có chu trình &rarr; <strong>phải đánh dấu đỉnh đã thăm</strong> để tránh lặp vô hạn."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-3",
+              number: "2.3",
+              title: "Breadth First Search (BFS) – Ý tưởng",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-3-bfs-idea",
+                  label: "Ý TƯỞNG BFS",
+                  title: "Duyệt Chiều Rộng & 3 Câu Hỏi Quan Trọng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Bắt đầu từ $s$.",
+                        "• Nếu đỉnh $v$ có thể đến được từ $s$, thì tất cả các đỉnh kề của $v$ cũng đến được từ $s$ (định nghĩa đệ quy).",
+                        "• BFS duyệt các đỉnh của đồ thị $G$ theo kiểu <strong>breadth-first</strong> (theo chiều rộng), tính từ đỉnh nguồn $s$.",
+                        "<strong>3 câu hỏi quan trọng và lời giải:</strong>",
+                        "• <em>Duy trì thứ tự duyệt bằng cách nào?</em> &rarr; Dùng <strong>hàng đợi (queue) Q</strong>, ban đầu chỉ chứa $s$.",
+                        "• <em>Phân biệt đỉnh đã thăm / chưa thăm (tránh chu trình)?</em> &rarr; Mảng/vector 1 chiều <strong>visited</strong> kích thước $V$: <code>visited[v] = 0</code> ban đầu, <code>visited[v] = 1</code> khi $v$ đã được thăm.",
+                        "• <em>Ghi nhớ đường đi (path) bằng cách nào?</em> &rarr; Mảng/vector 1 chiều <strong>p</strong> kích thước $V$: <code>p[v]</code> là đỉnh cha (predecessor/parent) của $v$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-4",
+              number: "2.4",
+              title: "BFS – Pseudo Code & Code Java",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-4-bfs-code",
+                  label: "MÃ NGUỒN BFS",
+                  title: "Thuật Toán BFS Hoàn Chỉnh Bằng Java",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Pseudo Code BFS:</strong>",
+                        "• Khởi tạo: <code>for all v in V: visited[v] = 0, p[v] = -1; Q = {s}, visited[s] = 1</code>",
+                        "• Vòng lặp: <code>while Q is not empty: u = Q.dequeue(); for all v adjacent to u: if visited[v] == 0 { visited[v] = 1; p[v] = u; Q.enqueue(v); }</code>"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-5",
+              number: "2.5",
+              title: "Phân tích độ phức tạp BFS (BFS Analysis)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-5-bfs-analysis",
+                  label: "PHÂN TÍCH BFS",
+                  title: "Chứng Minh Độ Phức Tạp Thời Gian O(V + E)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Mỗi đỉnh chỉ được đưa vào queue <strong>đúng 1 lần</strong> &rarr; $O(V)$.",
+                        "• Mỗi lần dequeue 1 đỉnh, tất cả $k$ đỉnh kề của nó được quét; sau khi tất cả các đỉnh đã được dequeue, tổng cộng tất cả $E$ cạnh đã được xét &rarr; $O(E)$ (giả sử dùng <strong>Adjacency List</strong>).",
+                        "• <strong>Tổng: O(V + E)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BfsMechanismQuestionsStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (BFS)",
+                      text: "• BFS dùng <strong>queue (FIFO)</strong>.<br/>• Cần 2 mảng phụ: <strong>visited</strong> (đánh dấu đã thăm) và <strong>p</strong> (lưu đỉnh cha để truy vết đường đi).<br/>• Độ phức tạp: <strong>O(V + E)</strong> &mdash; chỉ đúng khi dùng Adjacency List.<br/>• BFS duyệt theo từng <strong>\"tầng\"</strong> tính từ $s$ (giống level-order của cây)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-6",
+              number: "2.6",
+              title: "Depth First Search (DFS) – Ý tưởng",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-6-dfs-idea",
+                  label: "Ý TƯỞNG DFS",
+                  title: "Duyệt Chiều Sâu & 3 Câu Hỏi Quan Trọng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Bắt đầu từ $s$.",
+                        "• Nếu đỉnh $v$ có thể đến được từ $s$, thì tất cả các đỉnh kề của $v$ cũng đến được từ $s$ (định nghĩa đệ quy) &mdash; <strong>giống BFS</strong>.",
+                        "• DFS duyệt các đỉnh của $G$ theo kiểu <strong>depth-first</strong> (theo chiều sâu), tính từ đỉnh nguồn $s$.",
+                        "<strong>3 câu hỏi quan trọng và lời giải:</strong>",
+                        "• <em>Duy trì thứ tự duyệt bằng cách nào?</em> &rarr; Dùng <strong>stack S</strong>, nhưng thường dùng <strong>đệ quy (recursion)</strong> &mdash; một dạng stack ngầm (implicit stack).",
+                        "• <em>Phân biệt đỉnh đã thăm / chưa thăm (tránh chu trình)?</em> &rarr; Mảng/vector 1 chiều <strong>visited</strong> kích thước $V$: <code>visited[v] = 0</code> ban đầu, <code>visited[v] = 1</code> khi $v$ đã được thăm.",
+                        "• <em>Ghi nhớ đường đi (path) bằng cách nào?</em> &rarr; Mảng/vector 1 chiều <strong>p</strong> kích thước $V$: <code>p[v]</code> là đỉnh cha (predecessor/parent) của $v$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-7",
+              number: "2.7",
+              title: "DFS – Pseudo Code & Code Java (đệ quy)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-7-dfs-code",
+                  label: "MÃ NGUỒN DFS",
+                  title: "Thuật Toán DFS Đệ Quy Bằng Java",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Pseudo Code DFS:</strong>",
+                        "• Hàm đệ quy: <code>DFSrec(u): visited[u] = 1; for all v adjacent to u: if visited[v] == 0 { p[v] = u; DFSrec(v); }</code>",
+                        "• Trong hàm main: <code>for all v in V: visited[v] = 0, p[v] = -1; DFSrec(s);</code>"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-8",
+              number: "2.8",
+              title: "Phân tích độ phức tạp DFS (DFS Analysis)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-8-dfs-analysis",
+                  label: "PHÂN TÍCH DFS",
+                  title: "Chứng Minh Độ Phức Tạp O(V + E) & Cây Khung (Spanning Tree)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Mỗi đỉnh chỉ được thăm <strong>đúng 1 lần</strong> &rarr; $O(V)$, sau đó được đánh dấu (flag) để tránh chu trình.",
+                        "• Mỗi lần một đỉnh được thăm, tất cả $k$ đỉnh kề của nó được quét; sau khi tất cả các đỉnh đã được thăm, tổng cộng đã xét hết $E$ cạnh &rarr; $O(E)$ (giả sử dùng <strong>Adjacency List</strong>).",
+                        "• <strong>Tổng: O(V + E)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DfsMechanismQuestionsStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (DFS)",
+                      text: "• DFS dùng <strong>stack</strong> (thường triển khai bằng <strong>đệ quy</strong> &mdash; implicit stack).<br/>• Cũng cần <strong>visited</strong> và <strong>p</strong> giống BFS.<br/>• Độ phức tạp: <strong>O(V + E)</strong> &mdash; với Adjacency List.<br/>• BFS và DFS đều dùng kỹ thuật \"cờ đánh dấu\" (<strong>flag</strong>) để tránh lặp vô hạn do chu trình.<br/>• Cả BFS và DFS đều sinh ra một <strong>cây khung (Spanning Tree)</strong> của đồ thị."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-2-9",
+              number: "2.9",
+              title: "Thuật toán truy vết đường đi (Path Reconstruction Algorithm)",
+              parts: [
+                {
+                  id: "dsa-b12-part-2-9-path",
+                  label: "TRUY VẾT ĐƯỜNG ĐI",
+                  title: "Đối Chiếu Phiên Bản Lặp Ngược & Phiên Bản Đệ Quy Xuôi",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Sau khi chạy BFS/DFS từ $s$, mảng <strong>p</strong> cho phép truy vết đường đi từ $s$ đến 1 đỉnh đích $t$.",
+                        "• <strong>Cách 1 &mdash; Phiên bản lặp (Iterative):</strong> output bị <strong>đảo ngược (reversed)</strong>:",
+                        "&nbsp;&nbsp;+ Bắt đầu từ $t$, lùi dần về đỉnh cha <code>i = p[i]</code> cho đến khi gặp $s$.",
+                        "• <strong>Cách 2 &mdash; Phiên bản đệ quy (Recursive):</strong> cho ra đường đi <strong>đúng thứ tự (normal path)</strong>:",
+                        "&nbsp;&nbsp;+ Gọi đệ quy <code>backtrack(p[u], p)</code> trước rồi mới in <code>u</code> (nhờ cơ chế LIFO của Call Stack giống postorder).",
+                        "• <strong>Điều kiện dừng:</strong> <code>p[s] = -1</code> (đỉnh cha của $s$ là -1)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PathReconstructionStudio"
+                    },
+                    {
+                      type: "component",
+                      component: "GraphTraversalMasterFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Path Reconstruction)",
+                      text: "• Truy vết đường đi dựa vào mảng <strong>p</strong> đã lưu trong lúc chạy BFS/DFS.<br/>• <strong>Phiên bản lặp:</strong> đi từ $t$ ngược về $s$ &rarr; kết quả bị <strong>đảo ngược</strong>.<br/>• <strong>Phiên bản đệ quy:</strong> gọi đệ quy trước rồi mới in ra &rarr; kết quả <strong>đúng thứ tự</strong> từ $s$ đến $t$ (nhờ tính chất của đệ quy tương tự postorder).<br/>• Điều kiện dừng: <code>p[s] = -1</code>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b12-sec3",
+          roman: "III",
+          title: "Một số ứng dụng của duyệt đồ thị (BFS/DFS Applications)",
+          subsections: [
+            {
+              id: "dsa-b12-sub-3-1",
+              number: "3.1",
+              title: "Kiểm tra tính liên thông (Reachability Test)",
+              parts: [
+                {
+                  id: "dsa-b12-part-3-1-reachability",
+                  label: "KIỂM TRA LIÊN THÔNG",
+                  title: "Bài Toán Reachability Test Giữa 2 Đỉnh",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Bài toán:</strong> Kiểm tra đỉnh $v$ có đến được từ đỉnh $u$ hay không?",
+                        "• <strong>Cách làm:</strong> chạy BFS/DFS bắt đầu từ $s = u$.",
+                        "• Nếu sau khi BFS/DFS kết thúc, <code>visited[v] == 1</code> &rarr; $v$ đến được từ $u$; ngược lại &rarr; không đến được."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-3-2",
+              number: "3.2",
+              title: "Xác định thành phần liên thông (Identifying Component(s))",
+              parts: [
+                {
+                  id: "dsa-b12-part-3-2-components",
+                  label: "THÀNH PHẦN LIÊN THÔNG",
+                  title: "Xác Định, Đánh Nhãn & Đếm Số Thành Phần Liên Thông (CC)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Component (Thành phần liên thông):</strong> đồ thị con mà bất kỳ 2 đỉnh nào cũng nối được với nhau bằng ít nhất 1 đường đi, và không nối thông được với đỉnh nào khác bên ngoài.",
+                        "• Dùng BFS/DFS để <strong>xác định / đánh nhãn / đếm</strong> số thành phần liên thông trong đồ thị $G$.",
+                        "• <strong>Độ phức tạp của bài toán đếm thành phần liên thông:</strong> mặc dù mỗi lần gọi DFS/BFS tốn $O(V+E)$, và có thể gọi tới $V$ lần, nhưng <strong>tổng thể vẫn chỉ là O(V+E)</strong>, chứ <strong>không phải O(V·(V+E))</strong> &mdash; vì mỗi đỉnh và mỗi cạnh chỉ được xét đúng 1 lần trên toàn bộ vòng lặp <code>for all v in V</code>, do các đỉnh đã <code>visited</code> sẽ không bị chạy DFS/BFS lại."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphReachabilityLab"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Reachability & CC)",
+                      text: "• Reachability test: chạy BFS/DFS từ $u$, kiểm tra <code>visited[v]</code>.<br/>• Connected Component: đếm số lần phải \"khởi động\" DFS/BFS từ 1 đỉnh chưa <code>visited</code>.<br/>• Độ phức tạp đếm CC là <strong>O(V+E)</strong>, KHÔNG PHẢI $O(V \\cdot (V+E))$ &mdash; đây là điểm dễ nhầm khi thi!"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-3-3",
+              number: "3.3",
+              title: "Sắp xếp Topo (Topological Sort)",
+              parts: [
+                {
+                  id: "dsa-b12-part-3-3-toposort",
+                  label: "SẮP XẾP TÔ-PÔ",
+                  title: "Topological Sort Trên DAG (Post-Order + Reverse)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Khái niệm:</strong>",
+                        "• Topological sort của một <strong>DAG</strong> (Directed Acyclic Graph &mdash; đồ thị có hướng không chu trình) là một thứ tự tuyến tính (linear ordering) các đỉnh sao cho <strong>mỗi đỉnh xuất hiện trước tất cả các đỉnh mà nó có cạnh đi ra (outbound edges)</strong>.",
+                        "• Mỗi DAG có thể có <strong>một hoặc nhiều</strong> topological sort hợp lệ.",
+                        "• Một trong những mục đích chính của topological sort: dùng cho <strong>Dynamic Programming (DP) trên DAG</strong> (sẽ học ở bài sau).",
+                        "<strong>Cách hoạt động:</strong>",
+                        "• Nếu đồ thị là DAG, chỉ cần chạy DFS trên đồ thị và <strong>\"ghi lại đỉnh theo kiểu post-order\"</strong> sẽ cho ra một topological order hợp lệ.",
+                        "• <strong>Post-order:</strong> xử lý (ghi nhận) đỉnh $u$ <strong>sau khi</strong> tất cả con của $u$ đã được thăm xong.",
+                        "• <strong>Ví dụ minh họa:</strong>",
+                        "&nbsp;&nbsp;+ Giả sử duyệt hết các đỉnh kề của 0 bằng DFS trước &rarr; toposort list = [danh sách đỉnh đến được từ 0] - đỉnh 0",
+                        "&nbsp;&nbsp;+ Rồi duyệt hết đỉnh kề của 1 &rarr; toposort list = [[danh sách đỉnh đến được từ 1] - đỉnh 1] - đỉnh 0",
+                        "&nbsp;&nbsp;+ Tiếp tục như vậy, cuối cùng có: <code>toposort = [4, 3, 5, 2, 1, 0, 6, 7]</code>",
+                        "&nbsp;&nbsp;+ Sau khi <strong>đảo ngược (reverse)</strong>: <code>[7, 6, 0, 1, 2, 5, 3, 4]</code>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphTopologicalSortStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Topological Sort)",
+                      text: "• Chỉ áp dụng cho <strong>DAG</strong> (đồ thị có hướng, không chu trình).<br/>• Cách làm: chạy DFS, ghi nhận đỉnh theo <strong>post-order</strong> (sau khi xử lý xong toàn bộ con), rồi <strong>đảo ngược (reverse)</strong> danh sách kết quả.<br/>• Một DAG có thể có nhiều topo sort hợp lệ khác nhau.<br/>• Ứng dụng chính: làm nền cho DP trên DAG."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b12-sec4",
+          roman: "IV",
+          title: "Phần 4: So sánh và Tổng kết",
+          subsections: [
+            {
+              id: "dsa-b12-sub-4-1",
+              number: "4.1",
+              title: "Trade-off giữa DFS và BFS (O(V+E) mỗi thuật toán)",
+              parts: [
+                {
+                  id: "dsa-b12-part-4-1-tradeoff",
+                  label: "TRADE-OFF DFS VS BFS",
+                  title: "Bảng Đối Chiếu Ưu & Nhược Điểm DFS vs BFS",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Bảng so sánh Trade-off giữa DFS và BFS:</strong>",
+                        "• <strong>DFS:</strong>",
+                        "&nbsp;&nbsp;+ <em>Ưu điểm (Pros):</em> Có thể dễ code hơn (tùy trường hợp); dùng ít bộ nhớ hơn; có thêm 1 số tính năng mở rộng hữu ích (ngoài phạm vi môn nhưng hữu ích cho bài tập lớn: Topological Sort, Cycle Detection, SCC).",
+                        "&nbsp;&nbsp;+ <em>Nhược điểm (Cons):</em> Không giải được SSSP trên đồ thị không trọng số.",
+                        "• <strong>BFS:</strong>",
+                        "&nbsp;&nbsp;+ <em>Ưu điểm (Pros):</em> Có thể giải bài toán <strong>SSSP (Single-Source Shortest Path)</strong> trên đồ thị không trọng số (unweighted graph) &mdash; sẽ học ở bài sau.",
+                        "&nbsp;&nbsp;+ <em>Nhược điểm (Cons):</em> Có thể dài code hơn (tùy trường hợp); dùng nhiều bộ nhớ hơn (đặc biệt do phải duy trì queue)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphBfsDfsTradeoffDuelArena"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b12-sub-4-2",
+              number: "4.2",
+              title: "Tổng kết bài học & Cạm bẫy thi cử",
+              parts: [
+                {
+                  id: "dsa-b12-part-4-2-summary",
+                  label: "TỔNG KẾT & BẪY THI CỬ",
+                  title: "Bảng Vàng 7 Trụ Cột, 5 Cạm Bẫy Đề Thi & Mini-Quiz Tốt Nghiệp",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Trong bài này, ta đã học:</strong>",
+                        "• Một số <strong>ứng dụng của cấu trúc dữ liệu đồ thị</strong> (tiếp nối từ Bài 05).",
+                        "• <strong>Thuật toán duyệt đồ thị:</strong> cần 2 thành phần &mdash; điểm bắt đầu (Start) + cách di chuyển (Movement).",
+                        "• <strong>Breadth-First Search (BFS):</strong> dùng queue, duyệt theo chiều rộng.",
+                        "• <strong>Depth-First Search (DFS):</strong> dùng stack/đệ quy, duyệt theo chiều sâu.",
+                        "• Cả BFS và DFS đều dùng kỹ thuật <strong>cờ (flag)</strong> để tránh lặp do chu trình.",
+                        "• Cả BFS và DFS đều sinh ra <strong>Spanning Tree</strong> (cây khung) của đồ thị.",
+                        "• Một số ứng dụng: <strong>Reachability</strong> (kiểm tra liên thông), <strong>CC</strong> (đếm thành phần liên thông), <strong>Toposort</strong> (sắp xếp topo)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "GraphTraversalExamPitfallsCard"
+                    },
+                    {
+                      type: "component",
+                      component: "Chapter12FinalMasterMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Tổng kết — dễ ra thi)",
+                      text: "• BFS = queue, duyệt theo tầng; DFS = stack/đệ quy, duyệt theo nhánh sâu nhất trước.<br/>• Cả hai đều <strong>O(V+E)</strong> với Adjacency List.<br/>• BFS dùng cho SSSP trên đồ thị không trọng số; DFS thì không.<br/>• Toposort chỉ dùng DFS (không dùng BFS), theo nguyên tắc <strong>post-order + reverse</strong>, chỉ áp dụng cho DAG.<br/>• Đếm connected component bằng DFS/BFS có độ phức tạp tổng <strong>O(V+E)</strong>, không nhân thêm V."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b13",
+      title: "Bài 13: Cây khung nhỏ nhất (Minimum Spanning Tree - MST)",
+      description: "Hai thuật toán tham lam kinh điển CS2010 kết nối toàn bộ V đỉnh với đúng E = V - 1 cạnh và tổng trọng số nhỏ nhất: Kruskal hướng cạnh (Edge List + UFDS) O(E log E), đối đầu trực diện với Prim hướng đỉnh (Adjacency List + Min-Heap) O(E log V).",
+      sections: [
+        {
+          id: "dsa-b13-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan & Bộ Đôi Thuật Toán Cây Khung Nhỏ Nhất",
+          subsections: [
+            {
+              id: "dsa-b13-sub-0-hero",
+              number: "0.0",
+              title: "Tựa Đề & Live MST Dual-Workbench",
+              parts: [
+                {
+                  id: "dsa-b13-part-0-banner",
+                  label: "TỔNG QUAN CÂY KHUNG NHỎ NHẤT",
+                  title: "Phòng Thí Nghiệm Minimum Spanning Tree (Kruskal & Prim)",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaMstHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec1",
+          roman: "I",
+          title: "Phần 1: Ôn tập các khái niệm nền tảng (Review)",
+          subsections: [
+            {
+              id: "dsa-b13-sub-1-1",
+              number: "1.1",
+              title: "Cây (Tree) T",
+              parts: [
+                {
+                  id: "dsa-b13-part-1-1-tree",
+                  label: "KHÁI NIỆM CÂY",
+                  title: "Định Nghĩa & Tính Chất Cốt Tử Của Cây Tự Do (Free Tree)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• $T$ là một <strong>đồ thị liên thông (connected graph)</strong> có <strong>$V$ đỉnh</strong> và <strong>$V - 1$ cạnh</strong>.",
+                        "• <strong>Quan trọng:</strong> giữa bất kỳ 2 đỉnh nào trong $T$ luôn có <strong>duy nhất một đường đi (one unique path)</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-1-2",
+              number: "1.2",
+              title: "Cây khung (Spanning Tree) ST của đồ thị liên thông G",
+              parts: [
+                {
+                  id: "dsa-b13-part-1-2-spanning",
+                  label: "CÂY KHUNG",
+                  title: "Cây Khung Bao Phủ & Liên Hệ Duyệt Đồ Thị (Bài 12)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• $ST$ là một cây \"bao phủ\" (spans/covers) <strong>tất cả các đỉnh</strong> của $G$.",
+                        "• Nhắc lại: <strong>BFS Spanning Tree</strong> và <strong>DFS Spanning Tree</strong> (đã học ở Bài 12) chính là các cây khung sinh ra từ BFS/DFS."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-1-3",
+              number: "1.3",
+              title: "Bài toán sắp xếp (Sorting problem)",
+              parts: [
+                {
+                  id: "dsa-b13-part-1-3-sorting",
+                  label: "SẮP XẾP & UFDS",
+                  title: "Bộ Đôi Vũ Khí Tiên Quyết: Sorting + UFDS",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Sắp xếp lại 1 tập hợp đối tượng sao cho với mọi cặp đối tượng $(a, b)$ mà $a < b$, thì trong kết quả cuối cùng $a$ luôn đứng trước $b$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "TreeAndSpanningTreeBridgeStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 1)",
+                      text: "• Cây: $V$ đỉnh, $V-1$ cạnh, liên thông, đường đi giữa 2 đỉnh bất kỳ là duy nhất.<br/>• Spanning Tree: cây bao phủ hết mọi đỉnh của đồ thị gốc.<br/>• MST sẽ cần dùng lại kiến thức <strong>Sorting</strong> (bài 06) và <strong>Union-Find Disjoint Sets - UFDS</strong> (bài 11)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec2",
+          roman: "II",
+          title: "Phần 2: Ví dụ khởi động và định nghĩa MST",
+          subsections: [
+            {
+              id: "dsa-b13-sub-2-1",
+              number: "2.1",
+              title: "Ví dụ khởi động (Motivating Example)",
+              parts: [
+                {
+                  id: "dsa-b13-part-2-1-motivate",
+                  label: "VÍ DỤ KHỞI ĐỘNG",
+                  title: "Dự Án Hạ Tầng Nối Các Làng Ở Nông Thôn (Rural Road Network)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Bài toán:</strong> một dự án chính phủ (Government Project) muốn <strong>nối các làng ở nông thôn (rural villages)</strong> bằng đường (roads).",
+                        "• Chi phí xây một con đường phụ thuộc vào địa hình (terrain), v.v.",
+                        "• Ngân sách (budget) có giới hạn.",
+                        "• <strong>Câu hỏi:</strong> nên xây đường như thế nào?"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "RuralRoadNetworkMotivator"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-2-2",
+              number: "2.2",
+              title: "Các định nghĩa (More Definitions)",
+              parts: [
+                {
+                  id: "dsa-b13-part-2-2-defs",
+                  label: "GIẢI PHẪU TOÁN HỌC",
+                  title: "Đồ Thị Có Trọng Số & Trọng Số Của Cây Khung",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Đồ thị có trọng số (Weighted Graph):</strong>",
+                        "• Tập đỉnh $V$ (vertex set) &mdash; ví dụ: giao lộ (street intersections), nhà (houses), v.v.",
+                        "• Tập cạnh $E$ (edge set) &mdash; ví dụ: đường phố (streets), con đường (roads), đại lộ (avenues), v.v.",
+                        "• Thường là <strong>vô hướng (undirected)</strong> &mdash; ví dụ: đường 2 chiều.",
+                        "• Có <strong>trọng số (weighted)</strong> &mdash; ví dụ: khoảng cách (distance), thời gian (time), phí (toll), v.v.",
+                        "• Hàm trọng số $w(a, b): E \\to \\mathbb{R}$ &mdash; gán trọng số cho cạnh từ $a$ đến $b$.",
+                        "• Ký hiệu: Weighted Graph $G(V, E), w(a,b): E \\to \\mathbb{R}$.",
+                        "<strong>Đồ thị vô hướng liên thông (Connected undirected graph) G:</strong>",
+                        "• Tồn tại đường đi từ đỉnh $a$ bất kỳ đến đỉnh $b$ bất kỳ trong $G$.",
+                        "<strong>Trọng số của cây khung:</strong>",
+                        "• Cho $ST$ là 1 spanning tree của $G$. Gọi $w(ST)$ là tổng trọng số các cạnh trong $ST$:",
+                        "• $$w(ST) = \\sum_{(a, b) \\in ST} w(a, b)$$",
+                        "<strong>Minimum Spanning Tree (MST) của đồ thị vô hướng liên thông có trọng số G:</strong>",
+                        "• MST của $G$ là 1 Spanning Tree của $G$ có $w(ST)$ <strong>nhỏ nhất có thể</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-2-3",
+              number: "2.3",
+              title: "Bài toán MST chuẩn (The Standard MST Problem)",
+              parts: [
+                {
+                  id: "dsa-b13-part-2-3-standard",
+                  label: "BÀI TOÁN CHUẨN",
+                  title: "Chuẩn Hóa Bài Toán Minimum Spanning Tree",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Input:</strong> một đồ thị vô hướng liên thông có trọng số $G(V, E)$.",
+                        "• <strong>Yêu cầu:</strong> chọn ra một số cạnh của $G$ sao cho đồ thị vẫn liên thông, nhưng có <strong>tổng trọng số nhỏ nhất (minimum total weight)</strong>.",
+                        "• <strong>Output:</strong> Minimum Spanning Tree (MST) của $G$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-2-4",
+              number: "2.4",
+              title: "Ví dụ minh họa",
+              parts: [
+                {
+                  id: "dsa-b13-part-2-4-example",
+                  label: "VÍ DỤ MINH HỌA",
+                  title: "So Sánh Cây Khung Thường (20) vs MST Tối Ưu (18)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Với cùng 1 đồ thị gốc:",
+                        "• Một <strong>Spanning Tree</strong> (không tối ưu): chi phí = $4 + 4 + 6 + 6 = \\mathbf{20}$",
+                        "• <strong>MST</strong> (tối ưu): chi phí = $4 + 6 + 6 + 2 = \\mathbf{18}$",
+                        "&rarr; Cả 2 đều là spanning tree hợp lệ (bao phủ hết đỉnh, không chu trình), nhưng MST có tổng trọng số nhỏ nhất."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SpanningTreeVsMstDuelStudio"
+                    },
+                    {
+                      type: "component",
+                      component: "MstBasicsFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 2)",
+                      text: "• MST chỉ định nghĩa trên đồ thị <strong>vô hướng, liên thông, có trọng số</strong>.<br/>• MST là 1 loại Spanning Tree đặc biệt: trong tất cả các spanning tree có thể có của $G$, MST là cây có <strong>tổng trọng số nhỏ nhất</strong>.<br/>• Một đồ thị có thể có <strong>nhiều spanning tree</strong> nhưng MST (về mặt trọng số) là <strong>nhỏ nhất</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec3",
+          roman: "III",
+          title: "Phần 3: Các thuật toán giải MST (MST Algorithms)",
+          subsections: [
+            {
+              id: "dsa-b13-sub-3-1",
+              number: "3.1",
+              title: "Tổng quan các thuật toán giải MST",
+              parts: [
+                {
+                  id: "dsa-b13-part-3-1-overview",
+                  label: "PHẢ HỆ THUẬT TOÁN",
+                  title: "Toàn Cảnh Các Thuật Toán Giải MST Đa Thức (Polynomial)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• MST là bài toán nổi tiếng trong Computer Science, có nhiều thuật toán hiệu quả (đa thức &mdash; polynomial):",
+                        "&nbsp;&nbsp;+ <strong>Jarník's / Prim's greedy algorithm</strong> &mdash; dùng cấu trúc dữ liệu <strong>PriorityQueue</strong> (đã học ở bài 02-04).",
+                        "&nbsp;&nbsp;+ <strong>Kruskal's greedy algorithm</strong> &mdash; dùng cấu trúc dữ liệu <strong>Union Find Disjoint Sets (UFDS)</strong> (đã học ở bài 05 / 11).",
+                        "&nbsp;&nbsp;+ <strong>Borůvka's greedy algorithm</strong> (không thảo luận trong bài này).",
+                        "&nbsp;&nbsp;+ Và một vài biến thể nâng cao khác...",
+                        "• <strong>Cả Prim's và Kruskal's đều là thuật toán tham lam (greedy)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "MstAlgorithmsFamilyTreeStudio"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec4",
+          roman: "IV",
+          title: "Phần 4: Thuật toán Prim's (Prim's Algorithm)",
+          subsections: [
+            {
+              id: "dsa-b13-sub-4-1",
+              number: "4.1",
+              title: "Khái niệm & Cách hoạt động",
+              parts: [
+                {
+                  id: "dsa-b13-part-4-1-mechanism",
+                  label: "MÃ GIẢ & HOẠT HỌA",
+                  title: "Cơ Chế Cây Mọc Dần Từ Đỉnh Nguồn (Growing Tree)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Pseudo code (rất đơn giản):</strong>",
+                        "<code>T &larr; {s}</code>, một đỉnh bắt đầu $s$ (thường là đỉnh 0)",
+                        "enqueue các cạnh nối với $s$ (chỉ lưu đỉnh đầu kia và trọng số cạnh, không lưu đầu còn lại) vào priority queue $PQ$",
+                        "&nbsp;&nbsp;-- $PQ$ sắp xếp phần tử theo trọng số tăng dần",
+                        "<code>while</code> còn cạnh chưa xử lý trong $PQ$:",
+                        "&nbsp;&nbsp;lấy ra cạnh $e$ nhỏ nhất ở đầu $PQ$ (front most edge $e$)",
+                        "&nbsp;&nbsp;<code>if</code> đỉnh $v$ nối với cạnh $e$ này chưa được lấy (chưa taken):",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>T &larr; T &cup; {v}</code> (bao gồm cả cạnh $e$ này)",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;enqueue các cạnh nối với $v$ (như trên)",
+                        "$T$ là một MST.",
+                        "<strong>Cách hoạt động:</strong> Prim's phát triển cây $T$ từ 1 đỉnh nguồn $s$ duy nhất, mỗi bước \"mọc\" thêm 1 cạnh có trọng số nhỏ nhất nối từ cây hiện tại $T$ ra 1 đỉnh mới chưa thuộc $T$, cho tới khi $T$ bao phủ hết mọi đỉnh."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PrimAlgorithmExecutionStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-4-2",
+              number: "4.2",
+              title: "Cài đặt bằng Java (Easy Java Implementation)",
+              parts: [
+                {
+                  id: "dsa-b13-part-4-2-java",
+                  label: "CODE JAVA & ĐỘ PHỨC TẠP",
+                  title: "Cài Đặt Java & Phân Tích Độ Phức Tạp O(E log V)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Chỉ cần dùng <strong>2 cấu trúc dữ liệu quen thuộc</strong> để cài đặt Prim's:",
+                        "1. <strong>Priority Queue</strong> (có thể dùng <code>PriorityQueue</code> của Java).",
+                        "2. <strong>Mảng boolean</strong> (<code>taken[]</code> để xác định 1 đỉnh đã được lấy (taken) hay chưa).",
+                        "<strong>Với 2 cấu trúc dữ liệu này, ta chạy được Prim's trong O(E log V):</strong>",
+                        "• Mỗi cạnh được xử lý đúng 1 lần &rarr; $O(E)$.",
+                        "• Mỗi lần, thao tác Insert / ExtractMax (Extract-Min ở đây) trên PQ tốn $O(\\log E)$.",
+                        "• Vì $E = O(V^2)$, nên $O(\\log E) = O(\\log V^2) = O(2 \\log V) = \\mathbf{O(\\log V)}$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PrimJavaCodeComplexityWorkbench"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-4-3",
+              number: "4.3",
+              title: "Tại sao Prim's đúng? (Why Prim's Works?)",
+              parts: [
+                {
+                  id: "dsa-b13-part-4-3-proof",
+                  label: "CHỨNG MINH TÍNH ĐÚNG ĐẮN",
+                  title: "Chứng Minh Toán Học Bằng Kỹ Thuật Thay Thế Cạnh (Exchange Argument)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Trước hết, cần nhận ra Prim's là một <strong>thuật toán tham lam (greedy algorithm)</strong>: ở mỗi bước, luôn cố chọn cạnh hợp lệ tiếp theo $e$ có <strong>trọng số nhỏ nhất</strong>.",
+                        "• Thuật toán tham lam thường dễ cài đặt, nhưng thường cần <strong>\"chứng minh tính đúng đắn\" (proof of correctness)</strong>.",
+                        "<strong>Ý tưởng chứng minh (Exchange Argument):</strong>",
+                        "• Gọi $T$ là spanning tree do Prim's sinh ra, $T^*$ là spanning tree có chi phí tối thiểu (đã biết là tối ưu).",
+                        "• Nếu $T == T^*$: xong (đã chứng minh).",
+                        "• Nếu $T \\neq T^*$:",
+                        "&nbsp;&nbsp;+ Gọi $e_k = (u, v)$ là cạnh đầu tiên được Prim's chọn ở vòng lặp thứ $k$ mà <strong>không thuộc $T^*$</strong>.",
+                        "&nbsp;&nbsp;+ Gọi $P$ là đường đi từ $u$ đến $v$ trong $T^*$, và gọi $e^*$ là 1 cạnh trong $P$ sao cho 1 đầu mút thuộc cây đã tạo ở vòng lặp thứ $(k-1)$ của Prim's, đầu còn lại thì không &mdash; tức là 1 đầu của $e^*$ là $u$ hoặc $v$, nhưng 2 đầu mút của $e^*$ <strong>không phải chính xác là $u$ và $v$</strong>.",
+                        "&nbsp;&nbsp;+ Nếu trọng số của $e^*$ nhỏ hơn trọng số của $e_k$, thì Prim's đã phải chọn $e^*$ ở vòng lặp thứ $k$ rồi (theo tính greedy) &rarr; mâu thuẫn.",
+                        "&nbsp;&nbsp;+ Vậy <strong>chắc chắn $w(e^*) \\ge w(e_k)$</strong>.",
+                        "&nbsp;&nbsp;+ Khi $w(e^*) == w(e_k)$, việc chọn $e^*$ hay $e_k$ là tùy ý (arbitrary).",
+                        "&nbsp;&nbsp;+ Dù $w(e^*)$ lớn hơn hay bằng $w(e_k)$, ta có thể <strong>thay thế $e^*$ bằng $e_k$</strong> trong $T^*$ mà vẫn giữ nguyên (hoặc không tăng) tổng trọng số tối thiểu của $T^*$.",
+                        "&nbsp;&nbsp;+ Lặp lại quá trình này cho đến khi $T^*$ trở thành $T$.",
+                        "&nbsp;&nbsp;+ &rarr; Vậy cây khung do Prim's sinh ra chính là một Minimum Spanning Tree.",
+                        "<strong>Minh họa trực quan (Visual Explanation):</strong>",
+                        "• Cây $T$ do Prim's tạo ra, so với cây tối ưu giả định $T^*$.",
+                        "• Ví dụ: $e_1 = (0, 1)$ được chọn ở vòng lặp 1, nhưng đường đi $P$ từ 0 đến 1 trong $T^*$ là `0-2-1`, và $e^* = (0, 2)$.",
+                        "• Nếu thay $e_1$ bằng $e^*$, ta biến đổi $T^*$ thành $T$ &rarr; chứng minh $T$ cũng là 1 MST."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PrimExchangeArgumentProofStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Prim's Algorithm)",
+                      text: "• Prim's là thuật toán <strong>tham lam (greedy)</strong>, phát triển cây MST từ <strong>1 đỉnh nguồn $s$</strong> duy nhất.<br/>• Dùng <strong>Priority Queue</strong> để luôn lấy ra cạnh có trọng số nhỏ nhất nối từ cây hiện tại ra ngoài.<br/>• Cần mảng <strong>Boolean taken[]</strong> để biết đỉnh nào đã thuộc cây.<br/>• Độ phức tạp: <strong>O(E log V)</strong>.<br/>• Tính đúng đắn được chứng minh bằng <strong>exchange argument</strong> (kỹ thuật \"thay thế cạnh\")."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec5",
+          roman: "V",
+          title: "Phần 5: Thuật toán Kruskal's (Kruskal's Algorithm)",
+          subsections: [
+            {
+              id: "dsa-b13-sub-5-1",
+              number: "5.1",
+              title: "Khái niệm & Cách hoạt động",
+              parts: [
+                {
+                  id: "dsa-b13-part-5-1-mechanism",
+                  label: "MÃ GIẢ & MÔ PHỎNG",
+                  title: "Cơ Chế Duyệt Cạnh Sắp Xếp & Kiểm Tra Chu Trình",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Pseudo code (rất đơn giản):</strong>",
+                        "<code>sort</code> tập $E$ cạnh theo trọng số tăng dần",
+                        "<code>T &larr; {}</code>",
+                        "<code>while</code> còn cạnh chưa xử lý:",
+                        "&nbsp;&nbsp;chọn 1 cạnh $e$ chưa xử lý có chi phí nhỏ nhất (min cost)",
+                        "&nbsp;&nbsp;<code>if</code> thêm $e$ vào $T$ không tạo thành chu trình (cycle):",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;thêm $e$ vào $T$",
+                        "$T$ là một MST.",
+                        "<strong>Cách hoạt động:</strong> Kruskal's không xuất phát từ 1 đỉnh cụ thể như Prim's, mà xét <strong>toàn bộ tập cạnh</strong> theo thứ tự trọng số tăng dần, và <strong>thêm cạnh vào $T$ nếu không tạo chu trình</strong>, cho đến khi đủ cạnh tạo thành cây khung."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "KruskalAlgorithmExecutionStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-5-2",
+              number: "5.2",
+              title: "Tại sao Kruskal's đúng? (Why Kruskal's Works?)",
+              parts: [
+                {
+                  id: "dsa-b13-part-5-2-proof",
+                  label: "CHỨNG MINH TOÁN HỌC",
+                  title: "Chứng Minh Bằng Bất Biến Vòng Lặp (Loop Invariant)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Kruskal's cũng là một <strong>thuật toán tham lam (greedy algorithm)</strong>: ở mỗi bước luôn cố chọn cạnh chưa xử lý $e$ có trọng số nhỏ nhất.",
+                        "• Chứng minh dựa trên <strong>bất biến vòng lặp (loop invariant)</strong>: <em>\"Mọi cạnh $e$ được thêm vào $T$ bởi thuật toán Kruskal's đều là 1 phần của MST.\"</em>",
+                        "<strong>Giải thích bất biến:</strong>",
+                        "• Kruskal's có bước <strong>kiểm tra chu trình đặc biệt</strong> trước khi thêm cạnh $e$ vào $T$ &rarr; cạnh $e$ không bao giờ tạo ra chu trình trong $T$ (Ví dụ: không thể nối đỉnh 0 và 2 vì sẽ tạo thành chu trình).",
+                        "• Ở đầu mỗi vòng lặp, $T$ luôn là 1 phần của MST.",
+                        "• Ở cuối vòng lặp, ta đã chọn được <strong>$V - 1$ cạnh</strong> từ 1 đồ thị liên thông có trọng số $G$ mà không tạo chu trình &rarr; điều này đồng nghĩa ta có 1 <strong>Spanning Tree</strong>.",
+                        "• Bằng cách luôn thêm cạnh chưa xử lý $e$ có chi phí nhỏ nhất tiếp theo, ta có: <code>w(T &cup; e) &le; w(T &cup; bất kỳ cạnh chưa xử lý nào khác mà không tạo chu trình)</code> (Ví dụ: nối đỉnh 0 và 3 bằng cạnh nhỏ nhất tiếp theo).",
+                        "• Ở cuối vòng lặp, Spanning Tree $T$ phải có trọng số <strong>$w(T)$ nhỏ nhất</strong>, vậy $T$ chính là MST cuối cùng."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "KruskalLoopInvariantProofStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-5-3",
+              number: "5.3",
+              title: "Cài đặt thuật toán (Kruskal's Implementation)",
+              parts: [
+                {
+                  id: "dsa-b13-part-5-3-java",
+                  label: "EDGELIST & CODE JAVA",
+                  title: "Cài Đặt Bằng Java & Phân Tích Độ Phức Tạp O(E log V)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Để sắp xếp các cạnh (sort edges):</strong>",
+                        "• Ta dùng <strong>EdgeList</strong> để lưu thông tin đồ thị (Adjacency Matrix/List đã học trước đây <strong>không phù hợp</strong> cho việc sắp xếp cạnh!).",
+                        "• Sau đó dùng <strong>bất kỳ</strong> thuật toán sắp xếp nào đã học trước đây.",
+                        "• Trong Java, chỉ cần dùng 1 dòng: <code>Collections.sort(...)</code> &mdash; không cần tự code merge/quick sort.",
+                        "<strong>Để kiểm tra chu trình (test for cycles):</strong>",
+                        "• Dùng <strong>Union-Find Disjoint Sets (UFDS)</strong>.",
+                        "<strong>Pseudo code kèm độ phức tạp:</strong>",
+                        "• Để sắp xếp cạnh: cần $O(E \\log E)$.",
+                        "• Để kiểm tra chu trình: cần $O(\\alpha(V))$ &mdash; rất nhỏ, coi như hằng số $O(1)$ ($\\alpha$ là hàm ngược Ackermann, đặc trưng của UFDS).",
+                        "• <strong>Tổng thể:</strong> Kruskal's chạy trong $O(E \\log E + E \\cdot \\alpha(V))$, mà <code>E log E</code> chiếm ưu thế (dominates)!",
+                        "• Vì $E = O(V^2)$, nên Kruskal's chạy trong $O(E \\log V^2) = \\mathbf{O(E \\log V)}$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "KruskalJavaWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Kruskal's Algorithm)",
+                      text: "• Kruskal's là thuật toán <strong>tham lam</strong>, xét cạnh theo thứ tự <strong>trọng số tăng dần</strong>, thêm vào $T$ nếu <strong>không tạo chu trình</strong>.<br/>• Cần <strong>sort cạnh</strong> (dùng EdgeList, không dùng AdjMatrix/AdjList) và <strong>UFDS</strong> để kiểm tra chu trình.<br/>• Độ phức tạp: <strong>O(E log E) = O(E log V)</strong> (vì $E = O(V^2)$), với <code>E log E</code> là thành phần chiếm ưu thế.<br/>• Bất biến vòng lặp: mọi cạnh được thêm vào $T$ luôn là 1 phần của MST."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b13-sec6",
+          roman: "VI",
+          title: "Phần 6: So sánh và Tổng kết (Comparison & Summary)",
+          subsections: [
+            {
+              id: "dsa-b13-sub-6-1",
+              number: "6.1",
+              title: "Nên chọn thuật toán nào?",
+              parts: [
+                {
+                  id: "dsa-b13-part-6-1-duel",
+                  label: "ĐỐI ĐẦU THỰC CHIẾN",
+                  title: "So Sánh & Ma Trận Ra Quyết Định Lựa Chọn Thuật Toán",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Cả 2 thuật toán đều đúng và đều chạy trong thời gian đa thức gần tương đương: <strong>Prim's: $O(E \\log V)$</strong>, <strong>Kruskal's: $O(E \\log V)$</strong>.",
+                        "• Việc chọn Prim's hay Kruskal's tùy vào sở thích / tình huống cụ thể (slide đặt câu hỏi mở, không đưa ra khuyến nghị cố định)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "PrimVsKruskalDecisionMatrixDuel"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b13-sub-6-2",
+              number: "6.2",
+              title: "Tổng kết bài học",
+              parts: [
+                {
+                  id: "dsa-b13-part-6-2-summary",
+                  label: "TỔNG KẾT & QUIZ",
+                  title: "Bảng Vàng 7 Trụ Cột & Mini-Quiz Tốt Nghiệp Bài 13",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Trong bài này, ta đã học:",
+                        "• Giới thiệu lại <strong>bài toán MST</strong> (đã có nền tảng từ CS1231).",
+                        "• Cài đặt thuật toán <strong>Prim's</strong> &mdash; ôn lại <strong>PriorityQueue ADT</strong>.",
+                        "• Cài đặt thuật toán <strong>Kruskal's</strong> &mdash; ôn lại <strong>EdgeList</strong> và kỹ thuật sắp xếp cạnh, ôn lại <strong>Union-Find Disjoint Sets (UFDS)</strong>.",
+                        "<em>MST / Prim's / Kruskal's có thể sẽ được học sâu hơn ở môn CS3230.</em>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "Chapter13FinalMasterMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Tổng kết — dễ ra thi)",
+                      text: "• <strong>MST:</strong> cây khung có tổng trọng số nhỏ nhất của đồ thị vô hướng, liên thông, có trọng số.<br/>• <strong>Prim's:</strong> greedy, dùng <strong>Priority Queue</strong>, phát triển cây từ 1 đỉnh nguồn, độ phức tạp <strong>O(E log V)</strong>.<br/>• <strong>Kruskal's:</strong> greedy, <strong>sort cạnh</strong> + dùng <strong>UFDS</strong> kiểm tra chu trình, độ phức tạp <strong>O(E log V)</strong> (chủ yếu do bước sort $O(E \\log E)$).<br/>• Cả 2 thuật toán đều dựa trên tính chất tham lam (greedy) và đều cho ra kết quả <strong>đúng là MST</strong> (đã có chứng minh riêng cho từng thuật toán).<br/>• Kruskal's dùng <strong>EdgeList</strong> (không dùng AdjMatrix/AdjList) vì cần sort toàn bộ cạnh."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b14",
+      title: "Bài 14: Thuật toán Bellman-Ford (SSSP & Negative Cycles)",
+      sections: [
+        {
+          id: "dsa-b14-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan: Đường Đi Ngắn Nhất Trọng Số Âm & Chu Trình Âm",
+          subsections: [
+            {
+              id: "dsa-b14-sub-0-1",
+              number: "0.0",
+              title: "Tựa Đề & Live Bellman-Ford Workbench",
+              parts: [
+                {
+                  id: "dsa-b14-part-0-hero",
+                  label: "TỔNG QUAN TƯƠNG TÁC",
+                  title: "Vũ Khí Trọng Số Âm & Dò Tìm Chu Trình Âm",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaBellmanFordHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec1",
+          roman: "I",
+          title: "Phần 1: Bài toán Single-Source Shortest Paths (SSSP)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-1-1",
+              number: "1.1",
+              title: "Ôn lại định nghĩa cơ bản (Definitions)",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-1-defs",
+                  label: "ĐỒ THỊ CÓ HƯỚNG & TRỌNG SỐ",
+                  title: "Nền Tảng Đồ Thị Có Hướng & So Sánh MST vs SSSP",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Vertex set $V$</strong>: tập đỉnh (VD: giao lộ, nhà...).",
+                        "• <strong>Edge set $E$</strong>: tập cạnh (VD: đường phố...).",
+                        "• <strong>Directed (có hướng)</strong>: đường 1 chiều. Có thể dùng 2 cạnh (bi-directional) để mô hình 1 cạnh vô hướng (undirected). <em>Bài toán MST (đã học trước) làm việc trên đồ thị connected, undirected, weighted.</em>",
+                        "• <strong>Weighted (có trọng số)</strong>: khoảng cách, thời gian, phí cầu đường... Hàm trọng số: $w(a, b): E \\to \\mathbb{R}$ &mdash; gán trọng số cho cạnh từ $a$ đến $b$.",
+                        "• <strong>Weighted Graph:</strong> $G(V, E), w(a, b): E \\to \\mathbb{R}$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SsspFoundationsStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-1-2",
+              number: "1.2",
+              title: "(Simple) Path",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-2-path",
+                  label: "ĐƯỜNG ĐI ĐƠN GIẢN",
+                  title: "Đường Đi Đơn Giản & Công Thức Tính Trọng Số PW(p)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Path: $p = (v_0, v_1, v_2, ..., v_k)$ với $(v_i, v_{i+1}) \\in E, 0 \\le i \\le (k-1)$.",
+                        "• <strong>Simple:</strong> không có đỉnh lặp lại!",
+                        "• Ký hiệu tắt: $v_0 \\xrightarrow{p} v_k$ nghĩa là $p$ là 1 đường đi (path) từ $v_0$ đến $v_k$.",
+                        "• <strong>Path weight:</strong> $PW(p) = \\sum_{i=0}^{k-1} w(v_i, v_{i+1})$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-1-3",
+              number: "1.3",
+              title: "Shortest Path weight",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-3-delta",
+                  label: "TRỌNG SỐ ĐƯỜNG ĐI NGẮN NHẤT",
+                  title: "Khái Niệm Delta δ(a, b) & Unreachable",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• $\\delta(a, b)$ &mdash; đọc là <em>\"delta\"</em> &mdash; là trọng số đường đi ngắn nhất từ $a$ đến $b$.",
+                        "• Nếu tồn tại path: $\\delta(a, b) = \\min(PW(p))$ với mọi $p: a \\to b$.",
+                        "• Nếu $b$ không thể đến được từ $a$ (unreachable): $\\delta(a, b) = \\infty$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-1-4",
+              number: "1.4",
+              title: "Định nghĩa bài toán SSSP",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-4-sssp",
+                  label: "BÀI TOÁN SSSP",
+                  title: "Chuẩn Hóa Bài Toán Single-Source Shortest Paths",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Single-Source Shortest Paths (SSSP) Problem:</strong>",
+                        "&nbsp;&nbsp;+ Cho: $G(V, E), w(a, b): E \\to \\mathbb{R}$, và 1 đỉnh nguồn $s$ (source vertex).",
+                        "&nbsp;&nbsp;+ Tìm: $\\delta(s, b)$ (và đường đi tốt nhất) từ đỉnh $s$ đến <strong>mỗi</strong> đỉnh $b \\in V$.",
+                        "&nbsp;&nbsp;+ Tức là: từ <strong>1 nguồn</strong> đến <strong>tất cả các đỉnh còn lại</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-1-5",
+              number: "1.5",
+              title: "Cấu trúc dữ liệu phụ trợ để giải SSSP",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-5-datastruct",
+                  label: "MẢNG D[] & P[]",
+                  title: "Mảng Khoảng Cách D[v] & Mảng Đỉnh Cha p[v]",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Mảng/Vector $D$</strong> kích thước $|V|$ ($D = \\text{\"distance\"}$):",
+                        "&nbsp;&nbsp;+ Ban đầu: $D[v] = 0$ nếu $v = s$; ngược lại $D[v] = \\infty$ (số rất lớn).",
+                        "&nbsp;&nbsp;+ $D[v]$ giảm dần khi tìm được đường đi tốt hơn.",
+                        "&nbsp;&nbsp;+ $D[v] \\ge \\delta(s, v)$ trong suốt quá trình chạy thuật toán.",
+                        "&nbsp;&nbsp;+ $D[v] = \\delta(s, v)$ khi thuật toán kết thúc.",
+                        "• <strong>Mảng/Vector $p$</strong> kích thước $|V|$ ($p = \\text{predecessor}$ &mdash; đỉnh cha):",
+                        "&nbsp;&nbsp;+ $p[v]$ = đỉnh liền trước trên đường đi tốt nhất từ $s$ đến $v$.",
+                        "&nbsp;&nbsp;+ $p[s] = \\text{NULL}$ (thường dùng giá trị -1).",
+                        "&nbsp;&nbsp;+ Giống cách dùng mảng $p$ trong BFS/DFS Spanning Tree, MST."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-1-6",
+              number: "1.6",
+              title: "Ví dụ minh họa (Example)",
+              parts: [
+                {
+                  id: "dsa-b14-part-1-6-example",
+                  label: "VÍ DỤ TRỰC QUAN",
+                  title: "Khởi Tạo vs Kết Thúc & Truy Vết Backtrack",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "Cho $s = 0$. <strong>Khởi tạo:</strong>",
+                        "• $D[s] = D[0] = 0; D[v] = \\infty$ cho các đỉnh còn lại (màu đỏ).",
+                        "• $p[s] = -1$ (\"không có predecessor\"); $p[v] = -1$ cho các đỉnh còn lại.",
+                        "• Chưa có cạnh cam (orange edges) nào.",
+                        "<strong>Sau khi thuật toán kết thúc:</strong>",
+                        "• $D[s] = D[0] = 0$ (không đổi).",
+                        "• $D[v] = \\delta(s, v)$ cho các đỉnh còn lại &mdash; VD: $D[2] = 6, D[4] = 7$.",
+                        "• $p[s] = -1$.",
+                        "• $p[v]$ = đỉnh gốc của cạnh cam &mdash; VD: $p[2] = 0, p[4] = 2$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SsspDistancePredecessorWorkbench"
+                    },
+                    {
+                      type: "component",
+                      component: "SsspBasicsFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 1)",
+                      text: "• $\\delta(a,b)$ là trọng số đường đi ngắn nhất, $D[v]$ là giá trị \"đang có\", hội tụ về $\\delta$ khi thuật toán xong.<br/>• $D[v]$ luôn $\\ge \\delta(s,v)$ trong lúc chạy &mdash; chỉ giảm, không tăng.<br/>• $p[v]$ dùng để truy vết lại đường đi ngắn nhất (backtrack path)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec2",
+          roman: "II",
+          title: "Phần 2: Cạnh trọng số âm và chu trình âm (Negative Weight Edges and Cycles)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-2-1",
+              number: "2.1",
+              title: "Bản chất trọng số âm & Chu trình âm",
+              parts: [
+                {
+                  id: "dsa-b14-part-2-1-negative",
+                  label: "HỐ ĐEN CHU TRÌNH ÂM",
+                  title: "Chu Trình Âm: Undefined vs Well-defined Shortest Paths",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Cạnh trọng số âm <strong>tồn tại trong thực tế</strong> ở một số ứng dụng (Ví dụ minh họa giả tưởng: có thể \"du hành thời gian\" qua \"time tunnel\" = cạnh có trọng số âm).",
+                        "• <strong>Nếu tồn tại negative cycle (chu trình có tổng trọng số âm):</strong>",
+                        "&nbsp;&nbsp;+ VD: chu trình $1 \\to 2 \\to 1$ có tổng trọng số âm &rarr; là 1 <strong>negative cycle</strong>.",
+                        "&nbsp;&nbsp;+ Có thể đi lặp vô hạn $0 \\to 1 \\to 2 \\to 1 \\to 2 \\to 1 \\to ...$ để đạt tổng trọng số $\\to -\\infty$.",
+                        "&nbsp;&nbsp;+ &rArr; Shortest path từ 0 đến $\{1, 2, 3\}$ là <strong>undefined</strong> (không xác định).",
+                        "&nbsp;&nbsp;+ Nhưng shortest path từ 0 đến 4 vẫn <strong>ổn (well-defined)</strong>: $\\delta(0, 4) = -99$ (không đi qua negative cycle)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "NegativeWeightCycleSimulator"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 2)",
+                      text: "• Nếu đường đi ngắn nhất phải đi qua 1 negative cycle &rarr; shortest path <strong>không xác định</strong> (có thể giảm vô hạn).<br/>• Chỉ cần <strong>không đi qua</strong> negative cycle thì shortest path vẫn tính được bình thường."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec3",
+          roman: "III",
+          title: "Phần 3: Các thuật toán giải SSSP & 2 Khối Xây Dựng Cốt Tử",
+          subsections: [
+            {
+              id: "dsa-b14-sub-3-1",
+              number: "3.1",
+              title: "Tổng quan thuật toán & Bước khởi tạo initSSSP(s)",
+              parts: [
+                {
+                  id: "dsa-b14-part-3-1-init",
+                  label: "KHỞI TẠO INITSSSP",
+                  title: "Khối Xây Dựng 1: Khởi Tạo Toàn Cục initSSSP(s)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Có 3 thuật toán được đề cập trong bài:</strong>",
+                        "1. <strong>O(V+E) BFS</strong> &rarr; thất bại (fail) với trường hợp tổng quát của SSSP.",
+                        "2. <strong>O(V · E) Bellman-Ford's SSSP algorithm:</strong>",
+                        "&nbsp;&nbsp;+ Ý tưởng tổng quát của thuật toán SSSP.",
+                        "&nbsp;&nbsp;+ Trick để đảm bảo thuật toán dừng (termination).",
+                        "&nbsp;&nbsp;+ Bonus: phát hiện negative weight cycle.",
+                        "3. <em>(Phần III của loạt bài &mdash; chưa nằm trong slide này / Dijkstra).</em>",
+                        "<strong>Bước khởi tạo &mdash; initSSSP(s) (Dùng chung cho mọi thuật toán SSSP):</strong>",
+                        "<code>initSSSP(s)</code>",
+                        "&nbsp;&nbsp;<code>for each v in V:</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>D[v] &larr; 1000000000</code> // dùng 1B để đại diện cho INF",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>p[v] &larr; -1</code> // dùng -1 để đại diện cho NULL",
+                        "&nbsp;&nbsp;<code>D[s] &larr; 0</code> // đây là điều ta biết chắc từ đầu"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-3-2",
+              number: "3.2",
+              title: "Phép toán \"Relax\" (Nới lỏng cạnh)",
+              parts: [
+                {
+                  id: "dsa-b14-part-3-2-relax",
+                  label: "PHÉP TOÁN RELAX",
+                  title: "Khối Xây Dựng 2: Phép Toán Nới Lỏng Relax(u, v, w)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Là tên viết tắt cho hành động: <strong>\"nếu đường đi ngắn hơn tồn tại thì cập nhật lại\"</strong>.",
+                        "<code>relax(u, v, w_u_v)</code>",
+                        "&nbsp;&nbsp;<code>if D[v] > D[u] + w_u_v:</code> // nếu SP có thể được rút ngắn qua cạnh này",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>D[v] &larr; D[u] + w_u_v</code> // relax cạnh này",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>p[v] &larr; u</code> // ghi nhớ/cập nhật predecessor",
+                        "<strong>Minh họa:</strong> đỉnh $u$ có $D[u]=4$, đỉnh $v$ có $D[v]=9$, cạnh $(u, v)$ có trọng số 4.",
+                        "• Vì $D[u] + w = 4 + 4 = 8 < D[v] = 9 \\implies$ relax: $D[v] = 8, p[v] = u$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SsspBuildingBlocksStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 3)",
+                      text: "• <code>initSSSP(s)</code> và <code>relax(u, v, w)</code> là 2 khối xây dựng (building blocks) dùng chung cho mọi thuật toán SSSP.<br/>• <strong>Relax</strong> = so sánh \"đi thẳng $D[v]$\" với \"đi qua $u$ rồi tới $v$ ($D[u]+w$)\", chọn đường ngắn hơn."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec4",
+          roman: "IV",
+          title: "Phần 4: Ôn lại BFS – vì sao không dùng được cho SSSP tổng quát",
+          subsections: [
+            {
+              id: "dsa-b14-sub-4-1",
+              number: "4.1",
+              title: "BFS trên đồ thị không trọng số",
+              parts: [
+                {
+                  id: "dsa-b14-part-4-1-unweighted",
+                  label: "ĐỒ THỊ KHÔNG TRỌNG SỐ",
+                  title: "BFS Đếm Số Cạnh & BFS Spanning Tree = Shortest Paths Tree",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Khi đồ thị <strong>unweighted</strong> (không trọng số), SSSP có thể xem là bài toán tìm <strong>số cạnh ít nhất</strong> đi từ $s$ đến các đỉnh khác.",
+                        "• $(*)$ có thể xem mỗi cạnh có trọng số 1 hoặc trọng số hằng số như nhau.",
+                        "• Thuật toán <strong>O(V+E) BFS</strong> đo chính xác điều này.",
+                        "• <strong>BFS Spanning Tree = Shortest Paths Spanning Tree</strong> (khi đồ thị không trọng số)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-4-2",
+              number: "4.2",
+              title: "Modified BFS – chỉnh sửa BFS để tính SSSP",
+              parts: [
+                {
+                  id: "dsa-b14-part-4-2-mods",
+                  label: "3 ĐIỂM CẢI TIẾN",
+                  title: "Chuyển Đổi BFS Truyền Thống Sang Modified BFS",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>3 sửa đổi đơn giản:</strong>",
+                        "1. Đổi tên <code>visited</code> thành <code>D</code>.",
+                        "2. Ở đầu BFS: đặt $D[v] = \\text{INF}$ (VD: 1B) cho tất cả $v \\in G$, trừ <strong>$D[s] = 0$</strong>.",
+                        "3. Đổi đoạn trong vòng lặp BFS từ <code>visited[v] = 1</code> thành <code>D[v] = D[u] + 1</code> (v cách u đúng 1 bước)."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-4-3",
+              number: "4.3",
+              title: "Modified BFS Pseudo Code (bản đầy đủ)",
+              parts: [
+                {
+                  id: "dsa-b14-part-4-3-fullcode",
+                  label: "MÃ GIẢ ĐẦY ĐỦ",
+                  title: "Mã Giả Chi Tiết Modified BFS Với Hàng Đợi Queue",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>for all v in V: D[v] &larr; INF; p[v] &larr; -1</code>",
+                        "<code>Q &larr; {s}; D[s] &larr; 0</code>",
+                        "<code>while Q is not empty:</code>",
+                        "&nbsp;&nbsp;<code>u &larr; Q.dequeue()</code>",
+                        "&nbsp;&nbsp;<code>for all v adjacent to u:</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>if D[v] == INF:</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>D[v] &larr; D[u] + 1; p[v] &larr; u; Q.enqueue(v)</code>"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-4-4",
+              number: "4.4",
+              title: "Modified BFS Pseudo Code – dạng đơn giản (dùng relax)",
+              parts: [
+                {
+                  id: "dsa-b14-part-4-4-relaxcode",
+                  label: "MÃ GIẢ DÙNG RELAX",
+                  title: "Dạng Đơn Giản Tối Ưu Với Khối Xây Dựng relax(u, v, 1)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>initSSSP(s); Q &larr; {s}</code>",
+                        "<code>while Q is not empty:</code>",
+                        "&nbsp;&nbsp;<code>u &larr; Q.dequeue()</code>",
+                        "&nbsp;&nbsp;<code>for all v adjacent to u: relax(u, v, 1)</code> // trọng số luôn là 1"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-4-5",
+              number: "4.5",
+              title: "BFS thất bại trên trường hợp tổng quát",
+              parts: [
+                {
+                  id: "dsa-b14-part-4-5-counterexample",
+                  label: "VÍ DỤ PHẢN CHỨNG",
+                  title: "Cạm Bẫy Đường Vòng (Detour): BFS Báo Sai Đường Đi Ngắn Nhất",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Ví dụ: shortest path từ 0 đến 2 <strong>không phải</strong> là path $0 \\to 2$ (trọng số 9), mà là \"đường vòng\" (detour) $0 \\to 1 \\to 3 \\to 4 \\to 2$ với trọng số $2+3+2+1 = \\mathbf{8}$.",
+                        "• BFS <strong>không phát hiện</strong> được điều này, chỉ báo path $0 \\to 2$ (kết quả <strong>sai</strong>).",
+                        "• <strong>Rule of Thumb:</strong> Nếu chắc chắn đồ thị là <strong>unweighted</strong> (mọi cạnh trọng số 1 hoặc hằng số như nhau), thì giải SSSP bằng thuật toán <strong>O(V+E) BFS</strong> hiệu quả hơn."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "ModifiedBfsVsGeneralSsspDuel"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 4)",
+                      text: "• BFS chỉ đúng cho SSSP khi đồ thị <strong>không trọng số</strong> (hoặc trọng số bằng nhau).<br/>• Với đồ thị có trọng số khác nhau, BFS có thể cho kết quả <strong>sai</strong> vì nó chỉ đếm số cạnh, không quan tâm tổng trọng số.<br/>• Cần thuật toán khác cho trường hợp tổng quát &rarr; <strong>Bellman-Ford</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec5",
+          roman: "V",
+          title: "Phần 5: Thuật toán Bellman-Ford (Bellman-Ford's SSSP Algorithm)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-5-1",
+              number: "5.1",
+              title: "Khái niệm",
+              parts: [
+                {
+                  id: "dsa-b14-part-5-1-concept",
+                  label: "Ý TƯỞNG CỐT LÕI",
+                  title: "Nới Lỏng Toàn Bộ Cạnh E Lặp Lại |V| - 1 Lần",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Bellman-Ford giải SSSP cho đồ thị trọng số <strong>tổng quát</strong> (kể cả có cạnh âm), chạy trong <strong>O(V · E)</strong>.",
+                        "• <strong>Ý tưởng:</strong> <strong>relax tất cả các cạnh $E$, lặp lại $|V| - 1$ lần</strong>."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-5-2",
+              number: "5.2",
+              title: "Pseudo code & Độ phức tạp",
+              parts: [
+                {
+                  id: "dsa-b14-part-5-2-code",
+                  label: "MÃ GIẢ & ĐỘ PHỨC TẠP",
+                  title: "Cấu Trúc 2 Vòng Lặp Lồng Nhau O(V · E)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<code>BellmanFord-SSSP(s)</code>",
+                        "&nbsp;&nbsp;<code>initSSSP(s)</code> // O(V) ở đây",
+                        "&nbsp;&nbsp;<code>for i = 1 to |V| - 1</code> // O(V) ở đây",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>for each edge (u, v) in E</code> // O(E) ở đây",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>relax(u, v, w_u_v)</code> // O(1) ở đây",
+                        "• Ở cuối thuật toán Bellman-Ford, $D[v] = \\delta(s, v)$ nếu không tồn tại negative weight cycle.",
+                        "• <strong>Độ phức tạp:</strong> $O(V) \\times O(E) = \\mathbf{O(V \\cdot E)}$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordAlgorithmExecutionStudio"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-5-3",
+              number: "5.3",
+              title: "Ví dụ chạy trên VisuAlgo (CP3 4.17)",
+              parts: [
+                {
+                  id: "dsa-b14-part-5-3-visualgo",
+                  label: "MÔ PHỎNG VISUALGO",
+                  title: "Mô Phỏng Trực Quan Từng Pass Nới Lỏng Danh Sách Cạnh E",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Chạy Bellman-Ford từ nhiều nguồn khác nhau trên đồ thị mẫu (CP3 4.17).",
+                        "• Pass đầu tiên: relax <strong>toàn bộ $E$ cạnh</strong> của `BellmanFord(0)`."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordVisuAlgoPassTraceSandbox"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 5)",
+                      text: "• Bellman-Ford &mdash; lặp <strong>|V| - 1 vòng</strong>, mỗi vòng relax <strong>tất cả cạnh E</strong>.<br/>• Độ phức tạp: <strong>O(V · E)</strong>.<br/>• Hoạt động đúng cả khi có cạnh trọng số âm (miễn không có negative cycle ảnh hưởng đến path cần tính)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec6",
+          roman: "VI",
+          title: "Phần 6: Chứng minh tính đúng đắn (Theorem & Proof)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-6-1",
+              number: "6.1",
+              title: "Theorem 1: Shortest path là simple path (khi không có negative cycle)",
+              parts: [
+                {
+                  id: "dsa-b14-part-6-1-thm1",
+                  label: "ĐỊNH LÝ 1",
+                  title: "Chứng Minh Phản Chứng: Đường Đi Ngắn Nhất Luôn Là Simple Path",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Theorem 1:</strong> Nếu $G = (V, E)$ không chứa negative weight cycle, thì đường đi ngắn nhất $p$ từ $s$ đến $v$ là <strong>simple path</strong> (không lặp đỉnh).",
+                        "<strong>Proof by Contradiction (7 bước):</strong>",
+                        "1. Giả sử shortest path $p$ <strong>không phải</strong> simple path.",
+                        "2. Khi đó $p$ chứa 1 (hoặc nhiều) chu trình (cycle).",
+                        "3. Giả sử có chu trình $c$ trong $p$ với <strong>trọng số dương</strong> ($w(c) > 0$).",
+                        "4. Nếu loại bỏ $c$ khỏi $p$ &rarr; ta có 1 \"shortest path\" <strong>ngắn hơn</strong> $p$.",
+                        "5. &rarr; Mâu thuẫn với việc $p$ là shortest path.",
+                        "6. Kể cả nếu $c$ là chu trình có <strong>tổng trọng số bằng 0</strong> (vẫn có thể xảy ra), ta vẫn có thể loại bỏ $c$ khỏi $p$ mà <strong>không làm tăng</strong> trọng số của $p$.",
+                        "7. Vậy: $p$ là simple path (từ điểm 5), hoặc luôn có thể biến thành simple path (từ điểm 6).",
+                        "• <strong>Hệ quả:</strong> đường đi $p$ có <strong>tối đa $|V| - 1$ cạnh</strong> từ nguồn $s$ đến đỉnh \"xa nhất có thể\" $v$ trong $G$."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "dsa-b14-sub-6-2",
+              number: "6.2",
+              title: "Theorem 2: Sau khi Bellman-Ford kết thúc, D[v] = delta(s, v), ∀v ∈ V",
+              parts: [
+                {
+                  id: "dsa-b14-part-6-2-thm2",
+                  label: "ĐỊNH LÝ 2",
+                  title: "Chứng Minh Quy Nạp & Thứ Tự Duyệt Cạnh Tệ Nhất (Worst-Case)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "<strong>Proof by Induction:</strong>",
+                        "1. Xét shortest path $p$ từ $s$ đến $v_k$ ($p$ có số cạnh ít nhất). Trong đó $v_i$ là đỉnh mà shortest path từ $s$ cần $i$ hops (số cạnh) để đến.",
+                        "2. Ban đầu: $D[v_0] = \\delta(s, v_0) = 0$, vì $v_0$ chính là $s$.",
+                        "3. Sau <strong>1 pass</strong> qua $E$: $D[v_1] = \\delta(s, v_1)$.",
+                        "4. Sau <strong>2 passes</strong> qua $E$: $D[v_2] = \\delta(s, v_2), ...$",
+                        "5. Sau <strong>$k$ passes</strong> qua $E$: $D[v_k] = \\delta(s, v_k)$.",
+                        "6. Khi không có negative weight cycle, shortest path $p$ sẽ là <strong>simple path</strong> (theo Theorem 1).",
+                        "7. Vậy sau <strong>$|V| - 1$ iterations</strong>, đỉnh \"xa nhất\" $v_{|V|-1}$ từ $s$ có: <strong>$D[v_{|V|-1}] = \\delta(s, v_{|V|-1})$</strong> (Đúng ngay cả khi các cạnh trong $E$ được duyệt theo <strong>thứ tự tệ nhất có thể</strong>)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordTheoremsProofStudio"
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordMasterFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 6)",
+                      text: "• Vì shortest path (không có negative cycle) tối đa có $|V| - 1$ cạnh &rarr; cần đúng <strong>|V| - 1 lần relax toàn bộ E</strong> là đủ để hội tụ, bất kể thứ tự duyệt cạnh.<br/>• Đây chính là lý do vòng lặp ngoài của Bellman-Ford chạy từ 1 đến $|V| - 1$."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec7",
+          roman: "VII",
+          title: "Phần 7: \"Side Effect\": Phát hiện Negative Weight Cycle",
+          subsections: [
+            {
+              id: "dsa-b14-sub-7-1",
+              number: "7.1",
+              title: "Kỹ thuật kiểm tra thêm ở Pass thứ |V| & Hệ quả Corollary",
+              parts: [
+                {
+                  id: "dsa-b14-part-7-1-sideeffect",
+                  label: "SIDE EFFECT CỐT TỬ",
+                  title: "Dò Tìm Chu Trình Âm Bằng Lượt Quét Thứ |V|",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Corollary:</strong> Nếu giá trị $D[v]$ <strong>không hội tụ</strong> (fails to converge) sau $|V|-1$ pass, thì tồn tại 1 <strong>negative-weight cycle</strong> có thể đến được (reachable) từ nguồn $s$.",
+                        "• <strong>Cách kiểm tra thêm sau khi chạy xong Bellman-Ford (pass thứ $|V|$):</strong>",
+                        "<code>for each edge(u, v) in E:</code>",
+                        "&nbsp;&nbsp;<code>if D[v] > D[u] + w(u, v):</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>report negative weight cycle exists in G</code>",
+                        "• Nếu sau $|V|-1$ vòng mà <strong>vẫn còn cạnh có thể relax được</strong> &rarr; nghĩa là có negative cycle."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "NegativeCycleDetectionStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 7)",
+                      text: "• Đây là <strong>bonus/side-effect</strong> quan trọng của Bellman-Ford: vừa tính SSSP, vừa <strong>phát hiện được negative cycle</strong>.<br/>• <strong>Cách làm:</strong> chạy thêm 1 lượt kiểm tra relax (lần thứ $|V|$) &mdash; nếu vẫn còn relax được thì có negative cycle."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec8",
+          roman: "VIII",
+          title: "Phần 8: Cài đặt Java (Java Implementation)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-8-1",
+              number: "8.1",
+              title: "Mã nguồn Java & 3 Trường hợp Demo hiệu năng",
+              parts: [
+                {
+                  id: "dsa-b14-part-8-1-java",
+                  label: "CÀI ĐẶT JAVA",
+                  title: "Mã Nguồn BellmanFordDemo.java & Đảm Bảo Tính Dừng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Xem file <strong>BellmanFordDemo.java</strong>.",
+                        "• Cài đặt bằng <strong>AdjacencyList</strong> (hoặc <strong>EdgeList</strong>) để đạt $O(VE)$ Bellman-Ford.",
+                        "<strong>Các trường hợp demo hiệu năng:</strong>",
+                        "1. Đồ thị nhỏ, <strong>không</strong> có negative weight cycle &rarr; OK, chạy trong $O(VE)$.",
+                        "2. Đồ thị nhỏ, <strong>có</strong> negative weight cycle &rarr; Vẫn dừng (terminate) trong $O(VE)$, đồng thời báo cáo negative weight cycle tồn tại.",
+                        "3. Đồ thị nhỏ, có <strong>một số cạnh âm</strong> nhưng <strong>không có</strong> negative cycle &rarr; OK."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordJavaImplementationWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 8)",
+                      text: "• Bellman-Ford có thể cài bằng <strong>AdjacencyList</strong> hoặc <strong>EdgeList</strong>, độ phức tạp không đổi $O(VE)$.<br/>• Kể cả khi có negative cycle, thuật toán vẫn <strong>dừng đúng lúc</strong> (sau $|V|$ pass) và báo được lỗi, không chạy vô hạn."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b14-sec9",
+          roman: "IX",
+          title: "Phần 9: Tổng kết (Summary)",
+          subsections: [
+            {
+              id: "dsa-b14-sub-9-1",
+              number: "9.1",
+              title: "Tổng kết bức tranh SSSP & 8 Quy tắc vàng",
+              parts: [
+                {
+                  id: "dsa-b14-part-9-1-summary",
+                  label: "TỔNG KẾT TOÀN BỘ BÀI 14",
+                  title: "Bức Tranh Toàn Cảnh SSSP & 8 Quy Tắc Cốt Tử",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Giới thiệu bài toán <strong>SSSP</strong> (Single-Source Shortest Paths).",
+                        "• Ôn lại thuật toán <strong>BFS</strong> cho SSSP không trọng số (unweighted) &mdash; nhưng <strong>thất bại</strong> ở trường hợp tổng quát.",
+                        "• Giới thiệu thuật toán <strong>Bellman-Ford</strong>:",
+                        "&nbsp;&nbsp;+ Giải SSSP cho đồ thị trọng số tổng quát (<strong>weighted graph</strong>) trong <strong>O(VE)</strong>.",
+                        "&nbsp;&nbsp;+ Cũng có thể dùng để <strong>phát hiện sự tồn tại của negative weight cycle</strong>.",
+                        "<strong>📌 Cần nhớ (tổng hợp toàn bài):</strong>",
+                        "• <strong>SSSP</strong>: tìm $\\delta(s, v)$ từ 1 nguồn $s$ đến mọi đỉnh $v$.",
+                        "• <strong>D[v]</strong>: giá trị khoảng cách hiện tại ($\\ge \\delta$, hội tụ về $\\delta$ khi xong); <strong>p[v]</strong>: predecessor để truy vết path.",
+                        "• <strong>relax(u, v, w)</strong>: nếu $D[u] + w < D[v]$ thì cập nhật $D[v]$ và $p[v]$.",
+                        "• <strong>BFS</strong> chỉ đúng cho đồ thị <strong>không trọng số</strong>.",
+                        "• <strong>Bellman-Ford</strong>: relax <strong>toàn bộ $E$</strong>, lặp <strong>|V|-1 lần</strong> &rarr; <strong>O(VE)</strong>.",
+                        "• Đúng với cả cạnh trọng số <strong>âm</strong>, miễn shortest path không đi qua <strong>negative cycle</strong>.",
+                        "• Chạy thêm 1 vòng relax thứ <strong>|V|</strong> để <strong>phát hiện negative cycle</strong> (nếu vẫn relax được thì có cycle âm).",
+                        "• Nếu có negative cycle trên đường đi &rarr; shortest path đó <strong>undefined (-∞)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordMasterSummaryMatrix"
+                    },
+                    {
+                      type: "component",
+                      component: "BellmanFordChapter14FinalExamFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Tổng kết toàn bài 14)",
+                      text: "• SSSP unweighted &rarr; BFS $O(V+E)$.<br/>• SSSP weighted & có cạnh âm &rarr; Bellman-Ford $O(VE)$ ($V-1$ vòng relax + pass thứ $|V|$ dò chu trình âm).<br/>• Shortest path đi qua chu trình âm &rarr; Undefined ($-\\infty$)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "dsa-b15",
+      title: "Bài 15: Thuật toán Dijkstra",
+      sections: [
+        {
+          id: "dsa-b15-sec0-hero",
+          roman: "OVERVIEW",
+          title: "Tổng Quan: Thuật Toán Dijkstra & Chiến Lược Tham Lam O((V+E)logV)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-0-1",
+              number: "0.0",
+              title: "Tựa Đề & Live Dijkstra Pathfinder Workbench",
+              parts: [
+                {
+                  id: "dsa-b15-part-0-hero",
+                  label: "TỔNG QUAN TƯƠNG TÁC",
+                  title: "Chiến Thần Tìm Đường Siêu Tốc & Min-Heap Priority Queue",
+                  content: [
+                    {
+                      type: "component",
+                      component: "DsaDijkstraHeroBanner"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec1",
+          roman: "I",
+          title: "Phần 1: Dàn bài (Outline)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-1-1",
+              number: "1.1",
+              title: "4 Trường hợp đặc biệt (Special Cases) của SSSP",
+              parts: [
+                {
+                  id: "dsa-b15-part-1-1-outline",
+                  label: "DÀN BÀI",
+                  title: "4 Biến Thể Đặc Biệt Của Bài Toán SSSP Cổ Điển",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>4 trường hợp đặc biệt (special cases) của bài toán SSSP cổ điển:</strong>",
+                        "&nbsp;&nbsp;+ <strong>Special Case 1:</strong> Đồ thị là <strong>tree</strong> (cây) &rarr; $O(V)$.",
+                        "&nbsp;&nbsp;+ <strong>Special Case 2:</strong> Đồ thị <strong>unweighted</strong> (không trọng số) &rarr; $O(V+E)$.",
+                        "&nbsp;&nbsp;+ <strong>Special Case 3:</strong> Đồ thị <strong>directed và acyclic (DAG)</strong> &rarr; $O(V+E)$.",
+                        "&nbsp;&nbsp;+ <strong>Special Case 4ab:</strong> Đồ thị <strong>không có negative weight/cycle</strong> &rarr; Dijkstra $O((V+E)\\log V)$.",
+                        "• Ôn lại bài toán SSSP, với chế độ test của VisuAlgo."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SsspSpecialCasesRoadmapStudio"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec2",
+          roman: "II",
+          title: "Phần 2: Dạng cơ bản & Các biến thể (Basic Form & Variants)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-2-1",
+              number: "2.1",
+              title: "Triết lý thêm giả định để đơn giản hóa bài toán",
+              parts: [
+                {
+                  id: "dsa-b15-part-2-1-variants",
+                  label: "TRIẾT LÝ TỐI ƯU",
+                  title: "Thêm Giả Định Về Đồ Thị Để Đạt Thuật Toán Nhanh Hơn",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Bài này ôn lại chủ đề đã học ở bài trước: bài toán <strong>Single-Source Shortest Paths (SSSP)</strong>.",
+                        "• <strong>Ý tưởng:</strong> 1 bài toán có thể trở nên \"đơn giản hơn\" nếu ta thêm 1 số <strong>giả định (assumptions)</strong>.",
+                        "• Các biến thể (special cases) này <strong>có thể có thuật toán tốt hơn</strong>.",
+                        "• <em>PS:</em> Một số biến thể có thể phức tạp hơn dạng cơ bản, nhưng thường thì ta thêm giả định để <strong>đơn giản hóa</strong> bài toán."
+                      ]
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 2)",
+                      text: "• <strong>Ý tưởng chủ đạo của bài:</strong> thêm giả định về đồ thị &rarr; có thuật toán SSSP <strong>nhanh hơn</strong> Bellman-Ford ($O(VE)$)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec3",
+          roman: "III",
+          title: "Phần 3: Special Case 1: Đồ thị trọng số là 1 Tree (Cây)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-3-1",
+              number: "3.1",
+              title: "Tính chất đường đi duy nhất & Độ phức tạp O(V)",
+              parts: [
+                {
+                  id: "dsa-b15-part-3-1-tree",
+                  label: "SPECIAL CASE 1",
+                  title: "Giải SSSP Trên Cây Dễ Hơn Vì Mọi Path Đều Là Shortest Path",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Khi đồ thị trọng số là <strong>tree (cây)</strong>, giải SSSP dễ hơn nhiều vì <strong>mọi path trong cây đều là shortest path</strong>.",
+                        "&nbsp;&nbsp;+ <strong>Q1: Vì sao?</strong> &rarr; Vì Tree có $E = V - 1$, giữa 2 đỉnh chỉ có duy nhất 1 (simple) path, không có đường đi khác để so sánh.",
+                        "&nbsp;&nbsp;+ Sẽ <strong>không có negative weight cycle</strong> nào. <strong>Q2: Vì sao?</strong> &rarr; Vì cây không có chu trình (acyclic).",
+                        "&nbsp;&nbsp;+ Do đó, bất kỳ thuật toán duyệt đồ thị <strong>O(V)</strong> nào &mdash; <strong>DFS hoặc BFS</strong> &mdash; đều có thể dùng để giải SSSP này.",
+                        "&nbsp;&nbsp;+ <strong>Q3: Vì sao là O(V) mà không phải O(V+E) tiêu chuẩn?</strong> &rarr; Vì tree có $E = V - 1$, nên $O(V+E) = O(V + V - 1) = \\mathbf{O(V)}$.",
+                        "• <em>Lưu ý quan trọng:</em> có thể thử ở PS5 Subtask A.",
+                        "• <strong>3.1. Thử trên VisuAlgo:</strong>",
+                        "&nbsp;&nbsp;+ (Tạm thời dùng Bellman-Ford's hoặc Dijkstra's trong VisuAlgo).",
+                        "&nbsp;&nbsp;+ Thử tìm shortest path từ đỉnh nguồn 0 đến các đỉnh khác trong cây trọng số (undirected).",
+                        "&nbsp;&nbsp;+ Sẽ luôn gặp <strong>duy nhất 1 (simple) path</strong> giữa 2 đỉnh bất kỳ.",
+                        "&nbsp;&nbsp;+ Thử thêm cạnh trọng số âm &mdash; <strong>không ảnh hưởng</strong> gì nếu đồ thị là tree."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "TreeSsspUniquePathWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 3)",
+                      text: "• <strong>Tree:</strong> $E = V - 1$ &rarr; mọi path là unique và cũng chính là shortest path.<br/>• Tree không thể có cycle &rarr; không thể có negative weight cycle.<br/>• Dùng <strong>DFS/BFS</strong>, độ phức tạp <strong>O(V)</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec4",
+          roman: "IV",
+          title: "Phần 4: Special Case 2: Đồ thị Unweighted (Không trọng số)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-4-1",
+              number: "4.1",
+              title: "Giải pháp O(V+E) BFS & So sánh với Tree",
+              parts: [
+                {
+                  id: "dsa-b15-part-4-1-unweighted",
+                  label: "SPECIAL CASE 2",
+                  title: "Đồ Thị Không Trọng Số: Chỉ Dùng BFS",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Đã thảo luận ở tuần trước (bài Bellman-Ford).",
+                        "• <strong>Giải pháp: $O(V+E)$ BFS</strong>.",
+                        "• <strong>Lưu ý quan trọng:</strong>",
+                        "&nbsp;&nbsp;+ Với SSSP trên đồ thị <strong>unweighted</strong>, ta <strong>chỉ có thể dùng BFS</strong>.",
+                        "&nbsp;&nbsp;+ Với SSSP trên <strong>tree</strong>, ta có thể dùng <strong>cả DFS/BFS</strong>.",
+                        "&nbsp;&nbsp;+ Có thể thử ở PS5 Subtask A+B.",
+                        "• <strong>4.1. Thử trên VisuAlgo:</strong>",
+                        "&nbsp;&nbsp;+ Đồ thị này unweighted (tức mọi cạnh trọng số = 1).",
+                        "&nbsp;&nbsp;+ Thử tìm shortest path từ đỉnh nguồn 0 đến các đỉnh khác bằng <strong>BFS</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "UnweightedBfsOnlyShowdown"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 4)",
+                      text: "• <strong>Unweighted graph</strong> &rarr; chỉ dùng được <strong>BFS</strong> (không dùng DFS được, khác với trường hợp tree).<br/>• Độ phức tạp: <strong>O(V + E)</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec5",
+          roman: "V",
+          title: "Phần 5: Special Case 3: Đồ thị có trọng số, Directed & Acyclic (DAG)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-5-1",
+              number: "5.1",
+              title: "1 Pass Relax theo Topological Order & Tiền đề DP",
+              parts: [
+                {
+                  id: "dsa-b15-part-5-1-dag",
+                  label: "SPECIAL CASE 3",
+                  title: "Đồ Thị DAG: Đúng 1 Pass Relax Theo Thứ Tự Topological Sort",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Cycle</strong> là vấn đề lớn (major issue) trong SSSP.",
+                        "• Khi đồ thị là <strong>acyclic</strong> (không có chu trình), ta có thể <strong>chỉnh sửa (modify)</strong> thuật toán Bellman-Ford:",
+                        "&nbsp;&nbsp;+ Thay vòng lặp ngoài cùng <strong>V-1 lần</strong> bằng <strong>chỉ 1 pass (1 lượt)</strong>.",
+                        "&nbsp;&nbsp;+ Tức là chỉ chạy relaxation qua tất cả các cạnh <strong>1 lần duy nhất</strong>.",
+                        "&nbsp;&nbsp;+ Nhưng phải theo <strong>thứ tự topological (topological order)</strong> &mdash; nhắc lại toposort ở Lecture 06.",
+                        "• <strong>Vì sao cách này hoạt động?</strong>",
+                        "&nbsp;&nbsp;+ Chi tiết hơn sẽ học ở bài giới thiệu <strong>Dynamic Programming (Week 10)</strong>.",
+                        "• <strong>5.1. Thử trên VisuAlgo:</strong>",
+                        "&nbsp;&nbsp;+ Topological Sort của DAG này là <strong>{0, 2, 1, 3, 4, 5}</strong>.",
+                        "&nbsp;&nbsp;+ Thử relax các cạnh đi ra (outgoing edges) của các đỉnh theo đúng <strong>thứ tự topological</strong> ở trên.",
+                        "&nbsp;&nbsp;+ Chỉ với <strong>1 pass</strong>, tất cả các đỉnh sẽ có <code>dist[v]</code> đúng.",
+                        "&nbsp;&nbsp;+ <em>(Nội dung này sẽ được ôn lại ở Lecture 10).</em>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DagTopologicalOnePassStudio"
+                    },
+                    {
+                      type: "component",
+                      component: "SsspSpecialCasesFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 5)",
+                      text: "• <strong>DAG</strong> &rarr; chỉ cần <strong>1 pass relax</strong> theo đúng <strong>topological order</strong>, không cần lặp V-1 lần như Bellman-Ford.<br/>• Đây là <strong>tiền đề (precursor) cho Dynamic Programming</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec6",
+          roman: "VI",
+          title: "Phần 6: Special Case 4a: Đồ thị không có trọng số âm (no negative weight)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-6-1",
+              number: "6.1",
+              title: "Bối cảnh thế giới thực & Lý do cần thuật toán Dijkstra",
+              parts: [
+                {
+                  id: "dsa-b15-part-6-1-noneg",
+                  label: "SPECIAL CASE 4A",
+                  title: "Trọng Số Không Âm: Cánh Cửa Dẫn Tới Tốc Độ Vượt Trội",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Thuật toán <strong>Bellman-Ford</strong> hoạt động tốt cho <strong>mọi trường hợp</strong> SSSP trên đồ thị có trọng số, nhưng chạy trong <strong>O(VE)</strong>.",
+                        "• Với đồ thị \"kích thước hợp lý\" ($V \\sim 1000, E \\sim 100000$ &mdash; nhớ lại $E = O(V^2)$ trong đồ thị đơn dày đặc), Bellman-Ford <strong>thực sự \"chậm\"</strong>.",
+                        "• Trong nhiều trường hợp thực tế, bài toán SSSP được thực hiện trên đồ thị mà <strong>mọi cạnh đều có trọng số không âm (non-negative)</strong>.",
+                        "• <em>Ví dụ:</em> Di chuyển giữa 2 thành phố trên bản đồ (graph) thường tốn 1 lượng thời gian \"dương\".",
+                        "• May mắn thay, có 1 thuật toán SSSP <strong>nhanh hơn</strong> khai thác tính chất này: <strong>thuật toán Dijkstra's</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraMotivationBridgeStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 6)",
+                      text: "• <strong>Bellman-Ford:</strong> Dùng cho mọi trường hợp nhưng $O(VE)$, chậm với đồ thị lớn.<br/>• Khi biết chắc đồ thị <strong>không có cạnh âm</strong> &rarr; dùng <strong>Dijkstra's</strong> để nhanh hơn."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec7",
+          roman: "VII",
+          title: "Phần 7: DIJKSTRA'S ALGORITHM – Phiên bản gốc (The 'original version')",
+          subsections: [
+            {
+              id: "dsa-b15-sub-7-1",
+              number: "7.1",
+              title: "Ý tưởng chính (Key Ideas) & Ví dụ VisuAlgo CP3 4.17",
+              parts: [
+                {
+                  id: "dsa-b15-part-7-1-original",
+                  label: "DIJKSTRA BẢN GỐC",
+                  title: "Cơ Chế Tập Solved & Chiến Lược Tham Lam Min-Heap",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Giả định hình thức (Formal assumption):</strong> Với mỗi edge $(u, v) \\in E$, ta giả định $w(u, v) \\ge 0$ (non-negative).",
+                        "• <strong>Ý tưởng chính (bản gốc) thuật toán Dijkstra's:</strong>",
+                        "&nbsp;&nbsp;+ Duy trì 1 tập $S(olved)$ gồm các đỉnh mà trọng số shortest path cuối cùng đã được xác định, ban đầu $Solved = \\{s(ource)\\}$ &mdash; chỉ chứa đỉnh nguồn $s$.",
+                        "&nbsp;&nbsp;+ Lặp lại: chọn đỉnh $u$ trong $\\{V - Solved\\}$ có <strong>min shortest path estimate</strong> (ước lượng đường đi ngắn nhất nhỏ nhất), thêm $u$ vào $Solved$, và <strong>relax tất cả các cạnh đi ra từ $u$</strong>.",
+                        "&nbsp;&nbsp;+ Điều này đòi hỏi dùng 1 loại <strong>Priority Queue</strong>. (<strong>Q: Vì sao?</strong> Để luôn lấy ra đỉnh có dist nhỏ nhất hiệu quả).",
+                        "&nbsp;&nbsp;+ Cách chọn thứ tự relax này là <strong>\"tham lam\" (greedy)</strong>: chọn \"cái tốt nhất tính đến thời điểm hiện tại\" (best so far).",
+                        "&nbsp;&nbsp;+ Nhưng cuối cùng vẫn cho ra kết quả <strong>tối ưu (optimal)</strong> (xem chứng minh phía sau).",
+                        "• <strong>7.2. Ví dụ trên VisuAlgo:</strong>",
+                        "&nbsp;&nbsp;+ Chạy Dijkstra's (Original) từ nhiều nguồn khác nhau trên đồ thị mẫu (CP3 4.17).",
+                        "&nbsp;&nbsp;+ Trạng thái ban đầu của Dijkstra(0) (bản gốc)."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraOriginalExecutionStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 7)",
+                      text: "• Giả định bắt buộc của Dijkstra gốc: <strong>mọi $w(u, v) \\ge 0$</strong>.<br/>• Cấu trúc dữ liệu chính: <strong>Priority Queue</strong>.<br/>• Chiến lược: <strong>Greedy</strong> &mdash; luôn chọn đỉnh có dist nhỏ nhất chưa Solved."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec8",
+          roman: "VIII",
+          title: "Phần 8: Vì sao chiến lược Greedy này hoạt động? (Why This Greedy Strategy Works?)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-8-1",
+              number: "8.1",
+              title: "Loop Invariant, Định lý Subpath & Chứng minh dist[u] = Delta(s,u)",
+              parts: [
+                {
+                  id: "dsa-b15-part-8-1-proof",
+                  label: "CHỨNG MINH TOÁN HỌC",
+                  title: "Loop Invariant & Định Lý Subpath Của Shortest Path",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>8.1. Phần 1 – Loop Invariant:</strong>",
+                        "&nbsp;&nbsp;+ Tức là: vì sao chỉ cần xử lý (process) mỗi đỉnh <strong>đúng 1 lần</strong> là đủ?",
+                        "&nbsp;&nbsp;+ <strong>Loop Invariant:</strong> Mọi đỉnh trong tập <strong>Solved</strong> đều có <strong>khoảng cách shortest path đúng</strong> từ nguồn.",
+                        "&nbsp;&nbsp;+ Điều này đúng ban đầu: $Solved = \\{s\\}$ và $dist[s] = \\delta(s, s) = 0$.",
+                        "• <strong>8.2. Theorem: Subpaths của shortest path cũng là shortest path:</strong>",
+                        "&nbsp;&nbsp;+ <strong>Theorem:</strong> Cho $p$ là shortest path: $p = (v_0, v_1, v_2, \\dots, v_k)$. Cho $p_{ij}$ là subpath của $p$: $(v_i, v_{i+1}, \\dots, v_j), 0 \\le i \\le j \\le k$. Khi đó $p_{ij}$ cũng là shortest path (từ $i$ đến $j$).",
+                        "&nbsp;&nbsp;+ <strong>Proof by contradiction:</strong> Cho shortest path $p = v_0 \\to p_{0i} v_i \\to p_{ij} v_j \\to p_{jk} v_k$. Nếu $p_{ij}$ không phải shortest path, tồn tại $p'_{ij}$ khác ngắn hơn $p_{ij}$. Ta cắt bỏ $p_{ij}$ và thay bằng $p'_{ij}$, kết quả là 1 đường đi ngắn hơn từ $v_0$ đến $v_k$ &rarr; mâu thuẫn!",
+                        "• <strong>8.3. Phần 2 – Chứng minh $dist[u] = \\delta(s, u)$:</strong>",
+                        "&nbsp;&nbsp;+ Thuật toán Dijkstra's lặp lại việc thêm đỉnh tiếp theo $u$ có $dist[u]$ nhỏ nhất vào Solved.",
+                        "&nbsp;&nbsp;+ Tồn tại đỉnh $x$ đã có trong Solved ($dist[x] = \\delta(s, x)$) nối tới $u$ qua $edge(x, u)$ sao cho cách này ngắn nhất.",
+                        "&nbsp;&nbsp;+ Khi đó: $dist[u] = dist[x] + weight(x, u) = \\delta(s, x) + \\delta(x, u) = \\delta(s, u)$.",
+                        "&nbsp;&nbsp;+ Vậy: khi Dijkstra's kết thúc, ta có $dist[v] = \\delta(s, v)$ cho mọi $v \\in V$."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraProofCorrectnessStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 8)",
+                      text: "• <strong>Loop invariant:</strong> mọi đỉnh trong Solved đều đã có dist đúng bằng $\\delta$.<br/>• Chứng minh dựa trên: <strong>subpath của shortest path cũng là shortest path</strong>.<br/>• Kết luận: Dijkstra gốc kết thúc &rarr; $dist[v] = \\delta(s, v)$ với mọi $v$ (nếu mọi $w(u, v) \\ge 0$)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec9",
+          roman: "IX",
+          title: "Phần 9: Phân tích độ phức tạp – Original Dijkstra's Analysis",
+          subsections: [
+            {
+              id: "dsa-b15-sub-9-1",
+              number: "9.1",
+              title: "Bóc tách O(V log V) ExtractMin & O(E log V) DecreaseKey",
+              parts: [
+                {
+                  id: "dsa-b15-part-9-1-complexity",
+                  label: "PHÂN TÍCH BIG-O",
+                  title: "Tổng Thời Gian Chạy: O((V + E) log V)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>9.1. Phần 1 – Extract Min:</strong>",
+                        "&nbsp;&nbsp;+ Trong bản Dijkstra gốc, mỗi đỉnh chỉ được <strong>extract (lấy ra)</strong> khỏi priority queue <strong>đúng 1 lần</strong>.",
+                        "&nbsp;&nbsp;+ Vì có $V$ đỉnh, ta làm việc này tối đa <strong>O(V) lần</strong>.",
+                        "&nbsp;&nbsp;+ Mỗi lần <strong>extract min</strong> chạy <strong>O(log V)</strong> (dùng binary min heap hoặc balanced BST <code>findMin()</code>).",
+                        "&nbsp;&nbsp;+ Do đó phần này là <strong>O(V log V)</strong>.",
+                        "• <strong>9.2. Phần 2 – Relax + Decrease Key:</strong>",
+                        "&nbsp;&nbsp;+ Mỗi lần 1 đỉnh được xử lý, ta <strong>relax các neighbor (đỉnh kề)</strong> của nó. Tổng cộng, tất cả <strong>O(E)</strong> cạnh được xử lý.",
+                        "&nbsp;&nbsp;+ Nếu relax $edge(u, v)$ làm ta phải <strong>giảm $dist[v]$</strong>, ta gọi <code>DecreaseKey()</code> trong binary heap ($O(\\log V)$), hoặc xóa entry cũ rồi chèn entry mới trong balanced BST (Java <code>TreeSet</code>).",
+                        "&nbsp;&nbsp;+ Phần này là <strong>O(E log V)</strong>.",
+                        "• <strong>9.3. Tổng kết độ phức tạp:</strong>",
+                        "&nbsp;&nbsp;+ Tổng thể, Dijkstra's chạy trong <strong>O(V log V + E log V)</strong>, hay còn gọi là <strong>O((V + E) log V)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraComplexityBreakdownStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 9)",
+                      text: "• <strong>Extract min:</strong> $O(V \\log V)$ (mỗi đỉnh 1 lần, mỗi lần $O(\\log V)$).<br/>• <strong>Relax + Decrease Key:</strong> $O(E \\log V)$ (mỗi cạnh 1 lần, mỗi lần $O(\\log V)$).<br/>• <strong>Tổng:</strong> $O((V + E) \\log V)$."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec10",
+          roman: "X",
+          title: "Phần 10: Vấn đề: Dijkstra gốc thất bại khi có cạnh âm",
+          subsections: [
+            {
+              id: "dsa-b15-sub-10-1",
+              number: "10.1",
+              title: "Thử nghiệm CP3 4.18 & Vì sao chiến lược Greedy sụp đổ",
+              parts: [
+                {
+                  id: "dsa-b15-part-10-1-failure",
+                  label: "PHẢN CHỨNG CẠNH ÂM",
+                  title: "Dijkstra Bị Đánh Lừa Bởi Cạnh Âm & Báo Sai Kết Quả",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>10.1. Wait.. Let's try this!</strong>",
+                        "&nbsp;&nbsp;+ Chạy Dijkstra's (Original) từ $source = 0$ trên đồ thị mẫu (CP3 4.18).",
+                        "&nbsp;&nbsp;+ <strong>Câu hỏi:</strong> Có nhận được kết quả đúng tại đỉnh 4 không? &rarr; <strong>Không!</strong>",
+                        "• <strong>10.2. Vì sao chiến lược Greedy này không hoạt động lần này?</strong>",
+                        "&nbsp;&nbsp;+ Sự xuất hiện của cạnh <strong>trọng số âm</strong> có thể khiến đỉnh được chọn \"tham lam\" đầu tiên <strong>cuối cùng không phải</strong> là đỉnh \"gần nhất\" thực sự (true \"closest\") so với nguồn!",
+                        "&nbsp;&nbsp;+ Điều này xảy ra tại <strong>đỉnh 3</strong> trong ví dụ này.",
+                        "&nbsp;&nbsp;+ &rarr; \"Vấn đề nằm ở đây...\" (The issue is here...)"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraNegativeEdgeTrapSandbox"
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraCoreMechanismsFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 10)",
+                      text: "• Dijkstra's <strong>bản gốc chỉ đúng khi mọi cạnh $w(u, v) \\ge 0$</strong>.<br/>• Nếu có cạnh âm: đỉnh được chọn \"tham lam\" trước có thể <strong>không phải</strong> là đỉnh gần nhất thật sự &rarr; sai kết quả."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec11",
+          roman: "XI",
+          title: "Phần 11: DIJKSTRA'S ALGORITHM – Phiên bản chỉnh sửa (The 'modified' implementation)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-11-1",
+              number: "11.1",
+              title: "Special Case 4b, Lazy Data Structure & Mã giả Modified Dijkstra",
+              parts: [
+                {
+                  id: "dsa-b15-part-11-1-modified",
+                  label: "MODIFIED DIJKSTRA",
+                  title: "Xử Lý Cạnh Âm Bằng Kỹ Thuật Lazy Data Structure",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>11.1. Special Case 4b: Đồ thị không có negative weight cycle:</strong>",
+                        "&nbsp;&nbsp;+ Trong nhiều trường hợp thực tế, bài toán SSSP thực hiện trên đồ thị mà cạnh <strong>có thể có trọng số âm nhưng không có negative cycle</strong>.",
+                        "&nbsp;&nbsp;+ <em>Ví dụ:</em> Di chuyển giữa 2 thành phố bằng <strong>xe điện (electric car)</strong> dùng pin: leo dốc (+) năng lượng, xuống dốc sạc lại (-) năng lượng, nhưng không thể sạc mãi mãi do mất năng lượng động học &rarr; <strong>thuật toán Modified Dijkstra's</strong>.",
+                        "• <strong>11.2 & 11.3. Modified Implementation & Lazy Data Structure (CP3 4.4.3):</strong>",
+                        "&nbsp;&nbsp;+ <strong>Giả định hình thức:</strong> Đồ thị <strong>không có negative weight cycle</strong> (nhưng <strong>có thể có cạnh trọng số âm</strong>).",
+                        "&nbsp;&nbsp;+ Dùng <strong>Priority Queue</strong> lưu cặp <code>(dist[u], u)</code>.",
+                        "&nbsp;&nbsp;+ <strong>Lazy Data Structure:</strong> Khi lấy cặp $(d, u)$ ra khỏi PQ: nếu $d == dist[u]$ &rarr; relax các cạnh đi ra; nếu $d > dist[u]$ &rarr; bỏ qua (coi như đã \"xóa\").",
+                        "&nbsp;&nbsp;+ <strong>Q: Vì sao dùng Lazy?</strong> Vì C++/Java PriorityQueue không hỗ trợ tìm kiếm và sửa đổi nhanh các entry bên trong!",
+                        "• <strong>11.4. Modified Dijkstra's Algorithm – Pseudo code:</strong>",
+                        "<code>initSSSP(s); PQ.enqueue((0, s));</code>",
+                        "<code>while (!PQ.isEmpty()) &#123;</code>",
+                        "&nbsp;&nbsp;<code>(d, u) = PQ.dequeue();</code>",
+                        "&nbsp;&nbsp;<code>if (d == dist[u]) &#123; // lazy check</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;<code>for each (u, v, w) in Adj[u]:</code>",
+                        "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>if (dist[v] > dist[u] + w) &#123; dist[v] = dist[u] + w; PQ.enqueue((dist[v], v)); &#125;</code>",
+                        "&nbsp;&nbsp;<code>&#125;</code>",
+                        "<code>&#125;</code>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "ModifiedDijkstraExecutionStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 11)",
+                      text: "• Modified Dijkstra chấp nhận <strong>cạnh âm</strong> (nhưng không được có negative cycle).<br/>• Dùng <strong>Lazy Data Structure</strong>: không xóa entry cũ ngay, mà kiểm tra $d == dist[u]$ mỗi khi dequeue &mdash; nếu không khớp thì bỏ qua.<br/>• Khi $dist[v]$ giảm &rarr; <strong>enqueue lại</strong> $(dist[v], v)$, có thể có duplicate trong PQ."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec12",
+          roman: "XII",
+          title: "Phần 12: Phân tích độ phức tạp – Modified Dijkstra's Analysis",
+          subsections: [
+            {
+              id: "dsa-b15-sub-12-1",
+              number: "12.1",
+              title: "Chứng minh O((V + E) log V) khi có duplicate",
+              parts: [
+                {
+                  id: "dsa-b15-part-12-1-complexity",
+                  label: "PHÂN TÍCH ĐỘ PHỨC TẠP",
+                  title: "Tại Sao Có Duplicate Mà Vẫn Đạt O((V + E) log V)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>12.1. Phần 1 – Extract Min:</strong>",
+                        "&nbsp;&nbsp;+ Ta ngăn đỉnh đã xử lý bị xử lý lại nếu $d > dist[u]$.",
+                        "&nbsp;&nbsp;+ Nếu không có cạnh âm, mỗi đỉnh được xử lý từ PQ <strong>đúng 1 lần</strong> ($O(V)$ lần).",
+                        "&nbsp;&nbsp;+ Mỗi lần extract min chạy <strong>O(log V)</strong>.",
+                        "• <strong>12.2. Phần 2 – Relax & Duplicate:</strong>",
+                        "&nbsp;&nbsp;+ Mỗi lần 1 đỉnh được xử lý, ta relax tất cả neighbor của nó ($O(E)$ cạnh).",
+                        "&nbsp;&nbsp;+ Có tối đa <strong>O(E) bản sao</strong> trong PQ. Vì $E = O(V^2)$ nên $O(\\log E) = O(\\log V^2) = 2 O(\\log V) = \\mathbf{O(\\log V)}$.",
+                        "&nbsp;&nbsp;+ Mỗi lần insert vẫn chạy <strong>O(log V)</strong>.",
+                        "• <strong>Tổng thể:</strong> Modified Dijkstra's chạy trong <strong>O((V + E) log V)</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "ModifiedDijkstraComplexityStudio"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 12)",
+                      text: "• Modified Dijkstra vẫn đạt <strong>O((V + E) log V)</strong> dù có duplicate trong PQ, vì $O(\\log E) = O(\\log V)$ khi $E = O(V^2)$.<br/>• Độ phức tạp giống hệt bản gốc, nhưng modified có thể xử lý được cạnh âm."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec13",
+          roman: "XIII",
+          title: "Phần 13: Kiểm tra và giới hạn của Modified Dijkstra's",
+          subsections: [
+            {
+              id: "dsa-b15-sub-13-1",
+              number: "13.1",
+              title: "Thử nghiệm CP3 4.18, Trường hợp hàm mũ & Kẹt vô hạn",
+              parts: [
+                {
+                  id: "dsa-b15-part-13-1-limits",
+                  label: "GIỚI HẠN THUẬT TOÁN",
+                  title: "Rủi Ro Hàm Mũ O(2^k) & Bẫy Kẹt Vô Hạn Khi Có Negative Cycle",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>13.1. Try! (CP3 4.18):</strong>",
+                        "&nbsp;&nbsp;+ Chạy Dijkstra's (Modified) từ $source = 0$ trên đồ thị mẫu CP3 4.18.",
+                        "&nbsp;&nbsp;+ <strong>Kết quả:</strong> Có nhận được kết quả đúng tại đỉnh 4 không? &rarr; <strong>CÓ! (đúng $\\delta(0,4) = 1$)</strong>.",
+                        "• <strong>13.2 & 13.3. Không phải thuật toán \"toàn năng\":</strong>",
+                        "&nbsp;&nbsp;+ Nếu có cạnh âm không có negative cycle, tồn tại 1 số trường hợp cực đoan (extreme) mà modified Dijkstra's <strong>xử lý lại (re-process)</strong> cùng 1 đỉnh rất nhiều lần &rarr; <strong>Exponential time ($2^k$)</strong> (dù hiếm gặp).",
+                        "&nbsp;&nbsp;+ <strong>Rủi ro khi có Negative Cycle:</strong> Modified Dijkstra sẽ bị <strong>kẹt trong vòng lặp vô hạn (infinite loop)</strong>!",
+                        "&nbsp;&nbsp;+ &rarr; Khi đồ thị có nguy cơ chứa cycle âm &rarr; <strong>Bắt buộc dùng Bellman-Ford O(VE)</strong>!",
+                        "• <strong>13.4. Try Sample Graph, CP3 4.19!</strong>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "ModifiedDijkstraLimitsSandbox"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 13)",
+                      text: "• Modified Dijkstra's <strong>không phải toàn năng</strong>: có thể gặp trường hợp cực đoan chạy exponential time (dù hiếm).<br/>• Nếu đồ thị có khả năng cao chứa <strong>negative cycle</strong> &rarr; nên dùng <strong>Bellman-Ford</strong> (đơn giản, chặt hơn); modified Dijkstra có thể bị <strong>kẹt vô hạn</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec14",
+          roman: "XIV",
+          title: "Phần 14: Cài đặt Java (Java Implementation)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-14-1",
+              number: "14.1",
+              title: "PS5 Subtask B & 3 Kịch bản hiệu năng",
+              parts: [
+                {
+                  id: "dsa-b15-part-14-1-java",
+                  label: "CÀI ĐẶT JAVA",
+                  title: "Mã Nguồn ModifiedDijkstraDemo.java & 3 Kịch Bản Hiệu Năng",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Xem mã nguồn cài đặt <strong>ModifiedDijkstraDemo.java</strong> (chuẩn bị cho PS5 Subtask B).",
+                        "• <strong>Sơ trình diễn hiệu năng thuật toán trên 3 trường hợp:</strong>",
+                        "&nbsp;&nbsp;1. Đồ thị nhỏ, <strong>không</strong> có negative weight cycle &rarr; <strong>OK</strong>.",
+                        "&nbsp;&nbsp;2. Đồ thị nhỏ, có <strong>1 số cạnh âm</strong>; không có negative cycle &rarr; <strong>Vẫn OK</strong>.",
+                        "&nbsp;&nbsp;3. Đồ thị nhỏ, <strong>có</strong> negative weight cycle &rarr; Bài toán SSSP <strong>ill undefined</strong> (không xác định); modified Dijkstra có thể bị <strong>kẹt trong vòng lặp vô hạn</strong>."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraJavaImplementationWorkbench"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 14)",
+                      text: "• Không có cạnh âm hoặc có cạnh âm nhưng không có negative cycle &rarr; modified Dijkstra's <strong>OK</strong>.<br/>• Có negative cycle &rarr; SSSP vô nghĩa, và modified Dijkstra's có thể <strong>loop vô hạn</strong>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec15",
+          roman: "XV",
+          title: "Phần 15: Tổng kết các thuật toán SSSP (Summary of Various SSSP Algorithms)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-15-1",
+              number: "15.1",
+              title: "Ma trận toàn cảnh SSSP & 8 Quy tắc cốt tử",
+              parts: [
+                {
+                  id: "dsa-b15-part-15-1-summary",
+                  label: "TỔNG KẾT MASTER SSSP",
+                  title: "Bức Tranh Toàn Cảnh & Ma Trận 6 Kịch Bản SSSP",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• <strong>Trường hợp tổng quát (weighted graph):</strong> $O(VE)$ Bellman-Ford's algorithm.",
+                        "• <strong>Special case 1 (Tree):</strong> $O(V)$ BFS hoặc DFS.",
+                        "• <strong>Special case 2 (Unweighted):</strong> $O(V+E)$ BFS.",
+                        "• <strong>Special case 3 (DAG):</strong> $O(V+E)$ DFS để lấy topological sort rồi relax các đỉnh (tiền đề DP).",
+                        "• <strong>Special case 4ab (Không có cạnh âm / Không có cycle âm):</strong> $O((V+E)\\log V)$ original / modified Dijkstra's."
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "SsspMasterSummaryMatrix"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Tổng hợp toàn bài 15)",
+                      text: "• <strong>Tree</strong> &rarr; $O(V)$ DFS/BFS.<br/>• <strong>Unweighted</strong> &rarr; $O(V+E)$ BFS.<br/>• <strong>DAG</strong> &rarr; 1 pass relax theo topological order.<br/>• <strong>Không có cạnh âm</strong> &rarr; Dijkstra gốc $O((V+E)\\log V)$.<br/>• <strong>Có cạnh âm an toàn</strong> &rarr; Modified Dijkstra $O((V+E)\\log V)$.<br/>• <strong>Có nguy cơ chu trình âm</strong> &rarr; Bellman-Ford $O(VE)$ cho an toàn.<br/>• <strong>Nền tảng chứng minh:</strong> Loop invariant + Theorem subpath của shortest path."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "dsa-b15-sec16",
+          roman: "XVI",
+          title: "Phần 16: Chuẩn bị cho Online Quiz 2 (OQ2 Preparation)",
+          subsections: [
+            {
+              id: "dsa-b15-sub-16-1",
+              number: "16.1",
+              title: "Lộ trình ôn tập OQ2 & 10 Flashcards 3D Master",
+              parts: [
+                {
+                  id: "dsa-b15-part-16-1-oq2",
+                  label: "ÔN THI OQ2",
+                  title: "Chuẩn Bị Sẵn Sàng Cho Online Quiz 2 (OQ2)",
+                  content: [
+                    {
+                      type: "bullets",
+                      items: [
+                        "• Sau Lecture 09, sẽ có 1 chế độ test ngẫu nhiên (<strong>random test mode</strong>) @ VisuAlgo để kiểm tra đã sẵn sàng cho OQ2 chưa.",
+                        "• <strong>Nội dung OQ2 bao trùm 4 chủ đề cốt lõi:</strong>",
+                        "&nbsp;&nbsp;+ <strong>Graph DS</strong>",
+                        "&nbsp;&nbsp;+ <strong>Graph Traversal (DFS/BFS)</strong>",
+                        "&nbsp;&nbsp;+ <strong>MST (Prim's/Kruskal's)</strong>",
+                        "&nbsp;&nbsp;+ <strong>SSSP (Bellman-Ford's / Dijkstra's &mdash; cả bản gốc lẫn modified)</strong>",
+                        "• Luyện tập trước tại: <code>http://visualgo.net/training.html?diff=Hard&amp;n=20&amp;tl=40&amp;module=graphds,graphtraversal,mst,sssp</code>"
+                      ]
+                    },
+                    {
+                      type: "component",
+                      component: "DijkstraChapter15FinalExamFlashcards"
+                    },
+                    {
+                      type: "callout",
+                      variant: "warning",
+                      title: "📌 Cần nhớ (Phần 16)",
+                      text: "• OQ2 bao trùm: Graph DS, Graph Traversal, MST, SSSP (cả Bellman-Ford lẫn Dijkstra's &mdash; cả 2 phiên bản gốc và modified)."
                     }
                   ]
                 }

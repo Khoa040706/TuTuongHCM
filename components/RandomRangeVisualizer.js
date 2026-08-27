@@ -131,14 +131,14 @@ export default function RandomRangeVisualizer() {
             <div className="bg-[#151413] border border-stone-850 p-3 rounded-xl mb-4 font-mono text-[11px] leading-relaxed">
               {method === "random_class" ? (
                 <>
-                  <div className="text-stone-550">// Công thức chuẩn: rnd.nextInt(max - min + 1) + min</div>
+                  <div className="text-stone-550">{"// Công thức chuẩn: rnd.nextInt(max - min + 1) + min"}</div>
                   <div>Random rnd = <span className="text-amber-500">new</span> Random();</div>
                   <div><span className="text-amber-500">int</span> num = rnd.nextInt(<span className="text-amber-300">{maxVal}</span> - <span className="text-amber-300">{minVal}</span> + <span className="text-amber-300">1</span>) + <span className="text-amber-300">{minVal}</span>;</div>
                   <div className="text-emerald-450 mt-1">// Rút gọn: int num = rnd.nextInt({diffVal}) + {minVal};</div>
                 </>
               ) : (
                 <>
-                  <div className="text-stone-550">// Công thức chuẩn: (int)(Math.random() * (max - min + 1)) + min</div>
+                  <div className="text-stone-550">{"// Công thức chuẩn: (int)(Math.random() * (max - min + 1)) + min"}</div>
                   <div><span className="text-amber-500">int</span> num = (<span className="text-amber-500">int</span>)(Math.random() * (<span className="text-amber-300">{maxVal}</span> - <span className="text-amber-300">{minVal}</span> + <span className="text-amber-300">1</span>)) + <span className="text-amber-300">{minVal}</span>;</div>
                   <div className="text-emerald-450 mt-1">// Rút gọn: int num = (int)(Math.random() * {diffVal}) + {minVal};</div>
                 </>

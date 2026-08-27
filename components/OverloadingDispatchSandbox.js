@@ -100,7 +100,7 @@ export default function OverloadingDispatchSandbox() {
             <div className="text-[9px] text-stone-500 uppercase font-black tracking-wider mb-3 font-sans">Lớp Định Nghĩa Hàm (PrintService.java)</div>
             
             <div className="space-y-0.5 leading-relaxed text-[11px]">
-              <div className="text-stone-600">// Lớp chứa các hàm nạp chồng (overloaded)</div>
+              <div className="text-stone-600">{"// Lớp chứa các hàm nạp chồng (overloaded)"}</div>
               <div><span className="text-amber-500 font-bold">public class</span> PrintService &#123;</div>
               
               {/* Method 1: int */}

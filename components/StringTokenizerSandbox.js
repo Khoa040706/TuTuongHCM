@@ -516,9 +516,9 @@ export default function StringTokenizerSandbox() {
               <div className="space-y-3">
                 <span className="text-[9px] font-black text-rose-600 uppercase tracking-wider block">Mã nguồn bị lỗi (Odd tokens):</span>
                 <div className="p-3 bg-stone-900 border border-stone-850 rounded-xl text-white font-mono text-[9px] leading-relaxed">
-                  <div>StringTokenizer st = <span className="text-purple-400">new</span> StringTokenizer(<span className="text-amber-300">"my name is"</span>); <span className="text-stone-500">// 3 tokens</span></div>
+                  <div>StringTokenizer st = <span className="text-purple-400">new</span> StringTokenizer(<span className="text-amber-300">"my name is"</span>); <span className="text-stone-500">{"// 3 tokens"}</span></div>
                   <div><span className="text-purple-400">while</span> (st.hasMoreTokens()) {"{"}</div>
-                  <div className="pl-3.5"><span className="text-stone-400">// In ra 2 token mỗi vòng lặp</span></div>
+                  <div className="pl-3.5"><span className="text-stone-400">{"// In ra 2 token mỗi vòng lặp"}</span></div>
                   <div className="pl-3.5">System.out.println(st.nextToken() + <span className="text-amber-300">" "</span> + st.nextToken());</div>
                   <div>{"}"}</div>
                 </div>

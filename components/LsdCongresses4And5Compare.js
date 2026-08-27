@@ -27,10 +27,10 @@ export default function LsdCongresses4And5Compare() {
           </div>
 
           <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300 font-sans">
-            <p>• **Tổng Bí thư**: Đồng chí **Lê Duẩn**.</p>
-            <p>• **Sự kiện trọng đại**: Đổi tên Đảng Lao động Việt Nam thành **Đảng Cộng sản Việt Nam**.</p>
-            <p>• **Đường lối cốt lõi**: Xác định đường lối CNH XHCN + Tiến hành đồng thời **3 cuộc cách mạng** (Cách mạng Khoa học - Kỹ thuật giữ vai trò **THEN CHỐT**).</p>
-            <p>• **Kế hoạch**: Kế hoạch 5 năm (1976-1980).</p>
+            <p>• <strong>Tổng Bí thư</strong>: Đồng chí <strong>Lê Duẩn</strong>.</p>
+            <p>• <strong>Sự kiện trọng đại</strong>: Đổi tên Đảng Lao động Việt Nam thành <strong>Đảng Cộng sản Việt Nam</strong>.</p>
+            <p>• <strong>Đường lối cốt lõi</strong>: Xác định đường lối CNH XHCN + Tiến hành đồng thời <strong>3 cuộc cách mạng</strong> (Cách mạng Khoa học - Kỹ thuật giữ vai trò <strong>THEN CHỐT</strong>).</p>
+            <p>• <strong>Kế hoạch</strong>: Kế hoạch 5 năm (1976-1980).</p>
           </div>
         </div>
 
@@ -44,10 +44,10 @@ export default function LsdCongresses4And5Compare() {
           </div>
 
           <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300 font-sans">
-            <p>• **Tổng Bí thư**: Đồng chí **Lê Duẩn** (bầu lại).</p>
-            <p>• **Điểm mới lý luận**: Khẳng định nước ta đang ở **"chặng đường đầu tiên của thời kỳ quá độ lên CNXH"**.</p>
-            <p>• **Thay đổi ưu tiên**: Coi **"Nông nghiệp là mặt trận hàng đầu"**, thúc đẩy hàng tiêu dùng và xuất khẩu.</p>
-            <p>• **Kế hoạch**: Kế hoạch 5 năm (1981-1985).</p>
+            <p>• <strong>Tổng Bí thư</strong>: Đồng chí <strong>Lê Duẩn</strong> (bầu lại).</p>
+            <p>• <strong>Điểm mới lý luận</strong>: Khẳng định nước ta đang ở <strong>&quot;chặng đường đầu tiên của thời kỳ quá độ lên CNXH&quot;</strong>.</p>
+            <p>• <strong>Thay đổi ưu tiên</strong>: Coi <strong>&quot;Nông nghiệp là mặt trận hàng đầu&quot;</strong>, thúc đẩy hàng tiêu dùng và xuất khẩu.</p>
+            <p>• <strong>Kế hoạch</strong>: Kế hoạch 5 năm (1981-1985).</p>
           </div>
         </div>
       </div>

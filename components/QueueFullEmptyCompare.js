@@ -77,9 +77,9 @@ export default function QueueFullEmptyCompare() {
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
             </div>
-            <div><span className="text-slate-500">// Kiểm tra Empty:</span></div>
+            <div><span className="text-slate-500">{"// Kiểm tra Empty:"}</span></div>
             <div className="text-emerald-400 font-bold">isEmpty = (count == 0);</div>
-            <div className="pt-1"><span className="text-slate-500">// Kiểm tra Full:</span></div>
+            <div className="pt-1"><span className="text-slate-500">{"// Kiểm tra Full:"}</span></div>
             <div className="text-rose-400 font-bold">isFull = (count == maxSize);</div>
           </div>
 
@@ -116,9 +116,9 @@ export default function QueueFullEmptyCompare() {
               <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
             </div>
-            <div><span className="text-slate-500">// Trạng thái Empty:</span></div>
+            <div><span className="text-slate-500">{"// Trạng thái Empty:"}</span></div>
             <div className="text-emerald-400 font-bold">front == back</div>
-            <div className="pt-1"><span className="text-slate-500">// Trạng thái Full (ô tiếp theo đụng front):</span></div>
+            <div className="pt-1"><span className="text-slate-500">{"// Trạng thái Full (ô tiếp theo đụng front):"}</span></div>
             <div className="text-amber-300 font-bold">(back + 1) % maxSize == front</div>
           </div>
 

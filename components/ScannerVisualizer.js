@@ -32,7 +32,7 @@ export default function ScannerVisualizer() {
             remainingText: " 3.14\\n",
             cursorPos: 2,
             variables: { a: "42", b: "chưa có giá trị" },
-            analogy: "🍏 <strong>Băng chuyền:</strong><br/>Người khách <code>nextInt()</code> chỉ muốn ăn táo (số nguyên). Người này đến lấy quả táo <code>42</code> ra ăn, rồi **dừng lại ngay lập tức**. <br/>Quả cam <code>3.14</code> và khay rỗng <code>\\n</code> vẫn nằm nguyên trên băng chuyền!",
+            analogy: "🍏 <strong>Băng chuyền:</strong><br/>Người khách <code>nextInt()</code> chỉ muốn ăn táo (số nguyên). Người này đến lấy quả táo <code>42</code> ra ăn, rồi <strong>dừng lại ngay lập tức</strong>. <br/>Quả cam <code>3.14</code> và khay rỗng <code>\\n</code> vẫn nằm nguyên trên băng chuyền!",
             desc: "<strong>Chạy lệnh sc.nextInt():</strong> Scanner quét bộ đệm, bốc lấy số nguyên đầu tiên là <code>42</code> để gán vào biến <code>a</code>. <br/>Con trỏ đọc (▲) di chuyển và <strong>dừng lại ngay sau số 2</strong>. Khoảng trắng phía sau vẫn chưa bị đụng tới."
           },
           {
@@ -42,7 +42,7 @@ export default function ScannerVisualizer() {
             remainingText: "\\n",
             cursorPos: 7,
             variables: { a: "42", b: "3.14" },
-            analogy: "🍊 <strong>Băng chuyền:</strong><br/>Người khách <code>nextDouble()</code> muốn ăn cam (số thực). Người này đi dọc băng chuyền, bỏ qua khoảng trống ở giữa, lấy quả cam <code>3.14</code> ra ăn, rồi **dừng lại**.<br/>Cái khay rỗng <code>\\n</code> vẫn bị bỏ lại trên băng chuyền!",
+            analogy: "🍊 <strong>Băng chuyền:</strong><br/>Người khách <code>nextDouble()</code> muốn ăn cam (số thực). Người này đi dọc băng chuyền, bỏ qua khoảng trống ở giữa, lấy quả cam <code>3.14</code> ra ăn, rồi <strong>dừng lại</strong>.<br/>Cái khay rỗng <code>\\n</code> vẫn bị bỏ lại trên băng chuyền!",
             desc: "<strong>Chạy lệnh sc.nextDouble():</strong> Scanner quét tiếp, tự động <strong>bỏ qua (nhảy qua) khoảng trắng</strong>, tìm thấy số thực tiếp theo là <code>3.14</code> để gán cho biến <code>b</code>. <br/>Con trỏ đọc (▲) di chuyển và dừng ngay trước ký tự xuống dòng <code>\\n</code>."
           },
           {

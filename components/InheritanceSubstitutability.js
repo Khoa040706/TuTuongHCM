@@ -33,7 +33,7 @@ export default function InheritanceSubstitutability() {
 
         {/* Code Definition */}
         <div className="bg-stone-900 border border-stone-950 p-4 rounded-2xl text-stone-300 font-mono text-[10px] md:text-xs">
-          <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-2 font-mono">// Định nghĩa phương thức transfer() nhận tham số lớp cha BankAcct</span>
+          <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-2 font-mono">{"// Định nghĩa phương thức transfer() nhận tham số lớp cha BankAcct"}</span>
           <pre className="leading-relaxed">
 {`public static void transfer(BankAcct fromAcct, BankAcct toAcct, double amt) {
     fromAcct.withdraw(amt);
@@ -44,7 +44,7 @@ export default function InheritanceSubstitutability() {
 
         {/* Interaction Panel */}
         <div className="border border-stone-200 rounded-2xl p-4 bg-white space-y-4">
-          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// THỬ NGHIỆM TRUYỀN THAM SỐ (SUBSTITUTABILITY SIMULATION)</span>
+          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// THỬ NGHIỆM TRUYỀN THAM SỐ (SUBSTITUTABILITY SIMULATION)"}</span>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <button
@@ -162,7 +162,7 @@ applyBonus(ba); // ❌ LỖI BIÊN DỊCH: Type mismatch!
             💡
           </div>
           <div className="text-xs space-y-1">
-            <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">// ĐỊNH HƯỚNG KIẾN THỨC</span>
+            <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">{"// ĐỊNH HƯỚNG KIẾN THỨC"}</span>
             <p className="font-bold text-stone-700 leading-relaxed">
               Tính chất này chính là <strong>nền tảng quan trọng nhất</strong> để học về <strong>Tính Đa Hình (Polymorphism)</strong> ở bài học sau. 
               Hãy ghi nhớ thật kỹ quy tắc này để không bị đánh lừa trong các câu hỏi trắc nghiệm!

@@ -43,13 +43,13 @@ export default function LsdAntiUSSignificanceHero() {
 
           <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
             <p className="p-3 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100">
-              • Kết thúc **21 năm** chiến đấu chống đế quốc Mỹ, **30 năm** chiến tranh giải phóng dân tộc, **117 năm** chống đế quốc xâm lược.
+              • Kết thúc <strong>21 năm</strong> chiến đấu chống đế quốc Mỹ, <strong>30 năm</strong> chiến tranh giải phóng dân tộc, <strong>117 năm</strong> chống đế quốc xâm lược.
             </p>
             <p className="p-3 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100">
               • Quét sạch quân xâm lược khỏi bờ cõi, giành lại độc lập, thống nhất, toàn vẹn lãnh thổ cho Tổ quốc.
             </p>
             <p className="p-3 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100">
-              • Mở ra **kỷ nguyên mới** cho dân tộc: Cả nước hòa bình, thống nhất, cùng đi lên Chủ nghĩa Xã hội.
+              • Mở ra <strong>kỷ nguyên mới</strong> cho dân tộc: Cả nước hòa bình, thống nhất, cùng đi lên Chủ nghĩa Xã hội.
             </p>
           </div>
         </div>

@@ -1,18 +1,4 @@
-import { Playfair_Display, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  subsets: ["vietnamese", "latin"],
-  variable: "--font-playfair",
-  display: "swap"
-});
-
-const beVietnam = Be_Vietnam_Pro({
-  weight: ["300", "400", "500", "600", "700", "800"],
-  subsets: ["vietnamese", "latin"],
-  variable: "--font-be-vietnam",
-  display: "swap"
-});
 
 export const metadata = {
   title: "StudyMaster",
@@ -42,8 +28,16 @@ export default function RootLayout({ children }) {
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`${playfair.variable} ${beVietnam.variable} antialiased`}
+      className="antialiased"
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-screen bg-[#faf8f4] text-[#2c2a26] font-sans">
         {children}
       </body>

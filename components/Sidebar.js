@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BookOpen, Award, ChevronDown, ChevronRight, Menu, X, Settings, MousePointer, Edit2, Highlighter, Eraser, Trash2, Lock, Cpu, Sparkles, Zap, Layers } from "lucide-react";
+import { BookOpen, Award, ChevronDown, ChevronRight, Menu, X, Settings, MousePointer, Edit2, Highlighter, Eraser, Trash2, Lock, Cpu, Sparkles, Zap, Layers, Boxes } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -32,7 +32,10 @@ export default function Sidebar({
   onBackToAdmin,
   onOpenAlgoSim,
   isAlgoSimActive = false,
-  hasAlgoSim = false
+  hasAlgoSim = false,
+  onOpenDiagramSim,
+  isDiagramSimActive = false,
+  hasDiagramSim = false
 }) {
   const [expandedGroups, setExpandedGroups] = useState({});
   const [mounted, setMounted] = useState(false);
@@ -464,6 +467,87 @@ export default function Sidebar({
                   <ChevronRight 
                     className={`w-4 h-4 transition-all duration-200 group-hover:translate-x-0.5 ${
                       isAlgoSimActive ? "text-white/90" : "text-slate-400 group-hover:text-indigo-600"
+                    }`} 
+                  />
+                </div>
+              </button>
+            </div>
+          )}
+
+          {/* 🌟 NỔI BẬT: Thẻ Mô Phỏng Diagram (Dành cho môn Phân tích thiết kế và yêu cầu) */}
+          {hasDiagramSim && (
+            <div className="relative group">
+              {/* Ambient Glow Halo */}
+              <div 
+                className={`absolute -inset-0.5 rounded-2xl blur-sm transition-all duration-300 ${
+                  isDiagramSimActive 
+                    ? "bg-gradient-to-r from-[#A8CDE2] via-[#CCD06B] to-[#8E9346] opacity-80" 
+                    : "bg-gradient-to-r from-[#A8CDE2]/40 via-[#CCD06B]/30 to-[#8E9346]/40 opacity-0 group-hover:opacity-100"
+                }`} 
+              />
+              
+              <button
+                onClick={() => {
+                  if (isQuizMode) {
+                    showConfirm({
+                      title: "Xác nhận chuyển chế độ",
+                      message: "Bạn đang làm bài kiểm tra trắc nghiệm. Bạn có chắc chắn muốn chuyển sang Bộ Mô Phỏng Diagram?",
+                      confirmText: "Chuyển ngay",
+                      cancelText: "Ở lại",
+                      type: "warning",
+                      onConfirm: () => {
+                        setIsQuizMode(false);
+                        if (onOpenDiagramSim) onOpenDiagramSim();
+                        setIsOpen(false);
+                      }
+                    });
+                    return;
+                  }
+                  if (onOpenDiagramSim) onOpenDiagramSim();
+                  setIsOpen(false);
+                }}
+                className={`relative w-full p-3 rounded-2xl flex items-center justify-between border transition-all duration-200 group-hover:scale-[1.01] active:scale-[0.99] cursor-pointer overflow-hidden backdrop-blur-md ${
+                  isDiagramSimActive 
+                    ? "bg-[#18191B] text-white border-[#CCD06B] shadow-md sidebar-active-item" 
+                    : "bg-white hover:bg-[#F0F6FA] text-[#18191B] border-[#384417]/15 hover:border-[#CCD06B] shadow-sm"
+                }`}
+              >
+                <div className="flex items-center gap-3 z-10 min-w-0 flex-1">
+                  {/* Clean Icon */}
+                  <div 
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 ${
+                      isDiagramSimActive 
+                        ? "bg-[#CCD06B] text-[#18191B] shadow-inner font-bold" 
+                        : "bg-[#384417] text-[#CCD06B] shadow-sm"
+                    }`}
+                  >
+                    <Boxes className="w-4 h-4" />
+                  </div>
+
+                  {/* Clean Readable Text */}
+                  <div className="text-left min-w-0 flex-1">
+                    <div 
+                      className={`text-xs font-bold tracking-tight transition-colors ${
+                        isDiagramSimActive ? "text-[#CCD06B]" : "text-[#18191B] group-hover:text-[#384417]"
+                      }`}
+                    >
+                      📐 Bộ Mô Phỏng Diagram
+                    </div>
+                    <div 
+                      className={`text-[11px] font-medium leading-tight mt-0.5 transition-colors ${
+                        isDiagramSimActive ? "text-stone-300" : "text-[#384417]/70 group-hover:text-[#384417]"
+                      }`}
+                    >
+                      Class, Use Case, Sequence, Activity
+                    </div>
+                  </div>
+                </div>
+
+                {/* Navigation Arrow */}
+                <div className="z-10 shrink-0 ml-2">
+                  <ChevronRight 
+                    className={`w-4 h-4 transition-all duration-200 group-hover:translate-x-0.5 ${
+                      isDiagramSimActive ? "text-[#CCD06B]" : "text-[#8E9346] group-hover:text-[#384417]"
                     }`} 
                   />
                 </div>

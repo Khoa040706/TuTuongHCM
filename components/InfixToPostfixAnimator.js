@@ -185,7 +185,7 @@ export default function InfixToPostfixAnimator() {
             <span className="text-[11px] text-slate-500 font-sans">§6.5 Thuật toán Chuyển đổi</span>
           </div>
 
-          <div className="text-slate-500 mb-2">// 6.5 Thuật toán (Code) chuyển Infix ➔ Postfix</div>
+          <div className="text-slate-500 mb-2">{"// 6.5 Thuật toán (Code) chuyển Infix ➔ Postfix"}</div>
           <pre className="overflow-x-auto leading-relaxed text-slate-300">{`String postfixExp = "";
 for (each character ch in the infix expression) {
     switch (ch) {

@@ -84,7 +84,7 @@ export default function LsdNationalResistanceQuote() {
             </div>
             <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
               <li>• Bảo vệ an toàn cơ quan đầu não Trung ương Đảng & Chính phủ.</li>
-              <li>• Thành lập **Trung đoàn Thủ đô** anh hùng.</li>
+              <li>• Thành lập <strong>Trung đoàn Thủ đô</strong> anh hùng.</li>
               <li>• Ngày 17-2-1947: Rút lui an toàn lên chiến khu ATK Việt Bắc.</li>
             </ul>
           </div>

@@ -376,7 +376,7 @@ export default function FilterStreamVisualizer() {
             <Info className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
             <div>
               <strong className="block text-emerald-950 mb-0.5">💡 Vai trò của phương thức flush():</strong>
-              Để tối ưu hiệu suất ghi, các lớp luồng lọc như <code className="bg-emerald-100 px-1 rounded font-bold">BufferedOutputStream</code> không ghi dữ liệu trực tiếp xuống file từng byte một mà gom vào **bộ đệm RAM (Buffer)**. Gọi phương thức <code className="bg-emerald-100 px-1 rounded font-bold">flush()</code> sẽ ép buộc JVM đẩy lập tức toàn bộ dữ liệu đang chờ trong buffer RAM ghi xuống tệp tin đích vật lý.
+              Để tối ưu hiệu suất ghi, các lớp luồng lọc như <code className="bg-emerald-100 px-1 rounded font-bold">BufferedOutputStream</code> không ghi dữ liệu trực tiếp xuống file từng byte một mà gom vào <strong>bộ đệm RAM (Buffer)</strong>. Gọi phương thức <code className="bg-emerald-100 px-1 rounded font-bold">flush()</code> sẽ ép buộc JVM đẩy lập tức toàn bộ dữ liệu đang chờ trong buffer RAM ghi xuống tệp tin đích vật lý.
             </div>
           </div>
         </div>

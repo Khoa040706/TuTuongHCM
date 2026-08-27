@@ -139,7 +139,7 @@ class TruongPhong extends NhanVien {
                 <span className={`px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-wider ${p.badgeColor}`}>
                   {p.title}
                 </span>
-                <span className="text-[10px] text-stone-400 font-bold font-mono">// Trụ cột OOP</span>
+                <span className="text-[10px] text-stone-400 font-bold font-mono">{"// Trụ cột OOP"}</span>
               </div>
               <p className="text-xs leading-relaxed font-semibold text-stone-700">
                 {p.desc}
@@ -196,7 +196,7 @@ class TruongPhong extends NhanVien {
           <Award className="w-4 h-4 animate-pulse" />
         </div>
         <div className="text-xs space-y-1">
-          <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">// 📌 GHI NHỚ PHÒNG THI</span>
+          <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">{"// 📌 GHI NHỚ PHÒNG THI"}</span>
           <p className="font-bold text-stone-700 leading-relaxed">
             4 trụ cột OOP gồm: <strong className="text-amber-700">Encapsulation</strong>, <strong className="text-amber-700">Abstraction</strong>, <strong className="text-amber-700">Inheritance</strong>, và <strong className="text-amber-700">Polymorphism</strong>. Đây là bộ câu hỏi kinh điển luôn luôn xuất hiện trong các bài kiểm tra lý thuyết và phỏng vấn nghề nghiệp!
           </p>

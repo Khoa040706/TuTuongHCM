@@ -48,9 +48,9 @@ export default function LsdUnificationDashboard1976() {
             </div>
           </div>
           <div className="space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 font-sans">
-            <p>• **Tên nước**: Cộng hòa Xã hội Chủ nghĩa Việt Nam.</p>
-            <p>• **Thủ đô**: Hà Nội | **Quốc kỳ**: Cờ đỏ sao vàng | **Quốc ca**: Tiến quân ca.</p>
-            <p>• **Đổi tên thành phố**: Đổi tên Sài Gòn thành **Thành phố Hồ Chí Minh**.</p>
+            <p>• <strong>Tên nước</strong>: Cộng hòa Xã hội Chủ nghĩa Việt Nam.</p>
+            <p>• <strong>Thủ đô</strong>: Hà Nội | <strong>Quốc kỳ</strong>: Cờ đỏ sao vàng | <strong>Quốc ca</strong>: Tiến quân ca.</p>
+            <p>• <strong>Đổi tên thành phố</strong>: Đổi tên Sài Gòn thành <strong>Thành phố Hồ Chí Minh</strong>.</p>
           </div>
         </div>
       </div>
@@ -60,8 +60,8 @@ export default function LsdUnificationDashboard1976() {
         <Award size={32} className="mx-auto mb-2 text-amber-300" />
         <h4 className="text-lg font-bold font-serif mb-2">Bầu Các Chức Danh Lãnh Đạo Nhà Nước</h4>
         <p className="text-xs md:text-sm text-amber-100 max-w-2xl mx-auto leading-relaxed">
-          • **Chủ tịch nước**: Đồng chí **Tôn Đức Thắng** | **Chủ tịch Quốc hội**: Đồng chí **Trường Chinh** <br />
-          • **Thủ tướng Chính phủ**: Đồng chí **Phạm Văn Đồng**.
+          • <strong>Chủ tịch nước</strong>: Đồng chí <strong>Tôn Đức Thắng</strong> | <strong>Chủ tịch Quốc hội</strong>: Đồng chí <strong>Trường Chinh</strong> <br />
+          • <strong>Thủ tướng Chính phủ</strong>: Đồng chí <strong>Phạm Văn Đồng</strong>.
         </p>
       </div>
     </div>

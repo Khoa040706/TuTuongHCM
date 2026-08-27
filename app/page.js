@@ -42,6 +42,7 @@ import RecursionLab from "../components/RecursionLab";
 import MergeSortLab from "../components/MergeSortLab";
 import SelectionSortLab from "../components/SelectionSortLab";
 import InsertionSortLab from "../components/InsertionSortLab";
+import DiagramSimDashboard from "../components/DiagramSimDashboard";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../data/index";
@@ -97,6 +98,7 @@ export default function Page() {
   const [loadingMdx, setLoadingMdx] = useState(false);
   const [isQuizMode, setIsQuizModeRaw] = useState(false);
   const [isAlgoSimActive, setIsAlgoSimActive] = useState(false);
+  const [isDiagramSimActive, setIsDiagramSimActive] = useState(false);
   const [selectedAlgoId, setSelectedAlgoId] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
@@ -2109,6 +2111,7 @@ export default function Page() {
 
   const handleNavigate = (elementId) => {
     setIsAlgoSimActive(false);
+    setIsDiagramSimActive(false);
     // Resolve the element ID: sidebar passes raw subId, chapter-xxx, or section-xxx
     const el =
       document.getElementById(elementId) ||
@@ -2592,6 +2595,7 @@ export default function Page() {
   const handleSubjectSelect = (subjId) => {
     setSelectedSubjectId(subjId);
     setIsAlgoSimActive(false);
+    setIsDiagramSimActive(false);
     setIsQuizMode(false);
     setScrollY(0);
     setShowHero(true);
@@ -3461,7 +3465,7 @@ export default function Page() {
 
 
           {/* Layout wrapper for Sidebar and Content */}
-          <div className={`flex flex-col md:flex-row w-full min-h-screen relative z-10 main-study-content ${isAlgoSimActive ? "p-0 gap-0 bg-[#0b0f17]" : "gap-6 px-4 md:px-6 py-4"}`}>
+          <div className={`flex flex-col md:flex-row w-full min-h-screen relative z-10 main-study-content ${isDiagramSimActive ? "p-0 gap-0 bg-[#F0F6FA]" : isAlgoSimActive ? "p-0 gap-0 bg-[#18191B]" : "gap-6 px-4 md:px-6 py-4"}`}>
             {/* Sidebar Navigation */}
             <Sidebar
               chapters={chapters}
@@ -3472,7 +3476,7 @@ export default function Page() {
               isOpen={isSidebarOpen}
               setIsOpen={setIsSidebarOpen}
               onNavigate={handleNavigate}
-              forceHide={isAlgoSimActive}
+              forceHide={isAlgoSimActive || isDiagramSimActive}
               onChangeSubject={() => setAppStep("subject-select")}
               onLogout={handleLogout}
               onOpenProfile={() => setShowProfileModal(true)}
@@ -3491,8 +3495,18 @@ export default function Page() {
               hasAlgoSim={Boolean(currentSubject?.hasAlgoSim || selectedSubjectId === "dsa" || selectedSubjectId === "basic-algorithms" || selectedSubjectId === "oop")}
               onOpenAlgoSim={() => {
                 setIsQuizMode(false);
+                setIsDiagramSimActive(false);
                 setIsAlgoSimActive(true);
                 setSelectedAlgoId(null);
+                // Scroll to top smooth
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              isDiagramSimActive={isDiagramSimActive}
+              hasDiagramSim={Boolean(selectedSubjectId === "analysis-design")}
+              onOpenDiagramSim={() => {
+                setIsQuizMode(false);
+                setIsAlgoSimActive(false);
+                setIsDiagramSimActive(true);
                 // Scroll to top smooth
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
@@ -3500,10 +3514,10 @@ export default function Page() {
 
             {/* Main Content Area */}
             <div
-              className={`flex-grow flex flex-col min-w-0 ${isAlgoSimActive ? "bg-[#0b0f17]" : "bg-[#faf8f4]"}`}
+              className={`flex-grow flex flex-col min-w-0 ${isDiagramSimActive ? "bg-[#F0F6FA]" : isAlgoSimActive ? "bg-[#18191B]" : "bg-[#faf8f4]"}`}
             >
               {/* Header Bar (Hidden when in standalone Visualizer Portal mode) */}
-              {!isAlgoSimActive && (
+              {!isAlgoSimActive && !isDiagramSimActive && (
                 <header
                   className={`sticky top-0 z-30 flex items-center px-4 md:px-12 py-4 bg-[#faf8f4]/90 backdrop-blur-md border-b border-stone-200 transition-all duration-500 ${
                     !showHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
@@ -3607,6 +3621,12 @@ export default function Page() {
                       )}
                     </ErrorBoundary>
                   </div>
+                ) : isDiagramSimActive ? (
+                  <div className="flex-1 w-full min-h-screen p-0 m-0 animate-in">
+                    <ErrorBoundary>
+                      <DiagramSimDashboard onClose={() => setIsDiagramSimActive(false)} />
+                    </ErrorBoundary>
+                  </div>
                 ) : isQuizMode ? (
                   <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-8 animate-in">
                     <ErrorBoundary>
@@ -3664,10 +3684,10 @@ export default function Page() {
 
 
           {/* Scroll to Top Button */}
-          {showScrollTop && !showHero && (
+          {showScrollTop && !showHero && !isDiagramSimActive && (
             <button
               onClick={handleScrollToTop}
-              className="fixed bottom-6 left-6 md:left-[336px] z-50 p-3 rounded-full bg-accent text-white hover:bg-accent/90 border border-accent/20 shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-accent text-white hover:bg-accent/90 border border-accent/20 shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer"
               aria-label="Về đầu trang"
             >
               <ArrowUp size={20} />

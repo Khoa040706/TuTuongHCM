@@ -34,10 +34,10 @@ export default function LsdBorderWarsDashboard() {
 
           <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
             <p className="p-3 rounded-xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200">
-              • **Âm mưu kẻ thù**: Tập đoàn diệt chủng Pol Pot xua quân tàn sát nhân dân ta ở biên giới Tây Nam, xâm lược đảo Thổ Chu, Phú Quốc.
+              • <strong>Âm mưu kẻ thù</strong>: Tập đoàn diệt chủng Pol Pot xua quân tàn sát nhân dân ta ở biên giới Tây Nam, xâm lược đảo Thổ Chu, Phú Quốc.
             </p>
             <p className="p-3 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200">
-              • **Ngày 7-1-1979**: Quân tình nguyện Việt Nam phối hợp lực lượng cách mạng Campuchia giải phóng **Phnôm Pênh**, cứu nhân dân Campuchia khỏi họa diệt chủng.
+              • <strong>Ngày 7-1-1979</strong>: Quân tình nguyện Việt Nam phối hợp lực lượng cách mạng Campuchia giải phóng <strong>Phnôm Pênh</strong>, cứu nhân dân Campuchia khỏi họa diệt chủng.
             </p>
           </div>
         </div>
@@ -56,10 +56,10 @@ export default function LsdBorderWarsDashboard() {
 
           <div className="space-y-3 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
             <p className="p-3 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200">
-              • **Ngày 17-2-1979**: Trung Quốc bất ngờ huy động **60 vạn quân** tấn công trên toàn tuyến biên giới phía Bắc Việt Nam.
+              • <strong>Ngày 17-2-1979</strong>: Trung Quốc bất ngờ huy động <strong>60 vạn quân</strong> tấn công trên toàn tuyến biên giới phía Bắc Việt Nam.
             </p>
             <p className="p-3 rounded-xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-200">
-              • **Ngày 5-3-1979**: Chủ tịch Tôn Đức Thắng ra Lệnh **Tổng động viên toàn quốc**. Quân dân ta kiên cường giáng trả, buộc đối phương tuyên bố rút quân.
+              • <strong>Ngày 5-3-1979</strong>: Chủ tịch Tôn Đức Thắng ra Lệnh <strong>Tổng động viên toàn quốc</strong>. Quân dân ta kiên cường giáng trả, buộc đối phương tuyên bố rút quân.
             </p>
           </div>
         </div>

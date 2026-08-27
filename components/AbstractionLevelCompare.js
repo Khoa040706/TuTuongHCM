@@ -255,7 +255,7 @@ export default function AbstractionLevelCompare() {
             <span className="text-emerald-500">public interface</span> <span className="text-blue-400">Playable</span> &#123;<br/>
             {["move", "sound", "sleep"].map(method => (
               <div key={method} className="pl-4 text-emerald-450/90 font-bold">
-                void {method}(); <span className="text-stone-550">// Tự động là public abstract</span>
+                void {method}(); <span className="text-stone-550">{"// Tự động là public abstract"}</span>
               </div>
             ))}
             &#125;

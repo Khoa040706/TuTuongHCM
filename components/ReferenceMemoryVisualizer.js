@@ -39,7 +39,7 @@ export default function ReferenceMemoryVisualizer() {
 
       {/* Code Block Snippet */}
       <div className="bg-slate-900 text-slate-200 p-3.5 rounded-xl font-mono text-xs mb-5 border border-slate-800 flex flex-col gap-1">
-        <div className="text-slate-400">// Đoạn code minh họa:</div>
+        <div className="text-slate-400">{"// Đoạn code minh họa:"}</div>
         <div>
           <span className="text-purple-400">Integer</span> y = <span className="text-purple-400">new Integer</span>(<span className="text-amber-400">20</span>);
         </div>

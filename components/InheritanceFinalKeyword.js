@@ -80,7 +80,7 @@ export default function InheritanceFinalKeyword() {
           {/* Code Sandbox View with Compiler error simulation */}
           <div className="bg-stone-900 border border-stone-950 p-4 rounded-xl font-mono text-[10px] md:text-xs text-stone-300 flex flex-col justify-between min-h-[220px]">
             <div>
-              <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-3 border-b border-stone-800 pb-1">// Code & Simulator</span>
+              <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-3 border-b border-stone-800 pb-1">{"// Code & Simulator"}</span>
               {selectedUsage === "class" ? (
                 <pre className="leading-relaxed animate-in fade-in duration-200">
 {`final class SavingAcct extends BankAcct { ... }

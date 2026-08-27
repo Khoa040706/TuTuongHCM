@@ -16,7 +16,7 @@ export default function InheritanceGoalsExplorer() {
       badgeColor: "bg-indigo-100 text-indigo-700",
       visual: (
         <div className="flex flex-col items-center justify-center p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100 min-h-[220px]">
-          <div className="text-center font-bold text-xs uppercase tracking-widest text-indigo-500 mb-4">// Mô hình hóa phân cấp</div>
+          <div className="text-center font-bold text-xs uppercase tracking-widest text-indigo-500 mb-4">{"// Mô hình hóa phân cấp"}</div>
           
           <div className="flex flex-col items-center gap-3 w-full max-w-xs">
             {/* Superclass */}
@@ -110,7 +110,7 @@ class Dog extends Animal {
       badgeColor: "bg-blue-100 text-blue-700",
       visual: (
         <div className="flex flex-col items-center justify-center p-5 bg-blue-50/40 border border-blue-100 rounded-2xl min-h-[220px] space-y-4">
-          <div className="text-center font-bold text-xs uppercase tracking-widest text-blue-500">// Đa hình tại Runtime (Polymorphism)</div>
+          <div className="text-center font-bold text-xs uppercase tracking-widest text-blue-500">{"// Đa hình tại Runtime (Polymorphism)"}</div>
           
           <div className="flex items-stretch justify-center w-full max-w-md gap-3 text-xs font-mono">
             {/* Superclass Method */}
@@ -199,7 +199,7 @@ void eat() {
           <Pin className="w-4 h-4 animate-bounce" />
         </div>
         <div className="text-xs space-y-1">
-          <span className="text-[9px] font-black text-stone-500 uppercase tracking-widest block font-mono">// GHI NHỚ CỐT LÕI (KEY TAKEAWAY)</span>
+          <span className="text-[9px] font-black text-stone-500 uppercase tracking-widest block font-mono">{"// GHI NHỚ CỐT LÕI (KEY TAKEAWAY)"}</span>
           <p className="font-semibold text-stone-200 leading-relaxed text-sm">
             Kế thừa là trụ cột quan trọng bậc nhất giúp <strong className="text-indigo-400">code gọn hơn</strong>, <strong className="text-violet-400">dễ bảo trì hơn</strong>, và tránh việc lặp đi lặp lại mã nguồn thừa trong thiết kế phần mềm hướng đối tượng Java.
           </p>

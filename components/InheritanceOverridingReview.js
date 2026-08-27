@@ -68,7 +68,7 @@ export default function InheritanceOverridingReview() {
           <div className="font-mono text-[10px] md:text-xs text-stone-750 bg-stone-900 border border-stone-850 rounded-2xl p-4 leading-relaxed overflow-x-auto text-stone-300">
             {/* toString override */}
             <div className="border-b border-stone-800 pb-3 mb-3">
-              <span className="text-stone-500 block mb-1">// 1. Ghi đè phương thức toString()</span>
+              <span className="text-stone-500 block mb-1">{"// 1. Ghi đè phương thức toString()"}</span>
               <div>
                 <span className="text-indigo-400 cursor-pointer hover:bg-stone-800 px-1 rounded transition-colors" onClick={() => setSelectedWord("public")}>public</span>{" "}
                 <span className="text-purple-400 cursor-pointer hover:bg-stone-800 px-1 rounded transition-colors" onClick={() => setSelectedWord("returntype")}>String</span>{" "}
@@ -82,7 +82,7 @@ export default function InheritanceOverridingReview() {
 
             {/* equals override */}
             <div>
-              <span className="text-stone-500 block mb-1">// 2. Ghi đè phương thức equals()</span>
+              <span className="text-stone-500 block mb-1">{"// 2. Ghi đè phương thức equals()"}</span>
               <div>
                 <span className="text-indigo-400 cursor-pointer hover:bg-stone-800 px-1 rounded transition-colors" onClick={() => setSelectedWord("public")}>public</span>{" "}
                 <span className="text-purple-400 cursor-pointer hover:bg-stone-800 px-1 rounded transition-colors" onClick={() => setSelectedWord("returntype")}>boolean</span>{" "}
@@ -317,14 +317,14 @@ System.out.println(b1);`}
         >
           {flippedCards[1] ? (
             <div className="flex flex-col justify-between h-full space-y-2">
-              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">// Đáp án</span>
+              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">{"// Đáp án"}</span>
               <p className="text-[11px] font-semibold leading-relaxed">
                 Là việc viết lại một phương thức đã kế thừa từ lớp cha với <strong>cùng tên, cùng tham số, cùng kiểu trả về (chữ ký)</strong>.
               </p>
             </div>
           ) : (
             <div className="flex flex-col justify-between h-full">
-              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">// Câu hỏi 1</span>
+              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">{"// Câu hỏi 1"}</span>
               <h4 className="text-xs font-black text-stone-800 leading-tight">
                 Thế nào là Overriding (Ghi đè)?
               </h4>
@@ -343,14 +343,14 @@ System.out.println(b1);`}
         >
           {flippedCards[2] ? (
             <div className="flex flex-col justify-between h-full space-y-2">
-              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">// Đáp án</span>
+              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">{"// Đáp án"}</span>
               <p className="text-[11px] font-semibold leading-relaxed">
                 Để tùy biến lại hành vi được thừa hưởng từ lớp cha sao cho phù hợp với đặc thù riêng biệt của đối tượng thuộc lớp con.
               </p>
             </div>
           ) : (
             <div className="flex flex-col justify-between h-full">
-              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">// Câu hỏi 2</span>
+              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">{"// Câu hỏi 2"}</span>
               <h4 className="text-xs font-black text-stone-800 leading-tight">
                 Mục đích tối thượng của Overriding là gì?
               </h4>
@@ -369,14 +369,14 @@ System.out.println(b1);`}
         >
           {flippedCards[3] ? (
             <div className="flex flex-col justify-between h-full space-y-2">
-              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">// Đáp án</span>
+              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">{"// Đáp án"}</span>
               <p className="text-[11px] font-semibold leading-relaxed">
                 Là <code>toString()</code> và <code>equals()</code>. Chúng tự động kế thừa từ lớp cha tối cao <code>Object</code>.
               </p>
             </div>
           ) : (
             <div className="flex flex-col justify-between h-full">
-              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">// Câu hỏi 3</span>
+              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">{"// Câu hỏi 3"}</span>
               <h4 className="text-xs font-black text-stone-800 leading-tight">
                 Hai phương thức kế thừa mặc định nào của lớp Object hay bị hỏi thi nhất?
               </h4>
@@ -395,14 +395,14 @@ System.out.println(b1);`}
         >
           {flippedCards[4] ? (
             <div className="flex flex-col justify-between h-full space-y-2">
-              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">// Đáp án</span>
+              <span className="text-[8px] font-black text-stone-500 uppercase tracking-widest">{"// Đáp án"}</span>
               <p className="text-[11px] font-semibold leading-relaxed">
                 Overriding diễn ra ở hai lớp khác nhau có quan hệ Kế thừa. Overloading diễn ra ngay bên trong một lớp duy nhất.
               </p>
             </div>
           ) : (
             <div className="flex flex-col justify-between h-full">
-              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">// Câu hỏi 4</span>
+              <span className="text-[8px] font-black text-stone-400 uppercase tracking-widest">{"// Câu hỏi 4"}</span>
               <h4 className="text-xs font-black text-stone-800 leading-tight">
                 Phân biệt phạm vi diễn ra giữa Overriding và Overloading?
               </h4>

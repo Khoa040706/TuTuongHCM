@@ -135,11 +135,11 @@ export default function CollectionArrayCliDetour() {
           <p className="text-xs text-slate-350 mt-1 leading-relaxed">
             Học sinh cực kỳ hay nhầm lẫn cú pháp lấy độ dài:
             <br />
-            • <code>arr.length</code>: Dùng cho **Mảng (Array)**. Là **thuộc tính (attribute)** nên **CẤM** viết thêm cặp ngoặc tròn <code>()</code>.
+            • <code>arr.length</code>: Dùng cho <strong>Mảng (Array)</strong>. Là <strong>thuộc tính (attribute)</strong> nên <strong>CẤM</strong> viết thêm cặp ngoặc tròn <code>()</code>.
             <br />
-            • <code>str.length()</code>: Dùng cho **Chuỗi (String)**. Là **phương thức (method)** nên **BẮT BUỘC** phải có cặp ngoặc tròn <code>()</code>.
+            • <code>str.length()</code>: Dùng cho <strong>Chuỗi (String)</strong>. Là <strong>phương thức (method)</strong> nên <strong>BẮT BUỘC</strong> phải có cặp ngoặc tròn <code>()</code>.
             <br />
-            *Đề thi trắc nghiệm luôn luôn đưa ra các đoạn code viết sai như <code>arr.length()</code> hoặc <code>str.length</code> để đánh lừa thí sinh!*
+            <em>Đề thi trắc nghiệm luôn luôn đưa ra các đoạn code viết sai như <code>arr.length()</code> hoặc <code>str.length</code> để đánh lừa thí sinh!</em>
           </p>
         </div>
       </div>

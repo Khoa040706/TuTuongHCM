@@ -30,7 +30,7 @@ export default function InheritanceIsaHasa() {
         {/* Dynamic Selector Widget */}
         <div className="border border-stone-200 rounded-2xl p-4 bg-white space-y-4">
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// PHƯƠNG PHÁP XÁC ĐỊNH & THIẾT KẾ</span>
+            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// PHƯƠNG PHÁP XÁC ĐỊNH & THIẾT KẾ"}</span>
             
             <div className="flex bg-stone-150 p-0.5 rounded-lg border">
               <button
@@ -82,7 +82,7 @@ export default function InheritanceIsaHasa() {
 
             {/* Right: Code & Explanations */}
             <div className="space-y-3">
-              <h4 className="text-xs font-black text-stone-800 uppercase tracking-widest font-mono">// CÚ PHÁP HIỆN THỰC JAVA</h4>
+              <h4 className="text-xs font-black text-stone-800 uppercase tracking-widest font-mono">{"// CÚ PHÁP HIỆN THỰC JAVA"}</h4>
               {selectedRelation === "isa" ? (
                 <div className="space-y-2 animate-in fade-in duration-200">
                   <p className="text-xs text-stone-600 font-semibold leading-relaxed">
@@ -116,7 +116,7 @@ class Person {
 
         {/* Comparative Table */}
         <div className="border border-stone-200 rounded-2xl p-4 bg-white space-y-3">
-          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// BẢNG SO SÁNH TỔNG HỢP</span>
+          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// BẢNG SO SÁNH TỔNG HỢP"}</span>
           
           <div className="overflow-x-auto">
             <table className="w-full text-[10px] text-left border-collapse">
@@ -154,7 +154,7 @@ class Person {
             🎯
           </div>
           <div className="text-xs space-y-1">
-            <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">// LƯU Ý KHI ĐI THI</span>
+            <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">{"// LƯU Ý KHI ĐI THI"}</span>
             <p className="font-bold text-stone-700 leading-relaxed">
               Các câu hỏi thi trắc nghiệm lý thuyết OOP hoặc câu hỏi vẽ sơ đồ lớp UML <strong>rất hay yêu cầu phân biệt</strong> 2 loại mối quan hệ và 2 kiểu ký hiệu mũi tên này. Hãy ôn luyện kỹ!
             </p>

@@ -53,21 +53,21 @@ export default function InterfaceJvmMemoryPolymorphism() {
           activeLine === 1 ? "bg-sky-950/40 text-sky-300 font-semibold border-l-2 border-sky-500 pl-2" : "text-slate-450 hover:bg-slate-900/40 pl-2"
         }`}>
           <span className="text-slate-600 mr-3">1</span>
-          <span>Complex a; <span className="text-slate-500">// Khai báo biến kiểu Interface</span></span>
+          <span>Complex a; <span className="text-slate-500">{"// Khai báo biến kiểu Interface"}</span></span>
         </div>
 
         <div onClick={() => runLine(2)} className={`cursor-pointer p-1 rounded transition-colors ${
           activeLine === 2 ? "bg-sky-950/40 text-sky-300 font-semibold border-l-2 border-sky-500 pl-2" : "text-slate-450 hover:bg-slate-900/40 pl-2"
         }`}>
           <span className="text-slate-600 mr-3">2</span>
-          <span>a = new ComplexCart(10.0, 12.0); <span className="text-slate-500">// Gán đối tượng Cartesian</span></span>
+          <span>a = new ComplexCart(10.0, 12.0); <span className="text-slate-500">{"// Gán đối tượng Cartesian"}</span></span>
         </div>
 
         <div onClick={() => runLine(3)} className={`cursor-pointer p-1 rounded transition-colors ${
           activeLine === 3 ? "bg-sky-950/40 text-sky-300 font-semibold border-l-2 border-sky-500 pl-2" : "text-slate-450 hover:bg-slate-900/40 pl-2"
         }`}>
           <span className="text-slate-600 mr-3">3</span>
-          <span>a = new ComplexPolar(5.0, 0.46); <span className="text-slate-500">// Đa hình: Gán sang đối tượng Polar</span></span>
+          <span>a = new ComplexPolar(5.0, 0.46); <span className="text-slate-500">{"// Đa hình: Gán sang đối tượng Polar"}</span></span>
         </div>
       </div>
 

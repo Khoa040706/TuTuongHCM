@@ -109,7 +109,7 @@ export default function InheritanceCreatingSubclass() {
           {/* Copy-paste vs Inheritance comparative widget */}
           <div className="border border-stone-200 rounded-2xl p-4 bg-white">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// SO SÁNH THIẾT KẾ: SAO CHÉP VS KẾ THỪA</span>
+              <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// SO SÁNH THIẾT KẾ: SAO CHÉP VS KẾ THỪA"}</span>
               <button
                 onClick={() => setShowCopyCode(!showCopyCode)}
                 className="px-3 py-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-[10px] rounded-lg border-none cursor-pointer flex items-center gap-1"
@@ -240,7 +240,7 @@ class SavingAcct extends BankAcct {
               <Award className="w-4 h-4 animate-pulse" />
             </div>
             <div className="text-xs space-y-1">
-              <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">// 📌 ĐIỂM DỄ BỊ LỪA TRONG ĐỀ THI</span>
+              <span className="text-[9px] font-black text-amber-600 uppercase tracking-widest block font-mono">{"// 📌 ĐIỂM DỄ BỊ LỪA TRONG ĐỀ THI"}</span>
               <p className="font-bold text-stone-700 leading-relaxed">
                 <strong>Constructor (Hàm khởi tạo) KHÔNG ĐƯỢC KẾ THỪA!</strong> Lớp con bắt buộc phải tự định nghĩa constructor riêng, và sử dụng <code>super(...)</code> để gọi constructor của cha.
               </p>
@@ -250,7 +250,7 @@ class SavingAcct extends BankAcct {
           {/* Interactive Flow Diagram */}
           <div className="border border-stone-200 rounded-2xl p-4 bg-white">
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-              <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// TRỰC QUAN HÓA CHUỖI GỌI CONSTRUCTOR (SUPER CHAIN)</span>
+              <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// TRỰC QUAN HÓA CHUỖI GỌI CONSTRUCTOR (SUPER CHAIN)"}</span>
               
               <div className="flex items-center gap-2">
                 <button
@@ -348,7 +348,7 @@ class SavingAcct extends BankAcct {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               {/* Sandbox Code window */}
               <div className="lg:col-span-6 bg-stone-900 border border-stone-950 p-4 rounded-xl text-stone-300 font-mono text-[10px] md:text-xs">
-                <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-3 border-b border-stone-800 pb-1">// TestSavingAcct.java</span>
+                <span className="text-[8px] uppercase tracking-widest text-stone-500 font-black block mb-3 border-b border-stone-800 pb-1">{"// TestSavingAcct.java"}</span>
                 <div className="space-y-1 bg-stone-950 p-2.5 rounded-lg border border-stone-850">
                   {sandboxCodes.map((c, idx) => (
                     <div 
@@ -370,7 +370,7 @@ class SavingAcct extends BankAcct {
               {/* Sandbox Console Output window */}
               <div className="lg:col-span-6 bg-black text-emerald-400 p-4 rounded-xl font-mono text-[10px] md:text-xs flex flex-col justify-between min-h-[160px]">
                 <div>
-                  <span className="text-[8px] uppercase tracking-widest text-stone-600 font-black block mb-3 border-b border-stone-900 pb-1">// Output Console</span>
+                  <span className="text-[8px] uppercase tracking-widest text-stone-600 font-black block mb-3 border-b border-stone-900 pb-1">{"// Output Console"}</span>
                   <div className="space-y-2 max-h-[120px] overflow-y-auto">
                     {sandboxOutput.map((out, idx) => (
                       <div key={idx} className="space-y-0.5">
@@ -381,7 +381,7 @@ class SavingAcct extends BankAcct {
                   </div>
                 </div>
                 {sandboxStep === sandboxCodes.length && (
-                  <span className="text-[8px] text-emerald-600 font-sans font-black block mt-2 text-right">// Chương trình chạy hoàn tất.</span>
+                  <span className="text-[8px] text-emerald-600 font-sans font-black block mt-2 text-right">{"// Chương trình chạy hoàn tất."}</span>
                 )}
               </div>
             </div>

@@ -312,7 +312,7 @@ export default function FileAndByteStreamVisualizer() {
             <span className="text-[8px] font-bold px-1.5 py-0.5 bg-sky-50 text-sky-750 rounded-lg font-mono">X</span>
           </div>
           <ul className="text-xs text-stone-650 space-y-2.5 leading-relaxed font-medium">
-            <li>• **KHÔNG** hỗ trợ <code>mark()</code> / <code>reset()</code>.</li>
+            <li>• <strong>KHÔNG</strong> hỗ trợ <code>mark()</code> / <code>reset()</code>.</li>
             <li>• Khi khởi tạo đối tượng FileInputStream, tệp sẽ được mở để đọc ngay lập tức.</li>
           </ul>
         </div>

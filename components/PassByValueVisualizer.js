@@ -16,7 +16,7 @@ export default function PassByValueVisualizer() {
       highlightedLine: 3,
       mainStack: [{ name: "x", val: "5", active: false }],
       methodStack: [{ name: "val", val: "5 (Bản sao)", active: true }],
-      desc: "<strong>Bước 2: Gọi hàm và nhân bản tham số</strong><br/>Gọi hàm <code>tripleValue(x)</code>. Một vùng nhớ Stack mới được cấp cho hàm phụ. Biến tham số <code>val</code> được tạo ra và nhận một **bản sao (copy) giá trị** của <code>x</code>. Lúc này, <code>x</code> và <code>val</code> là 2 ô nhớ độc lập!",
+      desc: "<strong>Bước 2: Gọi hàm và nhân bản tham số</strong><br/>Gọi hàm <code>tripleValue(x)</code>. Một vùng nhớ Stack mới được cấp cho hàm phụ. Biến tham số <code>val</code> được tạo ra và nhận một <strong>bản sao (copy) giá trị</strong> của <code>x</code>. Lúc này, <code>x</code> và <code>val</code> là 2 ô nhớ độc lập!",
       console: ""
     },
     {
@@ -30,7 +30,7 @@ export default function PassByValueVisualizer() {
       highlightedLine: 4,
       mainStack: [{ name: "x", val: "5", active: true }],
       methodStack: null,
-      desc: "<strong>Bước 4: Kết thúc hàm phụ & Hủy vùng nhớ</strong><br/>Hàm phụ kết thúc, vùng nhớ Stack của nó bị **xóa bỏ hoàn toàn** khỏi RAM. Con trỏ quay về hàm <code>main()</code>.",
+      desc: "<strong>Bước 4: Kết thúc hàm phụ & Hủy vùng nhớ</strong><br/>Hàm phụ kết thúc, vùng nhớ Stack của nó bị <strong>xóa bỏ hoàn toàn</strong> khỏi RAM. Con trỏ quay về hàm <code>main()</code>.",
       console: ""
     },
     {

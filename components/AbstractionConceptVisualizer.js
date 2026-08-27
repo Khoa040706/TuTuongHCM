@@ -200,7 +200,7 @@ export default function AbstractionConceptVisualizer() {
                   <div className="bg-stone-900/60 border border-stone-800 px-4 py-2.5 rounded-xl font-mono text-[11px] text-stone-450 mt-5 w-full max-w-xs select-text">
                     <span className="text-amber-500">public class</span> <span className="text-blue-400">Phone</span> &#123;<br/>
                     &nbsp;&nbsp;<span className="text-emerald-500">public void</span> <span className="text-yellow-400">sendSMS</span>(String msg) &#123;<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-stone-550">// Ẩn đi 1000 dòng code phức tạp</span><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-stone-550">{"// Ẩn đi 1000 dòng code phức tạp"}</span><br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;this.hardware.dispatch(msg);<br/>
                     &nbsp;&nbsp;&#125;<br/>
                     &#125;

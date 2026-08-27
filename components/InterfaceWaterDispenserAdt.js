@@ -231,7 +231,7 @@ export default function InterfaceWaterDispenserAdt() {
                   </p>
                   
                   <div className="bg-slate-900 p-3 rounded-lg border border-slate-800 font-mono text-xs text-cyan-300/80 leading-relaxed">
-                    <div className="text-slate-500">// public interface WaterDispenser</div>
+                    <div className="text-slate-500">{"// public interface WaterDispenser"}</div>
                     <div>void setMode(String m);</div>
                     <div>void dispense();</div>
                   </div>

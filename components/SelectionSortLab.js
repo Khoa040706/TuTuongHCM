@@ -420,7 +420,9 @@ export default function SelectionSortLab({ onBack }) {
 
   // Ref to hold steps length for keyboard shortcuts without changing useEffect dependency size
   const stepsLengthRef = useRef(steps.length);
-  stepsLengthRef.current = steps.length;
+  useEffect(() => {
+    stepsLengthRef.current = steps.length;
+  }, [steps.length]);
 
   // Keyboard Shortcuts Listener (Static 0 dependencies to prevent React hook array size change errors!)
   useEffect(() => {

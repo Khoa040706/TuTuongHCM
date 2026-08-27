@@ -2199,31 +2199,353 @@ export const subjects = {
     icon: "📐",
     chapters: [
   {
-    "id": "analysis-design",
-    "title": "Phân tích thiết kế và yêu cầu",
-    "subtitle": "Quy trình thu thập yêu cầu, định nghĩa sơ đồ UML và thiết kế kiến trúc hệ thống phần mềm.",
+    "id": "ad-ch1",
+    "title": "Chapter 1: Introduction — Requirements Analysis and Design",
+    "subtitle": "Tổng quan về Hệ thống thông tin (Information Systems), Cấu trúc IPO, Phân loại ESS/MIS/TPS và Vai trò cầu nối chiến lược của (IT) Business Analyst trong toàn bộ vòng đời phát triển phần mềm (SDLC).",
     "sections": [
       {
-        "id": "ad-section-1",
-        "roman": "I",
-        "title": "Quy trình phân tích yêu cầu phần mềm",
+        "id": "ad1-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN HỆ THỐNG THÔNG TIN & CẦU NỐI KỸ NGHỆ YÊU CẦU",
         "subsections": [
           {
-            "id": "ad-sub-1",
-            "number": "1",
-            "title": "Xác định và phân loại yêu cầu"
+            "id": "ad1-sub-0",
+            "number": "0",
+            "title": "Interactive Requirements Cyber-Blueprint"
           }
         ]
       },
       {
-        "id": "ad-section-2",
-        "roman": "II",
-        "title": "Mô hình hóa hệ thống bằng UML",
+        "id": "ad1-section-1",
+        "roman": "I",
+        "title": "Information System (Hệ thống thông tin)",
         "subsections": [
           {
-            "id": "ad-sub-2",
+            "id": "ad1-sub-1-1",
             "number": "1",
-            "title": "Thiết kế các biểu đồ UML chính"
+            "title": "1.1 Định nghĩa Hệ thống thông tin (Information System)"
+          },
+          {
+            "id": "ad1-sub-1-2",
+            "number": "2",
+            "title": "1.2 Mô hình xử lý cơ bản (Input – Process – Output)"
+          },
+          {
+            "id": "ad1-sub-1-3",
+            "number": "3",
+            "title": "1.3 Năm thành phần cốt lõi (Five Core Components)"
+          },
+          {
+            "id": "ad1-sub-1-4",
+            "number": "4",
+            "title": "1.4 Chuỗi giá trị: Từ Data ➔ Information ➔ Knowledge"
+          },
+          {
+            "id": "ad1-sub-1-5",
+            "number": "5",
+            "title": "1.5 Phân loại hệ thống thông tin theo cấp độ (Types of IS by Level)"
+          },
+          {
+            "id": "ad1-sub-1-6",
+            "number": "6",
+            "title": "1.6 Các hệ thống thông tin phổ biến trong thực tế (ERP, CRM, SCM, HR)"
+          },
+          {
+            "id": "ad1-sub-1-7",
+            "number": "7",
+            "title": "1.7 Vì sao Information Systems quan trọng & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad1-section-2",
+        "roman": "II",
+        "title": "Role of the (IT) Business Analyst (Vai trò của BA)",
+        "subsections": [
+          {
+            "id": "ad1-sub-2-1",
+            "number": "1",
+            "title": "2.1 Business Analyst (BA) là ai? & 5 Chức năng chính"
+          },
+          {
+            "id": "ad1-sub-2-2",
+            "number": "2",
+            "title": "2.2 BA là cầu nối (The BA as a Bridge: Business ➔ BA ➔ IT)"
+          },
+          {
+            "id": "ad1-sub-2-3",
+            "number": "3",
+            "title": "2.3 Năm trách nhiệm cốt lõi của BA (Core Responsibilities)"
+          },
+          {
+            "id": "ad1-sub-2-4",
+            "number": "4",
+            "title": "2.4 Kỹ năng cần thiết (Technical/Analytical vs Soft Skills)"
+          },
+          {
+            "id": "ad1-sub-2-5",
+            "number": "5",
+            "title": "2.5 Mức độ tham gia theo giai đoạn dự án SDLC & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad1-section-3",
+        "roman": "III",
+        "title": "Bộ công cụ của BA: Methodology – Model – Tool – Technique",
+        "subsections": [
+          {
+            "id": "ad1-sub-3-1",
+            "number": "1",
+            "title": "3.1 Methodology (Phương pháp luận phát triển hệ thống)"
+          },
+          {
+            "id": "ad1-sub-3-2",
+            "number": "2",
+            "title": "3.2 Model (Mô hình hóa hệ thống & 4 Vai trò)"
+          },
+          {
+            "id": "ad1-sub-3-3",
+            "number": "3",
+            "title": "3.3 UML – Unified Modeling Language (6 Biểu đồ chuẩn)"
+          },
+          {
+            "id": "ad1-sub-3-4",
+            "number": "4",
+            "title": "3.4 Tool (Công cụ CASE hỗ trợ phần mềm)"
+          },
+          {
+            "id": "ad1-sub-3-5",
+            "number": "5",
+            "title": "3.5 Technique (5 Kỹ thuật khơi mở yêu cầu)"
+          },
+          {
+            "id": "ad1-sub-3-6",
+            "number": "6",
+            "title": "3.6 Mối quan hệ giữa 4 khái niệm & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad1-section-4",
+        "roman": "IV",
+        "title": "Stages in Building Information Systems (Các giai đoạn xây dựng hệ thống)",
+        "subsections": [
+          {
+            "id": "ad1-sub-4-1",
+            "number": "1",
+            "title": "4.1 Systems Development Life Cycle (SDLC) – 5 giai đoạn"
+          },
+          {
+            "id": "ad1-sub-4-2",
+            "number": "2",
+            "title": "4.2 Unified Process (UP) – 4 giai đoạn (Phases)"
+          },
+          {
+            "id": "ad1-sub-4-3",
+            "number": "3",
+            "title": "4.3 So sánh Sequential (Waterfall) vs. Iterative & Incremental (UP)"
+          },
+          {
+            "id": "ad1-sub-4-4",
+            "number": "4",
+            "title": "4.4 Bảng so sánh Traditional SDLC vs. Unified Process & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad1-section-5",
+        "roman": "V",
+        "title": "Tổng kết toàn diện Chương 1 & Grand Master Exam",
+        "subsections": [
+          {
+            "id": "ad1-sub-5-1",
+            "number": "1",
+            "title": "5.1 Tổng kết 3 trụ cột tri thức cốt lõi (Summary: Key Takeaways)"
+          },
+          {
+            "id": "ad1-sub-5-2",
+            "number": "2",
+            "title": "5.2 Bảng tra cứu & Thẻ ghi nhớ 8 thuật ngữ quan trọng (Key Terms)"
+          },
+          {
+            "id": "ad1-sub-5-3",
+            "number": "3",
+            "title": "5.3 Lưu ý trọng tâm khi ôn thi & Grand Master Exam 10 Câu"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ad-ch2",
+    "title": "Chapter 2: Systems Development Life Cycle (SDLC) & Business Modeling",
+    "subtitle": "Chuyên sâu về Vòng đời phát triển hệ thống (SDLC), Đối chiếu 2 trường phái Predictive vs Adaptive, Chi tiết 5 giai đoạn cốt lõi và Mô hình hóa quy trình nghiệp vụ doanh nghiệp.",
+    "sections": [
+      {
+        "id": "ad2-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN SDLC & MÔ HÌNH HÓA QUY TRÌNH KINH DOANH",
+        "subsections": [
+          {
+            "id": "ad2-sub-0",
+            "number": "0",
+            "title": "Chapter 2 SDLC & Business Process Blueprint"
+          }
+        ]
+      },
+      {
+        "id": "ad2-section-1",
+        "roman": "I",
+        "title": "Predictive vs Adaptive SDLC",
+        "subsections": [
+          {
+            "id": "ad2-sub-1-1",
+            "number": "1",
+            "title": "1.1 SDLC là gì? & Phân biệt 'Umbrella Concept' SDLC vs Methodology"
+          },
+          {
+            "id": "ad2-sub-1-2",
+            "number": "2",
+            "title": "1.2 Hai cách tổ chức SDLC (Predictive Approach vs Adaptive Approach)"
+          },
+          {
+            "id": "ad2-sub-1-3",
+            "number": "3",
+            "title": "1.3 Bảng so sánh chi tiết 6 khía cạnh giữa Predictive & Adaptive"
+          },
+          {
+            "id": "ad2-sub-1-4",
+            "number": "4",
+            "title": "1.4 Chọn Approach nào? (3 Tiêu chí quyết định & Checkpoint Quiz)"
+          }
+        ]
+      },
+      {
+        "id": "ad2-section-2",
+        "roman": "II",
+        "title": "SDLC Phases (Chi tiết 5 giai đoạn phát triển)",
+        "subsections": [
+          {
+            "id": "ad2-sub-2-0",
+            "number": "0",
+            "title": "2.0 Tổng quan 5 Phases, 5 Câu hỏi cốt lõi & So sánh Tuần tự vs Lặp lại"
+          },
+          {
+            "id": "ad2-sub-2-1",
+            "number": "1",
+            "title": "2.1 Phase 1: Planning (Why build it? — Activities & Deliverables)"
+          },
+          {
+            "id": "ad2-sub-2-2",
+            "number": "2",
+            "title": "2.2 Phase 2: Analysis (What is needed? — Activities & Deliverables)"
+          },
+          {
+            "id": "ad2-sub-2-3",
+            "number": "3",
+            "title": "2.3 Phase 3: Design (How will it work? — Activities & Deliverables)"
+          },
+          {
+            "id": "ad2-sub-2-4",
+            "number": "4",
+            "title": "2.4 Phase 4: Implementation (Build & Deploy — Activities & Deliverables)"
+          },
+          {
+            "id": "ad2-sub-2-5",
+            "number": "5",
+            "title": "2.5 Phase 5: Support (Keep it running — Activities & Deliverables & Checkpoint Quiz)"
+          }
+        ]
+      },
+      {
+        "id": "ad2-section-3",
+        "roman": "III",
+        "title": "Business Modeling (Mô hình hóa doanh nghiệp)",
+        "subsections": [
+          {
+            "id": "ad2-sub-3-1",
+            "number": "1",
+            "title": "3.1 Business Modeling là gì? & Ranh giới Enterprise"
+          },
+          {
+            "id": "ad2-sub-3-2",
+            "number": "2",
+            "title": "3.2 Vì sao model business trước khi model hệ thống?"
+          },
+          {
+            "id": "ad2-sub-3-3",
+            "number": "3",
+            "title": "3.3 Key Business Modeling Concepts (4 Khái niệm cốt lõi)"
+          },
+          {
+            "id": "ad2-sub-3-4",
+            "number": "4",
+            "title": "3.4 Business Process vs Business Use Case"
+          },
+          {
+            "id": "ad2-sub-3-5",
+            "number": "5",
+            "title": "3.5 Business Modeling Techniques & Vị trí trong SDLC & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad2-section-4",
+        "roman": "IV",
+        "title": "Initiation Phase (Giai đoạn khởi động dự án)",
+        "subsections": [
+          {
+            "id": "ad2-sub-4-1",
+            "number": "1",
+            "title": "4.1 Initiation Phase là gì? & Cổng kiểm soát dự án"
+          },
+          {
+            "id": "ad2-sub-4-2",
+            "number": "2",
+            "title": "4.2 Key Activities của Initiation Phase (4 Hoạt động chính)"
+          },
+          {
+            "id": "ad2-sub-4-3",
+            "number": "3",
+            "title": "4.3 Feasibility Analysis – 3 khía cạnh (Three Dimensions)"
+          },
+          {
+            "id": "ad2-sub-4-4",
+            "number": "4",
+            "title": "4.4 Deliverables của Initiation Phase & Checkpoint Quiz"
+          }
+        ]
+      },
+      {
+        "id": "ad2-section-5",
+        "roman": "V",
+        "title": "Business Use Cases, Activity Diagrams & Tổng Kết Chương",
+        "subsections": [
+          {
+            "id": "ad2-sub-5-1",
+            "number": "1",
+            "title": "5.1 Business Use Case là gì? & Phân loại Business Actors"
+          },
+          {
+            "id": "ad2-sub-5-2",
+            "number": "2",
+            "title": "5.2 Business Use Case Diagram: Ký hiệu gạch chéo & Ví dụ Order Fulfillment"
+          },
+          {
+            "id": "ad2-sub-5-3",
+            "number": "3",
+            "title": "5.3 Activity Diagram: Mục đích & Bảng tra cứu ký hiệu chuẩn UML"
+          },
+          {
+            "id": "ad2-sub-5-4",
+            "number": "4",
+            "title": "5.4 Trình mô phỏng quy trình đa làn bơi & Checkpoint Quiz Mục V"
+          },
+          {
+            "id": "ad2-sub-5-5",
+            "number": "5",
+            "title": "5.5 Tổng kết toàn diện 5 trụ cột, Flashcards 8 thuật ngữ & Grand Master Exam 10 Câu"
           }
         ]
       }
@@ -2231,7 +2553,7 @@ export const subjects = {
   }
 ],
     questionsMap: {},
-    isActive: false
+    isActive: true
   },
   "dsa": {
     id: "dsa",
@@ -3742,6 +4064,1493 @@ export const subjects = {
         ]
       }
     ]
+  },
+  {
+    "id": "dsa-b8",
+    "title": "Bài 8: Binary Search Tree (BST)",
+    "description": "Cấu trúc dữ liệu cây phi tuyến tính phân cấp, bài toán khảo sát dân số (Census Problem), ADT Table 8 thao tác cốt lõi, so sánh Unsorted vs Sorted Array và động lực ra đời của BST.",
+    "sections": [
+      {
+        "id": "dsa-b8-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Bảng Cây BST Thời Gian Thực",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Phòng Thí Nghiệm Cây BST Trực Quan"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec1",
+        "roman": "I",
+        "title": "Motivation: Census Problem & ADT Table",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-1-1",
+            "number": "1.1",
+            "title": "Bài toán Khảo sát Dân số & Giả định Đơn giản hóa"
+          },
+          {
+            "id": "dsa-b8-sub-1-2",
+            "number": "1.2",
+            "title": "Khái niệm ADT Table & 8 Thao tác Cốt lõi"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec2",
+        "roman": "II",
+        "title": "Giải Census Problem bằng Mảng (Array)",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-2-1",
+            "number": "2.1",
+            "title": "Unsorted Array (Mảng chưa sắp xếp)"
+          },
+          {
+            "id": "dsa-b8-sub-2-2",
+            "number": "2.2",
+            "title": "Sorted Array (Mảng đã sắp xếp) & Chi phí Dời mảng"
+          },
+          {
+            "id": "dsa-b8-sub-2-3",
+            "number": "2.3",
+            "title": "So sánh tổng hợp Unsorted vs Sorted Array"
+          },
+          {
+            "id": "dsa-b8-sub-2-4",
+            "number": "2.4",
+            "title": "Vấn đề Hiệu năng & Động lực Học Cây BST"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec3",
+        "roman": "III",
+        "title": "So sánh trực quan O(n) vs O(log n)",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-3-1",
+            "number": "3.1",
+            "title": "So sánh O(n) vs O(log n) — Lời hứa hẹn của BST"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec4",
+        "roman": "IV",
+        "title": "Binary Search Tree — Cấu trúc & Định nghĩa",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-4-1",
+            "number": "4.1",
+            "title": "Định nghĩa Vertex & Tính chất BST Property"
+          },
+          {
+            "id": "dsa-b8-sub-4-2",
+            "number": "4.2",
+            "title": "Cây mẫu BST (Ages) — Dùng xuyên suốt bài"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec5",
+        "roman": "V",
+        "title": "Các thao tác (Operations) trên BST",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-5-1",
+            "number": "5.1",
+            "title": "Search / FindMin / FindMax"
+          },
+          {
+            "id": "dsa-b8-sub-5-2",
+            "number": "5.2",
+            "title": "Successor, Predecessor & Inorder Traversal"
+          },
+          {
+            "id": "dsa-b8-sub-5-3",
+            "number": "5.3",
+            "title": "Select / Rank (Kiến thức mở rộng)"
+          },
+          {
+            "id": "dsa-b8-sub-5-4",
+            "number": "5.4",
+            "title": "Insert & Delete/Remove (3 Trường Hợp Cốt Lõi)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec6",
+        "roman": "VI",
+        "title": "Phân tích độ phức tạp (Analysis of BST Operations)",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-6-1",
+            "number": "6.1",
+            "title": "Phân tích chiều cao O(h): Search, Min, Max, Insert"
+          },
+          {
+            "id": "dsa-b8-sub-6-2",
+            "number": "6.2",
+            "title": "Phân tích Inorder Traversal — Kỹ thuật 3 lần chạm (O(n))"
+          },
+          {
+            "id": "dsa-b8-sub-6-3",
+            "number": "6.3",
+            "title": "Chứng minh: Successor của x có tối đa 1 con"
+          },
+          {
+            "id": "dsa-b8-sub-6-4",
+            "number": "6.4",
+            "title": "Phân tích Deletion — Chi tiết 3 Case & Bảng tổng hợp"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec7",
+        "roman": "VII",
+        "title": "Tổng kết: BST so với Array & Giới hạn Plain BST",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-7-1",
+            "number": "7.1",
+            "title": "Bảng đối đầu 3 cấu trúc (Unsorted vs Sorted vs BST)"
+          },
+          {
+            "id": "dsa-b8-sub-7-2",
+            "number": "7.2",
+            "title": "Hiện tượng suy biến Worst-Case Height (h = O(n))"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b8-sec8",
+        "roman": "VIII",
+        "title": "Tóm tắt toàn bài & Dashboard Ôn thi",
+        "subsections": [
+          {
+            "id": "dsa-b8-sub-8-1",
+            "number": "8.1",
+            "title": "Master Cheat Sheet & Flashcards Ôn tập"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b9",
+    "title": "Bài 9: AVL Tree — Balancing Act",
+    "description": "Cấu trúc dữ liệu cây tìm kiếm nhị phân tự cân bằng (Adelson-Velsky & Landis), Balance Factor BF và 4 phép quay thần thánh bảo chứng O(log n).",
+    "sections": [
+      {
+        "id": "dsa-b9-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Phòng Thí Nghiệm Cây AVL Tự Cân Bằng",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Live AVL Balancing Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec1",
+        "roman": "I",
+        "title": "Binary Search Tree (BST): Ôn nhanh",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-1-1",
+            "number": "1.1",
+            "title": "Khái niệm cơ bản & BST Property"
+          },
+          {
+            "id": "dsa-b9-sub-1-2",
+            "number": "1.2",
+            "title": "Hai thuộc tính bổ sung: Height và Size"
+          },
+          {
+            "id": "dsa-b9-sub-1-3",
+            "number": "1.3",
+            "title": "Tóm tắt độ phức tạp các thao tác BST"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec2",
+        "roman": "II",
+        "title": "Tầm quan trọng của việc 'Being Balanced'",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-2-1",
+            "number": "2.1",
+            "title": "Vì sao cần quan tâm đến h?"
+          },
+          {
+            "id": "dsa-b9-sub-2-2",
+            "number": "2.2",
+            "title": "Cận dưới (Lower bound) của h"
+          },
+          {
+            "id": "dsa-b9-sub-2-3",
+            "number": "2.3",
+            "title": "Cận trên (Upper bound) của h"
+          },
+          {
+            "id": "dsa-b9-sub-2-4",
+            "number": "2.4",
+            "title": "Kết hợp hai cận: log₂(n) < h < n"
+          },
+          {
+            "id": "dsa-b9-sub-2-5",
+            "number": "2.5",
+            "title": "Ví dụ cây cân bằng hoàn hảo & Chiến lược cân bằng"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec3",
+        "roman": "III",
+        "title": "Cây AVL [Adelson-Velskii & Landis, 1962]",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-3-1",
+            "number": "3.1",
+            "title": "Step 1 — Augment (Bổ sung thông tin x.height)"
+          },
+          {
+            "id": "dsa-b9-sub-3-2",
+            "number": "3.2",
+            "title": "Step 2 — Định nghĩa Invariant (Bất biến)"
+          },
+          {
+            "id": "dsa-b9-sub-3-3",
+            "number": "3.3",
+            "title": "Step 3 — Chứng minh: Height-balanced tree thì cân bằng"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec4",
+        "roman": "IV",
+        "title": "Step 3 — Duy trì Height-Balance bằng Rotations",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-4-1",
+            "number": "4.1",
+            "title": "Vấn đề: insert có thể làm mất cân bằng"
+          },
+          {
+            "id": "dsa-b9-sub-4-2",
+            "number": "4.2",
+            "title": "Tree Rotations (Phép xoay cây)"
+          },
+          {
+            "id": "dsa-b9-sub-4-3",
+            "number": "4.3",
+            "title": "Pseudo code — O(1) Time Complexity"
+          },
+          {
+            "id": "dsa-b9-sub-4-4",
+            "number": "4.4",
+            "title": "Balance Factor & Bốn trường hợp cần Rebalance"
+          },
+          {
+            "id": "dsa-b9-sub-4-5",
+            "number": "4.5",
+            "title": "Ví dụ minh họa Rebalancing (insert(37))"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec5",
+        "roman": "V",
+        "title": "Insertion vào AVL Tree — Tóm tắt quy trình",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-5-1",
+            "number": "5.1",
+            "title": "3 Bước Insertion & Nguyên lý Trigger tối đa 1 lần"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec6",
+        "roman": "VI",
+        "title": "Deletion khỏi AVL Tree — Tóm tắt quy trình & Cascade Effect",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-6-1",
+            "number": "6.1",
+            "title": "Quy trình Deletion & So sánh đối đầu với Insertion"
+          },
+          {
+            "id": "dsa-b9-sub-6-2",
+            "number": "6.2",
+            "title": "Mô phỏng chuỗi xoay liên hoàn khi xóa đỉnh 7"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec7",
+        "roman": "VII",
+        "title": "Các loại Balanced Search Tree khác (mở rộng, không đi sâu)",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-7-1",
+            "number": "7.1",
+            "title": "Bảng tổng hợp 7 họ Balanced BST"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec8",
+        "roman": "VIII",
+        "title": "Bảng tổng kết độ phức tạp — Sau khi học Balanced BST (bBST)",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-8-1",
+            "number": "8.1",
+            "title": "Bảng đối đầu 8 thao tác: Unsorted Array vs Sorted Array vs bBST (AVL)"
+          },
+          {
+            "id": "dsa-b9-sub-8-2",
+            "number": "8.2",
+            "title": "Giải mã ô dấu '?' của NumYounger(age)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b9-sec9",
+        "roman": "IX",
+        "title": "Tổng kết chương & Các điểm dễ ra thi (Summary)",
+        "subsections": [
+          {
+            "id": "dsa-b9-sub-9-1",
+            "number": "9.1",
+            "title": "Tổng kết chương (Summary)"
+          },
+          {
+            "id": "dsa-b9-sub-9-2",
+            "number": "9.2",
+            "title": "Tổng hợp nhanh — Các điểm dễ ra thi (Top 10 Points)"
+          },
+          {
+            "id": "dsa-b9-sub-9-3",
+            "number": "9.3",
+            "title": "Bài học kế tiếp — ADT Priority Queues & Binary Heaps"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b10",
+    "title": "Bài 10: Priority Queue & Binary Max Heap",
+    "sections": [
+      {
+        "id": "dsa-b10-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Phòng Thí Nghiệm Binary Max Heap",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Live Max Heap Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec1",
+        "roman": "I",
+        "title": "ADT PriorityQueue (PQ)",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-1-1",
+            "number": "1.1",
+            "title": "Ví dụ minh họa (Tình huống Air Traffic Controller)"
+          },
+          {
+            "id": "dsa-b10-sub-1-2",
+            "number": "1.2",
+            "title": "Các phép toán cơ bản (Important Basic Operations)"
+          },
+          {
+            "id": "dsa-b10-sub-1-3",
+            "number": "1.3",
+            "title": "Một vài điều cần nhớ về Data Structure (DS)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec2",
+        "roman": "II",
+        "title": "Cài đặt PriorityQueue bằng Array (Array-Based Implementation)",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-2-1",
+            "number": "2.1",
+            "title": "Strategy 1 — (Circular) Array-Based PQ, giữ mảng luôn có thứ tự"
+          },
+          {
+            "id": "dsa-b10-sub-2-2",
+            "number": "2.2",
+            "title": "Strategy 2 — Array-Based PQ, không cần sắp xếp khi enqueue"
+          },
+          {
+            "id": "dsa-b10-sub-2-3",
+            "number": "2.3",
+            "title": "So sánh 2 chiến lược (nếu chỉ dừng ở kiến thức CS1020)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec3",
+        "roman": "III",
+        "title": "Complete Binary Tree (Cây Nhị Phân Hoàn Chỉnh)",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-3-1",
+            "number": "3.1",
+            "title": "Khái niệm Complete Binary Tree"
+          },
+          {
+            "id": "dsa-b10-sub-3-2",
+            "number": "3.2",
+            "title": "Chiều cao (Height) của Complete Binary Tree có N items"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec4",
+        "roman": "IV",
+        "title": "Lưu trữ Complete Binary Tree bằng Array",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-4-1",
+            "number": "4.1",
+            "title": "Cách lưu (1-based array)"
+          },
+          {
+            "id": "dsa-b10-sub-4-2",
+            "number": "4.2",
+            "title": "Các phép toán điều hướng (Navigation operations)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec5",
+        "roman": "V",
+        "title": "Binary Heap Property",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-5-1",
+            "number": "5.1",
+            "title": "Định nghĩa tính chất Heap (trừ root)"
+          },
+          {
+            "id": "dsa-b10-sub-5-2",
+            "number": "5.2",
+            "title": "Vị trí phần tử lớn nhất"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec6",
+        "roman": "VI",
+        "title": "Insert(v) vào Binary Max Heap",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-6-1",
+            "number": "6.1",
+            "title": "Ý tưởng"
+          },
+          {
+            "id": "dsa-b10-sub-6-2",
+            "number": "6.2",
+            "title": "Code — Insert(v)"
+          },
+          {
+            "id": "dsa-b10-sub-6-3",
+            "number": "6.3",
+            "title": "Code — ShiftUp(i)"
+          },
+          {
+            "id": "dsa-b10-sub-6-4",
+            "number": "6.4",
+            "title": "Time Complexity"
+          },
+          {
+            "id": "dsa-b10-sub-6-5",
+            "number": "6.5",
+            "title": "Ví dụ minh họa: Insert(26) (VisuAlgo demo)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec7",
+        "roman": "VII",
+        "title": "ExtractMax() — Xóa phần tử lớn nhất",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-7-1",
+            "number": "7.1",
+            "title": "Ý tưởng"
+          },
+          {
+            "id": "dsa-b10-sub-7-2",
+            "number": "7.2",
+            "title": "Code — ExtractMax()"
+          },
+          {
+            "id": "dsa-b10-sub-7-3",
+            "number": "7.3",
+            "title": "Code — ShiftDown(i)"
+          },
+          {
+            "id": "dsa-b10-sub-7-4",
+            "number": "7.4",
+            "title": "Time Complexity"
+          },
+          {
+            "id": "dsa-b10-sub-7-5",
+            "number": "7.5",
+            "title": "Ví dụ minh họa: ExtractMax() (VisuAlgo demo)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec8",
+        "roman": "VIII",
+        "title": "So sánh lại các cách cài đặt PriorityQueue",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-8-1",
+            "number": "8.1",
+            "title": "Bảng so sánh tổng kết các chiến lược cài đặt"
+          },
+          {
+            "id": "dsa-b10-sub-8-2",
+            "number": "8.2",
+            "title": "Tổng kết bài học & Flashcards cốt lõi ôn thi"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec9",
+        "roman": "IX",
+        "title": "Xây dựng Heap từ mảng (BuildHeap & HeapSort)",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-9-0",
+            "number": "9.0",
+            "title": "Ôn lại: MergeSort (câu hỏi khởi động trước khi học HeapSort)"
+          },
+          {
+            "id": "dsa-b10-sub-9-1",
+            "number": "9.1",
+            "title": "HeapSort — ý tưởng chung"
+          },
+          {
+            "id": "dsa-b10-sub-9-2",
+            "number": "9.2",
+            "title": "BuildHeap phiên bản chậm — O(n log n)"
+          },
+          {
+            "id": "dsa-b10-sub-9-3",
+            "number": "9.3",
+            "title": "BuildHeap phiên bản nhanh — O(n)"
+          },
+          {
+            "id": "dsa-b10-sub-9-4",
+            "number": "9.4",
+            "title": "Phân tích tại sao BuildHeap nhanh (Faster) là O(n)"
+          },
+          {
+            "id": "dsa-b10-sub-9-5",
+            "number": "9.5",
+            "title": "Phân tích lại HeapSort với BuildHeap O(n)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec10",
+        "roman": "X",
+        "title": "Cài đặt Java (Java Implementation)",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-10-1",
+            "number": "10.1",
+            "title": "Cấu trúc lớp Heap Java (OOP Heap Class)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b10-sec11",
+        "roman": "SUMMARY",
+        "title": "Tổng kết chương & Bảng vàng Time Complexity",
+        "subsections": [
+          {
+            "id": "dsa-b10-sub-11-1",
+            "number": "11.1",
+            "title": "Tổng kết chương (Summary) & Mini-Quiz Tốt Nghiệp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b11",
+    "title": "Bài 11: The Foundations — Union-Find, Bitmask & Graph Basic",
+    "sections": [
+      {
+        "id": "dsa-b11-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Bộ Ba Vũ Khí Nền Tảng",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Live Foundations Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b11-sec1",
+        "roman": "I",
+        "title": "Union-Find Disjoint Sets (UFDS)",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-1-1",
+            "number": "1.1",
+            "title": "Khái niệm"
+          },
+          {
+            "id": "dsa-b11-sub-1-2",
+            "number": "1.2",
+            "title": "Ví dụ với 3 tập rời nhau"
+          },
+          {
+            "id": "dsa-b11-sub-1-3",
+            "number": "1.3",
+            "title": "Cách biểu diễn (Representation) UFDS"
+          },
+          {
+            "id": "dsa-b11-sub-1-4",
+            "number": "1.4",
+            "title": "Thao tác FindSet"
+          },
+          {
+            "id": "dsa-b11-sub-1-5",
+            "number": "1.5",
+            "title": "Thao tác UnionSet"
+          },
+          {
+            "id": "dsa-b11-sub-1-6",
+            "number": "1.6",
+            "title": "Độ phức tạp (Time Complexity)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b11-sec2",
+        "roman": "II",
+        "title": "Bitmask Data Structure",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-2-1",
+            "number": "2.1",
+            "title": "Khái niệm"
+          },
+          {
+            "id": "dsa-b11-sub-2-2",
+            "number": "2.2",
+            "title": "Các phép toán bit (Bit Operations)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b11-sec3",
+        "roman": "III",
+        "title": "Giới thiệu về Graph (Đồ thị)",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-3-1",
+            "number": "3.1",
+            "title": "Thuật ngữ Graph (1) — mở rộng từ (Binary) Tree"
+          },
+          {
+            "id": "dsa-b11-sub-3-2",
+            "number": "3.2",
+            "title": "Graph là gì?"
+          },
+          {
+            "id": "dsa-b11-sub-3-3",
+            "number": "3.3",
+            "title": "Thuật ngữ Graph (2)"
+          },
+          {
+            "id": "dsa-b11-sub-3-4",
+            "number": "3.4",
+            "title": "Thuật ngữ Graph (3)"
+          },
+          {
+            "id": "dsa-b11-sub-3-5",
+            "number": "3.5",
+            "title": "Ứng dụng thực tế của Graph (theo slide)"
+          },
+          {
+            "id": "dsa-b11-sub-3-6",
+            "number": "3.6",
+            "title": "Thuật ngữ Graph (4)"
+          },
+          {
+            "id": "dsa-b11-sub-3-7",
+            "number": "3.7",
+            "title": "Thuật ngữ Graph (5)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b11-sec4",
+        "roman": "IV",
+        "title": "Ba loại Graph Data Structures",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-4-1",
+            "number": "4.1",
+            "title": "Adjacency Matrix (Ma trận kề)"
+          },
+          {
+            "id": "dsa-b11-sub-4-2",
+            "number": "4.2",
+            "title": "Adjacency List (Danh sách kề)"
+          },
+          {
+            "id": "dsa-b11-sub-4-3",
+            "number": "4.3",
+            "title": "Edge List (Danh sách cạnh)"
+          },
+          {
+            "id": "dsa-b11-sub-4-4",
+            "number": "4.4",
+            "title": "So sánh nhanh 3 Graph Data Structures"
+          },
+          {
+            "id": "dsa-b11-sub-4-5",
+            "number": "4.5",
+            "title": "Java Implementation chi tiết — class IntegerPair"
+          },
+          {
+            "id": "dsa-b11-sub-4-6",
+            "number": "4.6",
+            "title": "Vì sao chọn Vector<Vector<IntegerPair>> cho AdjList?"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b11-sec5",
+        "roman": "V",
+        "title": "Summary (Tổng kết bài học)",
+        "subsections": [
+          {
+            "id": "dsa-b11-sub-5-1",
+            "number": "5.1",
+            "title": "Roadmap Liên Kết Các Học Phần CS2010"
+          },
+          {
+            "id": "dsa-b11-sub-5-2",
+            "number": "5.2",
+            "title": "Tổng Kết Toàn Bộ Bài 11 & Mini-Quiz Tốt Nghiệp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b12",
+    "title": "Bài 12: Duyệt đồ thị (Graph Traversal) – BFS & DFS",
+    "sections": [
+      {
+        "id": "dsa-b12-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Bộ Đôi Thuật Toán Duyệt Đồ Thị",
+        "subsections": [
+          {
+            "id": "dsa-b12-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Live Traversal Dual-Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b12-sec1",
+        "roman": "I",
+        "title": "Một số ứng dụng của cấu trúc dữ liệu đồ thị",
+        "subsections": [
+          {
+            "id": "dsa-b12-sub-1-1",
+            "number": "1.1",
+            "title": "Đếm số đỉnh V (Counting V)"
+          },
+          {
+            "id": "dsa-b12-sub-1-2",
+            "number": "1.2",
+            "title": "Liệt kê các đỉnh kề của đỉnh v"
+          },
+          {
+            "id": "dsa-b12-sub-1-3",
+            "number": "1.3",
+            "title": "Đếm số cạnh E (Counting E)"
+          },
+          {
+            "id": "dsa-b12-sub-1-4",
+            "number": "1.4",
+            "title": "Kiểm tra sự tồn tại của cạnh (u, v)"
+          },
+          {
+            "id": "dsa-b12-sub-1-5",
+            "number": "1.5",
+            "title": "Trade-off giữa AdjMatrix và AdjList"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b12-sec2",
+        "roman": "II",
+        "title": "Thuật toán duyệt đồ thị (Graph Traversal Algorithms)",
+        "subsections": [
+          {
+            "id": "dsa-b12-sub-2-1",
+            "number": "2.1",
+            "title": "Ôn lại: Duyệt cây nhị phân"
+          },
+          {
+            "id": "dsa-b12-sub-2-2",
+            "number": "2.2",
+            "title": "Duyệt một đồ thị tổng quát"
+          },
+          {
+            "id": "dsa-b12-sub-2-3",
+            "number": "2.3",
+            "title": "Breadth First Search (BFS) – Ý tưởng"
+          },
+          {
+            "id": "dsa-b12-sub-2-4",
+            "number": "2.4",
+            "title": "BFS – Pseudo Code & Code Java"
+          },
+          {
+            "id": "dsa-b12-sub-2-5",
+            "number": "2.5",
+            "title": "Phân tích độ phức tạp BFS"
+          },
+          {
+            "id": "dsa-b12-sub-2-6",
+            "number": "2.6",
+            "title": "Depth First Search (DFS) – Ý tưởng"
+          },
+          {
+            "id": "dsa-b12-sub-2-7",
+            "number": "2.7",
+            "title": "DFS – Pseudo Code & Code Java"
+          },
+          {
+            "id": "dsa-b12-sub-2-8",
+            "number": "2.8",
+            "title": "Phân tích độ phức tạp DFS"
+          },
+          {
+            "id": "dsa-b12-sub-2-9",
+            "number": "2.9",
+            "title": "Thuật toán truy vết đường đi"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b12-sec3",
+        "roman": "III",
+        "title": "Một số ứng dụng của duyệt đồ thị (BFS/DFS Applications)",
+        "subsections": [
+          {
+            "id": "dsa-b12-sub-3-1",
+            "number": "3.1",
+            "title": "Kiểm tra tính liên thông (Reachability Test)"
+          },
+          {
+            "id": "dsa-b12-sub-3-2",
+            "number": "3.2",
+            "title": "Xác định thành phần liên thông (Identifying Component(s))"
+          },
+          {
+            "id": "dsa-b12-sub-3-3",
+            "number": "3.3",
+            "title": "Sắp xếp Topo (Topological Sort)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b12-sec4",
+        "roman": "IV",
+        "title": "Phần 4: So sánh và Tổng kết",
+        "subsections": [
+          {
+            "id": "dsa-b12-sub-4-1",
+            "number": "4.1",
+            "title": "Trade-off giữa DFS và BFS"
+          },
+          {
+            "id": "dsa-b12-sub-4-2",
+            "number": "4.2",
+            "title": "Tổng kết bài học & Cạm bẫy thi cử"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b13",
+    "title": "Bài 13: Cây khung nhỏ nhất (Minimum Spanning Tree - MST)",
+    "sections": [
+      {
+        "id": "dsa-b13-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan & Bộ Đôi Thuật Toán Cây Khung Nhỏ Nhất",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-0-hero",
+            "number": "0.0",
+            "title": "Tựa Đề & Live MST Dual-Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec1",
+        "roman": "I",
+        "title": "Phần 1: Ôn tập các khái niệm nền tảng (Review)",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-1-1",
+            "number": "1.1",
+            "title": "Cây (Tree) T"
+          },
+          {
+            "id": "dsa-b13-sub-1-2",
+            "number": "1.2",
+            "title": "Cây khung (Spanning Tree) ST của đồ thị liên thông G"
+          },
+          {
+            "id": "dsa-b13-sub-1-3",
+            "number": "1.3",
+            "title": "Bài toán sắp xếp (Sorting problem)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec2",
+        "roman": "II",
+        "title": "Phần 2: Ví dụ khởi động và định nghĩa MST",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-2-1",
+            "number": "2.1",
+            "title": "Ví dụ khởi động (Motivating Example)"
+          },
+          {
+            "id": "dsa-b13-sub-2-2",
+            "number": "2.2",
+            "title": "Các định nghĩa (More Definitions)"
+          },
+          {
+            "id": "dsa-b13-sub-2-3",
+            "number": "2.3",
+            "title": "Bài toán MST chuẩn (The Standard MST Problem)"
+          },
+          {
+            "id": "dsa-b13-sub-2-4",
+            "number": "2.4",
+            "title": "Ví dụ minh họa (20 vs 18)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec3",
+        "roman": "III",
+        "title": "Phần 3: Các thuật toán giải MST (MST Algorithms)",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-3-1",
+            "number": "3.1",
+            "title": "Tổng quan các thuật toán giải MST"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec4",
+        "roman": "IV",
+        "title": "Phần 4: Thuật toán Prim's (Prim's Algorithm)",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-4-1",
+            "number": "4.1",
+            "title": "Khái niệm & Cách hoạt động"
+          },
+          {
+            "id": "dsa-b13-sub-4-2",
+            "number": "4.2",
+            "title": "Cài đặt bằng Java"
+          },
+          {
+            "id": "dsa-b13-sub-4-3",
+            "number": "4.3",
+            "title": "Tại sao Prim's đúng? (Proof of Correctness)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec5",
+        "roman": "V",
+        "title": "Phần 5: Thuật toán Kruskal's (Kruskal's Algorithm)",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-5-1",
+            "number": "5.1",
+            "title": "Khái niệm & Cách hoạt động"
+          },
+          {
+            "id": "dsa-b13-sub-5-2",
+            "number": "5.2",
+            "title": "Tại sao Kruskal's đúng?"
+          },
+          {
+            "id": "dsa-b13-sub-5-3",
+            "number": "5.3",
+            "title": "Cài đặt thuật toán"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b13-sec6",
+        "roman": "VI",
+        "title": "Phần 6: So sánh và Tổng kết",
+        "subsections": [
+          {
+            "id": "dsa-b13-sub-6-1",
+            "number": "6.1",
+            "title": "Nên chọn thuật toán nào?"
+          },
+          {
+            "id": "dsa-b13-sub-6-2",
+            "number": "6.2",
+            "title": "Tổng kết bài học & Mini-Quiz"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b14",
+    "title": "Bài 14: Thuật toán Bellman-Ford",
+    "sections": [
+      {
+        "id": "dsa-b14-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan: Đường Đi Ngắn Nhất Trọng Số Âm & Chu Trình Âm",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-0-1",
+            "number": "0.0",
+            "title": "Tựa Đề & Live Bellman-Ford Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec1",
+        "roman": "I",
+        "title": "Phần 1: Bài toán Single-Source Shortest Paths (SSSP)",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-1-1",
+            "number": "1.1",
+            "title": "Ôn lại định nghĩa cơ bản"
+          },
+          {
+            "id": "dsa-b14-sub-1-2",
+            "number": "1.2",
+            "title": "(Simple) Path"
+          },
+          {
+            "id": "dsa-b14-sub-1-3",
+            "number": "1.3",
+            "title": "Shortest Path weight (Delta)"
+          },
+          {
+            "id": "dsa-b14-sub-1-4",
+            "number": "1.4",
+            "title": "Định nghĩa bài toán SSSP"
+          },
+          {
+            "id": "dsa-b14-sub-1-5",
+            "number": "1.5",
+            "title": "Cấu trúc dữ liệu phụ trợ (D[], p[])"
+          },
+          {
+            "id": "dsa-b14-sub-1-6",
+            "number": "1.6",
+            "title": "Ví dụ minh họa"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec2",
+        "roman": "II",
+        "title": "Phần 2: Cạnh trọng số âm và chu trình âm",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-2-1",
+            "number": "2.1",
+            "title": "Bản chất trọng số âm & Negative Cycle"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec3",
+        "roman": "III",
+        "title": "Phần 3: Các thuật toán giải SSSP & 2 Khối Xây Dựng",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-3-1",
+            "number": "3.1",
+            "title": "Khởi tạo initSSSP(s)"
+          },
+          {
+            "id": "dsa-b14-sub-3-2",
+            "number": "3.2",
+            "title": "Phép toán Relax(u, v, w)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec4",
+        "roman": "IV",
+        "title": "Phần 4: Ôn lại BFS – Vì sao không dùng cho SSSP",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-4-1",
+            "number": "4.1",
+            "title": "BFS trên đồ thị không trọng số"
+          },
+          {
+            "id": "dsa-b14-sub-4-2",
+            "number": "4.2",
+            "title": "Modified BFS – 3 sửa đổi đơn giản"
+          },
+          {
+            "id": "dsa-b14-sub-4-3",
+            "number": "4.3",
+            "title": "Modified BFS Pseudo Code đầy đủ"
+          },
+          {
+            "id": "dsa-b14-sub-4-4",
+            "number": "4.4",
+            "title": "Modified BFS dùng relax"
+          },
+          {
+            "id": "dsa-b14-sub-4-5",
+            "number": "4.5",
+            "title": "BFS thất bại & Phản chứng Detour"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec5",
+        "roman": "V",
+        "title": "Phần 5: Thuật toán Bellman-Ford SSSP",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-5-1",
+            "number": "5.1",
+            "title": "Khái niệm Bellman-Ford O(V·E)"
+          },
+          {
+            "id": "dsa-b14-sub-5-2",
+            "number": "5.2",
+            "title": "Pseudo code & Độ phức tạp"
+          },
+          {
+            "id": "dsa-b14-sub-5-3",
+            "number": "5.3",
+            "title": "Ví dụ chạy trên VisuAlgo (CP3 4.17)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec6",
+        "roman": "VI",
+        "title": "Phần 6: Chứng minh tính đúng đắn (Theorem & Proof)",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-6-1",
+            "number": "6.1",
+            "title": "Định lý 1: Simple Path ≤ V-1 cạnh"
+          },
+          {
+            "id": "dsa-b14-sub-6-2",
+            "number": "6.2",
+            "title": "Định lý 2: Quy nạp V-1 vòng quét"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec7",
+        "roman": "VII",
+        "title": "Phần 7: Side Effect: Dò chu trình âm",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-7-1",
+            "number": "7.1",
+            "title": "Kiểm tra pass thứ |V| & Corollary"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec8",
+        "roman": "VIII",
+        "title": "Phần 8: Cài đặt Java (Java Implementation)",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-8-1",
+            "number": "8.1",
+            "title": "Mã nguồn Java & 3 Test Cases"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b14-sec9",
+        "roman": "IX",
+        "title": "Phần 9: Tổng kết (Summary & Master SSSP)",
+        "subsections": [
+          {
+            "id": "dsa-b14-sub-9-1",
+            "number": "9.1",
+            "title": "Bức tranh toàn cảnh SSSP & 8 Quy tắc"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dsa-b15",
+    "title": "Bài 15: Thuật toán Dijkstra",
+    "sections": [
+      {
+        "id": "dsa-b15-sec0-hero",
+        "roman": "OVERVIEW",
+        "title": "Tổng Quan: Thuật Toán Dijkstra & Chiến Lược Tham Lam O((V+E)logV)",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-0-1",
+            "number": "0.0",
+            "title": "Tựa Đề & Live Dijkstra Pathfinder Workbench"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec1",
+        "roman": "I",
+        "title": "Phần 1: Dàn bài (Outline SSSP)",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-1-1",
+            "number": "1.1",
+            "title": "4 Biến thể đặc biệt của SSSP"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec2",
+        "roman": "II",
+        "title": "Phần 2: Basic Form & Variants",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-2-1",
+            "number": "2.1",
+            "title": "Triết lý thêm giả định để tăng tốc"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec3",
+        "roman": "III",
+        "title": "Phần 3: Special Case 1: Đồ thị Tree (Cây)",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-3-1",
+            "number": "3.1",
+            "title": "Đường đi duy nhất & Độ phức tạp O(V)"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec4",
+        "roman": "IV",
+        "title": "Phần 4: Special Case 2: Đồ thị Unweighted",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-4-1",
+            "number": "4.1",
+            "title": "Giải pháp O(V+E) BFS & So sánh Tree"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec5",
+        "roman": "V",
+        "title": "Phần 5: Special Case 3: Đồ thị DAG",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-5-1",
+            "number": "5.1",
+            "title": "1 Pass Relax theo Toposort & Tiền đề DP"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec6",
+        "roman": "VI",
+        "title": "Phần 6: Special Case 4a: Trọng số không âm",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-6-1",
+            "number": "6.1",
+            "title": "Bối cảnh thực tế & Nhu cầu Dijkstra"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec7",
+        "roman": "VII",
+        "title": "Phần 7: Dijkstra Phiên bản gốc",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-7-1",
+            "number": "7.1",
+            "title": "Ý tưởng chính & Tập Solved Min-Heap"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec8",
+        "roman": "VIII",
+        "title": "Phần 8: Vì sao chiến lược Greedy hoạt động?",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-8-1",
+            "number": "8.1",
+            "title": "Loop Invariant & Định lý Subpath"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec9",
+        "roman": "IX",
+        "title": "Phần 9: Phân tích độ phức tạp O((V+E)logV)",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-9-1",
+            "number": "9.1",
+            "title": "O(V log V) ExtractMin & O(E log V) DecreaseKey"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec10",
+        "roman": "X",
+        "title": "Phần 10: Dijkstra thất bại khi có cạnh âm",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-10-1",
+            "number": "10.1",
+            "title": "Phản chứng CP3 4.18 & Lỗi sai đỉnh 4"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec11",
+        "roman": "XI",
+        "title": "Phần 11: Modified Dijkstra & Lazy DS",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-11-1",
+            "number": "11.1",
+            "title": "Special Case 4b & Mã giả Modified Dijkstra"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec12",
+        "roman": "XII",
+        "title": "Phần 12: Độ phức tạp Modified Dijkstra",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-12-1",
+            "number": "12.1",
+            "title": "Chứng minh O((V+E)logV) khi có duplicate"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec13",
+        "roman": "XIII",
+        "title": "Phần 13: Giới hạn của Modified Dijkstra",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-13-1",
+            "number": "13.1",
+            "title": "Rủi ro hàm mũ & Kẹt vòng lặp vô hạn"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec14",
+        "roman": "XIV",
+        "title": "Phần 14: Cài đặt Java & 3 Kịch bản",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-14-1",
+            "number": "14.1",
+            "title": "ModifiedDijkstraDemo.java & PS5 Subtask B"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec15",
+        "roman": "XV",
+        "title": "Phần 15: Tổng kết các thuật toán SSSP",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-15-1",
+            "number": "15.1",
+            "title": "Bức tranh toàn cảnh & 8 Quy tắc vàng SSSP"
+          }
+        ]
+      },
+      {
+        "id": "dsa-b15-sec16",
+        "roman": "XVI",
+        "title": "Phần 16: Chuẩn bị Online Quiz 2 (OQ2)",
+        "subsections": [
+          {
+            "id": "dsa-b15-sub-16-1",
+            "number": "16.1",
+            "title": "Lộ trình ôn tập & 10 Flashcards 3D Master"
+          }
+        ]
+      }
+    ]
   }
 ],
     questionsMap: {},
@@ -3763,29 +5572,1083 @@ export const subjects = {
   {
     "id": "database",
     "title": "Hệ cơ sở dữ liệu",
-    "subtitle": "Cơ sở dữ liệu quan hệ, thiết kế thực thể liên kết (ERD), chuẩn hóa dữ liệu và truy vấn SQL.",
+    "subtitle": "Cơ sở dữ liệu quan hệ, thiết kế thực thể liên kết (ERD), kiến trúc 3 mức ANSI-SPARC, chuẩn hóa dữ liệu và truy vấn SQL.",
     "sections": [
+      {
+        "id": "db-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN KIẾN TRÚC CSDL & LIVE QUERY WORKBENCH",
+        "subsections": [
+          {
+            "id": "db-sub-0",
+            "number": "0",
+            "title": "Interactive Database Cyber-Vault"
+          }
+        ]
+      },
       {
         "id": "db-section-1",
         "roman": "I",
-        "title": "Mô hình cơ sở dữ liệu quan hệ",
+        "title": "CSDL là gì? Tại sao cần tới các hệ CSDL?",
         "subsections": [
           {
-            "id": "db-sub-1",
+            "id": "db-sub-1-1",
             "number": "1",
-            "title": "Thiết kế lược đồ quan hệ và chuẩn hóa"
+            "title": "Các hệ thống dùng phương pháp xử lý tập tin (File Processing System)"
+          },
+          {
+            "id": "db-sub-1-2",
+            "number": "2",
+            "title": "Kiểm tra nhanh kiến thức: Hệ thống xử lý tập tin"
           }
         ]
       },
       {
         "id": "db-section-2",
         "roman": "II",
-        "title": "Ngôn ngữ truy vấn có cấu trúc (SQL)",
+        "title": "Cơ sở dữ liệu (Database) & Hệ quản trị CSDL (DBMS)",
         "subsections": [
           {
-            "id": "db-sub-2",
+            "id": "db-sub-2-1",
             "number": "1",
-            "title": "Thao tác dữ liệu cơ bản"
+            "title": "Khái niệm, Ưu điểm & Thách thức của Cơ sở dữ liệu"
+          },
+          {
+            "id": "db-sub-2-2",
+            "number": "2",
+            "title": "Các đối tượng sử dụng CSDL (User Categories)"
+          },
+          {
+            "id": "db-sub-2-3",
+            "number": "3",
+            "title": "Kiến trúc ba mức của một hệ CSDL (Three-Level Architecture)"
+          },
+          {
+            "id": "db-sub-2-4",
+            "number": "4",
+            "title": "Hệ quản trị CSDL (DBMS) & Các chức năng cốt lõi"
+          },
+          {
+            "id": "db-sub-2-5",
+            "number": "5",
+            "title": "Kiểm tra nhanh kiến thức: CSDL, Kiến trúc 3 mức & HQTCSDL"
+          }
+        ]
+      },
+      {
+        "id": "db-section-3",
+        "roman": "III",
+        "title": "Các mô hình dữ liệu (Data Models)",
+        "subsections": [
+          {
+            "id": "db-sub-3-1",
+            "number": "1",
+            "title": "Khái niệm mô hình dữ liệu & Phân loại 3 nhóm lớn"
+          },
+          {
+            "id": "db-sub-3-2",
+            "number": "2",
+            "title": "Mô hình mạng (Network) & Mô hình phân cấp (Hierarchical)"
+          },
+          {
+            "id": "db-sub-3-3",
+            "number": "3",
+            "title": "Mô hình thực thể kết hợp (Entity-Relationship Model - ER)"
+          },
+          {
+            "id": "db-sub-3-4",
+            "number": "4",
+            "title": "Mô hình quan hệ (Relational) & Mô hình hướng đối tượng (OODM)"
+          },
+          {
+            "id": "db-sub-3-5",
+            "number": "5",
+            "title": "Kiểm tra nhanh kiến thức: Các mô hình dữ liệu"
+          }
+        ]
+      },
+      {
+        "id": "db-section-4",
+        "roman": "IV",
+        "title": "Tóm tắt kiến thức cần nhớ (Ôn thi)",
+        "subsections": [
+          {
+            "id": "db-sub-4-1",
+            "number": "1",
+            "title": "6 Trọng điểm ôn thi & Bộ thẻ ghi nhớ Flashcards"
+          },
+          {
+            "id": "db-sub-4-2",
+            "number": "2",
+            "title": "Kiểm tra tổng hợp toàn diện Chương I"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch2",
+    "title": "Chương II: Mô hình dữ liệu quan hệ",
+    "subtitle": "Nền tảng toán học của RDBMS: Lý thuyết tập hợp, Giải phẫu bảng k-bộ, Tam trụ ràng buộc toàn vẹn & Cỗ máy đại số quan hệ.",
+    "sections": [
+      {
+        "id": "db2-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN MÔ HÌNH QUAN HỆ & RELATIONAL MATRIX",
+        "subsections": [
+          {
+            "id": "db2-sub-0",
+            "number": "0",
+            "title": "Interactive Relational Cyber-Matrix"
+          }
+        ]
+      },
+      {
+        "id": "db2-section-1",
+        "roman": "I",
+        "title": "Các định nghĩa cơ bản",
+        "subsections": [
+          {
+            "id": "db2-sub-1-1",
+            "number": "1",
+            "title": "Mở đầu & Khái niệm Mô hình quan hệ"
+          },
+          {
+            "id": "db2-sub-1-2",
+            "number": "2",
+            "title": "Lược đồ quan hệ, Tân từ & Lược đồ CSDL"
+          },
+          {
+            "id": "db2-sub-1-3",
+            "number": "3",
+            "title": "Khái niệm Quan hệ & Cơ sở lý thuyết tập hợp"
+          },
+          {
+            "id": "db2-sub-1-4",
+            "number": "4",
+            "title": "Họ nhà Khóa trong Lược đồ quan hệ"
+          },
+          {
+            "id": "db2-sub-1-5",
+            "number": "5",
+            "title": "Lược đồ và Thể hiện của CSDL qua 3 mức"
+          },
+          {
+            "id": "db2-sub-1-6",
+            "number": "6",
+            "title": "Kiểm tra nhanh kiến thức: Các định nghĩa mô hình quan hệ"
+          }
+        ]
+      },
+      {
+        "id": "db2-section-2",
+        "roman": "II",
+        "title": "Đại số quan hệ (Relational Algebra)",
+        "subsections": [
+          {
+            "id": "db2-sub-2-1",
+            "number": "1",
+            "title": "Giới thiệu & Các khái niệm nền tảng"
+          },
+          {
+            "id": "db2-sub-2-2",
+            "number": "2",
+            "title": "Phép chọn (Selection — σ) & Phép chiếu (Projection — π)"
+          },
+          {
+            "id": "db2-sub-2-3",
+            "number": "3",
+            "title": "Phép tích Descartes (×) & Phép kết nối (Join — ⋈, *)"
+          },
+          {
+            "id": "db2-sub-2-4",
+            "number": "4",
+            "title": "Các phép toán tập hợp tương thích: Hợp (∪), Giao (∩), Hiệu (−)"
+          },
+          {
+            "id": "db2-sub-2-5",
+            "number": "5",
+            "title": "Phép đặt lại tên (Rename) & Phép chia (Division — ÷)"
+          },
+          {
+            "id": "db2-sub-2-6",
+            "number": "6",
+            "title": "Studio lắp ghép truy vấn ĐSQH phức hợp"
+          },
+          {
+            "id": "db2-sub-2-7",
+            "number": "7",
+            "title": "Kiểm tra nhanh kiến thức: Đại số quan hệ"
+          }
+        ]
+      },
+      {
+        "id": "db2-section-3",
+        "roman": "III",
+        "title": "Chuyển đổi ERD sang các quan hệ (Mapping ER Diagram to Relations)",
+        "subsections": [
+          {
+            "id": "db2-sub-3-1",
+            "number": "1",
+            "title": "Tổng quan quy trình 7 bước chuyển đổi ERD ➔ Quan hệ"
+          },
+          {
+            "id": "db2-sub-3-2",
+            "number": "2",
+            "title": "Bước 1: Chuyển các thực thể thường (Regular Entities)"
+          },
+          {
+            "id": "db2-sub-3-3",
+            "number": "3",
+            "title": "Bước 2: Chuyển các thực thể yếu & Bước 4: Thực thể kết hợp"
+          },
+          {
+            "id": "db2-sub-3-4",
+            "number": "4",
+            "title": "Bước 3: Chuyển các mối quan hệ hai ngôi (Binary Relationships)"
+          },
+          {
+            "id": "db2-sub-3-5",
+            "number": "5",
+            "title": "Bước 5: Quan hệ một ngôi (Đệ quy) & Bước 6: Quan hệ ba ngôi/n-ngôi"
+          },
+          {
+            "id": "db2-sub-3-6",
+            "number": "6",
+            "title": "Bước 7: Quan hệ cha/con (Supertype/Subtype) & Bảng tổng kết"
+          },
+          {
+            "id": "db2-sub-3-7",
+            "number": "7",
+            "title": "Kiểm tra nhanh kiến thức: Chuyển đổi ERD sang Quan hệ"
+          }
+        ]
+      },
+      {
+        "id": "db2-section-4",
+        "roman": "IV",
+        "title": "Bài tập chương II (Relational Algebra Exercises)",
+        "subsections": [
+          {
+            "id": "db2-sub-4-1",
+            "number": "1",
+            "title": "CSDL Mẫu Dùng Cho Bài Tập (Mục 4.1)"
+          },
+          {
+            "id": "db2-sub-4-2",
+            "number": "2",
+            "title": "Lời giải chi tiết 11 câu hỏi truy vấn ĐSQH (Mục 4.2)"
+          }
+        ]
+      },
+      {
+        "id": "db2-section-5",
+        "roman": "V",
+        "title": "Tóm tắt kiến thức cần nhớ & Master Exam Chương II",
+        "subsections": [
+          {
+            "id": "db2-sub-5-1",
+            "number": "1",
+            "title": "Dashboard Tóm tắt kiến thức ôn thi toàn diện Chương II"
+          },
+          {
+            "id": "db2-sub-5-2",
+            "number": "2",
+            "title": "Đề kiểm tra tổng hợp Master Exam Chương II"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch3",
+    "title": "Chương III: Ngôn ngữ SQL",
+    "subtitle": "Cỗ máy truy vấn dữ liệu có cấu trúc: Hệ thống kiểu dữ liệu, Định nghĩa CSDL (DDL), Thuộc tính cột đặc thù (NULL, DEFAULT, IDENTITY) & 4 Trụ cột Ràng buộc toàn vẹn.",
+    "sections": [
+      {
+        "id": "db3-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN NGÔN NGỮ SQL & CỖ MÁY TRUY VẤN",
+        "subsections": [
+          {
+            "id": "db3-sub-0",
+            "number": "0",
+            "title": "Interactive SQL Cyber-Engine"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-1",
+        "roman": "I",
+        "title": "Sơ lược về hệ QTCSDL SQL Server 2000 & Chuẩn T-SQL",
+        "subsections": [
+          {
+            "id": "db3-sub-1-1",
+            "number": "1",
+            "title": "Hệ quản trị CSDL quan hệ SQL Server 2000"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-2",
+        "roman": "II",
+        "title": "Các kiểu dữ liệu trong SQL Server",
+        "subsections": [
+          {
+            "id": "db3-sub-2-1",
+            "number": "1",
+            "title": "Hệ thống kiểu dữ liệu số chính xác & số gần đúng"
+          },
+          {
+            "id": "db3-sub-2-2",
+            "number": "2",
+            "title": "Hệ thống kiểu chuỗi ký tự chuẩn vs Chuỗi Unicode"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-3",
+        "roman": "III",
+        "title": "Câu lệnh định nghĩa dữ liệu (DDL), Cập nhật & Ràng buộc toàn vẹn",
+        "subsections": [
+          {
+            "id": "db3-sub-3-1",
+            "number": "1",
+            "title": "Tạo Cơ sở dữ liệu & Cấu trúc Bảng vật lý (CREATE DATABASE, CREATE TABLE)"
+          },
+          {
+            "id": "db3-sub-3-2",
+            "number": "2",
+            "title": "Các thuộc tính cột: NULL, DEFAULT & IDENTITY"
+          },
+          {
+            "id": "db3-sub-3-3",
+            "number": "3",
+            "title": "Bốn Ràng buộc toàn vẹn cốt lõi & Cập nhật DML"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-4",
+        "roman": "IV",
+        "title": "Câu lệnh thao tác dữ liệu (DML) — Truy vấn dữ liệu (DQL / SELECT)",
+        "subsections": [
+          {
+            "id": "db3-sub-4-1",
+            "number": "1",
+            "title": "Truy vấn dữ liệu — Khái niệm chung & CSDL Ví dụ mẫu"
+          },
+          {
+            "id": "db3-sub-4-2",
+            "number": "2",
+            "title": "Truy vấn cơ bản: SELECT, WHERE, LIKE, BETWEEN & ORDER BY"
+          },
+          {
+            "id": "db3-sub-4-3",
+            "number": "3",
+            "title": "Điều kiện kết ở mệnh đề FROM (Chuẩn JOIN SQL-92)"
+          },
+          {
+            "id": "db3-sub-4-4",
+            "number": "4",
+            "title": "Truy vấn lồng (Nested Query / Subquery: IN, ALL, ANY, EXISTS)"
+          },
+          {
+            "id": "db3-sub-4-5",
+            "number": "5",
+            "title": "Hàm kết hợp (Aggregate Functions) & Gom nhóm (GROUP BY, HAVING)"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-5",
+        "roman": "V",
+        "title": "Khung nhìn (View)",
+        "subsections": [
+          {
+            "id": "db3-sub-5-1",
+            "number": "1",
+            "title": "Bản chất Khung nhìn (View) & Cú pháp Quản trị"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-6",
+        "roman": "VI",
+        "title": "Bài tập tổng hợp Chương III (CSDL QLBanHang)",
+        "subsections": [
+          {
+            "id": "db3-sub-6-1",
+            "number": "1",
+            "title": "Lời giải chuẩn mực & Phân tích 8 Bài tập Thực hành CSDL QLBanHang"
+          }
+        ]
+      },
+      {
+        "id": "db3-section-7",
+        "roman": "VII",
+        "title": "Tổng kết toàn diện & Grand Master Exam Chương III",
+        "subsections": [
+          {
+            "id": "db3-sub-7-1",
+            "number": "1",
+            "title": "Grand Summary Dashboard: 7 Trụ Cột Tri Thức T-SQL"
+          },
+          {
+            "id": "db3-sub-7-2",
+            "number": "2",
+            "title": "Grand Master Exam: Đề Kiểm Tra Toàn Diện Chương III"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch4",
+    "title": "Chương IV: Ràng buộc toàn vẹn",
+    "sections": [
+      {
+        "id": "db4-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN RÀNG BUỘC TOÀN VẸN & CYBER SHIELD",
+        "subsections": [
+          {
+            "id": "db4-sub-0",
+            "number": "0",
+            "title": "Interactive Integrity Constraints Cyber-Shield"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-1",
+        "roman": "I",
+        "title": "CSDL Mẫu (Sample Databases)",
+        "subsections": [
+          {
+            "id": "db4-sub-1-1",
+            "number": "1",
+            "title": "Đặc tả lược đồ CSDL HSSINHVIEN & CSDL QLHANGHOA"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-2",
+        "roman": "II",
+        "title": "Khái niệm Ràng buộc toàn vẹn (RBTV)",
+        "subsections": [
+          {
+            "id": "db4-sub-2-1",
+            "number": "1",
+            "title": "Bản chất điều kiện bất biến & Quy tắc quản lý"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-3",
+        "roman": "III",
+        "title": "Các yếu tố của một Ràng buộc toàn vẹn",
+        "subsections": [
+          {
+            "id": "db4-sub-3-1",
+            "number": "1",
+            "title": "Ba yếu tố cấu thành: Điều kiện, Bối cảnh & Tầm ảnh hưởng"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-4",
+        "roman": "IV",
+        "title": "Phân loại Ràng buộc toàn vẹn",
+        "subsections": [
+          {
+            "id": "db4-sub-4-1",
+            "number": "1",
+            "title": "Phân loại theo Bối cảnh: Một Quan Hệ vs Nhiều Quan Hệ"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-5",
+        "roman": "V",
+        "title": "RBTV có bối cảnh là MỘT quan hệ",
+        "subsections": [
+          {
+            "id": "db4-sub-5-1",
+            "number": "1",
+            "title": "Miền giá trị, Liên thuộc tính & Liên bộ"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-6",
+        "roman": "VI",
+        "title": "RBTV có bối cảnh là NHIỀU quan hệ",
+        "subsections": [
+          {
+            "id": "db4-sub-6-1",
+            "number": "1",
+            "title": "Phụ thuộc tồn tại (Khóa ngoại) & 2 Dấu hiệu nhận biết"
+          },
+          {
+            "id": "db4-sub-6-2",
+            "number": "2",
+            "title": "Liên bộ liên bảng, Liên thuộc tính liên bảng & Thuộc tính tổng hợp"
+          },
+          {
+            "id": "db4-sub-6-3",
+            "number": "3",
+            "title": "RBTV do Chu trình trong đồ thị lược đồ CSDL"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-7",
+        "roman": "VII",
+        "title": "Sơ đồ tổng hợp phân loại RBTV",
+        "subsections": [
+          {
+            "id": "db4-sub-7-1",
+            "number": "1",
+            "title": "Bản đồ phân loại toàn diện 8 loại Ràng buộc toàn vẹn"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-8",
+        "roman": "VIII",
+        "title": "Bài tập tổng hợp Chương IV",
+        "subsections": [
+          {
+            "id": "db4-sub-8-1",
+            "number": "1",
+            "title": "Đồ án CSDL Nghiên cứu Đề tài Sinh viên (SINHVIEN, DETAI, SV_DT)"
+          }
+        ]
+      },
+      {
+        "id": "db4-section-9",
+        "roman": "IX",
+        "title": "Tổng kết toàn diện & Grand Master Exam Chương IV",
+        "subsections": [
+          {
+            "id": "db4-sub-9-1",
+            "number": "1",
+            "title": "Grand Summary Dashboard: 8 Trọng Điểm RBTV"
+          },
+          {
+            "id": "db4-sub-9-2",
+            "number": "2",
+            "title": "Grand Master Exam: Đề Kiểm Tra Toàn Diện Chương IV"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch5",
+    "title": "Chương V: Phụ thuộc hàm và khóa",
+    "description": "Nền tảng toán học & lý thuyết chuẩn hóa CSDL quan hệ: Phụ thuộc hàm (X -> Y), Hệ tiên đề Armstrong, Thuật toán tính Bao đóng (X+), Phân loại thuộc tính (L, R, M, D) và xác định Khóa tối tiểu.",
+    "sections": [
+      {
+        "id": "db5-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN PHỤ THUỘC HÀM, HỆ TIÊN ĐỀ ARMSTRONG & KHÓA",
+        "subsections": [
+          {
+            "id": "db5-sub-0",
+            "number": "0",
+            "title": "Interactive Functional Dependencies & Keys Engine"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-1",
+        "roman": "I",
+        "title": "Lý thuyết thiết kế CSDL (Database Design Theory)",
+        "subsections": [
+          {
+            "id": "db5-sub-1-1",
+            "number": "1",
+            "title": "Vấn đề đặt ra & 4 Dị thường thiết kế kinh điển"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-2",
+        "roman": "II",
+        "title": "Phụ thuộc hàm (Functional Dependency - FD)",
+        "subsections": [
+          {
+            "id": "db5-sub-2-1",
+            "number": "1",
+            "title": "Định nghĩa, Ví dụ & Các nhận xét quan trọng"
+          },
+          {
+            "id": "db5-sub-2-2",
+            "number": "2",
+            "title": "Hệ tiên đề Armstrong & Quy tắc suy diễn bổ sung"
+          },
+          {
+            "id": "db5-sub-2-3",
+            "number": "3",
+            "title": "Bao đóng của tập thuộc tính (Attribute Closure X+) & Thuật toán"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-3",
+        "roman": "III",
+        "title": "Khóa (Key) & Thuật toán tìm khóa",
+        "subsections": [
+          {
+            "id": "db5-sub-3-1",
+            "number": "1",
+            "title": "Định nghĩa Siêu khóa, Khóa tối tiểu, Khóa chính & Khóa dự tuyển"
+          },
+          {
+            "id": "db5-sub-3-2",
+            "number": "2",
+            "title": "Thuật toán tìm khóa: Tìm một khóa & Tìm tất cả các khóa"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-4",
+        "roman": "IV",
+        "title": "Bài tập minh họa (trong slide)",
+        "subsections": [
+          {
+            "id": "db5-sub-4-1",
+            "number": "1",
+            "title": "Đồ án bài tập lớn: Lược đồ 11 thuộc tính U = ABCDEGHIJLM"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-5",
+        "roman": "V",
+        "title": "Phủ tối thiểu của tập phụ thuộc hàm (Minimal Cover)",
+        "subsections": [
+          {
+            "id": "db5-sub-5-1",
+            "number": "1",
+            "title": "Phụ thuộc hàm tương đương, Bổ đề & Phụ thuộc đầy đủ"
+          },
+          {
+            "id": "db5-sub-5-2",
+            "number": "2",
+            "title": "Định nghĩa & Thuật toán 3 bước tìm Phủ tối thiểu"
+          }
+        ]
+      },
+      {
+        "id": "db5-section-6",
+        "roman": "VI",
+        "title": "Bài tập chương V & Tổng kết các khái niệm cốt lõi",
+        "subsections": [
+          {
+            "id": "db5-sub-6-1",
+            "number": "1",
+            "title": "Bộ 3 Bài tập lớn tổng hợp cuối chương (Bài 1, Bài 2, Bài 3)"
+          },
+          {
+            "id": "db5-sub-6-2",
+            "number": "2",
+            "title": "Grand Summary Matrix & Grand Master Exam 10 Câu"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch6",
+    "title": "Chương VI: Chuẩn hóa Cơ sở dữ liệu",
+    "description": "Lý thuyết chuẩn hóa CSDL quan hệ: Các dạng chuẩn 1NF, 2NF, 3NF, BCNF, 4NF, 5NF; Phép tách không mất thông tin (Lossless Join) & Bảo toàn phụ thuộc hàm; Thuật toán Chase (Bảng đuổi); Phân rã 3NF và BCNF.",
+    "sections": [
+      {
+        "id": "db6-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN CHUẨN HÓA CƠ SỞ DỮ LIỆU & THÁP 5 TẦNG CHUẨN HÓA",
+        "subsections": [
+          {
+            "id": "db6-sub-0",
+            "number": "0",
+            "title": "Interactive Database Normalization Engine"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-1",
+        "roman": "I",
+        "title": "Tại sao cần chuẩn hóa? (Why Normalize?)",
+        "subsections": [
+          {
+            "id": "db6-sub-1-1",
+            "number": "1",
+            "title": "Ví dụ minh họa & Các thảm họa dị thường"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-2",
+        "roman": "II",
+        "title": "Chuẩn hóa dữ liệu (Database Normalization)",
+        "subsections": [
+          {
+            "id": "db6-sub-2-1",
+            "number": "1",
+            "title": "Định nghĩa, Cấu trúc tốt & 3 Câu hỏi chuẩn hóa"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-3",
+        "roman": "III",
+        "title": "Dạng chuẩn 1 (1NF - First Normal Form)",
+        "subsections": [
+          {
+            "id": "db6-sub-3-1",
+            "number": "1",
+            "title": "Thuộc tính đơn, Định nghĩa 1NF & Cách đưa về 1NF"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-4",
+        "roman": "IV",
+        "title": "Dạng chuẩn 2 (2NF - Second Normal Form)",
+        "subsections": [
+          {
+            "id": "db6-sub-4-1",
+            "number": "1",
+            "title": "Phụ thuộc hàm đầy đủ, Thuộc tính khóa & Định nghĩa 2NF"
+          },
+          {
+            "id": "db6-sub-4-2",
+            "number": "2",
+            "title": "Định lý nhận diện nhanh, Thuật toán kiểm tra & Phân rã 2NF"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-5",
+        "roman": "V",
+        "title": "Dạng chuẩn 3 (3NF - Third Normal Form)",
+        "subsections": [
+          {
+            "id": "db6-sub-5-1",
+            "number": "1",
+            "title": "Phụ thuộc bắc cầu, Định nghĩa 3NF & Thuật toán kiểm tra"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-6",
+        "roman": "VI",
+        "title": "Dạng chuẩn Boyce-Codd (BCNF)",
+        "subsections": [
+          {
+            "id": "db6-sub-6-1",
+            "number": "1",
+            "title": "Định nghĩa BCNF, Case study R(CSZ) & 3 Mệnh đề vàng"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-7",
+        "roman": "VII",
+        "title": "Các bước chuẩn hóa (Tổng quan luồng xử lý)",
+        "subsections": [
+          {
+            "id": "db6-sub-7-1",
+            "number": "1",
+            "title": "Sơ đồ luồng 4 chặng chuẩn hóa & Sandbox toàn năng"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-8",
+        "roman": "VIII",
+        "title": "Phân rã các lược đồ quan hệ (Decomposition)",
+        "subsections": [
+          {
+            "id": "db6-sub-8-1",
+            "number": "1",
+            "title": "Kiểm tra Lossless Join (Thuật toán Chase & Delobel) & Bảo toàn FD"
+          },
+          {
+            "id": "db6-sub-8-2",
+            "number": "2",
+            "title": "Thuật toán phân rã 3NF (Tổng hợp) & Phân rã BCNF (Cây Delobel)"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-9",
+        "roman": "IX",
+        "title": "Tổng kết về chuẩn hóa CSDL (Master Summary & Trade-offs)",
+        "subsections": [
+          {
+            "id": "db6-sub-9-1",
+            "number": "1",
+            "title": "Bản chất triệt tiêu dị thường & Định lý đánh đổi cốt lõi"
+          }
+        ]
+      },
+      {
+        "id": "db6-section-10",
+        "roman": "X",
+        "title": "Bài tập chương VI & Grand Master Exam 10 Câu",
+        "subsections": [
+          {
+            "id": "db6-sub-10-1",
+            "number": "1",
+            "title": "Bộ Bài Tập Lớn Cuối Chương (Bài 1 & Bài 2)"
+          },
+          {
+            "id": "db6-sub-10-2",
+            "number": "2",
+            "title": "Grand Master Exam 10 Câu Trắc Nghiệm Tổng Hợp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch7",
+    "title": "Chương VII: Tối ưu hóa câu hỏi",
+    "description": "Lý thuyết & Kỹ thuật tối ưu hóa câu truy vấn CSDL: Quy trình xử lý truy vấn, Cây đại số quan hệ (Query Tree), Các quy tắc tương đương, Tối ưu hóa Heuristic, Ước lượng chi phí I/O (Cost-based) và Các thuật toán phép nối.",
+    "sections": [
+      {
+        "id": "db7-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN TỐI ƯU HÓA CÂU HỎI & CYBER PIPELINE HERO BANNER",
+        "subsections": [
+          {
+            "id": "db7-sub-0",
+            "number": "0",
+            "title": "Interactive Query Optimization Engine"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-1",
+        "roman": "I",
+        "title": "Đặt vấn đề & Mục tiêu tối ưu hóa",
+        "subsections": [
+          {
+            "id": "db7-sub-1-1",
+            "number": "1",
+            "title": "Mục tiêu tối ưu hóa & Ví dụ minh họa ý tưởng"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-2",
+        "roman": "II",
+        "title": "Các chiến lược tối ưu tổng quát",
+        "subsections": [
+          {
+            "id": "db7-sub-2-1",
+            "number": "1",
+            "title": "6 Nguyên tắc & Chiến lược chung khi tối ưu hóa câu hỏi"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-3",
+        "roman": "III",
+        "title": "Biểu thức tương đương (Equivalence Rules L1 - L11)",
+        "subsections": [
+          {
+            "id": "db7-sub-3-1",
+            "number": "1",
+            "title": "Khái niệm quan hệ tương đương & Quy tắc kết nối/tích Đề-các (L1, L2)"
+          },
+          {
+            "id": "db7-sub-3-2",
+            "number": "2",
+            "title": "Các quy tắc liên quan tới phép chọn & phép chiếu (L3 - L11)"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-4",
+        "roman": "IV",
+        "title": "Ví dụ minh họa (CSDL Thư viện & 2 Chặng tối ưu)",
+        "subsections": [
+          {
+            "id": "db7-sub-4-1",
+            "number": "1",
+            "title": "Cơ sở dữ liệu ví dụ Thư viện & Phân tích cây ban đầu"
+          },
+          {
+            "id": "db7-sub-4-2",
+            "number": "2",
+            "title": "2 Bước tối ưu: Đẩy phép chọn & Biến đổi phép chiếu"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-5",
+        "roman": "V",
+        "title": "Bài tập tự luyện & Giải chi tiết",
+        "subsections": [
+          {
+            "id": "db7-sub-5-1",
+            "number": "1",
+            "title": "Giải chi tiết Bài 1 & Bài 2 CSDL Thư viện"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-6",
+        "roman": "VI",
+        "title": "Tóm tắt nhanh (Ôn thi siêu tốc & 5 Nguyên tắc vàng)",
+        "subsections": [
+          {
+            "id": "db7-sub-6-1",
+            "number": "1",
+            "title": "Master Summary Dashboard & Bảng tra cứu"
+          }
+        ]
+      },
+      {
+        "id": "db7-section-7",
+        "roman": "VII",
+        "title": "Grand Master Exam 10 Câu Trắc Nghiệm Toàn Diện",
+        "subsections": [
+          {
+            "id": "db7-sub-7-1",
+            "number": "1",
+            "title": "Bài thi tổng lực Chương VII có Timer đếm ngược"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "database-ch8",
+    "title": "Chương VIII: Thủ tục lưu trữ & Bẫy sự kiện",
+    "subtitle": "Lập trình Cơ sở dữ liệu nâng cao trên nền T-SQL: Cơ chế thực thi tiền biên dịch của Stored Procedure, Hàm tự định nghĩa (UDF), Bẫy sự kiện (Trigger), Bảng logic ảo INSERTED/DELETED và Quản trị Transaction Rollback.",
+    "sections": [
+      {
+        "id": "db8-section-0",
+        "roman": "★",
+        "title": "TỔNG QUAN STORED PROCEDURE & TRIGGER CYBER-ENGINE",
+        "subsections": [
+          {
+            "id": "db8-sub-0",
+            "number": "0",
+            "title": "Interactive Stored Procedure & Trigger Cyber-Engine"
+          }
+        ]
+      },
+      {
+        "id": "db8-section-1",
+        "roman": "I",
+        "title": "Điểm chung & Sự khác biệt cốt lõi giữa Stored Procedure và Trigger",
+        "subsections": [
+          {
+            "id": "db8-sub-1-1",
+            "number": "1",
+            "title": "Điểm chung giữa Stored Procedure và Trigger (WITH ENCRYPTION & sp_helptext)"
+          },
+          {
+            "id": "db8-sub-1-2",
+            "number": "2",
+            "title": "Sự khác biệt cốt lõi: Gọi chủ động (EXEC) vs Tự động kích hoạt (Auto-fired)"
+          }
+        ]
+      },
+      {
+        "id": "db8-section-2",
+        "roman": "II",
+        "title": "Phần A — Stored Procedure (Thủ tục lưu trữ)",
+        "subsections": [
+          {
+            "id": "db8-sub-2-1",
+            "number": "1",
+            "title": "Khái niệm, Phạm vi (Scope) & 3 Loại thủ tục"
+          },
+          {
+            "id": "db8-sub-2-2",
+            "number": "2",
+            "title": "Tạo mới & Thực thi Stored Procedure (CREATE PROC & EXEC)"
+          },
+          {
+            "id": "db8-sub-2-3",
+            "number": "3",
+            "title": "Thủ tục có tham số: Tham số Đầu vào (INPUT) & Đầu ra (OUTPUT)"
+          },
+          {
+            "id": "db8-sub-2-4",
+            "number": "4",
+            "title": "Lệnh RETURN: Thoát sớm & Trả về mã trạng thái số nguyên"
+          },
+          {
+            "id": "db8-sub-2-5",
+            "number": "5",
+            "title": "Quản lý riêng của Stored Procedure: Cú pháp DROP & ALTER"
+          },
+          {
+            "id": "db8-sub-2-6",
+            "number": "6",
+            "title": "Bài kiểm tra Checkpoint 4 câu củng cố kiến thức Mục I & II"
+          }
+        ]
+      },
+      {
+        "id": "db8-section-3",
+        "roman": "III",
+        "title": "Phần B — Trigger (Bẫy sự kiện)",
+        "subsections": [
+          {
+            "id": "db8-sub-3-1",
+            "number": "1",
+            "title": "Khái niệm & 5 Kiểu Trigger"
+          },
+          {
+            "id": "db8-sub-3-2",
+            "number": "2",
+            "title": "Cú pháp Tạo mới Trigger"
+          },
+          {
+            "id": "db8-sub-3-3",
+            "number": "3",
+            "title": "Hai Bảng ảo đặc biệt trong Trigger (INSERTED & DELETED)"
+          },
+          {
+            "id": "db8-sub-3-4",
+            "number": "4",
+            "title": "Các ví dụ chuẩn mực theo từng loại Trigger (a, b, c, d)"
+          },
+          {
+            "id": "db8-sub-3-5",
+            "number": "5",
+            "title": "Instead of vs After (For) Trigger"
+          },
+          {
+            "id": "db8-sub-3-6",
+            "number": "6",
+            "title": "Quản lý riêng của Trigger (DROP, ALTER, DISABLE/ENABLE)"
+          }
+        ]
+      },
+      {
+        "id": "db8-section-4",
+        "roman": "IV",
+        "title": "Tổng kết toàn diện — So sánh Stored Procedure vs Trigger",
+        "subsections": [
+          {
+            "id": "db8-sub-4-1",
+            "number": "1",
+            "title": "Đại ma trận đối chiếu 10 tiêu chí chuẩn xác 100%"
+          },
+          {
+            "id": "db8-sub-4-2",
+            "number": "2",
+            "title": "Grand Checkpoint Quiz 5 Câu Trắc Nghiệm Toàn Chương"
           }
         ]
       }
@@ -3793,7 +6656,7 @@ export const subjects = {
   }
 ],
     questionsMap: {},
-    isActive: false
+    isActive: true
   },
   "basic-concepts": {
     id: "basic-concepts",

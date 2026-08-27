@@ -238,7 +238,7 @@ export default function InterfaceComplexNumberPlane() {
               <span className="text-cyan-400 font-bold">{formulaText}</span>
             </div>
             <div className="p-3 rounded bg-slate-900/60 border border-slate-850 leading-relaxed text-slate-350">
-              <div className="text-slate-500 mb-1">// Thế số thực tế:</div>
+              <div className="text-slate-500 mb-1">{"// Thế số thực tế:"}</div>
               <div>{substitutionText}</div>
             </div>
           </div>

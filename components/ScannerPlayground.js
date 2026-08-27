@@ -233,18 +233,18 @@ export default function ScannerPlayground() {
             <div className="text-[9px] text-stone-400 uppercase font-black tracking-wider mb-3 font-sans">Mã Nguồn Java Mô Phỏng</div>
             
             <div className="space-y-1.5 py-2">
-              <div className="text-stone-600 pl-3">// Khởi tạo lớp đọc dữ liệu</div>
+              <div className="text-stone-600 pl-3">{"// Khởi tạo lớp đọc dữ liệu"}</div>
               <div className={getCodeHighlight(1)}>
                 Scanner sc = new Scanner(System.in);
               </div>
 
               {scenario === "next_then_nextline" && (
                 <>
-                  <div className="text-stone-600 pl-3 mt-2">// Đọc từ đơn lẻ (token)</div>
+                  <div className="text-stone-600 pl-3 mt-2">{"// Đọc từ đơn lẻ (token)"}</div>
                   <div className={getCodeHighlight(2)}>
                     String s1 = sc.next();
                   </div>
-                  <div className="text-stone-600 pl-3 mt-2">// Đọc phần còn lại của dòng</div>
+                  <div className="text-stone-600 pl-3 mt-2">{"// Đọc phần còn lại của dòng"}</div>
                   <div className={getCodeHighlight(3)}>
                     String s2 = sc.nextLine();
                   </div>
@@ -253,7 +253,7 @@ export default function ScannerPlayground() {
 
               {scenario === "nextline_only" && (
                 <>
-                  <div className="text-stone-600 pl-3 mt-2">// Đọc cả dòng dữ liệu</div>
+                  <div className="text-stone-600 pl-3 mt-2">{"// Đọc cả dòng dữ liệu"}</div>
                   <div className={getCodeHighlight(2)}>
                     String s1 = sc.nextLine();
                   </div>
@@ -262,11 +262,11 @@ export default function ScannerPlayground() {
 
               {scenario === "nextint_then_nextline" && (
                 <>
-                  <div className="text-stone-600 pl-3 mt-2">// Đọc số nguyên đầu tiên</div>
+                  <div className="text-stone-600 pl-3 mt-2">{"// Đọc số nguyên đầu tiên"}</div>
                   <div className={getCodeHighlight(2)}>
                     int n = sc.nextInt();
                   </div>
-                  <div className="text-stone-600 pl-3 mt-2">// Lệnh bị trôi nếu đệm còn dư \n</div>
+                  <div className="text-stone-600 pl-3 mt-2">{"// Lệnh bị trôi nếu đệm còn dư \n"}</div>
                   <div className={getCodeHighlight(3)}>
                     String s = sc.nextLine();
                   </div>

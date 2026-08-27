@@ -249,18 +249,18 @@ export default function StringBuilderThreadSafetyVisualizer() {
             </div>
 
             <div className="p-3 rounded-xl bg-stone-900 border border-stone-850 text-white font-mono text-[9px] leading-relaxed">
-              <span className="text-stone-500 block mb-1">// Mã giả hoạt động</span>
+              <span className="text-stone-500 block mb-1">{"// Mã giả hoạt động"}</span>
               {mode === "builder" ? (
                 <div className="space-y-1">
-                  <div><span className="text-rose-450">// Chạy đa luồng song song</span></div>
+                  <div><span className="text-rose-450">{"// Chạy đa luồng song song"}</span></div>
                   <div><span className="text-purple-400">new</span> Thread(() -&gt; sb.append(<span className="text-amber-300">"A"</span>)).start();</div>
                   <div><span className="text-purple-400">new</span> Thread(() -&gt; sb.append(<span className="text-amber-300">"B"</span>)).start();</div>
                 </div>
               ) : (
                 <div className="space-y-1">
-                  <div><span className="text-emerald-500">// Giao tác đồng bộ an toàn</span></div>
+                  <div><span className="text-emerald-500">{"// Giao tác đồng bộ an toàn"}</span></div>
                   <div><span className="text-purple-400">public synchronized</span> append(...) {"{"}</div>
-                  <div className="pl-3"><span className="text-stone-450">// Chỉ 1 luồng được ghi tại 1 thời điểm</span></div>
+                  <div className="pl-3"><span className="text-stone-450">{"// Chỉ 1 luồng được ghi tại 1 thời điểm"}</span></div>
                   <div>{"}"}</div>
                 </div>
               )}

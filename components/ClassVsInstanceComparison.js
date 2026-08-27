@@ -66,7 +66,7 @@ export default function ClassVsInstanceComparison() {
                   <strong>💡 Ví dụ:</strong> Mỗi quả bóng <code>MyBall</code> có màu sắc (<code>colour</code>) và bán kính (<code>radius</code>) riêng của nó. Bóng A màu đỏ không ảnh hưởng bóng B màu xanh.
                 </div>
                 <pre className="bg-[#151413] text-stone-300 font-mono text-[11px] p-3 rounded-xl overflow-x-auto">
-                  <span className="text-stone-500">// Khai báo trong lớp MyBall</span>{"\n"}
+                  <span className="text-stone-500">{"// Khai báo trong lớp MyBall"}</span>{"\n"}
                   <span className="text-amber-500">private String</span> colour;{"\n"}
                   <span className="text-amber-500">private double</span> radius;
                 </pre>
@@ -81,8 +81,8 @@ export default function ClassVsInstanceComparison() {
                 </div>
                 <pre className="bg-[#151413] text-stone-300 font-mono text-[11px] p-3 rounded-xl overflow-x-auto">
                   MyBall ball = <span className="text-amber-500">new</span> MyBall();{"\n"}
-                  String c = ball.<span className="text-sky-400 font-bold">getColour</span>(); <span className="text-stone-500">// ĐÚNG</span>{"\n"}
-                  String err = MyBall.getColour(); <span className="text-rose-400">// LỖI BIÊN DỊCH</span>
+                  String c = ball.<span className="text-sky-400 font-bold">getColour</span>(); <span className="text-stone-500">{"// ĐÚNG"}</span>{"\n"}
+                  String err = MyBall.getColour(); <span className="text-rose-400">{"// LỖI BIÊN DỊCH"}</span>
                 </pre>
               </div>
             )}
@@ -116,7 +116,7 @@ export default function ClassVsInstanceComparison() {
                   <strong>💡 Ví dụ:</strong> Thuộc tính <code>quantity</code> dùng để đếm số lượng bóng <code>MyBall</code> được sinh ra. Khi tạo thêm bóng, biến đếm chung này tăng lên.
                 </div>
                 <pre className="bg-[#151413] text-stone-300 font-mono text-[11px] p-3 rounded-xl overflow-x-auto">
-                  <span className="text-stone-500">// Khai báo trong lớp MyBall</span>{"\n"}
+                  <span className="text-stone-500">{"// Khai báo trong lớp MyBall"}</span>{"\n"}
                   <span className="text-amber-500">private static int</span> quantity = 0;
                 </pre>
               </div>
@@ -129,10 +129,10 @@ export default function ClassVsInstanceComparison() {
                   <strong>💡 Cách gọi:</strong> Nên gọi trực tiếp thông qua tên lớp mà không cần khởi tạo đối tượng.
                 </div>
                 <pre className="bg-[#151413] text-stone-300 font-mono text-[11px] p-3 rounded-xl overflow-x-auto">
-                  <span className="text-stone-500">// Gọi trực tiếp qua tên Lớp</span>{"\n"}
-                  <span className="text-amber-500">int</span> q = MyBall.<span className="text-sky-400 font-bold">getQuantity</span>(); <span className="text-stone-500">// Khuyên dùng</span>{"\n"}
+                  <span className="text-stone-500">{"// Gọi trực tiếp qua tên Lớp"}</span>{"\n"}
+                  <span className="text-amber-500">int</span> q = MyBall.<span className="text-sky-400 font-bold">getQuantity</span>(); <span className="text-stone-500">{"// Khuyên dùng"}</span>{"\n"}
                   MyBall b = <span className="text-amber-500">new</span> MyBall();{"\n"}
-                  <span className="text-amber-500">int</span> q2 = b.getQuantity(); <span className="text-stone-500">// Chạy được nhưng cảnh báo</span>
+                  <span className="text-amber-500">int</span> q2 = b.getQuantity(); <span className="text-stone-500">{"// Chạy được nhưng cảnh báo"}</span>
                 </pre>
               </div>
             )}

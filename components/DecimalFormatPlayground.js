@@ -156,7 +156,7 @@ export default function DecimalFormatPlayground() {
             
             <div className="space-y-1 py-1 text-[11px] leading-relaxed">
               <div><span className="text-amber-550 font-bold">import</span> java.text.DecimalFormat;</div>
-              <div className="text-stone-600">// ...</div>
+              <div className="text-stone-600">{"// ..."}</div>
               <div><span className="text-amber-500">double</span> val = {numberVal};</div>
               <div>DecimalFormat df = <span className="text-amber-500">new</span> DecimalFormat(<span className="text-emerald-450">"{pattern}"</span>);</div>
               <div>String res = df.format(val);</div>

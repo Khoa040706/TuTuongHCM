@@ -76,7 +76,7 @@ export default function InheritanceLimitations() {
           <div className="lg:col-span-7 space-y-4">
             {selectedInheritance === "single" ? (
               <div className="space-y-3 animate-in fade-in duration-200">
-                <h4 className="text-xs font-black text-stone-850 uppercase tracking-wider font-mono">// CƠ CHẾ ĐƠN KẾ THỪA (SINGLE INHERITANCE)</h4>
+                <h4 className="text-xs font-black text-stone-850 uppercase tracking-wider font-mono">{"// CƠ CHẾ ĐƠN KẾ THỪA (SINGLE INHERITANCE)"}</h4>
                 <p className="text-xs text-stone-600 font-semibold leading-relaxed">
                   Một lớp con chỉ có thể kế thừa từ <strong>duy nhất một lớp cha</strong> trực tiếp. Trong Java, cú pháp <code>class B extends A</code> chỉ cho phép chỉ định một lớp sau từ khóa <code>extends</code>.
                 </p>
@@ -87,7 +87,7 @@ export default function InheritanceLimitations() {
               </div>
             ) : (
               <div className="space-y-3 animate-in fade-in duration-200">
-                <h4 className="text-xs font-black text-stone-850 uppercase tracking-wider font-mono">// VÌ SAO JAVA KHÔNG HỖ TRỢ ĐA KẾ THỪA?</h4>
+                <h4 className="text-xs font-black text-stone-850 uppercase tracking-wider font-mono">{"// VÌ SAO JAVA KHÔNG HỖ TRỢ ĐA KẾ THỪA?"}</h4>
                 <p className="text-xs text-stone-600 font-semibold leading-relaxed">
                   Nếu lớp C kế thừa đồng thời từ A và B, và cả hai lớp này đều định nghĩa phương thức <code>print()</code>. Khi ta gọi <code>c.print()</code>, trình biên dịch sẽ không biết phải ưu tiên phiên bản của A hay B. Đây được gọi là <strong>Vấn đề kim cương (Diamond Problem)</strong>.
                 </p>

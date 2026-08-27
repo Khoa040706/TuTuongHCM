@@ -16,7 +16,7 @@ export default function InheritanceObjectClass() {
         
         {/* Left Column: Visual Class Hierarchy Tree */}
         <div className="lg:col-span-5 space-y-4">
-          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// CÂY PHẢ HỆ KHỞI NGUYÊN (CLASS HIERARCHY)</span>
+          <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// CÂY PHẢ HỆ KHỞI NGUYÊN (CLASS HIERARCHY)"}</span>
           
           <div className="bg-white border border-stone-200 rounded-2xl p-4 flex flex-col items-center justify-center space-y-3 min-h-[220px]">
             {/* Object Root Class Node */}
@@ -59,7 +59,7 @@ export default function InheritanceObjectClass() {
         {/* Right Column: Interaction area for toString() & equals() overrides */}
         <div className="lg:col-span-7 space-y-4">
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// WIDGET TÙY BIẾN TOSTRING & EQUALS</span>
+            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// WIDGET TÙY BIẾN TOSTRING & EQUALS"}</span>
             
             {/* Toggle state buttons */}
             <div className="flex bg-stone-150 p-0.5 rounded-lg border">

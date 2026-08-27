@@ -118,10 +118,10 @@ export default function CompositionVsInheritanceUML() {
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-[10px] font-sans text-slate-400 font-medium">// Code mẫu Composition</span>
+                <span className="text-[10px] font-sans text-slate-400 font-medium">{"// Code mẫu Composition"}</span>
               </div>
               <span className="text-purple-400">class</span> <span className="text-emerald-300">A</span> &#123;<br />
-              &nbsp;&nbsp;<span className="text-indigo-300">B</span> b = <span className="text-purple-400">new</span> <span className="text-indigo-300">B</span>(...); <span className="text-slate-500">// A được cấu thành từ B</span><br />
+              &nbsp;&nbsp;<span className="text-indigo-300">B</span> b = <span className="text-purple-400">new</span> <span className="text-indigo-300">B</span>(...); <span className="text-slate-500">{"// A được cấu thành từ B"}</span><br />
               &#125;
             </div>
 
@@ -199,10 +199,10 @@ export default function CompositionVsInheritanceUML() {
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-[10px] font-sans text-slate-400 font-medium">// Code mẫu Inheritance</span>
+                <span className="text-[10px] font-sans text-slate-400 font-medium">{"// Code mẫu Inheritance"}</span>
               </div>
               <span className="text-indigo-400">class</span> <span className="text-emerald-300">A</span> <span className="text-indigo-400">extends</span> <span className="text-cyan-300">B</span> &#123;<br />
-              &nbsp;&nbsp;<span className="text-slate-500">// A kế thừa toàn bộ phương thức public của B</span><br />
+              &nbsp;&nbsp;<span className="text-slate-500">{"// A kế thừa toàn bộ phương thức public của B"}</span><br />
               &#125;
             </div>
 

@@ -90,7 +90,7 @@ export default function CollectionGenericsWrapperType() {
             </span>
 
             <p className="text-xs text-slate-350 leading-relaxed mb-4">
-              Do Generics chỉ hoạt động trên kiểu dữ liệu tham chiếu (Reference Type), việc khai báo kiểu nguyên thủy trực tiếp làm tham số kiểu là hoàn toàn **bị cấm**.
+              Do Generics chỉ hoạt động trên kiểu dữ liệu tham chiếu (Reference Type), việc khai báo kiểu nguyên thủy trực tiếp làm tham số kiểu là hoàn toàn <strong>bị cấm</strong>.
             </p>
 
             <div className="space-y-2.5 font-mono text-[10px]">
@@ -103,22 +103,27 @@ export default function CollectionGenericsWrapperType() {
               {/* Correct code card */}
               <div className="p-3 bg-emerald-950/20 border-l-4 border-emerald-500 rounded-r-lg text-emerald-400">
                 <div className="font-bold">✓ ĐÚNG:</div>
-                <div className="mt-1">Pair&lt;Integer&gt; twoInt = new Pair&lt;&gt;(-5, 20);</div>
+                <div className="mt-1">Pair&lt;<span className="font-bold text-emerald-300">Integer</span>&gt; twoInt = new Pair&lt;&gt;(-5, 20);</div>
               </div>
             </div>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-slate-850 flex items-center justify-between text-[11px] text-slate-400">
+            <span>Primitive ➔ Wrapper</span>
+            <span className="font-mono text-cyan-400">Autoboxing</span>
           </div>
         </div>
       </div>
 
-      {/* Flashing exam warning alert */}
-      <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 flex gap-3 items-start animate-pulse">
+      {/* Trap Alert */}
+      <div className="p-4 bg-amber-950/20 border border-amber-500/30 rounded-xl flex items-start gap-3">
         <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
         <div>
           <span className="text-xs font-bold text-amber-400 font-mono uppercase tracking-wider block">
             🚨 Cạm bẫy thi cử: Cấm dùng Primitive Type
           </span>
           <p className="text-xs text-slate-350 mt-1 leading-relaxed">
-            Đề thi trắc nghiệm lập trình Java vô cùng hay lồng ghép các khai báo kiểu nguyên thủy như <code>Pair&lt;double&gt;</code> hoặc <code>Pair&lt;char&gt;</code> để lừa học sinh. Hãy nhớ rằng Generics **chỉ chấp nhận các kiểu Class** như <code>Double</code>, <code>Character</code>...
+            Đề thi trắc nghiệm lập trình Java vô cùng hay lồng ghép các khai báo kiểu nguyên thủy như <code>Pair&lt;double&gt;</code> hoặc <code>Pair&lt;char&gt;</code> để lừa học sinh. Hãy nhớ rằng Generics <strong>chỉ chấp nhận các kiểu Class</strong> như <code>Double</code>, <code>Character</code>...
           </p>
         </div>
       </div>

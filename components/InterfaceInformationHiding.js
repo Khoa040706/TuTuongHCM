@@ -85,7 +85,7 @@ export default function InterfaceInformationHiding() {
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-850 font-mono text-xs leading-relaxed text-slate-300">
             {wallActive ? (
               <>
-                <span className="text-slate-500">// Sử dụng T đúng đặc tả</span>
+                <span className="text-slate-500">{"// Sử dụng T đúng đặc tả"}</span>
                 <br />
                 T t = new T();
                 <br />
@@ -95,7 +95,7 @@ export default function InterfaceInformationHiding() {
               </>
             ) : (
               <>
-                <span className="text-slate-500">// Can thiệp trực tiếp ruột T</span>
+                <span className="text-slate-500">{"// Can thiệp trực tiếp ruột T"}</span>
                 <br />
                 T t = new T();
                 <br />
@@ -146,7 +146,7 @@ export default function InterfaceInformationHiding() {
 
           <div className="bg-slate-950 p-3 rounded-lg border border-slate-850 font-mono text-xs leading-relaxed text-slate-300 mb-3">
             <div>
-              <span className="text-slate-500">// Cài đặt nội bộ bên trong</span>
+              <span className="text-slate-500">{"// Cài đặt nội bộ bên trong"}</span>
               <br />
               {wallActive ? (
                 <>
@@ -160,7 +160,7 @@ export default function InterfaceInformationHiding() {
                 </>
               )}
             </div>
-            <div className="mt-2 text-slate-500">// Đặc tả giao diện ra bên ngoài</div>
+            <div className="mt-2 text-slate-500">{"// Đặc tả giao diện ra bên ngoài"}</div>
             <div className="text-indigo-300">
               public void addValue(int v) &#123; ... &#125;
               <br />

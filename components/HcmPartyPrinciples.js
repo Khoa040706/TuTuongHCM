@@ -139,7 +139,7 @@ export default function HcmPartyPrinciples() {
           NHỮNG VẤN ĐỀ NGUYÊN TẮC TRONG HOẠT ĐỘNG CỦA ĐẢNG
         </h4>
         <p className="text-stone-700 text-sm md:text-base leading-relaxed text-justify">
-          Hồ Chí Minh đặc biệt nhấn mạnh các nguyên tắc cốt lõi giúp Đảng Cộng sản Việt Nam giữ vững vai trò tiền phong, giữ gìn bản chất cách mạng, luôn trong sạch, vững mạnh và liên hệ mật thiết với nhân dân. Hãy click chọn từng nguyên tắc trong **7 Thẻ Nguyên Tắc** dưới đây để xem phân tích chi tiết:
+          Hồ Chí Minh đặc biệt nhấn mạnh các nguyên tắc cốt lõi giúp Đảng Cộng sản Việt Nam giữ vững vai trò tiền phong, giữ gìn bản chất cách mạng, luôn trong sạch, vững mạnh và liên hệ mật thiết với nhân dân. Hãy click chọn từng nguyên tắc trong <strong>7 Thẻ Nguyên Tắc</strong> dưới đây để xem phân tích chi tiết:
         </p>
       </div>
 

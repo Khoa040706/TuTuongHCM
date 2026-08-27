@@ -238,7 +238,7 @@ export default function InterfaceDataAbstractionAdt() {
                     </p>
                     <div className="bg-slate-900 p-3 rounded-lg border border-slate-850 font-mono text-xs text-slate-300 space-y-1 mb-3">
                       <div>int[] items = new int[5];</div>
-                      <div>int top = 2; <span className="text-slate-500">// Chỉ số đỉnh ngăn xếp</span></div>
+                      <div>int top = 2; <span className="text-slate-500">{"// Chỉ số đỉnh ngăn xếp"}</span></div>
                     </div>
                     {/* Visual array stack */}
                     <div className="flex gap-1 justify-center max-w-xs mx-auto">
@@ -264,7 +264,7 @@ export default function InterfaceDataAbstractionAdt() {
                       Lưu trữ bằng cách móc nối các đối tượng Node nằm rải rác trên vùng nhớ Heap. Mỗi Node chứa giá trị và địa chỉ của Node tiếp theo.
                     </p>
                     <div className="bg-slate-900 p-3 rounded-lg border border-slate-850 font-mono text-xs text-slate-300 space-y-1 mb-3">
-                      <div>Node top = node3; <span className="text-slate-500">// Trỏ trực tiếp vào Node đỉnh</span></div>
+                      <div>Node top = node3; <span className="text-slate-500">{"// Trỏ trực tiếp vào Node đỉnh"}</span></div>
                       <div className="text-[10px] text-slate-400">class Node &#123; int val; Node next; &#125;</div>
                     </div>
                     {/* Visual linked list chain */}

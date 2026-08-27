@@ -333,7 +333,7 @@ class QueueLLE <E> extends TailedLinkedList <E> implements QueueADT <E> {
               <div className="p-4 overflow-x-auto leading-relaxed flex-1">
                 <pre className="text-slate-200">
                   <code>
-                    <span className="text-slate-500">// QueueLL.java</span>{"\n"}
+                    <span className="text-slate-500">{"// QueueLL.java"}</span>{"\n"}
                     <span className="text-purple-400">import</span> java.util.*;{"\n"}
                     <span className="text-purple-400">class</span> <span className="text-cyan-300 font-bold">QueueLL</span> &lt;<span className="text-amber-300">E</span>&gt; <span className="text-purple-400">implements</span> <span className="text-teal-300">QueueADT</span> &lt;<span className="text-amber-300">E</span>&gt; {"{"}{"\n"}
                     
@@ -353,7 +353,7 @@ class QueueLLE <E> extends TailedLinkedList <E> implements QueueADT <E> {
                     {/* offer line */}
                     <div className={`py-1 px-1 rounded transition-colors ${activeMethod === "offer" ? "bg-cyan-900/60 border-l-4 border-cyan-400 font-bold" : ""}`}>
                       {"    "}<span className="text-purple-400">public</span> <span className="text-purple-400">boolean</span> <span className="text-cyan-200 font-bold">offer</span>(<span className="text-amber-300">E</span> o) {"{"}{"\n"}
-                      <span className="text-cyan-400 font-bold">{"        "}list.addLast(o);</span>    <span className="text-slate-500">// isEmpty(), addLast(), getFirst(), removeFirst()</span>{"\n"}
+                      <span className="text-cyan-400 font-bold">{"        "}list.addLast(o);</span>    <span className="text-slate-500">{"// isEmpty(), addLast(), getFirst(), removeFirst()"}</span>{"\n"}
                       <span className="text-slate-500">{"                            "}// là các public method của TailedLinkedList</span>{"\n"}
                       {"        "}<span className="text-purple-400">return</span> <span className="text-emerald-400">true</span>;{"\n"}
                       {"    "}{"}"}
@@ -450,7 +450,7 @@ class QueueLLE <E> extends TailedLinkedList <E> implements QueueADT <E> {
               <div className="p-4 overflow-x-auto leading-relaxed flex-1">
                 <pre className="text-slate-200">
                   <code>
-                    <span className="text-slate-500">// QueueLLE.java</span>{"\n"}
+                    <span className="text-slate-500">{"// QueueLLE.java"}</span>{"\n"}
                     <span className="text-purple-400">import</span> java.util.*;{"\n"}
                     <span className="text-purple-400">class</span> <span className="text-indigo-300 font-bold">QueueLLE</span> &lt;<span className="text-amber-300">E</span>&gt; <span className="text-purple-400">extends</span> <span className="text-cyan-300 font-bold">TailedLinkedList</span> &lt;<span className="text-amber-300">E</span>&gt; <span className="text-purple-400">implements</span> <span className="text-indigo-300">QueueADT</span> &lt;<span className="text-amber-300">E</span>&gt; {"{"}{"\n"}
                     

@@ -5,10 +5,19 @@ import { chuong4 } from "./chuong-4";
 import { chuong5 } from "./chuong-5";
 import { chuong6 } from "./chuong-6";
 import { analysisDesignData } from "./analysis-design";
+import { adCh1Data } from "./ad-ch1";
+import { adCh2Data } from "./ad-ch2";
 import { basicAlgorithmsData } from "./basic-algorithms";
 import { basicConceptsData } from "./basic-concepts";
 import { basicGeneralData } from "./basic-general";
 import { databaseData } from "./database";
+import { databaseCh2Data } from "./database-ch2";
+import { databaseCh3Data } from "./database-ch3";
+import { databaseCh4Data } from "./database-ch4";
+import { databaseCh5Data } from "./database-ch5";
+import { databaseCh6Data } from "./database-ch6";
+import { databaseCh7Data } from "./database-ch7";
+import { databaseCh8Data } from "./database-ch8";
 import { dsaData } from "./dsa";
 import { lichSuDangMoDau } from "./lich-su-dang-mo-dau";
 import { lichSuDangChuong1 } from "./lich-su-dang";
@@ -29,8 +38,12 @@ export const lessonsData = {
   "basic-algorithms": basicAlgorithmsData,
   "oop": oopData,
   "dsa": dsaData,
-  "database": databaseData,
-  "analysis-design": analysisDesignData
+  "database": {
+    chapters: [databaseData, databaseCh2Data, databaseCh3Data, databaseCh4Data, databaseCh5Data, databaseCh6Data, databaseCh7Data, databaseCh8Data]
+  },
+  "analysis-design": {
+    chapters: [adCh1Data, adCh2Data]
+  }
 };
 
 export function findSubsectionContent(subjectId, activeSubsectionId) {

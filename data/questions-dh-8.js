@@ -1,7 +1,7 @@
-import { questionsLsdDh8Part1 } from "./questions-lsd-dh8-part1";
-import { questionsLsdDh8Part2 } from "./questions-lsd-dh8-part2";
-import { questionsLsdDh8Trick1 } from "./questions-lsd-dh8-trick1";
-import { questionsLsdDh8Trick2 } from "./questions-lsd-dh8-trick2";
+import { questionsLsdDh8Part1 } from "./questions-lsd-dh8-part1.js";
+import { questionsLsdDh8Part2 } from "./questions-lsd-dh8-part2.js";
+import { questionsLsdDh8Trick1 } from "./questions-lsd-dh8-trick1.js";
+import { questionsLsdDh8Trick2 } from "./questions-lsd-dh8-trick2.js";
 
 export const questionsDh8 = {
   chapterId: "dh-8",

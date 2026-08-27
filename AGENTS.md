@@ -34,3 +34,18 @@ This version has breaking changes — APIs, conventions, and file structure may 
   * Phải chạy script tự động (Node.js) kiểm tra 100% ma trận và độ lệch chiều dài trong câu ($\le 15$ chars) trước khi tích hợp.
   * Phải chạy lệnh `npm run build` xác nhận biên dịch thành công 100% không phát sinh lỗi.
 
+# Quy tắc Làm việc khi Tiếp nhận & Nhập Tài liệu (Workflow & Interaction Rules)
+
+- **Quy tắc Lập Kế hoạch (Mandatory Planning Protocol)**:
+  * Khi người dùng yêu cầu lên kế hoạch (Plan), Agent **BẮT BUỘC** phải tạo ngay file/artifact kế hoạch (`implementation_plan.md`) hoàn chỉnh và yêu cầu người dùng xác nhận, không được chỉ nói suông trong phần chat.
+
+- **Quy tắc Đặt Câu hỏi Khảo sát (Interactive Survey & Decision Prompting)**:
+  * Khi cần khảo sát ý kiến hay làm rõ yêu cầu, Agent **BẮT BUỘC** phải hiển thị giao diện câu hỏi trắc nghiệm tương tác (dùng công cụ `ask_question`) để người dùng dễ dàng chọn lựa.
+  * Tùy chọn đề xuất đầu tiên phải có tiền tố `(Recommended)`.
+  * Các phương án lựa chọn phải được viết chi tiết, rõ nghĩa, chuyên nghiệp, không được viết cẩu thả hay quá ngắn gọn.
+
+- **Quy tắc Thiết kế Banner Tựa đề Chương (Chapter Hero Banner Overview)**:
+  * Hero Banner tại Mục ★ (Section 0) của mỗi chương là để **Overview (Tổng quan hóa) toàn bộ kiến thức của cả chương đó**.
+  * Phải thiết kế sống động, tích hợp sơ đồ luồng/pipeline tương tác, bảng chuyển đổi góc nhìn hoặc radar quét kiến thức trọng tâm của toàn chương.
+
+

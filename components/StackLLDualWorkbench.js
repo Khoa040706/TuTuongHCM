@@ -90,7 +90,7 @@ export default function StackLLDualWorkbench() {
 
                 {/* Code Content */}
                 <div className="p-4 font-mono text-xs overflow-x-auto text-slate-200 space-y-1 leading-relaxed">
-                  <div className="text-slate-500">// StackLL.java - Dùng BasicLinkedList bên trong</div>
+                  <div className="text-slate-500">{"// StackLL.java - Dùng BasicLinkedList bên trong"}</div>
                   <div><span className="text-purple-400">import</span> java.util.*;</div>
                   <br />
                   <div>
@@ -99,7 +99,7 @@ export default function StackLLDualWorkbench() {
 
                   {/* Highlighted property */}
                   <div className="bg-purple-950/70 -mx-4 px-4 py-1 border-l-2 border-purple-400 my-1 text-purple-200">
-                    <span className="text-purple-400">private</span> <span className="text-cyan-300">BasicLinkedList</span>&lt;<span className="text-amber-300">E</span>&gt; list; <span className="text-slate-400">// vì sao private?</span>
+                    <span className="text-purple-400">private</span> <span className="text-cyan-300">BasicLinkedList</span>&lt;<span className="text-amber-300">E</span>&gt; list; <span className="text-slate-400">{"// vì sao private?"}</span>
                   </div>
 
                   <div className="pl-4">
@@ -189,7 +189,7 @@ export default function StackLLDualWorkbench() {
 
                 {/* Code Content */}
                 <div className="p-4 font-mono text-xs overflow-x-auto text-slate-200 space-y-1 leading-relaxed">
-                  <div className="text-slate-500">// StackLLE.java - Kế thừa BasicLinkedList</div>
+                  <div className="text-slate-500">{"// StackLLE.java - Kế thừa BasicLinkedList"}</div>
                   <div><span className="text-indigo-400">import</span> java.util.*;</div>
                   <br />
 
@@ -198,7 +198,7 @@ export default function StackLLDualWorkbench() {
                     <span className="text-indigo-400">class</span> <span className="text-emerald-300">StackLLE</span>&lt;<span className="text-amber-300">E</span>&gt; <span className="text-indigo-400">extends</span> <span className="text-cyan-300">BasicLinkedList</span>&lt;<span className="text-amber-300">E</span>&gt; <span className="text-indigo-400">implements</span> <span className="text-cyan-300">StackADT</span>&lt;<span className="text-amber-300">E</span>&gt; &#123;
                   </div>
 
-                  <div className="pl-4 text-slate-500">// Không cần khai báo thuộc tính list hay constructor!</div>
+                  <div className="pl-4 text-slate-500">{"// Không cần khai báo thuộc tính list hay constructor!"}</div>
                   <div className="pl-4">
                     <span className="text-indigo-400">public boolean</span> <span className="text-emerald-300">empty</span>() &#123; <span className="text-indigo-400">return</span> isEmpty(); &#125;
                   </div>

@@ -201,7 +201,7 @@ export default function StringSummaryDashboard() {
           <div className="bg-stone-900 border border-stone-850 p-4 rounded-2xl text-white">
             <span className="text-[9px] font-black text-stone-500 uppercase tracking-wider block mb-2">📌 Phân nhóm tư duy cốt lõi:</span>
             <p className="text-xs font-semibold leading-relaxed text-stone-200">
-              Nhóm **Tạo & Sửa chuỗi** bao gồm <code>String</code>, <code>StringBuffer</code>, và <code>StringBuilder</code>. Còn **<code>StringTokenizer</code>** là công cụ bổ trợ độc lập dùng để **tách nhỏ chuỗi ký tự thành các thẻ (tokens)**, hoạt động khác biệt hoàn toàn về cơ chế và mục đích sử dụng.
+              Nhóm <strong>Tạo & Sửa chuỗi</strong> bao gồm <code>String</code>, <code>StringBuffer</code>, và <code>StringBuilder</code>. Còn <strong><code>StringTokenizer</code></strong> là công cụ bổ trợ độc lập dùng để <strong>tách nhỏ chuỗi ký tự thành các thẻ (tokens)</strong>, hoạt động khác biệt hoàn toàn về cơ chế và mục đích sử dụng.
             </p>
           </div>
         </div>
@@ -274,7 +274,7 @@ export default function StringSummaryDashboard() {
                   ))}
                 </div>
               </div>
-              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">// Click để đặt thẻ</span>
+              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">{"// Click để đặt thẻ"}</span>
             </div>
 
             {/* StringBuffer Bucket */}
@@ -305,7 +305,7 @@ export default function StringSummaryDashboard() {
                   ))}
                 </div>
               </div>
-              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">// Click để đặt thẻ</span>
+              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">{"// Click để đặt thẻ"}</span>
             </div>
 
             {/* StringBuilder Bucket */}
@@ -336,7 +336,7 @@ export default function StringSummaryDashboard() {
                   ))}
                 </div>
               </div>
-              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">// Click để đặt thẻ</span>
+              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">{"// Click để đặt thẻ"}</span>
             </div>
 
             {/* StringTokenizer Bucket */}
@@ -367,7 +367,7 @@ export default function StringSummaryDashboard() {
                   ))}
                 </div>
               </div>
-              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">// Click để đặt thẻ</span>
+              <span className="text-[8px] text-stone-450 block text-right mt-2 font-mono">{"// Click để đặt thẻ"}</span>
             </div>
 
           </div>

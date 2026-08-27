@@ -101,7 +101,7 @@ export default function InheritanceQuizChaining() {
         {/* Simulator Grid */}
         <div className="border border-stone-200 rounded-2xl p-4 bg-white space-y-4">
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">// BỘ DÒ LUỒNG THỰC THI (EXECUTION TRACER)</span>
+            <span className="text-[10px] font-black text-stone-500 uppercase tracking-wider block font-mono">{"// BỘ DÒ LUỒNG THỰC THI (EXECUTION TRACER)"}</span>
             
             <div className="flex gap-2">
               <button

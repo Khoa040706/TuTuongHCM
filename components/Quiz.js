@@ -79,6 +79,58 @@ function highlightJavaCode(code) {
   return html;
 }
 
+// Helper function to parse inline markdown (code, bold, italic, math)
+const parseInlineTokens = (text, keyPrefix = "") => {
+  if (!text) return null;
+  if (typeof text !== "string") return text;
+
+  const tokenRegex = /(`[^`]+`|\*\*[^*]+\*\*|(?<!\*)\*[^*\n]+\*(?!\*)|\$[^\$]+\$)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const token = match[0];
+    const key = `${keyPrefix}-${match.index}`;
+
+    if (token.startsWith("`") && token.endsWith("`")) {
+      parts.push(
+        <code key={key} className="bg-stone-100 dark:bg-stone-800 text-[#569cd6] dark:text-[#4ec9b0] px-1.5 py-0.5 rounded font-mono text-xs font-semibold border border-stone-200 dark:border-stone-700">
+          {token.slice(1, -1)}
+        </code>
+      );
+    } else if (token.startsWith("**") && token.endsWith("**")) {
+      parts.push(
+        <strong key={key} className="font-bold text-stone-900 dark:text-stone-100">
+          {token.slice(2, -2)}
+        </strong>
+      );
+    } else if (token.startsWith("*") && token.endsWith("*")) {
+      parts.push(
+        <em key={key} className="italic text-stone-800 dark:text-stone-200">
+          {token.slice(1, -1)}
+        </em>
+      );
+    } else if (token.startsWith("$") && token.endsWith("$")) {
+      parts.push(
+        <span key={key} className="font-serif italic font-semibold text-stone-850 dark:text-stone-200 px-0.5">
+          {token.slice(1, -1)}
+        </span>
+      );
+    }
+    lastIndex = match.index + token.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+};
+
 // Helper function to render text with code blocks and inline formatting
 const renderFormattedText = (text) => {
   if (!text) return null;
@@ -139,35 +191,16 @@ const renderFormattedText = (text) => {
           );
         }
 
-        // Render plain text with inline code `code` support and preserved newlines
+        // Render plain text with inline code `code`, **bold**, *italic*, $math$ support and preserved newlines
         const lines = part.content.split("\n");
         return (
           <div key={pIdx} className="space-y-1">
             {lines.map((line, lIdx) => {
               if (!line.trim()) return <div key={lIdx} className="h-1.5" />;
               
-              const inlineRegex = /`([^`]+)`/g;
-              const inlineParts = [];
-              let inLast = 0;
-              let inMatch;
-              while ((inMatch = inlineRegex.exec(line)) !== null) {
-                if (inMatch.index > inLast) {
-                  inlineParts.push(line.slice(inLast, inMatch.index));
-                }
-                inlineParts.push(
-                  <code key={inMatch.index} className="bg-stone-100 dark:bg-stone-800 text-[#569cd6] dark:text-[#4ec9b0] px-1.5 py-0.5 rounded font-mono text-xs font-semibold border border-stone-200 dark:border-stone-700">
-                    {inMatch[1]}
-                  </code>
-                );
-                inLast = inMatch.index + inMatch[0].length;
-              }
-              if (inLast < line.length) {
-                inlineParts.push(line.slice(inLast));
-              }
-
               return (
                 <p key={lIdx} className="leading-relaxed">
-                  {inlineParts}
+                  {parseInlineTokens(line, `${pIdx}-${lIdx}`)}
                 </p>
               );
             })}
@@ -462,6 +495,39 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     return shuffled.slice(0, count);
   };
 
+  // Helper an toàn: Xáo trộn options và cập nhật chính xác answer index (phòng ngừa -1)
+  const safeShuffleQuestionOptions = (q) => {
+    const qCopy = JSON.parse(JSON.stringify(q));
+    if (!qCopy.options || !Array.isArray(qCopy.options) || qCopy.options.length === 0) {
+      return qCopy;
+    }
+
+    let originalCorrectText = "";
+    if (typeof qCopy.answer === "number" && qCopy.answer >= 0 && qCopy.answer < qCopy.options.length) {
+      originalCorrectText = qCopy.options[qCopy.answer];
+    } else if (typeof qCopy.answer === "string") {
+      const letterMap = { A: 0, B: 1, C: 2, D: 3, a: 0, b: 1, c: 2, d: 3 };
+      const mappedIdx = letterMap[qCopy.answer.trim()];
+      if (mappedIdx !== undefined && mappedIdx < qCopy.options.length) {
+        originalCorrectText = qCopy.options[mappedIdx];
+      } else {
+        originalCorrectText = qCopy.answer.trim();
+      }
+    }
+
+    qCopy.options = shuffleArray(qCopy.options);
+
+    let newAnswerIdx = qCopy.options.indexOf(originalCorrectText);
+    if (newAnswerIdx === -1 && originalCorrectText) {
+      newAnswerIdx = qCopy.options.findIndex(
+        (opt) => String(opt).trim() === String(originalCorrectText).trim()
+      );
+    }
+
+    qCopy.answer = newAnswerIdx !== -1 ? newAnswerIdx : (typeof q.answer === "number" ? Math.min(Math.max(0, q.answer), qCopy.options.length - 1) : 0);
+    return qCopy;
+  };
+
   // Sample questions based on criteria
   const sampleQuestions = (chapterId) => {
     const questionData = questionsMap[chapterId];
@@ -689,14 +755,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     // Combine
     const combined = [...sampledOutside, ...sampledInside];
 
-    // Deep copy and shuffle options
-    const finalPool = combined.map((q) => {
-      const qCopy = JSON.parse(JSON.stringify(q));
-      const originalCorrectText = qCopy.options[qCopy.answer];
-      qCopy.options = shuffleArray(qCopy.options);
-      qCopy.answer = qCopy.options.indexOf(originalCorrectText);
-      return qCopy;
-    });
+    // Deep copy and shuffle options an toàn
+    const finalPool = combined.map(safeShuffleQuestionOptions);
 
     return shuffleArray(finalPool);
   };
@@ -731,14 +791,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       combined = [...slicedOutside, ...slicedInside];
     }
 
-    // Deep copy and shuffle options
-    const finalPool = combined.map((q) => {
-      const qCopy = JSON.parse(JSON.stringify(q));
-      const originalCorrectText = qCopy.options[qCopy.answer];
-      qCopy.options = shuffleArray(qCopy.options);
-      qCopy.answer = qCopy.options.indexOf(originalCorrectText);
-      return qCopy;
-    });
+    // Deep copy and shuffle options an toàn
+    const finalPool = combined.map(safeShuffleQuestionOptions);
 
     return shuffleArray(finalPool); // Shuffle question order for the fixed set
   };
@@ -772,14 +826,8 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         }
       }
 
-      // Shuffle the trick questions and shuffle their options
-      sampled = shuffleArray(trickPool).map((q) => {
-        const qCopy = JSON.parse(JSON.stringify(q));
-        const originalCorrectText = qCopy.options[qCopy.answer];
-        qCopy.options = shuffleArray(qCopy.options);
-        qCopy.answer = qCopy.options.indexOf(originalCorrectText);
-        return qCopy;
-      });
+      // Shuffle the trick questions and safely shuffle their options
+      sampled = shuffleArray(trickPool).map(safeShuffleQuestionOptions);
 
       setIsTrickMode(true);
       setTimeLeft(3600); // 60 minutes countdown
@@ -1700,7 +1748,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                       }`}>
                         {prefix}
                       </span>
-                      <span className="flex-1 leading-relaxed">{opt}</span>
+                      <span className="flex-1 leading-relaxed">{parseInlineTokens(opt, `opt-${oIdx}`)}</span>
                     </button>
                   );
                 })}
@@ -2298,7 +2346,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
                           }`}>
                             {prefix}
                           </span>
-                          <span className="flex-1">{opt}</span>
+                          <span className="flex-1">{parseInlineTokens(opt, `rev-opt-${oIdx}`)}</span>
                         </div>
                       );
                     })}
