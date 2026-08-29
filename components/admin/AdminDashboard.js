@@ -737,7 +737,7 @@ export default function AdminDashboard({
           boxShadow: headerProgress > 0.2 ? `0 4px 20px rgba(56, 21, 14, ${headerProgress * 0.05})` : "none"
         }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1600px] w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-2 sm:px-4">
           {/* Brand Logo (Liquid Mirror Glass with 3D Golden Mascot Emblem - Cuộn lên đầu trang) */}
           <div 
             onClick={scrollToTop}
@@ -863,7 +863,7 @@ export default function AdminDashboard({
             <span>Thêm Học Viên</span>
           </button>
         }
-        className="min-h-screen scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-8 border-t border-[#E8DACB]/60 dark:border-white/10"
+        className="scroll-mt-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-6 border-t border-[#E8DACB]/60 dark:border-white/10"
         forceMount={!!forcedSections.users}
       >
         <AdminUsersTab
@@ -892,7 +892,7 @@ export default function AdminDashboard({
         headerBadge="Luật ΔL ≤ 15"
         headerBadgeColor="bg-[#FEF3C7] dark:bg-[#D97706]/15 text-[#D97706] dark:text-[#FCD34D] border border-[#FDE68A] dark:border-[#D97706]/30"
         headerDesc="Bộ quét tự động phát hiện vi phạm độ dài phương án và phân tích 50 câu bẫy vận dụng cao."
-        className="min-h-screen scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-8 border-t border-[#E8DACB]/60 dark:border-white/10"
+        className="scroll-mt-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-6 border-t border-[#E8DACB]/60 dark:border-white/10"
         forceMount={!!forcedSections.questions}
       >
         <AdminQuestionsTab allSubjects={allSubjects} />
@@ -907,7 +907,7 @@ export default function AdminDashboard({
         headerBadge="Golden Podium"
         headerBadgeColor="bg-[#FEF9C3] dark:bg-[#CA8A04]/15 text-[#CA8A04] dark:text-[#FDE047] border border-[#FEF08A] dark:border-[#CA8A04]/30"
         headerDesc="Tôn vinh thành tích học tập xuất sắc của học viên theo từng môn học và đợt thi xếp hạng."
-        className="min-h-screen scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-8 border-t border-[#E8DACB]/60 dark:border-white/10 pb-24"
+        className="scroll-mt-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-6 border-t border-[#E8DACB]/60 dark:border-white/10 pb-24"
         forceMount={!!forcedSections.leaderboard}
       >
         <AdminLeaderboardTab

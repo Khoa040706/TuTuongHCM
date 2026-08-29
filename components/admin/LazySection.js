@@ -14,7 +14,7 @@ export default function LazySection({
   initialMount = false,
   forceMount = false,
   children,
-  className = "min-h-screen scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 space-y-8"
+  className = "scroll-mt-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-6"
 }) {
   const [isMounted, setIsMounted] = useState(initialMount || forceMount);
   const containerRef = useRef(null);

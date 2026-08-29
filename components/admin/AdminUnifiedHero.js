@@ -131,21 +131,33 @@ export default function AdminUnifiedHero({
       </div>
 
       {/* ========================================================================= */}
-      {/* LỚP 1 (Z1): 2-LINE DIAGONAL TYPOGRAPHY ('STUDY' & 'MASTER' ON THE LEFT)   */}
+      {/* LỚP 1 (Z1): 2-LINE FLUID ADAPTIVE TYPOGRAPHY ('STUDY' & 'MASTER')        */}
       {/* ========================================================================= */}
       <div 
-        className="absolute top-[24%] sm:top-[22%] lg:top-[19%] left-6 sm:left-12 lg:left-20 z-10 flex flex-col items-start pointer-events-none select-none transition-transform duration-75 ease-out"
+        className="absolute left-6 sm:left-12 lg:left-16 xl:left-24 z-10 flex flex-col items-start pointer-events-none select-none transition-transform duration-75 ease-out"
         style={{
+          top: "clamp(120px, 17vh, 260px)",
           transform: parallaxY > 0 ? `translateY(${parallaxY * 0.20}px)` : "none",
           willChange: "transform",
           opacity: 0.38,
           mixBlendMode: "soft-light"
         }}
       >
-        <span className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-[102px] xl:text-[122px] tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]">
+        <span 
+          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+          style={{
+            fontSize: "clamp(3.8rem, 8.5vh, 9.5rem)"
+          }}
+        >
           STUDY
         </span>
-        <span className="font-black text-5xl sm:text-6xl md:text-7xl lg:text-[102px] xl:text-[122px] tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap ml-8 sm:ml-16 lg:ml-22 mt-1 sm:mt-2 drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]">
+        <span 
+          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap mt-1 sm:mt-2 lg:mt-3 drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+          style={{
+            fontSize: "clamp(3.8rem, 8.5vh, 9.5rem)",
+            marginLeft: "clamp(1.5rem, 4.5vw, 6.5rem)"
+          }}
+        >
           MASTER
         </span>
       </div>
@@ -192,13 +204,13 @@ export default function AdminUnifiedHero({
       {/* ========================================================================= */}
       {/* LỚP 3 (Z3): BOTTOM FLOATING METRICS & LIVE TIME (PROTECTED TEXT-SHADOW)  */}
       {/* ========================================================================= */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 px-2 sm:px-4">
+      <div className="relative z-30 w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 px-4 sm:px-8 lg:px-12">
         {/* Bên trái: 3 KPI Metric Highlights (Chữ nổi với quầng bảo vệ text-shadow sâu) */}
-        <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
+        <div className="flex items-center gap-8 sm:gap-14 lg:gap-20 xl:gap-24">
           {currentTabInfo.kpis.map((kpi, kIdx) => (
             <div key={kIdx} className="space-y-1 animate-in fade-in slide-in-from-bottom-2 duration-300">
               <div 
-                className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight flex items-center gap-2"
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight flex items-center gap-2"
                 style={{
                   textShadow: "0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.5)"
                 }}
@@ -207,7 +219,7 @@ export default function AdminUnifiedHero({
                 {kIdx === 0 && <Sparkles size={18} className="text-[#E8B86D] drop-shadow-sm" />}
               </div>
               <div 
-                className="text-xs sm:text-sm text-[#F5EBE1] font-semibold tracking-wide"
+                className="text-xs sm:text-sm lg:text-base text-[#F5EBE1] font-semibold tracking-wide"
                 style={{
                   textShadow: "0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.4)"
                 }}
@@ -226,7 +238,7 @@ export default function AdminUnifiedHero({
               textShadow: "0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.7)"
             }}
           >
-            <span className="text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center gap-1.5">
               <Clock size={14} className="text-[#E8B86D]" />
               Thời Gian Thực
             </span>
@@ -234,7 +246,7 @@ export default function AdminUnifiedHero({
           </div>
 
           <div 
-            className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-mono"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight font-mono"
             style={{
               textShadow: "0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.5)"
             }}
@@ -242,7 +254,7 @@ export default function AdminUnifiedHero({
             {timeString || "00:00:00"}
           </div>
 
-          <div className="text-[10px] sm:text-[11px] font-bold text-[#86EFAC] bg-black/40 backdrop-blur-md border border-white/20 px-3 py-0.5 rounded-full w-fit shadow-md">
+          <div className="text-[10px] sm:text-[11px] lg:text-xs font-bold text-[#86EFAC] bg-black/40 backdrop-blur-md border border-white/20 px-3 py-0.5 rounded-full w-fit shadow-md">
             ● Live Online • 60 FPS
           </div>
         </div>
