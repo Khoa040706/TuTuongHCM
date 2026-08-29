@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background-color: #FCFDFE; font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1" fill="#A8CDE2" opacity="0.45" />
+    </pattern>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#384417" flood-opacity="0.08" />
+    </filter>
+    <marker id="act-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polyline points="1,2 9,5 1,8" fill="none" stroke="#18191B" stroke-width="1.8" stroke-linecap="round" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#FCFDFE" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Title Badge -->
+  <g transform="translate(40, 35)">
+    <rect x="0" y="0" width="530" height="42" rx="10" fill="#EBF4F6" stroke="#A8CDE2" stroke-width="1.5" />
+    <circle cx="22" cy="21" r="6" fill="#8E9346" />
+    <text x="38" y="26" font-size="14" font-weight="700" fill="#18191B" letter-spacing="0.5">UML ACTIVITY BLUEPRINT: 3-SWIMLANE ATM WORKFLOW</text>
+    <text x="435" y="26" font-size="11" font-weight="600" fill="#8E9346" font-family="monospace">ISO/IEC 19505</text>
+  </g>
+
+  <!-- Legend Top Right -->
+  <g transform="translate(1220, 30)">
+    <rect x="0" y="0" width="340" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.2" filter="url(#card-shadow)" />
+    <text x="16" y="20" font-size="11" font-weight="700" fill="#384417">KÝ HIỆU LUỒNG HOẠT ĐỘNG:</text>
+    <circle cx="24" cy="36" r="6" fill="#18191B" />
+    <text x="36" y="39" font-size="10" font-weight="600" fill="#18191B">Start (●)</text>
+    <polygon points="110,36 116,30 122,36 116,42" fill="#CCD06B" stroke="#384417" stroke-width="1" />
+    <text x="128" y="39" font-size="10" font-weight="600" fill="#384417">Decision (◆)</text>
+    <line x1="220" y1="36" x2="245" y2="36" stroke="#18191B" stroke-width="4" stroke-linecap="round" />
+    <text x="252" y="39" font-size="10" font-weight="600" fill="#18191B">Fork/Join (━)</text>
+  </g>
+
+  <!-- 🏊 3 SWIMLANES -->
+  <!-- Lane 1: Khách hàng (x: 40 to 520) -->
+  <g transform="translate(40, 100)">
+    <rect width="480" height="830" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="2" filter="url(#card-shadow)" />
+    <rect width="480" height="42" rx="12" fill="#384417" />
+    <rect y="30" width="480" height="12" fill="#384417" />
+    <text x="240" y="26" font-size="14" font-weight="800" fill="#FCFDFE" text-anchor="middle">LÀN BƠI 1: KHÁCH HÀNG (CUSTOMER)</text>
+  </g>
+
+  <!-- Lane 2: Máy ATM (x: 540 to 1040) -->
+  <g transform="translate(540, 100)">
+    <rect width="500" height="830" rx="12" fill="#F4F8EB" stroke="#384417" stroke-width="2" filter="url(#card-shadow)" />
+    <rect width="500" height="42" rx="12" fill="#8E9346" />
+    <rect y="30" width="500" height="12" fill="#8E9346" />
+    <text x="250" y="26" font-size="14" font-weight="800" fill="#FCFDFE" text-anchor="middle">LÀN BƠI 2: CÂY ATM TERMINAL</text>
+  </g>
+
+  <!-- Lane 3: Máy chủ Ngân hàng (x: 1060 to 1560) -->
+  <g transform="translate(1060, 100)">
+    <rect width="500" height="830" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="2" filter="url(#card-shadow)" />
+    <rect width="500" height="42" rx="12" fill="#384417" />
+    <rect y="30" width="500" height="12" fill="#384417" />
+    <text x="250" y="26" font-size="14" font-weight="800" fill="#FCFDFE" text-anchor="middle">LÀN BƠI 3: BANK HOST SERVER</text>
+  </g>
+
+  <!-- WORKFLOW NODES & CONNECTORS -->
+  <!-- 1. Initial Node (Lane 1, y: 170) -->
+  <circle cx="280" cy="170" r="12" fill="#18191B" />
+  <line x1="280" y1="182" x2="280" y2="220" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 1: Đưa thẻ & Nhập PIN (Lane 1) -->
+  <g transform="translate(170, 220)" filter="url(#card-shadow)">
+    <rect width="220" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.8" />
+    <text x="110" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Đưa Thẻ Vào &amp; Nhập PIN</text>
+  </g>
+
+  <!-- Connector to Lane 2: Đọc thẻ -->
+  <path d="M 390 246 L 660 246" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 2: Đọc Thẻ & Gửi Xác Thực (Lane 2) -->
+  <g transform="translate(660, 220)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Đọc Thẻ &amp; Gửi Dữ Liệu PIN</text>
+  </g>
+
+  <!-- Connector to Lane 3: Kiểm tra PIN -->
+  <path d="M 900 246 L 1180 246" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 3: Xác Thực PIN (Lane 3) -->
+  <g transform="translate(1180, 220)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#F4F8EB" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Kiểm Tra &amp; Xác Thực PIN</text>
+  </g>
+
+  <!-- Decision 1: PIN Đúng? (Lane 3) -->
+  <path d="M 1300 272 L 1300 320" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <g transform="translate(1260, 320)">
+    <polygon points="40,0 80,25 40,50 0,25" fill="#CCD06B" fill-opacity="0.6" stroke="#384417" stroke-width="2" />
+  </g>
+
+  <!-- Branch PIN Sai -> Eject Card -->
+  <path d="M 1340 345 L 1480 345 L 1480 840 L 780 840" stroke="#B91C1C" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#act-arrow)" />
+  <text x="1360" y="338" font-size="11" font-weight="700" fill="#B91C1C">[PIN Sai &gt; 3 lần: Khóa thẻ]</text>
+
+  <!-- Branch PIN Đúng -> Trả về Menu (Lane 2) -->
+  <path d="M 1260 345 L 780 345 L 780 380" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <text x="1000" y="338" font-size="11" font-weight="700" fill="#384417">[PIN Hợp lệ]</text>
+
+  <!-- Action 4: Hiển thị Menu & Tùy Chọn Rút Tiền (Lane 2) -->
+  <g transform="translate(660, 380)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Hiển Thị Danh Sách Dịch Vụ</text>
+  </g>
+
+  <!-- Connector to Lane 1: Chọn số tiền -->
+  <path d="M 660 406 L 280 406 L 280 450" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 5: Chọn Số Tiền Cần Rút (Lane 1) -->
+  <g transform="translate(160, 450)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Chọn Số Tiền Cần Rút</text>
+  </g>
+
+  <!-- Connector back to Lane 3: Kiểm tra số dư -->
+  <path d="M 400 476 L 1300 476 L 1300 510" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 6: Kiểm Tra Số Dư Tài Khoản (Lane 3) -->
+  <g transform="translate(1180, 510)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#F4F8EB" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Kiểm Tra Hạn Mức &amp; Số Dư</text>
+  </g>
+
+  <!-- Decision 2: Đủ số dư? -->
+  <path d="M 1300 562 L 1300 600" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <g transform="translate(1260, 600)">
+    <polygon points="40,0 80,25 40,50 0,25" fill="#CCD06B" fill-opacity="0.6" stroke="#384417" stroke-width="2" />
+  </g>
+
+  <!-- Branch Đủ tiền -> Fork Bar song song -->
+  <path d="M 1260 625 L 890 625 L 890 660" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <text x="1000" y="618" font-size="11" font-weight="700" fill="#384417">[Số dư hợp lệ]</text>
+
+  <!-- FORK BAR: Xử lý song song (Lane 2 & Lane 3) -->
+  <line x1="680" y1="660" x2="1350" y2="660" stroke="#18191B" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Fork Branch A: Nhả tiền (Lane 2) -->
+  <path d="M 780 663 L 780 700" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <g transform="translate(660, 700)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#EBF4F6" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Khay Nhả Tiền &amp; In Bill</text>
+  </g>
+
+  <!-- Fork Branch B: Trừ tiền tài khoản (Lane 3) -->
+  <path d="M 1260 663 L 1260 700" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <g transform="translate(1140, 700)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#F4F8EB" stroke="#384417" stroke-width="1.8" />
+    <text x="120" y="31" font-size="12" font-weight="700" fill="#18191B" text-anchor="middle">Khấu Trừ Tiền &amp; Ghi Log</text>
+  </g>
+
+  <!-- JOIN BAR: Hội tụ luồng hoàn thành -->
+  <path d="M 780 752 L 780 780" stroke="#18191B" stroke-width="2" />
+  <path d="M 1260 752 L 1260 780 L 780 780" stroke="#18191B" stroke-width="2" />
+  <line x1="680" y1="780" x2="1350" y2="780" stroke="#18191B" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Connector to Lane 1: Nhận tiền -->
+  <path d="M 780 783 L 780 820 L 280 820 L 280 840" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+
+  <!-- Action 7: Nhận Tiền, Thẻ & Hóa Đơn (Lane 1) -->
+  <g transform="translate(160, 840)" filter="url(#card-shadow)">
+    <rect width="240" height="52" rx="12" fill="#CCD06B" fill-opacity="0.35" stroke="#384417" stroke-width="2" />
+    <text x="120" y="31" font-size="12" font-weight="800" fill="#18191B" text-anchor="middle">Nhận Tiền Mặt, Thẻ &amp; Bill</text>
+  </g>
+
+  <!-- Final Node (Bullseye Circle) -->
+  <path d="M 400 866 L 750 866" stroke="#18191B" stroke-width="2" marker-end="url(#act-arrow)" />
+  <g transform="translate(760, 866)">
+    <circle cx="0" cy="0" r="14" fill="#FCFDFE" stroke="#18191B" stroke-width="2.2" />
+    <circle cx="0" cy="0" r="8" fill="#18191B" />
+  </g>
+
+  <!-- Footer -->
+  <g transform="translate(40, 960)">
+    <text x="0" y="20" font-size="12" font-weight="600" fill="#8E9346">✦ Scandinavian Nature-Tech Blueprint • Phân định trách nhiệm qua 3 Làn Bơi • Xử lý song song Fork/Join</text>
+  </g>
+</svg>

@@ -78,21 +78,53 @@ body.scroll-locked {
   overflow: hidden !important;
 }
 
-/* Custom Scrollbar */
+/* ========================================================================= */
+/* PREMIUM ULTRA-SLEEK MINIMALIST SCROLLBAR (LINEAR / APPLE STYLE)           */
+/* ========================================================================= */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 122, 112, 0.35) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 6px;
-  border: 3px solid var(--bg);
+  background: rgba(140, 122, 112, 0.35);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--support);
+  background: rgba(216, 90, 56, 0.85); /* Terracotta Accent #D85A38 */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #D85A38;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* --- Scroll-driven reveal animations --- */

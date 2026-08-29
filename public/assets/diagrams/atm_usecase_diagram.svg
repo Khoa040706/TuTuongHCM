@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background-color: #FCFDFE; font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1" fill="#A8CDE2" opacity="0.45" />
+    </pattern>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#384417" flood-opacity="0.08" />
+    </filter>
+    <marker id="uc-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polyline points="1,2 9,5 1,8" fill="none" stroke="#384417" stroke-width="1.8" stroke-linecap="round" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#FCFDFE" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Title Badge -->
+  <g transform="translate(40, 35)">
+    <rect x="0" y="0" width="510" height="42" rx="10" fill="#EBF4F6" stroke="#A8CDE2" stroke-width="1.5" />
+    <circle cx="22" cy="21" r="6" fill="#8E9346" />
+    <text x="38" y="26" font-size="14" font-weight="700" fill="#18191B" letter-spacing="0.5">UML USE CASE BLUEPRINT: ATM BANKING SYSTEM</text>
+    <text x="415" y="26" font-size="11" font-weight="600" fill="#8E9346" font-family="monospace">ISO/IEC 19505</text>
+  </g>
+
+  <!-- Legend Top Right -->
+  <g transform="translate(1200, 30)">
+    <rect x="0" y="0" width="360" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.2" filter="url(#card-shadow)" />
+    <text x="16" y="20" font-size="11" font-weight="700" fill="#384417">QUY ƯỚC LIÊN KẾT CA SỬ DỤNG:</text>
+    <line x1="20" y1="36" x2="60" y2="36" stroke="#18191B" stroke-width="1.8" />
+    <text x="68" y="39" font-size="10" font-weight="600" fill="#18191B">Association</text>
+    <line x1="140" y1="36" x2="190" y2="36" stroke="#384417" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#uc-arrow)" />
+    <text x="198" y="39" font-size="10" font-weight="600" fill="#384417">«include» / «extend»</text>
+  </g>
+
+  <!-- SYSTEM BOUNDARY BOX -->
+  <g transform="translate(380, 100)">
+    <rect width="840" height="830" rx="16" fill="#FFFFFF" stroke="#384417" stroke-width="2.2" filter="url(#card-shadow)" />
+    <rect x="20" y="16" width="300" height="34" rx="8" fill="#F4F8EB" stroke="#8E9346" stroke-width="1.2" />
+    <text x="35" y="38" font-size="13" font-weight="800" fill="#384417" letter-spacing="0.5">SYSTEM: ATM Banking Terminal</text>
+  </g>
+
+  <!-- ACTORS (Left & Right) -->
+  <!-- Actor 1: Customer (Left Top) -->
+  <g transform="translate(160, 260)">
+    <circle cx="50" cy="30" r="18" fill="#FFFFFF" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="48" x2="50" y2="105" stroke="#18191B" stroke-width="2.2" />
+    <line x1="15" y1="70" x2="85" y2="70" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="20" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="80" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <rect x="-10" y="165" width="120" height="28" rx="6" fill="#384417" />
+    <text x="50" y="184" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">Customer</text>
+  </g>
+
+  <!-- Actor 2: Bank Host (Right Top) -->
+  <g transform="translate(1330, 260)">
+    <circle cx="50" cy="30" r="18" fill="#FFFFFF" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="48" x2="50" y2="105" stroke="#18191B" stroke-width="2.2" />
+    <line x1="15" y1="70" x2="85" y2="70" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="20" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="80" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <rect x="-20" y="165" width="140" height="28" rx="6" fill="#8E9346" />
+    <text x="50" y="184" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">Bank Server</text>
+  </g>
+
+  <!-- Actor 3: Technician (Left Bottom) -->
+  <g transform="translate(160, 680)">
+    <circle cx="50" cy="30" r="18" fill="#FFFFFF" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="48" x2="50" y2="105" stroke="#18191B" stroke-width="2.2" />
+    <line x1="15" y1="70" x2="85" y2="70" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="20" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <line x1="50" y1="105" x2="80" y2="155" stroke="#18191B" stroke-width="2.2" />
+    <rect x="-10" y="165" width="120" height="28" rx="6" fill="#384417" />
+    <text x="50" y="184" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">Technician</text>
+  </g>
+
+  <!-- Association Lines -->
+  <!-- Customer -> Check Balance -->
+  <line x1="260" y1="330" x2="480" y2="200" stroke="#18191B" stroke-width="1.8" />
+  <!-- Customer -> Withdraw Cash -->
+  <line x1="260" y1="340" x2="480" y2="330" stroke="#18191B" stroke-width="1.8" />
+  <!-- Customer -> Transfer Funds -->
+  <line x1="260" y1="350" x2="480" y2="460" stroke="#18191B" stroke-width="1.8" />
+  <!-- Customer -> Change PIN -->
+  <line x1="260" y1="360" x2="480" y2="590" stroke="#18191B" stroke-width="1.8" />
+
+  <!-- Bank Host -> Use Cases -->
+  <line x1="1330" y1="330" x2="720" y2="200" stroke="#18191B" stroke-width="1.8" />
+  <line x1="1330" y1="340" x2="720" y2="330" stroke="#18191B" stroke-width="1.8" />
+  <line x1="1330" y1="350" x2="720" y2="460" stroke="#18191B" stroke-width="1.8" />
+  <line x1="1330" y1="360" x2="1080" y2="330" stroke="#18191B" stroke-width="1.8" />
+
+  <!-- Technician -> Use Cases -->
+  <line x1="260" y1="750" x2="480" y2="720" stroke="#18191B" stroke-width="1.8" />
+  <line x1="260" y1="760" x2="480" y2="840" stroke="#18191B" stroke-width="1.8" />
+
+  <!-- Include / Extend Dependencies -->
+  <!-- Check Balance -> <<include>> Authenticate PIN -->
+  <path d="M 680 220 L 980 300" stroke="#384417" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#uc-arrow)" />
+  <text x="800" y="245" font-size="11" font-weight="700" fill="#384417" transform="rotate(15 800,245)">«include»</text>
+
+  <!-- Withdraw Cash -> <<include>> Authenticate PIN -->
+  <path d="M 720 330 L 950 330" stroke="#384417" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#uc-arrow)" />
+  <text x="810" y="322" font-size="11" font-weight="700" fill="#384417">«include»</text>
+
+  <!-- Transfer Funds -> <<include>> Authenticate PIN -->
+  <path d="M 680 440 L 980 360" stroke="#384417" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#uc-arrow)" />
+  <text x="800" y="415" font-size="11" font-weight="700" fill="#384417" transform="rotate(-15 800,415)">«include»</text>
+
+  <!-- Withdraw Cash -> <<extend>> Print Receipt -->
+  <path d="M 950 490 L 720 360" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#uc-arrow)" />
+  <text x="810" y="445" font-size="11" font-weight="700" fill="#8E9346" transform="rotate(-30 810,445)">«extend»</text>
+
+  <!-- USE CASE OVALS -->
+  <!-- UC 1: Check Balance -->
+  <g transform="translate(480, 160)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#F4F8EB" stroke="#384417" stroke-width="2" />
+    <text x="120" y="44" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">Kiểm Tra Số Dư (Check Balance)</text>
+  </g>
+
+  <!-- UC 2: Withdraw Cash (Primary) -->
+  <g transform="translate(480, 290)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#EBF4F6" stroke="#384417" stroke-width="2.2" />
+    <text x="120" y="44" font-size="13" font-weight="800" fill="#18191B" text-anchor="middle">Rút Tiền Mặt (Withdraw Cash)</text>
+  </g>
+
+  <!-- UC 3: Transfer Funds -->
+  <g transform="translate(480, 420)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#F4F8EB" stroke="#384417" stroke-width="2" />
+    <text x="120" y="44" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">Chuyển Khoản (Transfer Funds)</text>
+  </g>
+
+  <!-- UC 4: Change PIN -->
+  <g transform="translate(480, 550)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#F4F8EB" stroke="#384417" stroke-width="2" />
+    <text x="120" y="44" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">Đổi Mã PIN (Change PIN)</text>
+  </g>
+
+  <!-- UC 5: Authenticate PIN (Included) -->
+  <g transform="translate(950, 290)" filter="url(#card-shadow)">
+    <ellipse cx="125" cy="40" rx="125" ry="38" fill="#CCD06B" fill-opacity="0.35" stroke="#384417" stroke-width="2" stroke-dasharray="4 2" />
+    <text x="125" y="38" font-size="10" font-weight="700" fill="#8E9346" text-anchor="middle">«mandatory»</text>
+    <text x="125" y="52" font-size="13" font-weight="800" fill="#18191B" text-anchor="middle">Xác Thực Mã PIN (Verify PIN)</text>
+  </g>
+
+  <!-- UC 6: Print Receipt (Extended) -->
+  <g transform="translate(950, 460)" filter="url(#card-shadow)">
+    <ellipse cx="125" cy="40" rx="125" ry="38" fill="#FFFFFF" stroke="#8E9346" stroke-width="1.8" />
+    <text x="125" y="38" font-size="10" font-weight="700" fill="#8E9346" text-anchor="middle">«optional»</text>
+    <text x="125" y="52" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">In Hóa Đơn (Print Receipt)</text>
+  </g>
+
+  <!-- UC 7: Refill Cash (Technician) -->
+  <g transform="translate(480, 680)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#F4F8EB" stroke="#384417" stroke-width="2" />
+    <text x="120" y="44" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">Nạp Tiền Vào Khay (Refill Cash)</text>
+  </g>
+
+  <!-- UC 8: Run Diagnostics (Technician) -->
+  <g transform="translate(480, 810)" filter="url(#card-shadow)">
+    <ellipse cx="120" cy="40" rx="120" ry="38" fill="#F4F8EB" stroke="#384417" stroke-width="2" />
+    <text x="120" y="44" font-size="13" font-weight="700" fill="#18191B" text-anchor="middle">Chạy Chẩn Đoán (Diagnostics)</text>
+  </g>
+
+  <!-- Footer -->
+  <g transform="translate(40, 960)">
+    <text x="0" y="20" font-size="12" font-weight="600" fill="#8E9346">✦ Scandinavian Nature-Tech Blueprint • Black-box Functional Boundary • Quan hệ «include» và «extend» chuẩn mực</text>
+  </g>
+</svg>

@@ -1,352 +1,263 @@
 # HƯỚNG DẪN NHÀ PHÁT TRIỂN & TÀI LIỆU HỆ THỐNG STUDYMASTER ♋
 
-Hệ thống hỗ trợ học tập trực quan và ôn thi trắc nghiệm bảo mật toàn diện cho các môn Đại cương (Tư tưởng Hồ Chí Minh, Lịch sử Đảng Cộng sản Việt Nam) và các môn chuyên ngành Công nghệ thông tin.
+Hệ thống hỗ trợ học tập trực quan đa giác quan, phòng thí nghiệm thuật toán tương tác, quản trị học tập tập trung và ôn thi trắc nghiệm bảo mật toàn diện cho các môn **Lý luận chính trị** (Tư tưởng Hồ Chí Minh, Lịch sử Đảng Cộng sản Việt Nam) và các môn **Khoa học Máy tính & Công nghệ Thông tin** (DSA, CSDL, OOP Java, PTTKYC, Kiến trúc Máy tính, Mạng máy tính, v.v.).
 
 ---
 
 ## 📌 PHẦN 1: TỔNG QUAN DỰ ÁN & TRIẾT LÝ THIẾT KẾ
 
 ### 1. Tầm nhìn và Mục tiêu của StudyMaster
-*StudyMaster* ra đời với mục tiêu giải quyết "nỗi sợ" học các môn lý luận chính trị và lý thuyết chuyên ngành của sinh viên. Bằng cách kết hợp giữa công nghệ biên dịch bài đọc thời gian thực (**MDX**), hệ thống mô phỏng trực quan tương tác (**Interactive Visualizers**), và công cụ vẽ ghi chú tự do (**Drawing Canvas Overlay**), StudyMaster biến những trang giáo trình tĩnh, khô khan thành một không gian học tập sống động, lôi cuốn và thúc đẩy tư duy chủ động.
+*StudyMaster* ra đời với sứ mệnh xóa bỏ rào cản tiếp thu trong các môn lý thuyết trừu tượng và chuyên ngành phức tạp. Bằng cách kết hợp giữa kiến trúc bài giảng cấu trúc động (**Structured Curriculum Engine**), các phòng thí nghiệm mô phỏng thời gian thực (**Algorithm Labs & Diagram Studios**), công cụ vẽ ghi chú tự do vector (**SVG Drawing Canvas**), và hệ thống quản trị học tập hiện đại (**Admin Dashboard**), StudyMaster biến tài liệu học thuật tĩnh thành một không gian học tập sống động, lôi cuốn và thúc đẩy tư duy phản biện.
 
-Hệ thống được thiết kế hướng tới:
-* **Học tập đa giác quan (Multisensory Learning)**: Sinh viên vừa đọc lý thuyết chuẩn, vừa tương tác trực quan với các timeline lịch sử hoặc visualizer thuật toán, đồng thời trực tiếp ghi chép, vẽ sơ đồ tư duy ngay trên màn hình.
-* **Đánh giá năng lực thực chất (Secure Assessment)**: Cơ chế trắc nghiệm 2 tầng phân tách rõ ràng giữa việc ôn tập hàng ngày (tự do tra cứu, xem giải thích ngay lập tức) và thi thử xếp hạng (bảo mật tuyệt đối đáp án, chấm điểm phía server).
+Hệ thống được thiết kế hướng tới 4 giá trị cốt lõi:
+1. **Học tập đa giác quan (Multisensory Learning)**: Người học vừa tiếp cận giáo trình chuẩn mực, vừa tương tác trực tiếp với các mô hình dữ liệu động, vừa lắng nghe âm thanh nhịp điệu mô phỏng (Woodblock & Keypress sound effects) và vẽ sơ đồ tư duy ngay trên màn hình.
+2. **Đánh giá năng lực thực chất & Chống đoán bừa**: Cơ chế trắc nghiệm phân tách rõ rệt giữa tự luyện tập và thi xếp hạng bảo mật trên Server Actions; áp dụng luật cân bằng độ dài phương án ($\Delta L \le 15$ ký tự) để triệt tiêu việc suy đoán đáp án theo trực giác.
+3. **Phòng thí nghiệm trực quan hóa chuyên sâu**: Cung cấp các công cụ đồ họa cao cấp như Studio phân tích sơ đồ UML (Use Case, Class, Sequence, Activity) và các phòng Lab thuật toán so sánh song song.
+4. **Quản trị và Giám sát toàn diện (Admin Analytics)**: Bảng điều khiển quản trị theo dõi thời gian thực tiến độ của học viên, biểu đồ phân tích năng lực radar, kiểm định chất lượng câu hỏi tự động và trích xuất báo cáo Excel.
 
 ### 2. Triết lý Thiết kế Trải nghiệm (UX Philosophy)
-Hệ thống học tập của StudyMaster tập trung vào ba trụ cột UX cốt lõi:
-1. **Giảm thiểu xao nhãng (Cognitive Load Reduction)**: Giao diện học tập được tối ưu hóa như một "Focus Mode". Sidebar có thể ẩn/hiện linh hoạt, thanh công cụ vẽ tay nằm ở góc màn hình tinh gọn, tránh làm phiền mắt người đọc.
-2. **Khắc sâu kiến thức (Active Recall & Spaced Repetition)**: Tích hợp trực tiếp các hộp ghi nhớ nhanh và trắc nghiệm khái niệm nhỏ (`ConceptQuiz`) ngay giữa các đoạn văn để người học lập tức kiểm tra mức độ tiếp thu thông tin.
-3. **Cảm giác tiến bộ liên tục (Gamification & Feedback Loop)**: Bảng xếp hạng online (`Leaderboard`) cập nhật điểm số theo thời gian thực tạo động lực thi đua học tập giữa các học viên.
+1. **Giảm thiểu xao nhãng (Cognitive Load Reduction)**: Giao diện học tập tối ưu hóa theo chế độ *Focus Mode*. Sidebar có thể thu gọn mượt mà, thanh công cụ ghi chú nổi tinh gọn và tự động đổi màu chủ đạo (Accent Color) theo từng môn học.
+2. **Khắc sâu kiến thức (Active Recall & Spaced Repetition)**: Đặt các hộp ghi nhớ nhanh (Mnemonic Box), hộp tóm tắt (Summary Box), và trắc nghiệm khái niệm nhỏ (`ConceptQuiz`) ngay giữa các đoạn văn để người học lập tức củng cố kiến thức.
+3. **Động lực tiến bộ liên tục (Gamification & Real-time Ranking)**: Bảng xếp hạng trực tuyến vinh danh Top học viên, huy hiệu thành tích và hệ thống âm thanh phản hồi tức thì tạo cảm giác hứng khởi trong quá trình ôn luyện.
 
 ---
 
 ## 📌 PHẦN 2: KIẾN TRÚC HỆ THỐNG & STACK CÔNG NGHỆ
 
-Hệ thống được xây dựng trên một nền tảng công nghệ hiện đại, đảm bảo hiệu năng tải trang nhanh, render mượt mà các hiệu ứng phức tạp và bảo mật dữ liệu ở mức cao.
+Hệ thống áp dụng kiến trúc **Single Page App (SPA) với Central State Orchestrator** tối ưu hiệu năng tải trang, bảo mật bài thi và kết nối mượt mà giữa các tầng dữ liệu:
 
 ```
-┌────────────────────────────────────────────────────────┐
-│                      STUDYMASTER                       │
-│                     (Client Side)                      │
-│                                                        │
-│  ┌─────────────────┐ ┌─────────────────┐ ┌──────────┐  │
-│  │   UI Components │ │ Drawing Canvas  │ │ MDX View │  │
-│  └────────┬────────┘ └────────┬────────┘ └────┬─────┘  │
-└───────────┼───────────────────┼───────────────┼────────┘
-            │                   │               │
-            │ (Server Actions)  │               │
-┌───────────▼───────────────────▼───────────────▼────────┐
-│                   NEXT.JS 16 SERVER                    │
-│                                                        │
-│  ┌─────────────────────────┐ ┌──────────────────────┐  │
-│  │      MDX Compiler       │ │ Secure Grade Action  │  │
-│  │ (gray-matter & remote)  │ │ (Grading Logic)      │  │
-│  └────────────┬────────────┘ └──────────┬───────────┘  │
-└───────────────┼─────────────────────────┼──────────────┘
-                │                         │ (SDK)
-                │ (File Reads)            ▼
-        ┌───────▼───────┐         ┌───────────────┐
-        │ MDX Curriculum│         │ Firebase Cloud│
-        │    Files      │         │   Firestore   │
-        └───────────────┘         └───────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                              STUDYMASTER                               │
+│                             (Client Side)                              │
+│                                                                        │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────────┐  │
+│  │  ContentRenderer │  │  Drawing Canvas  │  │   Admin Dashboard    │  │
+│  │ & 820+ Visualizer│  │   (SVG Vector)   │  │ (12 Sub-components)  │  │
+│  └────────┬─────────┘  └────────┬─────────┘  └──────────┬───────────┘  │
+└───────────┼─────────────────────┼───────────────────────┼──────────────┘
+            │                     │                       │
+            │ (Data Query)        │                       │ (Data Flow)
+┌───────────▼─────────────────────▼───────────────────────▼──────────────┐
+│                    STRUCTURED LESSONS & QUIZ ENGINE                    │
+│                                                                        │
+│  ┌──────────────────────────┐  ┌────────────────────────────────────┐  │
+│  │    data/lessons.js       │  │        Secure Quiz Engine          │  │
+│  │  (Structured JS Modules) │  │  (Server Action app/actions/quiz)  │  │
+│  └────────────┬─────────────┘  └─────────────────┬──────────────────┘  │
+└───────────────┼──────────────────────────────────┼─────────────────────┘
+                │                                  │ (SDK)
+                │ (Module Imports)                 ▼
+        ┌───────▼────────┐               ┌───────────────────┐
+        │  Curriculum &  │               │  Firebase Cloud   │
+        │ Question Sets  │               │     Firestore     │
+        └────────────────┘               └───────────────────┘
 ```
 
-### 1. Stack Công nghệ chi tiết
-* **Framework**: **Next.js 16.2.9 (App Router)**.
-  * Tận dụng tối đa Server Components để giảm kích thước mã nguồn JavaScript gửi tới Client.
-  * Sử dụng **Server Actions** làm cầu nối giao tiếp bảo mật giữa Client và Server mà không cần xây dựng API Route REST truyền thống.
-* **Thư viện Giao diện**: **React 19.2.4**.
-  * Quản lý trạng thái bằng React Hooks (`useState`, `useEffect`, `useRef`, `useTransition`).
-* **Styling**: **TailwindCSS v4.0.0** kết hợp **PostCSS**.
-  * Xây dựng layout Responsive toàn diện (Mobile, Tablet, Desktop).
-  * Tận dụng các biến CSS động để điều phối hệ màu HSL linh hoạt.
-* **Hiệu ứng & Hoạt họa (Animations)**: **GSAP v3.15.0 (GreenSock Animation Platform)** cùng `@gsap/react`.
-  * Thực hiện các hiệu ứng Cinematic Scroll và tương tác hover Spotlight 3D cao cấp.
-* **Cơ sở dữ liệu & Đám mây**: **Google Firebase SDK v12.14.0**.
-  * Sử dụng Firestore để quản lý và lưu trữ bảng xếp hạng kết quả thi trắc nghiệm.
-* **Biên dịch & Parser MDX**: `next-mdx-remote` và `gray-matter`.
-  * Hỗ trợ lưu trữ tài liệu dưới dạng Markdown mở rộng và biên dịch sang React component một cách an toàn ở runtime.
+### Stack Công nghệ chi tiết:
+* **Core Framework**: **Next.js 16.2.9 (App Router)** & **React 19.2.4** (Hooks, Transitions, Suspense & Error Boundaries).
+* **Styling Engine**: **TailwindCSS v4.0.0** kết hợp **PostCSS** và hệ thống CSS Variables động.
+* **Hoạt họa & Kỹ xảo**: **GSAP v3.15.0 (GreenSock)** cùng `@gsap/react` và ScrollTrigger (Cinematic Scroll, 3D Spotlight Tracking).
+* **Đồ họa 3D & Hiệu ứng tương tác**: **Three.js v0.185.1**, **Canvas Confetti v1.9.4**, **Lucide React v1.17.0**.
+* **Đám mây & Cơ sở dữ liệu**: **Google Firebase SDK v12.14.0** (Firestore & Firebase Auth).
+* **Xuất báo cáo & Dữ liệu**: **ExcelJS v4.4.0**, **JSPDF v4.2.1**, **HTML2Canvas v1.4.1**.
 
 ---
 
-## 📌 PHẦN 3: DANH MỤC COMPONENT TƯƠNG TÁC (Visualizers & Explorers)
+## 📌 PHẦN 3: CƠ CHẾ DỰNG BÀI HỌC CẤU TRÚC (STRUCTURED CONTENT RENDERER)
 
-Để hiện thực hóa triết lý "Học tập tương tác", StudyMaster tích hợp một hệ thống đa dạng các Component tùy biến hoạt động ngay trong bài đọc MDX. Các component này được chia thành 3 nhóm lớn:
+Thay vì sử dụng các tệp MDX cần phân tích chuỗi văn bản tĩnh, hệ thống StudyMaster sử dụng **Cơ chế Cấu trúc Dữ liệu Động (Structured JavaScript Data Modules)**:
 
-### 1. Nhóm Khoa học Máy tính & Giải thuật (IT/CS Visualizers)
-Nhóm component này giúp lập trình trực quan hóa các khái niệm trừu tượng trong lập trình và cấu trúc dữ liệu:
-* **`BubbleSortVisualizer` (Mô phỏng Sắp xếp Nổi bọt)**: 
-  * *Chức năng*: Minh họa từng bước so sánh và hoán vị (Swap) hai phần tử cạnh nhau.
-  * *UX tương tác*: Các thanh giá trị đổi màu động (vàng khi so sánh, xanh lá khi đã ở vị trí đúng, đỏ khi hoán vị). Hỗ trợ nút điều khiển Play/Pause/Step-by-step và thanh trượt chỉnh tốc độ mô phỏng từ 100ms đến 2000ms.
-* **`QuickSortVisualizer` (Mô phỏng Sắp xếp Nhanh)**:
-  * *Chức năng*: Biểu diễn trực quan giải thuật phân hoạch (Partitioning) sử dụng phần tử chốt (Pivot).
-  * *UX tương tác*: Cho phép chọn các chế độ chọn Pivot khác nhau (Pivot đầu, Pivot cuối, Pivot giữa). Trực quan hóa quá trình đệ quy chia đôi mảng bằng các phân vùng màu sắc riêng biệt.
-* **`MemoryVisualizer` (Mô phỏng Bộ nhớ RAM)**:
-  * *Chức năng*: Giải thích khái niệm cực kỳ hóc búa về truyền tham trị (Pass by Value) và truyền tham chiếu (Pass by Reference).
-  * *Cơ chế hoạt động*: Chia đôi màn hình thành hai vùng nhớ **Stack** (chứa các biến cục bộ, địa chỉ con trỏ) và **Heap** (chứa dữ liệu đối tượng thực tế). Khi người dùng nhấn nút chạy mã giả, các ô nhớ sẽ tự động được cấp phát, trỏ mũi tên liên kết động từ Stack sang Heap, và giải phóng khi ra khỏi phạm vi khối lệnh.
-* **`CastingPlayground` (Sân chơi Ép kiểu)**:
-  * *Chức năng*: Mô phỏng cơ chế ép kiểu ngầm định (Implicit) và tường minh (Explicit) trong Java.
-  * *UX tương tác*: Học sinh kéo các thanh trượt thay đổi giá trị của biến số lớn (như `double`, `float`) rồi ép kiểu sang biến số nhỏ hơn (như `int`, `byte`) để trực tiếp quan sát hiện tượng mất mát phần thập phân hoặc tràn số (Overflow) về dạng bit nhị phân.
-* **`BigOCurveChart` & `BigOSimulator` (Biểu đồ & Bộ giả lập Big O)**:
-  * *Chức năng*: So sánh tốc độ tăng trưởng của các hàm độ phức tạp thời gian.
-  * *UX tương tác*: Đồ thị tương tác vẽ các đường $O(1)$, $O(\log n)$, $O(n)$, $O(n \log n)$, $O(n^2)$. Học sinh có thể tăng giá trị đầu vào $N$ lên hàng triệu để bộ giả lập tính toán thời gian chạy giả định trên siêu máy tính và máy tính cá nhân, giúp hiểu rõ tại sao thuật toán tối ưu lại quan trọng.
-* **`PrintfFormatter` (Định dạng Xuất Printf)**:
-  * *Chức năng*: Hướng dẫn chi tiết cách sử dụng đặc tả định dạng xuất (như `%d`, `%5d`, `%.2f`, `%-10s`).
-  * *UX tương tác*: Học sinh nhập chuỗi định dạng và giá trị đầu vào, hệ thống sẽ vẽ ra từng ô ký tự đầu ra trên màn hình để minh họa khoảng trống đệm (Padding) và căn lề (Alignment).
-
-### 2. Nhóm Lịch sử & Lý luận Chính trị (History & Political Explorers)
-Các component này được thiết kế để trực quan hóa lịch sử biên niên và các học thuyết phức tạp:
-* **`HcmTimeline1945to1969` (Trục thời gian Hồ Chí Minh)**:
-  * *Chức năng*: Trình bày biên niên sử các hoạt động cách mạng của Bác từ năm 1945 đến năm 1969.
-  * *UX tương tác*: Trục thời gian dạng đứng (Vertical Timeline) tích hợp hiệu ứng cuộn Spotlight. Khi cuộn tới năm nào, sự kiện lịch sử của năm đó sẽ sáng lên, hiển thị hình ảnh tư liệu, trích dẫn lời nói nổi tiếng và các tài liệu tham khảo liên quan.
-* **`LsdHistoryTimeline` (Trục thời gian Lịch sử Đảng)**:
-  * *Chức năng*: Biên niên sử các cột mốc thành lập Đảng, các kỳ Đại hội và các phong trào cách mạng (1930-1945, 1945-1954, v.v.).
-  * *UX tương tác*: Phân chia các thời kỳ lịch sử bằng các tab màu sắc đặc trưng của Đảng (đỏ sẫm và vàng gold), hỗ trợ lọc sự kiện theo danh mục (Quân sự, Chính trị, Ngoại giao).
-* **`LsdObjectExplorer` & `LsdMethodologyExplorer` (Bảng khám phá Đối tượng & Phương pháp)**:
-  * *Chức năng*: Trực quan hóa các khái niệm trừu tượng về đối tượng nghiên cứu và phương pháp luận của môn Lịch sử Đảng.
-  * *UX tương tác*: Thiết kế dạng các thẻ bài lật (Flip Cards) 3D hoặc sơ đồ tư duy tương tác (Interactive Mindmap). Người học nhấp vào từng nút để mở rộng các nhánh phương pháp nghiên cứu cụ thể (như phương pháp lịch sử, phương pháp logic, phương pháp liên ngành) kèm ví dụ thực tiễn.
-
-### 3. Nhóm Bổ trợ Giao diện (UI Auxiliary Components)
-* **`DrawingCanvas` (Lớp vẽ ghi chú tự do)**:
-  * *Chức năng*: Cho phép viết vẽ tự do đè lên bài học.
-  * *UX tương tác*: Cung cấp thanh công cụ nổi (Floating Toolbar) chứa bút vẽ nét mịn, tô sáng (Highlight) bán trong suốt, tẩy xóa và bảng chọn màu sắc.
-* **`CinematicScrollWrapper`**: Sử dụng GSAP ScrollTrigger để tạo hiệu ứng cuộn trang điện ảnh (fade-in, slide-up mượt mà khi phần tử lọt vào khung nhìn).
-* **`SpotlightCardWrapper`**: Áp dụng hiệu ứng quét ánh sáng 3D theo con trỏ chuột trên các thẻ bài học.
+1. **Kho Dữ liệu Bài học (`data/lessons.js`)**:
+   * Dữ liệu bài giảng của 10 môn học được module hóa thành các tệp dữ liệu JavaScript chuẩn (`chuong-1.js`, `dsa.js`, `oop.js`, `database.js`, `lich-su-dang.js`, `ad-ch1.js`, v.v.).
+   * Cấu trúc phân cấp rõ ràng: `Subject ➔ Chapter ➔ Section ➔ Subsection ➔ Parts`.
+2. **Bộ Dựng Nội dung (`components/ContentRenderer.js`)**:
+   * Hàm `findSubsectionContent(subjectId, activeSubsectionId)` truy xuất trực tiếp cây dữ liệu trong bộ nhớ với độ trễ $0\text{ms}$.
+   * Tự động nhận diện và bao bọc các khối kiến thức đặc biệt:
+     * **Hộp Mẹo nhớ (Mnemonic Box)**: Tóm tắt mẹo ghi nhớ nhanh, công thức cốt lõi.
+     * **Hộp Tổng kết (Summary Box)**: Tổng hợp các luận điểm học thuật trọng tâm.
+     * **Hộp Trích dẫn & Định nghĩa (Quote & Definition Box)**: Trích dẫn văn kiện và khái niệm.
+   * **Nhúng trực tiếp 820+ React Visualizers**: Cho phép gắn trực tiếp các props tương tác, biến trạng thái và hàm xử lý sự kiện mà không bị giới hạn bởi rào cản serialize của Markdown.
 
 ---
 
-## 📌 PHẦN 4: HỆ THỐNG THIẾT KẾ UI/UX (Design System)
+## 📌 PHẦN 4: PHÂN HỆ QUẢN TRỊ ADMIN DASHBOARD (`components/admin/`)
 
-### 1. Triết lý Thiết kế Giao diện (Visual Aesthetics)
-StudyMaster mang ngôn ngữ thiết kế **Premium Dark Mode & Glassmorphism**. Giao diện sử dụng các đường viền sắc nét, độ phản chiếu nhẹ, các thẻ bài học có hiệu ứng đổ bóng mờ ảo mang lại cảm giác chiều sâu 3D trên không gian phẳng.
-
-* **Hiệu ứng Kính mờ (Glassmorphism)**: Các bảng điều khiển, Sidebar, và hộp thoại sử dụng background dạng bán trong suốt `bg-white/60` hoặc `bg-stone-900/80` kết hợp bộ lọc làm nhòe nền `backdrop-blur-md` mang lại cảm giác tinh tế và hiện đại.
-* **Hiệu ứng Phát sáng (Neon Glow)**: Sử dụng các giải màu gradient phát sáng tinh tế (`border-accent/30`, `shadow-[0_0_20px_rgba(var(--accent-rgb),0.15)]`) để làm nổi bật các cấu phần quan trọng mà không gây lòe loẹt.
-
-### 2. Cơ chế Hệ màu HSL Động (Dynamic Theme Engine)
-Một trong những điểm độc đáo nhất của StudyMaster là khả năng thay đổi màu sắc chủ đạo (Accent Color) dựa trên môn học được chọn. Việc này giúp kích thích thị giác và phân loại không gian tâm lý học tập cho từng bộ môn khác nhau.
-
-* **Cơ chế triển khai**:
-  Trong `data/index.js`, mỗi môn học được định nghĩa kèm theo bộ mã màu HSL dưới dạng các giá trị Hex và RGB. Ví dụ:
-  ```javascript
-  "tu-tuong-hcm": {
-    themeColors: {
-      accent: "#d97706",      // Hổ phách/Vàng cam (Truyền thống chính trị)
-      secondary: "#c2410c",
-      accentRgb: "217, 119, 6"
-    }
-  },
-  "oop": {
-    themeColors: {
-      accent: "#2563eb",      // Xanh dương công nghệ (IT/Chuyên ngành)
-      secondary: "#1d4ed8",
-      accentRgb: "37, 99, 235"
-    }
-  }
-  ```
-  Khi người dùng chuyển đổi môn học, một React `useEffect` trong `app/page.js` sẽ bắt sự kiện và ghi đè trực tiếp các biến CSS này vào root của tài liệu:
-  ```javascript
-  document.documentElement.style.setProperty("--accent", colors.accent);
-  document.documentElement.style.setProperty("--accent-rgb", colors.accentRgb);
-  ```
-  Nhờ đó, toàn bộ các thành phần giao diện (đường viền, chữ, nút bấm, canvas vẽ ghi chú) sẽ đồng loạt đổi màu đồng bộ chỉ trong tích tắc.
-
-### 3. Hiệu ứng Hoạt họa Cao cấp
-* **Cinematic Scroll (GSAP)**:
-  Khi sinh viên cuộn bài đọc, component `<CinematicScrollWrapper>` sử dụng ScrollTrigger để tính toán vị trí cuộn. Các phần của bài đọc sẽ trượt nhẹ từ dưới lên và tăng dần độ hiển thị (Opacity: 0 ➔ 1, Y-Offset: 40px ➔ 0px) tạo hiệu ứng lật trang điện ảnh mượt mà.
-* **Spotlight Card (3D Mouse Tracking)**:
-  Các thẻ bài đọc có hiệu ứng theo dõi chuột. Khi người dùng rê chuột lên thẻ, một vùng sáng tròn (Spotlight) phát ra từ tâm trỏ chuột sẽ quét qua bề mặt thẻ, làm lộ ra các đường viền phát sáng ẩn dưới lớp kính mờ.
-
----
-
-## 📌 PHẦN 5: ĐI SÂU CƠ CHẾ KỸ THUẬT (Deep Dive)
-
-Phần này đi sâu vào 4 giải pháp công nghệ cốt lõi giúp StudyMaster tối ưu hóa hiệu năng, bảo mật và khả năng tương tác.
-
-### 1. Cơ chế Biên dịch & Render MDX Động (Dynamic MDX Serialization)
-Để thay thế việc import cứng toàn bộ dữ liệu văn bản bài đọc vào Client (làm phình to bundle size ban đầu), StudyMaster sử dụng kiến trúc biên dịch động qua Server Actions:
-
-* **Đọc tệp tin**: Khi người dùng chọn một mục bài học, Client kích hoạt Server Action `getSubsectionMdx`. Action này dùng Node `fs` để đọc tệp `.mdx` tương ứng từ đĩa cứng theo đường dẫn tương đối.
-* **Tiền xử lý Directives (Pre-processing)**: Nhằm hỗ trợ định dạng hộp ghi nhớ màu sắc chuẩn Tailwind mà không cần cài đặt các plugin Remark nặng nề, Server Action chạy các biểu thức chính quy (Regex) để chuyển đổi cú pháp directive của Markdown thành các thẻ JSX hợp lệ trước khi gửi vào bộ biên dịch:
-  ```javascript
-  processedContent = processedContent.replace(/:::summary\s*\n([\s\S]*?)\n\s*:::/g, '<SummaryBox>\n$1\n</SummaryBox>');
-  ```
-* **Biên dịch ở Server-Side**: Sử dụng `next-mdx-remote/serialize` để phân tích Frontmatter (chứa metadata chương, phần) và compile nội dung Markdown/JSX thành một chuỗi JS đã được mã hóa (`mdxSource`).
-* **Hydration ở Client-Side**: Client nhận `mdxSource` và chuyển trực tiếp vào component `<MDXRemote>` trong [components/ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js). Tại đây, ta khai báo một `components` registry để ánh xạ các thẻ JSX động (như `<MnemonicBox />`, `<BubbleSortVisualizer />`) thành các React Component thực tế.
-
-### 2. Luồng Bảo mật Trắc nghiệm 2 tầng (2-Tier Quiz Security)
-Hệ thống phân tách luồng nghiệp vụ của hai chế độ: **Luyện tập tự do (Immediate Mode)** và **Thi xếp hạng trực tuyến (Exam Mode)**:
-
-* **Tầng 1 - Luyện tập**: Sử dụng trực tiếp dữ liệu tĩnh được nạp dưới Client. Khi người dùng click chọn phương án, component lập tức đối chiếu với `questions[idx].answer` và hiển thị giải thích đáp án ngay lập tức.
-* **Tầng 2 - Thi xếp hạng**:
-  1. **Khóa dữ liệu**: Khi bắt đầu bài thi, hàm `startNewQuiz` sẽ sao chép bộ câu hỏi và **xóa hoàn toàn** hai thuộc tính `answer` và `explanation` ra khỏi state của React:
-     ```javascript
-     const secureQuestions = sampled.map(q => {
-       const qCopy = { ...q };
-       delete qCopy.answer;
-       delete qCopy.explanation;
-       return qCopy;
-     });
-     ```
-     Điều này chặn đứng việc học sinh xem đáp án thông qua Console biến React hoặc DevTools Network Tab.
-  2. **Xáo trộn ngẫu nhiên**: Client xáo trộn thứ tự câu hỏi và thứ tự các phương án lựa chọn.
-  3. **Chấm điểm Server-side**: Khi nhấn nộp bài, Client gửi mảng đáp án đã chọn cùng danh sách câu hỏi đã xáo trộn lên Server Action `submitExamScore` ở [app/actions/quiz.js](file:///d:/TT%20HCM/app/actions/quiz.js).
-  4. **Tính điểm & Ghi nhận**: Server Action tải dữ liệu gốc từ bộ nhớ Server (nơi chứa đáp án đúng chưa bị xóa), so khớp giá trị chuỗi văn bản của phương án đã chọn để chấm điểm. Sau đó, Server dùng SDK quản trị để ghi thẳng điểm số vào Firestore `rankings` collection, rồi mới trả về danh sách giải thích chi tiết cho Client hiển thị.
-
-### 3. Thuật toán Co giãn Nét vẽ SVG trong DrawingCanvas (SVG Responsive Coordinate Mapping)
-Lớp Canvas vẽ ghi chép sử dụng SVG thay vì HTML5 Canvas truyền thống để nét vẽ có độ sắc nét vector cao. Tuy nhiên, việc vẽ trên màn hình có kích thước thay đổi (Responsive) sẽ làm lệch vị trí nét vẽ so với dòng chữ bên dưới. StudyMaster giải quyết việc này bằng thuật toán ánh xạ tọa độ tỉ lệ:
-
-* **Tọa độ tương đối khi vẽ (Relative Mapping)**:
-  Khi người dùng click chuột và di chuyển để vẽ, tọa độ tuyệt đối $(X_{\text{raw}}, Y_{\text{raw}})$ của chuột so với thẻ Container được chuyển đổi thành tọa độ tỉ lệ phần trăm $(X_{\text{rel}}, Y_{\text{rel}})$ dựa trên kích thước hiện tại $(\text{width}_{\text{current}}, \text{height}_{\text{current}})$ của khung chứa:
-  $$X_{\text{rel}} = \frac{X_{\text{raw}}}{\text{width}_{\text{current}}}, \quad Y_{\text{rel}} = \frac{Y_{\text{raw}}}{\text{height}_{\text{current}}}$$
-* **Tọa độ tuyệt đối khi hiển thị (Absolute Scaling)**:
-  Khi render nét vẽ ra SVG, tọa độ tỉ lệ phần trăm được nhân ngược lại với kích thước thực tế của màn hình tại thời điểm hiển thị:
-  $$X_{\text{render}} = X_{\text{rel}} \times \text{width}_{\text{current}}, \quad Y_{\text{render}} = Y_{\text{rel}} \times \text{height}_{\text{current}}$$
-* **Theo dõi thay đổi**: Component sử dụng `ResizeObserver` để liên tục cập nhật kích thước Container và kích hoạt re-render lại SVG nét vẽ. Nhờ đó, dù học sinh xoay màn hình điện thoại hay thay đổi kích thước trình duyệt, các nét vẽ highlight vẫn neo chính xác vào từng dòng chữ bài đọc.
-
-### 4. Thuật toán Xáo trộn ngẫu nhiên Fisher-Yates (Fisher-Yates Shuffle)
-Để đảm bảo đề thi xếp hạng của mỗi học sinh là ngẫu nhiên và không thiên vị (unbiased), hệ thống áp dụng thuật toán Fisher-Yates để trộn câu hỏi và các phương án trả lời:
-
-* **Giải thuật**: Duyệt mảng từ cuối lên đầu (từ chỉ số $i = n-1$ xuống $1$). Tại mỗi bước, chọn ngẫu nhiên một chỉ số $j$ trong khoảng từ $0$ đến $i$, hoán vị phần tử tại vị trí $i$ và $j$.
-* **Độ phức tạp**: Thời gian chạy đạt tuyến tính $O(n)$ và độ phức tạp không gian là $O(1)$ (hoán vị tại chỗ), đảm bảo phân phối xác suất đồng đều cho tất cả các hoán vị có thể có của đề thi.
-
----
-
-## 📌 PHẦN 6: BẢN ĐỒ THƯ MỤC DỰ ÁN
-
-Dưới đây là sơ đồ tổ chức mã nguồn của hệ thống StudyMaster để lập trình viên mới dễ dàng tiếp cận:
+Hệ thống quản trị **Admin Dashboard** được thiết kế theo cấu trúc module hóa cao cấp với **12 sub-components** chuyên trách:
 
 ```
-studymaster-next/
-├── app/                        # Thư mục ứng dụng chính (Next.js App Router)
-│   ├── actions/                # Các Server Actions giao tiếp và xử lý dữ liệu
-│   │   ├── content.js          # Server Action nạp & biên dịch bài đọc MDX
-│   │   └── quiz.js             # Server Action chấm điểm thi & ghi Firestore
-│   ├── globals.css             # Định nghĩa CSS toàn cục (biến màu sắc, fonts)
-│   ├── layout.js               # Bọc bố cục HTML toàn trang
-│   └── page.js                 # File điều phối trạng thái chính (Main State Dashboard)
-├── components/                 # Các component UI tái sử dụng ở Client
-│   ├── ContentRenderer.js      # Bộ render MDX và registry các visualizer tương tác
-│   ├── DrawingCanvas.js        # Lớp vẽ ghi chú tự do vector SVG tương đối
-│   ├── Quiz.js                 # Component thi trắc nghiệm (Ôn tập & Thi xếp hạng)
-│   ├── Sidebar.js              # Thanh điều hướng cây mục lục môn học bên trái
-│   └── ...                     # Các visualizer, timeline, explorer chuyên ngành
-├── content/                    # Kho dữ liệu bài đọc dạng tệp MDX (.mdx)
-│   ├── tu-tuong-hcm/           # Bài đọc môn Tư tưởng Hồ Chí Minh
-│   ├── lich-su-dang/           # Bài đọc môn Lịch sử Đảng Cộng sản Việt Nam
-│   └── ...                     # Các môn học khác
-├── data/                       # Cấu trúc môn học (Metadata) & Ngân hàng câu hỏi
-│   ├── index.js                # Tinh gọn: chứa metadata danh mục và bản đồ quiz
-│   ├── questions-chuong-1.js   # Ngân hàng trắc nghiệm Tư tưởng Hồ Chí Minh ch.1
-│   └── ...                     # Các tệp câu hỏi trắc nghiệm của các chương khác
-├── legacy_data/                # Thư mục lưu trữ dự phòng (Backup) dữ liệu JS cũ
-├── lib/                        # Khởi tạo kết nối dịch vụ
-│   └── firebase.js             # Cấu hình Firebase Cloud Firestore
-├── scripts/                    # Scripts tự động hóa phục vụ phát triển
-│   ├── convert-to-mdx.mjs      # Script chuyển đổi dữ liệu JS sang MDX
-│   └── generate-metadata.mjs   # Script tạo tệp index.js tinh gọn tự động
-└── package.json                # Khai báo thư viện phụ thuộc và scripts chạy dự án
+components/admin/
+├── AdminDashboard.js         # Khung điều phối trung tâm & quản lý State
+├── AdminUnifiedHero.js       # Hero banner hiển thị Live KPIs & Quick Actions
+├── AdminHero.js              # Banner phụ trợ
+├── AdminCinematicHero.js     # Banner phong cách điện ảnh
+├── AdminDock.js              # Thanh Dock điều hướng nổi chuyển đổi 4 Tab
+├── AdminOverviewTab.js       # Tab Tổng quan: Biểu đồ SVG Bézier & Donut, System Logs
+├── AdminUsersTab.js          # Tab Quản lý Học viên: Phân trang, Khóa/Mở, Đổi pass, Xuất Excel
+├── AdminQuestionsTab.js      # Tab Ngân hàng Câu hỏi: Kiểm định luật chống đoán bừa (ΔL ≤ 15)
+├── AdminLeaderboardTab.js    # Tab Bảng xếp hạng: Vinh danh Top học viên & Lọc bộ môn
+├── AdminUserDrawer.js        # Drawer chi tiết học viên & Biểu đồ Radar năng lực
+├── AdminWorkDrawer.js        # Drawer tác vụ nhanh & Kiểm tra sức khỏe hệ thống
+└── AdminModals.js            # Hộp thoại Thêm học viên, Đổi mật khẩu, Xác nhận an toàn
+```
+
+### 1. Tab Tổng quan (`AdminOverviewTab.js`)
+* **4 Thẻ KPI động**: Tổng số học viên, Độ chuẩn xác trung bình (%), Tổng lượt ôn tập, Số nhật ký hoạt động.
+* **Biểu đồ Đường Lượt thi (SVG Smooth Cubic Bézier Curve)**: Tự động tính toán đường cong Bézier mượt mà theo lịch sử làm bài theo ngày, hỗ trợ rê chuột (hover) xem chi tiết số lượt thi tại từng mốc thời gian.
+* **Biểu đồ Donut Phân bố Môn học**: Trực quan hóa tỉ trọng lượt ôn luyện giữa các môn đại cương và chuyên ngành.
+* **Nhật ký Hoạt động Hệ thống (System Audit Logs)**: Ghi lại các hành vi quan trọng (hoàn thành bài thi, nộp điểm 40/40, đăng ký tài khoản) kèm bộ lọc và nút dọn dẹp log.
+
+### 2. Tab Quản lý Học viên (`AdminUsersTab.js`)
+* **Tìm kiếm & Phân loại**: Tìm kiếm theo Username/Email thời gian thực, lọc tài khoản Đang hoạt động hoặc Đã bị khóa.
+* **Phân trang & Hành động nhanh**: Xem hồ sơ, Khóa/Mở khóa tài khoản ngay lập tức, Đổi mật khẩu học viên mà không cần quyền can thiệp cơ sở dữ liệu thô.
+* **Trích xuất Excel (`ExcelJS`)**: Xuất danh sách toàn bộ học viên kèm ngày tạo và trạng thái ra file `.xlsx` định dạng chuyên nghiệp.
+
+### 3. Tab Ngân hàng Câu hỏi & Kiểm định Chất lượng (`AdminQuestionsTab.js`)
+* **Công cụ Kiểm định Tự động (Rule Compliance Auditor)**: Quét toàn bộ câu hỏi trong chương được chọn, tự động tính toán độ lệch chiều dài giữa phương án dài nhất và ngắn nhất ($\Delta L = L_{\max} - L_{\min}$). Nếu $\Delta L > 15$ ký tự, hệ thống gắn cờ cảnh báo vi phạm quy tắc chống đoán bừa của dự án.
+* **Phân tích Cấu trúc & Đề bẫy**: Phân loại rõ ràng các nhóm câu hỏi Inside (chuẩn giáo trình), Outside (vận dụng thực tế) và Tricks (50 câu bẫy tư duy).
+* **Xem trước Chi tiết**: Hiển thị đầy đủ nội dung câu hỏi, 4 phương án lựa chọn, đáp án đúng và phần giải thích cặn kẽ / bẫy tư duy (`trickDetails`).
+
+### 4. Tab Bảng xếp hạng (`AdminLeaderboardTab.js`)
+* **Vinh danh Top học viên**: Bảng vàng hiển thị Top 1, Top 2, Top 3 với hiệu ứng phát sáng kim loại (Vàng, Bạc, Đồng).
+* **Lọc đa chiều**: Lọc thành tích theo từng môn học, thời gian hoàn thành và điểm số tuyệt đối.
+
+### 5. Drawer Hồ sơ Năng lực Cá nhân (`AdminUserDrawer.js`)
+* Trượt từ cạnh phải màn hình khi nhấp vào một học viên bất kỳ.
+* Hiển thị chỉ số chuyên cần, tỷ lệ làm bài, lịch sử thi gần nhất và **Biểu đồ Radar Năng lực** phân tích độ thuần thục theo từng môn học.
+
+---
+
+## 📌 PHẦN 5: PHÒNG THÍ NGHIỆM MÔ PHỎNG & COMPONENT TƯƠNG TÁC
+
+Hệ thống tích hợp hơn **820+ bộ mô phỏng trực quan** cùng 2 phòng Lab tương tác chuyên sâu:
+
+### 1. Phòng Thí nghiệm Thuật toán (`AlgoSimDashboard.js`)
+Bao gồm các bài Lab chuyên sâu phục vụ môn Cấu trúc Dữ liệu & Giải thuật:
+* **`BubbleSortLab.js`**: Mô phỏng sắp xếp nổi bọt với thanh đo so sánh, hoán vị (Swap), bộ đếm vòng lặp và âm thanh gõ nhịp điệu trực quan.
+* **`SelectionSortLab.js`**: Mô phỏng tìm phần tử nhỏ nhất và đưa về đầu mảng đã sắp xếp.
+* **`InsertionSortLab.js`**: Mô phỏng giải thuật chèn từng phần tử vào mảng con đã có thứ tự.
+* **`MergeSortLab.js`**: Phòng Lab sắp xếp trộn đỉnh cao với **2 cửa sổ so sánh song song**, cây đệ quy chia để trị (Divide and Conquer) và cửa sổ popup mã giả (Pseudocode) tương tác.
+* **`BinarySearchLab.js`**: Mô phỏng tìm kiếm nhị phân với 3 con trỏ `Low`, `Mid`, `High` trên mảng số nguyên.
+* **`BfsLab.js` & `BstLab.js`**: Mô phỏng duyệt đồ thị theo chiều rộng và thao tác thêm/xóa/cân bằng trên cây nhị phân tìm kiếm.
+* **`RecursionLab.js`**: Mô phỏng ngăn xếp đệ quy (Call Stack Animation) qua bài toán Tháp Hà Nội và Dãy Fibonacci.
+
+### 2. Studio Sơ đồ Phân tích Thiết kế Hệ thống (`DiagramSimDashboard.js`)
+Dành riêng cho môn Phân tích & Thiết kế HTTT (PTTKYC):
+* **Trực quan hóa 4 loại sơ đồ UML**: Sơ đồ Ca sử dụng (Use Case), Sơ đồ Lớp (Class Diagram), Sơ đồ Tuần tự (Sequence Diagram), Sơ đồ Hoạt động (Activity Diagram) của Hệ thống ATM thực tế.
+* **Chế độ Lightbox Siêu Phân Giải (Fullscreen Lightbox)**:
+  * Khả năng phóng to/thu nhỏ mượt mà từ **50% đến 500%** (`ZoomIn`, `ZoomOut`, nút nhanh `1:1`).
+  * **Kéo chuột di chuyển bản vẽ tự do (Freehand Pan & Drag)**: Giữ chuột trái hoặc vuốt cảm ứng trên màn hình cảm ứng để di chuyển bản vẽ tới mọi góc nhìn chi tiết.
+  * Hỗ trợ định dạng vector SVG sắc nét và PNG chất lượng cao.
+
+---
+
+## 📌 PHẦN 6: DANH MỤC 10 MÔN HỌC CHÍNH THỨC
+
+Dữ liệu được tổ chức chuẩn hóa trong [`data/index.js`](file:///d:/TT%20HCM/data/index.js):
+
+| Mã định danh | Tên môn học | Danh mục | Màu chủ đạo (HSL) |
+| :--- | :--- | :--- | :--- |
+| `tu-tuong-hcm` | **Tư tưởng Hồ Chí Minh** | Môn đại cương | Cam hổ phách (`#d97706`) |
+| `lich-su-dang` | **Lịch sử Đảng Cộng sản Việt Nam** | Môn đại cương | Đỏ cờ / Vàng gold (`#dc2626`) |
+| `database` | **Cơ sở Dữ liệu (Database)** | Chuyên ngành CNTT | Xanh lục bảo (`#059669`) |
+| `dsa` | **Cấu trúc Dữ liệu & Giải thuật** | Chuyên ngành CNTT | Xanh dương đậm (`#2563eb`) |
+| `oop` | **Lập trình Hướng đối tượng (Java OOP)** | Chuyên ngành CNTT | Tím Indigo (`#6366f1`) |
+| `analysis-design` | **Phân tích & Thiết kế HTTT (PTTKYC)** | Chuyên ngành CNTT | Rêu Oliu (`#384417` / `#CCD06B`) |
+| `basic-general` | **Kiến trúc Máy tính & Hợp ngữ** | Cơ sở ngành | Xám đá (`#475569`) |
+| `basic-concepts` | **Mạng máy tính & Cơ bản** | Cơ sở ngành | Xanh lơ (`#0891b2`) |
+| `basic-algorithms`| **Thuật toán cơ bản** | Cơ sở ngành | Vàng cam (`#ea580c`) |
+| `cloud-computing` | **Điện toán đám mây & Tổng quan** | Chuyên ngành CNTT | Xanh bầu trời (`#0284c7`) |
+
+---
+
+## 📌 PHẦN 7: QUY CHUẨN ĐỀ THI & CƠ CHẾ BẢO MẬT 2 TẦNG
+
+### 1. Cơ chế Bảo mật Trắc nghiệm 2 tầng (2-Tier Quiz Security)
+* **Tầng 1 - Luyện tập tự do (Practice Mode)**: Dữ liệu nạp ở Client để phản hồi tức thì đúng/sai kèm lời giải chi tiết giúp việc tự học đạt hiệu quả cao nhất.
+* **Tầng 2 - Thi xếp hạng trực tuyến (Ranked Exam Mode)**:
+  1. **Khóa dữ liệu**: Khi bắt đầu thi, Client tải bộ câu hỏi đã bị **xóa hoàn toàn** trường `answer` và `explanation` thông qua Server Action `getExamQuestions`. Không thể tra đáp án qua Console hay Network Payload.
+  2. **Xáo trộn ngẫu nhiên**: Áp dụng thuật toán Fisher-Yates xáo trộn thứ tự câu hỏi và thứ tự 4 đáp án A, B, C, D.
+  3. **Chấm điểm Server-side**: Khi nộp bài, Client gửi danh sách lựa chọn lên Server Action `submitExamScore` tại [`app/actions/quiz.js`](file:///d:/TT%20HCM/app/actions/quiz.js). Server so khớp với đáp án gốc trong bộ nhớ, tính điểm và ghi thẳng vào Firestore `rankings` collection trước khi trả kết quả giải thích về cho Client.
+
+### 2. Quy tắc Chống đoán bừa Tuyệt đối (Equal Option Length Balance)
+* Trong **cùng một câu hỏi**, độ lệch chiều dài giữa phương án dài nhất và ngắn nhất **bắt buộc** $\le 15$ ký tự:
+  $$\Delta L = L_{\max} - L_{\min} \le 15$$
+* Các phương án nhiễu được viết công phu, chuẩn ngữ pháp, tương đồng độ dài và văn phong học thuật với đáp án đúng để học viên không thể "đoán mò câu dài nhất".
+
+### 3. Cấu trúc Bộ đề thi Chuẩn hóa
+* **Bộ đề Chính thức (Fixed Exam Sets)**: Đúng 40 câu cố định (36 câu Inside chuẩn giáo trình + 4 câu Outside vận dụng thực tiễn). Tỷ lệ độ khó trong 36 câu Inside: 20% Dễ (7 câu), 50% Trung bình (18 câu), 30% Khó (11 câu).
+* **Bộ đề Bẫy (Trick Exam Sets)**: Đúng 50 câu bẫy tư duy Vận dụng cao. 100% câu hỏi bẫy bắt buộc chứa thuộc tính `trickDetails` gồm: `whyTrapped` (nguyên nhân hay sai), `trickWord` (từ khóa bẫy), `citation` (trích dẫn giáo trình), `tip` (mẹo nhớ nhanh).
+* **Chapter Hero Banner Overview**: Mỗi chương học tại Mục ★ (Section 0) đều có Banner tổng quan hóa toàn bộ kiến thức của cả chương với sơ đồ luồng pipeline và bảng chuyển đổi góc nhìn.
+
+---
+
+## 📌 PHẦN 8: CƠ CHẾ ĐỒ HỌA SVG DRAWING CANVAS
+
+Bảng vẽ ghi chú [`DrawingCanvas.js`](file:///d:/TT%20HCM/components/DrawingCanvas.js) cho phép học viên viết vẽ trực tiếp lên giáo trình với độ nét vector cao:
+* **Khắc phục triệt để lem trang**: Mỗi bài học sở hữu một lớp vẽ ghi chép độc lập trong `localStorage` thông qua khóa định danh `drawingKey = ${subjectId}_${activeSubsectionId}`.
+* **Thuật toán Co giãn Tọa độ Tương đối (Responsive SVG Mapping)**:
+  * Khi vẽ, tọa độ thực $(X_{\text{raw}}, Y_{\text{raw}})$ được chuẩn hóa thành tỷ lệ phần trăm $(X_{\text{rel}}, Y_{\text{rel}}) \in [0.0, 1.0]$:
+    $$X_{\text{rel}} = \frac{X_{\text{raw}}}{\text{width}_{\text{canvas}}}, \quad Y_{\text{rel}} = \frac{Y_{\text{raw}}}{\text{height}_{\text{canvas}}}$$
+  * Khi hiển thị lại trên các kích thước màn hình khác nhau, tọa độ được nhân ngược lại với kích thước thực tế mới. Kết hợp cùng `ResizeObserver`, các nét vẽ highlight luôn neo chính xác vào từng dòng chữ.
+
+---
+
+## 📌 PHẦN 9: BẢN ĐỒ THƯ MỤC DỰ ÁN
+
+```
+TT HCM/
+├── admindashboardDoc/               # Bộ tài liệu đặc tả & thiết kế Admin Dashboard
+│   ├── 01_BRD_BUSINESS_REQUIREMENTS.md
+│   ├── 02_SRS_SYSTEM_REQUIREMENTS.md
+│   ├── 03_TECHNICAL_ARCHITECTURE_DESIGN.md
+│   ├── 04_DATA_MODELS_AND_CONTRACTS.md
+│   ├── 05_UI_UX_INTERACTION_SPEC.md
+│   ├── 06_QA_ACCEPTANCE_CRITERIA.md
+│   └── README.md
+├── app/                             # Next.js App Router
+│   ├── actions/                     # Server Actions bảo mật
+│   │   └── quiz.js                  # Chấm điểm Server-side & Ghi Firestore
+│   ├── globals.css                  # CSS toàn cục, Theme Variables & HSL Engine
+│   ├── layout.js                    # Layout HTML bọc toàn trang
+│   └── page.js                      # Bộ điều phối trạng thái chính (State Orchestrator)
+├── components/                      # Kho linh kiện giao diện React
+│   ├── admin/                       # Phân hệ Quản trị Admin Dashboard (12 components)
+│   ├── AlgoSimDashboard.js          # Phòng Lab Thuật toán (Bubble, Selection, Insertion, Merge...)
+│   ├── DiagramSimDashboard.js       # Studio Sơ đồ Hệ thống ATM (Lightbox, Zoom, Pan & Drag)
+│   ├── DrawingCanvas.js             # Lớp vẽ ghi chú vector SVG tương đối
+│   ├── ContentRenderer.js           # Bộ dựng nội dung bài học & Registry Visualizers
+│   ├── Quiz.js                      # Component làm bài trắc nghiệm (Luyện tập & Thi)
+│   ├── Sidebar.js                   # Thanh điều hướng mục lục cây thư mục môn học
+│   └── ...                          # Hơn 820+ Visualizers và Explorers chuyên biệt
+├── data/                            # Dữ liệu 10 môn học & Ngân hàng câu hỏi (Structured JS Data)
+│   ├── index.js                     # Cổng xuất dữ liệu và metadata danh mục
+│   ├── lessons.js                   # Cổng hợp nhất dữ liệu bài giảng của toàn bộ 10 môn học
+│   ├── questions-chuong-*.js        # Ngân hàng trắc nghiệm Tư tưởng Hồ Chí Minh
+│   ├── questions-lsd-*.js           # Ngân hàng trắc nghiệm Lịch sử Đảng
+│   ├── oop.js / dsa.js / database.js# Dữ liệu bài giảng chuyên ngành CNTT
+│   └── ...                          # Các ngân hàng câu hỏi đề thi & đề bẫy
+├── lib/                             # Thư viện & Cấu hình dịch vụ
+│   └── firebase.js                  # Khởi tạo kết nối Firebase Cloud Firestore
+├── public/                          # Tài nguyên tĩnh
+│   └── assets/diagrams/             # Bộ sơ đồ ATM (Use Case, Class, Sequence, Activity)
+├── AGENTS.md                        # Bộ quy tắc phát triển & Luật kiểm định đề thi
+├── README.md                        # Tài liệu hướng dẫn & Kiến trúc tổng thể hệ thống
+└── package.json                     # Danh mục thư viện phụ thuộc và scripts dự án
 ```
 
 ---
 
-## 📌 PHẦN 7: HƯỚNG DẪN PHÁT TRIỂN & MỞ RỘNG
+## 📌 PHẦN 10: HƯỚNG DẪN CÀI ĐẶT & VẬN HÀNH
 
-### 1. Hướng dẫn tích hợp môn học mới vào hệ thống
-Để tích hợp thêm một môn học mới (ví dụ: `triet-hoc`), thực hiện theo 3 bước sau:
-
-1. **Khai báo Metadata Môn học**:
-   Mở tệp [data/index.js](file:///d:/TT%20HCM/data/index.js), thêm một entry mới vào đối tượng `subjects` với cấu trúc cây thư mục (Chapters ➔ Sections ➔ Subsections):
-   ```javascript
-   "triet-hoc": {
-     id: "triet-hoc",
-     title: "Triết học Mác - Lênin",
-     description: "Mô tả môn học...",
-     category: "Môn đại cương",
-     quote: "“Triết học không chỉ giải thích thế giới, vấn đề là cải tạo thế giới.”",
-     themeColors: {
-       accent: "#047857",     // Mã màu CSS riêng cho môn học
-       secondary: "#065f46",
-       accentRgb: "4, 120, 87"
-     },
-     icon: "⚖️",
-     chapters: [
-       {
-         id: "triet-chuong-1",
-         title: "Chương I",
-         subtitle: "Khái luận về triết học...",
-         sections: [
-           {
-             id: "khai-niem-triet",
-             roman: "I",
-             title: "Triết học và vấn đề cơ bản của triết học",
-             subsections: [
-               { id: "triet-hoc-la-gi", number: "1", title: "Khái niệm triết học" }
-             ]
-           }
-         ]
-       }
-     ],
-     questionsMap: {}
-   }
-   ```
-2. **Soạn thảo Bài đọc MDX**:
-   Tạo thư mục khớp với cấu trúc id đã khai báo: `content/triet-hoc/triet-chuong-1/khai-niem-triet/`. Sau đó tạo tệp [triet-hoc-la-gi.mdx](file:///d:/TT%20HCM/content/triet-hoc/triet-chuong-1/khai-niem-triet/triet-hoc-la-gi.mdx) với frontmatter:
-   ```markdown
-   ---
-   id: "triet-hoc-la-gi"
-   number: "1"
-   title: "Khái niệm triết học"
-   parts:
-     - id: "dinh-nghia"
-       label: "a"
-       title: "Định nghĩa triết học"
-   ---
-   <Part id="dinh-nghia">
-   Nội dung bài học Triết học viết bằng Markdown...
-   </Part>
-   ```
-3. **Cấu hình Trắc nghiệm (tùy chọn)**:
-   Tạo tệp câu hỏi `data/questions-triet-hoc.js`, import và map vào `questionsMap` trong `data/index.js`.
-
-### 2. Hướng dẫn viết một Component tương tác mới
-Nếu muốn chèn một Component tương tác tùy biến mới (ví dụ: `<TreeVisualizer />`) vào bài học MDX:
-
-1. **Viết Component**: Tạo tệp `components/TreeVisualizer.js` bằng React và Tailwind CSS.
-2. **Đăng ký Component Registry**: 
-   Mở tệp [components/ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js):
-   * Import component mới ở đầu tệp:
-     ```javascript
-     import TreeVisualizer from "./TreeVisualizer";
-     ```
-   * Thêm component vào đối tượng `mdxComponents` inside hàm `ContentRenderer`:
-     ```javascript
-     const mdxComponents = {
-       // ... components hiện có
-       TreeVisualizer,
-     };
-     ```
-3. **Chèn vào MDX**: Giờ đây, bạn có thể gọi trực tiếp `<TreeVisualizer />` ở bất kỳ đâu trong các tệp `.mdx` của mình.
-
-### 3. Các lệnh điều khiển phát triển
-* Chạy dự án ở local (Môi trường Phát triển):
-  ```bash
-  npm run dev
-  ```
-* Kiểm tra biên dịch và tối ưu hóa đóng gói (Môi trường Sản xuất):
-  ```bash
-  npm run build
-  ```
-* Khởi chạy Production Server sau khi build thành công:
-  ```bash
-  npm run start
-  ```
+```bash
+npm run dev     # Chạy môi trường phát triển (http://localhost:3000)
+npm run build   # Kiểm tra đóng gói & biên dịch sản xuất
+npm run start   # Khởi chạy production server
+```
 
 ---
 
-## 🔑 ĐĂNG NHẬP NHANH (Hệ thống Thử nghiệm)
-Hệ thống tích hợp tài khoản Admin cài sẵn phục vụ kiểm nghiệm nhanh:
-* **Tài khoản**: `admin`
-* **Mật khẩu**: `admin`
-*(Người dùng cũng có thể tự tạo tài khoản mới ngay tại trang đăng nhập).*
+## 🔑 TÀI KHOẢN ĐĂNG NHẬP THỬ NGHIỆM
+
+* **Quản trị viên (Admin Dashboard)**: Tài khoản: `admin` | Mật khẩu: `admin`
+* **Học viên mẫu (Student View)**: Tài khoản: `hocsinh1` | Mật khẩu: `Student@123`

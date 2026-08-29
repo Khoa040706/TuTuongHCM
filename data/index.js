@@ -6829,6 +6829,22 @@ export const subjects = {
   }
 ],
     questionsMap: {}
+  },
+  "cloud-computing": {
+    id: "cloud-computing",
+    title: "Điện toán đám mây",
+    description: "Tổng quan mô hình dịch vụ IaaS/PaaS/SaaS, kiến trúc ảo hóa, 5 đặc tính NIST và hạ tầng đám mây hiện đại.",
+    category: "Môn chuyên ngành",
+    quote: "“Điện toán đám mây biến hạ tầng IT thành tiện ích như điện nước — truy cập mọi lúc, co giãn linh hoạt và tính phí theo nhu cầu.”",
+    themeColors: {
+      accent: "#38bdf8",
+      secondary: "#0284c7",
+      accentRgb: "56, 189, 248"
+    },
+    icon: "☁️",
+    chapters: [],
+    questionsMap: {},
+    isActive: true
   }
 };
 

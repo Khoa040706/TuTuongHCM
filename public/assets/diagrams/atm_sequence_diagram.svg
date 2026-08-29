@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background-color: #FCFDFE; font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1" fill="#A8CDE2" opacity="0.45" />
+    </pattern>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#384417" flood-opacity="0.08" />
+    </filter>
+    <marker id="sync-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polygon points="1,2 9,5 1,8" fill="#18191B" />
+    </marker>
+    <marker id="reply-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <polyline points="1,2 9,5 1,8" fill="none" stroke="#8E9346" stroke-width="1.8" stroke-linecap="round" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#FCFDFE" />
+  <rect width="100%" height="100%" fill="url(#grid)" />
+
+  <!-- Title Badge -->
+  <g transform="translate(40, 35)">
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#EBF4F6" stroke="#A8CDE2" stroke-width="1.5" />
+    <circle cx="22" cy="21" r="6" fill="#8E9346" />
+    <text x="38" y="26" font-size="14" font-weight="700" fill="#18191B" letter-spacing="0.5">UML SEQUENCE BLUEPRINT: CASH WITHDRAWAL</text>
+    <text x="445" y="26" font-size="11" font-weight="600" fill="#8E9346" font-family="monospace">ISO/IEC 19505</text>
+  </g>
+
+  <!-- Legend Top Right -->
+  <g transform="translate(1220, 30)">
+    <rect x="0" y="0" width="340" height="52" rx="12" fill="#FFFFFF" stroke="#384417" stroke-width="1.2" filter="url(#card-shadow)" />
+    <text x="16" y="20" font-size="11" font-weight="700" fill="#384417">THÔNG ĐIỆP TƯƠNG TÁC:</text>
+    <line x1="20" y1="36" x2="60" y2="36" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+    <text x="68" y="39" font-size="10" font-weight="600" fill="#18191B">Sync Call (──▶)</text>
+    <line x1="160" y1="36" x2="200" y2="36" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#reply-arrow)" />
+    <text x="208" y="39" font-size="10" font-weight="600" fill="#8E9346">Reply (┈ ┈ ▷)</text>
+  </g>
+
+  <!-- PARTICIPANTS & LIFELINES (5 Entities) -->
+  <!-- 1. :Customer (x: 160) -->
+  <g transform="translate(80, 110)">
+    <rect width="160" height="44" rx="8" fill="#384417" filter="url(#card-shadow)" />
+    <text x="80" y="27" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">:Customer</text>
+    <line x1="80" y1="44" x2="80" y2="820" stroke="#384417" stroke-width="1.5" stroke-dasharray="6 6" />
+  </g>
+
+  <!-- 2. :CardReader (x: 450) -->
+  <g transform="translate(370, 110)">
+    <rect width="160" height="44" rx="8" fill="#8E9346" filter="url(#card-shadow)" />
+    <text x="80" y="27" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">:CardReader</text>
+    <line x1="80" y1="44" x2="80" y2="820" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="6 6" />
+  </g>
+
+  <!-- 3. :ATMController (x: 750) -->
+  <g transform="translate(670, 110)">
+    <rect width="160" height="44" rx="8" fill="#384417" filter="url(#card-shadow)" />
+    <text x="80" y="27" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">:ATMController</text>
+    <line x1="80" y1="44" x2="80" y2="820" stroke="#384417" stroke-width="1.5" stroke-dasharray="6 6" />
+  </g>
+
+  <!-- 4. :BankServer (x: 1060) -->
+  <g transform="translate(980, 110)">
+    <rect width="160" height="44" rx="8" fill="#8E9346" filter="url(#card-shadow)" />
+    <text x="80" y="27" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">:BankServer</text>
+    <line x1="80" y1="44" x2="80" y2="820" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="6 6" />
+  </g>
+
+  <!-- 5. :CashDispenser (x: 1370) -->
+  <g transform="translate(1290, 110)">
+    <rect width="160" height="44" rx="8" fill="#384417" filter="url(#card-shadow)" />
+    <text x="80" y="27" font-size="13" font-weight="700" fill="#FCFDFE" text-anchor="middle">:CashDispenser</text>
+    <line x1="80" y1="44" x2="80" y2="820" stroke="#384417" stroke-width="1.5" stroke-dasharray="6 6" />
+  </g>
+
+  <!-- ACTIVATION BARS -->
+  <rect x="153" y="190" width="14" height="610" rx="4" fill="#CCD06B" fill-opacity="0.3" stroke="#384417" stroke-width="1.2" />
+  <rect x="443" y="200" width="14" height="110" rx="4" fill="#CCD06B" fill-opacity="0.5" stroke="#384417" stroke-width="1.2" />
+  <rect x="743" y="230" width="14" height="540" rx="4" fill="#CCD06B" fill-opacity="0.5" stroke="#384417" stroke-width="1.2" />
+  <rect x="1053" y="330" width="14" height="280" rx="4" fill="#CCD06B" fill-opacity="0.5" stroke="#384417" stroke-width="1.2" />
+  <rect x="1363" y="650" width="14" height="90" rx="4" fill="#CCD06B" fill-opacity="0.5" stroke="#384417" stroke-width="1.2" />
+
+  <!-- MESSAGE FLOW SEQUENCES -->
+  <!-- 1. Insert Card -->
+  <line x1="167" y1="210" x2="443" y2="210" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="300" y="200" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">1: insertCard(cardData)</text>
+
+  <!-- 2. Read Card Data -->
+  <line x1="457" y1="240" x2="743" y2="240" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="600" y="230" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">2: readCardData(accountNo)</text>
+
+  <!-- 3. Prompt PIN -->
+  <line x1="743" y1="280" x2="167" y2="280" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#reply-arrow)" />
+  <text x="450" y="270" font-size="11" font-weight="700" fill="#8E9346" text-anchor="middle">3: promptForPIN()</text>
+
+  <!-- 4. Enter PIN -->
+  <line x1="167" y1="320" x2="743" y2="320" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="450" y="310" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">4: enterPIN(pinCode)</text>
+
+  <!-- 5. Verify PIN with Bank -->
+  <line x1="757" y1="350" x2="1053" y2="350" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="900" y="340" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">5: verifyCredentials(accNo, pin)</text>
+
+  <!-- 6. PIN Validated -->
+  <line x1="1053" y1="390" x2="757" y2="390" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#reply-arrow)" />
+  <text x="900" y="380" font-size="11" font-weight="700" fill="#8E9346" text-anchor="middle">6: authSuccess(true)</text>
+
+  <!-- 7. Select Withdrawal Amount -->
+  <line x1="167" y1="440" x2="743" y2="440" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="450" y="430" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">7: requestWithdrawal(amount)</text>
+
+  <!-- 8. Check Balance & Hold Funds -->
+  <line x1="757" y1="480" x2="1053" y2="480" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="900" y="470" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">8: processDebit(accNo, amount)</text>
+
+  <!-- Combined Fragment: Alt [Balance OK vs Insufficient] -->
+  <g transform="translate(100, 520)">
+    <rect width="1400" height="230" rx="10" fill="#EBF4F6" fill-opacity="0.3" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="6 3" />
+    <rect x="0" y="0" width="80" height="26" rx="6" fill="#8E9346" />
+    <text x="40" y="18" font-size="11" font-weight="800" fill="#FCFDFE" text-anchor="middle">alt</text>
+    <text x="95" y="18" font-size="11" font-weight="700" fill="#384417">[balance &gt;= amount: Giao dịch thành công]</text>
+  </g>
+
+  <!-- 9. Debit OK -->
+  <line x1="1053" y1="570" x2="757" y2="570" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#reply-arrow)" />
+  <text x="900" y="560" font-size="11" font-weight="700" fill="#8E9346" text-anchor="middle">9: debitSuccess(newBalance)</text>
+
+  <!-- 10. Dispense Cash Command -->
+  <line x1="757" y1="660" x2="1363" y2="660" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="1060" y="650" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">10: dispenseCash(amount)</text>
+
+  <!-- 11. Cash Dispensed Feedback -->
+  <line x1="1363" y1="710" x2="757" y2="710" stroke="#8E9346" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#reply-arrow)" />
+  <text x="1060" y="700" font-size="11" font-weight="700" fill="#8E9346" text-anchor="middle">11: cashEjected()</text>
+
+  <!-- 12. Deliver Cash to Customer -->
+  <line x1="743" y1="760" x2="167" y2="760" stroke="#18191B" stroke-width="1.8" marker-end="url(#sync-arrow)" />
+  <text x="450" y="750" font-size="11" font-weight="700" fill="#18191B" text-anchor="middle">12: takeCashAndReceipt()</text>
+
+  <!-- Footer -->
+  <g transform="translate(40, 960)">
+    <text x="0" y="20" font-size="12" font-weight="600" fill="#8E9346">✦ Scandinavian Nature-Tech Blueprint • Trục thời gian tuyến tính • Khối tương tác Alt/Loop chuẩn UML 2.5</text>
+  </g>
+</svg>

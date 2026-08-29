@@ -32,7 +32,8 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
-  Minimize2
+  Minimize2,
+  Move
 } from "lucide-react";
 
 // ==========================================
@@ -111,7 +112,7 @@ const DIAGRAM_DATA = [
     categoryLabel: "STRUCTURAL MODELING",
     phase: "Phase 3: Design",
     difficulty: "Chuyên sâu",
-    previewImg: "/assets/diagrams/atm_class_diagram.jpg",
+    previewImg: "/assets/diagrams/atm_class_diagram.png",
     caseStudyFocus: "ATM System Class Blueprint (Cấu trúc OOP Máy Rút Tiền ATM)",
     summary:
       "Mô tả cấu trúc tĩnh của hệ thống phần mềm hướng đối tượng bao gồm các lớp (Classes), thuộc tính (Attributes), phương thức (Methods) và các mối quan hệ (Association, Aggregation, Composition, Inheritance).",
@@ -143,7 +144,7 @@ const DIAGRAM_DATA = [
     categoryLabel: "BUSINESS & REQUIREMENTS",
     phase: "Phase 2: Analysis",
     difficulty: "Cốt lõi",
-    previewImg: "/assets/diagrams/atm_usecase_diagram.jpg",
+    previewImg: "/assets/diagrams/atm_usecase_diagram.png",
     caseStudyFocus: "ATM System Use Cases (Ca Sử Dụng Rút Tiền & Quản Trị Hệ Thống)",
     summary:
       "Mô tả chức năng của hệ thống dưới góc nhìn của tác nhân bên ngoài (Black-box view), thể hiện ai (Actor) tương tác với hệ thống và các mối liên kết phụ thuộc (<<include>>, <<extend>>, Generalization).",
@@ -175,7 +176,7 @@ const DIAGRAM_DATA = [
     categoryLabel: "BEHAVIORAL MODELING",
     phase: "Phase 3: Design",
     difficulty: "Vận dụng cao",
-    previewImg: "/assets/diagrams/atm_sequence_diagram.jpg",
+    previewImg: "/assets/diagrams/atm_sequence_diagram.png",
     caseStudyFocus: "ATM Cash Withdrawal Interaction (Trục Thời Gian Rút Tiền ATM)",
     summary:
       "Mô tả tương tác động giữa các đối tượng theo trục thời gian tuyến tính từ trên xuống dưới, làm rõ chi tiết các cuộc gọi hàm (Synchronous/Asynchronous call), điều kiện lặp/rẽ nhánh và giá trị trả về.",
@@ -207,7 +208,7 @@ const DIAGRAM_DATA = [
     categoryLabel: "BEHAVIORAL & WORKFLOW",
     phase: "Phase 2 & 3: Modeling",
     difficulty: "Cốt lõi",
-    previewImg: "/assets/diagrams/atm_activity_diagram.jpg",
+    previewImg: "/assets/diagrams/atm_activity_diagram.png",
     caseStudyFocus: "ATM 3-Swimlane Process Workflow (Quy Trình Nghiệp Vụ 3 Làn Bơi)",
     summary:
       "Mô tả luồng công việc (Workflow) của một quy trình nghiệp vụ hoặc giải thuật xử lý, phân chia trách nhiệm qua các làn bơi (Swimlanes), điểm rẽ nhánh (Decisions) và xử lý song song (Fork/Join).",
@@ -242,6 +243,111 @@ export default function DiagramSimDashboard({ onClose }) {
   const [isSimRunning, setIsSimRunning] = useState(true);
   const [zoomScale, setZoomScale] = useState(1);
   const [isFullscreenImg, setIsFullscreenImg] = useState(false);
+  const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const hasMovedRef = useRef(false);
+  const touchStartDistRef = useRef(null);
+  const lightboxRef = useRef(null);
+
+  // Wheel zoom handler on fullscreen container (non-passive listener)
+  useEffect(() => {
+    const el = lightboxRef.current;
+    if (!el || !isFullscreenImg) return;
+    const onWheelHandler = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
+      setZoomScale((prev) => Math.max(0.5, Math.min(5, +(prev * zoomFactor).toFixed(2))));
+    };
+    el.addEventListener("wheel", onWheelHandler, { passive: false });
+    return () => el.removeEventListener("wheel", onWheelHandler);
+  }, [isFullscreenImg]);
+
+  const handleMouseDown = (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    setIsDragging(true);
+    dragStartRef.current = { x: e.clientX - panPosition.x, y: e.clientY - panPosition.y };
+    hasMovedRef.current = false;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const newX = e.clientX - dragStartRef.current.x;
+    const newY = e.clientY - dragStartRef.current.y;
+    if (Math.abs(newX - panPosition.x) > 3 || Math.abs(newY - panPosition.y) > 3) {
+      hasMovedRef.current = true;
+    }
+    setPanPosition({ x: newX, y: newY });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 1) {
+      const touch = e.touches[0];
+      setIsDragging(true);
+      dragStartRef.current = { x: touch.clientX - panPosition.x, y: touch.clientY - panPosition.y };
+      hasMovedRef.current = false;
+    } else if (e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      touchStartDistRef.current = dist;
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 1 && isDragging) {
+      const touch = e.touches[0];
+      const newX = touch.clientX - dragStartRef.current.x;
+      const newY = touch.clientY - dragStartRef.current.y;
+      setPanPosition({ x: newX, y: newY });
+      hasMovedRef.current = true;
+    } else if (e.touches.length === 2 && touchStartDistRef.current) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      const ratio = dist / touchStartDistRef.current;
+      setZoomScale((prev) => Math.max(0.5, Math.min(5, +(prev * ratio).toFixed(2))));
+      touchStartDistRef.current = dist;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    touchStartDistRef.current = null;
+  };
+
+  const handleDoubleClick = (e) => {
+    e.stopPropagation();
+    if (zoomScale > 1.2 || panPosition.x !== 0 || panPosition.y !== 0) {
+      setZoomScale(1);
+      setPanPosition({ x: 0, y: 0 });
+    } else {
+      setZoomScale(2.2);
+    }
+  };
+
+  const handleResetView = (e) => {
+    if (e) e.stopPropagation();
+    setZoomScale(1);
+    setPanPosition({ x: 0, y: 0 });
+  };
+
+  const handleOpenFullscreen = (e) => {
+    if (e) e.stopPropagation();
+    setZoomScale(1);
+    setPanPosition({ x: 0, y: 0 });
+    setIsFullscreenImg(true);
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -269,12 +375,15 @@ export default function DiagramSimDashboard({ onClose }) {
     setActiveModalDiagram(diagram);
     setModalTab("theory");
     setZoomScale(1);
+    setPanPosition({ x: 0, y: 0 });
     setIsFullscreenImg(false);
   };
 
   const handleCloseModal = () => {
     if (isSoundEnabled) playWoodblockSound();
     setActiveModalDiagram(null);
+    setZoomScale(1);
+    setPanPosition({ x: 0, y: 0 });
     setIsFullscreenImg(false);
   };
 
@@ -761,7 +870,7 @@ export default function DiagramSimDashboard({ onClose }) {
                     </button>
                     <div className="w-[1px] h-3.5 bg-stone-200 mx-0.5" />
                     <button
-                      onClick={() => setIsFullscreenImg(true)}
+                      onClick={handleOpenFullscreen}
                       className="p-1.5 rounded-lg bg-[#18191B] text-[#CCD06B] hover:bg-[#2A2B2E] transition-all cursor-pointer flex items-center gap-1 text-[10px] font-bold px-2"
                       title="Xem toàn màn hình (Fullscreen Lightbox)"
                     >
@@ -774,7 +883,7 @@ export default function DiagramSimDashboard({ onClose }) {
                 {/* Full-Height Stage Canvas with Image Preview */}
                 <div 
                   className="w-full flex-1 min-h-[300px] rounded-2xl bg-white border border-[#384417]/15 p-2 shadow-sm relative overflow-auto flex items-center justify-center group cursor-zoom-in"
-                  onClick={() => setIsFullscreenImg(true)}
+                  onClick={handleOpenFullscreen}
                   title="Nhấp đúp hoặc bấm nút để mở toàn cảnh siêu nét"
                 >
                   <div 
@@ -962,11 +1071,10 @@ export default function DiagramSimDashboard({ onClose }) {
         document.body
       )}
 
-      {/* 🔍 FULLSCREEN LIGHTBOX MODAL (SIÊU PHÂN GIẢI TOÀN MÀN HÌNH) */}
+      {/* 🔍 FULLSCREEN LIGHTBOX MODAL (SIÊU PHÂN GIẢI TOÀN MÀN HÌNH & KÉO DI CHUYỂN BẢN VẼ) */}
       {isMounted && isFullscreenImg && activeModalDiagram && createPortal(
         <div 
-          className="fixed inset-0 z-[10000] flex flex-col bg-black/90 backdrop-blur-xl animate-fadeIn p-4 sm:p-6 select-none"
-          onClick={() => setIsFullscreenImg(false)}
+          className="fixed inset-0 z-[10000] flex flex-col bg-black/95 backdrop-blur-xl animate-fadeIn p-4 sm:p-6 select-none"
         >
           {/* Lightbox Header Bar */}
           <div className="flex items-center justify-between text-white mb-3 shrink-0" onClick={(e) => e.stopPropagation()}>
@@ -981,18 +1089,18 @@ export default function DiagramSimDashboard({ onClose }) {
 
             <div className="flex items-center gap-2">
               <button
-                onClick={() => setZoomScale((prev) => Math.max(0.6, +(prev - 0.2).toFixed(1)))}
+                onClick={() => setZoomScale((prev) => Math.max(0.5, +(prev - 0.2).toFixed(1)))}
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
                 title="Thu nhỏ"
                 aria-label="Thu nhỏ"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-xs font-mono font-bold px-2 text-[#CCD06B] min-w-[40px] text-center">
+              <span className="text-xs font-mono font-bold px-2 text-[#CCD06B] min-w-[45px] text-center">
                 {Math.round(zoomScale * 100)}%
               </span>
               <button
-                onClick={() => setZoomScale((prev) => Math.min(3, +(prev + 0.2).toFixed(1)))}
+                onClick={() => setZoomScale((prev) => Math.min(5, +(prev + 0.2).toFixed(1)))}
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer"
                 title="Phóng to"
                 aria-label="Phóng to"
@@ -1000,10 +1108,11 @@ export default function DiagramSimDashboard({ onClose }) {
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setZoomScale(1)}
-                className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-stone-300 transition-all cursor-pointer"
-                title="Về kích thước gốc"
+                onClick={handleResetView}
+                className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-stone-300 transition-all cursor-pointer flex items-center gap-1"
+                title="Về kích thước gốc 100% & Căn giữa"
               >
+                <RotateCcw className="w-3 h-3" />
                 1:1
               </button>
               <button
@@ -1017,18 +1126,63 @@ export default function DiagramSimDashboard({ onClose }) {
             </div>
           </div>
 
-          {/* Lightbox Image Container */}
+          {/* Lightbox Image Container with Freehand Drag & Pan */}
           <div 
-            className="flex-1 min-h-0 flex items-center justify-center overflow-auto p-2 sm:p-4 cursor-zoom-out"
-            onClick={() => setIsFullscreenImg(false)}
+            ref={lightboxRef}
+            className={`flex-1 min-h-0 w-full h-full flex items-center justify-center overflow-hidden relative select-none touch-none ${
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            }`}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onDoubleClick={handleDoubleClick}
+            onClick={(e) => {
+              if (!hasMovedRef.current && e.target === lightboxRef.current) {
+                setIsFullscreenImg(false);
+              }
+            }}
           >
-            <img
-              src={activeModalDiagram.previewImg}
-              alt={activeModalDiagram.title}
-              style={{ transform: `scale(${zoomScale})` }}
-              className="max-h-full max-w-full object-contain rounded-2xl shadow-2xl transition-transform duration-200 select-none cursor-default"
+            <div
+              className="relative flex items-center justify-center pointer-events-none"
+              style={{
+                transform: `translate3d(${panPosition.x}px, ${panPosition.y}px, 0) scale(${zoomScale})`,
+                transformOrigin: "center center",
+                transition: isDragging ? "none" : "transform 0.15s ease-out"
+              }}
+            >
+              <img
+                src={activeModalDiagram.previewImg}
+                alt={activeModalDiagram.title}
+                draggable={false}
+                className="max-h-[82vh] max-w-[88vw] object-contain rounded-2xl shadow-2xl select-none pointer-events-none"
+              />
+            </div>
+
+            {/* Bottom floating helper guidance bar */}
+            <div 
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-stone-200 text-xs shadow-2xl pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <span className="flex items-center gap-1.5 text-[#CCD06B] font-semibold">
+                <Move className="w-3.5 h-3.5" /> Giữ chuột & kéo để di chuyển bản vẽ
+              </span>
+              <span className="hidden sm:inline text-white/30">•</span>
+              <span className="hidden sm:inline text-stone-300">
+                Lăn chuột / Nhấp đúp để phóng to
+              </span>
+              <span className="text-white/30">•</span>
+              <button
+                onClick={handleResetView}
+                className="text-xs text-[#CCD06B] hover:underline underline-offset-2 cursor-pointer font-bold flex items-center gap-1"
+                title="Đưa về giữa và kích thước 100%"
+              >
+                <RotateCcw className="w-3 h-3" /> Căn giữa
+              </button>
+            </div>
           </div>
         </div>,
         document.body
