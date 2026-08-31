@@ -131,12 +131,12 @@ export default function AdminUnifiedHero({
       </div>
 
       {/* ========================================================================= */}
-      {/* LỚP 1 (Z1): 2-LINE FLUID ADAPTIVE TYPOGRAPHY ('STUDY' & 'MASTER')        */}
+      {/* LỚP 1 (Z1): 2-LINE MEGA FLUID TYPOGRAPHY ('STUDY' & 'MASTER' GẤP ĐÔI)    */}
       {/* ========================================================================= */}
       <div 
         className="absolute left-6 sm:left-12 lg:left-16 xl:left-24 z-10 flex flex-col items-start pointer-events-none select-none transition-transform duration-75 ease-out"
         style={{
-          top: "clamp(120px, 17vh, 260px)",
+          top: "clamp(95px, 13vh, 210px)",
           transform: parallaxY > 0 ? `translateY(${parallaxY * 0.20}px)` : "none",
           willChange: "transform",
           opacity: 0.38,
@@ -144,18 +144,18 @@ export default function AdminUnifiedHero({
         }}
       >
         <span 
-          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap drop-shadow-[0_2px_14px_rgba(255,255,255,0.3)]"
           style={{
-            fontSize: "clamp(3.8rem, 8.5vh, 9.5rem)"
+            fontSize: "clamp(6.5rem, 15vh, 16rem)"
           }}
         >
           STUDY
         </span>
         <span 
-          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap mt-1 sm:mt-2 lg:mt-3 drop-shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+          className="font-black tracking-[0.12em] sm:tracking-[0.16em] leading-none text-white uppercase text-left whitespace-nowrap mt-1 sm:mt-2 lg:mt-3 drop-shadow-[0_2px_14px_rgba(255,255,255,0.3)]"
           style={{
-            fontSize: "clamp(3.8rem, 8.5vh, 9.5rem)",
-            marginLeft: "clamp(1.5rem, 4.5vw, 6.5rem)"
+            fontSize: "clamp(6.5rem, 15vh, 16rem)",
+            marginLeft: "clamp(2rem, 5vw, 8rem)"
           }}
         >
           MASTER
