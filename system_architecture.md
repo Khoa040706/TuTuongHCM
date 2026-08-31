@@ -1,157 +1,191 @@
 # Kiến trúc Hệ thống (System Architecture)
 
-Tài liệu này mô tả chi tiết kiến trúc, cấu trúc thư mục, luồng dữ liệu, và cách thức hoạt động của hệ thống **StudyMaster** để người đọc có thể dễ dàng hiểu và bảo trì mã nguồn trong tương lai.
+Tài liệu này mô tả chi tiết kiến trúc kỹ thuật, cấu trúc thư mục, luồng dữ liệu và cách thức hoạt động của hệ sinh thái **StudyMaster** để phục vụ công tác bàn giao, vận hành và mở rộng trong tương lai.
 
 ---
 
-## 🏗️ Tổng quan Kiến trúc
+## 🏗️ 1. Tổng quan Kiến trúc
 
-Dự án StudyMaster được phát triển trên nền tảng **Next.js 15+ (App Router)** và **React 19**, kết hợp với **TailwindCSS v4** cho giao diện người dùng. Hệ thống áp dụng mô hình **Single Page App (SPA)** với bộ quản lý trạng thái tập trung (State Orchestrator) tại trang gốc.
+Dự án StudyMaster được xây dựng trên nền tảng **Next.js 16 (App Router)** và **React 19**, kết hợp với **TailwindCSS v4** và **GSAP 3**. Hệ thống áp dụng mô hình **Single Page App (SPA)** với bộ quản lý trạng thái tập trung (**Central State Orchestrator**) tại trang gốc kết hợp các **Server Actions** để bảo mật việc chấm điểm và phân quyền.
 
-### Các Tính năng Cốt lõi:
-1. **Quản lý Định hướng (Client-side Routing)**: Điều phối trạng thái hiển thị bằng một máy trạng thái đơn giản (`login` ➔ `subject-select` ➔ `study`).
-2. **Khung Vẽ Ghi chú (Interactive Canvas)**: Lớp canvas vẽ trực tiếp chồng lên tài liệu học tập, hỗ trợ lưu trữ nội dung ghi chú tự động.
-3. **Mô-đun Trắc nghiệm (Quiz System)**: Hỗ trợ hai chế độ chấm điểm (ngay lập tức và nộp bài cuối giờ), lưu tiến độ học tập và tích hợp bảng xếp hạng trực tuyến.
-4. **Cơ sở Dữ liệu Cloud Firestore**: Lưu trữ thông tin kết quả thi trắc nghiệm của sinh viên.
+```mermaid
+graph TB
+    subgraph Client_Side ["Client-Side Runtime (React 19 & Next.js App Router)"]
+        Orchestrator["app/page.js<br>(Central State Orchestrator)"]
+        Sidebar["Sidebar.js<br>(Accordion Nav & Theme)"]
+        Renderer["ContentRenderer.js<br>(Academic Lessons & 140+ Visualizers)"]
+        Canvas["DrawingCanvas.js<br>(SVG Normalized Vector Canvas)"]
+        QuizUI["Quiz.js<br>(Practice & Timed Exam UI)"]
+        Admin["components/admin/*<br>(Admin Dashboard & Analytics)"]
+        AlgoLabs["AlgoSimDashboard & Labs<br>(BST, BFS, Sorting Labs)"]
+    end
+
+    subgraph Server_Actions ["Secure Server Boundary (Node.js runtime)"]
+        ActionGet["getExamQuestions()<br>(Strips answers & explanations)"]
+        ActionGrade["submitExamScore()<br>(Server-side grading & Anti-cheat)"]
+    end
+
+    subgraph Data_Persistence ["Data & Persistence Layer"]
+        LocalCache["localStorage<br>(Session Recovery & Canvas Paths)"]
+        Firestore["Cloud Firestore<br>(Collection: rankings)"]
+        Curriculum["data/lessons.js & data/index.js<br>(10 Subjects Structured Data)"]
+    end
+
+    Orchestrator --> Sidebar
+    Orchestrator --> Renderer
+    Orchestrator --> Canvas
+    Orchestrator --> QuizUI
+    Orchestrator --> Admin
+    Orchestrator --> AlgoLabs
+
+    Renderer --> Curriculum
+    Sidebar --> Curriculum
+    Canvas <--> LocalCache
+
+    QuizUI --> ActionGet
+    QuizUI --> ActionGrade
+    ActionGrade --> Firestore
+```
 
 ---
 
-## 📁 Cấu trúc Thư mục
-
-Dưới đây là sơ đồ tổ chức thư mục của dự án và vai trò của từng phần:
+## 📁 2. Cấu trúc Thư mục Dự án
 
 ```
 TT HCM/
-├── app/                      # Cấu trúc Next.js App Router
-│   ├── layout.js             # Layout chung (Fonts, Theme Provider)
-│   ├── page.js               # Trang gốc điều phối toàn bộ State hệ thống
-│   └── globals.css           # Cấu hình thiết kế CSS, biến chủ đề (Light/Dark)
-├── components/               # Các component React giao diện
-│   ├── Sidebar.js            # Thanh điều hướng mục lục chương học & cấu hình
-│   ├── ContentRenderer.js    # Hiển thị nội dung bài học & highlight, mẹo nhớ
-│   ├── DrawingCanvas.js      # Lớp phủ canvas trong suốt để ghi chú, vẽ tay
-│   ├── NoteToolbar.js        # Thanh công cụ ghi chú (bút vẽ, tẩy, chọn màu)
-│   └── Quiz.js               # Giao diện & Logic làm bài trắc nghiệm
-├── data/                     # Nội dung học tập & Ngân hàng câu hỏi
-│   ├── chuong-mo-dau.js      # Nội dung Chương Mở đầu Tư tưởng HCM
-│   ├── chuong-1.js           # Nội dung Chương 1 Tư tưởng HCM
-│   ├── lich-su-dang.js       # Nội dung Lịch sử Đảng
-│   ├── questions-mo-dau.js   # Bộ câu hỏi trắc nghiệm
-│   └── index.js              # Cổng xuất dữ liệu học tập hợp nhất
-├── lib/                      # Các thư viện & API dùng chung
-│   └── firebase.js           # Cấu hình & Khởi tạo kết nối Google Firebase
-├── public/                   # Thư mục chứa các tài nguyên tĩnh
-│   └── assets/               # Chứa ảnh nền login & logo linh vật Học viện
-└── legacy_vanilla/           # Phiên bản PWA thuần (HTML/JS) dùng để đối chiếu
+├── app/                              # Next.js App Router & Server Actions
+│   ├── actions/
+│   │   └── quiz.js                   # Server Actions chấm điểm độc lập & bảo mật đề thi
+│   ├── layout.js                     # Root layout, Fonts, Global Head metadata
+│   ├── page.js                       # State Orchestrator điều phối toàn bộ ứng dụng
+│   ├── globals.css                   # Thiết kế CSS Tokens, Tailwind v4
+│   └── favicon.ico                   # App icon
+├── components/                       # Kho giao diện & Visualizers (~140+ components)
+│   ├── admin/                        # Phân hệ Quản trị viên (12 sub-components)
+│   │   ├── AdminDashboard.js         # Khung điều phối Dashboard trung tâm
+│   │   ├── AdminUnifiedHero.js       # Hero banner hiển thị Live KPIs & Quick Actions
+│   │   ├── AdminOverviewTab.js       # Tab Tổng quan: Biểu đồ SVG Bézier & Donut
+│   │   ├── AdminUsersTab.js          # Tab Quản lý Học viên & Xuất Excel
+│   │   ├── AdminQuestionsTab.js      # Tab Ngân hàng Câu hỏi & Kiểm định ΔL ≤ 15
+│   │   ├── AdminLeaderboardTab.js    # Tab Bảng xếp hạng & Vinh danh Top học viên
+│   │   ├── AdminUserDrawer.js        # Drawer hồ sơ & Biểu đồ Radar năng lực
+│   │   └── AdminModals.js            # Hộp thoại Thêm học viên, Đổi mật khẩu
+│   ├── Sidebar.js                    # Thanh điều hướng mục lục dạng Accordion đa tầng
+│   ├── ContentRenderer.js            # Bộ dựng bài học cấu trúc & Visualizer Loader
+│   ├── Quiz.js                       # Giao diện luyện tập, thi thử và phân tích bẫy tư duy
+│   ├── DrawingCanvas.js              # Khung vẽ ghi chú vector tự co giãn theo tỷ lệ
+│   ├── AlgoSimDashboard.js           # Bảng điều khiển phòng thí nghiệm thuật toán
+│   ├── DiagramSimDashboard.js        # Studio sơ đồ phân tích thiết kế UML với Fullscreen Lightbox
+│   ├── BubbleSortLab.js              # Phòng Lab sắp xếp nổi bọt (kèm âm thanh gõ phím)
+│   ├── MergeSortLab.js               # Phòng Lab sắp xếp trộn (2 cửa sổ so sánh song song)
+│   ├── SelectionSortLab.js           # Phòng Lab sắp xếp chọn
+│   ├── InsertionSortLab.js           # Phòng Lab sắp xếp chèn
+│   ├── BinarySearchLab.js            # Phòng Lab tìm kiếm nhị phân
+│   ├── BfsLab.js & BstLab.js         # Phòng Lab duyệt đồ thị & cây nhị phân
+│   ├── RecursionLab.js               # Phòng Lab ngăn xếp đệ quy (Tháp Hà Nội, Fibonacci)
+│   ├── ProfileModal.js               # Modal hồ sơ cá nhân & đổi avatar linh vật
+│   └── ErrorBoundary.js              # Bắt lỗi runtime React tránh crash trang
+├── data/                             # Cơ sở dữ liệu 10 môn học & Ngân hàng đề thi
+│   ├── index.js                      # Metadata cây thư mục phục vụ Sidebar & QuestionsMap
+│   ├── lessons.js                    # Cổng nạp dữ liệu bài học động (findSubsectionContent)
+│   ├── chuong-1.js .. chuong-6.js    # Giáo trình 6 Chương Tư tưởng Hồ Chí Minh
+│   ├── lich-su-dang*.js              # Giáo trình Lịch sử Đảng (Mở đầu, C1-C3, Kết luận)
+│   ├── oop.js                        # Giáo trình Lập trình Hướng đối tượng Java
+│   ├── dsa.js                        # Giáo trình Cấu trúc dữ liệu & Giải thuật
+│   ├── database*.js                  # Giáo trình Hệ Cơ sở dữ liệu (Chương 1 đến Chương 8)
+│   ├── analysis-design.js & ad-ch*.js# Giáo trình Phân tích Thiết kế HTTT
+│   ├── basic-general.js              # Giáo trình Đại hội Đảng & Kiến thức nền tảng
+│   └── questions-*.js                # Ngân hàng hàng nghìn câu hỏi trắc nghiệm & đề bẫy
+├── lib/                              # Thư viện & Cấu hình SDK
+│   └── firebase.js                   # Kết nối Google Firebase Firestore & Auth
+├── public/                           # Tài nguyên tĩnh
+│   ├── assets/                       # Logo, linh vật trong suốt (`cancer_mascot_transparent.png`), sơ đồ UML
+│   ├── images/admin/                 # Ảnh minh họa bối cảnh trong Admin Dashboard
+│   └── manifest.json                 # Cấu hình PWA
+├── scripts/                          # Script tiện ích & Sinh metadata
+│   ├── generate-metadata.mjs         # Script tạo tự động `data/index.js`
+│   └── verify_admin_test_cases.js    # Script kiểm thử chất lượng Admin Dashboard
+├── AGENTS.md                         # Quy tắc bắt buộc của toàn bộ dự án cho AI Agent
+├── setup.md                          # Hướng dẫn cài đặt & môi trường
+├── system_architecture.md            # Tài liệu kiến trúc kỹ thuật này
+└── README.md                         # Tài liệu giới thiệu tổng quan dự án
 ```
 
 ---
 
-## 🧩 Mô tả Chi tiết các Component
+## 🧩 3. Chi tiết các Phân hệ Cốt lõi
 
-### 1. [app/page.js](file:///c:/Users/Admin/Desktop/TT%20HCM/app/page.js) (State Orchestrator)
-Đóng vai trò là "Bộ điều phối trạng thái trung tâm". Hầu hết các trạng thái quan trọng của phiên học được lưu giữ tại đây và truyền xuống các component con:
-* **Trạng thái Điều hướng (`appStep`)**: Điều hướng người dùng qua các màn hình (`login`, `subject-select`, `study`).
-* **Trạng thái Tài khoản (`currentUser`)**: Lưu tên người dùng sau khi đăng nhập thành công. Hỗ trợ ghi nhớ đăng nhập thông qua `localStorage`.
-* **Trình tự Quản lý Chủ đề**: Người dùng có thể chọn các môn học có sẵn (Tư tưởng HCM, Lịch sử Đảng) hoặc tạo thêm chủ đề tự định nghĩa thông qua modal tạo môn học.
-* **Bộ điều khiển Ghi chú & Nút Tẩy**: Đồng bộ hóa công cụ vẽ (`activeTool`), mã màu (`activeColor`) và danh sách hình vẽ nổi bật (`highlights`).
+### 1. Central State Orchestrator ([app/page.js](file:///d:/TT%20HCM/app/page.js))
+Đóng vai trò là trung tâm điều phối trạng thái của toàn bộ ứng dụng:
+* **State máy trạng thái (`appStep`)**: Điều khiển luồng màn hình (`login` ➔ `register` ➔ `subject-select` ➔ `study` ➔ `quiz`).
+* **Phiên người dùng (`currentUser`, `currentUserAvatar`)**: Lưu giữ danh tính học viên, đồng bộ trạng thái đăng nhập với `localStorage` và Firebase Auth.
+* **Bộ điều khiển ghi chú**: Đồng bộ công cụ đang chọn (`activeTool`: `cursor`, `pen`, `highlighter`, `eraser`), bảng màu (`activeColor`) và danh sách nét vẽ.
 
-### 2. [components/Sidebar.js](file:///c:/Users/Admin/Desktop/TT%20HCM/components/Sidebar.js)
-Thanh bên trái màn hình học tập, hỗ trợ:
-* Danh sách mục lục bài học được hiển thị dạng cây (Accordion) cho phép đóng/mở linh hoạt theo Chương ➔ Phần ➔ Tiểu mục.
-* Tự động đóng mở nhóm chương cha chứa mục con đang được chọn (`activeSubsectionId`).
-* Tích hợp bộ chuyển đổi giao diện Sáng/Tối (`next-themes`).
-* Nút chuyển đổi qua lại giữa giao diện Học bài (Study Mode) và Làm trắc nghiệm (Quiz Mode).
+### 2. Bộ Dựng Bài học Cấu trúc ([components/ContentRenderer.js](file:///d:/TT%20HCM/components/ContentRenderer.js))
+* Truy xuất dữ liệu với hàm `findSubsectionContent(subjectId, activeSubsectionId)` từ bộ nhớ RAM với độ trễ $0\text{ms}$.
+* Tự động nhận diện và tạo kiểu giao diện chuẩn học thuật:
+  - **Hộp Mẹo nhớ (Mnemonic Box)**: Tóm tắt điểm mấu chốt và mẹo ghi nhớ nhanh.
+  - **Hộp Tóm tắt (Summary Box)**: Tổng hợp luận điểm trọng tâm.
+  - **Hộp Trích dẫn (Quote Box)**: Trích dẫn văn kiện và lời Bác dạy.
+* **Tích hợp 140+ Visualizers**: Tự động render sơ đồ tương tác, cây nhị phân, thuật toán sắp xếp hoặc dòng thời gian lịch sử tương ứng với từng tiểu mục bài học.
 
-### 3. [components/ContentRenderer.js](file:///c:/Users/Admin/Desktop/TT%20HCM/components/ContentRenderer.js)
-Đảm nhiệm phân tích cú pháp dữ liệu học tập và hiển thị giao diện học tập chuẩn học thuật:
-* Trình bày văn bản rõ ràng, phân biệt tiêu đề chính/phụ.
-* Tự động phát hiện và tô màu trực quan các hộp thông tin đặc biệt:
-  * **Hộp Mẹo nhớ (Mnemonic)**: Màu vàng/cam nhạt có biểu tượng bóng đèn giúp ghi nhớ nhanh.
-  * **Hộp Tóm tắt (Summary)**: Màu lục nhạt tổng hợp kiến thức trọng tâm.
-  * **Hộp Tài liệu tham khảo (Reference)**: Màu lam nhạt trích dẫn tài liệu gốc.
+### 3. Khung Vẽ Ghi chú Tự co giãn ([components/DrawingCanvas.js](file:///d:/TT%20HCM/components/DrawingCanvas.js))
+* **Lớp phủ Vector trong suốt**: Thẻ `<canvas>` nằm đè lên nội dung học tập. Khi ở chế độ `cursor`, canvas chuyển sang `pointer-events-none` để người dùng cuộn trang và chọn văn bản tự nhiên. Khi chọn `pen`/`eraser`, canvas chuyển sang `pointer-events-auto` để nhận nét vẽ.
+* **Thuật toán Co giãn Nét vẽ Chuẩn hóa (Normalized Auto-scale)**:
+  - Tọa độ nét vẽ không lưu bằng pixel cứng mà lưu theo tỷ lệ phần trăm $(x_{norm}, y_{norm}) \in [0.0, 1.0]$ so với chiều rộng/cao của canvas.
+  - Khi kích thước màn hình thay đổi (Resize/Rotate), `ResizeObserver` kích hoạt vẽ lại chính xác theo tỷ lệ mới:
+    $$\begin{cases} X_{new} = x_{norm} \times Width_{new} \\ Y_{new} = y_{norm} \times Height_{new} \end{cases}$$
 
-### 4. [components/DrawingCanvas.js](file:///c:/Users/Admin/Desktop/TT%20HCM/components/DrawingCanvas.js) & [components/NoteToolbar.js](file:///c:/Users/Admin/Desktop/TT%20HCM/components/NoteToolbar.js)
-Giải pháp ghi chú đồ họa trực tiếp trên tài liệu:
-* **Lớp phủ trong suốt**: `DrawingCanvas` là một thẻ `<canvas>` tuyệt đối nằm đè lên khung văn bản nội dung bài học. Khi người dùng chọn công cụ Bút vẽ (`pen`) hoặc Tẩy (`eraser`), lớp phủ này sẽ bật tính năng nhận sự kiện chuột/chạm (`pointer-events-auto`) để bắt đầu vẽ. Khi chọn Con trỏ (`cursor`), lớp phủ này sẽ nhường quyền bấm chuột (`pointer-events-none`) để sinh viên cuộn trang hoặc chọn văn bản bên dưới.
-* **Tự động lưu trữ**: Mọi nét vẽ (`paths`) được ghi lại dưới dạng danh sách các điểm tọa độ và màu sắc, tự động lưu vào `localStorage`.
-* **Thuật toán Co giãn Nét vẽ (Resizing Auto-scale)**: 
-  Để các nét vẽ không bị lệch vị trí khi cửa sổ trình duyệt thay đổi kích thước hoặc chuyển đổi thiết bị (điện thoại/máy tính):
-  * **Tọa độ Chuẩn hóa**: Khi vẽ, tọa độ các điểm $(X, Y)$ không lưu dưới dạng pixel tĩnh mà lưu dưới dạng tỷ lệ phần trăm so với chiều rộng và chiều cao của canvas tại thời điểm đó (giá trị từ `0.0` đến `1.0`).
-  * **Vẽ lại động**: Khi cửa sổ resize hoặc ResizeObserver kích hoạt thay đổi chiều rộng/chiều cao canvas, hàm `drawPaths` sẽ lấy tọa độ phần trăm nhân ngược lại với chiều rộng/chiều cao mới để vẽ lại chính xác vị trí tương đối.
+### 4. Hệ thống Trắc nghiệm Bảo mật & Chống đoán bừa ([components/Quiz.js](file:///d:/TT%20HCM/components/Quiz.js) & [app/actions/quiz.js](file:///d:/TT%20HCM/app/actions/quiz.js))
+* **2 Chế độ kiểm tra**:
+  - **Luyện tập (Practice)**: Hiển thị ngay đáp án đúng/sai, lời giải thích và nguyên nhân bẫy tư duy (`whyTrapped`, `trickWord`, `citation`, `tip`).
+  - **Thi thử tính giờ (Timed Exam)**: Sử dụng Server Action `getExamQuestions` để lọc bỏ hoàn toàn đáp án và giải thích ở phía client. Sau khi làm xong, Server Action `submitExamScore` chấm điểm độc lập trên máy chủ và ghi nhận vào Firestore collection `rankings`.
+* **Luật Cân bằng Chiều dài Đáp án (Equal Option Length Balance)**:
+  - Trong cùng 1 câu hỏi, độ lệch giữa phương án dài nhất và ngắn nhất luôn thỏa mãn $\Delta L = L_{\max} - L_{\min} \le 15$ ký tự để chống đoán bừa theo trực giác.
 
-### 5. [components/Quiz.js](file:///c:/Users/Admin/Desktop/TT%20HCM/components/Quiz.js)
-Mô-đun kiểm tra trắc nghiệm nâng cao:
-* **Bộ cấu hình ban đầu**: Cho phép thiết lập chương học muốn thi (hoặc tất cả các câu hỏi), số lượng câu hỏi và chế độ chấm điểm:
-  * **Chế độ Luyện tập (Immediate feedback)**: Hiển thị đáp án đúng/sai ngay lập tức sau khi nhấn chọn phương án, đính kèm lời giải thích chi tiết.
-  * **Chế độ Thi cử (Submit at end)**: Lưu lại các lựa chọn và chỉ hiển thị điểm số cùng bảng tổng sắp đáp án sau khi nộp bài.
-* **Khôi phục phiên làm bài (State Recovery)**: Trạng thái bài kiểm tra được lưu định kỳ vào `localStorage`. Nếu sinh viên vô tình làm mới trình duyệt, hệ thống sẽ nhận diện và hỏi xem sinh viên có muốn làm tiếp bài thi đang dở hay không.
-* **Xếp hạng trực tuyến**: Kết quả thi của sinh viên sẽ được ghi nhận và lưu lên bảng xếp hạng Firestore trực tuyến để so sánh điểm số và thời gian hoàn thành.
+### 5. Phân hệ Quản trị ([components/admin/](file:///d:/TT%20HCM/components/admin))
+* **AdminOverviewTab**: Hiển thị Live KPIs, biểu đồ SVG Bézier lượt thi theo ngày và biểu đồ Donut tỷ trọng môn học.
+* **AdminUsersTab**: Quản lý học viên, khóa/mở tài khoản, đổi mật khẩu và xuất file Excel qua `ExcelJS`.
+* **AdminQuestionsTab**: Tự động chạy thuật toán quét và kiểm định độ lệch $\Delta L \le 15$ ký tự của toàn bộ ngân hàng câu hỏi.
+* **AdminLeaderboardTab**: Bảng xếp hạng vinh danh Top 1, Top 2, Top 3 với hiệu ứng ánh kim lấp lánh.
 
 ---
 
-## 🗄️ Thiết kế Dữ liệu & Firestore
+## 🗄️ 4. Thiết kế Dữ liệu & Firestore Schema
 
-### 1. Dữ liệu bài học (`data/`)
-Nội dung bài học được tổ chức dưới dạng mảng cấu trúc JSON:
-```javascript
-export const chapters = [
-  {
-    id: "chuong-1",
-    title: "Chương I: ...",
-    sections: [
-      {
-        id: "section-1-1",
-        title: "1.1. ...",
-        subsections: [
-          {
-            id: "sub-1-1-1",
-            title: "a. ...",
-            content: "Nội dung văn bản học tập...",
-            summary: "Bản tóm tắt ý chính...",
-            mnemonic: "Mẹo nhớ..."
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-### 2. Firestore Collection: `rankings`
-Bảng xếp hạng lưu trữ trên Firebase Firestore sử dụng cấu trúc tài liệu sau:
-* **Tên tài liệu**: Tự động sinh bởi Firebase SDK.
-* **Các trường dữ liệu (Fields)**:
-  * `name` (String): Tên của học viên tham gia thi.
-  * `score` (Number): Điểm số đạt được (số câu đúng).
-  * `totalQuestions` (Number): Tổng số câu hỏi trong bài thi.
-  * `chapterId` (String): Định danh chương học đã thi (ví dụ: `all` hoặc `chuong-mo-dau`).
-  * `elapsedTime` (Number): Thời gian làm bài tính bằng giây.
-  * `timestamp` (Timestamp): Thời điểm nộp bài.
+### Collection: `rankings`
+Bảng xếp hạng lưu trữ trên Cloud Firestore:
+* `name` (String): Tên học viên tham gia thi.
+* `subjectId` (String): Mã môn học (`tu-tuong-hcm`, `lich-su-dang`, v.v.).
+* `chapterId` (String): Mã chương học đã thi.
+* `examSetId` (String): Mã đề thi hoặc `"trick"`.
+* `score` (Number): Điểm số đạt được (số câu đúng).
+* `total` (Number): Tổng số câu hỏi trong bài thi (ví dụ: 40 hoặc 50).
+* `time` (Number): Thời gian hoàn thành tính bằng giây.
+* `date` (String): Thời điểm nộp bài theo chuẩn ISO 8601.
 
 ---
 
-## 🔄 Quy trình Luồng hoạt động Chính
+## 🔄 5. Luồng Hoạt động Tổng thể
 
-### Luồng Đăng nhập & Điều phối Trang:
+### Luồng Trắc nghiệm & Chấm điểm Bảo mật:
 ```mermaid
-graph TD
-    A[Bắt đầu] --> B{Đã đăng nhập trước đó?}
-    B -- Có (Local Storage) --> C[Tự động vào Subject Select]
-    B -- Chưa --> D[Màn hình Đăng nhập]
-    D --> E{Nhập thông tin đăng nhập}
-    E -- admin/admin hoặc TK Đăng ký --> C
-    C --> F[Chọn môn học: Tư tưởng HCM / Lịch sử Đảng / Tự tạo]
-    F --> G[Giao diện Học tập chính]
+sequenceDiagram
+    autonumber
+    actor Student as Học viên
+    participant Client as Quiz.js (Client)
+    participant Action as app/actions/quiz.js (Server)
+    participant DB as Cloud Firestore
+
+    Student->>Client: Chọn Môn & Chương -> Bắt đầu thi
+    Client->>Action: getExamQuestions(subjectId, chapterId, isTrickMode)
+    Note over Action: Lọc bỏ answer & explanation
+    Action-->>Client: Trả về danh sách câu hỏi bảo mật
+    Student->>Client: Làm bài và nhấn "Nộp bài"
+    Client->>Action: submitExamScore(clientAnswers, elapsedTime)
+    Note over Action: So khớp đáp án gốc trên Server & Chấm điểm
+    Action->>DB: addDoc(collection(db, "rankings"), record)
+    Action-->>Client: Trả về kết quả chi tiết & Lời giải
+    Client->>Student: Hiển thị bảng tổng kết điểm & Confetti chúc mừng
 ```
 
-### Luồng Hoạt động của Khung vẽ Ghi chú:
-```mermaid
-graph TD
-    A[Chọn công cụ trên Toolbar] --> B{Công cụ là gì?}
-    B -- cursor --> C[pointer-events-none: Cuộn trang & Chọn văn bản bên dưới bình thường]
-    B -- pen / eraser --> D[pointer-events-auto: Lắng nghe Mouse/Touch events để vẽ hình]
-    D --> E[Sự kiện vẽ kết thúc]
-    E --> F[Lưu nét vẽ tọa độ phần trăm vào LocalStorage]
-    F --> G[Kích hoạt ResizeObserver khi thay đổi kích thước ➔ Vẽ lại chuẩn tỷ lệ]
-```

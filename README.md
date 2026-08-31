@@ -77,7 +77,7 @@ Thay vì sử dụng các tệp MDX cần phân tích chuỗi văn bản tĩnh, 
      * **Hộp Mẹo nhớ (Mnemonic Box)**: Tóm tắt mẹo ghi nhớ nhanh, công thức cốt lõi.
      * **Hộp Tổng kết (Summary Box)**: Tổng hợp các luận điểm học thuật trọng tâm.
      * **Hộp Trích dẫn & Định nghĩa (Quote & Definition Box)**: Trích dẫn văn kiện và khái niệm.
-   * **Nhúng trực tiếp 820+ React Visualizers**: Cho phép gắn trực tiếp các props tương tác, biến trạng thái và hàm xử lý sự kiện mà không bị giới hạn bởi rào cản serialize của Markdown.
+   * **Nhúng trực tiếp ~140+ React Visualizers**: Cho phép gắn trực tiếp các props tương tác, biến trạng thái và hàm xử lý sự kiện mà không bị giới hạn bởi rào cản serialize của Markdown.
 
 ---
 
@@ -129,7 +129,7 @@ components/admin/
 
 ## 📌 PHẦN 5: PHÒNG THÍ NGHIỆM MÔ PHỎNG & COMPONENT TƯƠNG TÁC
 
-Hệ thống tích hợp hơn **820+ bộ mô phỏng trực quan** cùng 2 phòng Lab tương tác chuyên sâu:
+Hệ thống tích hợp hơn **140+ bộ mô phỏng trực quan** cùng 2 phòng Lab tương tác chuyên sâu:
 
 ### 1. Phòng Thí nghiệm Thuật toán (`AlgoSimDashboard.js`)
 Bao gồm các bài Lab chuyên sâu phục vụ môn Cấu trúc Dữ liệu & Giải thuật:
@@ -206,21 +206,14 @@ Bảng vẽ ghi chú [`DrawingCanvas.js`](file:///d:/TT%20HCM/components/Drawing
 
 ```
 TT HCM/
-├── admindashboardDoc/               # Bộ tài liệu đặc tả & thiết kế Admin Dashboard
-│   ├── 01_BRD_BUSINESS_REQUIREMENTS.md
-│   ├── 02_SRS_SYSTEM_REQUIREMENTS.md
-│   ├── 03_TECHNICAL_ARCHITECTURE_DESIGN.md
-│   ├── 04_DATA_MODELS_AND_CONTRACTS.md
-│   ├── 05_UI_UX_INTERACTION_SPEC.md
-│   ├── 06_QA_ACCEPTANCE_CRITERIA.md
-│   └── README.md
-├── app/                             # Next.js App Router
+├── admindashboardDoc/               # Bộ tài liệu đặc tả & thiết kế Admin Dashboard (BRD, SRS, QA)
+├── app/                             # Next.js App Router & Server Actions
 │   ├── actions/                     # Server Actions bảo mật
 │   │   └── quiz.js                  # Chấm điểm Server-side & Ghi Firestore
 │   ├── globals.css                  # CSS toàn cục, Theme Variables & HSL Engine
 │   ├── layout.js                    # Layout HTML bọc toàn trang
 │   └── page.js                      # Bộ điều phối trạng thái chính (State Orchestrator)
-├── components/                      # Kho linh kiện giao diện React
+├── components/                      # Kho linh kiện giao diện React (~140+ components)
 │   ├── admin/                       # Phân hệ Quản trị Admin Dashboard (12 components)
 │   ├── AlgoSimDashboard.js          # Phòng Lab Thuật toán (Bubble, Selection, Insertion, Merge...)
 │   ├── DiagramSimDashboard.js       # Studio Sơ đồ Hệ thống ATM (Lightbox, Zoom, Pan & Drag)
@@ -228,20 +221,26 @@ TT HCM/
 │   ├── ContentRenderer.js           # Bộ dựng nội dung bài học & Registry Visualizers
 │   ├── Quiz.js                      # Component làm bài trắc nghiệm (Luyện tập & Thi)
 │   ├── Sidebar.js                   # Thanh điều hướng mục lục cây thư mục môn học
-│   └── ...                          # Hơn 820+ Visualizers và Explorers chuyên biệt
+│   └── ...                          # Hơn 140+ Visualizers và Explorers chuyên biệt
 ├── data/                            # Dữ liệu 10 môn học & Ngân hàng câu hỏi (Structured JS Data)
 │   ├── index.js                     # Cổng xuất dữ liệu và metadata danh mục
 │   ├── lessons.js                   # Cổng hợp nhất dữ liệu bài giảng của toàn bộ 10 môn học
-│   ├── questions-chuong-*.js        # Ngân hàng trắc nghiệm Tư tưởng Hồ Chí Minh
-│   ├── questions-lsd-*.js           # Ngân hàng trắc nghiệm Lịch sử Đảng
+│   ├── chuong-1.js .. chuong-6.js   # Giáo trình 6 Chương Tư tưởng Hồ Chí Minh
+│   ├── lich-su-dang*.js             # Giáo trình Lịch sử Đảng
 │   ├── oop.js / dsa.js / database.js# Dữ liệu bài giảng chuyên ngành CNTT
-│   └── ...                          # Các ngân hàng câu hỏi đề thi & đề bẫy
+│   └── questions-*.js               # Ngân hàng hàng nghìn câu hỏi trắc nghiệm & đề bẫy
 ├── lib/                             # Thư viện & Cấu hình dịch vụ
 │   └── firebase.js                  # Khởi tạo kết nối Firebase Cloud Firestore
 ├── public/                          # Tài nguyên tĩnh
-│   └── assets/diagrams/             # Bộ sơ đồ ATM (Use Case, Class, Sequence, Activity)
-├── AGENTS.md                        # Bộ quy tắc phát triển & Luật kiểm định đề thi
-├── README.md                        # Tài liệu hướng dẫn & Kiến trúc tổng thể hệ thống
+│   ├── assets/                      # Linh vật trong suốt (`cancer_mascot_transparent.png`), Logo
+│   ├── assets/diagrams/             # Bộ sơ đồ ATM (Use Case, Class, Sequence, Activity PNG)
+│   └── images/admin/                # Ảnh bối cảnh Admin Dashboard
+├── scripts/                         # Script tiện ích & Sinh metadata
+├── AGENTS.md                        # Bộ quy tắc phát triển & Luật kiểm định đề thi cho AI
+├── setup.md                         # Hướng dẫn cài đặt & bàn giao môi trường
+├── system_architecture.md           # Tài liệu kiến trúc kỹ thuật chi tiết
+├── plan.md / bug-report.md / context.md # Các file ghi nhận kế hoạch & ngữ cảnh dùng chung
+├── README.md                        # Tài liệu giới thiệu tổng thể hệ thống này
 └── package.json                     # Danh mục thư viện phụ thuộc và scripts dự án
 ```
 
