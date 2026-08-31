@@ -1,19 +1,19 @@
 import fs from "fs";
 import path from "path";
 
-// We import the files from legacy_data
-import { chuong1 } from "../legacy_data/chuong-1.js";
-import { chuong2 } from "../legacy_data/chuong-2.js";
-import { chuong3 } from "../legacy_data/chuong-3.js";
-import { lichSuDangMoDau } from "../legacy_data/lich-su-dang-mo-dau.js";
-import { lichSuDangChuong1 } from "../legacy_data/lich-su-dang.js";
+// We import the files from data
+import { chuong1 } from "../data/chuong-1.js";
+import { chuong2 } from "../data/chuong-2.js";
+import { chuong3 } from "../data/chuong-3.js";
+import { lichSuDangMoDau } from "../data/lich-su-dang-mo-dau.js";
+import { lichSuDangChuong1 } from "../data/lich-su-dang.js";
 import { oopData } from "../data/oop.js";
-import { analysisDesignData } from "../legacy_data/analysis-design.js";
+import { analysisDesignData } from "../data/analysis-design.js";
 import { dsaData } from "../data/dsa.js";
-import { databaseData } from "../legacy_data/database.js";
-import { basicAlgorithmsData } from "../legacy_data/basic-algorithms.js";
-import { basicConceptsData } from "../legacy_data/basic-concepts.js";
-import { basicGeneralData } from "../legacy_data/basic-general.js";
+import { databaseData } from "../data/database.js";
+import { basicAlgorithmsData } from "../data/basic-algorithms.js";
+import { basicConceptsData } from "../data/basic-concepts.js";
+import { basicGeneralData } from "../data/basic-general.js";
 
 // Helper to strip content and parts recursively, keeping only layout tree
 function stripMetadata(chapter) {
