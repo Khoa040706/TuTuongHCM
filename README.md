@@ -77,7 +77,7 @@ Thay vì sử dụng các tệp MDX cần phân tích chuỗi văn bản tĩnh, 
      * **Hộp Mẹo nhớ (Mnemonic Box)**: Tóm tắt mẹo ghi nhớ nhanh, công thức cốt lõi.
      * **Hộp Tổng kết (Summary Box)**: Tổng hợp các luận điểm học thuật trọng tâm.
      * **Hộp Trích dẫn & Định nghĩa (Quote & Definition Box)**: Trích dẫn văn kiện và khái niệm.
-   * **Nhúng trực tiếp ~140+ React Visualizers**: Cho phép gắn trực tiếp các props tương tác, biến trạng thái và hàm xử lý sự kiện mà không bị giới hạn bởi rào cản serialize của Markdown.
+   * **Nhúng trực tiếp 820+ React Visualizers**: Cho phép gắn trực tiếp các props tương tác, biến trạng thái và hàm xử lý sự kiện mà không bị giới hạn bởi rào cản serialize của Markdown.
 
 ---
 
@@ -129,7 +129,7 @@ components/admin/
 
 ## 📌 PHẦN 5: PHÒNG THÍ NGHIỆM MÔ PHỎNG & COMPONENT TƯƠNG TÁC
 
-Hệ thống tích hợp hơn **140+ bộ mô phỏng trực quan** cùng 2 phòng Lab tương tác chuyên sâu:
+Hệ thống tích hợp hơn **820+ bộ mô phỏng trực quan** cùng 2 phòng Lab tương tác chuyên sâu:
 
 ### 1. Phòng Thí nghiệm Thuật toán (`AlgoSimDashboard.js`)
 Bao gồm các bài Lab chuyên sâu phục vụ môn Cấu trúc Dữ liệu & Giải thuật:
@@ -213,7 +213,7 @@ TT HCM/
 │   ├── globals.css                  # CSS toàn cục, Theme Variables & HSL Engine
 │   ├── layout.js                    # Layout HTML bọc toàn trang
 │   └── page.js                      # Bộ điều phối trạng thái chính (State Orchestrator)
-├── components/                      # Kho linh kiện giao diện React (~140+ components)
+├── components/                      # Kho linh kiện giao diện React (820+ Visualizers & Components)
 │   ├── admin/                       # Phân hệ Quản trị Admin Dashboard (12 components)
 │   ├── AlgoSimDashboard.js          # Phòng Lab Thuật toán (Bubble, Selection, Insertion, Merge...)
 │   ├── DiagramSimDashboard.js       # Studio Sơ đồ Hệ thống ATM (Lightbox, Zoom, Pan & Drag)
@@ -221,7 +221,7 @@ TT HCM/
 │   ├── ContentRenderer.js           # Bộ dựng nội dung bài học & Registry Visualizers
 │   ├── Quiz.js                      # Component làm bài trắc nghiệm (Luyện tập & Thi)
 │   ├── Sidebar.js                   # Thanh điều hướng mục lục cây thư mục môn học
-│   └── ...                          # Hơn 140+ Visualizers và Explorers chuyên biệt
+│   └── ...                          # Hơn 820+ Visualizers và Explorers chuyên biệt
 ├── data/                            # Dữ liệu 10 môn học & Ngân hàng câu hỏi (Structured JS Data)
 │   ├── index.js                     # Cổng xuất dữ liệu và metadata danh mục
 │   ├── lessons.js                   # Cổng hợp nhất dữ liệu bài giảng của toàn bộ 10 môn học

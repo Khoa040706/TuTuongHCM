@@ -13,7 +13,7 @@ graph TB
     subgraph Client_Side ["Client-Side Runtime (React 19 & Next.js App Router)"]
         Orchestrator["app/page.js<br>(Central State Orchestrator)"]
         Sidebar["Sidebar.js<br>(Accordion Nav & Theme)"]
-        Renderer["ContentRenderer.js<br>(Academic Lessons & 140+ Visualizers)"]
+        Renderer["ContentRenderer.js<br>(Academic Lessons & 820+ Visualizers)"]
         Canvas["DrawingCanvas.js<br>(SVG Normalized Vector Canvas)"]
         QuizUI["Quiz.js<br>(Practice & Timed Exam UI)"]
         Admin["components/admin/*<br>(Admin Dashboard & Analytics)"]
@@ -60,7 +60,7 @@ TT HCM/
 │   ├── page.js                       # State Orchestrator điều phối toàn bộ ứng dụng
 │   ├── globals.css                   # Thiết kế CSS Tokens, Tailwind v4
 │   └── favicon.ico                   # App icon
-├── components/                       # Kho giao diện & Visualizers (~140+ components)
+├── components/                       # Kho giao diện & Visualizers (820+ Visualizers & Components)
 │   ├── admin/                        # Phân hệ Quản trị viên (12 sub-components)
 │   │   ├── AdminDashboard.js         # Khung điều phối Dashboard trung tâm
 │   │   ├── AdminUnifiedHero.js       # Hero banner hiển thị Live KPIs & Quick Actions
@@ -127,7 +127,7 @@ TT HCM/
   - **Hộp Mẹo nhớ (Mnemonic Box)**: Tóm tắt điểm mấu chốt và mẹo ghi nhớ nhanh.
   - **Hộp Tóm tắt (Summary Box)**: Tổng hợp luận điểm trọng tâm.
   - **Hộp Trích dẫn (Quote Box)**: Trích dẫn văn kiện và lời Bác dạy.
-* **Tích hợp 140+ Visualizers**: Tự động render sơ đồ tương tác, cây nhị phân, thuật toán sắp xếp hoặc dòng thời gian lịch sử tương ứng với từng tiểu mục bài học.
+* **Tích hợp 820+ Visualizers**: Tự động render sơ đồ tương tác, cây nhị phân, thuật toán sắp xếp hoặc dòng thời gian lịch sử tương ứng với từng tiểu mục bài học.
 
 ### 3. Khung Vẽ Ghi chú Tự co giãn ([components/DrawingCanvas.js](file:///d:/TT%20HCM/components/DrawingCanvas.js))
 * **Lớp phủ Vector trong suốt**: Thẻ `<canvas>` nằm đè lên nội dung học tập. Khi ở chế độ `cursor`, canvas chuyển sang `pointer-events-none` để người dùng cuộn trang và chọn văn bản tự nhiên. Khi chọn `pen`/`eraser`, canvas chuyển sang `pointer-events-auto` để nhận nét vẽ.
