@@ -1,0 +1,25 @@
+[1mdiff --git a/AGENTS.md b/AGENTS.md[m
+[1mindex 88e4149..59b4469 100644[m
+[1m--- a/AGENTS.md[m
+[1m+++ b/AGENTS.md[m
+[36m@@ -38,9 +38,17 @@[m [mThis version has breaking changes — APIs, conventions, and file structure may[m
+   * Luôn đọc kỹ `context.md` và `plan.md` trước khi tiến hành viết mã nguồn.[m
+   * Không tự ý bịa thêm trường (field), phương thức hoặc endpoint ngoài hợp đồng dữ liệu / API contract đã định nghĩa trong `plan.md`.[m
+   * Cập nhật `plan.md` và xin ý kiến xác nhận trước nếu phát sinh nhu cầu thay đổi API / Data contract so với kế hoạch ban đầu.[m
+[31m-- **Quy tắc Bất khả xâm phạm về Nội dung Giáo trình**:[m
+[31m-  * **TUYỆT ĐỐI KHÔNG CHỈNH SỬA NỘI DUNG GIÁO TRÌNH CHÍNH THỨC**: Không thay đổi hay cắt xén nội dung các bài đọc học thuật, giáo trình của các môn học chính thức (Tư tưởng Hồ Chí Minh, Lịch sử Đảng Cộng sản Việt Nam) vì đây là các tài liệu đã được kiểm duyệt nghiêm ngặt.[m
+[31m-  * **ĐƯỢC PHÉP**: Cải tiến giao diện, trải nghiệm người dùng (UI/UX), nâng cấp công cụ học tập (Canvas, Quiz, sơ đồ tương tác) nhằm nâng cao hiệu quả tiếp thu.[m
+[32m+[m[32m## Vùng dữ liệu bất khả xâm phạm[m
+[32m+[m[32mToàn bộ file trong thư mục data/ là nội dung giáo trình/câu hỏi đã nhập sẵn,[m
+[32m+[m[32mKHÔNG ĐƯỢC sửa dưới bất kỳ hình thức nào, bao gồm nhưng không giới hạn:[m
+[32m+[m[32m- data/chuong-*.js, data/lich-su-dang*.js[m
+[32m+[m[32m- data/database-ch*.js, data/database.js[m
+[32m+[m[32m- data/questions-chuong-*.js[m
+[32m+[m[32m- data/ad-ch*.js[m
+[32m+[m[32m- data/dsa.js, data/oop.js, data/basic-*.js, data/analysis-design.js, data/lessons.js[m
+[32m+[m[32mQuy tắc chung: bất kỳ file .js nào trong thư mục data/ đều coi là dữ liệu tĩnh,[m
+[32m+[m[32mkhông phải code logic — không sửa, không xóa, không tạo file mới đè lên.[m
+[32m+[m[32m- **ĐƯỢC PHÉP**: Cải tiến giao diện, trải nghiệm người dùng (UI/UX), nâng cấp công cụ học tập (Canvas, Quiz, sơ đồ tương tác) nhằm nâng cao hiệu quả tiếp thu.[m
+ [m
+ ## Quy tắc biên soạn Bài kiểm tra trắc nghiệm (Quiz / Exam Rules)[m
+ - **Quy tắc Đặt tên & Định danh (Dynamic Naming Convention)**:[m

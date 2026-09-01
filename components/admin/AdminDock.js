@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { LayoutDashboard, Users, ShieldAlert, Trophy, ArrowLeft } from "lucide-react";
+import { LayoutDashboard, Users, ShieldAlert, Trophy, FileSpreadsheet, ArrowLeft } from "lucide-react";
 
 export default function AdminDock({
   activeTab,
@@ -32,6 +32,12 @@ export default function AdminDock({
       label: "Bảng xếp hạng",
       icon: Trophy,
       badge: "Top 3"
+    },
+    {
+      id: "learning-report",
+      label: "Báo cáo Tiến độ",
+      icon: FileSpreadsheet,
+      badge: "Excel/PDF"
     }
   ];
 

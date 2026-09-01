@@ -46,7 +46,11 @@ import DiagramSimDashboard from "../components/DiagramSimDashboard";
 import AdminDashboard from "../components/admin/AdminDashboard";
 
 import ProfileModal from "../components/ProfileModal";
-import { subjects } from "../data/index";
+import { subjects } from "../lib/curriculum";
+import { useLearningState } from "../hooks/useLearningState";
+import CloudFlashcardDeck from "../components/cloud/CloudFlashcardDeck";
+import CloudSearchPanel from "../components/cloud/CloudSearchPanel";
+import ReviewQueue from "../components/learning/ReviewQueue";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
@@ -108,6 +112,18 @@ export default function Page() {
   const [activeColor, setActiveColor] = useState("rgba(217, 119, 6, 0.2)");
   const [highlights, setHighlights] = useState([]);
   const [reRenderKey, setReRenderKey] = useState(0);
+
+  // Cloud & Learning states (API Contract: LEARN, FLASH)
+  const {
+    state: learningState,
+    completeSubsection,
+    toggleBookmark,
+    toggleReview,
+    isSubsectionCompleted
+  } = useLearningState(selectedSubjectId);
+  const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isReviewQueueOpen, setIsReviewQueueOpen] = useState(false);
 
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -2332,6 +2348,10 @@ export default function Page() {
                       selectedSubjectId={selectedSubjectId}
                       activeSubsectionId={activeSubsectionId}
                       setActiveSubsectionId={setActiveSubsectionId}
+                      learningState={learningState}
+                      onCompleteSubsection={completeSubsection}
+                      onToggleBookmark={toggleBookmark}
+                      onToggleReview={toggleReview}
                     />
 
                     {/* Freehand overlay drawing canvas */}
@@ -2348,7 +2368,68 @@ export default function Page() {
             </div>
           </div>
 
+          {/* Cloud & Learning Floating Toolbar */}
+          {!showHero && !isQuizMode && (
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 p-2 rounded-2xl bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl border border-stone-200/80 shadow-2xl">
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-750 hover:bg-stone-100 transition-all cursor-pointer"
+                title="Tra cứu thuật ngữ song ngữ (Ctrl + K)"
+              >
+                <Search size={14} className="text-accent" />
+                <span className="hidden sm:inline">Tra cứu (Ctrl+K)</span>
+              </button>
 
+              <button
+                type="button"
+                onClick={() => setIsFlashcardsOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-750 hover:bg-stone-100 transition-all cursor-pointer"
+                title="Bàn học Flashcard SM-2"
+              >
+                <Sparkles size={14} className="text-amber-500" />
+                <span>Flashcards</span>
+                {learningState.flashcards?.dueCount > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-white text-[10px] font-black">
+                    {learningState.flashcards.dueCount}
+                  </span>
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsReviewQueueOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-750 hover:bg-stone-100 transition-all cursor-pointer"
+                title="Hàng đợi cần ôn tập"
+              >
+                <AlertTriangle size={14} className="text-rose-500" />
+                <span>Cần ôn</span>
+                {learningState.reviewItems?.filter((r) => r.needsReview).length > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[10px] font-black">
+                    {learningState.reviewItems.filter((r) => r.needsReview).length}
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
+
+          {/* Cloud Modals */}
+          <CloudFlashcardDeck
+            isOpen={isFlashcardsOpen}
+            onClose={() => setIsFlashcardsOpen(false)}
+            subjectId={selectedSubjectId}
+          />
+          <CloudSearchPanel
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            onSelectSubsection={(subId) => setActiveSubsectionId(subId)}
+          />
+          <ReviewQueue
+            isOpen={isReviewQueueOpen}
+            onClose={() => setIsReviewQueueOpen(false)}
+            reviewItems={learningState.reviewItems}
+            onSelectSubsection={(subId) => setActiveSubsectionId(subId)}
+          />
 
           {/* Scroll to Top Button */}
           {showScrollTop && !showHero && !isDiagramSimActive && (

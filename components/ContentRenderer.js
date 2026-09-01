@@ -1,6 +1,14 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { findSubsectionContent, lessonsData } from "../data/lessons";
+import { findSubsectionContent, lessonsData } from "../lib/curriculum";
+import CloudChapterHero from "./cloud/CloudChapterHero";
+import CloudConceptMap from "./cloud/CloudConceptMap";
+import CloudComparisonExplorer from "./cloud/CloudComparisonExplorer";
+import CloudDecisionSandbox from "./cloud/CloudDecisionSandbox";
+import CloudArchitectureDnD from "./cloud/CloudArchitectureDnD";
+import SubsectionCompletion from "./learning/SubsectionCompletion";
+import BookmarkButton from "./learning/BookmarkButton";
+import ReviewToggle from "./learning/ReviewToggle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -1134,7 +1142,16 @@ function ChapterHeader({ title, subtitle, chapterId, id }) {
   );
 }
 
-export default function ContentRenderer({ chapters, selectedSubjectId, activeSubsectionId, setActiveSubsectionId }) {
+export default function ContentRenderer({
+  chapters,
+  selectedSubjectId,
+  activeSubsectionId,
+  setActiveSubsectionId,
+  learningState,
+  onCompleteSubsection,
+  onToggleBookmark,
+  onToggleReview
+}) {
   const [activeLang, setActiveLang] = useState("java");
 
   // Refresh ScrollTrigger after static content renders and layout stabilizes
@@ -1231,15 +1248,42 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
             >
               {/* Subsection title header bar inside page stream */}
               {sub.title && (
-                <div className="subsection-header-badge mt-6 px-4 flex items-center gap-2 select-none">
-                  {sub.number && (
-                    <span className="w-5 h-5 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-[10px] font-black text-accent font-mono">
-                      {sub.number}
-                    </span>
-                  )}
-                  <h3 className="text-xs md:text-sm font-bold text-stone-750 uppercase tracking-wider">
-                    {sub.title}
-                  </h3>
+                <div className="subsection-header-badge mt-6 px-4 flex items-center justify-between gap-2 select-none">
+                  <div className="flex items-center gap-2">
+                    {sub.number && (
+                      <span className="w-5 h-5 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-[10px] font-black text-accent font-mono">
+                        {sub.number}
+                      </span>
+                    )}
+                    <h3 className="text-xs md:text-sm font-bold text-stone-750 uppercase tracking-wider">
+                      {sub.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {onToggleBookmark && (
+                      <BookmarkButton
+                        isBookmarked={learningState?.bookmarks?.some((b) => b.subsectionId === sub.id)}
+                        onToggle={() =>
+                          onToggleBookmark(sub.id, {
+                            chapterId: activeChapter?.id,
+                            sectionId: sec.id
+                          })
+                        }
+                      />
+                    )}
+                    {onToggleReview && (
+                      <ReviewToggle
+                        reviewItem={learningState?.reviewItems?.find((r) => r.subsectionId === sub.id)}
+                        onToggle={() =>
+                          onToggleReview(sub.id, {
+                            chapterId: activeChapter?.id,
+                            sectionId: sec.id
+                          })
+                        }
+                      />
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -1327,6 +1371,22 @@ export default function ContentRenderer({ chapters, selectedSubjectId, activeSub
                   );
                 });
               })()}
+
+              {/* Subsection Completion Action Bar */}
+              {onCompleteSubsection && (
+                <SubsectionCompletion
+                  subsectionId={sub.id}
+                  isCompleted={learningState?.subsections?.some((s) => s.subsectionId === sub.id && s.completed)}
+                  completedAt={learningState?.subsections?.find((s) => s.subsectionId === sub.id)?.completedAt}
+                  onComplete={async ({ reachedEnd }) => {
+                    await onCompleteSubsection(sub.id, {
+                      chapterId: activeChapter?.id,
+                      sectionId: sec.id,
+                      reachedEnd
+                    });
+                  }}
+                />
+              )}
             </div>
           );
         })}
@@ -1681,6 +1741,31 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
             />
           ))}
         </ol>
+      );
+
+    case "cloud-chapter-hero":
+      return (
+        <CloudChapterHero key={path} chapterId={block.chapterId} />
+      );
+
+    case "cloud-concept-map":
+      return (
+        <CloudConceptMap key={path} />
+      );
+
+    case "cloud-comparison-explorer":
+      return (
+        <CloudComparisonExplorer key={path} defaultMode={block.mode} />
+      );
+
+    case "cloud-decision-sandbox":
+      return (
+        <CloudDecisionSandbox key={path} />
+      );
+
+    case "cloud-architecture-dnd":
+      return (
+        <CloudArchitectureDnD key={path} />
       );
 
     case "bubble-sort-visualizer":
