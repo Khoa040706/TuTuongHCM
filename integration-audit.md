@@ -435,3 +435,58 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 Backend Route Handlers và service hiện nhìn chung bám theo API contract trong `plan.md`; lỗi integration chủ yếu nằm ở việc frontend chưa chuyển khỏi auth/localStorage/mock architecture và shared curriculum chưa thống nhất. Tuy nhiên backend quiz vẫn có hai điểm cần xử lý trước production: không ràng buộc submission bằng toàn bộ đề đã cấp và chưa reject nhất quán trick exam set ID sai.
 
 Không nên kiểm thử UI end-to-end với Firestore production ở trạng thái này vì kết quả sẽ trộn ba nguồn trạng thái độc lập: localStorage cũ, MockServer localStorage và Firebase/Firestore thật.
+
+---
+
+## 7. Các mismatch FE ↔ BE bổ sung qua kiểm tra mã nguồn thực tế [THIẾU]
+
+### INT-35 [THIẾU] — Thiếu đồng bộ trạng thái: Quiz thi đạt (>= 7.0) ↔ `learningState`
+
+- **Luồng/feature:** Đồng bộ tiến độ sau khi hoàn thành bài thi Quiz.
+- **FE đang làm gì:** Khi nộp bài thi đạt điểm >= 7.0, `Quiz.js` hiển thị kết quả chúc mừng nhưng không có callback/cơ chế thông báo để `useLearningState` (tại `app/page.js`) làm mới lại state.
+- **BE đang làm gì:** `gradeAndRecordQuiz` trong `lib/server/quiz-service.js` đã tính toán và ghi nhận `chapterCompleted: true` cùng `bestScore10` vào Firestore.
+- **Contract hiện có:** `plan.md` FE-04 & FE-09 quy định khi quiz đạt >= 7.0 thì đồng bộ completion của chương.
+- **Loại lỗi:** `FE`.
+- **Mức độ blocker:** `HIGH` — Sidebar, thẻ chương và dashboard học viên trên FE không tự cập nhật trạng thái hoàn thành chương cho đến khi người dùng reload toàn bộ trang.
+- **Bằng chứng chính:** `components/Quiz.js`, `hooks/useLearningState.js`, `app/page.js`, `lib/server/quiz-service.js`.
+
+### INT-36 [THIẾU] — Lệch nguồn dữ liệu danh mục ngay trong nội bộ `Quiz.js`
+
+- **Luồng/feature:** Nạp metadata môn học/câu hỏi trong `Quiz.js`.
+- **FE đang làm gì:** Trong khi `app/page.js`, `Sidebar.js` và `ContentRenderer.js` đều đã chuyển sang dùng Adapter `lib/curriculum.js` để tích hợp môn Cloud Computing, thì dòng 13 của `components/Quiz.js` vẫn import trực tiếp `subjects` từ `data/index.js`.
+- **BE đang làm gì:** Server Action `quiz.js` đọc qua `content-catalog.js`.
+- **Contract hiện có:** Danh mục môn học phải nhất quán xuyên suốt ứng dụng.
+- **Loại lỗi:** `FE`.
+- **Mức độ blocker:** `MEDIUM` — Gây bất nhất trong nội bộ Frontend; nếu sau này kích hoạt quiz cho môn Cloud Computing hoặc các môn mở rộng qua adapter, `Quiz.js` sẽ không tìm thấy dữ liệu.
+- **Bằng chứng chính:** `components/Quiz.js:13`, `lib/curriculum.js`.
+
+### INT-37 [THIẾU] — Thiếu đồng bộ vòng đời hai chiều: Firebase Client Auth ↔ Session Cookie Server
+
+- **Luồng/feature:** Quản lý vòng đời phiên xác thực giữa client và backend.
+- **FE đang làm gì:** Client dùng Firebase Web SDK lưu token trong IndexedDB/localStorage.
+- **BE đang làm gì:** Server chỉ chấp nhận và duy trì phiên qua HttpOnly Cookie `studymaster_session`.
+- **Contract hiện có:** AUTH-02 / AUTH-03 quy định phiên làm việc trên server phải đồng bộ với danh tính Firebase Auth.
+- **Loại lỗi:** `CONTRACT`.
+- **Mức độ blocker:** `HIGH` — Nếu học viên đăng nhập client thành công nhưng bước trao đổi lấy session cookie gặp sự cố (hoặc khi session cookie hết hạn trên server sau 12h/5 ngày trong khi Firebase Web SDK client vẫn còn phiên), Client sẽ ngỡ là đã đăng nhập nhưng 100% request gọi xuống Backend đều bị từ chối với lỗi `401 UNAUTHENTICATED`.
+- **Bằng chứng chính:** `app/page.js`, `lib/firebase.js`, `lib/server/auth.js`.
+
+### INT-38 [THIẾU] — Thiếu tầng xử lý phản hồi lỗi tập trung (Error Interceptor / Fetch Wrapper)
+
+- **Luồng/feature:** Bắt và điều hướng các mã lỗi bảo mật/phiên làm việc từ backend.
+- **FE đang làm gì:** Các hook/component tự `catch` lỗi rời rạc bằng `console.warn` hoặc hiển thị state rỗng; không có cơ chế chặn lỗi chung.
+- **BE đang làm gì:** Backend trả về các mã lỗi có cấu trúc (`UNAUTHENTICATED`, `ACCOUNT_DISABLED`, `FORBIDDEN`, `DATASTORE_UNAVAILABLE`).
+- **Contract hiện có:** Bảng mã lỗi HTTP và Error Envelope trong `plan.md` mục 8.
+- **Loại lỗi:** `FE`.
+- **Mức độ blocker:** `HIGH` — Khi tài khoản bị vô hiệu hóa (`ACCOUNT_DISABLED`) hoặc phiên hết hạn (`UNAUTHENTICATED`), người dùng không được tự động chuyển hướng về màn hình đăng nhập (`appStep = "login"`), mà giao diện hiển thị rỗng hoặc rơi vào trạng thái im lặng.
+- **Bằng chứng chính:** `hooks/useLearningState.js`, `components/cloud/CloudFlashcardDeck.js`, `components/admin/AdminLearningReportTab.js`.
+
+### INT-39 [THIẾU] — Thiếu cơ chế tiếp nhận Stream nhị phân cho Export Báo cáo Admin
+
+- **Luồng/feature:** Xuất báo cáo học tập XLSX/PDF từ backend.
+- **FE đang làm gì:** `AdminLearningReportTab.js` tự tạo file ở client bằng `exceljs`/`jspdf`; hoàn toàn chưa có hàm xử lý nhận binary stream từ API export của server.
+- **BE đang làm gì:** Endpoint `GET /api/admin/learning-report/export?format=xlsx|pdf` trả về stream nhị phân kèm headers `Content-Disposition: attachment; filename=...`.
+- **Contract hiện có:** ADMIN-02 trong `plan.md` quy định server xuất file nhị phân đính kèm.
+- **Loại lỗi:** `CONTRACT`.
+- **Mức độ blocker:** `HIGH` — Không thể chuyển từ client export sang server export nếu FE chưa có hàm gọi `response.blob()`, tạo Blob Object URL và kích hoạt thẻ tải về trình duyệt.
+- **Bằng chứng chính:** `components/admin/AdminLearningReportTab.js`, `app/api/admin/learning-report/export/route.js`.
+
