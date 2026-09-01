@@ -38,17 +38,30 @@ This version has breaking changes — APIs, conventions, and file structure may 
   * Luôn đọc kỹ `context.md` và `plan.md` trước khi tiến hành viết mã nguồn.
   * Không tự ý bịa thêm trường (field), phương thức hoặc endpoint ngoài hợp đồng dữ liệu / API contract đã định nghĩa trong `plan.md`.
   * Cập nhật `plan.md` và xin ý kiến xác nhận trước nếu phát sinh nhu cầu thay đổi API / Data contract so với kế hoạch ban đầu.
-## Vùng dữ liệu bất khả xâm phạm
-Toàn bộ file trong thư mục data/ là nội dung giáo trình/câu hỏi đã nhập sẵn,
-KHÔNG ĐƯỢC sửa dưới bất kỳ hình thức nào, bao gồm nhưng không giới hạn:
-- data/chuong-*.js, data/lich-su-dang*.js
-- data/database-ch*.js, data/database.js
-- data/questions-chuong-*.js
-- data/ad-ch*.js
-- data/dsa.js, data/oop.js, data/basic-*.js, data/analysis-design.js, data/lessons.js
-Quy tắc chung: bất kỳ file .js nào trong thư mục data/ đều coi là dữ liệu tĩnh,
-không phải code logic — không sửa, không xóa, không tạo file mới đè lên.
-- **ĐƯỢC PHÉP**: Cải tiến giao diện, trải nghiệm người dùng (UI/UX), nâng cấp công cụ học tập (Canvas, Quiz, sơ đồ tương tác) nhằm nâng cao hiệu quả tiếp thu.
+## Vùng dữ liệu bất khả xâm phạm (data/)
+
+- File ĐÃ TỒN TẠI trong data/ là nội dung giáo trình chính thức đã nhập —
+  KHÔNG ĐƯỢC sửa, xóa, ghi đè nội dung bên trong.
+- TẠO FILE MỚI trong data/ cho môn/chương CHƯA có sẵn là ĐƯỢC PHÉP, và là
+  việc cần làm khi giao task nhập liệu mới — miễn không đụng file đã tồn tại.
+- Khi không chắc 1 file đã tồn tại hay chưa, kiểm tra bằng cách liệt kê
+  thư mục data/ trước, không tự suy đoán.
+
+## Phạm vi làm việc — ai làm gì
+
+- Bạn (Codex) CHỊU TRÁCH NHIỆM: lên kế hoạch (plan.md), toàn bộ phần
+  backend (Server Actions trong app/actions/, logic xử lý dữ liệu, tương
+  tác Firebase/Firestore), và debug lỗi được báo cáo. Backend LÀ phạm vi
+  của bạn, không phải vùng cấm.
+- Agent frontend (Antigravity) chịu trách nhiệm: toàn bộ UI/component/page,
+  styling, routing state (appStep).
+- Dự án này là Next.js App Router — 1 codebase duy nhất, KHÔNG tách thư
+  mục frontend/backend riêng biệt theo đường dẫn — phân biệt theo TRÁCH
+  NHIỆM/NỘI DUNG file, không theo việc file nằm ở thư mục nào.
+- Rule "chỉ sửa trong phạm vi của mình" áp dụng khi THỰC SỰ GHI/SỬA FILE
+  code, KHÔNG áp dụng cho giai đoạn thảo luận, đặt câu hỏi, hay lên kế
+  hoạch — ở giai đoạn đó, được tự do đề xuất mọi phương án mà không cần
+  né tránh.
 
 ## Quy tắc biên soạn Bài kiểm tra trắc nghiệm (Quiz / Exam Rules)
 - **Quy tắc Đặt tên & Định danh (Dynamic Naming Convention)**:
