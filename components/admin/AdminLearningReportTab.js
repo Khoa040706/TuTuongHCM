@@ -2,12 +2,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { adminApi } from "../../lib/client/api";
 import { FileSpreadsheet, FileText, Filter, CheckCircle2, AlertCircle, RefreshCw, Loader2, Download } from "lucide-react";
-import ExcelJS from "exceljs";
-import jsPDF from "jspdf";
 
 export default function AdminLearningReportTab() {
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [exporting, setExporting] = useState(false);
   const [filters, setFilters] = useState({
     subjectId: "",
@@ -18,12 +17,18 @@ export default function AdminLearningReportTab() {
   const fetchReport = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const res = await adminApi.getReport(filters);
       if (res.ok && res.data) {
         setReport(res.data);
+      } else {
+        setError(res.error?.message || "Không thể tải báo cáo học tập");
+        setReport(null);
       }
     } catch (err) {
       console.warn("Failed to fetch learning report:", err);
+      setError("Lỗi kết nối khi tải báo cáo học tập");
+      setReport(null);
     } finally {
       setLoading(false);
     }
@@ -33,103 +38,27 @@ export default function AdminLearningReportTab() {
     fetchReport();
   }, [fetchReport]);
 
-  // Export to Excel using ExcelJS
-  const handleExportExcel = async () => {
-    if (!report) return;
+  // Export report via backend streaming binary API (ADMIN-02)
+  const handleExport = async (format) => {
     try {
       setExporting(true);
-      const workbook = new ExcelJS.Workbook();
-      workbook.creator = "StudyMaster Admin System";
-      workbook.created = new Date();
-
-      const sheet = workbook.addWorksheet("Báo cáo Tiến độ Học tập");
-      sheet.columns = [
-        { header: "Mã Học viên (UID)", key: "uid", width: 22 },
-        { header: "Tên Học viên", key: "displayName", width: 25 },
-        { header: "Email", key: "email", width: 28 },
-        { header: "Môn học", key: "subjectId", width: 18 },
-        { header: "Mã Chương", key: "chapterId", width: 15 },
-        { header: "Số tiểu mục hoàn thành", key: "completedSubsections", width: 24 },
-        { header: "Tổng tiểu mục yêu cầu", key: "totalRequiredSubsections", width: 22 },
-        { header: "Đạt chương", key: "completed", width: 14 },
-        { header: "Điểm Quiz cao nhất", key: "bestQuizScore10", width: 20 },
-        { header: "Số nội dung cần ôn", key: "reviewItemsCount", width: 20 }
-      ];
-
-      // Format header row
-      sheet.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" } };
-      sheet.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1E293B" } };
-
-      report.users.forEach((u) => {
-        (u.subjects || []).forEach((s) => {
-          (s.chapters || []).forEach((c) => {
-            sheet.addRow({
-              uid: u.uid,
-              displayName: u.displayName,
-              email: u.email || "N/A",
-              subjectId: s.subjectId,
-              chapterId: c.chapterId,
-              completedSubsections: c.completedSubsections,
-              totalRequiredSubsections: c.totalRequiredSubsections,
-              completed: c.completed ? "ĐÃ ĐẠT" : "CHƯA",
-              bestQuizScore10: c.bestQuizScore10 !== null ? `${c.bestQuizScore10}/10` : "N/A",
-              reviewItemsCount: c.reviewItemsCount || 0
-            });
-          });
-        });
-      });
-
-      const buffer = await workbook.xlsx.writeBuffer();
-      const blob = new Blob([buffer], {
-        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `studymaster-learning-report-${Date.now()}.xlsx`;
-      a.click();
-      window.URL.revokeObjectURL(url);
+      setError(null);
+      const res = await adminApi.exportReport(format, filters);
+      if (res.ok && res.data) {
+        const url = window.URL.createObjectURL(res.data);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = res.filename || `studymaster-learning-report-${Date.now()}.${format}`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      } else {
+        setError(res.error?.message || `Không thể xuất báo cáo ${format.toUpperCase()}`);
+      }
     } catch (err) {
-      console.warn("Export Excel error:", err);
-    } finally {
-      setExporting(false);
-    }
-  };
-
-  // Export to PDF using jsPDF
-  const handleExportPDF = async () => {
-    if (!report) return;
-    try {
-      setExporting(true);
-      const doc = new jsPDF();
-      doc.setFontSize(16);
-      doc.text("StudyMaster - Bao Cao Tien Do Hoc Tap", 14, 20);
-
-      doc.setFontSize(10);
-      doc.text(`Ngay xuat bao cao: ${new Date().toLocaleDateString("vi-VN")}`, 14, 28);
-      doc.text(`Tong so hoc vien: ${report.summary.totalUsers}`, 14, 34);
-      doc.text(`So chuong da hoan thanh: ${report.summary.completedChapters}`, 14, 40);
-      doc.text(`So hoc vien can on tap: ${report.summary.usersNeedingReview}`, 14, 46);
-
-      let yPos = 56;
-      doc.setFontSize(11);
-      doc.text("Danh sach hoc vien & tien do:", 14, yPos);
-      yPos += 8;
-
-      doc.setFontSize(9);
-      report.users.slice(0, 15).forEach((u, idx) => {
-        const textLine = `${idx + 1}. ${u.displayName} (${u.uid.slice(0, 8)}) - So mon: ${u.subjects?.length || 0}`;
-        doc.text(textLine, 14, yPos);
-        yPos += 6;
-        if (yPos > 270) {
-          doc.addPage();
-          yPos = 20;
-        }
-      });
-
-      doc.save(`studymaster-learning-report-${Date.now()}.pdf`);
-    } catch (err) {
-      console.warn("Export PDF error:", err);
+      console.warn(`Export ${format} error:`, err);
+      setError(`Lỗi khi tải file báo cáo: ${err.message}`);
     } finally {
       setExporting(false);
     }
@@ -159,24 +88,32 @@ export default function AdminLearningReportTab() {
           </button>
           <button
             type="button"
-            onClick={handleExportExcel}
-            disabled={exporting || !report}
-            className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-2 cursor-pointer"
+            onClick={() => handleExport("xlsx")}
+            disabled={exporting || loading}
+            className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-2 cursor-pointer disabled:opacity-50"
           >
-            <FileSpreadsheet className="w-4 h-4" />
+            {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileSpreadsheet className="w-4 h-4" />}
             <span>Xuất Excel (.xlsx)</span>
           </button>
           <button
             type="button"
-            onClick={handleExportPDF}
-            disabled={exporting || !report}
-            className="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 active:scale-95 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-2 cursor-pointer"
+            onClick={() => handleExport("pdf")}
+            disabled={exporting || loading}
+            className="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 active:scale-95 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-2 cursor-pointer disabled:opacity-50"
           >
-            <FileText className="w-4 h-4" />
+            {exporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileText className="w-4 h-4" />}
             <span>Xuất PDF</span>
           </button>
         </div>
       </div>
+
+      {/* Error Alert Banner */}
+      {error && (
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2.5 animate-fade-in">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+          <span>{error}</span>
+        </div>
+      )}
 
       {/* Summary KPI Cards */}
       {report && (

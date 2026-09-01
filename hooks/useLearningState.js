@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { learningApi } from "../lib/client/api";
 
-export function useLearningState(subjectId) {
+export function useLearningState(subjectId, enabled = true) {
   const [state, setState] = useState({
     subjectId: subjectId || "cloud-computing",
     chapters: [],
@@ -15,7 +16,7 @@ export function useLearningState(subjectId) {
   const [error, setError] = useState(null);
 
   const fetchState = useCallback(async () => {
-    if (!subjectId) return;
+    if (!subjectId || !enabled) return;
     try {
       setLoading(true);
       setError(null);
@@ -30,7 +31,7 @@ export function useLearningState(subjectId) {
     } finally {
       setLoading(false);
     }
-  }, [subjectId]);
+  }, [subjectId, enabled]);
 
   useEffect(() => {
     fetchState();
@@ -125,7 +126,15 @@ export function useLearningState(subjectId) {
         if (res.ok && res.data) {
           setState((prev) => {
             const list = prev.reviewItems.map((r) =>
-              r.subsectionId === subsectionId ? { ...r, manual: false, needsReview: res.data.needsReview } : r
+              r.subsectionId === subsectionId
+                ? {
+                    ...r,
+                    manual: false,
+                    needsReview: res.data.needsReview,
+                    systemReasons: Array.isArray(res.data.systemReasons) ? res.data.systemReasons : [],
+                    updatedAt: res.data.updatedAt || new Date().toISOString()
+                  }
+                : r
             );
             return { ...prev, reviewItems: list };
           });
@@ -154,6 +163,16 @@ export function useLearningState(subjectId) {
     return { needsReview: Boolean(revItem?.needsReview), manual: isManual };
   };
 
+  const decrementDueCount = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      flashcards: {
+        ...prev.flashcards,
+        dueCount: Math.max(0, (prev.flashcards?.dueCount || 0) - 1)
+      }
+    }));
+  }, []);
+
   return {
     state,
     loading,
@@ -162,6 +181,7 @@ export function useLearningState(subjectId) {
     completeSubsection,
     toggleBookmark,
     toggleReview,
+    decrementDueCount,
     isSubsectionCompleted: (subId) => state.subsections.some((s) => s.subsectionId === subId && s.completed),
     isBookmarked: (subId) => state.bookmarks.some((b) => b.subsectionId === subId),
     getReviewStatus: (subId) => state.reviewItems.find((r) => r.subsectionId === subId)

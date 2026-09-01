@@ -47,6 +47,7 @@ import AdminDashboard from "../components/admin/AdminDashboard";
 
 import ProfileModal from "../components/ProfileModal";
 import { subjects } from "../lib/curriculum";
+import { useAuthSession } from "../hooks/useAuthSession";
 import { useLearningState } from "../hooks/useLearningState";
 import CloudFlashcardDeck from "../components/cloud/CloudFlashcardDeck";
 import CloudSearchPanel from "../components/cloud/CloudSearchPanel";
@@ -113,14 +114,23 @@ export default function Page() {
   const [highlights, setHighlights] = useState([]);
   const [reRenderKey, setReRenderKey] = useState(0);
 
+  // Auth session hook (AUTH-01..04)
+  const {
+    user: authUser,
+    loginAdmin: authLoginAdmin,
+    loginWithGoogle: authLoginGoogle,
+    logout: authLogout
+  } = useAuthSession();
+
   // Cloud & Learning states (API Contract: LEARN, FLASH)
   const {
     state: learningState,
     completeSubsection,
     toggleBookmark,
     toggleReview,
+    decrementDueCount,
     isSubsectionCompleted
-  } = useLearningState(selectedSubjectId);
+  } = useLearningState(selectedSubjectId, Boolean(authUser || currentUser));
   const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isReviewQueueOpen, setIsReviewQueueOpen] = useState(false);
@@ -307,6 +317,17 @@ export default function Page() {
       }
     }
   }, []);
+
+  // Sync server session from authUser
+  useEffect(() => {
+    if (authUser) {
+      const displayName = authUser.displayName || authUser.email || authUser.uid;
+      setCurrentUser(displayName);
+      if (appStep === "login" || appStep === "register" || appStep === "forgot-password") {
+        setAppStep(authUser.role === "admin" ? "admin-dashboard" : "subject-select");
+      }
+    }
+  }, [authUser, appStep]);
 
   // Load current user's avatar when user changes
   useEffect(() => {
@@ -1139,14 +1160,28 @@ export default function Page() {
     setAppStep("login");
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    if (loginUser === "admin" && loginPass === "admin") {
+      const res = await authLoginAdmin("admin", "admin", rememberMe);
+      if (res.success) {
+        loginSuccess("admin");
+      } else {
+        showAlert({
+          title: "Đăng nhập thất bại",
+          message: res.message || "Tên đăng nhập hoặc mật khẩu quản trị không chính xác.",
+          type: "warning"
+        });
+      }
+      return;
+    }
+
     const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
     const foundUser = users.find(u => (u.username === loginUser || u.email === loginUser) && u.password === loginPass);
     
-    if (foundUser || (loginUser === "admin" && loginPass === "admin")) {
-      const displayName = foundUser ? foundUser.username : "admin";
-      if (foundUser && foundUser.locked) {
+    if (foundUser) {
+      const displayName = foundUser.username;
+      if (foundUser.locked) {
         showAlert({
           title: "Tài khoản bị khóa",
           message: "Tài khoản của bạn đã bị Admin khóa. Vui lòng liên hệ Admin để được mở khóa!",
@@ -1177,48 +1212,17 @@ export default function Page() {
 
   const handleRealGoogleLogin = async () => {
     try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      
-      if (!user || !user.email) {
-        showToast("Không thể lấy thông tin email từ Google.", "error");
-        return;
-      }
-      
-      const email = user.email;
-      const users = JSON.parse(localStorage.getItem("studymaster_users") || "[]");
-      const foundUser = users.find(u => u.email === email);
-      
-      if (foundUser) {
-        if (foundUser.locked) {
-          showAlert({
-            title: "Tài khoản bị khóa",
-            message: "Tài khoản của bạn đã bị Admin khóa. Vui lòng liên hệ Admin để được mở khóa!",
-            type: "warning"
-          });
-          return;
-        }
-        showToast(`Chào mừng quay trở lại, ${foundUser.username}!`, "success");
-        loginSuccess(foundUser.username);
-      } else {
-        // First-time login: store user info in temporary state and show register popup
-        setGoogleUserTemp({
-          email: email,
-          displayName: user.displayName || ""
-        });
-        // Pre-fill username with email prefix
-        const emailPrefix = email.split("@")[0].replace(/[^a-zA-Z0-9]/g, "");
-        setGoogleUsername(emailPrefix);
-        setGooglePassword("");
-        setGoogleConfirmPassword("");
-        setShowGoogleRegisterModal(true);
+      const res = await authLoginGoogle(rememberMe);
+      if (res.success && res.user) {
+        const displayName = res.user.displayName || res.user.email || "Học viên Google";
+        showToast(`Chào mừng quay trở lại, ${displayName}!`, "success");
+        loginSuccess(displayName);
+      } else if (!res.cancelled) {
+        showToast(res.message || "Đăng nhập Google thất bại", "error");
       }
     } catch (error) {
       console.error("Google Auth Error:", error);
-      if (error.code !== "auth/popup-closed-by-user") {
-        showToast(`Lỗi đăng nhập Google: ${error.message}`, "error");
-      }
+      showToast(`Lỗi đăng nhập Google: ${error.message}`, "error");
     }
   };
 
@@ -1314,7 +1318,8 @@ export default function Page() {
       type: "confirm",
       confirmText: "Đăng xuất",
       cancelText: "Hủy",
-      onConfirm: () => {
+      onConfirm: async () => {
+        await authLogout();
         setCurrentUser("");
         setLoginPass("");
         // Clear both storage types
@@ -2418,6 +2423,7 @@ export default function Page() {
             isOpen={isFlashcardsOpen}
             onClose={() => setIsFlashcardsOpen(false)}
             subjectId={selectedSubjectId}
+            onReviewComplete={() => decrementDueCount()}
           />
           <CloudSearchPanel
             isOpen={isSearchOpen}

@@ -48,7 +48,7 @@ export default function SubsectionCompletion({
             </div>
             <p className="text-xs text-stone-600">
               {isCompleted
-                ? `Bài học đã được ghi nhận hoàn thành lúc ${new Date(completedAt || Date.now()).toLocaleTimeString("vi-VN")}.`
+                ? `Bài học đã được ghi nhận hoàn thành${completedAt ? ` lúc ${new Date(completedAt).toLocaleTimeString("vi-VN")}` : ""}.`
                 : reachedEnd
                 ? "Bạn đã đọc hết nội dung bài học! Bấm xác nhận để cập nhật tiến độ."
                 : "Vui lòng cuộn xem hết toàn bộ nội dung bài học để mở khóa nút hoàn thành."}

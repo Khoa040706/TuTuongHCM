@@ -9,8 +9,7 @@ import {
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { db } from "../lib/firebase";
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
-import { subjects } from "../data/index";
+import { subjects } from "../lib/curriculum";
 import confetti from "canvas-confetti";
 import { submitExamScore } from "../app/actions/quiz";
 

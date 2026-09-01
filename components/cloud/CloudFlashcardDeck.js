@@ -1,13 +1,20 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { flashcardApi } from "../../lib/client/api";
 import { Sparkles, RotateCw, Check, AlertCircle, ArrowLeft, ArrowRight, X, Loader2 } from "lucide-react";
 
-export default function CloudFlashcardDeck({ isOpen, onClose, subjectId = "cloud-computing" }) {
+export default function CloudFlashcardDeck({
+  isOpen,
+  onClose,
+  subjectId = "cloud-computing",
+  onReviewComplete
+}) {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState(null);
 
@@ -15,14 +22,20 @@ export default function CloudFlashcardDeck({ isOpen, onClose, subjectId = "cloud
   const loadCards = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const res = await flashcardApi.getDueCards(subjectId, 20);
       if (res.ok && res.data?.cards) {
         setCards(res.data.cards);
         setCurrentIndex(0);
         setIsFlipped(false);
+      } else {
+        setError(res.error?.message || "Không thể tải thẻ ghi nhớ");
+        setCards([]);
       }
     } catch (err) {
       console.warn("Failed to load flashcards:", err);
+      setError("Lỗi kết nối khi tải thẻ");
+      setCards([]);
     } finally {
       setLoading(false);
     }
@@ -47,6 +60,9 @@ export default function CloudFlashcardDeck({ isOpen, onClose, subjectId = "cloud
       });
 
       if (res.ok && res.data) {
+        if (onReviewComplete) {
+          onReviewComplete(res.data);
+        }
         setFeedback(`Đã lưu! Lần ôn tiếp theo sau ${res.data.intervalDays} ngày.`);
         setTimeout(() => {
           setFeedback(null);
@@ -58,9 +74,12 @@ export default function CloudFlashcardDeck({ isOpen, onClose, subjectId = "cloud
             loadCards();
           }
         }, 600);
+      } else {
+        setError(res.error?.message || "Lỗi ghi nhận kết quả ôn tập");
       }
     } catch (err) {
       console.warn("Error submitting rating:", err);
+      setError("Không thể gửi kết quả ôn tập");
     } finally {
       setIsSubmitting(false);
     }
@@ -120,6 +139,21 @@ export default function CloudFlashcardDeck({ isOpen, onClose, subjectId = "cloud
             <div className="flex flex-col items-center gap-3 py-12">
               <Loader2 className="w-8 h-8 text-accent animate-spin" />
               <span className="text-xs text-stone-400 font-semibold tracking-wider uppercase">Đang nạp thẻ đến hạn...</span>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto mb-4">
+                <AlertCircle className="w-8 h-8" />
+              </div>
+              <h4 className="font-extrabold text-lg text-rose-800">Không thể tải thẻ</h4>
+              <p className="text-xs text-rose-600 mt-2 max-w-xs mx-auto">{error}</p>
+              <button
+                type="button"
+                onClick={loadCards}
+                className="mt-4 px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-xs font-bold text-stone-700 transition-colors cursor-pointer"
+              >
+                Thử lại
+              </button>
             </div>
           ) : cards.length === 0 ? (
             <div className="text-center py-12">
