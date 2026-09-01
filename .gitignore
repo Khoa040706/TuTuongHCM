@@ -12,6 +12,11 @@
 
 # testing
 /coverage
+/.firebase-cache/
+/.firebase-cli-config/
+/firebase-debug.log
+/firestore-debug.log
+/ui-debug.log
 
 # next.js
 /.next/

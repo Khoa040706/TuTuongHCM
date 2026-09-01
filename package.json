@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:backend": "node --test tests/learning/*.test.js",
+    "test:integration:emulator": "node scripts/run-integration-emulators.mjs",
     "clean": "powershell -Command \"if (Test-Path '.next') { Remove-Item -Recurse -Force '.next' }\""
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "firebase-tools": "15.28.2",
     "next-pwa": "^5.6.0",
     "tailwindcss": "^4",
     "typescript": "^5.7.3"
