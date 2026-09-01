@@ -31,6 +31,8 @@
 
 Frontend và backend thật hiện đã cùng tồn tại trong repo nhưng chưa tạo thành một hệ thống thống nhất. Frontend học tập chủ yếu đi qua `MockServer`, auth chính vẫn dùng `localStorage`, trong khi backend yêu cầu Firebase ID token và HttpOnly session cookie. Riêng quiz exam lại gọi thẳng Server Action thật nhưng xử lý response theo schema cũ. Đồng thời frontend Cloud dùng catalog ghép ở `lib/curriculum.js`, còn backend chỉ đọc `data/index.js` và `data/lessons.js`, khiến backend không nhìn thấy 7 chương và flashcard Cloud.
 
+Sau khi loại các mục trùng và re-verify bằng code, bản cuối có **42 mismatch integration riêng biệt** cùng **4 sai khác tài liệu**, gồm: **12 BLOCKER**, **23 HIGH**, **11 MEDIUM**.
+
 Các blocker phải được giải quyết trước khi có thể kiểm thử integration end-to-end:
 
 1. Thống nhất Firebase Auth và backend session.
@@ -88,7 +90,7 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - **BE đang làm gì:** Không có endpoint quản lý password riêng; kiến trúc dự kiến dùng Firebase Auth và chỉ nhận Firebase ID token để tạo session.
 - **Contract hiện có:** Phần tổng quan/BE-02/FE-03 trong `plan.md` yêu cầu Firebase Auth cho Google và email/password; không lưu password trong localStorage/Firestore.
 - **Loại lỗi:** `FE`.
-- **Mức độ blocker:** `HIGH` — trái mô hình auth thống nhất và giữ credential không an toàn ở browser.
+- **Mức độ blocker:** `BLOCKER` cho luồng email/password — trái mô hình auth thống nhất, không tạo được backend session và giữ credential không an toàn ở browser. Client cũng chưa có cơ chế loại bỏ `studymaster_users` cũ như BE-03 yêu cầu.
 - **Bằng chứng chính:** `app/page.js`, mục 5.1 và BE-02/FE-03 trong `plan.md`.
 
 ### INT-06 — Logout không kết thúc Firebase/backend session
@@ -131,14 +133,14 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - **Mức độ blocker:** `BLOCKER` — backend thật trả danh sách Cloud rỗng và FLASH-02 trả `FLASHCARD_NOT_FOUND`.
 - **Bằng chứng chính:** `data/cloud-computing-flashcards.js`, `lib/server/flashcard-catalog.js`, `data/lessons.js`.
 
-### INT-10 — Completion mock hard-code tổng subsection
+### INT-10 — Snapshot learning/completion mock khác contract backend
 
 - **Luồng/feature:** Hoàn thành subsection/chương.
-- **FE đang làm gì:** Qua MockServer, `totalRequiredSubsections` luôn bằng `4`; Cloud được coi là hoàn thành khi completed count `>= 4`.
-- **BE đang làm gì:** Tính chính xác danh sách subsection bắt buộc từ catalog và yêu cầu completed count bằng tổng thực tế.
+- **FE đang làm gì:** Với user/môn chưa có local state, MockServer trả `chapters: []` thay vì snapshot đầy đủ các chương. Khi có completion, `totalRequiredSubsections` luôn bằng `4`; Cloud được coi là hoàn thành khi completed count `>= 4`.
+- **BE đang làm gì:** LEARN-01 luôn dựng danh sách chương từ catalog, kể cả chương có tiến độ bằng 0; backend tính chính xác danh sách subsection bắt buộc và yêu cầu completed count bằng tổng thực tế.
 - **Contract hiện có:** Server tự tính `totalRequiredSubsections`; client không được gửi hoặc giả định con số này.
 - **Loại lỗi:** `SHARED_DATA`.
-- **Mức độ blocker:** `HIGH` — trạng thái hoàn thành mock không thể chuyển nguyên trạng sang Firestore và có thể công nhận sai chương.
+- **Mức độ blocker:** `HIGH` — snapshot/progress mock không thể chuyển nguyên trạng sang Firestore, UI không có baseline chương đúng và có thể công nhận sai chương.
 - **Bằng chứng chính:** `lib/client/mock-server.js`, `lib/server/learning-repository.js`.
 
 ### INT-11 — QUIZ-01 không được frontend sử dụng
@@ -234,7 +236,7 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 ### INT-20 — Admin report frontend vẫn dùng mock session/report
 
 - **Luồng/feature:** Xem báo cáo học tập.
-- **FE đang làm gì:** `AdminLearningReportTab` gọi `adminApi.getReport()`, đi vào MockServer. `app/page.js` login admin cũ không tạo `studymaster_mock_session`, nên mock report thường trả `FORBIDDEN`; component không hiển thị error envelope.
+- **FE đang làm gì:** `AdminLearningReportTab` gọi `adminApi.getReport()`, đi vào MockServer. `app/page.js` login admin cũ không tạo `studymaster_mock_session`, nên mock report thường trả `FORBIDDEN`; component không hiển thị error envelope. Nếu có mock session, MockServer vẫn bỏ qua các filter đầu vào, tính `quizAttempts/dueFlashcards` không đầy đủ và có thể đưa admin vào `totalUsers`, khác report thật.
 - **BE đang làm gì:** ADMIN-01 tổng hợp Firestore thật và yêu cầu backend session role `admin`/`teacher`.
 - **Contract hiện có:** `GET /api/admin/learning-report` với filter và JSON envelope.
 - **Loại lỗi:** `FE`.
@@ -244,11 +246,11 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 ### INT-21 — Admin export dùng client generation thay vì binary API
 
 - **Luồng/feature:** Xuất XLSX/PDF.
-- **FE đang làm gì:** Dùng ExcelJS/jsPDF trong browser từ report mock; không gọi `adminApi.exportReport()` và không xử lý HTTP binary/download headers.
+- **FE đang làm gì:** Dùng ExcelJS/jsPDF trong browser từ report mock; không gọi `adminApi.exportReport()`, không có nhánh đọc `response.blob()`/`Content-Disposition`. XLSX client thiếu `attemptsCount` và `dueFlashcardsCount`; PDF chỉ liệt kê tối đa 15 user và không có chi tiết chapter/progress/quiz/review/flashcard theo contract.
 - **BE đang làm gì:** ADMIN-02 tạo file server-side, trả binary với `Content-Type` và `Content-Disposition`.
 - **Contract hiện có:** `GET /api/admin/learning-report/export?format=xlsx|pdf` cùng filter; lỗi vẫn trả JSON envelope.
 - **Loại lỗi:** `CONTRACT`.
-- **Mức độ blocker:** `HIGH` — file frontend không phải snapshot đã xác thực từ backend và transport hoàn toàn khác contract.
+- **Mức độ blocker:** `HIGH` — file frontend không phải snapshot đã xác thực từ backend, thiếu trường bắt buộc và transport hoàn toàn khác contract.
 - **Bằng chứng chính:** `components/admin/AdminLearningReportTab.js`, `app/api/admin/learning-report/export/route.js`.
 
 ### INT-22 — Mock export contract khác backend export contract
@@ -261,10 +263,10 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - **Mức độ blocker:** `HIGH` — không thể đổi implementation phía dưới facade mà giữ nguyên consumer hiện tại.
 - **Bằng chứng chính:** `lib/client/mock-server.js`, `app/api/admin/learning-report/export/route.js`.
 
-### INT-23 — Error handling frontend không dùng error code/status của backend
+### INT-23 — Thiếu API error interceptor và xử lý error code/status thống nhất
 
 - **Luồng/feature:** Toàn bộ API lỗi, đặc biệt auth expiry, forbidden và datastore unavailable.
-- **FE đang làm gì:** Nhiều consumer chỉ kiểm tra `res.ok` một phần, nuốt lỗi bằng `console.warn`, hoặc không kiểm tra envelope; không có handler chung cho 401/403 và không redirect về login.
+- **FE đang làm gì:** Nhiều consumer chỉ kiểm tra `res.ok` một phần, nuốt lỗi bằng `console.warn`, hoặc không kiểm tra envelope. `lib/client/api.js` không có fetch wrapper/error interceptor; không có handler chung cho `UNAUTHENTICATED`, `ACCOUNT_DISABLED`, `FORBIDDEN`, `DATASTORE_UNAVAILABLE` và không đưa `appStep` về login khi phiên hết hạn.
 - **BE đang làm gì:** Trả error envelope chuẩn với HTTP status cho Route Handler và envelope không throw cho Server Action.
 - **Contract hiện có:** `{ ok: false, error: { code, message, fields? } }` cùng bảng HTTP/error code trong `plan.md`.
 - **Loại lỗi:** `FE`.
@@ -341,14 +343,14 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - **Mức độ blocker:** `MEDIUM` — behavior server hợp lý nhưng contract và client chưa định nghĩa phản ứng thống nhất.
 - **Bằng chứng chính:** `lib/server/auth.js`, bảng lỗi từng endpoint trong `plan.md`.
 
-### INT-31 — Trick exam set không reject mọi `examSetId` không hợp lệ
+### INT-31 — Contract chưa định nghĩa rõ namespace `examSetId` của trick mode
 
 - **Luồng/feature:** Chọn bộ đề bẫy.
 - **FE đang làm gì:** Gửi các ID dạng `trick`, `trick-1`, `trick-2` dựa trên state UI.
-- **BE đang làm gì:** Nếu `isTrickMode = true` và không parse được set number, backend trả toàn bộ `tricks` thay vì luôn trả `EXAM_SET_NOT_FOUND`; cùng behavior này áp dụng cho nhiều chuỗi tùy ý.
-- **Contract hiện có:** QUIZ-01/02 có lỗi `EXAM_SET_NOT_FOUND` cho exam set không tồn tại.
-- **Loại lỗi:** `BE`.
-- **Mức độ blocker:** `MEDIUM` — request sai có thể được chấp nhận với bộ đề khác mong đợi.
+- **BE đang làm gì:** Nếu `isTrickMode = true` và không parse được set number, backend coi request là chọn toàn bộ `tricks`. Điều này hỗ trợ giá trị generic `"trick"` mà FE hiện dùng, nhưng cũng khiến các chuỗi tùy ý khác có cùng hành vi.
+- **Contract hiện có:** QUIZ-01/02 chỉ nói `examSetId: string | number` và có lỗi `EXAM_SET_NOT_FOUND`; chưa quy định `"trick"`, `"trick-N"` hoặc giá trị generic nào là hợp lệ.
+- **Loại lỗi:** `CONTRACT`.
+- **Mức độ blocker:** `MEDIUM` — chưa thể sửa BE hoặc FE an toàn cho đến khi chốt namespace ID; không tự giả định chuỗi generic nào hợp lệ.
 - **Bằng chứng chính:** `lib/server/quiz-service.js`.
 
 ### INT-32 — Mock flashcard/review liên kết sai subsection thật
@@ -388,22 +390,22 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - `context.md` vẫn nói không có `app/api`, Firebase Admin, rules, indexes hoặc migration.
 - Thực tế các thành phần này đã tồn tại.
 - `context.md` còn ghi phạm vi chỉ frontend và cấm tạo mọi file `data/*.js`, trái với `AGENTS.md` hiện tại.
-- **Loại:** `CONFIG`/tài liệu điều phối.
-- **Mức blocker:** `HIGH` — agent mới có thể đưa ra quyết định sai phạm vi hoặc thiết kế lại phần đã tồn tại.
+- **Loại lỗi:** `CONFIG`.
+- **Mức độ blocker:** `HIGH` — agent mới có thể đưa ra quyết định sai phạm vi hoặc thiết kế lại phần đã tồn tại.
 
 ### DOC-02 — `plan.md` vẫn ở trạng thái “chưa triển khai”
 
 - Plan ghi “Chờ người dùng xác nhận”, “Chưa viết source code” và “không bắt đầu implementation”.
 - Code FE/BE đã được triển khai và merge.
-- **Loại:** `CONTRACT`/tài liệu trạng thái.
-- **Mức blocker:** `MEDIUM` — API contract vẫn dùng được, nhưng trạng thái/gate không còn phản ánh repo.
+- **Loại lỗi:** `CONTRACT`.
+- **Mức độ blocker:** `MEDIUM` — API contract vẫn dùng được, nhưng trạng thái/gate không còn phản ánh repo.
 
 ### DOC-03 — Adapter curriculum đã được chọn nhưng chưa ghi nhận trong plan
 
 - Plan nói nếu không được sửa `data/index.js`/`data/lessons.js` thì dùng adapter ngoài `data/` và cập nhật plan.
 - FE đã tạo `lib/curriculum.js` nhưng plan chưa cập nhật, backend cũng chưa dùng adapter.
-- **Loại:** `SHARED_DATA`/`CONTRACT`.
-- **Mức blocker:** `BLOCKER` — đây là nguyên nhân trực tiếp khiến Cloud FE và BE có hai catalog.
+- **Loại lỗi:** `SHARED_DATA`.
+- **Mức độ blocker:** `BLOCKER` — đây là nguyên nhân trực tiếp khiến Cloud FE và BE có hai catalog.
 
 ### DOC-04 — Cấu trúc/test thực tế chưa đạt các task đã nêu
 
@@ -411,82 +413,124 @@ Các blocker phải được giải quyết trước khi có thể kiểm thử 
 - Chỉ có test scheduler và learning rules.
 - Chưa có test API/auth/authorization/Firestore/report/binary export như BE-11.
 - Không có Firebase emulator config.
-- **Loại:** `BE`/`CONFIG`.
-- **Mức blocker:** `HIGH` cho regression safety khi bắt đầu cứu integration.
+- **Loại lỗi:** `CONFIG`.
+- **Mức độ blocker:** `HIGH` cho regression safety khi bắt đầu cứu integration.
 
 ## 5. Ma trận blocker theo luồng
 
 | Luồng | Blocker chính | Trạng thái end-to-end hiện tại |
 |---|---|---|
-| Google login → study API | INT-01, INT-04, INT-07 | Không chạy với backend thật. |
-| Email/password → study API | INT-01, INT-05, INT-07 | Không chạy với backend thật. |
-| Admin login → report | INT-01, INT-03, INT-20 | Không chạy. |
+| Google login → study API | INT-01, INT-04, INT-07, INT-37 | Không chạy với backend thật. |
+| Email/password → study API | INT-01, INT-05, INT-07, INT-37 | Không chạy với backend thật. |
+| Admin login → report | INT-01, INT-03, INT-20, INT-37 | Không chạy. |
 | Cloud learning state | INT-02, INT-08 | Chỉ mock; backend không thấy chapter. |
 | Cloud completion | INT-08, INT-10 | Mock tính sai; backend thật không nhận ID. |
 | Cloud flashcard | INT-09, INT-25, INT-32 | Chỉ mock; backend thật không thấy card. |
 | Exam secure question load | INT-11, INT-15 | Chưa dùng backend cấp đề. |
-| Exam submit | INT-01, INT-12, INT-14 | Không chạy đúng; có lỗ hổng subset. |
-| Practice ranking | INT-16, INT-17, INT-29 | Local hoạt động; Firestore không tương thích. |
+| Exam submit | INT-01, INT-12, INT-14, INT-35, INT-40 | Không chạy đúng; có lỗ hổng subset và state không đồng bộ. |
+| Practice ranking | INT-16, INT-17, INT-29, INT-41, INT-42 | Local hoạt động; Firestore/điều kiện completion không thống nhất. |
 | Profile/password | INT-05, INT-18, INT-29 | Không tương thích Firebase Auth/rules. |
-| Admin report/export | INT-20, INT-21, INT-22, INT-33 | Chỉ mock/client-side; không có Cloud thật. |
-
-## 6. Kết luận audit
-
-Backend Route Handlers và service hiện nhìn chung bám theo API contract trong `plan.md`; lỗi integration chủ yếu nằm ở việc frontend chưa chuyển khỏi auth/localStorage/mock architecture và shared curriculum chưa thống nhất. Tuy nhiên backend quiz vẫn có hai điểm cần xử lý trước production: không ràng buộc submission bằng toàn bộ đề đã cấp và chưa reject nhất quán trick exam set ID sai.
-
-Không nên kiểm thử UI end-to-end với Firestore production ở trạng thái này vì kết quả sẽ trộn ba nguồn trạng thái độc lập: localStorage cũ, MockServer localStorage và Firebase/Firestore thật.
+| Admin report/export | INT-20, INT-21, INT-22, INT-33, INT-43 | Chỉ mock/client-side; không có Cloud thật và thiếu filter/field. |
+| Runtime/deploy Firebase | INT-27, INT-28, INT-44 | Chưa tái lập được cấu hình project/rules/credential từ repo. |
 
 ---
 
-## 7. Các mismatch FE ↔ BE bổ sung qua kiểm tra mã nguồn thực tế [THIẾU]
+## 6. Mismatch bổ sung đã re-verify
 
-### INT-35 [THIẾU] — Thiếu đồng bộ trạng thái: Quiz thi đạt (>= 7.0) ↔ `learningState`
+### INT-35 — Thiếu đồng bộ trạng thái quiz ↔ `learningState`
 
 - **Luồng/feature:** Đồng bộ tiến độ sau khi hoàn thành bài thi Quiz.
 - **FE đang làm gì:** Khi nộp bài thi đạt điểm >= 7.0, `Quiz.js` hiển thị kết quả chúc mừng nhưng không có callback/cơ chế thông báo để `useLearningState` (tại `app/page.js`) làm mới lại state.
-- **BE đang làm gì:** `gradeAndRecordQuiz` trong `lib/server/quiz-service.js` đã tính toán và ghi nhận `chapterCompleted: true` cùng `bestScore10` vào Firestore.
+- **BE đang làm gì:** `gradeAndRecordQuiz` tính và ghi `bestScore10`, cập nhật `chapterProgress`, rồi trả `chapterCompleted` theo cả hai điều kiện: đủ subsection và điểm cao nhất `>= 7.0`. Giá trị này không phải lúc nào cũng `true` chỉ vì lượt thi vừa đạt.
 - **Contract hiện có:** `plan.md` FE-04 & FE-09 quy định khi quiz đạt >= 7.0 thì đồng bộ completion của chương.
 - **Loại lỗi:** `FE`.
-- **Mức độ blocker:** `HIGH` — Sidebar, thẻ chương và dashboard học viên trên FE không tự cập nhật trạng thái hoàn thành chương cho đến khi người dùng reload toàn bộ trang.
+- **Mức độ blocker:** `HIGH` — các UI đang đọc `learningState` (đặc biệt completion state trong content và các consumer được bổ sung sau này) không nhận `bestScore10/chapterCompleted` mới cho đến khi refetch/reload. Audit không gán lỗi cho Sidebar hiện tại vì Sidebar chưa được truyền learning state.
 - **Bằng chứng chính:** `components/Quiz.js`, `hooks/useLearningState.js`, `app/page.js`, `lib/server/quiz-service.js`.
 
-### INT-36 [THIẾU] — Lệch nguồn dữ liệu danh mục ngay trong nội bộ `Quiz.js`
+### INT-36 — Lệch nguồn dữ liệu danh mục ngay trong nội bộ `Quiz.js`
 
 - **Luồng/feature:** Nạp metadata môn học/câu hỏi trong `Quiz.js`.
-- **FE đang làm gì:** Trong khi `app/page.js`, `Sidebar.js` và `ContentRenderer.js` đều đã chuyển sang dùng Adapter `lib/curriculum.js` để tích hợp môn Cloud Computing, thì dòng 13 của `components/Quiz.js` vẫn import trực tiếp `subjects` từ `data/index.js`.
+- **FE đang làm gì:** `app/page.js` và `ContentRenderer.js` dùng adapter `lib/curriculum.js` (Sidebar nhận chapters từ page), nhưng `components/Quiz.js` vẫn import trực tiếp `subjects` từ `data/index.js`.
 - **BE đang làm gì:** Server Action `quiz.js` đọc qua `content-catalog.js`.
 - **Contract hiện có:** Danh mục môn học phải nhất quán xuyên suốt ứng dụng.
 - **Loại lỗi:** `FE`.
 - **Mức độ blocker:** `MEDIUM` — Gây bất nhất trong nội bộ Frontend; nếu sau này kích hoạt quiz cho môn Cloud Computing hoặc các môn mở rộng qua adapter, `Quiz.js` sẽ không tìm thấy dữ liệu.
 - **Bằng chứng chính:** `components/Quiz.js:13`, `lib/curriculum.js`.
 
-### INT-37 [THIẾU] — Thiếu đồng bộ vòng đời hai chiều: Firebase Client Auth ↔ Session Cookie Server
+### INT-37 — Thiếu cơ chế reconcile vòng đời Firebase Client Auth ↔ server session
 
 - **Luồng/feature:** Quản lý vòng đời phiên xác thực giữa client và backend.
-- **FE đang làm gì:** Client dùng Firebase Web SDK lưu token trong IndexedDB/localStorage.
+- **FE đang làm gì:** Không có listener/boot flow thống nhất giữa Firebase Auth state và AUTH-03. Sau khi có integration thật, Firebase client token và cookie server có thể hết hạn hoặc bị thu hồi ở hai thời điểm khác nhau mà UI không reconcile lại.
 - **BE đang làm gì:** Server chỉ chấp nhận và duy trì phiên qua HttpOnly Cookie `studymaster_session`.
 - **Contract hiện có:** AUTH-02 / AUTH-03 quy định phiên làm việc trên server phải đồng bộ với danh tính Firebase Auth.
-- **Loại lỗi:** `CONTRACT`.
+- **Loại lỗi:** `FE`.
 - **Mức độ blocker:** `HIGH` — Nếu học viên đăng nhập client thành công nhưng bước trao đổi lấy session cookie gặp sự cố (hoặc khi session cookie hết hạn trên server sau 12h/5 ngày trong khi Firebase Web SDK client vẫn còn phiên), Client sẽ ngỡ là đã đăng nhập nhưng 100% request gọi xuống Backend đều bị từ chối với lỗi `401 UNAUTHENTICATED`.
 - **Bằng chứng chính:** `app/page.js`, `lib/firebase.js`, `lib/server/auth.js`.
 
-### INT-38 [THIẾU] — Thiếu tầng xử lý phản hồi lỗi tập trung (Error Interceptor / Fetch Wrapper)
+### INT-40 — FE bỏ qua `passed`, `bestScore10` và `chapterCompleted`
 
-- **Luồng/feature:** Bắt và điều hướng các mã lỗi bảo mật/phiên làm việc từ backend.
-- **FE đang làm gì:** Các hook/component tự `catch` lỗi rời rạc bằng `console.warn` hoặc hiển thị state rỗng; không có cơ chế chặn lỗi chung.
-- **BE đang làm gì:** Backend trả về các mã lỗi có cấu trúc (`UNAUTHENTICATED`, `ACCOUNT_DISABLED`, `FORBIDDEN`, `DATASTORE_UNAVAILABLE`).
-- **Contract hiện có:** Bảng mã lỗi HTTP và Error Envelope trong `plan.md` mục 8.
+- **Luồng/feature:** Hiển thị kết quả/pass và completion sau quiz.
+- **FE đang làm gì:** Exam flow chỉ cố đọc `score/gradedResults` theo schema cũ; không dùng `passed`, `score10`, `bestScore10`, `chapterCompleted`, `attemptsCount`. UI luôn chúc mừng đã hoàn thành bài kiểm tra và chỉ dùng ngưỡng `80%` cho confetti/feedback, không hiển thị rõ trạng thái đạt chương theo ngưỡng `7.0`.
+- **BE đang làm gì:** QUIZ-02 trả đầy đủ các field trên; `passed = score10 >= 7.0` và điểm cao nhất không giảm.
+- **Contract hiện có:** QUIZ-02 response và quy tắc hoàn thành chương trong `plan.md`.
 - **Loại lỗi:** `FE`.
-- **Mức độ blocker:** `HIGH` — Khi tài khoản bị vô hiệu hóa (`ACCOUNT_DISABLED`) hoặc phiên hết hạn (`UNAUTHENTICATED`), người dùng không được tự động chuyển hướng về màn hình đăng nhập (`appStep = "login"`), mà giao diện hiển thị rỗng hoặc rơi vào trạng thái im lặng.
-- **Bằng chứng chính:** `hooks/useLearningState.js`, `components/cloud/CloudFlashcardDeck.js`, `components/admin/AdminLearningReportTab.js`.
+- **Mức độ blocker:** `HIGH` — FE không thể hiện kết quả nghiệp vụ mà backend đã chốt và có thể khiến người đạt 7.0–7.99 hiểu sai trạng thái.
+- **Bằng chứng chính:** `components/Quiz.js`, `lib/server/quiz-service.js`.
 
-### INT-39 [THIẾU] — Thiếu cơ chế tiếp nhận Stream nhị phân cho Export Báo cáo Admin
+### INT-41 — Ranking/leaderboard bị chia giữa nhiều nguồn trạng thái
 
-- **Luồng/feature:** Xuất báo cáo học tập XLSX/PDF từ backend.
-- **FE đang làm gì:** `AdminLearningReportTab.js` tự tạo file ở client bằng `exceljs`/`jspdf`; hoàn toàn chưa có hàm xử lý nhận binary stream từ API export của server.
-- **BE đang làm gì:** Endpoint `GET /api/admin/learning-report/export?format=xlsx|pdf` trả về stream nhị phân kèm headers `Content-Disposition: attachment; filename=...`.
-- **Contract hiện có:** ADMIN-02 trong `plan.md` quy định server xuất file nhị phân đính kèm.
+- **Luồng/feature:** Lịch sử quiz, subject high score, leaderboard và dashboard admin.
+- **FE đang làm gì:** `Quiz.js`, `app/page.js`, `ProfileModal` và các tab admin đọc `studymaster_quiz_rankings_{chapterId}`; practice còn thử ghi Firestore trực tiếp; leaderboard ưu tiên Firestore rồi fallback local. MockServer định nghĩa kho ranking riêng nhưng QUIZ-02 mock không persist attempt vào đó.
+- **BE đang làm gì:** QUIZ-02 ghi từng attempt vào Firestore `rankings` và summary vào `users/{uid}/quizSummary`; report backend đọc `quizSummary`, không đọc localStorage.
+- **Contract hiện có:** `rankings` giữ từng lượt thi và `quizSummary` giữ điểm cao nhất/số lượt; danh tính dựa trên UID session.
+- **Loại lỗi:** `SHARED_DATA`.
+- **Mức độ blocker:** `HIGH` — high score, leaderboard, profile và admin dashboard có thể hiển thị bốn kết quả khác nhau cho cùng người học.
+- **Bằng chứng chính:** `components/Quiz.js`, `app/page.js`, `components/ProfileModal.js`, `components/admin/*`, `lib/client/mock-server.js`, `lib/server/quiz-service.js`.
+
+### INT-42 — Chưa rõ practice mode có được tính vào completion/report hay không
+
+- **Luồng/feature:** Practice quiz, điều kiện đạt chương và số lượt quiz.
+- **FE đang làm gì:** Practice mode chấm hoàn toàn tại client, lưu local ranking và không gọi QUIZ-02; vì vậy không cập nhật `quizSummary`, `bestQuizScore10`, `chapterProgress` hoặc report thật.
+- **BE đang làm gì:** Chỉ những bài gửi qua QUIZ-02 mới được xác minh, ghi attempt và tham gia điều kiện hoàn thành `>= 7.0`.
+- **Contract hiện có:** Plan mô tả Quiz có hai chế độ và QUIZ-02 là nộp/chấm quiz, nhưng chưa nói rõ practice attempt có được tính điểm chính thức/completion/report hay chỉ exam mode mới được tính.
 - **Loại lỗi:** `CONTRACT`.
-- **Mức độ blocker:** `HIGH` — Không thể chuyển từ client export sang server export nếu FE chưa có hàm gọi `response.blob()`, tạo Blob Object URL và kích hoạt thẻ tải về trình duyệt.
-- **Bằng chứng chính:** `components/admin/AdminLearningReportTab.js`, `app/api/admin/learning-report/export/route.js`.
+- **Mức độ blocker:** `HIGH` — không được tự nối practice vào QUIZ-02 hoặc loại practice khỏi tiến độ cho đến khi nghiệp vụ này được chốt.
+- **Bằng chứng chính:** `components/Quiz.js`, `app/actions/quiz.js`, `lib/server/quiz-service.js`, `plan.md`.
+
+### INT-43 — UI report thiếu filter và trường xuất theo contract
+
+- **Luồng/feature:** Lọc/xuất báo cáo admin.
+- **FE đang làm gì:** State có `needsReview` nhưng UI không có control thay đổi; không có filter `uid` hoặc `chapterId`. XLSX/PDF client thiếu một phần dữ liệu chi tiết như đã nêu ở INT-21.
+- **BE đang làm gì:** ADMIN-01/02 hỗ trợ `uid`, `subjectId`, `chapterId`, `completion`, `needsReview` và export đủ attempts/review/due flashcards.
+- **Contract hiện có:** ADMIN-01/02 và FE-10 trong `plan.md` yêu cầu filter user/môn/chương/completion/review.
+- **Loại lỗi:** `FE`.
+- **Mức độ blocker:** `MEDIUM` — không chặn tải report mặc định nhưng không thể khai thác đầy đủ contract đã có.
+- **Bằng chứng chính:** `components/admin/AdminLearningReportTab.js`, `app/api/admin/learning-report/route.js`, `lib/server/report-service.js`.
+
+### INT-44 — Cấu hình runtime Firebase Admin/admin credential không tái lập từ repo
+
+- **Luồng/feature:** Khởi động backend thật ở môi trường local/staging/production.
+- **FE đang làm gì:** Firebase Web SDK trỏ cứng tới một project; không có dấu hiệu trong repo cho biết môi trường FE đang khớp với Admin SDK runtime nào.
+- **BE đang làm gì:** Cần service-account base64 hoặc bộ `FIREBASE_ADMIN_*`, có fallback Application Default Credentials; admin login còn bắt buộc `ADMIN_USERNAME` và `ADMIN_PASSWORD`.
+- **Contract hiện có:** Plan yêu cầu credential/config qua environment và không commit secret, nhưng repo không có `.env.example`/tài liệu mapping biến môi trường hay Firebase project alias.
+- **Loại lỗi:** `CONFIG`.
+- **Mức độ blocker:** `HIGH` cho một checkout mới — API có thể build nhưng auth/Firestore thật không thể được xác nhận chạy đúng project nếu thiếu cấu hình ngoài repo.
+- **Bằng chứng chính:** `lib/firebase.js`, `lib/server/firebase-admin.js`, `lib/server/auth.js`, `.gitignore`, không có `.env.example` hoặc `firebase.json`.
+
+## 7. Kết quả xử lý re-verify
+
+- **INT-01..INT-30, INT-32..INT-34:** đã đối chiếu lại và giữ; một số lý do/phạm vi được làm rõ trong chính mục tương ứng.
+- **INT-31:** phát hiện hiện tượng đúng nhưng nguyên nhân ban đầu quy hoàn toàn cho BE là chưa đủ căn cứ; đã sửa thành khoảng trống `CONTRACT` về namespace `examSetId`.
+- **INT-35:** giữ, nhưng bỏ khẳng định Sidebar hiện tại tự hiển thị learning state vì code chưa truyền state này cho Sidebar.
+- **INT-36:** giữ; làm rõ Sidebar nhận catalog gián tiếp từ `app/page.js` thay vì tự import adapter.
+- **INT-37:** giữ; chốt loại `FE` vì contract AUTH-02/03 đã có, phần thiếu là cơ chế client reconcile hai vòng đời session.
+- Phát hiện Anti về error interceptor là đúng và đã được hợp nhất vào **INT-23**; không giữ thêm một mismatch trùng nội dung.
+- Phát hiện Anti về binary export là đúng và đã được hợp nhất vào **INT-21/INT-22**; không giữ thêm một mismatch trùng nội dung.
+- **INT-40..INT-44:** các mismatch mới được bổ sung sau vòng re-verify cuối.
+
+## 8. Kết luận audit cuối
+
+Backend Route Handlers và service hiện nhìn chung bám theo API contract trong `plan.md`; lỗi integration chủ yếu nằm ở việc frontend chưa chuyển khỏi auth/localStorage/mock architecture và shared curriculum chưa thống nhất. Backend quiz vẫn có một lỗi validation rõ ràng là không ràng buộc submission bằng toàn bộ đề đã cấp. Riêng namespace `examSetId` của trick mode và việc practice mode có được tính vào completion/report hay không là hai điểm nghiệp vụ/contract chưa đủ rõ, không được tự sửa theo suy đoán.
+
+Không nên kiểm thử UI end-to-end với Firestore production ở trạng thái này vì kết quả sẽ trộn các nguồn trạng thái độc lập: localStorage cũ, MockServer localStorage, Firebase client state và Firestore/backend thật.
 
