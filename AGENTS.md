@@ -38,9 +38,17 @@ This version has breaking changes — APIs, conventions, and file structure may 
   * Luôn đọc kỹ `context.md` và `plan.md` trước khi tiến hành viết mã nguồn.
   * Không tự ý bịa thêm trường (field), phương thức hoặc endpoint ngoài hợp đồng dữ liệu / API contract đã định nghĩa trong `plan.md`.
   * Cập nhật `plan.md` và xin ý kiến xác nhận trước nếu phát sinh nhu cầu thay đổi API / Data contract so với kế hoạch ban đầu.
-- **Quy tắc Bất khả xâm phạm về Nội dung Giáo trình**:
-  * **TUYỆT ĐỐI KHÔNG CHỈNH SỬA NỘI DUNG GIÁO TRÌNH CHÍNH THỨC**: Không thay đổi hay cắt xén nội dung các bài đọc học thuật, giáo trình của các môn học chính thức (Tư tưởng Hồ Chí Minh, Lịch sử Đảng Cộng sản Việt Nam) vì đây là các tài liệu đã được kiểm duyệt nghiêm ngặt.
-  * **ĐƯỢC PHÉP**: Cải tiến giao diện, trải nghiệm người dùng (UI/UX), nâng cấp công cụ học tập (Canvas, Quiz, sơ đồ tương tác) nhằm nâng cao hiệu quả tiếp thu.
+## Vùng dữ liệu bất khả xâm phạm
+Toàn bộ file trong thư mục data/ là nội dung giáo trình/câu hỏi đã nhập sẵn,
+KHÔNG ĐƯỢC sửa dưới bất kỳ hình thức nào, bao gồm nhưng không giới hạn:
+- data/chuong-*.js, data/lich-su-dang*.js
+- data/database-ch*.js, data/database.js
+- data/questions-chuong-*.js
+- data/ad-ch*.js
+- data/dsa.js, data/oop.js, data/basic-*.js, data/analysis-design.js, data/lessons.js
+Quy tắc chung: bất kỳ file .js nào trong thư mục data/ đều coi là dữ liệu tĩnh,
+không phải code logic — không sửa, không xóa, không tạo file mới đè lên.
+- **ĐƯỢC PHÉP**: Cải tiến giao diện, trải nghiệm người dùng (UI/UX), nâng cấp công cụ học tập (Canvas, Quiz, sơ đồ tương tác) nhằm nâng cao hiệu quả tiếp thu.
 
 ## Quy tắc biên soạn Bài kiểm tra trắc nghiệm (Quiz / Exam Rules)
 - **Quy tắc Đặt tên & Định danh (Dynamic Naming Convention)**:
