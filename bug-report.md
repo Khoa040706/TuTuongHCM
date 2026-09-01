@@ -13,8 +13,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Route cố ý yêu cầu session trước khi đọc catalog; 401 đến từ test environment chưa có Auth Emulator/session bootstrap, không phải bằng chứng lỗi catalog.
 - **Fix vòng 1**: Bổ sung Auth + Firestore Emulator, tạo Firebase student ID token rồi trao đổi qua AUTH-02 để nhận cookie thật; không bypass `requireSession()`.
 - **Kết quả tự verify**: HTTP 200, đúng 7 chapter `cloud-ch1..cloud-ch7`, tất cả `quizRequired=false`.
+- **Retest độc lập (Frontend Verifier)**: PASS (`test:integration:emulator` với Firebase Emulator Suite + Java 21). Trả về đủ 7 chapter Cloud, không yêu cầu quiz.
 - **Owner chốt**: Environment / Shared.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -24,8 +25,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: 401 đến từ thiếu session/emulator. Chuỗi `cloud-ch1-s1-overview` ghi trong báo cáo cũ không tồn tại trong catalog; fixture được sửa về ID chính thức `cloud-ch1-s1-scope`, không sửa dữ liệu hoặc contract.
 - **Fix vòng 1**: Dùng session thật từ Auth Emulator, Firestore Emulator và fixture ID từ shared catalog.
 - **Kết quả tự verify**: HTTP 200; subsection `cloud-ch1-s1-scope` hoàn thành và `completedSubsections` của `cloud-ch1` tăng thành 1.
+- **Retest độc lập (Frontend Verifier)**: PASS. Subsection hoàn thành chính xác và bộ đếm tiến độ chương `cloud-ch1` tăng thành 1.
 - **Owner chốt**: Environment / Shared test fixture.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -35,8 +37,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Test cũ không có session nên chỉ xác minh được auth guard; chưa thể kết luận catalog cho tới khi gỡ 401.
 - **Fix vòng 1**: Chạy negative cases bằng cookie student hợp lệ từ Auth Emulator.
 - **Kết quả tự verify**: `cloud-ch999` trả 404 `CHAPTER_NOT_FOUND`; `cloud-missing` trả 404 `SUBSECTION_NOT_FOUND`; không còn bị 401 che.
+- **Retest độc lập (Frontend Verifier)**: PASS. Nhận đúng 404 `CHAPTER_NOT_FOUND` và `SUBSECTION_NOT_FOUND` sau khi vượt qua auth guard.
 - **Owner chốt**: Environment.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -46,8 +49,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Test environment chưa thực hiện chuỗi AUTH-01 → custom-token exchange → AUTH-02, nên request không có admin session; chưa phải lỗi report.
 - **Fix vòng 1**: Harness tạo admin emulator, custom claim `admin`, ID token và cookie theo đúng auth contract; fixture student nằm trong Firestore Emulator.
 - **Kết quả tự verify**: HTTP 200; tìm thấy student fixture, subject Cloud có đủ 7 chương và `summary.totalUsers=1`.
+- **Retest độc lập (Frontend Verifier)**: PASS. Nhận HTTP 200, tổng hợp đầy đủ tiến độ học tập 7 chương Cloud của student fixture từ Firestore Emulator.
 - **Owner chốt**: Environment / Shared.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -57,8 +61,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: 401 phát sinh trước flashcard service do thiếu session test; không đủ căn cứ kết luận catalog/due logic.
 - **Fix vòng 1**: Chạy FLASH-01 bằng student cookie thật và Firestore Emulator rỗng.
 - **Kết quả tự verify**: HTTP 200, `dueCount=12`, `cards.length=12`.
+- **Retest độc lập (Frontend Verifier)**: PASS. Trả về đúng 12 thẻ đến hạn cho student mới.
 - **Owner chốt**: Environment.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -68,8 +73,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Giống ITP-FC-002; request cũ chưa đi qua auth guard nên chưa chạm logic limit.
 - **Fix vòng 1**: Chạy case `limit=5` trong cùng emulator fixture.
 - **Kết quả tự verify**: HTTP 200, `cards.length=5`, `dueCount=12`.
+- **Retest độc lập (Frontend Verifier)**: PASS. `cards.length` giới hạn đúng 5 thẻ và `dueCount` giữ nguyên 12.
 - **Owner chốt**: Environment.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -79,8 +85,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Thiếu session/emulator chặn trước transaction; chưa thể kết luận flashcard linkage ở lần chạy cũ.
 - **Fix vòng 1**: Chạy FLASH-02 bằng student cookie thật trên Firestore Emulator.
 - **Kết quả tự verify**: HTTP 200; `cloud_fc_01` liên kết đúng `cloud-ch1-s2-features` và thêm system reason `FLASHCARD_AGAIN`.
+- **Retest độc lập (Frontend Verifier)**: PASS. Review cập nhật tiến độ, liên kết chính xác `cloud-ch1-s2-features` và system reason `FLASHCARD_AGAIN`.
 - **Owner chốt**: Environment / Shared.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -90,8 +97,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Thiếu Firestore Emulator làm chuỗi review → due list → learning state không thể chạy; không có bằng chứng lỗi đồng bộ sâu hơn.
 - **Fix vòng 1**: Harness giữ cùng fixture/session qua FLASH-02, FLASH-01 và LEARN-01.
 - **Kết quả tự verify**: Sau rating `again`, FLASH-01 và `learningState.flashcards.dueCount` cùng bằng 11.
+- **Retest độc lập (Frontend Verifier)**: PASS. Cả hai API `FLASH-01` và `LEARN-01` đồng bộ giảm `dueCount` về 11 sau khi review thẻ.
 - **Owner chốt**: Environment / Shared.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
@@ -120,5 +128,6 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: FE đã gọi API thật; blocker quan sát được là test environment chưa tạo admin cookie và student Firestore fixture. Không sửa component trong vòng này.
 - **Fix vòng 1**: Bổ sung admin session/fixture qua Emulator Suite và kiểm tra trực tiếp ADMIN-01.
 - **Kết quả tự verify**: Backend API trả HTTP 200 với student Cloud/7 chương. Phần render UI để verifier Frontend chạy lại.
+- **Retest độc lập (Frontend Verifier)**: PASS. Backend API `GET /api/admin/learning-report` trả HTTP 200, cung cấp đầy đủ dữ liệu người dùng và tiến độ 7 chương Cloud, component Frontend `AdminLearningReportTab` nhận và hiển thị dữ liệu thật thành công.
 - **Owner chốt**: Environment (phần 401); Frontend chỉ còn bước verify E2E.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
