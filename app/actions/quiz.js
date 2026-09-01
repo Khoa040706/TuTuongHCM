@@ -1,112 +1,86 @@
 "use server";
 
-import { db } from "../../lib/firebase";
-import { collection, addDoc } from "firebase/firestore";
-import { subjects } from "../../data/index";
+import { ApiError, actionError, successData } from "../../lib/server/api-response.js";
+import { requireSession } from "../../lib/server/auth.js";
+import { gradeAndRecordQuiz, secureQuestions } from "../../lib/server/quiz-service.js";
+import {
+  requireBoolean,
+  requireFiniteNumber,
+  requireObject,
+  requireString
+} from "../../lib/server/validation.js";
 
-// Server Action to get questions for exam mode (stripping correct answer & explanation)
-export async function getExamQuestions(subjectId, chapterId, examSetId, isTrickMode) {
-  try {
-    const currentSubject = subjects[subjectId];
-    if (!currentSubject) return null;
-    const questionsMap = currentSubject.questionsMap;
-    const questionData = questionsMap[chapterId];
-    if (!questionData) return null;
-
-    let pool = [];
-    if (isTrickMode) {
-      pool = questionData.tricks || [];
-    } else {
-      pool = [...(questionData.inside || []), ...(questionData.outside || [])];
-    }
-
-    // Strip answers and explanations to prevent client-side inspection
-    const secureQuestions = pool.map(q => {
-      return {
-        id: q.id,
-        question: q.question || q.q,
-        q: q.q || q.question,
-        options: q.options,
-        difficulty: q.difficulty,
-        sectionId: q.sectionId,
-        subsectionId: q.subsectionId
-      };
+function validateBaseInput(value) {
+  const input = requireObject(value);
+  const examSetId = input.examSetId;
+  if (
+    !((typeof examSetId === "string" && examSetId.trim()) ||
+      (typeof examSetId === "number" && Number.isFinite(examSetId)))
+  ) {
+    throw new ApiError(400, "VALIDATION_ERROR", "Dữ liệu gửi lên không hợp lệ.", {
+      examSetId: "Phải là chuỗi hoặc số."
     });
+  }
+  return {
+    subjectId: requireString(input.subjectId, "subjectId"),
+    chapterId: requireString(input.chapterId, "chapterId"),
+    examSetId: typeof examSetId === "string" ? examSetId.trim() : examSetId,
+    isTrickMode: requireBoolean(input.isTrickMode, "isTrickMode")
+  };
+}
 
-    return secureQuestions;
+export async function getExamQuestions(payload) {
+  try {
+    await requireSession();
+    const input = validateBaseInput(payload);
+    return successData({ questions: secureQuestions(input) });
   } catch (error) {
-    console.error("Error in getExamQuestions:", error);
-    return null;
+    return actionError(error);
   }
 }
 
-// Server Action to grade the exam securely and write score directly to Firestore
-export async function submitExamScore({ name, subjectId, chapterId, examSetId, isTrickMode, questionsState, clientAnswers, elapsedTime }) {
+export async function submitExamScore(payload) {
   try {
-    const currentSubject = subjects[subjectId];
-    if (!currentSubject) throw new Error("Môn học không tồn tại");
-    const questionsMap = currentSubject.questionsMap;
-    const questionData = questionsMap[chapterId];
-    if (!questionData) throw new Error("Ngân hàng câu hỏi không tồn tại");
-
-    let originalPool = [];
-    if (isTrickMode) {
-      originalPool = questionData.tricks || [];
-    } else {
-      originalPool = [...(questionData.inside || []), ...(questionData.outside || [])];
+    const user = await requireSession();
+    const input = requireObject(payload);
+    const base = validateBaseInput(input);
+    if (!Array.isArray(input.questionsState) || !Array.isArray(input.clientAnswers)) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Dữ liệu gửi lên không hợp lệ.", {
+        questionsState: "Phải là mảng.",
+        clientAnswers: "Phải là mảng."
+      });
     }
-
-    // Create a lookup map for validation (questionId -> correct option text & explanation)
-    const answersLookup = {};
-    originalPool.forEach(q => {
-      answersLookup[q.id] = {
-        correctText: q.options[q.answer],
-        explanation: q.explanation
-      };
-    });
-
-    let correctCount = 0;
-    const gradedResults = questionsState.map((q, idx) => {
-      const original = answersLookup[q.id];
-      const clientSelectionIdx = clientAnswers[idx];
-      const isAnswered = clientSelectionIdx !== -1 && clientSelectionIdx !== undefined;
-      const clientSelectionText = isAnswered ? q.options[clientSelectionIdx] : null;
-
-      const isCorrect = original && clientSelectionText === original.correctText;
-      if (isCorrect) {
-        correctCount++;
+    const questionsState = input.questionsState.map((question, index) => {
+      const item = requireObject(question, `questionsState.${index}`);
+      if (!Array.isArray(item.options)) {
+        throw new ApiError(400, "VALIDATION_ERROR", "Dữ liệu gửi lên không hợp lệ.", {
+          [`questionsState.${index}.options`]: "Phải là mảng."
+        });
       }
-
       return {
-        id: q.id,
-        isCorrect,
-        correctOptionIndex: original ? q.options.indexOf(original.correctText) : -1,
-        explanation: original ? original.explanation : ""
+        id: requireString(item.id, `questionsState.${index}.id`),
+        options: item.options.map((option, optionIndex) =>
+          requireString(option, `questionsState.${index}.options.${optionIndex}`, {
+            max: 2000
+          })
+        )
       };
     });
-
-    const record = {
-      name,
-      subjectId,
-      score: correctCount,
-      total: questionsState.length,
-      time: elapsedTime,
-      date: new Date().toISOString(),
-      chapterId,
-      examSetId: isTrickMode ? "trick" : examSetId
-    };
-
-    // Save directly to Firestore from the server
-    const docRef = await addDoc(collection(db, "rankings"), record);
-    console.log("Saved score on server to Firestore. ID:", docRef.id);
-
-    return {
-      score: correctCount,
-      total: questionsState.length,
-      gradedResults
-    };
+    const clientAnswers = input.clientAnswers.map((answer, index) =>
+      requireFiniteNumber(answer, `clientAnswers.${index}`, { min: -1, max: 100 })
+    );
+    const elapsedTime = requireFiniteNumber(input.elapsedTime, "elapsedTime", {
+      min: 0,
+      max: 24 * 60 * 60
+    });
+    const data = await gradeAndRecordQuiz(user, {
+      ...base,
+      questionsState,
+      clientAnswers,
+      elapsedTime
+    });
+    return successData(data);
   } catch (error) {
-    console.error("Error in submitExamScore:", error);
-    throw new Error("Lỗi khi nộp điểm thi: " + error.message);
+    return actionError(error);
   }
 }
