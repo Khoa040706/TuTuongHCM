@@ -5,6 +5,7 @@ import {
   Users,
   ShieldAlert,
   Trophy,
+  FileSpreadsheet,
   Plus,
   BookOpen,
   LogOut
@@ -16,6 +17,7 @@ import AdminOverviewTab from "./AdminOverviewTab";
 import AdminUsersTab from "./AdminUsersTab";
 import AdminQuestionsTab from "./AdminQuestionsTab";
 import AdminLeaderboardTab from "./AdminLeaderboardTab";
+import AdminLearningReportTab from "./AdminLearningReportTab";
 import AdminWorkDrawer from "./AdminWorkDrawer";
 import AdminUserDrawer from "./AdminUserDrawer";
 import { AdminAddUserModal, AdminChangePasswordModal } from "./AdminModals";
@@ -916,7 +918,22 @@ export default function AdminDashboard({
         />
       </LazySection>
 
-      {/* 5. SLIDE-OVER RADAR DRAWER FOR INDIVIDUAL STUDENT */}
+      {/* 5. SECTION 5: LEARNING REPORT & EXCEL/PDF EXPORT (LAZY MOUNT) */}
+      <LazySection
+        id="learning-report"
+        type="learning-report"
+        headerIcon={FileSpreadsheet}
+        headerTitle="Báo Cáo Tiến Độ Học Tập & Ôn Tập (Excel/PDF)"
+        headerBadge="State Sync"
+        headerBadgeColor="bg-[#F0FDF4] dark:bg-[#15803D]/15 text-[#15803D] dark:text-[#86EFAC] border border-[#BBF7D0] dark:border-[#15803D]/30"
+        headerDesc="Tổng hợp ma trận hoàn thành bài đọc, tiến độ tiểu mục, danh sách cần ôn tập và trích xuất báo cáo."
+        className="scroll-mt-24 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 space-y-6 border-t border-[#E8DACB]/60 dark:border-white/10 pb-24"
+        forceMount={!!forcedSections["learning-report"]}
+      >
+        <AdminLearningReportTab />
+      </LazySection>
+
+      {/* 6. SLIDE-OVER RADAR DRAWER FOR INDIVIDUAL STUDENT */}
       <AdminUserDrawer
         isOpen={isUserDrawerOpen}
         onClose={() => setIsUserDrawerOpen(false)}
