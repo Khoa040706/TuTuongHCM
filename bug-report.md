@@ -164,8 +164,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
    - **Đánh đổi**: không chứng minh được tập đó thực sự do QUIZ-01 cấp, làm yếu yêu cầu bảo mật đã chốt; không khuyến nghị.
 
 - **Phương án được áp dụng**: Phương án 3, theo quyết định của người dùng.
+- **Retest độc lập (Frontend Verifier)**: PASS (`npm run test:backend` 17/17 pass, `test:integration:emulator` 10/10 pass). Xác thực toàn bộ flow QUIZ-01 (`getExamQuestions`) cấp đề sạch + `examTicket` HMAC-SHA256, QUIZ-02 (`submitExamScore`) chấm điểm chính xác dựa trên ticket và lưu 1 attempt vào Firestore Emulator; từ chối thành công các trường hợp ticket sai chữ ký (`INVALID_EXAM_TICKET`), sai user (`INVALID_EXAM_TICKET`), hết hạn (`EXAM_TICKET_EXPIRED`) và request không hợp lệ (`QUESTION_SET_MISMATCH`, `EXAM_SET_NOT_FOUND`). Component `Quiz.js` đã tích hợp lưu và nộp qua `examTicket`, đọc đúng success envelope.
 - **Owner chốt**: Shared — Backend + Frontend.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
