@@ -106,9 +106,11 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 ### 9. `ITP-QUIZ-001` — QUIZ-02 chấm full issued set và ghi đúng một attempt
 - **Test ID**: `ITP-QUIZ-001`
 - **Expected**: Nộp đủ 40 câu hỏi đã cấp từ QUIZ-01, Server Action trả về `{ ok: true, data }`, tạo đúng 1 bản ghi `rankings` và tăng `attemptsCount` thêm 1.
-- **Re-verify nguyên nhân**: Blocker Auth/Firestore Emulator đã được gỡ, nhưng vòng này chưa có Server Action harness cấp/nộp một fixed set hoàn chỉnh. Theo nguyên tắc không kết luận lỗi sâu hơn khi chưa chạy đúng transport, chưa khẳng định transaction quiz đúng hoặc sai.
+- **Re-verify nguyên nhân**: Auth và Firestore Emulator đều hoạt động; thiếu sót còn lại đúng là test harness chưa gọi Server Action qua transport thật. Không tìm thấy lỗi trong `submitExamScore` khi chạy fixed set ngoài phạm vi DECISION-04.
+- **Fix vòng 1**: Bổ sung Server Action harness đọc action ID từ manifest Next.js, mã hóa/giải mã React Server Components payload, giữ cookie student thật và gọi QUIZ-01 → QUIZ-02. Harness kiểm tra cả response envelope lẫn side effect trong Firestore Emulator.
+- **Kết quả tự verify**: QUIZ-01 với `tu-tuong-hcm/chuong-2/de-1` trả đúng 40 câu, không lộ `answer`/`explanation`; QUIZ-02 trả `{ok:true,data}`, `total=40`, `attemptsCount=1`; có đúng 1 ranking và quiz summary có `attemptsCount=1`, `bestScore10=0`.
 - **Owner chốt**: Backend test coverage; không phụ thuộc 401 nữa.
-- **Trạng thái**: `open`
+- **Trạng thái**: `fixed_pending_verify`
 
 ---
 
@@ -116,7 +118,43 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Test ID**: `ITP-E2E-003`
 - **Expected**: Giao diện Quiz nạp đề thi sạch qua Server Action `QUIZ-01`, nộp bài và render kết quả từ `QUIZ-02` envelope.
 - **Actual**: Giao diện Quiz đang tạm dừng thay đổi (STOP) theo cổng quyết định kiến trúc `DECISION-04` (chưa thống nhất contract cho chế độ auto exam và trick mode).
-- **Re-verify nguyên nhân**: Đây là luồng Frontend và vẫn bị `DECISION-04` che; vòng Backend/Environment không được tự chọn namespace/selector contract.
+- **Re-verify nguyên nhân — auto exam**: FE hiểu `examSetId="auto"` là tự lấy ngẫu nhiên khoảng 40 câu từ `inside/outside`; BE hiểu cùng giá trị là toàn bộ `inside + outside`. QUIZ-02 hiện bắt `questionsState` khớp toàn bộ pool BE, vì vậy đề 40 câu do FE chọn sẽ bị `QUESTION_SET_MISMATCH`. Contract hiện không có attempt ID/ticket/seed để BE biết chính xác tập ngẫu nhiên QUIZ-01 đã cấp.
+- **Re-verify nguyên nhân — trick mode**: FE phát sinh `"trick"`, `"trick-1"`, `"trick-2"` và truyền thêm `isTrickMode`. BE chỉ lọc theo `trickSet` khi parse được số và ngân hàng có tag; nếu không thì trả toàn bộ tricks. Do đó chuỗi tùy ý, `"trick-x"`, `"0"`, hoặc `"auto"` kết hợp `isTrickMode=true` đều có thể vô tình được hiểu là “toàn bộ”. Ngược lại, ngân hàng không gắn `trickSet` khiến `"trick-1"` cũng trở thành toàn bộ. Khi ghi ranking, BE luôn ép mọi trick set về `examSetId="trick"`, làm mất thông tin bộ 1/2.
+- **Re-verify nguyên nhân — luồng chung**: FE hiện vẫn tự đọc ngân hàng câu hỏi, chưa gọi QUIZ-01 và đọc QUIZ-02 theo schema cũ (`res.score` thay vì `res.data.score`). Đây là phần sửa FE đã xác định được, nhưng chưa thể hoàn tất đúng nghĩa cho auto/trick trước khi chốt cách biểu diễn issued set.
+
+#### Các phương án contract cho DECISION-04
+
+1. **Chỉ dùng fixed set, bỏ auto và sentinel tổng**: chỉ chấp nhận `"de-{N}"` khi `isTrickMode=false` và `"trick-{N}"` khi `isTrickMode=true`.
+   - **FE**: bỏ nút đề ngẫu nhiên; chỉ render các set tồn tại; ngân hàng trick không có tag cần một lựa chọn quy ước riêng hoặc không hiển thị.
+   - **BE**: whitelist cặp mode/ID, reject mọi tổ hợp khác; QUIZ-01/02 vẫn tái tạo cùng pool mà không cần field mới.
+   - **Dữ liệu**: ngân hàng trick chưa có `trickSet` cần được coi là một set mặc định bằng logic adapter, hoặc phải bổ sung dữ liệu sau khi được phép; ranking giữ đúng ID cụ thể.
+   - **Đánh đổi**: ít thay đổi contract nhất và chắc chắn, nhưng loại bỏ chức năng “Đề ngẫu nhiên” đang có trên UI.
+
+2. **Giữ schema hiện tại nhưng auto phải tất định**: namespace hợp lệ là `"auto" | "de-{N}" | "trick" | "trick-{N}"`; `isTrickMode` phải tương thích với ID. `"auto"` được BE suy ra thành một tập 40 câu tất định từ user/subject/chapter, không random lại mỗi attempt.
+   - **FE**: gọi QUIZ-01 và dùng nguyên tập trả về; gửi lại cùng selector khi nộp; đổi mô tả “ngẫu nhiên” thành “đề tự động/cá nhân hóa cố định” nếu cần.
+   - **BE**: thêm strict validation và thuật toán tất định giống nhau ở QUIZ-01/02; giữ `"trick"` cho toàn bộ ngân hàng không chia set, `"trick-{N}"` chỉ cho tag tồn tại.
+   - **Dữ liệu**: không cần collection mới hay sửa file `data/`; ranking phải lưu nguyên selector thay vì ép mọi trick về `"trick"`.
+   - **Đánh đổi**: không thêm field contract, nhưng “auto” không còn là đề ngẫu nhiên mới theo từng lượt.
+
+3. **Issued-set ticket có chữ ký, không lưu attempt trước khi nộp**: QUIZ-01 trả thêm `examTicket` chứa/đại diện cho selector và danh sách ID đã cấp; QUIZ-02 bắt buộc nhận lại ticket. Namespace vẫn whitelist `"auto"`, `"de-{N}"`, `"trick"`, `"trick-{N}"`.
+   - **FE**: lưu `examTicket` cùng quiz/resume state; nộp ticket với `questionsState`; không tự sample đề thi.
+   - **BE**: QUIZ-01 random đúng ma trận rồi ký ticket; QUIZ-02 xác minh chữ ký, hạn dùng, subject/chapter/mode và exact IDs trước khi chấm; cần secret ký ổn định giữa các instance.
+   - **Dữ liệu**: không cần collection attempt mới và không sửa ngân hàng; ranking lưu selector thật. Ticket hết hạn cần được tính đến cho chức năng resume.
+   - **Đánh đổi**: giữ đúng trải nghiệm random và bảo mật issued set với ít ghi Firestore hơn, nhưng thay request/response contract và thêm cấu hình secret.
+
+4. **Issued attempt lưu Firestore**: QUIZ-01 tạo `attemptId`, lưu selector + exact question IDs + expiry/status; QUIZ-02 nhận `attemptId` và chỉ chấm một lần.
+   - **FE**: lưu `attemptId` trong resume state và gửi khi nộp; xử lý attempt hết hạn/đã nộp.
+   - **BE**: thêm lifecycle tạo/nộp attempt, transaction chống replay, cleanup/TTL và error codes tương ứng.
+   - **Dữ liệu**: thêm collection/subcollection quiz attempts, TTL/index/rules hoặc chỉ cho Admin SDK truy cập; ranking tham chiếu attempt và selector cụ thể.
+   - **Đánh đổi**: mạnh nhất về audit, resume và chống nộp lặp, nhưng thay đổi lớn nhất.
+
+5. **Cho client gửi bất kỳ subset 40 câu hợp lệ**: QUIZ-02 kiểm tra mỗi ID thuộc ngân hàng và đúng số lượng/ma trận thay vì exact issued set.
+   - **FE**: có thể giữ sampling hiện tại, chỉ cần sửa envelope/action flow.
+   - **BE**: nới validation full-pool thành subset validation.
+   - **Dữ liệu**: không cần schema mới.
+   - **Đánh đổi**: không chứng minh được tập đó thực sự do QUIZ-01 cấp, làm yếu yêu cầu bảo mật đã chốt; không khuyến nghị.
+
+- **Đề xuất kỹ thuật (chưa phải quyết định)**: Phương án 3 phù hợp nhất nếu vẫn muốn “Đề ngẫu nhiên” đúng nghĩa. Nó giữ QUIZ-01 là nguồn cấp đề an toàn và QUIZ-02 chấm chính xác issued set như `plan.md`, không cần sửa/migrate ngân hàng dữ liệu, đồng thời ít trạng thái server hơn phương án 4. Nếu ưu tiên tuyệt đối không đổi schema thì phương án 2 là lựa chọn gần code hiện tại nhất, với đánh đổi rõ ràng rằng auto không random theo từng lượt.
 - **Owner chốt**: Frontend / Shared contract decision.
 - **Trạng thái**: `open`
 

@@ -208,7 +208,7 @@ Không kiểm thử như một yêu cầu đã hoàn thành đối với bốn `
   2. Gọi QUIZ-02.
   3. Đọc `rankings`, `quizSummary`, `chapterProgress` sau transaction.
 - **Expected:** `{ok:true,data}` đúng contract; `total` bằng số câu đã cấp; tạo đúng một ranking; `attemptsCount` tăng đúng một; score/best/completion nhất quán.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `BLOCKED_NOT_RUN` bởi FE chưa dùng QUIZ-01 và đang đọc QUIZ-02 theo schema cũ (`INT-11/12`). Có thể chạy trực tiếp ở Server Action harness trước khi FE được sửa.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — `tests/integration/backend-emulator.test.mjs` gọi trực tiếp QUIZ-01 → QUIZ-02 qua Next.js Server Action transport với session thật; fixed set `de-1` trả 40 câu sạch, ghi đúng 1 ranking và `quizSummary.attemptsCount = 1` trên Firestore Emulator.
 
 ### ITP-QUIZ-002 — QUIZ-02 chấp nhận đổi thứ tự câu/options hợp lệ
 
@@ -327,4 +327,3 @@ Tranche repair chỉ được coi là nghiệm thu integration hoàn chỉnh khi
 3. Các negative quiz case chứng minh không có Firestore side effect.
 4. LEARN-01, FLASH-01/02 và ADMIN-01 cùng nhìn thấy catalog Cloud nhất quán.
 5. `npm.cmd run test:backend`, lint và `npm.cmd run build` tiếp tục thành công trên commit cuối.
-

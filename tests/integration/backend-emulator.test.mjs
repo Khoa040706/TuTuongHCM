@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
+import { createRequire } from "node:module";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const projectId = "demo-studymaster";
@@ -11,6 +15,12 @@ const baseUrl = "http://127.0.0.1:3100";
 const authEmulatorUrl = "http://127.0.0.1:9099";
 const firestoreEmulatorUrl = "http://127.0.0.1:8080";
 const nextBin = path.join(root, "node_modules", "next", "dist", "bin", "next");
+const require = createRequire(import.meta.url);
+const {
+  createFromFetch,
+  createTemporaryReferenceSet,
+  encodeReply
+} = require("../../node_modules/next/dist/compiled/react-server-dom-turbopack/client");
 
 let server;
 let serverLogs = "";
@@ -63,6 +73,58 @@ function appRequest(pathname, { cookie, body, ...options } = {}) {
     headers,
     ...(body === undefined ? {} : { body: JSON.stringify(body) })
   });
+}
+
+async function readServerActionId(exportedName, timeoutMs = 30000) {
+  const manifestPath = path.join(root, ".next", "dev", "server", "server-reference-manifest.json");
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    try {
+      const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+      const match = Object.entries(manifest.node || {}).find(
+        ([, reference]) =>
+          reference.filename === "app/actions/quiz.js" &&
+          reference.exportedName === exportedName
+      );
+      if (match) return match[0];
+    } catch {
+      // Trang chính có thể vẫn đang được Turbopack biên dịch.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error(`Không tìm thấy Server Action ${exportedName} trong manifest.`);
+}
+
+async function callServerAction(exportedName, args, cookie) {
+  const pageResponse = await fetch(`${baseUrl}/`, {
+    headers: cookie ? { cookie } : undefined
+  });
+  assert.equal(pageResponse.status, 200, await pageResponse.text());
+
+  const actionId = await readServerActionId(exportedName);
+  const temporaryReferences = createTemporaryReferenceSet();
+  const body = await encodeReply(args, { temporaryReferences });
+  const response = await fetch(`${baseUrl}/`, {
+    method: "POST",
+    headers: {
+      accept: "text/x-component",
+      cookie,
+      "next-action": actionId
+    },
+    body
+  });
+  assert.equal(
+    response.headers.get("content-type")?.startsWith("text/x-component"),
+    true,
+    `Server Action trả content-type ${response.headers.get("content-type") || "rỗng"}.`
+  );
+  const decoded = await createFromFetch(Promise.resolve(response), {
+    temporaryReferences,
+    callServer() {
+      throw new Error("Server Action lồng nhau không được hỗ trợ trong integration harness.");
+    }
+  });
+  return decoded.a;
 }
 
 async function exchangeSession(idToken, rememberMe = false) {
@@ -266,6 +328,54 @@ test("protected learning APIs run against Auth and Firestore emulators", async (
     );
     assert.equal(due.data.data.dueCount, 11);
     assert.equal(learning.data.data.flashcards.dueCount, 11);
+  });
+
+  await t.test("ITP-QUIZ-001 submits a full issued set and records one attempt", async () => {
+    const request = {
+      subjectId: "tu-tuong-hcm",
+      chapterId: "chuong-2",
+      examSetId: "de-1",
+      isTrickMode: false
+    };
+    const issued = await callServerAction("getExamQuestions", [request], student.cookie);
+    assert.equal(issued.ok, true, JSON.stringify(issued));
+    assert.equal(issued.data.questions.length, 40);
+    assert.ok(issued.data.questions.every((question) => !("answer" in question)));
+    assert.ok(issued.data.questions.every((question) => !("explanation" in question)));
+
+    const submitted = await callServerAction(
+      "submitExamScore",
+      [{
+        ...request,
+        questionsState: issued.data.questions.map(({ id, options }) => ({ id, options })),
+        clientAnswers: issued.data.questions.map(() => -1),
+        elapsedTime: 90
+      }],
+      student.cookie
+    );
+    assert.equal(submitted.ok, true, JSON.stringify(submitted));
+    assert.equal(submitted.data.total, 40);
+    assert.equal(submitted.data.score, 0);
+    assert.equal(submitted.data.attemptsCount, 1);
+    assert.equal(submitted.data.bestScore10, 0);
+    assert.equal(submitted.data.passed, false);
+
+    const db = getFirestore(initializeApp({ projectId }, "integration-verifier"));
+    const rankings = await db.collection("rankings")
+      .where("uid", "==", student.user.uid)
+      .get();
+    assert.equal(rankings.size, 1);
+    assert.equal(rankings.docs[0].data().total, 40);
+    assert.equal(rankings.docs[0].data().examSetId, "de-1");
+
+    const summary = await db.collection("users")
+      .doc(student.user.uid)
+      .collection("quizSummary")
+      .doc("tu-tuong-hcm__chuong-2")
+      .get();
+    assert.equal(summary.exists, true);
+    assert.equal(summary.data().attemptsCount, 1);
+    assert.equal(summary.data().bestScore10, 0);
   });
 
   const admin = await createAdminSession();
