@@ -46,6 +46,16 @@ Dự án sử dụng **Google Firebase Firestore** để lưu trữ bảng xếp
   };
   ```
 
+### Secret ký vé đề thi
+
+Exam mode yêu cầu biến môi trường server-side `EXAM_TICKET_SECRET` có tối thiểu 32 ký tự. Giá trị này dùng để ký `examTicket`, phải giống nhau trên mọi instance backend và tuyệt đối không đặt tên với tiền tố `NEXT_PUBLIC_`.
+
+```dotenv
+EXAM_TICKET_SECRET=replace-with-a-random-secret-of-at-least-32-characters
+```
+
+Khi chạy integration test bằng Firebase Emulator, test harness tự cấp secret riêng; không cần dùng secret production.
+
 ---
 
 ## 🏃 4. Các Lệnh Thực thi (Project Scripts)

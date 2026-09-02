@@ -1,8 +1,8 @@
-# Integration Repair Plan — NEED_DECISION
+# Integration Repair Plan — FIXED_PENDING_VERIFY
 
-> **Trạng thái:** `PARTIAL_BACKEND_COMPLETE — NEED_DECISION`
+> **Trạng thái:** `FIXED_PENDING_VERIFY`
 >
-> Chỉ tranche Backend/Shared độc lập với các quyết định nghiệp vụ đã được thực hiện. Các mục Frontend không bị sửa. Bốn decision gate vẫn mở; không tự chọn contract mới cho các luồng đó.
+> DECISION-04 đã được người dùng chốt theo phương án issued-set `examTicket` có chữ ký. Backend và Frontend trực tiếp liên quan đã được triển khai; đang chờ verifier độc lập.
 
 ## 0. Trạng thái thực thi Backend/Shared
 
@@ -33,14 +33,14 @@
 ### REPAIR-BE-01 — Chặn nộp subset của đề quiz đã cấp
 
 - **Mismatch:** `INT-14`.
-- **Expected behavior:** QUIZ-02 chỉ chấm khi `questionsState` chứa đúng toàn bộ ID của pool do cùng input QUIZ-01 xác định; cho phép đổi thứ tự câu nhưng không cho thiếu, thêm hoặc lặp ID.
-- **Contract/source of truth:** QUIZ-01/02 và các lỗi đã chốt `QUESTION_SET_MISMATCH`, `DUPLICATE_QUESTION_ID`; không thay request/response schema.
+- **Expected behavior:** QUIZ-02 chỉ chấm exact ordered set do QUIZ-01 cấp và không cho client gửi/chọn question IDs.
+- **Contract/source of truth:** Contract `examTicket` đã cập nhật trong `plan.md` theo DECISION-04.
 - **Owner:** `Backend`.
-- **Việc đã sửa:** Thêm validation thuần cho tập ID và gọi trước khi chấm/ghi Firestore. Submission subset hoặc có ID ngoài đề trả `QUESTION_SET_MISMATCH`; ID lặp trả `DUPLICATE_QUESTION_ID`.
-- **Cách verify:** Unit test full set khác thứ tự, subset, ID ngoài đề, duplicate và empty; chạy toàn bộ backend tests và production build.
-- **Lỗi được unblock:** Phần bảo mật Backend của `INT-11/12`; việc đồng bộ selector `INT-15/31` vẫn bị `DECISION-04` block.
-- **Kết quả verify:** `npm.cmd run test:backend` qua 13/13 test, gồm 5 test mới cho question-set validation; ESLint thành công; `npm.cmd run build` thành công.
-- **Trạng thái:** `VERIFIED`.
+- **Việc đã sửa:** Validation subset cũ được thay thế trong runtime bằng ticket HMAC chứa exact ordered IDs; QUIZ-02 chỉ nhận answers, xác minh ticket và từ chối answer length sai trước transaction.
+- **Cách verify:** Unit exact order/tamper/user/expiry; Emulator answer length mismatch, ticket tamper và nộp ticket cũ sau lần random thứ hai.
+- **Lỗi được unblock:** Bảo mật Backend của `INT-11/12/14` và ITP-E2E-003.
+- **Kết quả verify:** Backend unit 17/17 và Emulator integration 10/10 pass.
+- **Trạng thái:** `FIXED_PENDING_VERIFY`.
 
 ## 1. Dependency gate
 
@@ -99,24 +99,18 @@ Hiện chưa thể hoàn thiện task graph cho toàn bộ 42 mismatch integrati
 - **Cách verify sau khi chốt:** Chạy cùng một bộ đáp án ở Practice và Exam; kiểm tra response, attempt record, best score, chapter completion, leaderboard và report đều đúng semantics đã chọn; rules tiếp tục cấm client tự ghi điểm.
 - **Bị block bởi quyết định này:** Repair Practice flow, ranking consolidation, quiz-to-learning-state refresh, report attempts và regression completion `>= 7.0`.
 
-### DECISION-04 — Namespace hợp lệ của `examSetId` trong trick mode
+### DECISION-04 — Issued-set `examTicket` có chữ ký
 
 - **Mismatch liên quan:** `INT-15`, `INT-31`; ảnh hưởng `INT-11`, `INT-12`, `INT-14`.
-- **Expected behavior cần chốt:** FE và BE phải dùng cùng tập giá trị `examSetId`, phân biệt rõ chọn toàn bộ đề bẫy, một bộ bẫy cụ thể và ID không hợp lệ.
-- **Contract/source of truth hiện có:** QUIZ-01/02 chỉ khai báo `examSetId: string | number`. FE phát sinh `"trick"`, `"trick-1"`, `"trick-2"`; BE coi mọi chuỗi không parse được là yêu cầu lấy toàn bộ tricks, nên chuỗi tùy ý cũng có thể hợp lệ ngoài ý muốn.
-- **Owner:** `Shared` — schema/namespace là contract chung; Backend validate; Frontend phát đúng ID.
-- **Cần quyết định:**
-  1. Cho phép `"trick"` là sentinel lấy toàn bộ và `"trick-{N}"` là bộ cụ thể;
-  2. Chỉ cho phép `"trick-{N}"`, không có sentinel tổng;
-  3. Tách `examSetId` khỏi lựa chọn tổng bằng field/mode riêng, ví dụ `selection: "all" | "set"`.
-- **Việc phải sửa sau khi chốt:** Cập nhật contract QUIZ-01/02 trong `plan.md` trước; tạo validation whitelist; đồng bộ selector FE; bảo đảm ID sai trả `EXAM_SET_NOT_FOUND` hoặc `VALIDATION_ERROR` theo contract được chọn.
-- **Cách verify sau khi chốt:** Contract tests cho từng ID hợp lệ, ID biên và chuỗi tùy ý; QUIZ-01 và QUIZ-02 phải resolve cùng một question set; submission không thể đổi namespace để vượt kiểm tra toàn bộ đề đã cấp.
-- **Bị block bởi quyết định này:** Repair quiz selector, server validation question set, `auto`/trick resolution và test bảo mật QUIZ-01 → QUIZ-02.
+- **Expected behavior:** QUIZ-01 là nguồn duy nhất random/resolve đề và trả exact issued set cùng ticket có chữ ký; QUIZ-02 chỉ nhận ticket + answers, không random lại hoặc nhận danh sách ID do client chọn.
+- **Contract/source of truth được chọn:** Phương án 3 do người dùng chốt; contract QUIZ-01/02 đã cập nhật trong `plan.md`. Selector hợp lệ là `auto`, `de-{N}`, `trick`, `trick-{N}` theo mode tương ứng.
+- **Owner:** `Shared` — Backend ký/xác minh và chấm; Frontend lưu/gửi ticket và đọc envelope.
+- **Việc đã sửa:** Ticket HMAC-SHA256 ràng buộc uid, selector, ordered IDs, nonce và expiry 4 giờ; auto random server-side; strict selector; QUIZ-02 rehydrate exact set; FE dùng QUIZ-01, lưu ticket trong resume state và bỏ `questionsState` khỏi submit. Không thêm collection Firestore.
+- **Cách verify:** Unit tamper/user/expiry/exact order; Emulator gọi QUIZ-01 hai lần rồi nộp ticket lần đầu, kiểm tra graded IDs vẫn khớp đề đầu; answer length sai và ticket tamper đều bị từ chối; production build.
+- **Kết quả verify:** Backend unit 17/17 pass; Emulator integration 10/10 pass, gồm ITP-E2E-003; không có ranking phụ từ các submission bị từ chối.
+- **Lỗi được unblock:** `ITP-E2E-003`, `INT-11`, `INT-12`, `INT-14`, `INT-15`, `INT-31`.
+- **Trạng thái:** `FIXED_PENDING_VERIFY`.
 
-## 3. Điều kiện tiếp tục
+## 3. Trạng thái gate
 
-Chỉ sau khi bốn quyết định trên được xác nhận mới tiếp tục viết bản repair plan đầy đủ. Bản tiếp theo sẽ:
-
-- sắp toàn bộ mismatch theo dependency thay vì thứ tự file/ID;
-- với từng `INT-*` và `DOC-*`, ghi expected behavior, source of truth, owner, thay đổi cần làm, cách verify và quan hệ block;
-- không thay API contract ngầm; mọi contract phát sinh từ quyết định sẽ được cập nhật trong `plan.md` trước khi code theo rule dự án.
+DECISION-04 đã được chốt và triển khai. ITP-E2E-003 không còn blocker kỹ thuật đã biết, đang chờ verifier độc lập trước khi chuyển từ `fixed_pending_verify` sang `verified`.

@@ -118,12 +118,20 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 ### 10. `ITP-E2E-003` — Exam dùng issued set và hiển thị QUIZ-02 envelope
 - **Test ID**: `ITP-E2E-003`
 - **Expected**: Giao diện Quiz nạp đề thi sạch qua Server Action `QUIZ-01`, nộp bài và render kết quả từ `QUIZ-02` envelope.
-- **Actual**: Giao diện Quiz đang tạm dừng thay đổi (STOP) theo cổng quyết định kiến trúc `DECISION-04` (chưa thống nhất contract cho chế độ auto exam và trick mode).
+- **Actual sau fix**: Giao diện Quiz gọi QUIZ-01 để nhận đề + `examTicket`, lưu ticket trong active/resume state, rồi gọi QUIZ-02 bằng ticket + answers và đọc kết quả từ success envelope. Auto exam và trick selector được backend resolve/validate thống nhất.
 - **Re-verify nguyên nhân — auto exam**: FE hiểu `examSetId="auto"` là tự lấy ngẫu nhiên khoảng 40 câu từ `inside/outside`; BE hiểu cùng giá trị là toàn bộ `inside + outside`. QUIZ-02 hiện bắt `questionsState` khớp toàn bộ pool BE, vì vậy đề 40 câu do FE chọn sẽ bị `QUESTION_SET_MISMATCH`. Contract hiện không có attempt ID/ticket/seed để BE biết chính xác tập ngẫu nhiên QUIZ-01 đã cấp.
 - **Re-verify nguyên nhân — trick mode**: FE phát sinh `"trick"`, `"trick-1"`, `"trick-2"` và truyền thêm `isTrickMode`. BE chỉ lọc theo `trickSet` khi parse được số và ngân hàng có tag; nếu không thì trả toàn bộ tricks. Do đó chuỗi tùy ý, `"trick-x"`, `"0"`, hoặc `"auto"` kết hợp `isTrickMode=true` đều có thể vô tình được hiểu là “toàn bộ”. Ngược lại, ngân hàng không gắn `trickSet` khiến `"trick-1"` cũng trở thành toàn bộ. Khi ghi ranking, BE luôn ép mọi trick set về `examSetId="trick"`, làm mất thông tin bộ 1/2.
 - **Re-verify nguyên nhân — luồng chung**: FE hiện vẫn tự đọc ngân hàng câu hỏi, chưa gọi QUIZ-01 và đọc QUIZ-02 theo schema cũ (`res.score` thay vì `res.data.score`). Đây là phần sửa FE đã xác định được, nhưng chưa thể hoàn tất đúng nghĩa cho auto/trick trước khi chốt cách biểu diễn issued set.
 
-#### Các phương án contract cho DECISION-04
+#### Quyết định và kết quả sửa DECISION-04
+
+- **Quyết định đã chốt**: Phương án 3 — QUIZ-01 cấp issued-set `examTicket` có chữ ký; QUIZ-02 chỉ nhận ticket + answers + elapsed time.
+- **Backend đã sửa**: `auto` random phía server; fixed/trick được resolve và xáo thứ tự phía server. Ticket HMAC-SHA256 ràng buộc user, selector, exact ordered question IDs, nonce, issued time và expiry 4 giờ. QUIZ-02 xác minh ticket rồi khôi phục đúng issued set từ ngân hàng, không random lại và không nhận question IDs/options từ client. Ticket sai chữ ký, sai user hoặc hết hạn bị từ chối trước transaction.
+- **Frontend đã sửa**: Exam mode gọi QUIZ-01, render nguyên đề server cấp, lưu ticket trong active/resume state và chỉ gửi `examTicket`, `clientAnswers`, `elapsedTime` cho QUIZ-02. Response được đọc đúng envelope `res.data`; graded results ghép lại bằng question ID.
+- **Dữ liệu/cấu hình**: Không thêm Firestore collection, không sửa file `data/`. Ranking giữ đúng `auto`, `de-N`, `trick` hoặc `trick-N`. Backend yêu cầu secret server-side `EXAM_TICKET_SECRET` tối thiểu 32 ký tự.
+- **Kết quả tự verify**: Unit ticket 4/4 pass; toàn bộ backend unit 17/17 pass; Emulator integration 10/10 pass. ITP-E2E-003 chứng minh ticket chứa đúng ordered IDs của QUIZ-01, vẫn nộp đúng đề đầu tiên sau khi server cấp thêm một đề random khác, và ticket bị tamper trả `INVALID_EXAM_TICKET` mà không tạo thêm ranking.
+
+#### Các phương án contract đã đánh giá (lưu vết)
 
 1. **Chỉ dùng fixed set, bỏ auto và sentinel tổng**: chỉ chấp nhận `"de-{N}"` khi `isTrickMode=false` và `"trick-{N}"` khi `isTrickMode=true`.
    - **FE**: bỏ nút đề ngẫu nhiên; chỉ render các set tồn tại; ngân hàng trick không có tag cần một lựa chọn quy ước riêng hoặc không hiển thị.
@@ -138,7 +146,7 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
    - **Đánh đổi**: không thêm field contract, nhưng “auto” không còn là đề ngẫu nhiên mới theo từng lượt.
 
 3. **Issued-set ticket có chữ ký, không lưu attempt trước khi nộp**: QUIZ-01 trả thêm `examTicket` chứa/đại diện cho selector và danh sách ID đã cấp; QUIZ-02 bắt buộc nhận lại ticket. Namespace vẫn whitelist `"auto"`, `"de-{N}"`, `"trick"`, `"trick-{N}"`.
-   - **FE**: lưu `examTicket` cùng quiz/resume state; nộp ticket với `questionsState`; không tự sample đề thi.
+   - **FE**: lưu `examTicket` cùng quiz/resume state; nộp ticket với answers và elapsed time; không tự sample đề thi hoặc gửi question IDs.
    - **BE**: QUIZ-01 random đúng ma trận rồi ký ticket; QUIZ-02 xác minh chữ ký, hạn dùng, subject/chapter/mode và exact IDs trước khi chấm; cần secret ký ổn định giữa các instance.
    - **Dữ liệu**: không cần collection attempt mới và không sửa ngân hàng; ranking lưu selector thật. Ticket hết hạn cần được tính đến cho chức năng resume.
    - **Đánh đổi**: giữ đúng trải nghiệm random và bảo mật issued set với ít ghi Firestore hơn, nhưng thay request/response contract và thêm cấu hình secret.
@@ -155,9 +163,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
    - **Dữ liệu**: không cần schema mới.
    - **Đánh đổi**: không chứng minh được tập đó thực sự do QUIZ-01 cấp, làm yếu yêu cầu bảo mật đã chốt; không khuyến nghị.
 
-- **Đề xuất kỹ thuật (chưa phải quyết định)**: Phương án 3 phù hợp nhất nếu vẫn muốn “Đề ngẫu nhiên” đúng nghĩa. Nó giữ QUIZ-01 là nguồn cấp đề an toàn và QUIZ-02 chấm chính xác issued set như `plan.md`, không cần sửa/migrate ngân hàng dữ liệu, đồng thời ít trạng thái server hơn phương án 4. Nếu ưu tiên tuyệt đối không đổi schema thì phương án 2 là lựa chọn gần code hiện tại nhất, với đánh đổi rõ ràng rằng auto không random theo từng lượt.
-- **Owner chốt**: Frontend / Shared contract decision.
-- **Trạng thái**: `open`
+- **Phương án được áp dụng**: Phương án 3, theo quyết định của người dùng.
+- **Owner chốt**: Shared — Backend + Frontend.
+- **Trạng thái**: `fixed_pending_verify`
 
 ---
 

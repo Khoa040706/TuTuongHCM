@@ -193,7 +193,8 @@ test("protected learning APIs run against Auth and Firestore emulators", async (
       GCLOUD_PROJECT: projectId,
       NEXT_PUBLIC_FIREBASE_PROJECT_ID: projectId,
       ADMIN_USERNAME: "admin",
-      ADMIN_PASSWORD: "admin"
+      ADMIN_PASSWORD: "admin",
+      EXAM_TICKET_SECRET: "integration-exam-ticket-secret-with-at-least-32-characters"
     },
     stdio: ["ignore", "pipe", "pipe"]
   });
@@ -340,14 +341,15 @@ test("protected learning APIs run against Auth and Firestore emulators", async (
     const issued = await callServerAction("getExamQuestions", [request], student.cookie);
     assert.equal(issued.ok, true, JSON.stringify(issued));
     assert.equal(issued.data.questions.length, 40);
+    assert.equal(typeof issued.data.examTicket, "string");
+    assert.ok(Date.parse(issued.data.expiresAt) > Date.now());
     assert.ok(issued.data.questions.every((question) => !("answer" in question)));
     assert.ok(issued.data.questions.every((question) => !("explanation" in question)));
 
     const submitted = await callServerAction(
       "submitExamScore",
       [{
-        ...request,
-        questionsState: issued.data.questions.map(({ id, options }) => ({ id, options })),
+        examTicket: issued.data.examTicket,
         clientAnswers: issued.data.questions.map(() => -1),
         elapsedTime: 90
       }],
@@ -376,6 +378,102 @@ test("protected learning APIs run against Auth and Firestore emulators", async (
     assert.equal(summary.exists, true);
     assert.equal(summary.data().attemptsCount, 1);
     assert.equal(summary.data().bestScore10, 0);
+  });
+
+  await t.test("ITP-E2E-003 submits the exact random auto set represented by examTicket", async () => {
+    const request = {
+      subjectId: "tu-tuong-hcm",
+      chapterId: "chuong-2",
+      examSetId: "auto",
+      isTrickMode: false
+    };
+    const firstIssued = await callServerAction("getExamQuestions", [request], student.cookie);
+    assert.equal(firstIssued.ok, true, JSON.stringify(firstIssued));
+    assert.equal(firstIssued.data.questions.length, 40);
+
+    const encodedClaims = firstIssued.data.examTicket.split(".")[0];
+    const claims = JSON.parse(Buffer.from(encodedClaims, "base64url").toString("utf8"));
+    assert.deepEqual(
+      claims.questionIds,
+      firstIssued.data.questions.map((question) => question.id)
+    );
+
+    const secondIssued = await callServerAction("getExamQuestions", [request], student.cookie);
+    assert.equal(secondIssued.ok, true, JSON.stringify(secondIssued));
+
+    const shortenedAnswers = await callServerAction(
+      "submitExamScore",
+      [{
+        examTicket: firstIssued.data.examTicket,
+        clientAnswers: firstIssued.data.questions.slice(1).map(() => -1),
+        elapsedTime: 120
+      }],
+      student.cookie
+    );
+    assert.equal(shortenedAnswers.ok, false);
+    assert.equal(shortenedAnswers.error.code, "QUESTION_SET_MISMATCH");
+
+    const submitted = await callServerAction(
+      "submitExamScore",
+      [{
+        examTicket: firstIssued.data.examTicket,
+        clientAnswers: firstIssued.data.questions.map(() => -1),
+        elapsedTime: 120
+      }],
+      student.cookie
+    );
+    assert.equal(submitted.ok, true, JSON.stringify(submitted));
+    assert.equal(submitted.data.total, 40);
+    assert.deepEqual(
+      submitted.data.gradedResults.map((result) => result.id),
+      firstIssued.data.questions.map((question) => question.id)
+    );
+
+    const tamperedTicket = `${firstIssued.data.examTicket.slice(0, -1)}A`;
+    const rejected = await callServerAction(
+      "submitExamScore",
+      [{
+        examTicket: tamperedTicket,
+        clientAnswers: firstIssued.data.questions.map(() => -1),
+        elapsedTime: 120
+      }],
+      student.cookie
+    );
+    assert.equal(rejected.ok, false);
+    assert.equal(rejected.error.code, "INVALID_EXAM_TICKET");
+
+    const db = getFirestore(initializeApp({ projectId }, "integration-e2e-verifier"));
+    const autoRankings = await db.collection("rankings")
+      .where("uid", "==", student.user.uid)
+      .where("examSetId", "==", "auto")
+      .get();
+    assert.equal(autoRankings.size, 1);
+
+    const trickIssued = await callServerAction(
+      "getExamQuestions",
+      [{
+        subjectId: "tu-tuong-hcm",
+        chapterId: "chuong-2",
+        examSetId: "trick-1",
+        isTrickMode: true
+      }],
+      student.cookie
+    );
+    assert.equal(trickIssued.ok, true, JSON.stringify(trickIssued));
+    assert.equal(trickIssued.data.questions.length, 50);
+
+    const invalidModeSelector = await callServerAction(
+      "getExamQuestions",
+      [{
+        subjectId: "tu-tuong-hcm",
+        chapterId: "chuong-2",
+        examSetId: "auto",
+        isTrickMode: true
+      }],
+      student.cookie
+    );
+    assert.equal(invalidModeSelector.ok, false);
+    assert.equal(invalidModeSelector.error.code, "EXAM_SET_NOT_FOUND");
   });
 
   const admin = await createAdminSession();

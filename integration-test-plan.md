@@ -202,50 +202,48 @@ Không kiểm thử như một yêu cầu đã hoàn thành đối với bốn `
 
 ### ITP-QUIZ-001 — QUIZ-02 chấm full issued set và ghi đúng một attempt
 
-- **Precondition:** Student session hợp lệ; chọn fixed exam set không thuộc contract đang treo; lấy câu hỏi sạch bằng QUIZ-01; reset quiz fixture.
+- **Precondition:** Student session hợp lệ; lấy fixed set sạch và `examTicket` bằng QUIZ-01; reset quiz fixture.
 - **Steps:**
-  1. Tạo `questionsState/clientAnswers` đủ toàn bộ câu QUIZ-01 trả về.
-  2. Gọi QUIZ-02.
+  1. Tạo `clientAnswers` đủ số câu QUIZ-01 trả về.
+  2. Gọi QUIZ-02 với `examTicket`, `clientAnswers`, `elapsedTime`; không gửi question IDs/options.
   3. Đọc `rankings`, `quizSummary`, `chapterProgress` sau transaction.
 - **Expected:** `{ok:true,data}` đúng contract; `total` bằng số câu đã cấp; tạo đúng một ranking; `attemptsCount` tăng đúng một; score/best/completion nhất quán.
 - **PASS/FAIL:** ☒ PASS ☐ FAIL — `tests/integration/backend-emulator.test.mjs` gọi trực tiếp QUIZ-01 → QUIZ-02 qua Next.js Server Action transport với session thật; fixed set `de-1` trả 40 câu sạch, ghi đúng 1 ranking và `quizSummary.attemptsCount = 1` trên Firestore Emulator.
 
-### ITP-QUIZ-002 — QUIZ-02 chấp nhận đổi thứ tự câu/options hợp lệ
+### ITP-QUIZ-002 — QUIZ-02 chấm đúng exact issued set, không random lại
 
-- **Precondition:** Như ITP-QUIZ-001; giữ nguyên toàn bộ ID và multiset options.
-- **Steps:** Đổi thứ tự câu và options, cập nhật index câu trả lời tương ứng rồi nộp.
-- **Expected:** Submission được chấm; không trả `QUESTION_SET_MISMATCH`; kết quả đúng theo text đáp án gốc.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `NOT_RUN`.
+- **Precondition:** Cùng user gọi QUIZ-01 `auto` hai lần và giữ ticket/đề lần đầu.
+- **Steps:** Sau khi đề thứ hai đã được cấp, nộp answers với ticket thứ nhất.
+- **Expected:** QUIZ-02 chấm đúng ordered IDs của đề thứ nhất, không dùng đề thứ hai và không random lại.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — `tests/integration/backend-emulator.test.mjs`, case ITP-E2E-003.
 
-### ITP-QUIZ-003 — QUIZ-02 từ chối subset và không ghi dữ liệu
+### ITP-QUIZ-003 — QUIZ-02 từ chối answers thiếu và không ghi dữ liệu
 
 - **Precondition:** Đã lấy full set bằng QUIZ-01; chụp số ranking và summary trước test.
-- **Steps:** Bỏ một câu cùng answer tương ứng rồi gọi QUIZ-02.
+- **Steps:** Giữ ticket nguyên vẹn nhưng bỏ một phần tử khỏi `clientAnswers` rồi gọi QUIZ-02.
 - **Expected:** `{ok:false,error.code:"QUESTION_SET_MISMATCH"}`; không tạo ranking; không tăng `attemptsCount`; không đổi best score/chapter/review state.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `NOT_RUN`.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — Emulator trả `QUESTION_SET_MISMATCH`; submission hợp lệ sau đó chỉ tạo đúng một ranking `auto`.
 
-### ITP-QUIZ-004 — QUIZ-02 từ chối câu ngoài đề
+### ITP-QUIZ-004 — QUIZ-02 từ chối ticket bị chỉnh sửa
 
-- **Precondition:** Như ITP-QUIZ-003.
-- **Steps:** Thay một ID bằng ID hợp lệ thuộc set khác hoặc chuỗi bất kỳ, giữ nguyên số lượng.
-- **Expected:** `QUESTION_SET_MISMATCH`; không có Firestore side effect.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `NOT_RUN`.
+- **Precondition:** Có ticket hợp lệ từ QUIZ-01 và đã chụp số ranking.
+- **Steps:** Sửa một byte của ticket rồi gọi QUIZ-02 với answers đủ.
+- **Expected:** `INVALID_EXAM_TICKET`; không có Firestore side effect.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — Unit tamper và Emulator Server Action đều pass.
 
-### ITP-QUIZ-005 — QUIZ-02 từ chối duplicate theo đúng error code
+### ITP-QUIZ-005 — Ticket bị ràng buộc đúng user
 
-- **Precondition:** Như ITP-QUIZ-003.
-- **Steps:** Lặp một question ID và bỏ một ID khác để giữ nguyên số lượng.
-- **Expected:** `DUPLICATE_QUESTION_ID`; không có Firestore side effect.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `NOT_RUN`.
+- **Precondition:** User A nhận ticket hợp lệ.
+- **Steps:** Xác minh/nộp ticket dưới UID user B.
+- **Expected:** `INVALID_EXAM_TICKET`; không chấm hoặc ghi attempt.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — `tests/learning/exam-ticket.test.js`.
 
-### ITP-QUIZ-006 — Regression option tampering và answer length
+### ITP-QUIZ-006 — Ticket hết hạn
 
-- **Precondition:** Full set hợp lệ từ QUIZ-01.
-- **Steps:**
-  1. Thay text một option rồi nộp.
-  2. Khôi phục options, sau đó gửi `clientAnswers.length` khác `questionsState.length`.
-- **Expected:** Cả hai request trả `QUESTION_SET_MISMATCH`; không ghi Firestore.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `NOT_RUN`.
+- **Precondition:** Ticket hợp lệ đã qua expiry 4 giờ.
+- **Steps:** Xác minh/nộp ticket tại thời điểm hết hạn.
+- **Expected:** `EXAM_TICKET_EXPIRED`; không chấm hoặc ghi attempt.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — `tests/learning/exam-ticket.test.js`.
 
 ### ITP-QUIZ-007 — Regression auth boundary
 
@@ -256,7 +254,7 @@ Không kiểm thử như một yêu cầu đã hoàn thành đối với bốn `
 
 ## 7. FE ↔ BE regression sau khi Frontend gỡ mock
 
-Các case dưới đây được thiết kế từ code FE hiện tại nhưng chưa thể PASS end-to-end: `lib/client/api.js` vẫn gọi `MockServer`, `CloudFlashcardDeck` chưa dùng HTTP backend thật, và `Quiz.js` chưa dùng QUIZ-01/đọc success envelope QUIZ-02 đúng cách. Không sửa FE trong tranche backend này.
+Các case dưới đây kiểm tra regression FE ↔ BE. Flow Quiz đã dùng QUIZ-01/QUIZ-02 thật theo contract `examTicket`; các flow khác giữ trạng thái riêng của chúng.
 
 ### ITP-E2E-001 — Mở môn Cloud và nhận cùng một navigation tree
 
@@ -274,10 +272,10 @@ Các case dưới đây được thiết kế từ code FE hiện tại nhưng c
 
 ### ITP-E2E-003 — Exam dùng issued set và hiển thị QUIZ-02 envelope
 
-- **Precondition:** `INT-11/12/35/40` phía FE đã được repair; dùng fixed set không thuộc decision trick/Practice.
-- **Steps:** Bắt đầu exam, hoàn thành toàn bộ đề, nộp và reload learning state.
-- **Expected:** Network/server action theo thứ tự QUIZ-01 → QUIZ-02; FE gửi đủ set; hiển thị `score10/passed/bestScore10`; progress refresh; không có answer trong payload QUIZ-01.
-- **PASS/FAIL:** ☐ PASS ☐ FAIL — `BLOCKED_NOT_RUN` bởi quiz integration FE.
+- **Precondition:** Student session hợp lệ; `EXAM_TICKET_SECRET` được cấu hình; chọn exam `auto`.
+- **Steps:** QUIZ-01 cấp đề random + ticket; lưu/resume ticket; nộp answers + ticket qua QUIZ-02 và đọc success envelope.
+- **Expected:** QUIZ-01 không lộ answer; ticket đại diện exact ordered set; submit không gửi question IDs/options và không random lại; FE dùng `res.data` để render score/graded results; chỉ một attempt được ghi.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — FE contract/build và Emulator Server Action flow 10/10 pass; trạng thái defect là `fixed_pending_verify` chờ verifier độc lập.
 
 ### ITP-E2E-004 — Admin report hiển thị Cloud từ backend thật
 
@@ -292,13 +290,13 @@ Các case dưới đây được thiết kế từ code FE hiện tại nhưng c
 
 - **Precondition:** Dependencies đã cài.
 - **Steps:** Chạy `npm.cmd run test:backend`.
-- **Expected:** 13/13 test đạt, gồm scheduler, learning rules và 5 question-set cases.
-- **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: 13 tests, 0 fail.
+- **Expected:** 17/17 test đạt, gồm ticket signing/expiry/user binding, scheduler, learning rules và question-set regression.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: 17 tests, 0 fail.
 
 ### ITP-REG-002 — Lint phạm vi thay đổi
 
 - **Precondition:** ESLint config hiện tại.
-- **Steps:** Chạy ESLint cho `content-catalog`, `flashcard-catalog`, `quiz-service`, `quiz-validation` và test mới.
+- **Steps:** Chạy ESLint cho Server Actions, `exam-ticket`, `quiz-service`, `Quiz.js` và các test ticket/integration đã đổi.
 - **Expected:** Exit code 0, không warning/error.
 - **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: command exit code 0.
 
@@ -309,14 +307,14 @@ Các case dưới đây được thiết kế từ code FE hiện tại nhưng c
 - **Expected:** Next.js 16.2.9 compile, TypeScript check, page-data collection và static generation thành công; toàn bộ API route vẫn được phát hiện.
 - **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: production build hoàn tất, exit code 0.
 
-### ITP-REG-004 — Không mutation vùng dữ liệu/Frontend
+### ITP-REG-004 — Không mutation vùng dữ liệu hoặc Frontend ngoài Quiz flow
 
 - **Precondition:** Có diff của tranche repair.
 - **Steps:**
   1. Liệt kê toàn bộ changed/untracked paths.
-  2. Kiểm tra không có file `data/*.js`, `app/page.js`, `components/**`, `hooks/**` hoặc `lib/client/**` bị sửa bởi tranche.
-- **Expected:** Chỉ có server/shared validation, backend tests và tài liệu kế hoạch thay đổi; dữ liệu tĩnh và FE nguyên vẹn.
-- **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: status/diff sau repair không có path Frontend hoặc `data/`.
+  2. Kiểm tra không có file `data/*.js`; Frontend chỉ được đổi `components/Quiz.js` theo quyền DECISION-04.
+- **Expected:** Không sửa dữ liệu tĩnh; không có UI/component ngoài Quiz flow bị thay đổi.
+- **PASS/FAIL:** ☒ PASS ☐ FAIL — evidence: diff chỉ có `components/Quiz.js` ở phía Frontend và không có path `data/`.
 
 ## 9. Exit criteria
 

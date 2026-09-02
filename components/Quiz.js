@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/set-state-in-effect, react-hooks/exhaustive-deps, react-hooks/immutability, react-hooks/purity */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { 
@@ -11,7 +11,7 @@ import { useGSAP } from "@gsap/react";
 import { db } from "../lib/firebase";
 import { subjects } from "../lib/curriculum";
 import confetti from "canvas-confetti";
-import { submitExamScore } from "../app/actions/quiz";
+import { getExamQuestions, submitExamScore } from "../app/actions/quiz";
 
 const STATE_STORAGE_KEY = "studymaster_active_quiz_state";
 
@@ -227,6 +227,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
   const [timeLeft, setTimeLeft] = useState(2700); // 45 minutes countdown
   const [isTrickMode, setIsTrickMode] = useState(false);
   const [selectedSet, setSelectedSet] = useState("auto");
+  const [examTicket, setExamTicket] = useState(null);
   const [bookmarks, setBookmarks] = useState(new Set());
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showMobileGrid, setShowMobileGrid] = useState(false);
@@ -257,9 +258,16 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     if (savedStateStr) {
       try {
         const state = JSON.parse(savedStateStr);
-        if (state && state.questions && state.questions.length > 0) {
+        if (
+          state &&
+          state.questions &&
+          state.questions.length > 0 &&
+          (state.mode !== "end" || typeof state.examTicket === "string")
+        ) {
           setSavedState(state);
           setStep("resume-confirm");
+        } else {
+          localStorage.removeItem(STATE_STORAGE_KEY);
         }
       } catch (e) {
         console.error("Error loading saved quiz state:", e);
@@ -422,6 +430,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       timeLeft: remTime,
       isTrickMode,
       selectedSet,
+      examTicket,
       bookmarks: Array.from(currentBookmarks || new Set())
     };
     localStorage.setItem(STATE_STORAGE_KEY, JSON.stringify(state));
@@ -796,8 +805,9 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     return shuffleArray(finalPool); // Shuffle question order for the fixed set
   };
 
-  const startNewQuiz = (forceTrickMode = false, trickSetNum = null) => {
+  const startNewQuiz = async (forceTrickMode = false, trickSetNum = null) => {
     let sampled = [];
+    let nextSelectedSet = selectedSet;
     if (forceTrickMode) {
       const questionData = questionsMap[selectedChapterId];
       let trickPool = questionData?.tricks || [];
@@ -813,31 +823,68 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       // Filter by trickSetNum if provided
       if (trickSetNum !== null) {
         trickPool = trickPool.filter((q) => q.trickSet === trickSetNum);
-        setSelectedSet(`trick-${trickSetNum}`);
+        nextSelectedSet = `trick-${trickSetNum}`;
       } else {
         // Fallback or default
         if (trickPool.some(q => q.trickSet === 2)) {
           // If we have trickSet 2, default to set 1
           trickPool = trickPool.filter((q) => q.trickSet === 1);
-          setSelectedSet("trick-1");
+          nextSelectedSet = "trick-1";
         } else {
-          setSelectedSet("trick");
+          nextSelectedSet = "trick";
         }
       }
 
-      // Shuffle the trick questions and safely shuffle their options
-      sampled = shuffleArray(trickPool).map(safeShuffleQuestionOptions);
-
       setIsTrickMode(true);
+      setSelectedSet(nextSelectedSet);
+      if (mode === "immediate") {
+        sampled = shuffleArray(trickPool).map(safeShuffleQuestionOptions);
+      }
       setTimeLeft(3600); // 60 minutes countdown
     } else {
-      if (selectedSet === "auto") {
-        sampled = sampleQuestions(selectedChapterId);
-      } else {
-        const setNum = parseInt(selectedSet.replace("de-", ""));
-        sampled = getFixedSetQuestions(selectedChapterId, setNum);
+      if (mode === "immediate") {
+        if (selectedSet === "auto") {
+          sampled = sampleQuestions(selectedChapterId);
+        } else {
+          const setNum = parseInt(selectedSet.replace("de-", ""));
+          sampled = getFixedSetQuestions(selectedChapterId, setNum);
+        }
       }
       setIsTrickMode(false);
+    }
+
+    if (mode === "end") {
+      setExamTicket(null);
+      try {
+        const issued = await getExamQuestions({
+          subjectId,
+          chapterId: selectedChapterId,
+          examSetId: nextSelectedSet,
+          isTrickMode: forceTrickMode
+        });
+        if (!issued?.ok) {
+          showAlert({
+            title: "Không thể cấp đề thi",
+            message: issued?.error?.message || "Hệ thống không thể cấp đề thi lúc này.",
+            type: "warning"
+          });
+          return;
+        }
+        sampled = issued.data.questions;
+        setExamTicket(issued.data.examTicket);
+      } catch (error) {
+        showAlert({
+          title: "Không thể cấp đề thi",
+          message: error?.message || "Hệ thống không thể cấp đề thi lúc này.",
+          type: "warning"
+        });
+        return;
+      }
+    } else {
+      setExamTicket(null);
+    }
+
+    if (!forceTrickMode) {
       // Auto-adjust countdown timer based on question count
       if (sampled.length > 100) {
         setTimeLeft(10800); // 180 minutes (3 hours) for Mega 240-question set
@@ -857,18 +904,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       return;
     }
 
-    if (mode === "end") {
-      // Strip answers and explanations for exam security
-      const secureQuestions = sampled.map(q => {
-        const qCopy = { ...q };
-        delete qCopy.answer;
-        delete qCopy.explanation;
-        return qCopy;
-      });
-      setQuestions(secureQuestions);
-    } else {
-      setQuestions(sampled);
-    }
+    setQuestions(sampled);
     setAnswers(new Array(sampled.length).fill(-1));
     setBookmarks(new Set());
     setCurrentIndex(0);
@@ -894,6 +930,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
       setTimeLeft(typeof savedState.timeLeft === "number" ? savedState.timeLeft : 2700);
       setIsTrickMode(!!savedState.isTrickMode);
       setSelectedSet(savedState.selectedSet || "auto");
+      setExamTicket(savedState.examTicket || null);
       setBookmarks(new Set(savedState.bookmarks || []));
       setStep("quiz-run");
     }
@@ -959,31 +996,28 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
   };
 
   async function submitQuiz() {
-    clearQuizState();
-
     if (mode === "end") {
       try {
         setLoadingRankings(true);
+        if (!examTicket) throw new Error("Lượt thi không có examTicket hợp lệ.");
         const res = await submitExamScore({
-          name,
-          subjectId,
-          chapterId: selectedChapterId,
-          examSetId: selectedSet,
-          isTrickMode,
-          questionsState: questions,
+          examTicket,
           clientAnswers: answers,
           elapsedTime
         });
+        if (!res?.ok) throw new Error(res?.error?.message || "Không thể chấm bài thi.");
+        const result = res.data;
 
-        setLatestScore(res.score);
+        setLatestScore(result.score);
 
         // Re-inject correct answers and explanations back to the questions state for the review screen
-        const updatedQuestions = questions.map((q, idx) => {
-          const graded = res.gradedResults[idx];
+        const gradedById = new Map(result.gradedResults.map((item) => [item.id, item]));
+        const updatedQuestions = questions.map((q) => {
+          const graded = gradedById.get(q.id);
           return {
             ...q,
-            answer: graded.correctOptionIndex,
-            explanation: graded.explanation
+            answer: graded?.correctOptionIndex ?? -1,
+            explanation: graded?.explanation || ""
           };
         });
         setQuestions(updatedQuestions);
@@ -991,12 +1025,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         const record = {
           name,
           subjectId,
-          score: res.score,
+          score: result.score,
           total: questions.length,
           time: elapsedTime,
           date: new Date().toISOString(),
           chapterId: selectedChapterId,
-          examSetId: isTrickMode ? "trick" : selectedSet
+          examSetId: selectedSet
         };
 
         // Save to LocalStorage history
@@ -1004,11 +1038,12 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
         existing.push(record);
         localStorage.setItem(`studymaster_quiz_rankings_${selectedChapterId}`, JSON.stringify(existing));
 
+        clearQuizState();
         setStep("results");
-        if (res.score / (questions.length || 40) >= 0.8) {
+        if (result.score / (questions.length || 40) >= 0.8) {
           triggerConfetti();
         }
-        await loadAndRenderLeaderboard(res.score, record);
+        await loadAndRenderLeaderboard(result.score, record);
       } catch (err) {
         console.error("Lỗi khi nộp điểm thi lên server:", err);
         if (showToast) showToast("Lỗi khi nộp điểm: " + err.message, "error");
@@ -1026,6 +1061,7 @@ export default function Quiz({ onClose, showToast, showConfirm, showAlert, subje
     });
 
     setLatestScore(correct);
+    clearQuizState();
 
     const record = {
       name,

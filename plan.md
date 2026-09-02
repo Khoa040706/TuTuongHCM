@@ -898,12 +898,17 @@ Thẻ chưa từng học được xem là đến hạn; nội dung được join
       difficulty: "easy" | "medium" | "hard" | null,
       sectionId: string | null,
       subsectionId: string | null
-    }>
+    }>,
+    examTicket: string,
+    expiresAt: string
   }
 }
 ```
 
-Không trả `answer`, `explanation`, `trickDetails`.
+Không trả `answer`, `explanation`, `trickDetails`. Theo `DECISION-04`, QUIZ-01 là nơi duy nhất chọn đề thi: `auto` được random phía server; fixed/trick set được resolve phía server; thứ tự exact question IDs đã cấp, selector, user và hạn dùng được đóng trong `examTicket` có chữ ký. Client coi ticket là opaque và không tự chọn lại danh sách question ID.
+
+Ticket hết hạn sau 4 giờ, đủ cho thời lượng đề dài nhất hiện tại. Secret ký bắt buộc cấu hình server-side qua `EXAM_TICKET_SECRET` và không được đưa vào `NEXT_PUBLIC_*`.
+
 **Lỗi:** `UNAUTHENTICATED`, `VALIDATION_ERROR`, `SUBJECT_NOT_FOUND`, `CHAPTER_NOT_FOUND`, `EXAM_SET_NOT_FOUND`, `QUIZ_NOT_AVAILABLE`, `INTERNAL_ERROR`.
 
 ### QUIZ-02 — Nộp/chấm quiz (sửa Server Action)
@@ -914,20 +919,13 @@ Không trả `answer`, `explanation`, `trickDetails`.
 
 ```js
 {
-  subjectId: string,
-  chapterId: string,
-  examSetId: string | number,
-  isTrickMode: boolean,
-  questionsState: Array<{
-    id: string,
-    options: string[]
-  }>,
+  examTicket: string,
   clientAnswers: number[],
   elapsedTime: number
 }
 ```
 
-Bỏ field `name`; server lấy danh tính từ session. `elapsedTime` là thời gian làm quiz, không phải thời gian học.
+Bỏ field `name`; server lấy danh tính từ session. `elapsedTime` là thời gian làm quiz, không phải thời gian học. QUIZ-02 xác minh chữ ký, expiry và user binding của `examTicket`, sau đó khôi phục đúng ordered issued set từ ticket để chấm; không random lại và không nhận question IDs/options do client cung cấp.
 
 **Response thành công**
 
@@ -954,7 +952,7 @@ Bỏ field `name`; server lấy danh tính từ session. `elapsedTime` là thờ
 
 `passed = score10 >= 7.0`; `bestScore10` chỉ tăng hoặc giữ nguyên.
 
-**Lỗi:** `UNAUTHENTICATED`, `VALIDATION_ERROR`, `SUBJECT_NOT_FOUND`, `CHAPTER_NOT_FOUND`, `EXAM_SET_NOT_FOUND`, `QUESTION_SET_MISMATCH`, `DUPLICATE_QUESTION_ID`, `INVALID_OPTION_INDEX`, `DATASTORE_UNAVAILABLE`, `INTERNAL_ERROR`.
+**Lỗi:** `UNAUTHENTICATED`, `VALIDATION_ERROR`, `INVALID_EXAM_TICKET`, `EXAM_TICKET_EXPIRED`, `SUBJECT_NOT_FOUND`, `CHAPTER_NOT_FOUND`, `EXAM_SET_NOT_FOUND`, `QUESTION_SET_MISMATCH`, `INVALID_OPTION_INDEX`, `DATASTORE_UNAVAILABLE`, `INTERNAL_ERROR`.
 
 ### ADMIN-01 — Xem báo cáo học tập
 
