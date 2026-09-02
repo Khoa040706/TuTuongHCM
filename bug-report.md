@@ -109,8 +109,9 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Re-verify nguyên nhân**: Auth và Firestore Emulator đều hoạt động; thiếu sót còn lại đúng là test harness chưa gọi Server Action qua transport thật. Không tìm thấy lỗi trong `submitExamScore` khi chạy fixed set ngoài phạm vi DECISION-04.
 - **Fix vòng 1**: Bổ sung Server Action harness đọc action ID từ manifest Next.js, mã hóa/giải mã React Server Components payload, giữ cookie student thật và gọi QUIZ-01 → QUIZ-02. Harness kiểm tra cả response envelope lẫn side effect trong Firestore Emulator.
 - **Kết quả tự verify**: QUIZ-01 với `tu-tuong-hcm/chuong-2/de-1` trả đúng 40 câu, không lộ `answer`/`explanation`; QUIZ-02 trả `{ok:true,data}`, `total=40`, `attemptsCount=1`; có đúng 1 ranking và quiz summary có `attemptsCount=1`, `bestScore10=0`.
+- **Retest độc lập (Frontend Verifier)**: PASS (`test:integration:emulator` với Firebase Emulator Suite + Java 21). Gọi QUIZ-01 (`getExamQuestions`) nhận 40 câu hỏi sạch, gọi QUIZ-02 (`submitExamScore`) qua Next.js Server Action transport nhận `{ ok: true, data }`, `total=40`, `attemptsCount=1`; xác minh trực tiếp Firestore Emulator tạo đúng 1 bản ghi `rankings` và cập nhật `quizSummary.attemptsCount=1`, `bestScore10=0`.
 - **Owner chốt**: Backend test coverage; không phụ thuộc 401 nữa.
-- **Trạng thái**: `fixed_pending_verify`
+- **Trạng thái**: `verified`
 
 ---
 
