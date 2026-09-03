@@ -242,6 +242,30 @@ export default function Page() {
   const landingContainerRef = useRef(null);
   const subjectGridRef = useRef(null);
   const touchStartYRef = useRef(0);
+  const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+
+  // Auto-focus username input when auth modal opens
+  useEffect(() => {
+    if (showAuthOverlay && appStep === "login") {
+      const timer = setTimeout(() => {
+        usernameInputRef.current?.focus();
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, [showAuthOverlay, appStep]);
+
+  // Press Enter on landing page to open login modal without mouse
+  useEffect(() => {
+    const handleLandingKeyDown = (e) => {
+      if (e.key === "Enter" && appStep === "login" && !showAuthOverlay) {
+        e.preventDefault();
+        setShowAuthOverlay(true);
+      }
+    };
+    window.addEventListener("keydown", handleLandingKeyDown);
+    return () => window.removeEventListener("keydown", handleLandingKeyDown);
+  }, [appStep, showAuthOverlay]);
 
   // Login & Register Form inputs
   const [loginUser, setLoginUser] = useState("");
@@ -1161,7 +1185,7 @@ export default function Page() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
     if (loginUser === "admin" && loginPass === "admin") {
       const res = await authLoginAdmin("admin", "admin", rememberMe);
       if (res.success) {
@@ -1593,11 +1617,22 @@ export default function Page() {
                       <div className="relative">
                         <User size={14} className="absolute left-0 top-1/2 -translate-y-1/2 text-static-stone-400" />
                         <input
+                          ref={usernameInputRef}
                           type="text"
                           required
                           placeholder="Nhập tên đăng nhập hoặc email..."
                           value={loginUser}
                           onChange={(e) => setLoginUser(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              if (!loginPass) {
+                                passwordInputRef.current?.focus();
+                              } else {
+                                handleLogin(e);
+                              }
+                            }
+                          }}
                           className="w-full pl-7 pr-4 py-2 border-b border-stone-800 focus:border-accent bg-transparent text-xs text-static-stone-100 placeholder-stone-500 focus:outline-none transition-all duration-300"
                         />
                       </div>
@@ -1617,11 +1652,18 @@ export default function Page() {
                       <div className="relative">
                         <Lock size={14} className="absolute left-0 top-1/2 -translate-y-1/2 text-static-stone-400" />
                         <input
+                          ref={passwordInputRef}
                           type={showPass ? "text" : "password"}
                           required
                           placeholder="Nhập mật khẩu..."
                           value={loginPass}
                           onChange={(e) => setLoginPass(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              handleLogin(e);
+                            }
+                          }}
                           className="w-full pl-7 pr-9 py-2 border-b border-stone-800 focus:border-accent bg-transparent text-xs text-static-stone-100 placeholder-stone-500 focus:outline-none transition-all duration-300"
                         />
                         <button
