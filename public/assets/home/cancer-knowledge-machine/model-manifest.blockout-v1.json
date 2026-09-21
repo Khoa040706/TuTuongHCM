@@ -1,0 +1,1291 @@
+{
+  "schemaVersion": "0.1-blockout-review",
+  "contractStatus": "AWAITING_BLOCKOUT_APPROVAL",
+  "asset": {
+    "name": "CancerKnowledgeMachineBlockout",
+    "stage": "blockout",
+    "frontAxisBlender": "-Y",
+    "upAxisBlender": "+Z",
+    "units": "meter",
+    "referencePolicy": "The approved AI concept is a visual reference only; this config and model contract define count, proportions, hierarchy, pivots, and poses.",
+    "walkingLegCount": 8,
+    "clawCount": 2,
+    "antennaCount": 0
+  },
+  "generatedAtUtc": "2026-09-13T16:52:21.809373+00:00",
+  "toolchain": {
+    "blenderVersion": "5.2.1 LTS",
+    "blenderVersionTuple": [
+      5,
+      2,
+      1
+    ],
+    "pythonVersion": "3.13.13",
+    "exportOperator": "bpy.ops.export_scene.gltf",
+    "exportFormat": "GLB",
+    "factoryStartupRequired": true
+  },
+  "stats": {
+    "objectCount": 52,
+    "meshCount": 37,
+    "triangleCount": 8448,
+    "vertexCount": 4294,
+    "materialCount": 3,
+    "materials": [
+      "MAT_AmberGlow",
+      "MAT_Charcoal",
+      "MAT_GoldSatin"
+    ],
+    "textureCount": 0
+  },
+  "boundsByPose": {
+    "closed": {
+      "min": [
+        -3.826161,
+        -1.79,
+        -3.55
+      ],
+      "max": [
+        3.826161,
+        1.323637,
+        3.55
+      ],
+      "size": [
+        7.652323,
+        3.113637,
+        7.1
+      ]
+    },
+    "compact": {
+      "min": [
+        -2.857095,
+        -1.2888,
+        -2.24928
+      ],
+      "max": [
+        2.857095,
+        0.942337,
+        2.24928
+      ],
+      "size": [
+        5.71419,
+        2.231137,
+        4.49856
+      ]
+    }
+  },
+  "poses": {
+    "closed": {
+      "frame": 1,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 0.0,
+      "clawRightYDeg": 0.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "open": {
+      "frame": 21,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 19.0,
+      "clawRightYDeg": -19.0,
+      "ringInnerYDeg": 13.0,
+      "ringOuterYDeg": -10.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "guide_left": {
+      "frame": 41,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 34.0,
+      "clawRightYDeg": -5.0,
+      "ringInnerYDeg": 9.0,
+      "ringOuterYDeg": -7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "guide_right": {
+      "frame": 61,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 5.0,
+      "clawRightYDeg": -34.0,
+      "ringInnerYDeg": -9.0,
+      "ringOuterYDeg": 7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "compact": {
+      "frame": 81,
+      "rootScale": 0.72,
+      "clawLeftYDeg": -14.0,
+      "clawRightYDeg": 14.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 0.88,
+      "legsScale": 0.82
+    }
+  },
+  "nodes": [
+    {
+      "name": "cancer_mark",
+      "type": "CURVE",
+      "parent": "crab_root",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_left",
+      "type": "EMPTY",
+      "parent": "crab_root",
+      "location": [
+        -1.72,
+        -0.38,
+        0.92
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_left_arm",
+      "type": "MESH",
+      "parent": "claw_left",
+      "location": [
+        -0.35,
+        -0.045,
+        0.155
+      ],
+      "rotationEuler": [
+        1.156925,
+        0.0,
+        -1.442927
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_left_forearm",
+      "type": "MESH",
+      "parent": "claw_left",
+      "location": [
+        -1.03,
+        -0.105,
+        0.505
+      ],
+      "rotationEuler": [
+        1.03754,
+        -0.0,
+        -1.525373
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_left_palm",
+      "type": "MESH",
+      "parent": "claw_left",
+      "location": [
+        -1.36,
+        -0.12,
+        0.7
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_right",
+      "type": "EMPTY",
+      "parent": "crab_root",
+      "location": [
+        1.72,
+        -0.38,
+        0.92
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_right_arm",
+      "type": "MESH",
+      "parent": "claw_right",
+      "location": [
+        0.35,
+        -0.045,
+        0.155
+      ],
+      "rotationEuler": [
+        1.156925,
+        -0.0,
+        1.442927
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_right_forearm",
+      "type": "MESH",
+      "parent": "claw_right",
+      "location": [
+        1.03,
+        -0.105,
+        0.505
+      ],
+      "rotationEuler": [
+        1.03754,
+        0.0,
+        1.525373
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "claw_right_palm",
+      "type": "MESH",
+      "parent": "claw_right",
+      "location": [
+        1.36,
+        -0.12,
+        0.7
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "crab_body",
+      "type": "MESH",
+      "parent": "crab_root",
+      "location": [
+        0.0,
+        0.0,
+        0.25
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "crab_root",
+      "type": "EMPTY",
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_01",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        -1.72,
+        -0.57,
+        0.58
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_01_joint",
+      "type": "MESH",
+      "parent": "leg_left_01",
+      "location": [
+        -0.98,
+        -0.08,
+        0.2
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_01_lower",
+      "type": "MESH",
+      "parent": "leg_left_01",
+      "location": [
+        -1.4,
+        -0.12,
+        -0.12
+      ],
+      "rotationEuler": [
+        2.219698,
+        -0.0,
+        -1.475845
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_01_upper",
+      "type": "MESH",
+      "parent": "leg_left_01",
+      "location": [
+        -0.49,
+        -0.04,
+        0.1
+      ],
+      "rotationEuler": [
+        1.370129,
+        -0.0,
+        -1.489344
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_02",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        -1.72,
+        -0.19,
+        0.18
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_02_joint",
+      "type": "MESH",
+      "parent": "leg_left_02",
+      "location": [
+        -1.08,
+        -0.03,
+        0.02
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_02_lower",
+      "type": "MESH",
+      "parent": "leg_left_02",
+      "location": [
+        -1.53,
+        -0.05,
+        -0.32
+      ],
+      "rotationEuler": [
+        2.217369,
+        -0.0,
+        -1.526381
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_02_upper",
+      "type": "MESH",
+      "parent": "leg_left_02",
+      "location": [
+        -0.54,
+        -0.015,
+        0.01
+      ],
+      "rotationEuler": [
+        1.552287,
+        0.0,
+        -1.543026
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_03",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        -1.72,
+        0.19,
+        -0.22
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_03_joint",
+      "type": "MESH",
+      "parent": "leg_left_03",
+      "location": [
+        -1.06,
+        0.02,
+        -0.1
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_03_lower",
+      "type": "MESH",
+      "parent": "leg_left_03",
+      "location": [
+        -1.5,
+        0.02,
+        -0.46
+      ],
+      "rotationEuler": [
+        2.256526,
+        0.0,
+        -1.570796
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_03_upper",
+      "type": "MESH",
+      "parent": "leg_left_03",
+      "location": [
+        -0.53,
+        0.01,
+        -0.05
+      ],
+      "rotationEuler": [
+        1.664841,
+        -0.0,
+        -1.589662
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_04",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        -1.72,
+        0.57,
+        -0.57
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_04_joint",
+      "type": "MESH",
+      "parent": "leg_left_04",
+      "location": [
+        -0.94,
+        0.07,
+        -0.18
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_04_lower",
+      "type": "MESH",
+      "parent": "leg_left_04",
+      "location": [
+        -1.33,
+        0.09,
+        -0.56
+      ],
+      "rotationEuler": [
+        2.342552,
+        0.0,
+        -1.622033
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_left_04_upper",
+      "type": "MESH",
+      "parent": "leg_left_04",
+      "location": [
+        -0.47,
+        0.035,
+        -0.09
+      ],
+      "rotationEuler": [
+        1.759485,
+        -0.0,
+        -1.645127
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_01",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        1.72,
+        -0.57,
+        0.58
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_01_joint",
+      "type": "MESH",
+      "parent": "leg_right_01",
+      "location": [
+        0.98,
+        -0.08,
+        0.2
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_01_lower",
+      "type": "MESH",
+      "parent": "leg_right_01",
+      "location": [
+        1.4,
+        -0.12,
+        -0.12
+      ],
+      "rotationEuler": [
+        2.219698,
+        0.0,
+        1.475845
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_01_upper",
+      "type": "MESH",
+      "parent": "leg_right_01",
+      "location": [
+        0.49,
+        -0.04,
+        0.1
+      ],
+      "rotationEuler": [
+        1.370129,
+        0.0,
+        1.489344
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_02",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        1.72,
+        -0.19,
+        0.18
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_02_joint",
+      "type": "MESH",
+      "parent": "leg_right_02",
+      "location": [
+        1.08,
+        -0.03,
+        0.02
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_02_lower",
+      "type": "MESH",
+      "parent": "leg_right_02",
+      "location": [
+        1.53,
+        -0.05,
+        -0.32
+      ],
+      "rotationEuler": [
+        2.217369,
+        0.0,
+        1.526381
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_02_upper",
+      "type": "MESH",
+      "parent": "leg_right_02",
+      "location": [
+        0.54,
+        -0.015,
+        0.01
+      ],
+      "rotationEuler": [
+        1.552287,
+        -0.0,
+        1.543026
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_03",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        1.72,
+        0.19,
+        -0.22
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_03_joint",
+      "type": "MESH",
+      "parent": "leg_right_03",
+      "location": [
+        1.06,
+        0.02,
+        -0.1
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_03_lower",
+      "type": "MESH",
+      "parent": "leg_right_03",
+      "location": [
+        1.5,
+        0.02,
+        -0.46
+      ],
+      "rotationEuler": [
+        2.256526,
+        -0.0,
+        1.570796
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_03_upper",
+      "type": "MESH",
+      "parent": "leg_right_03",
+      "location": [
+        0.53,
+        0.01,
+        -0.05
+      ],
+      "rotationEuler": [
+        1.664841,
+        0.0,
+        1.589662
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_04",
+      "type": "EMPTY",
+      "parent": "legs_group",
+      "location": [
+        1.72,
+        0.57,
+        -0.57
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_04_joint",
+      "type": "MESH",
+      "parent": "leg_right_04",
+      "location": [
+        0.94,
+        0.07,
+        -0.18
+      ],
+      "rotationEuler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_04_lower",
+      "type": "MESH",
+      "parent": "leg_right_04",
+      "location": [
+        1.33,
+        0.09,
+        -0.56
+      ],
+      "rotationEuler": [
+        2.342552,
+        -0.0,
+        1.622033
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "leg_right_04_upper",
+      "type": "MESH",
+      "parent": "leg_right_04",
+      "location": [
+        0.47,
+        0.035,
+        -0.09
+      ],
+      "rotationEuler": [
+        1.759485,
+        0.0,
+        1.645127
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "legs_group",
+      "type": "EMPTY",
+      "parent": "crab_root",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_left",
+      "type": "EMPTY",
+      "parent": "claw_left",
+      "location": [
+        -3.08,
+        -0.5,
+        1.62
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_left_01",
+      "type": "MESH",
+      "parent": "pincer_left",
+      "location": [
+        1.27,
+        0.35,
+        -1.08675
+      ],
+      "rotationEuler": [
+        1.800754,
+        0.0,
+        -1.533776
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_left_02",
+      "type": "MESH",
+      "parent": "pincer_left",
+      "location": [
+        1.27,
+        0.35,
+        -0.75325
+      ],
+      "rotationEuler": [
+        1.340839,
+        -0.0,
+        -1.533776
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_right",
+      "type": "EMPTY",
+      "parent": "claw_right",
+      "location": [
+        3.08,
+        -0.5,
+        1.62
+      ],
+      "rotationEuler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_right_01",
+      "type": "MESH",
+      "parent": "pincer_right",
+      "location": [
+        -1.27,
+        0.35,
+        -1.08675
+      ],
+      "rotationEuler": [
+        1.800754,
+        -0.0,
+        1.533776
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "pincer_right_02",
+      "type": "MESH",
+      "parent": "pincer_right",
+      "location": [
+        -1.27,
+        0.35,
+        -0.75325
+      ],
+      "rotationEuler": [
+        1.340839,
+        0.0,
+        1.533776
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "ring_inner",
+      "type": "MESH",
+      "parent": "crab_root",
+      "location": [
+        0.0,
+        1.08,
+        0.0
+      ],
+      "rotationEuler": [
+        1.570796,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "ring_outer",
+      "type": "MESH",
+      "parent": "crab_root",
+      "location": [
+        0.0,
+        1.2,
+        0.0
+      ],
+      "rotationEuler": [
+        1.570796,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "checks": {
+    "requiredRootChildren": {
+      "pass": true,
+      "missing": []
+    },
+    "walkingLegCount": {
+      "pass": true,
+      "actual": 8,
+      "expected": 8
+    },
+    "walkingLegSymmetry": {
+      "pass": true,
+      "mismatchedPairs": []
+    },
+    "forbiddenAntennaLikeNodes": {
+      "pass": true,
+      "matches": []
+    },
+    "curvedBodyDepth": {
+      "pass": true,
+      "depth": 1.519999,
+      "minimum": 1.4
+    },
+    "ringBodyRadialClearance": {
+      "pass": true,
+      "clearance": 0.515,
+      "minimum": 0.35
+    },
+    "ringBodyDepthClearance": {
+      "pass": true,
+      "clearance": 0.215,
+      "minimum": 0.18
+    },
+    "ringLegDepthClearance": {
+      "pass": true,
+      "clearance": 0.1606,
+      "minimum": 0.15
+    },
+    "poseSet": {
+      "pass": true,
+      "actual": [
+        "closed",
+        "open",
+        "guide_left",
+        "guide_right",
+        "compact"
+      ]
+    },
+    "compactWidth": {
+      "pass": true,
+      "closed": 7.652323,
+      "compact": 5.71419,
+      "ratio": 0.746726,
+      "maximumRatio": 0.82
+    }
+  },
+  "files": {
+    "blend": {
+      "path": "D:\\TT HCM\\assets-src\\home\\cancer-knowledge-machine\\blender\\cancer_machine_blockout.blend",
+      "bytes": 181890,
+      "sha256": "edd5f52d8797eb8e3d3514d6f54b60be8abae021a787fc8310352143eefe385d"
+    },
+    "glb": {
+      "path": "D:\\TT HCM\\public\\assets\\home\\cancer-knowledge-machine\\cancer-machine.blockout.glb",
+      "bytes": 271392,
+      "sha256": "f9d9daa7bf0ce9ccfeb11b361876c4c3f7fca2742163f82df06511a770de4c60"
+    },
+    "config": {
+      "path": "D:\\TT HCM\\assets-src\\home\\cancer-knowledge-machine\\config\\blockout.json",
+      "bytes": 3269,
+      "sha256": "9b453fc75ad8123bf8cdd606def339569f79fa6bf9177d408649bc09248277a8"
+    },
+    "script": {
+      "path": "D:\\TT HCM\\assets-src\\home\\cancer-knowledge-machine\\scripts\\build_blockout.py",
+      "bytes": 27529,
+      "sha256": "5825759799ea6ae39a970778666a3b7a7269f1717d2ada3888668b7e4c9758d0"
+    }
+  },
+  "renders": [
+    {
+      "name": "01-front-closed",
+      "pose": "closed",
+      "path": "D:\\TT HCM\\artifacts\\homepage-3d\\blockout\\01-front-closed.png",
+      "bytes": 712717,
+      "sha256": "2273f9c861018353131da019b51014d333dc8f331087005097e265f70660f462"
+    },
+    {
+      "name": "02-three-quarter-open",
+      "pose": "open",
+      "path": "D:\\TT HCM\\artifacts\\homepage-3d\\blockout\\02-three-quarter-open.png",
+      "bytes": 691380,
+      "sha256": "578290517f94ab43feaa905c4369a3906efd40b3b39a68bdf7b6afd4ee8751c7"
+    },
+    {
+      "name": "03-side-closed",
+      "pose": "closed",
+      "path": "D:\\TT HCM\\artifacts\\homepage-3d\\blockout\\03-side-closed.png",
+      "bytes": 640701,
+      "sha256": "aa4663844115f3f7074bc7ad80f73b06640477318c9e4b7cc02a48e1bd843fb9"
+    },
+    {
+      "name": "04-front-open",
+      "pose": "open",
+      "path": "D:\\TT HCM\\artifacts\\homepage-3d\\blockout\\04-front-open.png",
+      "bytes": 711622,
+      "sha256": "c99b94647d8b8516b11b4f16f87a2f2928b738092a5be32ca8deb1c4a478a120"
+    },
+    {
+      "name": "05-front-compact",
+      "pose": "compact",
+      "path": "D:\\TT HCM\\artifacts\\homepage-3d\\blockout\\05-front-compact.png",
+      "bytes": 643764,
+      "sha256": "5e29f99f6222d5ccb32e3cfe78d88c4812df4994fe1f7cc8e33aa8fb40cebf54"
+    }
+  ],
+  "limitations": [
+    "Blockout geometry and materials are review-only, not final topology or look-dev.",
+    "The numeric checks cover hierarchy, symmetry, body depth, ring clearance, and compact bounds; visual gaps and silhouette still require human review.",
+    "Content/CTA clearance is represented by compact bounds only because product UI integration is outside Step 3."
+  ]
+}

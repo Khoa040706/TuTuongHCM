@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 3,
+  "asset": {
+    "name": "CancerKnowledgeMachineB5AShapeRevision",
+    "revision": "b5a-focused-shape-revision-1",
+    "frontAxis": "-Y",
+    "upAxis": "+Z",
+    "unit": "meter",
+    "referencePolicy": "The approved concept guides the large-form silhouette and armor language only. The model contract and this config remain authoritative for counts, hierarchy, pivots, and poses."
+  },
+  "palette": {
+    "goldSatin": [0.82, 0.43, 0.08, 1.0],
+    "charcoal": [0.045, 0.039, 0.031, 1.0],
+    "amber": [1.0, 0.53, 0.04, 1.0],
+    "ivory": [0.956, 0.939, 0.902, 1.0]
+  },
+  "body": {
+    "location": [0.0, 0.0, 0.12],
+    "scale": [1.86, 1.02, 1.42],
+    "segments": 32,
+    "rings": 20,
+    "middleWidthBoost": 0.13,
+    "topCompression": 0.2,
+    "bottomTuck": 0.15,
+    "frontPlate": {
+      "location": [0.0, -1.02, 0.12],
+      "scale": [1.2, 0.16, 0.9]
+    }
+  },
+  "rings": {
+    "locationY": 1.28,
+    "inner": { "majorRadius": 2.66, "minorRadius": 0.07 },
+    "outer": { "majorRadius": 3.02, "minorRadius": 0.085 },
+    "majorSegments": 64,
+    "minorSegments": 10
+  },
+  "legs": {
+    "perSide": 4,
+    "rootX": 1.62,
+    "rootY": [-0.62, -0.22, 0.2, 0.58],
+    "rootZ": [0.55, 0.18, -0.2, -0.52],
+    "coxaLength": [0.46, 0.51, 0.53, 0.49],
+    "upperLength": [0.72, 0.82, 0.88, 0.8],
+    "lowerLength": [0.9, 1.0, 1.05, 0.94],
+    "kneeRise": [0.46, 0.2, -0.02, -0.2],
+    "tipDrop": [0.54, 0.67, 0.78, 0.9],
+    "radius": 0.3,
+    "taper": [1.0, 0.72, 0.42],
+    "ankleFraction": [0.56, 0.58, 0.61, 0.57],
+    "ankleDropFraction": [0.16, 0.2, 0.23, 0.28],
+    "depthRhythm": [-0.12, -0.045, 0.04, 0.11]
+  },
+  "claws": {
+    "root": [1.55, -0.4, 0.72],
+    "elbow": [1.79, -0.48, 1.3],
+    "palm": [2.08, -0.52, 1.9],
+    "segmentRadius": 0.28,
+    "palmScale": [0.57, 0.48, 0.79],
+    "fingerLength": 1.2,
+    "fingerGap": 0.18,
+    "fingerArc": 0.42,
+    "fingerWidth": [0.25, 0.22, 0.14, 0.05],
+    "fingerDepth": 0.24
+  },
+  "candidateGeometry": {
+    "bodyArmor": {
+      "center": [0.0, -0.94, 0.12],
+      "outerHalfSize": [1.36, 1.04],
+      "innerHalfSize": [1.16, 0.86],
+      "outerDepth": 0.16,
+      "innerDepth": 0.12
+    },
+    "clawArmor": {
+      "halfSize": [0.44, 0.52],
+      "depth": 0.12,
+      "frontOffsetY": -0.4
+    },
+    "pincer": {
+      "xOffsets": [0.22, 0.42, 0.56, 0.5],
+      "upperZOffsets": [0.26, 0.58, 0.9, 1.18],
+      "lowerZOffsets": [0.2, 0.48, 0.77, 1.04],
+      "widths": [0.23, 0.2, 0.13, 0.045]
+    },
+    "jointScale": [1.02, 0.74, 0.82]
+  },
+  "shapeRevision": {
+    "bodyArmor": {
+      "outerLocation": [0.0, -0.7, 0.12],
+      "outerScale": [1.5, 0.48, 1.13],
+      "innerLocation": [0.0, -1.01, 0.12],
+      "innerScale": [1.25, 0.25, 0.91],
+      "lowerTransitionLocation": [0.0, -0.7, -0.63],
+      "lowerTransitionScale": [1.2, 0.33, 0.42]
+    },
+    "clawArmor": {
+      "capScale": [0.38, 0.15, 0.62],
+      "capFrontOffsetY": -0.39,
+      "innerFingerX": [-0.2, -0.45, -0.59, -0.52],
+      "innerFingerZ": [0.26, 0.59, 0.91, 1.14],
+      "outerFingerX": [0.17, 0.3, 0.2, -0.03],
+      "outerFingerZ": [0.22, 0.58, 0.96, 1.2],
+      "innerWidths": [0.21, 0.18, 0.115, 0.042],
+      "outerWidths": [0.25, 0.21, 0.13, 0.045]
+    },
+    "legs": {
+      "flatten": [0.76, 0.72, 0.68, 0.62],
+      "radiusFactors": [[1.15, 0.92], [1.02, 0.72], [0.88, 0.5], [0.58, 0.16]]
+    },
+    "reviewGray": [0.34, 0.36, 0.38, 1.0]
+  },
+  "mark": {
+    "outerRadius": 0.34,
+    "innerRadius": 0.255,
+    "innerOffsetX": 0.12,
+    "thickness": 0.065,
+    "frontY": -1.34,
+    "z": 0.13
+  },
+  "poses": {
+    "closed": {
+      "frame": 1,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 4.0,
+      "clawRightYDeg": -4.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 0.0,
+      "pincerScaleZ": 0.72
+    },
+    "open": {
+      "frame": 21,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 30.0,
+      "clawRightYDeg": -30.0,
+      "ringInnerYDeg": 13.0,
+      "ringOuterYDeg": -10.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 4.0,
+      "pincerScaleZ": 1.12
+    },
+    "guide_left": {
+      "frame": 41,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 42.0,
+      "clawRightYDeg": -10.0,
+      "ringInnerYDeg": 9.0,
+      "ringOuterYDeg": -7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 7.0,
+      "pincerScaleZ": 0.92
+    },
+    "guide_right": {
+      "frame": 61,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 10.0,
+      "clawRightYDeg": -42.0,
+      "ringInnerYDeg": -9.0,
+      "ringOuterYDeg": 7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 7.0,
+      "pincerScaleZ": 0.92
+    },
+    "compact": {
+      "frame": 81,
+      "rootScale": 0.94,
+      "clawLeftYDeg": 58.0,
+      "clawRightYDeg": -58.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 0.83,
+      "legsScale": 1.0,
+      "legFoldDeg": 42.0,
+      "pincerScaleZ": 0.64
+    }
+  },
+  "animation": {
+    "fps": 24,
+    "timeFormula": "timeSeconds = frame / fps",
+    "exportForceSampling": true
+  },
+  "render": {
+    "resolution": [768, 768],
+    "samples": 32,
+    "views": [
+      { "name": "01-front-closed-gray", "pose": "closed", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] },
+      { "name": "02-three-quarter-open-gray", "pose": "open", "camera": [8.2, -9.2, 4.4], "target": [0.0, 0.0, 0.1] }
+    ]
+  }
+}

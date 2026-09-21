@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps, @next/next/no-img-element */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle, Trash2, Search, Download, Plus, BarChart3, Users, KeyRound, Unlock, MousePointer, Edit2, Highlighter, Eraser } from "lucide-react";
+import { Menu, ArrowUp, ChevronDown, Eye, EyeOff, Lock, User, Mail, ShieldAlert, Check, X, ArrowLeft, AlertTriangle, Info, CheckCircle2, HelpCircle, XCircle, Trash2, Search, Download, Plus, BarChart3, Users, KeyRound, Unlock, MousePointer, Edit2, Highlighter, Eraser, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -52,6 +52,7 @@ import { useLearningState } from "../hooks/useLearningState";
 import CloudFlashcardDeck from "../components/cloud/CloudFlashcardDeck";
 import CloudSearchPanel from "../components/cloud/CloudSearchPanel";
 import ReviewQueue from "../components/learning/ReviewQueue";
+import HomeExperience from "../components/home/HomeExperience";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
@@ -91,8 +92,26 @@ export default function Page() {
   // App routing flow steps: "login", "register", "forgot-password", "subject-select", "study"
   const [appStep, setAppStepRaw] = useState("login");
   const [showAuthOverlay, setShowAuthOverlay] = useState(false);
+  const [pendingHomeDestination, setPendingHomeDestination] = useState(null);
+  const [b7QaMode, setB7QaMode] = useState("full");
   const [currentUser, setCurrentUser] = useState("");
   const [selectedSubjectId, setSelectedSubjectId] = useState("tu-tuong-hcm");
+
+  useEffect(() => {
+    const allowed = new Set([
+      "full",
+      "auth-spa-minimal",
+      "dom-gsap-no-canvas",
+      "canvas-minimal",
+      "canvas-model-loader-only",
+      "canvas-model",
+      "canvas-model-lighting",
+      "canvas-model-lighting-data",
+      "canvas-production-machine",
+    ]);
+    const requested = window.__STUDYMASTER_B7_QA_MODE__;
+    if (allowed.has(requested)) setB7QaMode(requested);
+  }, []);
   
   // Profile & Avatar states
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -255,17 +274,18 @@ export default function Page() {
     }
   }, [showAuthOverlay, appStep]);
 
-  // Press Enter on landing page to open login modal without mouse
+  // The landing has no global Enter shortcut: only the focused CTA can open auth.
   useEffect(() => {
-    const handleLandingKeyDown = (e) => {
-      if (e.key === "Enter" && appStep === "login" && !showAuthOverlay) {
-        e.preventDefault();
-        setShowAuthOverlay(true);
+    if (!showAuthOverlay) return undefined;
+    const handleAuthKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setShowAuthOverlay(false);
+        setPendingHomeDestination(null);
       }
     };
-    window.addEventListener("keydown", handleLandingKeyDown);
-    return () => window.removeEventListener("keydown", handleLandingKeyDown);
-  }, [appStep, showAuthOverlay]);
+    window.addEventListener("keydown", handleAuthKeyDown);
+    return () => window.removeEventListener("keydown", handleAuthKeyDown);
+  }, [showAuthOverlay]);
 
   // Login & Register Form inputs
   const [loginUser, setLoginUser] = useState("");
@@ -437,41 +457,7 @@ export default function Page() {
         gsap.set(quoteCursor, { display: "inline-block" });
       }
     }
-  }, { dependencies: [showHero, appStep, selectedSubjectId] });
-
-  // GSAP Entrance Animations for Login/Register Screens
-  useGSAP(() => {
-    if (appStep === "login" || appStep === "register" || appStep === "forgot-password") {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 } });
-      
-      // Mascot & celestial rings reveal
-      tl.fromTo(".mascot-wrapper", 
-        { scale: 0.3, opacity: 0, rotation: -45 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 1.6 }
-      );
-      
-      // Orbit rings rotation intro
-      tl.fromTo("svg.animate-spin-slow",
-        { rotate: -180 },
-        { rotate: 0, duration: 2 },
-        "<"
-      );
-      
-      // Login button entrance
-      tl.fromTo(".landing-login-btn",
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1 },
-        "-=0.9"
-      );
-      
-      // Footer elements fade-in
-      tl.fromTo(".landing-footer",
-        { opacity: 0 },
-        { opacity: 0.8, duration: 1 },
-        "-=0.6"
-      );
-    }
-  }, { dependencies: [appStep], scope: landingContainerRef });
+  }, { dependencies: [showHero, appStep, selectedSubjectId], revertOnUpdate: true });
 
   // GSAP Modal overlay animations
   useGSAP(() => {
@@ -491,7 +477,7 @@ export default function Page() {
         "-=0.2"
       );
     }
-  }, { dependencies: [showAuthOverlay, appStep], scope: landingContainerRef });
+  }, { dependencies: [showAuthOverlay, appStep], scope: landingContainerRef, revertOnUpdate: true });
 
   // GSAP Subject Select grid entrance
   useGSAP(() => {
@@ -513,7 +499,7 @@ export default function Page() {
         );
       }
     }
-  }, { dependencies: [appStep], scope: subjectGridRef });
+  }, { dependencies: [appStep], scope: subjectGridRef, revertOnUpdate: true });
 
   // Ambient floating particles, Cancer constellation, and Water ripples canvas animation
   useEffect(() => {
@@ -1316,6 +1302,26 @@ export default function Page() {
     loginSuccess(usernameTrimmed);
   };
 
+  const enterHomeTool = (tool) => {
+    setIsQuizMode(false);
+    setScrollY(0);
+    setShowHero(false);
+    setIsTransitioning(false);
+    if (tool === "bubble-sort") {
+      setSelectedSubjectId("dsa");
+      setIsDiagramSimActive(false);
+      setIsAlgoSimActive(true);
+      setSelectedAlgoId("bubble-sort");
+    } else if (tool === "activity-diagram") {
+      setSelectedSubjectId("analysis-design");
+      setIsAlgoSimActive(false);
+      setSelectedAlgoId(null);
+      setIsDiagramSimActive(true);
+    }
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setAppStep("study");
+  };
+
   const loginSuccess = (username) => {
     setCurrentUser(username);
     localStorage.setItem("studymaster_user_name", username);
@@ -1326,6 +1332,14 @@ export default function Page() {
       sessionStorage.setItem("studymaster_session_user", username);
       localStorage.removeItem("studymaster_session_user");
       localStorage.removeItem("studymaster_remember_me");
+    }
+
+    setShowAuthOverlay(false);
+    if (pendingHomeDestination) {
+      const destination = pendingHomeDestination;
+      setPendingHomeDestination(null);
+      enterHomeTool(destination);
+      return;
     }
     
     if (username.toLowerCase() === "admin") {
@@ -1378,6 +1392,23 @@ export default function Page() {
     
     setAppStep("study");
   };
+
+  const openHomeTool = (tool) => {
+    const signedIn = Boolean(authUser || currentUser);
+    if (!signedIn) {
+      setPendingHomeDestination(tool);
+      setShowAuthOverlay(true);
+      return;
+    }
+    setPendingHomeDestination(null);
+    enterHomeTool(tool);
+  };
+
+  const homeViewerRole = !(authUser || currentUser)
+    ? "guest"
+    : authUser?.role === "admin" || currentUser.toLowerCase() === "admin"
+      ? "admin"
+      : "learner";
 
 
   // Rendering parameters
@@ -1505,8 +1536,8 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-[#faf8f4] flex flex-col relative">
-      {/* Background Particles Canvas (Only active in Login, Register, Forgot Password, Subject Select, or Study View) */}
-      {(appStep === "login" || appStep === "register" || appStep === "forgot-password" || appStep === "subject-select" || appStep === "study") && (
+      {/* Existing particles remain limited to the learning shell, outside the R3F landing. */}
+      {(appStep === "subject-select" || appStep === "study") && (
         <canvas
           ref={particlesCanvasRef}
           className="fixed inset-0 w-full h-full pointer-events-none z-20"
@@ -1518,70 +1549,32 @@ export default function Page() {
       {(appStep === "login" || appStep === "register" || appStep === "forgot-password") && (
         <div
           ref={landingContainerRef}
-          className="login-bg-container min-h-screen flex flex-col justify-center items-center z-10 relative bg-cover bg-center bg-[#07090e] w-full overflow-hidden text-stone-100 transition-colors duration-500"
+          className="home-landing-shell min-h-screen z-10 relative w-full bg-[#faf8f4] text-[#2c2a26]"
+          data-pending-destination={pendingHomeDestination || ""}
         >
-          {/* Main Cinematic Landing Page Content (blurs when overlay is open) */}
-          <div className={`flex-grow w-full z-30 blur-transition relative ${showAuthOverlay ? "blur-active" : ""}`}>
-            {/* Mascot & Astrology Wheel (positioned absolutely at y = 28% on mobile / 25% on desktop) */}
-            <div 
-              className="mascot-align absolute top-[28%] md:top-[25%] left-1/2 flex items-center justify-center"
-            >
-              <div className="mascot-wrapper float-slow relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center">
-                {/* Nested Celestial Gyroscopic Rings SVG */}
-                <svg className="absolute w-full h-full animate-spin-slow opacity-65 text-accent/80" viewBox="0 0 200 200" fill="none">
-                  {/* Orbit ring 1 */}
-                  <circle cx="100" cy="100" r="90" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-                  {/* Orbit ring 2 */}
-                  <circle cx="100" cy="100" r="76" stroke="currentColor" strokeWidth="0.75" />
-                  {/* 3D Ellipses */}
-                  <ellipse cx="100" cy="100" rx="95" ry="32" stroke="currentColor" strokeWidth="1" transform="rotate(-30 100 100)" />
-                  <ellipse cx="100" cy="100" rx="95" ry="32" stroke="currentColor" strokeWidth="1" transform="rotate(30 100 100)" />
-                  {/* Celestial nodes */}
-                  <circle cx="100" cy="10" r="3" fill="currentColor" className="animate-pulse" />
-                  <circle cx="100" cy="190" r="3" fill="currentColor" className="animate-pulse" />
-                  <circle cx="48" cy="48" r="2" fill="currentColor" />
-                  <circle cx="152" cy="152" r="2" fill="currentColor" />
-                </svg>
-
-                {/* Gold Medallion Mascot inside gold border */}
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden z-10 flex items-center justify-center p-1 bg-transparent border-2 border-accent/40 shadow-[0_0_25px_rgba(245,158,11,0.35)]">
-                  <img 
-                    src="/assets/cancer_mascot_transparent.png" 
-                    alt="Cancer Zodiac Mascot" 
-                    className="w-full h-full object-contain scale-[1.05]" 
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Hidden for accessibility/SEO, styled out visually since it is baked in the image */}
-            <h1 className="sr-only">StudyMaster</h1>
-            <p className="sr-only">♋</p>
-            
-            {/* Animated Login Button (positioned absolutely at y = 53.5% on mobile / 68% on desktop) */}
-            <div 
-              className="btn-align absolute top-[53.5%] md:top-[68%] left-1/2"
-            >
-              <button
-                onClick={() => setShowAuthOverlay(true)}
-                className="landing-login-btn px-6 py-1.5 md:px-10 md:py-2.5 rounded-full border border-accent/60 text-accent bg-[#12110f]/30 hover:bg-accent hover:text-stone-950 text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(217,119,6,0.15)] cursor-pointer hover:scale-105 hover:shadow-[0_0_25px_rgba(217,119,6,0.3)] active:scale-95 duration-300 hover:border-accent w-[135px] md:w-[180px]"
-              >
-                Đăng nhập
-              </button>
-            </div>
-          </div>
-
-          {/* Minimalist Footer positioned absolute bottom to prevent pushing content layout */}
-          <div className={`landing-footer absolute bottom-2 py-2 text-[10px] text-stone-400/80 flex justify-between items-center w-full max-w-5xl px-6 z-30 blur-transition ${showAuthOverlay ? "blur-active" : ""}`}>
-            <span>© 2026 StudyMaster. Thấu hiểu & Phát triển.</span>
-            <span className="flex items-center gap-1.5">
-              <span>Độc quyền chiêm tinh học</span>
-              <span className="text-accent font-bold">♋</span>
-            </span>
+          <div className={`w-full blur-transition ${showAuthOverlay ? "blur-active" : ""}`}>
+            <HomeExperience
+              authOpen={showAuthOverlay}
+              qaMode={b7QaMode}
+              viewerRole={homeViewerRole}
+              onOpenAuth={() => {
+                setPendingHomeDestination(null);
+                setShowAuthOverlay(true);
+              }}
+              onOpenBubbleSort={() => openHomeTool("bubble-sort")}
+              onOpenDiagram={() => openHomeTool("activity-diagram")}
+              onOpenSubjects={() => setAppStep("subject-select")}
+              onOpenAdmin={() => setAppStep("admin-dashboard")}
+            />
           </div>
 
           {/* Centered Auth Overlay Modal */}
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-hidden={!showAuthOverlay}
+            inert={!showAuthOverlay}
+            aria-label="Xác thực StudyMaster"
             className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 dark:bg-black/60 backdrop-blur-md transition-all duration-500 ${
               showAuthOverlay ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
             }`}
@@ -1593,7 +1586,10 @@ export default function Page() {
             >
               {/* Close Button */}
               <button
-                onClick={() => setShowAuthOverlay(false)}
+                onClick={() => {
+                  setShowAuthOverlay(false);
+                  setPendingHomeDestination(null);
+                }}
                 className="absolute top-4 right-4 p-1.5 rounded-full text-stone-400 hover:text-accent hover:bg-stone-850/50 transition-colors cursor-pointer"
                 title="Quay lại màn hình chính"
               >

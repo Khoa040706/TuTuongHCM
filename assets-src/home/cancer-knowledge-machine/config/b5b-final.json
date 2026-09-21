@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "asset": {
+    "name": "CancerKnowledgeMachine",
+    "revision": "b5b-final-candidate-1",
+    "sourceStage": "b5a-focused-shape-revision-1",
+    "license": "StudyMaster original asset; generated in-house from approved concept direction and repository scripts. No external 3D model or texture is embedded."
+  },
+  "materials": {
+    "goldSatin": {
+      "baseColor": [0.72, 0.34, 0.055, 1.0],
+      "metallic": 0.72,
+      "roughness": 0.3
+    },
+    "charcoalMatte": {
+      "baseColor": [0.055, 0.043, 0.031, 1.0],
+      "metallic": 0.16,
+      "roughness": 0.5
+    },
+    "amberAccent": {
+      "baseColor": [0.96, 0.42, 0.035, 1.0],
+      "metallic": 0.42,
+      "roughness": 0.26
+    }
+  },
+  "finish": {
+    "bevelSegments": 2,
+    "bevelWidths": {
+      "body": 0.022,
+      "claw": 0.016,
+      "leg": 0.012,
+      "ring": 0.008
+    },
+    "panelLineDepth": 0.022,
+    "panelLineY": -1.185,
+    "panelLines": [
+      [[-1.35, 0.48], [-1.18, 0.35], [-1.08, 0.2]],
+      [[-1.36, -0.42], [-1.18, -0.31], [-1.08, -0.18]],
+      [[1.35, 0.48], [1.18, 0.35], [1.08, 0.2]],
+      [[1.36, -0.42], [1.18, -0.31], [1.08, -0.18]]
+    ]
+  },
+  "optimization": {
+    "animationKeyReduction": true,
+    "geometryCompression": false,
+    "geometryCompressionReason": "The uncompressed candidate is already below the 3 MB budget; keeping standard GLB avoids adding a Draco/Meshopt decoder to the current runtime."
+  },
+  "render": {
+    "resolution": [900, 900],
+    "samples": 48,
+    "views": [
+      { "name": "01-front-closed-final", "pose": "closed", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] },
+      { "name": "02-three-quarter-open-final", "pose": "open", "camera": [8.2, -9.2, 4.4], "target": [0.0, 0.0, 0.1] },
+      { "name": "03-side-closed-final", "pose": "closed", "camera": [12.2, -0.2, 1.2], "target": [0.0, 0.0, 0.0] },
+      { "name": "04-front-open-final", "pose": "open", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] },
+      { "name": "05-front-compact-final", "pose": "compact", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] }
+    ]
+  }
+}

@@ -6,6 +6,11 @@ questions-chuong-*, ad-ch*, dsa.js, oop.js, basic-*, analysis-design.js,
 lessons.js, và mọi file .js khác trong data/) là nội dung giáo trình/câu hỏi
 đã nhập sẵn — KHÔNG ĐƯỢC sửa/xóa/ghi đè. Chỉ được đọc/import.
 
+Ngoại lệ duy nhất theo `AGENTS.md` hiện hành: được tạo **file mới** trong `data/`
+cho môn/chương chưa có sẵn khi nhiệm vụ là nhập liệu mới. Ngoại lệ này không cho
+phép sửa, xóa hoặc ghi đè bất kỳ file nào đã tồn tại. Phải liệt kê thư mục và xác
+minh đường dẫn đích chưa tồn tại trước khi tạo.
+
 ## Coding convention
 - **Framework & Runtime**: Next.js 16 (App Router), React 19 (`use client` / `use server` boundaries), Node.js runtime.
 - **Styling**: TailwindCSS v4 (`@tailwindcss/postcss`) kết hợp Design Tokens văn hóa: Silk Ivory (`#faf8f4`), Dark Charcoal Earth (`#2c2a26`), Amber Gold (`#d97706`).
@@ -31,17 +36,17 @@ lessons.js, và mọi file .js khác trong data/) là nội dung giáo trình/c�
 
 # Context dự án StudyMaster
 
-> Khảo sát và cập nhật toàn diện trên mã nguồn thực tế ngày 2026-09-03. Nội dung dưới đây mô tả **chính xác kiến trúc và mã nguồn đang tồn tại thực tế trong dự án**.
+> Khảo sát toàn diện trên mã nguồn thực tế ngày 2026-09-03; kiểm kê lại repository và bổ sung định hướng trang chủ 3D ngày 2026-09-13. Nội dung dưới đây mô tả **kiến trúc đang tồn tại thực tế**, đồng thời tách rõ phần định hướng chưa triển khai.
 
 ## 1. Bức tranh tổng thể
 
 StudyMaster là ứng dụng học tập đa môn chạy bằng Next.js App Router kết hợp kiến trúc Single Page Application (SPA) ở client: `app/page.js` giữ state trung tâm và chuyển giữa `login`, `register`, `forgot-password`, `subject-select`, `study` và `admin-dashboard`. Ứng dụng gồm ba khối lớn:
 
-1. **Giáo trình & Visualizers**: 10 môn học chính quy với hàng trăm visualizer/lab tương tác (bao gồm trọn bộ 7 chương môn Điện toán đám mây mới).
+1. **Giáo trình & Visualizers**: 10 môn học chính quy với hàng trăm visualizer/lab tương tác (workspace hiện có dữ liệu Điện toán đám mây đến Chương 9).
 2. **Hệ thống Trắc nghiệm Bảo mật 2 tầng**: Luyện tập (phản hồi tức thì) và Thi tính giờ (đề thi được cấp qua vé ký số HMAC SHA-256 `examTicket`, bảo mật chống gian lận và chấm điểm độc lập phía server).
 3. **Phân hệ Quản trị & Đồng bộ Học tập**: Quản lý học viên, duyệt câu hỏi, thống kê bảng xếp hạng, đồng bộ tiến độ học tập (sentinel scroll + nút hoàn thành), bookmark, hàng đợi ôn tập lặp lại ngắt quãng (SM-2) và xuất báo cáo nhị phân (Excel/PDF).
 
-Quy mô repo hiện tại (không tính `node_modules`, `.next`): hơn 1.000 file; trong đó `components/` có hơn 840 file React Client Components; `data/` có 132 module dữ liệu và ngân hàng đề thi; phân hệ server có 10 Route Handlers, 13 server library modules, 2 client API/mock modules, 3 custom hooks và bộ kiểm thử tự động.
+Quy mô workspace tại lần kiểm kê ngày 2026-09-13 (không tính `.git`, `node_modules`, `.next` và output sinh tự động): 1.214 file, 38.856.204 byte; trong đó `components/` có 968 file `.js` (952 file khai báo `"use client"` ở dòng đầu), `data/` có 136 module `.js`; phân hệ server có 10 Route Handlers, 13 server library modules, 2 client API/mock modules, 3 custom hooks và bộ kiểm thử tự động. Số liệu này bao gồm file chưa commit trong workspace và có thể thay đổi theo nhánh làm việc.
 
 ## 2. Tech stack
 
@@ -159,7 +164,7 @@ firebase.json             Cấu hình Firebase project và emulators
 
 ### Vùng dữ liệu bất khả xâm phạm
 
-Theo `AGENTS.md`, **toàn bộ file `.js` nằm trong cây thư mục `data/` (kể cả thư mục con nếu có sau này) đều là dữ liệu tĩnh đã nhập sẵn, không phải code logic để chỉnh sửa**. Không được sửa, xóa, ghi đè hoặc tạo file `.js` mới trong `data/` dưới bất kỳ hình thức nào.
+Theo `AGENTS.md`, **toàn bộ file `.js` đã tồn tại trong cây thư mục `data/` đều là dữ liệu tĩnh đã nhập sẵn, không phải code logic để chỉnh sửa**. Không được sửa, xóa hoặc ghi đè các file này. Chỉ được tạo file mới cho môn/chương chưa có sẵn khi nhiệm vụ nhập liệu mới yêu cầu và sau khi đã xác minh file đích chưa tồn tại.
 
 Phạm vi bao gồm toàn bộ `data/*.js`, tiêu biểu nhưng không giới hạn:
 
@@ -168,9 +173,9 @@ Phạm vi bao gồm toàn bộ `data/*.js`, tiêu biểu nhưng không giới h�
 - Giáo trình CSDL: `data/database.js`, `data/database-ch*.js`.
 - Giáo trình/phân hệ môn khác: `data/ad-ch*.js`, `data/analysis-design.js`, `data/dsa.js`, `data/oop.js`, `data/basic-*.js`.
 - Toàn bộ ngân hàng câu hỏi và file tổng hợp đề: mọi `data/questions-*.js`, không chỉ `questions-chuong-*.js`.
-- Bất kỳ file `.js` hiện có hoặc được dự kiến bổ sung sau này bên trong `data/`, kể cả file có vẻ chứa hàm, import/export, metadata hay logic ghép mảng.
+- Bất kỳ file `.js` hiện có bên trong `data/`, kể cả file có vẻ chứa hàm, import/export, metadata hay logic ghép mảng.
 
-Quy tắc này cũng áp dụng gián tiếp cho tooling: không chạy script/generator/migration nào nếu nó sẽ tạo, sửa hoặc ghi đè file `.js` trong `data/`. Các cải tiến backend/frontend phải đọc và tiêu thụ dữ liệu hiện hữu mà không mutation vùng này.
+Quy tắc này cũng áp dụng gián tiếp cho tooling: không chạy script/generator/migration nào nếu nó sẽ sửa hoặc ghi đè file `.js` đã tồn tại trong `data/`. Các cải tiến backend/frontend phải đọc và tiêu thụ dữ liệu hiện hữu mà không mutation vùng này. Tooling chỉ được tạo file mới trong trường hợp nhập môn/chương mới đã được giao rõ ràng và đường dẫn đích chưa tồn tại.
 
 Các tài liệu gốc (`README.md`, `system_architecture.md`, `setup.md`, `walkthrough.md`) hữu ích để hiểu ý định, nhưng có chỗ lệch với implementation và phải kiểm chứng bằng code trước khi dựa vào.
 
@@ -559,4 +564,75 @@ Phân hệ thi trắc nghiệm giao tiếp trực tiếp với server qua hai Se
   - Các khối học thuật dùng class ngữ nghĩa BEM nhẹ: `.content-block__label`, `.bullet-list__item`, `.definition-box`, `.highlight-box`, `.quote-block`.
 - **Ranh giới Bất khả xâm phạm (Inviolable Data Boundary)**:
   - Toàn bộ các tệp tin `.js` đã tồn tại trong `data/` được định danh là **dữ liệu tĩnh bất khả xâm phạm**. Mã nguồn chỉ được phép `import` đọc dữ liệu, tuyệt đối không được sửa đổi, xóa bỏ hay ghi đè. Môn học mới (Điện toán đám mây) được ghép nối an toàn qua lớp Adapter Pattern [`lib/curriculum.js`](file:///d:/TT%20HCM/lib/curriculum.js).
+
+---
+
+## 10. Định hướng trang chủ 3D — Cỗ máy tri thức Cự Giải (2026-09-13)
+
+### 10.1. Tài liệu nguồn và thứ tự ưu tiên
+
+Hai brief mới trong `taskcanlam/` đã được đọc và đối chiếu với source:
+
+1. `taskcanlam/StudyMaster-R3F-Homepage-Brief.md`: baseline kiến trúc cho trang chủ giới thiệu 3D bằng React Three Fiber, GSAP storytelling, HTML/React cho nội dung và CTA, cùng các yêu cầu fallback, accessibility, lifecycle và hiệu năng.
+2. `taskcanlam/StudyMaster-BA-Concept-Cu-Giai-3D.md`: đặc tả BA/concept cụ thể hơn cho **Cỗ máy tri thức Cự Giải** và là định hướng ưu tiên khi hai tài liệu khác nhau về art direction.
+
+Quyết định hợp nhất: giữ kiến trúc kỹ thuật và tiêu chí chất lượng của brief R3F, nhưng dùng concept cua Cự Giải cùng bảng màu dự án thay cho “lõi tri thức” và bảng tím–cyan ban đầu. Hai brief là tài liệu định hướng, không phải bằng chứng rằng hạng mục đã được triển khai.
+
+### 10.2. Concept và mục tiêu trải nghiệm đã chốt
+
+- Trang chủ kể câu chuyện từ nhận diện thương hiệu tới công cụ học thật: cua Cự Giải dạng huy hiệu cơ khí mở không gian kiến thức; các khối dữ liệu chuyển thành mô phỏng thuật toán và diagram; CTA dẫn vào luồng học hiện có.
+- Giữ silhouette cua, hai càng, hai vòng độc lập và ký hiệu Cự Giải nhỏ. Cua có tính cách điềm tĩnh, chính xác, dùng cử chỉ để dẫn mắt thay vì biểu cảm hoạt hình hoặc chuyển động tấn công.
+- Art direction ưu tiên Silk Ivory `#FAF8F4`, Dark Charcoal Earth `#2C2A26`, Amber Gold `#D97706`, Amber Glow `#F59E0B`; màu môn học chỉ dùng có kiểm soát cho dữ liệu/đường nối.
+- Desktop-first nhưng vẫn phải dùng được ở màn hình thấp, zoom 200%, bàn phím, reduced motion và máy không hỗ trợ WebGL.
+- CTA vào học phải xuất hiện ngay từ hero; người quay lại không bị buộc xem hết storytelling.
+
+### 10.3. Storyboard sáu cảnh
+
+1. **S01 — Gặp StudyMaster:** giới thiệu giá trị, cua/vòng ở pose huy hiệu và CTA thật.
+2. **S02 — Mở không gian kiến thức:** hai vòng tách, khối kiến thức xuất hiện và được tổ chức thành nhóm.
+3. **S03 — Nhìn thấy thuật toán từng bước:** các khối tạo dãy, highlight so sánh và đổi vị trí theo một ví dụ thuật toán đã xác minh.
+4. **S04 — Từ dữ liệu tới cấu trúc:** khối trở thành node/cạnh của một loại diagram thật mà sản phẩm hỗ trợ.
+5. **S05 — Từ quan sát tới thực hành:** preview giao diện thật hoặc demo cô lập có nhãn, sau đó CTA mở công cụ thật.
+6. **S06 — Bắt đầu hành trình:** giảm chuyển động phụ, đặt heading và CTA làm trọng tâm.
+
+Mọi cảnh phải có trạng thái xác định theo scroll, chạy đúng cả xuôi lẫn ngược, hỗ trợ nhảy trực tiếp bằng anchor/chapter navigation và không dùng canvas để truyền đạt nội dung thiết yếu.
+
+### 10.4. Kết quả xác minh trên source hiện tại
+
+- Stack đang khóa ở Next.js `16.2.9`, React/React DOM `19.2.4`, Three.js `^0.185.1`, GSAP `^3.15.0` và `@gsap/react` `^2.1.2`.
+- `@react-three/fiber` và `@react-three/drei` **chưa có** trong `package.json`/`package-lock.json`; phải kiểm tra tương thích với React 19 và Next.js 16 trước khi đề xuất cài đặt.
+- Bước 3 đã tạo blockout tái sinh được bằng config/script. V1 được giữ riêng; vòng sửa v2 đã thay silhouette/tỷ lệ của càng, mai, chân, trăng, vòng và articulation compact, kèm source `.blend`, GLB, manifest, năm ảnh và contact sheet cùng camera. GLB v2 đã load bằng Three.js r185 và quét collision ở frame chuyển tiếp. Người dùng duyệt B3.8 ngày 2026-09-14 để dùng cho kiểm chứng tích hợp B4; đây không phải phê duyệt model final.
+- `app/page.js` hiện là Client Component điều phối SPA bằng `appStep`; điểm vào hiện tại là `login`, sau xác thực chuyển sang `subject-select` hoặc `admin-dashboard`. Chưa có route marketing/homepage riêng.
+- Luồng học thật đã có `AlgoSimDashboard` và `DiagramSimDashboard`; D04 đã khóa ví dụ Bubble Sort `[3,1,2]` và Activity Diagram ATM sau khi đối chiếu implementation/asset thật. Copy cuối vẫn không được hứa chức năng ngoài sản phẩm.
+- Auth, tiến độ, quiz, flashcard và báo cáo đã có hợp đồng backend hiện hữu. Hạng mục trang chủ không được tự thêm API, Firestore collection hoặc dữ liệu cá nhân hóa chỉ để điều khiển motion.
+
+### 10.5. Kiến trúc triển khai mục tiêu
+
+- Giữ Next.js/React/Tailwind và backend hiện tại; chỉ bổ sung R3F/Drei sau khi xác minh dependency và được triển khai trong phạm vi frontend.
+- Three.js/R3F chịu trách nhiệm scene, camera, geometry, material và ánh sáng; GSAP/ScrollTrigger sở hữu timeline/story progress; React/HTML sở hữu heading, copy, navigation và CTA.
+- Dùng một Canvas chính nếu có thể. Nhóm cha nhận chuyển động theo scroll; nhóm con nhận idle/pointer offset nhỏ. Không để GSAP và `useFrame` cùng ghi liên tục vào một thuộc tính.
+- Không gọi React `setState` mỗi frame, không tạo render loop thứ hai, không tắt SSR toàn trang chỉ vì canvas và không đưa toàn bộ chữ/nút vào texture 3D.
+- Nội dung/CTA hiển thị không phụ thuộc model tải xong; lazy-load scene nặng; giữ kích thước vùng canvas để tránh layout shift.
+- Cleanup bắt buộc cho ScrollTrigger/timeline, listener, observer và tài nguyên scene thuộc quyền sở hữu của trang. Vào/ra trải nghiệm nhiều lần không được nhân đôi canvas, trigger hoặc render loop.
+
+### 10.6. Hợp đồng asset 3D
+
+Model bản đầu gồm `crab_root`, `crab_body`, `claw_left`, `claw_right`, `legs_group`, `ring_outer`, `ring_inner` và `cancer_mark`. Hợp đồng khóa đúng 8 chân đi bộ đối xứng (4 mỗi bên, ngoài 2 càng), không râu; thân là mai cong có chiều sâu; hai vòng có pivot độc lập; biểu tượng trăng là chi tiết phụ. Concept AI chỉ là reference hình ảnh, không phải blueprint tỷ lệ/topology/pivot.
+
+Gói bàn giao phải có file nguồn chỉnh sửa được, `.glb` tối ưu cho web, ảnh fallback không chứa UI text, manifest node/hierarchy/pivot/material/đơn vị/hướng nhìn, thông tin quyền sử dụng asset và đủ 5 pose `closed/open/guide_left/guide_right/compact`. Bước 3 đã kiểm tra load GLB bằng Three.js; kiểm tra trong browser/R3F thuộc Bước 4.
+
+### 10.7. Giới hạn, hiệu năng và nghiệm thu cốt lõi
+
+- Bản đầu không thêm AI tutor, multiplayer, simulator mới, backend mới, theme toàn ứng dụng hoặc giao diện mobile riêng.
+- Mục tiêu khởi đầu: hướng tới 60 FPS trên desktop tham chiếu; nếu cảnh nặng duy trì dưới 45 FPS thì giảm chất lượng; DPR ban đầu khoảng tối đa 1,5; asset 3D + texture mở đầu hướng tới tối đa 3 MB. Đây là ngân sách cần đo, chưa phải kết quả đạt được.
+- Phải có fallback khi tải asset/WebGL lỗi, reduced-motion mode, CTA hoạt động bằng bàn phím, focus nhìn thấy, không tràn ngang và không mất nội dung ở 1366×768, 1440×900, 1920×1080 và zoom 200%.
+- Ví dụ thuật toán/diagram phải được kiểm chứng học thuật; dữ liệu mẫu ghi rõ “Minh họa”; không bịa số liệu, testimonial, thành tích hoặc chức năng.
+- Preview tĩnh không được dùng nút giả gây hiểu nhầm. CTA phải dẫn tới đúng state/route thật và xử lý đúng trạng thái khách, người đã đăng nhập và người chưa có lịch sử học.
+
+### 10.8. Gate còn mở trước khi code sản phẩm
+
+1. Hoàn thành và duyệt trải nghiệm B4 S01→S02 trong trình duyệt với blockout v2; dừng trước B5.
+2. Preview đã duyệt dùng ở S05 và cấu hình máy desktop tham chiếu để đo hiệu năng ở bước triển khai sau.
+
+D01–D04 và gate B3.8 đã chốt/kiểm chứng. B4 đã tích hợp blockout v2 bằng R3F/GSAP tại landing `/`, giữ auth overlay đóng khi vào, CTA HTML thật, cuộn hai chiều, fallback và reduced motion; build, backend smoke test và Chrome production QA đã pass. Hiện dừng chờ người dùng duyệt trải nghiệm trước B5. Backlog B5 bắt buộc hoàn thiện hình học: càng đầy đặn/ít giống móc, mai như vỏ giáp, chân dày và thuôn gần concept; không chỉ đổi vật liệu/hoa văn.
 

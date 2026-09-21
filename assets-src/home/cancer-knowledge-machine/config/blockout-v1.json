@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "asset": {
+    "name": "CancerKnowledgeMachineBlockout",
+    "frontAxis": "-Y",
+    "upAxis": "+Z",
+    "unit": "meter",
+    "referencePolicy": "The approved AI concept is a visual reference only; this config and model contract define count, proportions, hierarchy, pivots, and poses."
+  },
+  "palette": {
+    "goldSatin": [0.82, 0.43, 0.08, 1.0],
+    "charcoal": [0.045, 0.039, 0.031, 1.0],
+    "amber": [1.0, 0.53, 0.04, 1.0],
+    "ivory": [0.956, 0.939, 0.902, 1.0]
+  },
+  "body": {
+    "location": [0.0, 0.0, 0.25],
+    "scale": [2.3, 0.76, 1.7],
+    "segments": 32,
+    "rings": 20,
+    "bevelWidth": 0.08
+  },
+  "rings": {
+    "locationY": 1.08,
+    "inner": { "majorRadius": 2.92, "minorRadius": 0.105 },
+    "outer": { "majorRadius": 3.42, "minorRadius": 0.13 },
+    "majorSegments": 64,
+    "minorSegments": 10
+  },
+  "legs": {
+    "perSide": 4,
+    "rootX": 1.72,
+    "rootY": [-0.57, -0.19, 0.19, 0.57],
+    "rootZ": [0.58, 0.18, -0.22, -0.57],
+    "upperLength": [0.98, 1.08, 1.06, 0.94],
+    "lowerLength": [0.84, 0.9, 0.88, 0.78],
+    "outwardRise": [0.2, 0.02, -0.1, -0.18],
+    "radius": 0.105
+  },
+  "claws": {
+    "root": [1.72, -0.38, 0.92],
+    "elbow": [2.42, -0.47, 1.23],
+    "palm": [3.08, -0.5, 1.62],
+    "segmentRadius": 0.19,
+    "palmScale": [0.55, 0.3, 0.48],
+    "pincerLength": 0.72,
+    "pincerGap": 0.23
+  },
+  "mark": {
+    "radius": 0.42,
+    "thickness": 0.07,
+    "frontY": -0.79,
+    "z": 0.34
+  },
+  "poses": {
+    "closed": {
+      "frame": 1,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 0.0,
+      "clawRightYDeg": 0.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "open": {
+      "frame": 21,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 19.0,
+      "clawRightYDeg": -19.0,
+      "ringInnerYDeg": 13.0,
+      "ringOuterYDeg": -10.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "guide_left": {
+      "frame": 41,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 34.0,
+      "clawRightYDeg": -5.0,
+      "ringInnerYDeg": 9.0,
+      "ringOuterYDeg": -7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "guide_right": {
+      "frame": 61,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 5.0,
+      "clawRightYDeg": -34.0,
+      "ringInnerYDeg": -9.0,
+      "ringOuterYDeg": 7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0
+    },
+    "compact": {
+      "frame": 81,
+      "rootScale": 0.72,
+      "clawLeftYDeg": -14.0,
+      "clawRightYDeg": 14.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 0.88,
+      "legsScale": 0.82
+    }
+  },
+  "render": {
+    "resolution": [768, 768],
+    "samples": 32,
+    "views": [
+      { "name": "01-front-closed", "pose": "closed", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] },
+      { "name": "02-three-quarter-open", "pose": "open", "camera": [8.2, -9.2, 4.4], "target": [0.0, 0.0, 0.1] },
+      { "name": "03-side-closed", "pose": "closed", "camera": [11.8, 0.0, 1.2], "target": [0.0, 0.0, 0.0] },
+      { "name": "04-front-open", "pose": "open", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.2] },
+      { "name": "05-front-compact", "pose": "compact", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] }
+    ]
+  }
+}

@@ -6,6 +6,127 @@ import CloudConceptMap from "./cloud/CloudConceptMap";
 import CloudComparisonExplorer from "./cloud/CloudComparisonExplorer";
 import CloudDecisionSandbox from "./cloud/CloudDecisionSandbox";
 import CloudArchitectureDnD from "./cloud/CloudArchitectureDnD";
+import CloudCollaborationRadar from "./cloud/CloudCollaborationRadar";
+import CollaborationToolsBentoGrid from "./cloud/CollaborationToolsBentoGrid";
+import CloudVoipVsPstnInteractive from "./cloud/CloudVoipVsPstnInteractive";
+import RealtimeCoauthoringSimulator from "./cloud/RealtimeCoauthoringSimulator";
+import CollaborationMasterSummaryMatrix from "./cloud/CollaborationMasterSummaryMatrix";
+import MicroQuizCard from "./cloud/MicroQuizCard";
+import VirtualMemorySwappingSimulator from "./cloud/VirtualMemorySwappingSimulator";
+import UpPhasesPipelineVisualizer from "./ad/UpPhasesPipelineVisualizer";
+import InitiationActivitiesStepper from "./ad/InitiationActivitiesStepper";
+import UmlNotationInteractiveGuide from "./ad/UmlNotationInteractiveGuide";
+import CourseRegistrationSystemStudio from "./ad/CourseRegistrationSystemStudio";
+import UseCaseDescriptionDualViewer from "./ad/UseCaseDescriptionDualViewer";
+import CourseRegistrationScenarioRunner from "./ad/CourseRegistrationScenarioRunner";
+import AdMicroQuizCard from "./ad/AdMicroQuizCard";
+import EventDrivenThinkingArena from "./ad/EventDrivenThinkingArena";
+import ThreeEventTypesDuelArena from "./ad/ThreeEventTypesDuelArena";
+import InteractiveEventTableStudio from "./ad/InteractiveEventTableStudio";
+import EventDecompositionPipelineStepper from "./ad/EventDecompositionPipelineStepper";
+import FourActorTypesRadarStudio from "./ad/FourActorTypesRadarStudio";
+import ActorIdentificationWorkbench from "./ad/ActorIdentificationWorkbench";
+import OneEventOneUseCaseStudio from "./ad/OneEventOneUseCaseStudio";
+import UseCaseNamingConventionsTester from "./ad/UseCaseNamingConventionsTester";
+import SystemBoundaryActorLinkerStudio from "./ad/SystemBoundaryActorLinkerStudio";
+import UmlRelationshipTripleArena from "./ad/UmlRelationshipTripleArena";
+import IncludeExtendExecutionSimulator from "./ad/IncludeExtendExecutionSimulator";
+import OrganizedCourseRegistrationDiagramStudio from "./ad/OrganizedCourseRegistrationDiagramStudio";
+import CommonMistakesDiagnosticArena from "./ad/CommonMistakesDiagnosticArena";
+import BaCognitivePipelineRunner from "./ad/BaCognitivePipelineRunner";
+import Chapter3TerminologyMasterMatrix from "./ad/Chapter3TerminologyMasterMatrix";
+import SystemAnalysisAuditChecklist from "./ad/SystemAnalysisAuditChecklist";
+import OnePageMemoryMapVisualizer from "./ad/OnePageMemoryMapVisualizer";
+import AdChapter3HeroBanner from "./ad/Chapter3HeroBanner";
+import ProjectBaselineControlCockpit from "./ad/ProjectBaselineControlCockpit";
+import DiscoveryIterativeEngineRunner from "./ad/DiscoveryIterativeEngineRunner";
+import UpRequirementsEffortCurveStudio from "./ad/UpRequirementsEffortCurveStudio";
+import BehavioralVsStructuralDuelArena from "./ad/BehavioralVsStructuralDuelArena";
+import CourseRegistrationTocDiagramStudio from "./ad/CourseRegistrationTocDiagramStudio";
+import ThreeLevelsDescriptionTrioStudio from "./ad/ThreeLevelsDescriptionTrioStudio";
+import FullyDressedTemplateInteractiveStudio from "./ad/FullyDressedTemplateInteractiveStudio";
+import BusinessRulesTraceabilityWorkbench from "./ad/BusinessRulesTraceabilityWorkbench";
+import LibrarySystemDiagramStudio from "./ad/LibrarySystemDiagramStudio";
+import ReserveBookAuthoringLab from "./ad/ReserveBookAuthoringLab";
+import UseCaseAuthoringPitfallsArena from "./ad/UseCaseAuthoringPitfallsArena";
+import AdChapter4HeroBanner from "./ad/Chapter4HeroBanner";
+import ExtensionPointExecutionSimulator from "./ad/ExtensionPointExecutionSimulator";
+import UseCasePackageArchitectureStudio from "./ad/UseCasePackageArchitectureStudio";
+import ExamTrapBusterRadar from "./ad/ExamTrapBusterRadar";
+import RequirementsDesignInteractiveChecklist from "./ad/RequirementsDesignInteractiveChecklist";
+import OneMinuteChapterSprintCards from "./ad/OneMinuteChapterSprintCards";
+import VmotionZeroDowntimeSimulator from "./cloud/VmotionZeroDowntimeSimulator";
+import VdiVsAppvDualViewer from "./cloud/VdiVsAppvDualViewer";
+import VpnTunnelPacketInspector from "./cloud/VpnTunnelPacketInspector";
+import VirtualizationMasterSummaryMatrix from "./cloud/VirtualizationMasterSummaryMatrix";
+import CloudHistoryTimeline from "./cloud/CloudHistoryTimeline";
+import NistFeaturesInteractiveRadar from "./cloud/NistFeaturesInteractiveRadar";
+import CloudDeploymentDecisionSandbox from "./cloud/CloudDeploymentDecisionSandbox";
+import SharedResponsibilityStackVisualizer from "./cloud/SharedResponsibilityStackVisualizer";
+import CloudPlatformLayersVisualizer from "./cloud/CloudPlatformLayersVisualizer";
+import CloudChallengesRadar from "./cloud/CloudChallengesRadar";
+import Web1VsWeb2InteractiveViewer from "./cloud/Web1VsWeb2InteractiveViewer";
+import AwsReliabilityAutoScalingSimulator from "./cloud/AwsReliabilityAutoScalingSimulator";
+import CloudMasterKeyTermsMatrix from "./cloud/CloudMasterKeyTermsMatrix";
+import DataCenterHierarchyExplorer from "./cloud/DataCenterHierarchyExplorer";
+import ThermalContainmentSimulator from "./cloud/ThermalContainmentSimulator";
+import DataCenterTrafficFlowVisualizer from "./cloud/DataCenterTrafficFlowVisualizer";
+import NetworkTopologyBattlefield from "./cloud/NetworkTopologyBattlefield";
+import StorageVirtualizationSandbox from "./cloud/StorageVirtualizationSandbox";
+import VirtualizationTypesComparison from "./cloud/VirtualizationTypesComparison";
+import PrivilegeLevelsHierarchy from "./cloud/PrivilegeLevelsHierarchy";
+import VirtualIoPipelineVisualizer from "./cloud/VirtualIoPipelineVisualizer";
+import VmMigrationSimulator from "./cloud/VmMigrationSimulator";
+import BareMetalVsHostedDuel from "./cloud/BareMetalVsHostedDuel";
+import HostedVsMultibootComparison from "./cloud/HostedVsMultibootComparison";
+import Chapter2MasterKeyTermsMatrix from "./cloud/Chapter2MasterKeyTermsMatrix";
+import SaasLifecycleDuel from "./cloud/SaasLifecycleDuel";
+import SaasTradeOffBalanceScale from "./cloud/SaasTradeOffBalanceScale";
+import SingleVsMultiTenantSandbox from "./cloud/SingleVsMultiTenantSandbox";
+import OpenSaasStackExplorer from "./cloud/OpenSaasStackExplorer";
+import MashupIntegrationMixer from "./cloud/MashupIntegrationMixer";
+import SoaArchitectureTriangleSandbox from "./cloud/SoaArchitectureTriangleSandbox";
+import DualSaasTitanExplorer from "./cloud/DualSaasTitanExplorer";
+import SaasSecurityShieldSandbox from "./cloud/SaasSecurityShieldSandbox";
+import SaasFutureTechNexus from "./cloud/SaasFutureTechNexus";
+import Chapter3MasterKeyTermsMatrix from "./cloud/Chapter3MasterKeyTermsMatrix";
+import Chapter3HeroBanner from "./cloud/Chapter3HeroBanner";
+import PaasArchitectureStackVisualizer from "./cloud/PaasArchitectureStackVisualizer";
+import PaasEvolutionTimeline from "./cloud/PaasEvolutionTimeline";
+import PaasBenefitsSpeedometer from "./cloud/PaasBenefitsSpeedometer";
+import VendorLockInSimulator from "./cloud/VendorLockInSimulator";
+import PaasTitanBattlefield from "./cloud/PaasTitanBattlefield";
+import PaasEnterpriseValueCockpit from "./cloud/PaasEnterpriseValueCockpit";
+import ServerlessFaasSandbox from "./cloud/ServerlessFaasSandbox";
+import Chapter4MasterKeyTermsMatrix from "./cloud/Chapter4MasterKeyTermsMatrix";
+import Chapter4HeroBanner from "./cloud/Chapter4HeroBanner";
+import IaasInfrastructureStackVisualizer from "./cloud/IaasInfrastructureStackVisualizer";
+import ServerTypesComparisonDuel from "./cloud/ServerTypesComparisonDuel";
+import CloudStorageTriadSandbox from "./cloud/CloudStorageTriadSandbox";
+import LoadBalancerTrafficSimulator from "./cloud/LoadBalancerTrafficSimulator";
+import DisasterRecoveryRedundancySimulator from "./cloud/DisasterRecoveryRedundancySimulator";
+import CloudNasStorageExplorer from "./cloud/CloudNasStorageExplorer";
+import IaasEnterpriseUseCaseMatrix from "./cloud/IaasEnterpriseUseCaseMatrix";
+import IaasBigThreeBattlefield from "./cloud/IaasBigThreeBattlefield";
+import Chapter5MasterKeyTermsMatrix from "./cloud/Chapter5MasterKeyTermsMatrix";
+import IdaasTripleAStackCockpit from "./cloud/IdaasTripleAStackCockpit";
+import IdaasBenefitsChallengesMatrix from "./cloud/IdaasBenefitsChallengesMatrix";
+import FidmTokenFlowSimulator from "./cloud/FidmTokenFlowSimulator";
+import SsoDominoSimulator from "./cloud/SsoDominoSimulator";
+import AccountProvisioningOpenIdDuel from "./cloud/AccountProvisioningOpenIdDuel";
+import MobileIdManagementShield from "./cloud/MobileIdManagementShield";
+import IdaasQuadVendorBattlefield from "./cloud/IdaasQuadVendorBattlefield";
+import Chapter6MasterKeyTermsMatrix from "./cloud/Chapter6MasterKeyTermsMatrix";
+import Chapter6HeroBanner from "./cloud/Chapter6HeroBanner";
+import NasVsSanEvolutionDuel from "./cloud/NasVsSanEvolutionDuel";
+import CloudStorageArchitectureXray from "./cloud/CloudStorageArchitectureXray";
+import ObjectStorageDataFlowSimulator from "./cloud/ObjectStorageDataFlowSimulator";
+import CloudDataSecurityShield from "./cloud/CloudDataSecurityShield";
+import CloudBackupPipelineSimulator from "./cloud/CloudBackupPipelineSimulator";
+import IndustryAndCloudDatabaseMatrix from "./cloud/IndustryAndCloudDatabaseMatrix";
+import BlockStorageDeepDiveExplorer from "./cloud/BlockStorageDeepDiveExplorer";
+import Chapter7MasterKeyTermsMatrix from "./cloud/Chapter7MasterKeyTermsMatrix";
+import Chapter7HeroBanner from "./cloud/Chapter7HeroBanner";
 import SubsectionCompletion from "./learning/SubsectionCompletion";
 import BookmarkButton from "./learning/BookmarkButton";
 import ReviewToggle from "./learning/ReviewToggle";
@@ -1768,6 +1889,408 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
         <CloudArchitectureDnD key={path} />
       );
 
+    case "cloud-collaboration-radar":
+      return (
+        <CloudCollaborationRadar key={path} />
+      );
+
+    case "collaboration-tools-bento-grid":
+      return (
+        <CollaborationToolsBentoGrid key={path} />
+      );
+
+    case "cloud-voip-vs-pstn":
+      return (
+        <CloudVoipVsPstnInteractive key={path} />
+      );
+
+    case "realtime-coauthoring-simulator":
+      return (
+        <RealtimeCoauthoringSimulator key={path} />
+      );
+
+    case "collaboration-master-summary-matrix":
+      return (
+        <CollaborationMasterSummaryMatrix key={path} />
+      );
+
+    case "micro-quiz":
+      return (
+        <MicroQuizCard
+          key={path}
+          question={block.question}
+          options={block.options}
+          answerIndex={block.answerIndex}
+          explanation={block.explanation}
+          hint={block.hint}
+        />
+      );
+
+    case "virtual-memory-swapping":
+      return (
+        <VirtualMemorySwappingSimulator key={path} />
+      );
+
+    case "vmotion-zero-downtime":
+      return (
+        <VmotionZeroDowntimeSimulator key={path} />
+      );
+
+    case "vdi-vs-appv":
+      return (
+        <VdiVsAppvDualViewer key={path} />
+      );
+
+    case "vpn-tunnel-inspector":
+      return (
+        <VpnTunnelPacketInspector key={path} />
+      );
+
+    case "virtualization-master-summary-matrix":
+      return (
+        <VirtualizationMasterSummaryMatrix key={path} />
+      );
+
+    case "cloud-history-timeline":
+      return (
+        <CloudHistoryTimeline key={path} />
+      );
+
+    case "nist-features-radar":
+      return (
+        <NistFeaturesInteractiveRadar key={path} />
+      );
+
+    case "cloud-deployment-decision-sandbox":
+      return (
+        <CloudDeploymentDecisionSandbox key={path} />
+      );
+
+    case "shared-responsibility-stack":
+      return (
+        <SharedResponsibilityStackVisualizer key={path} />
+      );
+
+    case "cloud-platform-layers":
+      return (
+        <CloudPlatformLayersVisualizer key={path} />
+      );
+
+    case "cloud-challenges-radar":
+      return (
+        <CloudChallengesRadar key={path} />
+      );
+
+    case "web1-vs-web2-viewer":
+      return (
+        <Web1VsWeb2InteractiveViewer key={path} />
+      );
+
+    case "aws-reliability-auto-scaling":
+      return (
+        <AwsReliabilityAutoScalingSimulator key={path} />
+      );
+
+    case "cloud-master-key-terms-matrix":
+      return (
+        <CloudMasterKeyTermsMatrix key={path} />
+      );
+
+    case "datacenter-hierarchy-explorer":
+      return (
+        <DataCenterHierarchyExplorer key={path} />
+      );
+
+    case "thermal-containment-simulator":
+      return (
+        <ThermalContainmentSimulator key={path} />
+      );
+
+    case "datacenter-traffic-flow":
+      return (
+        <DataCenterTrafficFlowVisualizer key={path} />
+      );
+
+    case "network-topology-battlefield":
+      return (
+        <NetworkTopologyBattlefield key={path} />
+      );
+
+    case "storage-virtualization-sandbox":
+      return (
+        <StorageVirtualizationSandbox key={path} />
+      );
+
+    case "virtualization-types-comparison":
+      return (
+        <VirtualizationTypesComparison key={path} />
+      );
+
+    case "privilege-levels-hierarchy":
+      return (
+        <PrivilegeLevelsHierarchy key={path} />
+      );
+
+    case "virtual-io-pipeline-visualizer":
+      return (
+        <VirtualIoPipelineVisualizer key={path} />
+      );
+
+    case "vm-migration-simulator":
+      return (
+        <VmMigrationSimulator key={path} />
+      );
+
+    case "bare-metal-vs-hosted-duel":
+      return (
+        <BareMetalVsHostedDuel key={path} />
+      );
+
+    case "hosted-vs-multiboot-comparison":
+      return (
+        <HostedVsMultibootComparison key={path} />
+      );
+
+    case "chapter2-master-keyterms-matrix":
+      return (
+        <Chapter2MasterKeyTermsMatrix key={path} />
+      );
+
+    case "saas-lifecycle-duel":
+      return (
+        <SaasLifecycleDuel key={path} />
+      );
+
+    case "saas-tradeoff-balance-scale":
+      return (
+        <SaasTradeOffBalanceScale key={path} />
+      );
+
+    case "single-vs-multi-tenant-sandbox":
+      return (
+        <SingleVsMultiTenantSandbox key={path} />
+      );
+
+    case "open-saas-stack-explorer":
+      return (
+        <OpenSaasStackExplorer key={path} />
+      );
+
+    case "mashup-integration-mixer":
+      return (
+        <MashupIntegrationMixer key={path} />
+      );
+
+    case "soa-architecture-triangle-sandbox":
+      return (
+        <SoaArchitectureTriangleSandbox key={path} />
+      );
+
+    case "dual-saas-titan-explorer":
+      return (
+        <DualSaasTitanExplorer key={path} />
+      );
+
+    case "saas-security-shield-sandbox":
+      return (
+        <SaasSecurityShieldSandbox key={path} />
+      );
+
+    case "saas-future-tech-nexus":
+      return (
+        <SaasFutureTechNexus key={path} />
+      );
+
+    case "chapter3-master-keyterms-matrix":
+      return (
+        <Chapter3MasterKeyTermsMatrix key={path} />
+      );
+
+    case "chapter3-hero-banner":
+      return (
+        <Chapter3HeroBanner key={path} />
+      );
+
+    case "paas-architecture-stack-visualizer":
+      return (
+        <PaasArchitectureStackVisualizer key={path} />
+      );
+
+    case "paas-evolution-timeline":
+      return (
+        <PaasEvolutionTimeline key={path} />
+      );
+
+    case "paas-benefits-speedometer":
+      return (
+        <PaasBenefitsSpeedometer key={path} />
+      );
+
+    case "vendor-lock-in-simulator":
+      return (
+        <VendorLockInSimulator key={path} />
+      );
+
+    case "paas-titan-battlefield":
+      return (
+        <PaasTitanBattlefield key={path} />
+      );
+
+    case "paas-enterprise-value-cockpit":
+      return (
+        <PaasEnterpriseValueCockpit key={path} />
+      );
+
+    case "serverless-faas-sandbox":
+      return (
+        <ServerlessFaasSandbox key={path} />
+      );
+
+    case "chapter4-master-keyterms-matrix":
+      return (
+        <Chapter4MasterKeyTermsMatrix key={path} />
+      );
+
+    case "chapter4-hero-banner":
+      return (
+        <Chapter4HeroBanner key={path} />
+      );
+
+    case "iaas-infrastructure-stack-visualizer":
+      return (
+        <IaasInfrastructureStackVisualizer key={path} />
+      );
+
+    case "server-types-comparison-duel":
+      return (
+        <ServerTypesComparisonDuel key={path} />
+      );
+
+    case "cloud-storage-triad-sandbox":
+      return (
+        <CloudStorageTriadSandbox key={path} />
+      );
+
+    case "load-balancer-traffic-simulator":
+      return (
+        <LoadBalancerTrafficSimulator key={path} />
+      );
+
+    case "disaster-recovery-redundancy-simulator":
+      return (
+        <DisasterRecoveryRedundancySimulator key={path} />
+      );
+
+    case "cloud-nas-storage-explorer":
+      return (
+        <CloudNasStorageExplorer key={path} />
+      );
+
+    case "iaas-enterprise-usecase-matrix":
+      return (
+        <IaasEnterpriseUseCaseMatrix key={path} />
+      );
+
+    case "iaas-big-three-battlefield":
+      return (
+        <IaasBigThreeBattlefield key={path} />
+      );
+
+    case "chapter5-master-key-terms-matrix":
+      return (
+        <Chapter5MasterKeyTermsMatrix key={path} />
+      );
+
+    case "idaas-triple-a-cockpit":
+      return (
+        <IdaasTripleAStackCockpit key={path} />
+      );
+
+    case "idaas-benefits-challenges-matrix":
+      return (
+        <IdaasBenefitsChallengesMatrix key={path} />
+      );
+
+    case "fidm-token-flow-simulator":
+      return (
+        <FidmTokenFlowSimulator key={path} />
+      );
+
+    case "sso-domino-simulator":
+      return (
+        <SsoDominoSimulator key={path} />
+      );
+
+    case "account-provisioning-openid-duel":
+      return (
+        <AccountProvisioningOpenIdDuel key={path} />
+      );
+
+    case "mobile-id-management-shield":
+      return (
+        <MobileIdManagementShield key={path} />
+      );
+
+    case "idaas-quad-vendor-battlefield":
+      return (
+        <IdaasQuadVendorBattlefield key={path} />
+      );
+
+    case "chapter6-master-key-terms-matrix":
+      return (
+        <Chapter6MasterKeyTermsMatrix key={path} />
+      );
+
+    case "chapter6-hero-banner":
+      return (
+        <Chapter6HeroBanner key={path} />
+      );
+
+    case "nas-vs-san-evolution-duel":
+      return (
+        <NasVsSanEvolutionDuel key={path} />
+      );
+
+    case "cloud-storage-architecture-xray":
+      return (
+        <CloudStorageArchitectureXray key={path} />
+      );
+
+    case "object-storage-data-flow-simulator":
+      return (
+        <ObjectStorageDataFlowSimulator key={path} />
+      );
+
+    case "cloud-data-security-shield":
+      return (
+        <CloudDataSecurityShield key={path} />
+      );
+
+    case "cloud-backup-pipeline-simulator":
+      return (
+        <CloudBackupPipelineSimulator key={path} />
+      );
+
+    case "industry-and-cloud-database-matrix":
+      return (
+        <IndustryAndCloudDatabaseMatrix key={path} />
+      );
+
+    case "block-storage-deep-dive-explorer":
+      return (
+        <BlockStorageDeepDiveExplorer key={path} />
+      );
+
+    case "chapter-7-master-key-terms-matrix":
+      return (
+        <Chapter7MasterKeyTermsMatrix key={path} />
+      );
+
+    case "chapter-7-hero-banner":
+      return (
+        <Chapter7HeroBanner key={path} />
+      );
+
     case "bubble-sort-visualizer":
       return (
         <BubbleSortVisualizer key={path} />
@@ -2866,6 +3389,48 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
       );
 
     case "component":
+      if (block.component === "UpPhasesPipelineVisualizer" || block.componentName === "UpPhasesPipelineVisualizer") return <UpPhasesPipelineVisualizer key={path} />;
+      if (block.component === "InitiationActivitiesStepper" || block.componentName === "InitiationActivitiesStepper") return <InitiationActivitiesStepper key={path} />;
+      if (block.component === "UmlNotationInteractiveGuide" || block.componentName === "UmlNotationInteractiveGuide") return <UmlNotationInteractiveGuide key={path} />;
+      if (block.component === "CourseRegistrationSystemStudio" || block.componentName === "CourseRegistrationSystemStudio") return <CourseRegistrationSystemStudio key={path} />;
+      if (block.component === "UseCaseDescriptionDualViewer" || block.componentName === "UseCaseDescriptionDualViewer") return <UseCaseDescriptionDualViewer key={path} />;
+      if (block.component === "CourseRegistrationScenarioRunner" || block.componentName === "CourseRegistrationScenarioRunner") return <CourseRegistrationScenarioRunner key={path} />;
+      if (block.component === "AdMicroQuizCard" || block.componentName === "AdMicroQuizCard") return <AdMicroQuizCard key={path} {...(block.props || {})} />;
+      if (block.component === "EventDrivenThinkingArena" || block.componentName === "EventDrivenThinkingArena") return <EventDrivenThinkingArena key={path} />;
+      if (block.component === "ThreeEventTypesDuelArena" || block.componentName === "ThreeEventTypesDuelArena") return <ThreeEventTypesDuelArena key={path} />;
+      if (block.component === "InteractiveEventTableStudio" || block.componentName === "InteractiveEventTableStudio") return <InteractiveEventTableStudio key={path} />;
+      if (block.component === "EventDecompositionPipelineStepper" || block.componentName === "EventDecompositionPipelineStepper") return <EventDecompositionPipelineStepper key={path} />;
+      if (block.component === "FourActorTypesRadarStudio" || block.componentName === "FourActorTypesRadarStudio") return <FourActorTypesRadarStudio key={path} />;
+      if (block.component === "ActorIdentificationWorkbench" || block.componentName === "ActorIdentificationWorkbench") return <ActorIdentificationWorkbench key={path} />;
+      if (block.component === "OneEventOneUseCaseStudio" || block.componentName === "OneEventOneUseCaseStudio") return <OneEventOneUseCaseStudio key={path} />;
+      if (block.component === "UseCaseNamingConventionsTester" || block.componentName === "UseCaseNamingConventionsTester") return <UseCaseNamingConventionsTester key={path} />;
+      if (block.component === "SystemBoundaryActorLinkerStudio" || block.componentName === "SystemBoundaryActorLinkerStudio") return <SystemBoundaryActorLinkerStudio key={path} />;
+      if (block.component === "UmlRelationshipTripleArena" || block.componentName === "UmlRelationshipTripleArena") return <UmlRelationshipTripleArena key={path} />;
+      if (block.component === "IncludeExtendExecutionSimulator" || block.componentName === "IncludeExtendExecutionSimulator") return <IncludeExtendExecutionSimulator key={path} />;
+      if (block.component === "OrganizedCourseRegistrationDiagramStudio" || block.componentName === "OrganizedCourseRegistrationDiagramStudio") return <OrganizedCourseRegistrationDiagramStudio key={path} />;
+      if (block.component === "CommonMistakesDiagnosticArena" || block.componentName === "CommonMistakesDiagnosticArena") return <CommonMistakesDiagnosticArena key={path} />;
+      if (block.component === "BaCognitivePipelineRunner" || block.componentName === "BaCognitivePipelineRunner") return <BaCognitivePipelineRunner key={path} />;
+      if (block.component === "Chapter3TerminologyMasterMatrix" || block.componentName === "Chapter3TerminologyMasterMatrix") return <Chapter3TerminologyMasterMatrix key={path} />;
+      if (block.component === "SystemAnalysisAuditChecklist" || block.componentName === "SystemAnalysisAuditChecklist") return <SystemAnalysisAuditChecklist key={path} />;
+      if (block.component === "OnePageMemoryMapVisualizer" || block.componentName === "OnePageMemoryMapVisualizer") return <OnePageMemoryMapVisualizer key={path} />;
+      if (block.component === "AdChapter3HeroBanner" || block.componentName === "AdChapter3HeroBanner" || block.component === "Chapter3HeroBanner" || block.componentName === "Chapter3HeroBanner") return <AdChapter3HeroBanner key={path} />;
+      if (block.component === "ProjectBaselineControlCockpit" || block.componentName === "ProjectBaselineControlCockpit") return <ProjectBaselineControlCockpit key={path} />;
+      if (block.component === "DiscoveryIterativeEngineRunner" || block.componentName === "DiscoveryIterativeEngineRunner") return <DiscoveryIterativeEngineRunner key={path} />;
+      if (block.component === "UpRequirementsEffortCurveStudio" || block.componentName === "UpRequirementsEffortCurveStudio") return <UpRequirementsEffortCurveStudio key={path} />;
+      if (block.component === "BehavioralVsStructuralDuelArena" || block.componentName === "BehavioralVsStructuralDuelArena") return <BehavioralVsStructuralDuelArena key={path} />;
+      if (block.component === "CourseRegistrationTocDiagramStudio" || block.componentName === "CourseRegistrationTocDiagramStudio") return <CourseRegistrationTocDiagramStudio key={path} />;
+      if (block.component === "ThreeLevelsDescriptionTrioStudio" || block.componentName === "ThreeLevelsDescriptionTrioStudio") return <ThreeLevelsDescriptionTrioStudio key={path} />;
+      if (block.component === "FullyDressedTemplateInteractiveStudio" || block.componentName === "FullyDressedTemplateInteractiveStudio") return <FullyDressedTemplateInteractiveStudio key={path} />;
+      if (block.component === "BusinessRulesTraceabilityWorkbench" || block.componentName === "BusinessRulesTraceabilityWorkbench") return <BusinessRulesTraceabilityWorkbench key={path} />;
+      if (block.component === "LibrarySystemDiagramStudio" || block.componentName === "LibrarySystemDiagramStudio") return <LibrarySystemDiagramStudio key={path} />;
+      if (block.component === "ReserveBookAuthoringLab" || block.componentName === "ReserveBookAuthoringLab") return <ReserveBookAuthoringLab key={path} />;
+      if (block.component === "UseCaseAuthoringPitfallsArena" || block.componentName === "UseCaseAuthoringPitfallsArena") return <UseCaseAuthoringPitfallsArena key={path} />;
+      if (block.component === "AdChapter4HeroBanner" || block.componentName === "AdChapter4HeroBanner" || block.component === "Chapter4HeroBanner" || block.componentName === "Chapter4HeroBanner") return <AdChapter4HeroBanner key={path} />;
+      if (block.component === "ExtensionPointExecutionSimulator" || block.componentName === "ExtensionPointExecutionSimulator") return <ExtensionPointExecutionSimulator key={path} />;
+      if (block.component === "UseCasePackageArchitectureStudio" || block.componentName === "UseCasePackageArchitectureStudio") return <UseCasePackageArchitectureStudio key={path} />;
+      if (block.component === "ExamTrapBusterRadar" || block.componentName === "ExamTrapBusterRadar") return <ExamTrapBusterRadar key={path} />;
+      if (block.component === "RequirementsDesignInteractiveChecklist" || block.componentName === "RequirementsDesignInteractiveChecklist") return <RequirementsDesignInteractiveChecklist key={path} />;
+      if (block.component === "OneMinuteChapterSprintCards" || block.componentName === "OneMinuteChapterSprintCards") return <OneMinuteChapterSprintCards key={path} />;
       if (block.component === "WaterDispenserAdt" || block.componentName === "WaterDispenserAdt") return <WaterDispenserAdt key={path} />;
       if (block.component === "ComplexNumberPlane" || block.componentName === "ComplexNumberPlane") return <ComplexNumberPlane key={path} />;
       if (block.component === "ShapeComparableVisualizer" || block.componentName === "ShapeComparableVisualizer") return <ShapeComparableVisualizer key={path} />;

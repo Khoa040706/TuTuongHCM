@@ -1,6 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Cloud, Layers, Cpu, Shield, Database, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
+import Chapter1HeroBanner from "./Chapter1HeroBanner";
+import Chapter2HeroBanner from "./Chapter2HeroBanner";
+import Chapter3HeroBanner from "./Chapter3HeroBanner";
+import Chapter8HeroBanner from "./Chapter8HeroBanner";
+import Chapter9HeroBanner from "./Chapter9HeroBanner";
 
 const CHAPTER_METADATA = {
   "cloud-ch1": {
@@ -135,10 +140,64 @@ const CHAPTER_METADATA = {
       { subject: "Quy trình Sao lưu 3 bước", level: "90%" },
       { subject: "CSDL Cloud RDBMS/NoSQL", level: "95%" }
     ]
+  },
+  "cloud-ch8": {
+    title: "Chương 8: Collaboration in a Cloud Environment",
+    subtitle: "Hệ sinh thái Cộng tác Đám mây: Web-based, IM, Cloud Phone/VoIP, Fax & Document Sharing",
+    color: "from-teal-500/20 to-sky-600/20",
+    accent: "text-teal-600",
+    badge: "Cộng tác & Truyền thông",
+    pipeline: [
+      { step: "01", label: "Cloud Collaboration", desc: "Hiệu suất, tiết kiệm chi phí, truy cập mọi lúc & bảo mật" },
+      { step: "02", label: "Web & Instant Messaging", desc: "Chat thời gian thực, gọi video, chia sẻ file & VoIP" },
+      { step: "03", label: "Cloud Phone & Fax", desc: "Chuyển dịch PSTN sang VoIP, quản lý số hóa & mã hóa" },
+      { step: "04", label: "Document Sharing & Blogs", desc: "Đồng biên tập tức thời, quản lý phiên bản & Web 2.0" }
+    ],
+    radarPoints: [
+      { subject: "Hệ sinh thái Cloud Collaboration", level: "100%" },
+      { subject: "Giao tiếp Tức thời (IM) & VoIP", level: "95%" },
+      { subject: "Hệ thống Thoại & Fax Đám mây", level: "90%" },
+      { subject: "Đồng biên tập & Blog Doanh nghiệp", level: "95%" }
+    ]
+  },
+  "cloud-ch9": {
+    title: "Chương 9: Virtualization",
+    subtitle: "Công nghệ Ảo hóa, Bộ nhớ Ảo, Green Computing & Hợp nhất Máy chủ Hyper-V",
+    color: "from-emerald-500/20 to-teal-700/20",
+    accent: "text-emerald-600",
+    badge: "Ảo hóa & Hạ tầng",
+    pipeline: [
+      { step: "01", label: "Ảo hóa Cơ bản", desc: "Server, Desktop, Storage Virtualization" },
+      { step: "02", label: "Bộ nhớ Ảo", desc: "Paging & Swapping: Bù đắp thiếu RAM vật lý" },
+      { step: "03", label: "Green Computing", desc: "Tiết kiệm điện năng, giảm CO2 & rác thải e-waste" },
+      { step: "04", label: "Microsoft Hyper-V", desc: "Server Consolidation, quản trị đa VM & cân bằng tải" }
+    ],
+    radarPoints: [
+      { subject: "Công nghệ Ảo hóa Cơ bản", level: "100%" },
+      { subject: "Cơ chế Paging & Swapping", level: "95%" },
+      { subject: "Mục tiêu Green Computing", level: "90%" },
+      { subject: "Microsoft Hyper-V & VM Mgmt", level: "95%" }
+    ]
   }
 };
 
 export default function CloudChapterHero({ chapterId = "cloud-ch1" }) {
+  if (chapterId === "cloud-ch1") {
+    return <Chapter1HeroBanner />;
+  }
+  if (chapterId === "cloud-ch2") {
+    return <Chapter2HeroBanner />;
+  }
+  if (chapterId === "cloud-ch3") {
+    return <Chapter3HeroBanner />;
+  }
+  if (chapterId === "cloud-ch8") {
+    return <Chapter8HeroBanner />;
+  }
+  if (chapterId === "cloud-ch9") {
+    return <Chapter9HeroBanner />;
+  }
+
   const [activeTab, setActiveTab] = useState("pipeline");
   const meta = CHAPTER_METADATA[chapterId] || CHAPTER_METADATA["cloud-ch1"];
 

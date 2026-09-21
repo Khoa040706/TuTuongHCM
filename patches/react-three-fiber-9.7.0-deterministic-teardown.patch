@@ -1,0 +1,30 @@
+StudyMaster managed patch: studymaster-r3f-9.7.0-deterministic-teardown-v1
+
+Target: @react-three/fiber 9.7.0 web bundles
+Authoritative apply/check/rollback implementation:
+  scripts/apply-r3f-teardown-patch.mjs
+
+Original -> patched SHA-256:
+  dist/events-156d8d12.esm.js
+    4807e252e0f4529b7783c9c4b96056b066626552d4fb83570e50ce61746440e9
+    ba66b6bccbedc6fd58a477d5d24430175face8d68b41642cfd39b4d86c9e908a
+  dist/events-4c71f21f.cjs.prod.js
+    ee2d5e586702c3c08468b9bc9b28dddea7561a38cf2e63585b797ca58fe1323a
+    1ed02d0617de9d451ad2a301990507580a2c9ec4c04f5f31101dbc7f8b005bda
+  dist/events-b1bdeb1a.cjs.dev.js
+    9b4b2e2b2f5900ad458c85ea8f674e008a6e736c1c96a66e639d943cb5a13e6e
+    2d5f8aa2cbae72fe2a2c9cbc8b25b7e4a52af1699e4a0eb225d7611adaa4530b
+
+Semantic transform:
+  - Add a per-root lifecycle token with unmounted/teardownStarted state.
+  - Cancel render continuation after an unmount and dispose a renderer returned
+    by an async gl factory after that root has already unmounted.
+  - Replace the internal 500 ms timer with renderer cleanup inside the React
+    reconciler's updateContainer(null) commit callback.
+  - At that lifecycle endpoint: disconnect events/XR, dispose render lists and
+    scene-owned resources, call renderer.dispose(), then force context loss.
+  - Delete only the matching root instance and invoke the existing callback.
+
+Apply:    npm run patch:r3f-teardown
+Check:    npm run patch:r3f-teardown:check
+Rollback: npm run patch:r3f-teardown:rollback

@@ -24,18 +24,23 @@ export default function CloudFlashcardDeck({
       setLoading(true);
       setError(null);
       const res = await flashcardApi.getDueCards(subjectId, 20);
-      if (res.ok && res.data?.cards) {
-        setCards(res.data.cards);
+      if (res.ok && Array.isArray(res.data?.cards)) {
+        const validCards = res.data.cards.filter(
+          (card) => card && typeof card === "object" && typeof card.front === "string"
+        );
+        setCards(validCards);
         setCurrentIndex(0);
         setIsFlipped(false);
       } else {
         setError(res.error?.message || "Không thể tải thẻ ghi nhớ");
         setCards([]);
+        setCurrentIndex(0);
       }
     } catch (err) {
       console.warn("Failed to load flashcards:", err);
       setError("Lỗi kết nối khi tải thẻ");
       setCards([]);
+      setCurrentIndex(0);
     } finally {
       setLoading(false);
     }
@@ -43,6 +48,9 @@ export default function CloudFlashcardDeck({
 
   useEffect(() => {
     if (isOpen) {
+      setCurrentIndex(0);
+      setIsFlipped(false);
+      setFeedback(null);
       loadCards();
     }
   }, [isOpen, loadCards]);
@@ -67,12 +75,15 @@ export default function CloudFlashcardDeck({
         setTimeout(() => {
           setFeedback(null);
           setIsFlipped(false);
-          if (currentIndex < cards.length - 1) {
-            setCurrentIndex((prev) => prev + 1);
-          } else {
-            // Done with deck
-            loadCards();
-          }
+          setCurrentIndex((prev) => {
+            if (prev < cards.length - 1) {
+              return prev + 1;
+            } else {
+              // Done with deck
+              loadCards();
+              return 0;
+            }
+          });
         }, 600);
       } else {
         setError(res.error?.message || "Lỗi ghi nhận kết quả ôn tập");
@@ -107,7 +118,7 @@ export default function CloudFlashcardDeck({
 
   if (!isOpen) return null;
 
-  const currentCard = cards[currentIndex];
+  const currentCard = cards[currentIndex] || null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs font-sans animate-fade-in">
@@ -155,7 +166,7 @@ export default function CloudFlashcardDeck({
                 Thử lại
               </button>
             </div>
-          ) : cards.length === 0 ? (
+          ) : cards.length === 0 || !currentCard ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
                 <Check className="w-8 h-8" />
@@ -187,13 +198,15 @@ export default function CloudFlashcardDeck({
                   {isFlipped ? (
                     <div className="space-y-3">
                       <h4 className="text-base sm:text-lg font-bold text-stone-850 leading-relaxed">
-                        {currentCard.back}
+                        {currentCard?.back}
                       </h4>
                       <div className="flex items-center justify-center gap-2 pt-2">
-                        <span className="text-xs px-2.5 py-1 rounded-full bg-stone-200 text-stone-700 font-semibold">
-                          EN: {currentCard.en}
-                        </span>
-                        {currentCard.abbreviation && (
+                        {currentCard?.en && (
+                          <span className="text-xs px-2.5 py-1 rounded-full bg-stone-200 text-stone-700 font-semibold">
+                            EN: {currentCard.en}
+                          </span>
+                        )}
+                        {currentCard?.abbreviation && (
                           <span className="text-xs px-2.5 py-1 rounded-full bg-accent/10 text-accent font-bold">
                             {currentCard.abbreviation}
                           </span>
@@ -203,7 +216,7 @@ export default function CloudFlashcardDeck({
                   ) : (
                     <div className="space-y-2">
                       <h3 className="text-lg sm:text-xl font-extrabold text-stone-850">
-                        {currentCard.front}
+                        {currentCard?.front}
                       </h3>
                       <p className="text-xs text-stone-400 font-medium">Bấm vào thẻ hoặc phím Space để xem lời giải</p>
                     </div>

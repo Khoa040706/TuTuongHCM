@@ -1,4 +1,5 @@
 import "./globals.css";
+import PwaRegistration from "../components/PwaRegistration";
 
 export const metadata = {
   title: "StudyMaster",
@@ -18,9 +19,7 @@ export const metadata = {
 export const viewport = {
   themeColor: "#d97706",
   width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false
+  initialScale: 1
 };
 
 export default function RootLayout({ children }) {
@@ -39,6 +38,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-screen bg-[#faf8f4] text-[#2c2a26] font-sans">
+        <PwaRegistration />
         {children}
       </body>
     </html>

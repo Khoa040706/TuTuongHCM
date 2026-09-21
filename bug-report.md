@@ -179,3 +179,65 @@ Nguyên tắc kiểm thử: **Không sửa mã nguồn trong quá trình kiểm 
 - **Retest độc lập (Frontend Verifier)**: PASS. Backend API `GET /api/admin/learning-report` trả HTTP 200, cung cấp đầy đủ dữ liệu người dùng và tiến độ 7 chương Cloud, component Frontend `AdminLearningReportTab` nhận và hiển thị dữ liệu thật thành công.
 - **Owner chốt**: Environment (phần 401); Frontend chỉ còn bước verify E2E.
 - **Trạng thái**: `verified`
+
+---
+
+### 12. `BUG-AUTH-VERCEL` — Lỗi Đăng nhập Admin trên Vercel ("Chưa cấu hình tài khoản quản trị phía server")
+- **Mã định danh**: `BUG-AUTH-VERCEL`
+- **Môi trường ghi nhận**: Production / Preview Deployment trên Vercel.
+- **Triệu chứng thực tế**: Khi học viên/quản trị viên nhập tài khoản `admin` / `admin` và nhấn "Đăng nhập", giao diện hiển thị cảnh báo:
+  > ⚠️ *Đăng nhập thất bại: Chưa cấu hình tài khoản quản trị phía server.*
+- **Nguyên nhân gốc rễ (Root Cause)**:
+  1. Tệp cấu hình cục bộ [`.env.local`](file:///d:/TT%20HCM/.env.local) nằm trong danh mục loại trừ `.gitignore` nên không được đẩy lên GitHub hoặc nạp tự động vào môi trường Vercel.
+  2. Tại [`lib/server/auth.js`](file:///d:/TT%20HCM/lib/server/auth.js#L120-L124), hàm `createAdminCustomToken` kiểm tra nghiêm ngặt:
+     ```javascript
+     const expectedUsername = process.env.ADMIN_USERNAME;
+     const expectedPassword = process.env.ADMIN_PASSWORD;
+     if (!expectedUsername || !expectedPassword) {
+       throw new ApiError(500, "INTERNAL_ERROR", "Chưa cấu hình tài khoản quản trị phía server.");
+     }
+     ```
+  3. Trên Vercel Project Settings chưa được thiết lập các biến môi trường này, dẫn đến cả 2 giá trị đều mang giá trị `undefined` và ném ra lỗi `500 INTERNAL_ERROR`.
+- **Rà soát nguy cơ tiềm ẩn (Secondary Blockers)**:
+  - Nếu chỉ cấu hình `ADMIN_USERNAME` và `ADMIN_PASSWORD` mà thiếu `FIREBASE_ADMIN_SERVICE_ACCOUNT_BASE64`, Firebase Admin SDK trong Serverless Function sẽ kích hoạt fallback `applicationDefault()` và sập ngay lập tức (do Vercel không có ADC file).
+  - Nếu thiếu `EXAM_TICKET_SECRET`, tính năng thi thử tính giờ sẽ sập khi ký HMAC SHA-256 vé thi.
+- **Giải pháp khắc phục**: Cấu hình đầy đủ 5 biến môi trường trên Vercel Dashboard (`Settings` -> `Environment Variables`):
+  - `ADMIN_USERNAME`
+  - `ADMIN_PASSWORD`
+  - `EXAM_TICKET_SECRET`
+  - `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+  - `FIREBASE_ADMIN_SERVICE_ACCOUNT_BASE64`
+- **Trạng thái**: `open (chờ cấu hình trên Vercel Dashboard)`
+
+---
+
+### 13. `PERF-AUTH-001` — Độ trễ Đăng nhập ~3s ở môi trường Local (Phân tích Chuỗi 10 Vòng Mạng)
+- **Mã định danh**: `PERF-AUTH-001`
+- **Môi trường ghi nhận**: Local Development (`npm run dev`).
+- **Triệu chứng thực tế**: Sau khi nhấn nút "Đăng nhập" tài khoản quản trị, hệ thống mất khoảng 3 giây mới hoàn tất xác thực và chuyển hướng vào Dashboard. Trong thời gian này nút bấm không có trạng thái phản hồi (loading spinner), tạo cảm giác đơ/treo ứng dụng.
+- **Nguyên nhân gốc rễ (Root Cause)**:
+  1. **Next.js Dev Route Compilation**: Khi chạy `next dev`, hai route `/api/auth/admin-token` và `/api/auth/session` được biên dịch on-demand tại lần gọi đầu, tiêu tốn ~1.2s - 1.8s để nạp các gói thư viện nặng (`firebase-admin`, crypto, gRPC).
+  2. **Kiến trúc Bắt tay 4 chặng với 10 vòng mạng liên lục địa (10 Network Roundtrips)**:
+     - Chặng 1 (`POST /api/auth/admin-token`):
+       * `getAdminAuth().getUser("admin")` (gọi Google Identity Toolkit API)
+       * `setCustomUserClaims(...)` (gọi Google Identity Toolkit API)
+       * `users/admin.get()` (gọi Cloud Firestore)
+       * `users/admin.set()` (ghi Cloud Firestore)
+     - Chặng 2 (Client Firebase SDK):
+       * `signInWithCustomToken` (gọi Google Auth qua Internet)
+     - Chặng 3 (Client Token Refresh thừa):
+       * `getIdToken(true)` ép buộc client gửi thêm 1 request refresh token lên Google dù token vừa được tạo mới 5ms trước.
+     - Chặng 4 (`POST /api/auth/session`):
+       * `verifyIdToken(idToken, true)` ép kiểm tra thu hồi qua mạng với Google.
+       * `getUser("admin")` (gọi lại Google API lần 2).
+       * `users/admin.get()` và `users/admin.set()` (đọc/ghi Firestore trùng lặp lần 2).
+       * `createSessionCookie(...)` (gọi Google Auth).
+     - Tổng thời gian trễ tích lũy từ các cuộc gọi mạng liên tục từ máy local (Việt Nam) sang cụm server Google: **~2.8s - 3.5s**.
+- **Giải pháp tối ưu xuống < 400ms**:
+  1. Chuyển `getIdToken(true)` thành `getIdToken(false)` để lấy ngay token trên RAM client (tiết kiệm ~400ms).
+  2. Bỏ `checkRevoked=true` trong `verifyIdToken` ở luồng cấp phiên mới để chỉ xác thực chữ ký số bằng Public Key cache trong RAM server (tiết kiệm ~350ms).
+  3. Bỏ thao tác đọc/ghi Firestore lặp lại 2 lần liên tiếp cho tài khoản admin cố định (tiết kiệm ~800ms - 1.2s).
+  4. Đơn giản hóa luồng cấp session Admin trực tiếp 1-Hop thay vì 2-Hop ping-pong.
+  5. Thêm trạng thái `isLoggingIn` hiển thị spinner và nhãn *"Đang xác thực..."* để triệt tiêu độ trễ cảm nhận.
+- **Trạng thái**: `analyzed (sẵn sàng triển khai khi người dùng yêu cầu)`
+

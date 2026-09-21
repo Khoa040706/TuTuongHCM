@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 3,
+  "asset": {
+    "name": "CancerKnowledgeMachineB5ACandidate",
+    "revision": "b5a-geometry-candidate-1",
+    "frontAxis": "-Y",
+    "upAxis": "+Z",
+    "unit": "meter",
+    "referencePolicy": "The approved concept sheet guides silhouette and armor language only. This config and the model contract define counts, hierarchy, pivots, proportions, and poses."
+  },
+  "palette": {
+    "goldSatin": [0.82, 0.43, 0.08, 1.0],
+    "charcoal": [0.045, 0.039, 0.031, 1.0],
+    "amber": [1.0, 0.53, 0.04, 1.0],
+    "ivory": [0.956, 0.939, 0.902, 1.0]
+  },
+  "body": {
+    "location": [0.0, 0.0, 0.16],
+    "scale": [1.84, 1.02, 1.43],
+    "segments": 32,
+    "rings": 20,
+    "middleWidthBoost": 0.16,
+    "topCompression": 0.24,
+    "bottomTuck": 0.17,
+    "frontPlate": {
+      "location": [0.0, -1.04, 0.12],
+      "scale": [1.18, 0.12, 0.9]
+    }
+  },
+  "rings": {
+    "locationY": 1.28,
+    "inner": { "majorRadius": 2.66, "minorRadius": 0.07 },
+    "outer": { "majorRadius": 3.02, "minorRadius": 0.085 },
+    "majorSegments": 64,
+    "minorSegments": 10
+  },
+  "legs": {
+    "perSide": 4,
+    "rootX": 1.62,
+    "rootY": [-0.62, -0.22, 0.2, 0.58],
+    "rootZ": [0.55, 0.18, -0.2, -0.52],
+    "coxaLength": [0.5, 0.54, 0.53, 0.48],
+    "upperLength": [0.7, 0.77, 0.8, 0.74],
+    "lowerLength": [0.7, 0.78, 0.82, 0.76],
+    "kneeRise": [0.3, 0.1, -0.1, -0.27],
+    "tipDrop": [0.46, 0.58, 0.68, 0.76],
+    "radius": 0.19,
+    "taper": [1.0, 0.78, 0.5]
+  },
+  "claws": {
+    "root": [1.55, -0.4, 0.72],
+    "elbow": [2.12, -0.48, 1.0],
+    "palm": [2.6, -0.52, 1.38],
+    "segmentRadius": 0.25,
+    "palmScale": [0.86, 0.43, 0.54],
+    "fingerLength": 1.18,
+    "fingerGap": 0.18,
+    "fingerArc": 0.42,
+    "fingerWidth": [0.34, 0.28, 0.18, 0.075],
+    "fingerDepth": 0.22
+  },
+  "candidateGeometry": {
+    "bodyArmor": {
+      "center": [0.0, -1.095, 0.12],
+      "outerHalfSize": [1.38, 1.08],
+      "innerHalfSize": [1.22, 0.92],
+      "outerDepth": 0.13,
+      "innerDepth": 0.105
+    },
+    "clawArmor": {
+      "halfSize": [0.48, 0.27],
+      "depth": 0.09,
+      "frontOffsetY": -0.43
+    },
+    "pincer": {
+      "xOffsets": [0.3, 0.62, 0.92, 1.1, 1.18],
+      "upperZOffsets": [0.28, 0.44, 0.52, 0.49, 0.36],
+      "lowerZOffsets": [-0.28, -0.42, -0.48, -0.44, -0.32],
+      "widths": [0.2, 0.27, 0.23, 0.14, 0.055]
+    },
+    "jointScale": [1.12, 0.8, 0.88]
+  },
+  "mark": {
+    "outerRadius": 0.38,
+    "innerRadius": 0.285,
+    "innerOffsetX": 0.135,
+    "thickness": 0.07,
+    "frontY": -1.265,
+    "z": 0.16
+  },
+  "poses": {
+    "closed": {
+      "frame": 1,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 4.0,
+      "clawRightYDeg": -4.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 0.0,
+      "pincerScaleZ": 0.68
+    },
+    "open": {
+      "frame": 21,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 30.0,
+      "clawRightYDeg": -30.0,
+      "ringInnerYDeg": 13.0,
+      "ringOuterYDeg": -10.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 4.0,
+      "pincerScaleZ": 1.18
+    },
+    "guide_left": {
+      "frame": 41,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 42.0,
+      "clawRightYDeg": -10.0,
+      "ringInnerYDeg": 9.0,
+      "ringOuterYDeg": -7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 7.0,
+      "pincerScaleZ": 0.98
+    },
+    "guide_right": {
+      "frame": 61,
+      "rootScale": 1.0,
+      "clawLeftYDeg": 10.0,
+      "clawRightYDeg": -42.0,
+      "ringInnerYDeg": -9.0,
+      "ringOuterYDeg": 7.0,
+      "ringScale": 1.0,
+      "legsScale": 1.0,
+      "legFoldDeg": 7.0,
+      "pincerScaleZ": 0.98
+    },
+    "compact": {
+      "frame": 81,
+      "rootScale": 0.94,
+      "clawLeftYDeg": 58.0,
+      "clawRightYDeg": -58.0,
+      "ringInnerYDeg": 0.0,
+      "ringOuterYDeg": 0.0,
+      "ringScale": 0.83,
+      "legsScale": 1.0,
+      "legFoldDeg": 42.0,
+      "pincerScaleZ": 0.62
+    }
+  },
+  "animation": {
+    "fps": 24,
+    "timeFormula": "timeSeconds = frame / fps",
+    "exportForceSampling": true
+  },
+  "render": {
+    "resolution": [768, 768],
+    "samples": 32,
+    "views": [
+      { "name": "01-front-closed", "pose": "closed", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] },
+      { "name": "02-three-quarter-open", "pose": "open", "camera": [8.2, -9.2, 4.4], "target": [0.0, 0.0, 0.1] },
+      { "name": "03-side-closed", "pose": "closed", "camera": [11.8, 0.0, 1.2], "target": [0.0, 0.0, 0.0] },
+      { "name": "04-front-open", "pose": "open", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.2] },
+      { "name": "05-front-compact", "pose": "compact", "camera": [0.0, -12.4, 1.0], "target": [0.0, 0.0, 0.0] }
+    ]
+  }
+}

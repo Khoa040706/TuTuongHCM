@@ -44,3 +44,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temporary & testing artifacts
+/.tmp/
+/artifacts/
+*.heapsnapshot
+
+# 3D & script temporary files
+*.blend1
+__pycache__/
+*.pyc

@@ -1,0 +1,62 @@
+StudyMaster managed patch: studymaster-three-r185-dfg-lut-owner-v2
+Target: three@0.185.1
+Canonical applicator: scripts/apply-three-dfg-lut-patch.mjs
+
+--- src/renderers/shaders/DFGLUTData.js
++++ src/renderers/shaders/DFGLUTData.js
+@@
+-let lut = null;
+-export function getDFGLUT() {
+-  if ( lut === null ) {
+-    lut = new DataTexture( ... );
+-    ...
+-  }
++export function createDFGLUT() {
++  const lut = new DataTexture( ... );
++  ...
+   return lut;
+ }
+
+--- src/renderers/WebGLRenderer.js
++++ src/renderers/WebGLRenderer.js
+@@
+-import { getDFGLUT } from './shaders/DFGLUTData.js';
++import { createDFGLUT } from './shaders/DFGLUTData.js';
+@@ renderer-owned state
++let _dfgLUT = null;
++const _trackedMaterials = new Set();
+@@ WebGLRenderer.dispose(), before properties.dispose()
++if ( _dfgLUT !== null ) {
++  _dfgLUT.dispose();
++  _dfgLUT = null;
++}
++for ( const material of _trackedMaterials ) {
++  material.removeEventListener( 'dispose', onMaterialDispose );
++  deallocateMaterial( material );
++}
++_trackedMaterials.clear();
+@@ material program registration
+ material.addEventListener( 'dispose', onMaterialDispose );
++_trackedMaterials.add( material );
+@@ material dispose callback
+ material.removeEventListener( 'dispose', onMaterialDispose );
++_trackedMaterials.delete( material );
+@@ PBR uniform refresh
+-m_uniforms.dfgLUT.value = getDFGLUT();
++if ( _dfgLUT === null ) _dfgLUT = createDFGLUT();
++m_uniforms.dfgLUT.value = _dfgLUT;
+
+The applicator makes the equivalent exact replacements in:
+- src/renderers/shaders/DFGLUTData.js
+- src/renderers/WebGLRenderer.js
+- build/three.module.js
+- build/three.cjs
+
+Safety properties:
+- refuses versions other than 0.185.1;
+- verifies SHA-256 of every pristine input before first application;
+- is idempotent and supports --check;
+- supports --reverse and verifies restored upstream hashes;
+- gives each renderer its own lazy PBR LUT;
+- tracks shared materials per renderer and removes only that renderer's listener/program references on teardown;
+- never calls `material.dispose()` for shared caller-owned materials, so disposing renderer A cannot invalidate renderer B.
