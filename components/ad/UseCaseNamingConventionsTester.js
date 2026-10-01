@@ -125,7 +125,7 @@ export default function UseCaseNamingConventionsTester() {
       </div>
 
       {/* 4 Rules Selector Navigation */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
         {RULES.map((r) => {
           const isSelected = r.id === selectedRuleId;
           return (
@@ -146,8 +146,8 @@ export default function UseCaseNamingConventionsTester() {
                 </span>
                 <span className="text-[10px] text-stone-400 font-semibold">{r.tagline.split(" ")[0]}</span>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-stone-900 line-clamp-1">{r.title}</div>
-              <div className="text-[11px] text-stone-500 line-clamp-1 mt-0.5">{r.subtitle}</div>
+              <div className="text-xs sm:text-sm font-bold text-stone-900 leading-snug">{r.title}</div>
+              <div className="text-[11px] text-stone-500 leading-snug mt-0.5">{r.subtitle}</div>
             </button>
           );
         })}

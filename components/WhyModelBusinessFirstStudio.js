@@ -84,8 +84,8 @@ export default function WhyModelBusinessFirstStudio() {
         </div>
       </div>
 
-      {/* 4 Reasons Selector Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mb-6">
+      {/* 4 Reasons Selector Grid (Responsive 2x2 on Laptop, 4 on XL) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-6">
         {Object.entries(reasons).map(([key, item]) => {
           const isSelected = selectedReason === key;
           const Icon = item.icon;

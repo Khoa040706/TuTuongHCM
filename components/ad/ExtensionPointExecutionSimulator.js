@@ -162,8 +162,8 @@ export default function ExtensionPointExecutionSimulator() {
 
       {/* Simulator Flow Visualization */}
       <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Base Use Case Column (7 cols) */}
-        <div className="lg:col-span-7 space-y-3">
+        {/* Base Use Case Column (6 cols on laptop, 7 cols on xl) */}
+        <div className="lg:col-span-6 xl:col-span-7 space-y-3">
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-bold text-stone-900 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
@@ -232,8 +232,8 @@ export default function ExtensionPointExecutionSimulator() {
           )}
         </div>
 
-        {/* Extending Use Case Column (5 cols) */}
-        <div className="lg:col-span-5 space-y-3">
+        {/* Extending Use Case Column (6 cols on laptop, 5 cols on xl) */}
+        <div className="lg:col-span-6 xl:col-span-5 space-y-3">
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-bold text-blue-900 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>

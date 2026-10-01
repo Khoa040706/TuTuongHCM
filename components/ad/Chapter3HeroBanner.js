@@ -266,8 +266,8 @@ export default function Chapter3HeroBanner() {
           </p>
         </div>
 
-        {/* Executive Vital Metrics Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
+        {/* Executive Vital Metrics Bar (Responsive: 1-2-3-5 cols) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 pt-2">
           <div className="p-3 rounded-xl bg-white/80 backdrop-blur-xs border border-amber-200/80 shadow-xs text-center">
             <span className="text-[10px] uppercase font-extrabold tracking-wider text-amber-700 block">Quy trình chuẩn</span>
             <div className="text-xl font-black text-stone-900 mt-0.5">11 Chặng</div>
@@ -292,7 +292,7 @@ export default function Chapter3HeroBanner() {
             <span className="text-[11px] text-stone-500">&lt;&lt;include&gt;&gt; • &lt;&lt;extend&gt;&gt; • Gen</span>
           </div>
 
-          <div className="p-3 rounded-xl bg-white/80 backdrop-blur-xs border border-rose-200/80 shadow-xs text-center col-span-2 sm:col-span-1">
+          <div className="p-3 rounded-xl bg-white/80 backdrop-blur-xs border border-rose-200/80 shadow-xs text-center col-span-1 sm:col-span-2 lg:col-span-1">
             <span className="text-[10px] uppercase font-extrabold tracking-wider text-rose-700 block">Nguyên tắc vàng</span>
             <div className="text-xl font-black text-stone-900 mt-0.5">1 Event = 1 UC</div>
             <span className="text-[11px] text-stone-500">Quy tắc 1:1 & Verb+Noun</span>
@@ -311,8 +311,8 @@ export default function Chapter3HeroBanner() {
             </span>
           </div>
 
-          {/* Pillars Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          {/* Pillars Strip (Responsive: 3 cols on Laptop, 6 on XL, No line-clamp) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5">
             {PILLARS.map(p => {
               const isActive = activePillarId === p.id;
               const Icon = p.icon;
@@ -340,7 +340,7 @@ export default function Chapter3HeroBanner() {
                       {p.title}
                     </div>
                   </div>
-                  <div className="text-[10px] text-stone-500 mt-1 line-clamp-1">
+                  <div className="text-[10px] text-stone-500 mt-1 leading-snug">
                     {p.subtitle}
                   </div>
                 </button>

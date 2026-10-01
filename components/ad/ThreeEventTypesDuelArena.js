@@ -148,7 +148,7 @@ export default function ThreeEventTypesDuelArena() {
                 </span>
               </div>
               <div className="font-bold text-sm sm:text-base text-stone-900">{t.name}</div>
-              <div className="text-xs text-stone-500 font-mono mt-1 line-clamp-1">{t.tagline}</div>
+              <div className="text-xs text-stone-500 font-mono mt-1 leading-snug">{t.tagline}</div>
             </button>
           );
         })}

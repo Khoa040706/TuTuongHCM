@@ -1,71 +1,89 @@
-# Implementation Plan — Trang chủ 3D StudyMaster
+# Kế hoạch Thực thi: Biên soạn Bộ đề Bẫy 2 & Xuất File Tổng hợp Chương 5 — Điện toán đám mây
 
-> **Trạng thái:** `AWAITING REVIEW — B7 BLOCKED / NON-DETERMINISTIC CLEANUP`; B8 chưa mở
->
-> **Tài liệu điều phối chính:** [`plan.md`](plan.md)
+> **Chuyên mục:** Ngân hàng đề thi trắc nghiệm Bẫy tư duy (Trick Exam Sets)  
+> **Môn học:** Điện toán đám mây (Cloud Computing)  
+> **Chương:** Chương 5 — Infrastructure as a Service (IaaS)  
+> **Dữ liệu nguồn giáo trình:** `data/cloud-computing-chapter-5.js`  
+> **Bộ đề bẫy 1 đối chiếu:** `data/questions-cloud-ch5-trick1.js` (50 câu: `cloud-c5-d1-001` ➔ `cloud-c5-d1-050`)  
+> **Quy mô triển khai:** 50 câu bẫy mới độc lập (`cloud-c5-d2-001` ➔ `cloud-c5-d2-050`) + File tổng hợp 100 câu 2 bộ đề.
 
-## Mục tiêu lượt hiện tại
+---
 
-- [x] Đọc hai brief và `AGENTS.md`.
-- [x] Đối chiếu dependency, SPA state, auth, learning state, simulator, diagram, asset, PWA và Blender runtime.
-- [x] Tạo bộ kế hoạch tám bước, model contract, decision log và traceability matrix.
-- [x] Nhận và đồng bộ D01, D03, D04.
-- [x] Hoàn thành Bước 1 và chuẩn bị concept/storyboard Bước 2.
-- [x] Nhận duyệt D02 tại concept sheet và khóa MUST/SHOULD/LATER.
-- [x] Đồng bộ model contract: 8 chân đối xứng, không râu, mai cong, hai vòng độc lập và 5 pose.
-- [x] Tạo pipeline `bpy` có config riêng; xuất `.blend`, GLB, manifest và bộ ảnh review.
-- [x] Giữ nguyên bộ v1; hoàn thành vòng sửa blockout v2 về càng/mai/chân/trăng/vòng/pose và contact sheet cùng camera.
-- [x] Kiểm tra lại `.blend` v2; load GLB bằng Three.js, kiểm tra contract/hash và quét collision ở frame chuyển tiếp.
-- [x] Người dùng duyệt blockout B3.8 để dùng cho kiểm chứng tích hợp; không phải phê duyệt model final.
-- [x] B4 — tích hợp GLB v2 vào R3F, hoàn thiện S01→S02, build và kiểm chứng Chrome production.
-- [x] B4 revision — sửa framing ở 1366×768/1440×900, tách pha storytelling, đo controller/transform/reduced motion và bàn giao ảnh + video xuôi/ngược 18 giây.
-- [x] Người dùng duyệt B4 revision trong phạm vi proof slice desktop S01→S02.
-- [x] B5A — tạo ứng viên hình học riêng: càng đầy đặn có vỏ giáp/ngón cong thuôn, mai có cấu trúc giáp, chân dày và thuôn hơn; giữ asset v2, hierarchy/pivot và 5 pose.
-- [x] B5A — kiểm tra pose theo thời gian rõ ràng trong manifest, contract/GLB/chuyển tiếp, geometry stats, ảnh ba góc, contact sheet concept/v2/ứng viên và preview B4 S01/S02.
-- [x] B5A revision — giữ ứng viên trước, tạo script/config/output riêng; sửa càng dựng và ôm vào giữa, mai giáp hòa vào vòm, chân giáp thuôn có đầu cong xuống.
-- [x] B5A revision — render duy nhất front closed và three-quarter open bằng xám đồng nhất cùng camera/scale; ghép concept màu để review và tự ghi điểm còn lệch.
-- [x] B5A revision — xác nhận nhẹ node/pivot, 8 chân, 2 càng, không râu, hai vòng độc lập và 5 pose trong `.blend`; chưa xuất GLB/chạy full validator/browser QA.
-- [x] Gate B5A hình khối — người dùng chấp nhận hướng shape revision để kiểm chứng kỹ thuật; chưa phải duyệt model final.
-- [x] B5A technical — GLB/manifest revision có `timeSeconds`, node/pivot/load/5 pose/BVH transition đạt; lỗi giao nhau thật ở coxa đã sửa cục bộ, phần chồng còn lại ở góc ba phần tư là camera occlusion.
-- [x] B5A web — runtime B4 lấy pose theo `timeSeconds` manifest; 16 action canonical, S01/S02 xuôi/ngược tại 1366×768 và 1440×900 đạt sau khi controller/master/phases ổn định.
-- [x] B5B — material vàng satin/than mờ, bevel/normal và bốn đường phân mảng lớn; GLB dưới budget, fallback/source/license/manifest và preview B4 hoàn thành.
-- [x] Gate B5B — người dùng duyệt model hiện tại làm baseline B6; khóa GLB 736.372 byte, SHA-256 `95eb4b7bd2ec87480daa9e0e97366f62fe6adb605fed088c9f2a4a6b71badf35`; không chỉnh form/hoa văn nếu không có defect.
-- [x] Typography — xác nhận JSX là Unicode NFC; Chrome QA bị chặn Google Fonts nên Georgia fallback theo glyph tạo advance width sai. Đổi fallback display font riêng homepage sang Times New Roman trước Georgia và chụp lại S01/S02 production không còn tách chữ.
-- [x] B6 — hoàn thiện cầu nối S02, trace Bubble Sort S03, Activity Diagram ATM S04 từ asset thật, preview có nhãn “Minh họa” S05 và CTA auth matrix S06.
-- [x] B6 — controller duy nhất lấy 5 pose theo `timeSeconds`; chapter jump, forward/reverse, 21 mốc nội suy, scroll nhanh, resize, pause/resume, reduced motion và model-error fallback đều pass production.
-- [x] B6 — bàn giao ảnh từng cảnh và video 12 giây S01→S06→S01 ghép từ 96 frame Chrome/WebGL thật.
-- [x] B6 revision — thay snapshot-only S03 bằng ba data block R3F identity cố định, derive compare/swap/lock/early-exit từ progress; giữ HTML trace làm fallback.
-- [x] B6 revision — thay PNG-only S04 bằng diagram có cấu trúc 14 node/16 edge, guard/fork/join đúng vai trò, node-first → edge-draw → main-flow highlight; giữ PNG nguồn để đối chiếu/fallback.
-- [x] B6 revision — guest pending destination đã click-test đến Bubble Sort và Diagram Studio; learner/admin mới kiểm tra source.
-- [x] B6 revision — browser QA v4 `pass=true`, video 1366×768 gồm 96 frame ở 8 fps/12 giây đã được Blender đọc lại; video là ghép frame, không phải quay real-time.
-- [x] Gate B6 revision — người dùng duyệt chức năng/storyboard để chuyển sang B7; giữ B5B và đúng sáu cảnh.
-- [x] B7 — ghi nhận/sửa/retest header, label data block, ATM connector/guard, bounds toàn khối và hash restore; ảnh/JSON before-after đã lưu.
-- [x] B7 — đo production baseline, lifecycle năm vòng, integration/auth, accessibility và PWA; báo cáo phân loại PASS/FAIL/NOT TESTED. Lifecycle retention còn FAIL; GPU desktop và learner/admin NOT TESTED.
-- [x] B7 targeted revision — sửa nhãn StoryDataBlocks đúng aspect texture/geometry và PASS ảnh/đo S03/S04 ở 1366×768, 1440×900.
-- [x] B7 targeted revision — thay hardcode lifecycle bằng registry Canvas/controller thực; heap snapshot + retaining paths xác nhận delta đã giảm nhưng retention vẫn `FAIL`. B7 tiếp tục `AWAITING REVIEW`, B8 chưa mở.
-- [x] B7 revision2 — tăng font nhãn và đo glyph/plane riêng; PASS S03/S04 tại 1366×768 và 1440×900.
-- [x] B7 revision2 — đối chứng auth tối giản, DOM/GSAP không Canvas, Canvas tối giản và homepage đầy đủ; sửa owner ảnh responsive S04. DOM/GSAP retest về 309→309 node, nhưng full homepage vẫn `FAIL` do rooted WebGL context/canvas tăng theo vòng; instrumentation-off cho cùng xu hướng.
-- [x] B7 WebGL reproduction — Canvas + GLTFLoader không render plateau 390→390; khi render clone GLB tăng 472→877 (+81 node/vòng), không cần thêm lighting/StoryDataBlocks/controller để tái hiện.
-- [x] B7 desktop GPU — lỗi tái hiện trên Chrome desktop, renderer thật `Intel UHD Graphics 630 / ANGLE D3D11`; GPU không phải SwiftShader. Strong path cùng hội tụ vào WebGL properties/texture → context → detached canvas.
-- [x] B7 cleanup audit — hoàn tác dispose renderer/forceContextLoss; thử clone geometry/material riêng + dispose không cải thiện và không được giữ. Residual vẫn `FAIL`; reproduction/lệnh chạy được bàn giao, B8 chưa mở.
-- [x] B7 minimal repro — harness tĩnh độc lập chứng minh R3F box và Three box plateau; R3F/Three render GLB tăng theo vòng ngay cả khi thay toàn bộ material bằng MeshBasicMaterial.
-- [x] B7 ownership fix — strong path đi từ GLTF parser/cache qua geometry và listener renderer tới WebGLBuffer. `geometry.dispose()` kết hợp `gl.dispose()` làm harness plateau; đưa thay đổi nhỏ nhất vào production và giữ lại vì WebGLBuffer delta giảm từ +1.155 xuống 0/5 vòng.
-- [x] B7 production retest — build PASS, model render/chuyển động đủ 5/5 remount; nhưng tổng DOM vẫn +2.470, listener +153 và heap +3.814.380 B/5 vòng. Material cleanup không cải thiện nên đã hoàn tác. Gate lifecycle giữ `FAIL`, B8 chưa mở.
-- [x] B7 home retention — snapshot production xác định `DFG_LUT` singleton/listener renderer là strong owner chung. Đối chứng homepage đầy đủ chỉ loại PBR path làm DOM 802→802 trên Intel GPU trong 5 vòng, trong khi model/data/controller vẫn hoạt động. Không có public teardown an toàn và không hạ vật liệu B5B; production residual vẫn `FAIL`, B8 chưa mở.
-- [x] B7 managed patch — patch Three r185 theo ownership renderer PASS harness PBR/two-renderer: callback shared material 2→1→0, renderer còn sống không đổi pixel hash; patch có apply/check/reverse và hash khóa.
-- [x] B7 final candidate — clean build PASS và bundle chứa patch v2. Warm-up Intel xác nhận callback 2→1→0, remount 5/5 render 71 calls/28.388 triangles và có transform theo scroll. Full retention plateau DOM 1304→1304, listener từng vòng 392→392, WebGLBuffer count delta 0; nhưng cùng một callback material còn 1→1 từ baseline tới final trong lượt đầy đủ trong khi warm-up riêng là 0. Delay 650 ms không tất định, gate giữ `FAIL/BLOCKED`; không thử thêm cleanup/delay.
+## 🎯 1. Mục tiêu & Yêu cầu Kỹ thuật Bắt buộc
 
-## Thứ tự thực hiện sau phê duyệt
+1. **Đa dạng hóa 5 dạng cấu trúc câu hỏi (50 câu)**:
+   * **Dạng 1 (24% = 12 câu)**: Chọn phát biểu SAI / KHÔNG CHÍNH XÁC (Cài cắm mệnh đề ngụy biện: *nhà cung cấp IaaS chịu trách nhiệm tự động vá lỗi hệ điều hành máy ảo của khách hàng, Shared Virtual Server không bao giờ bị ảnh hưởng hiệu năng bởi láng giềng, Object Storage có thể format để làm ổ đĩa boot hệ điều hành, Round Robin là thuật toán tối ưu nhất cho các tác vụ tính toán không đồng đều, Cloud NAS chỉ dùng được trong mạng LAN...*).
+   * **Dạng 2 (20% = 10 câu)**: Chọn phát biểu ĐÚNG / CHÍNH XÁC NHẤT (Các phương án nhiễu chứa từ ngữ tuyệt đối hóa sai lệch; kiểm tra chuẩn xác về cơ chế Block Storage, thuật toán Least Connections, chỉ số RTO/RPO trong Disaster Recovery, kiến trúc Tam hùng AWS/Azure/GCP).
+   * **Dạng 3 (20% = 10 câu)**: Đánh giá chùm mệnh đề logic kỹ thuật (I, II, III, IV) và chọn tổ hợp chân trị đúng về 3 loại server (Physical, Dedicated, Shared), 3 chiến lược sao lưu (Full, Incremental, Differential), 3 thuật toán Load Balancing, 4 loại Redundancy.
+   * **Dạng 4 (18% = 9 câu)**: Tình huống / Kịch bản kỹ thuật & kiến trúc thực tế (Lựa chọn Bare-metal cho Big Data/HPC, đối phó hiện tượng Noisy Neighbor trong ngân hàng bằng Dedicated Server, chọn Object Storage lưu trữ video stream, cấu hình IP Hash cho Sticky Session, lập kế hoạch Disaster Recovery với RTO dưới 15 phút).
+   * **Dạng 5 (18% = 9 câu)**: Phân biệt các cặp khái niệm song sinh dễ nhầm lẫn (Block Storage vs File Storage vs Object Storage, Physical Server vs Dedicated Virtual Server vs Shared Virtual Server, RTO vs RPO, Incremental Backup vs Differential Backup, IaaS vs PaaS).
 
-1. [Xác minh tích hợp](plans/homepage-3d/01-product-integration.md)
-2. [Concept và storyboard](plans/homepage-3d/02-concept-storyboard.md)
-3. [Blender blockout](plans/homepage-3d/03-blender-blockout.md)
-4. [Lát cắt R3F/GSAP S01→S02](plans/homepage-3d/04-r3f-story-slice.md)
-5. [Model final](plans/homepage-3d/05-blender-final-model.md)
-6. [S03–S06](plans/homepage-3d/06-scenes-and-preview.md)
-7. [Tích hợp và hiệu năng](plans/homepage-3d/07-integration-performance.md)
-8. [QA và bàn giao](plans/homepage-3d/08-qa-handoff.md)
+2. **Khác biệt hoàn toàn với Bộ đề bẫy 1**:
+   * 100% câu hỏi mới khai thác sâu vào chi tiết kỹ thuật: cơ chế IOPS và bus kết nối của Block Storage, cấu trúc metadata và REST API của Object Storage, hiện tượng láng giềng ồn ào (Noisy Neighbor), giao thức NFS/SMB của Cloud NAS, chỉ số RTO/RPO, thuật toán băm IP Client, 4 loại Redundancy (Hardware, Software, Network, Data).
 
-## Gate hiện tại
+3. **Chống đoán bừa tuyệt đối (Equal Option Length Balance)**:
+   * Trong cùng một câu hỏi: $\Delta L = L_{\max} - L_{\min} \le 15$ ký tự trên **100% câu hỏi** ($50/50$ câu).
 
-D02/D03, gate B3.8, B4, B5 và B6 đã đóng. Asset v2/candidate/source revision vẫn giữ nguyên; B5B baseline/hash đã khóa. B7 đang chờ review ở trạng thái `FAIL/BLOCKED` do cleanup material còn phụ thuộc timing; B8 chưa mở.
+4. **100% Câu hỏi có trường `trickDetails` đầy đủ**:
+   * `whyTrapped`: Phân tích cụ thể cơ chế tâm lý khiến học viên dễ chọn sai.
+   * `trickWord`: Từ khóa / chi tiết gài bẫy trực tiếp.
+   * `citation`: Dẫn chứng mục học thuật trong giáo trình Chương 5.
+   * `tip`: Mẹo nhận diện và phương pháp loại trừ phương án nhiễu.
+
+5. **Cân bằng đáp án phân bổ**:
+   * Đúng chuẩn 12–13 câu cho mỗi phương án (12A, 13B, 12C, 13D) để tránh thiên lệch xác suất.
+
+6. **Tích hợp hệ thống & Xuất file Markdown tổng hợp**:
+   * Tạo file `data/questions-cloud-ch5-trick2.js`.
+   * Cập nhật `lib/curriculum.js` tích hợp `sets["trick-2"]` và gộp mảng `tricks`.
+   * Tạo tệp `tong-hop-2-de-thi-bay-chuong-5-dien-toan-dam-may.md` tổng hợp toàn diện 100 câu của cả 2 bộ đề bẫy Chương 5, gồm:
+     - 2 Bảng tra cứu đáp án nhanh dạng lưới ma trận 10 dòng x 5 cột.
+     - Ma trận phân loại 5 dạng câu hỏi bẫy.
+     - Toàn bộ nội dung câu hỏi, đáp án, giải thích chi tiết và phân tích bẫy tư duy.
+
+---
+
+## 🗺️ 2. Lộ trình Thực hiện Từng bước (Step-by-Step Execution Plan)
+
+### Bước 1: Khảo sát đối chiếu & Xây dựng Ma trận 50 câu hỏi mới Chương 5
+* Rà soát toàn bộ 50 câu của `data/questions-cloud-ch5-trick1.js` để đảm bảo 0% trùng lặp.
+* Xây dựng ngân hàng 50 câu mới bao phủ toàn bộ 8 mục giáo trình Chương 5:
+  - Mục I: Định nghĩa IaaS & 5 thành phần cơ bản (Servers, Storage, Networking, Virtualization, Management/Automation).
+  - Mục II: 3 Loại Server (Physical/Bare-metal, Dedicated Virtual, Shared Virtual & Hiện tượng Noisy Neighbor).
+  - Mục III: 3 Loại Storage (Block, File, Object), Mạng VPC, Firewall/Security Groups, Virtualization (Hypervisor vs Container), IaC.
+  - Mục IV: Cân bằng tải (Load Balancing), Health Monitoring, 3 Thuật toán (Round Robin, Least Connections, IP Hash) & 5 Lợi ích (chống DDoS, HA).
+  - Mục V: Dự phòng (Redundancy: Hardware, Software, Network, Data), 3 Chiến lược sao lưu (Full, Incremental, Differential), RTO và RPO.
+  - Mục VI: Cloud-based NAS (Centralized Storage Server, NFS/SMB, 4 Lợi ích, 3 Nhà cung cấp: Nirvanix, AWS FSx, GCP Filestore).
+  - Mục VII: 5 Ưu điểm, 5 Use Cases & Tam Hùng IaaS Toàn Cầu (AWS, Azure, GCP).
+  - Mục VIII: Tổng kết toàn bộ Chương 5 & Ranh giới trách nhiệm chia sẻ IaaS.
+
+### Bước 2: Tạo script tự động sinh và kiểm thử
+* Tạo script `scripts/generate-cloud-ch5-trick2.mjs`:
+  - Đảm bảo độ lệch chiều dài $\Delta L \le 15$ trên từng câu.
+  - Phân bổ đáp án chuẩn: 12A - 13B - 12C - 13D.
+  - Kiểm tra tính duy nhất (0 câu trùng với Đề 1).
+  - Ghi ra file `data/questions-cloud-ch5-trick2.js`.
+
+### Bước 3: Kiểm định tự động xác minh tiêu chí
+* Tạo script `scripts/verify-cloud-ch5-trick2.mjs` kiểm tra 6 tiêu chuẩn:
+  1. Đủ 50 câu hỏi.
+  2. ID đúng định dạng `cloud-c5-d2-001` -> `cloud-c5-d2-050`.
+  3. $\Delta L \le 15$ ký tự trên 100% câu hỏi.
+  4. 100% câu có đủ 4 trường `trickDetails`.
+  5. 0 câu trùng lặp với Đề bẫy 1.
+  6. Phân bổ đáp án cân bằng.
+
+### Bước 4: Tích hợp vào hệ thống (Curriculum Adapter)
+* Sửa file `lib/curriculum.js`:
+  - Import `questionsCloudCh5Trick2`.
+  - Cập nhật `questionsMap["cloud-ch5"]`: thêm `sets["trick-2"]` và gộp mảng `tricks: [...questionsCloudCh5Trick1, ...questionsCloudCh5Trick2]`.
+
+### Bước 5: Xuất file Markdown Tổng hợp 2 Bộ đề bẫy
+* Tạo và chạy script `scripts/generate-cloud-ch5-tricks-markdown.mjs`:
+  - Xuất ra `tong-hop-2-de-thi-bay-chuong-5-dien-toan-dam-may.md`.
+  - Bao gồm 2 bảng tra cứu đáp án nhanh ở đầu file.
+  - Hiển thị đầy đủ câu hỏi, lựa chọn, đáp án đúng, giải thích và 4 trường `trickDetails`.
+
+### Bước 6: Kiểm thử tổng thể & Build hệ thống
+* Chạy `npm run test:backend` (xác nhận 17/17 tests pass).
+* Chạy `npm run build` (xác nhận Next.js App Router biên dịch thành công 100%).

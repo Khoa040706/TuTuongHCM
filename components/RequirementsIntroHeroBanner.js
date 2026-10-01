@@ -281,8 +281,8 @@ export default function RequirementsIntroHeroBanner() {
         </div>
 
         {/* Top Quick Radar Metrics Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
             <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
               <Database className="w-4 h-4" />
             </div>
@@ -334,7 +334,7 @@ export default function RequirementsIntroHeroBanner() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
               {sectionCards.map((card) => {
                 const Icon = card.icon;
                 const isSelected = selectedSectionCard === card.id;
@@ -436,7 +436,7 @@ export default function RequirementsIntroHeroBanner() {
               <span className="text-xs font-mono font-bold uppercase text-amber-400 block mb-2">
                 1. SDLC Vòng Đời Chu Kỳ 5 Pha:
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
                 {[
                   { n: "1. Planning", d: "Feasibility Study 3 khía cạnh" },
                   { n: "2. Analysis", d: "Gather & Model requirements" },
@@ -457,7 +457,7 @@ export default function RequirementsIntroHeroBanner() {
               <span className="text-xs font-mono font-bold uppercase text-purple-400 block mb-2">
                 2. Unified Process (UP) Lặp Tăng Dần 4 Pha:
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {[
                   { n: "1. Inception", d: "Phạm vi & Business Case" },
                   { n: "2. Elaboration", d: "Baseline kiến trúc & Triệt tiêu rủi ro" },

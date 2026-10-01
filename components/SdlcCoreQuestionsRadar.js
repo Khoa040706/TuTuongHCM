@@ -112,8 +112,8 @@ export default function SdlcCoreQuestionsRadar() {
         </div>
       </div>
 
-      {/* 5 Phase Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 mb-6">
+      {/* 5 Phase Cards Grid (Responsive: 3 cols on Laptop, 5 on XL, No truncate) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 mb-6">
         {Object.entries(phases).map(([key, item]) => {
           const isSelected = selectedPhase === key;
           const Icon = item.icon;
@@ -123,7 +123,7 @@ export default function SdlcCoreQuestionsRadar() {
               onClick={() => setSelectedPhase(key)}
               className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${
                 isSelected
-                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-blue-400/50 shadow-xl scale-105`
+                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-blue-400/50 shadow-xl scale-[1.02]`
                   : `bg-slate-950/70 border-slate-800 hover:bg-slate-800/40 text-slate-300`
               }`}
             >
@@ -132,12 +132,12 @@ export default function SdlcCoreQuestionsRadar() {
                   <div className={`p-2 rounded-xl bg-gradient-to-br ${item.color} text-white shadow`}>
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-900 text-slate-300">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
                     Phase {item.num}
                   </span>
                 </div>
-                <h3 className="font-extrabold text-xs sm:text-sm text-white">{item.name}</h3>
-                <p className="text-[11px] text-cyan-400 mt-1 font-semibold truncate">{item.question}</p>
+                <h3 className="font-extrabold text-sm text-white">{item.name}</h3>
+                <p className="text-[11px] text-cyan-400 mt-1 font-semibold leading-snug">{item.question}</p>
               </div>
             </button>
           );
@@ -162,7 +162,7 @@ export default function SdlcCoreQuestionsRadar() {
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs sm:text-sm text-slate-200">
             <span className="text-amber-400 font-bold block mb-1 uppercase text-xs">Mục đích tối thượng:</span>
-            <p className="font-medium">{current.purpose}</p>
+            <p className="font-medium leading-relaxed">{current.purpose}</p>
           </div>
         </div>
       )}
@@ -172,9 +172,9 @@ export default function SdlcCoreQuestionsRadar() {
         <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
         <div>
           <span className="text-cyan-400 font-bold uppercase text-xs block mb-0.5">
-            Cơ chế thực thi trong mô hình {mode === "predictive" ? "Predictive" : "Adaptive"}:
+            Cơ chế thực thi trong mô hình {mode === "predictive" ? "Predictive (Thác nước)" : "Adaptive (Agile/UP)"}:
           </span>
-          <span>
+          <span className="leading-relaxed">
             {mode === "predictive"
               ? "Trong dự án Predictive (Waterfall), 5 phase này chạy đúng 1 lần duy nhất theo trình tự nghiêm ngặt; mỗi phase phải nghiệm thu xong 100% mới chuyển tiếp."
               : "Trong dự án Adaptive (Agile/UP), cùng bộ 5 phase này được thu nhỏ và lặp lại trọn vẹn trong mỗi vòng lặp ngắn (Iteration 1-4 tuần) để xuất bản Working Increment."}

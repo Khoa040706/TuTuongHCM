@@ -237,7 +237,8 @@ export default function EventDrivenThinkingArena() {
         </div>
 
         {/* Badges Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        {/* 4 Characteristics Grid (Responsive 2x2 on Laptop, 4 on XL, No line-clamp) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
           {CHARACTERISTICS.map((c) => {
             const Icon = c.icon;
             const isSelected = c.id === selectedCharId;
@@ -253,9 +254,9 @@ export default function EventDrivenThinkingArena() {
               >
                 <div className="flex items-center gap-2 mb-1">
                   <Icon className={`w-4 h-4 ${isSelected ? "text-stone-900" : "text-stone-400"}`} />
-                  <span className="text-xs font-bold line-clamp-1">{c.title}</span>
+                  <span className="text-xs font-bold leading-snug">{c.title}</span>
                 </div>
-                <div className="text-[11px] text-stone-500 line-clamp-1">{c.subtitle}</div>
+                <div className="text-[11px] text-stone-500 mt-0.5 leading-snug">{c.subtitle}</div>
               </button>
             );
           })}

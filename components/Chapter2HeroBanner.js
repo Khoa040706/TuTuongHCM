@@ -242,8 +242,8 @@ export default function Chapter2HeroBanner() {
           </div>
         </div>
 
-        {/* Quick Metrics Bar 5 Columns */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+        {/* Quick Metrics Bar (Responsive: 1-2-3-5 cols) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
           <div className="p-3 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center gap-2.5">
             <RotateCw className="w-4 h-4 text-cyan-400 shrink-0" />
             <div>
@@ -342,7 +342,7 @@ export default function Chapter2HeroBanner() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
               {[
                 { p: "Phase 1: Planning", q: "Why build it?", d: "Business Value & Feasibility Study", color: "from-amber-500 to-orange-600" },
                 { p: "Phase 2: Analysis", q: "What is needed?", d: "Gather Requirements & AS-IS/TO-BE Models", color: "from-emerald-500 to-teal-600" },
@@ -388,7 +388,7 @@ export default function Chapter2HeroBanner() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
               {[
                 { code: "A", name: "Business Actor", def: "Tác nhân bên NGOÀI (Khách hàng, Nhà cung cấp)", note: "Khởi tạo / Nhận giá trị" },
                 { code: "W", name: "Business Worker", def: "Nhân sự bên TRONG (Sales clerk, Kế toán, Kho)", note: "Thực thi các bước trong quy trình" },

@@ -41,23 +41,20 @@ export default function RelationalAlgebraOperatorsSuite() {
     { Maso: "GV01", Hoten: "Lê Đức Phúc", Ngsinh: "1975", QQ: "Đồng Tháp", Hs_luong: "5.2" }
   ];
 
-  // Filtering for Select tab
-  const filteredHocBong = hocbongData.filter((r) => r.diemTB >= scoreThreshold);
-
   return (
-    <div className="my-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden text-slate-800">
+    <div className="my-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden text-slate-800 w-full min-w-0">
       {/* Header */}
       <div className="px-5 py-4 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold flex-shrink-0">
             <Sliders className="w-5 h-5" />
           </div>
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+          <div className="min-w-0">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600 block truncate">
               Interactive Algebra Suite • Mục 2.2 - 2.8
             </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
-              Studio Thao Tác Trực Quan 5 Toán Tử Đại Số Quan Hệ Cơ Bản
+            <h3 className="text-base sm:text-lg font-extrabold text-slate-900 truncate">
+              Studio Thao Tác Trực Quan 5 Toán Tử Đại Số Quan Hệ
             </h3>
           </div>
         </div>
@@ -108,20 +105,20 @@ export default function RelationalAlgebraOperatorsSuite() {
       </div>
 
       {/* Main Studio Body */}
-      <div className="p-6 space-y-5">
+      <div className="p-5 sm:p-6 space-y-5 min-w-0">
         {/* TAB 1: SELECTION (σ) */}
         {activeTab === "select" && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-orange-50/80 border border-orange-200 flex flex-wrap items-center justify-between gap-3 shadow-sm">
-              <div>
+          <div className="space-y-4 min-w-0">
+            <div className="p-4 rounded-xl bg-orange-50/80 border border-orange-200 flex flex-wrap items-center justify-between gap-3 shadow-sm min-w-0">
+              <div className="min-w-0">
                 <div className="text-xs font-bold text-orange-800 uppercase tracking-wider font-mono">
                   Công Thức Đại Số Toán Học:
                 </div>
-                <div className="text-sm font-bold text-orange-950 font-mono mt-0.5">
+                <div className="text-sm font-bold text-orange-950 font-mono mt-0.5 break-words">
                   σ_(DiemTB ≥ {scoreThreshold.toFixed(1)})(HOCBONG)
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-xs">
+              <div className="flex items-center gap-3 text-xs flex-wrap">
                 <span className="text-slate-700 font-medium">Ngưỡng lọc DiemTB ≥</span>
                 <input
                   type="range"
@@ -139,7 +136,7 @@ export default function RelationalAlgebraOperatorsSuite() {
             </div>
 
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-              <table className="w-full text-xs text-left border-collapse">
+              <table className="w-full text-xs text-left border-collapse min-w-[500px]">
                 <thead>
                   <tr className="bg-slate-100 border-b border-slate-200 text-slate-700 font-mono">
                     <th className="p-3">maSoSV</th>
@@ -184,21 +181,21 @@ export default function RelationalAlgebraOperatorsSuite() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed font-sans">
-              💡 <strong>Cơ chế:</strong> Phép chọn <strong>σ</strong> lọc ra các bộ thỏa mãn điều kiện logic $C(t) = \text{True}$. Phép chọn có <strong>tính giao hoán</strong>: $\sigma_{C_1}(\sigma_{C_2}(R)) = \sigma_{C_2}(\sigma_{C_1}(R))$.
+            <p className="text-xs text-slate-600 leading-relaxed font-sans break-words">
+              💡 <strong>Cơ chế:</strong> Phép chọn <strong>σ</strong> lọc ra các bộ thỏa mãn điều kiện logic <em>C(t) = True</em>. Phép chọn có <strong>tính giao hoán</strong>: <em>σ<sub>C1</sub>(σ<sub>C2</sub>(R)) = σ<sub>C2</sub>(σ<sub>C1</sub>(R))</em>.
             </p>
           </div>
         )}
 
         {/* TAB 2: PROJECTION (π) */}
         {activeTab === "project" && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-200 flex flex-wrap items-center justify-between gap-3 shadow-sm">
-              <div>
+          <div className="space-y-4 min-w-0">
+            <div className="p-4 rounded-xl bg-blue-50/80 border border-blue-200 flex flex-wrap items-center justify-between gap-3 shadow-sm min-w-0">
+              <div className="min-w-0">
                 <div className="text-xs font-bold text-blue-800 uppercase tracking-wider font-mono">
                   Công Thức Chiếu Cột:
                 </div>
-                <div className="text-sm font-bold text-blue-950 font-mono mt-0.5">
+                <div className="text-sm font-bold text-blue-950 font-mono mt-0.5 break-words">
                   π_({Object.keys(selectedColumns).filter(k => selectedColumns[k]).join(", ") || "Chưa chọn cột"})(HOCBONG)
                 </div>
               </div>
@@ -227,7 +224,7 @@ export default function RelationalAlgebraOperatorsSuite() {
             </div>
 
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-              <table className="w-full text-xs text-left border-collapse">
+              <table className="w-full text-xs text-left border-collapse min-w-[450px]">
                 <thead>
                   <tr className="bg-slate-100 border-b border-slate-200 text-blue-900 font-mono">
                     <th className="p-3 text-center w-10 text-slate-400">#</th>
@@ -250,7 +247,7 @@ export default function RelationalAlgebraOperatorsSuite() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed font-sans">
+            <p className="text-xs text-slate-600 leading-relaxed font-sans break-words">
               💡 <strong>Cơ chế:</strong> Phép chiếu <strong>π</strong> cắt lấy một tập con các cột $X \subseteq U$, đồng thời tự động <strong>chọn bộ đại diện khử các dòng trùng lặp</strong> theo bản chất tập hợp.
             </p>
           </div>
@@ -258,19 +255,19 @@ export default function RelationalAlgebraOperatorsSuite() {
 
         {/* TAB 3: UNION (∪) */}
         {activeTab === "union" && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-purple-50/80 border border-purple-200 font-mono text-xs text-purple-950 shadow-sm">
+          <div className="space-y-4 min-w-0">
+            <div className="p-4 rounded-xl bg-purple-50/80 border border-purple-200 font-mono text-xs text-purple-950 shadow-sm break-words">
               <span className="font-bold text-purple-800 uppercase">Công thức Hợp (Union):</span> π_(Maso, Hoten)(Canbo ∪ Giangvien)
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 shadow-sm">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 shadow-sm min-w-0">
                 <div className="font-bold text-purple-900 font-mono">Quan hệ 1: Canbo</div>
                 <div className="font-mono text-[11px] text-slate-700 space-y-1">
                   <div>• CB01 - Nguyễn Văn An (1980 - Cần Thơ)</div>
                   <div>• CB02 - Trần Thị Bình (1985 - Cần Thơ)</div>
                 </div>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 shadow-sm">
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2 shadow-sm min-w-0">
                 <div className="font-bold text-purple-900 font-mono">Quan hệ 2: Giangvien</div>
                 <div className="font-mono text-[11px] text-slate-700 space-y-1">
                   <div>• CB02 - Trần Thị Bình (1985 - Cần Thơ)</div>
@@ -279,9 +276,10 @@ export default function RelationalAlgebraOperatorsSuite() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-purple-50/50 border border-purple-200 space-y-2 shadow-sm">
+            <div className="p-4 rounded-xl bg-purple-50/50 border border-purple-200 space-y-2 shadow-sm min-w-0">
               <div className="text-xs font-bold text-purple-900 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-600" /> Kết quả Canbo ∪ Giangvien (3 bộ — đã khử trùng lặp CB02):
+                <Sparkles className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                <span>Kết quả Canbo ∪ Giangvien (3 bộ — đã khử trùng lặp CB02):</span>
               </div>
               <div className="font-mono text-xs text-emerald-900 space-y-1 pl-3 border-l-2 border-purple-500 font-semibold">
                 <div>1. (CB01, Nguyễn Văn An)</div>
@@ -294,11 +292,11 @@ export default function RelationalAlgebraOperatorsSuite() {
 
         {/* TAB 4: INTERSECTION (∩) */}
         {activeTab === "intersect" && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 font-mono text-xs text-emerald-950 shadow-sm">
+          <div className="space-y-4 min-w-0">
+            <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 font-mono text-xs text-emerald-950 shadow-sm break-words">
               <span className="font-bold text-emerald-800 uppercase">Công thức Giao (Intersection):</span> r₁ ∩ r₂ = {"{t | t ∈ r₁ ∧ t ∈ r₂}"}
             </div>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm min-w-0">
               <div className="font-bold text-slate-900">Ví dụ: Tìm SV vừa làm đề tài DT001 vừa làm đề tài DT005:</div>
               <div className="p-3 rounded-lg bg-slate-900 font-mono text-[11px] text-amber-300 overflow-x-auto whitespace-pre shadow-inner">
 {`π_(MaSV, Hoten)(σ_(MaDT='DT001')(SINHVIEN * SV_DT))
@@ -314,18 +312,18 @@ export default function RelationalAlgebraOperatorsSuite() {
 
         {/* TAB 5: DIFFERENCE (−) */}
         {activeTab === "diff" && (
-          <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-rose-50/80 border border-rose-200 font-mono text-xs text-rose-950 shadow-sm">
+          <div className="space-y-4 min-w-0">
+            <div className="p-4 rounded-xl bg-rose-50/80 border border-rose-200 font-mono text-xs text-rose-950 shadow-sm break-words">
               <span className="font-bold text-rose-800 uppercase">Công thức Hiệu (Difference):</span> r − s = {"{t | t ∈ r ∧ t ∉ s}"}
             </div>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm min-w-0">
               <div className="font-bold text-slate-900">Ví dụ: Tìm SV KHÔNG thực hiện đề tài có nơi áp dụng ở Vĩnh Long:</div>
               <div className="p-3 rounded-lg bg-slate-900 font-mono text-[11px] text-rose-300 overflow-x-auto whitespace-pre shadow-inner">
 {`π_(MaSV, Hoten)(SINHVIEN)
    − 
 π_(MaSV, Hoten)(σ_(NoiAD='Vĩnh Long')(SINHVIEN * SV_DT))`}
               </div>
-              <div className="text-slate-600 text-xs pt-1 leading-relaxed">
+              <div className="text-slate-600 text-xs pt-1 leading-relaxed break-words">
                 ⚠️ <strong>Quy tắc bắt buộc:</strong> Các phép Hợp (∪), Giao (∩), Hiệu (−) <strong>chỉ thực hiện được trên hai quan hệ tương thích</strong> (tức cùng chung tập thuộc tính $U$).
               </div>
             </div>

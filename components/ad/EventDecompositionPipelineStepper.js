@@ -157,8 +157,8 @@ export default function EventDecompositionPipelineStepper() {
         </div>
       </div>
 
-      {/* Steps Quick Selector Navigation */}
-      <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+      {/* Steps Quick Selector Navigation (Responsive: 3 cols on Laptop, 6 on XL, No line-clamp) */}
+      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5">
         {STEPS.map((s, idx) => {
           const isSelected = idx === currentStepIndex;
           const isCompleted = idx < currentStepIndex;
@@ -178,8 +178,8 @@ export default function EventDecompositionPipelineStepper() {
                 <span className="text-xs font-bold">Bước {s.step}</span>
                 {isCompleted && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
               </div>
-              <div className={`text-[11px] line-clamp-1 ${isSelected ? "text-emerald-100" : "text-stone-500"}`}>
-                {s.vietnameseTitle.split("&")[0]}
+              <div className={`text-[11px] leading-snug ${isSelected ? "text-emerald-100" : "text-stone-500"}`}>
+                {s.vietnameseTitle}
               </div>
             </button>
           );

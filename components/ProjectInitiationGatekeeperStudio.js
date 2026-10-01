@@ -54,7 +54,7 @@ export default function ProjectInitiationGatekeeperStudio() {
         <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
           Lộ trình 4 hoạt động trọng tâm của Initiation Phase:
         </span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
           {activities.map((act) => (
             <div key={act.num} className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
               <div>
@@ -134,7 +134,7 @@ export default function ProjectInitiationGatekeeperStudio() {
         <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
           Bộ 4 sản phẩm chuyển giao chính thức (Deliverables):
         </span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
           {deliverables.map((del, idx) => (
             <div key={idx} className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs flex flex-col justify-between">
               <div>

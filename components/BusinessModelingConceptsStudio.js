@@ -83,8 +83,8 @@ export default function BusinessModelingConceptsStudio() {
         </div>
       </div>
 
-      {/* 4 Concepts Grid Selector */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+      {/* 4 Concepts Grid Selector (Responsive 2x2 on Laptop, 4 on XL) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3.5 mb-6">
         {Object.entries(concepts).map(([key, item]) => {
           const isSelected = selectedConcept === key;
           const Icon = item.icon;

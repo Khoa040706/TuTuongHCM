@@ -99,7 +99,7 @@ export default function UnifiedProcessPhasesStudio() {
       </div>
 
       {/* 4 Phases Horizontal Navigation */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3 mb-6">
         {Object.entries(upPhases).map(([key, item]) => {
           const isSelected = selectedPhase === key;
           const Icon = item.icon;

@@ -211,7 +211,7 @@ export default function Chapter4HeroBanner() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
           {PIPELINE_STAGES.map((st, idx) => (
             <div
               key={idx}
@@ -221,12 +221,12 @@ export default function Chapter4HeroBanner() {
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-extrabold opacity-70">CHẶNG {st.step}</span>
                   {idx < PIPELINE_STAGES.length - 1 && (
-                    <ArrowRight className={`w-3.5 h-3.5 ${st.arrow} hidden md:inline`} />
+                    <ArrowRight className={`w-3.5 h-3.5 ${st.arrow} hidden xl:inline`} />
                   )}
                 </div>
                 <div className="mt-1 text-sm font-black leading-tight">{st.title}</div>
               </div>
-              <div className="mt-2 text-[11px] font-medium opacity-85">{st.sub}</div>
+              <div className="mt-2 text-[11px] font-medium opacity-85 leading-snug">{st.sub}</div>
             </div>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function Chapter4HeroBanner() {
         </div>
 
         {/* Pillars selector tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-3">
           {CHAPTER4_PILLARS.map((pil) => {
             const isSelected = activePillar === pil.id;
             const IconComponent = pil.icon;
@@ -250,7 +250,7 @@ export default function Chapter4HeroBanner() {
               <button
                 key={pil.id}
                 onClick={() => setActivePillar(pil.id)}
-                className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition-all ${
+                className={`flex flex-col items-center justify-center p-3.5 rounded-2xl border text-center transition-all ${
                   isSelected
                     ? "bg-white border-amber-500 shadow-md ring-2 ring-amber-300/80 -translate-y-0.5"
                     : "bg-white/60 border-stone-200 hover:bg-white hover:border-stone-300 text-stone-600"
@@ -260,7 +260,8 @@ export default function Chapter4HeroBanner() {
                   <IconComponent className="w-4 h-4" />
                 </div>
                 <span className="text-[10px] font-mono font-bold text-stone-400">{pil.badge}</span>
-                <span className="text-xs font-bold text-stone-800 mt-0.5 line-clamp-1">{pil.title.split(" ")[0]} {pil.title.split(" ")[1]}</span>
+                <span className="text-xs font-bold text-stone-800 mt-1 leading-snug text-center">{pil.title}</span>
+                <span className="text-[10px] text-stone-500 leading-tight mt-0.5 text-center hidden sm:block">{pil.subtitle}</span>
               </button>
             );
           })}

@@ -166,8 +166,8 @@ export default function InitiationActivitiesStepper() {
         </div>
       </div>
 
-      {/* 6 Step Progress Indicators */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 my-5">
+      {/* 6 Step Progress Indicators (Responsive: 3 cols on Laptop, 6 on XL, No truncate) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5 my-5">
         {STEPS.map((step, idx) => {
           const isActive = idx === currentStepIdx;
           const isDone = idx < currentStepIdx;
@@ -176,7 +176,7 @@ export default function InitiationActivitiesStepper() {
             <button
               key={step.stepNumber}
               onClick={() => setCurrentStepIdx(idx)}
-              className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
+              className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                 isActive
                   ? "border-emerald-600 bg-emerald-50 text-emerald-950 ring-2 ring-emerald-400/30 shadow-xs font-bold"
                   : isDone
@@ -184,11 +184,11 @@ export default function InitiationActivitiesStepper() {
                   : "border-stone-200 bg-white text-stone-400 hover:text-stone-600"
               }`}
             >
-              <div className="text-[10px] font-mono font-bold uppercase tracking-wider mb-0.5">
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider mb-0.5 text-emerald-800">
                 Bước 0{step.stepNumber}
               </div>
-              <div className="text-xs truncate font-medium">
-                {step.title.split(" ")[0]} {step.title.split(" ")[1] || ""}
+              <div className="text-xs font-semibold leading-snug">
+                {step.title}
               </div>
             </button>
           );

@@ -43,119 +43,122 @@ export default function RelationalModelHeroBanner() {
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-b from-amber-50/40 via-white to-orange-50/30 text-slate-800 shadow-sm my-8">
+    <div className="relative overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-b from-amber-50/40 via-white to-orange-50/30 text-slate-800 shadow-sm my-8 w-full min-w-0">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-1/4 -mt-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 -mb-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Banner Header */}
-      <div className="relative p-6 sm:p-8 border-b border-slate-200 bg-white/80 backdrop-blur-md">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
+      <div className="relative p-5 sm:p-7 md:p-8 border-b border-slate-200 bg-white/80 backdrop-blur-md">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-100 to-amber-100 border border-orange-200 text-orange-800 text-xs font-bold font-mono tracking-wide shadow-sm">
-            <Database className="w-4 h-4 text-orange-600" />
-            CHƯƠNG II: MÔ HÌNH DỮ LIỆU QUAN HỆ
+            <Database className="w-4 h-4 text-orange-600 flex-shrink-0" />
+            <span>CHƯƠNG II: MÔ HÌNH DỮ LIỆU QUAN HỆ</span>
           </div>
           <span className="text-xs font-mono text-slate-600 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200">
             Relational Data Model • E.F. Codd (1970)
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
           Nền Tảng Toán Học & Cấu Trúc Bảng Quan Hệ RDBMS
         </h1>
-        <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
+        <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-600 max-w-3xl leading-relaxed font-sans">
           Khám phá thế giới cơ sở dữ liệu quan hệ: Lý thuyết tập hợp của các <strong className="text-orange-700 font-mono">k-bộ</strong>, giải phẫu bảng dữ liệu, 3 tam trụ ràng buộc toàn vẹn và cỗ máy đại số quan hệ.
         </p>
 
         {/* 4 Technology Pillar Badges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-6">
-          <div className="p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-mono font-bold text-xs">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 mt-5 sm:mt-6">
+          <div className="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
               01
             </div>
-            <div>
-              <div className="text-[11px] font-bold text-slate-900">E.F. Codd 1970</div>
-              <div className="text-[10px] text-slate-500 font-mono">Set Theory Core</div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold text-slate-900 truncate">E.F. Codd 1970</div>
+              <div className="text-[10px] text-slate-500 font-mono truncate">Set Theory Core</div>
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-mono font-bold text-xs">
+          <div className="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
               02
             </div>
-            <div>
-              <div className="text-[11px] font-bold text-slate-900">Tuples & Domains</div>
-              <div className="text-[10px] text-slate-500 font-mono">Tập các k-bộ</div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold text-slate-900 truncate">Tuples & Domains</div>
+              <div className="text-[10px] text-slate-500 font-mono truncate">Tập các k-bộ</div>
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-mono font-bold text-xs">
+          <div className="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
               03
             </div>
-            <div>
-              <div className="text-[11px] font-bold text-slate-900">3 Integrity Pillars</div>
-              <div className="text-[10px] text-slate-500 font-mono">Domain, Entity, Ref</div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold text-slate-900 truncate">3 Ràng Buộc</div>
+              <div className="text-[10px] text-slate-500 font-mono truncate">Domain, Entity, Ref</div>
             </div>
           </div>
 
-          <div className="p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm">
-            <div className="w-8 h-8 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-mono font-bold text-xs">
+          <div className="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200 flex items-center gap-2.5 shadow-sm min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-mono font-bold text-xs flex-shrink-0">
               04
             </div>
-            <div>
-              <div className="text-[11px] font-bold text-slate-900">Relational Algebra</div>
-              <div className="text-[10px] text-slate-500 font-mono">σ, π, ⋈, ×, ∪, −</div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold text-slate-900 truncate">Đại Số Quan Hệ</div>
+              <div className="text-[10px] text-slate-500 font-mono truncate">σ, π, ⋈, ×, ∪, −</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Interactive Studio Navigation Tabs */}
-      <div className="px-6 pt-4 border-b border-slate-200 bg-slate-50/60 flex flex-wrap gap-2">
+      <div className="px-4 sm:px-6 pt-3.5 border-b border-slate-200 bg-slate-50/70 flex flex-wrap gap-2">
         <button
           onClick={() => setActiveTab("anatomy")}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all ${
             activeTab === "anatomy"
               ? "bg-orange-600 text-white shadow-md shadow-orange-950/20"
               : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
-          <Table className="w-4 h-4" /> 1. Giải Phẫu Bảng Quan Hệ (Anatomy)
+          <Table className="w-4 h-4 flex-shrink-0" />
+          <span>1. Giải Phẫu Bảng (Anatomy)</span>
         </button>
 
         <button
           onClick={() => setActiveTab("integrity")}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all ${
             activeTab === "integrity"
               ? "bg-blue-600 text-white shadow-md shadow-blue-950/20"
               : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
-          <ShieldAlert className="w-4 h-4" /> 2. Thử Nghiệm Vi Phạm 3 Ràng Buộc (Sandbox)
+          <ShieldAlert className="w-4 h-4 flex-shrink-0" />
+          <span>2. Thử Nghiệm 3 Ràng Buộc (Sandbox)</span>
         </button>
 
         <button
           onClick={() => setActiveTab("algebra")}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition-all ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl font-bold text-xs transition-all ${
             activeTab === "algebra"
               ? "bg-purple-600 text-white shadow-md shadow-purple-950/20"
               : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
           }`}
         >
-          <Zap className="w-4 h-4" /> 3. Cỗ Máy Đại Số Quan Hệ Live (Algebra Engine)
+          <Zap className="w-4 h-4 flex-shrink-0" />
+          <span>3. Cỗ Máy Đại Số Live (Algebra)</span>
         </button>
       </div>
 
       {/* Tab 1: Relational Matrix Anatomy */}
       {activeTab === "anatomy" && (
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-5 min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <span className="text-[11px] font-mono text-orange-600 uppercase tracking-wider font-bold">
+            <div className="min-w-0">
+              <span className="text-[11px] font-mono text-orange-600 uppercase tracking-wider font-bold block">
                 Interactive Relational Table
               </span>
-              <h3 className="text-lg font-extrabold text-slate-900">
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 truncate">
                 Quan Hệ: <span className="text-orange-600 font-mono">SINH_VIEN</span> (<span className="underline text-amber-700">MaSV</span>, HoTen, NgaySinh, MaKhoa, DiemTB)
               </h3>
             </div>
@@ -164,37 +167,37 @@ export default function RelationalModelHeroBanner() {
             <div className="flex flex-wrap gap-1.5 text-xs font-mono">
               <button
                 onClick={() => setSelectedElement("pk")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "pk" ? "bg-amber-100 border-amber-400 text-amber-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "pk" ? "bg-amber-100 border-amber-400 text-amber-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 🔑 Khóa chính (PK)
               </button>
               <button
                 onClick={() => setSelectedElement("fk")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "fk" ? "bg-blue-100 border-blue-400 text-blue-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "fk" ? "bg-blue-100 border-blue-400 text-blue-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 🔗 Khóa ngoại (FK)
               </button>
               <button
                 onClick={() => setSelectedElement("domain")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "domain" ? "bg-purple-100 border-purple-400 text-purple-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "domain" ? "bg-purple-100 border-purple-400 text-purple-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 🌐 Miền giá trị (Domain)
               </button>
               <button
                 onClick={() => setSelectedElement("tuple")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "tuple" ? "bg-emerald-100 border-emerald-400 text-emerald-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "tuple" ? "bg-emerald-100 border-emerald-400 text-emerald-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 📄 Bộ giá trị (Tuple)
               </button>
               <button
                 onClick={() => setSelectedElement("degree")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "degree" ? "bg-orange-100 border-orange-400 text-orange-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "degree" ? "bg-orange-100 border-orange-400 text-orange-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 📐 Bậc (Degree = 5)
               </button>
               <button
                 onClick={() => setSelectedElement("cardinality")}
-                className={`px-3 py-1.5 rounded-lg border transition-all ${selectedElement === "cardinality" ? "bg-cyan-100 border-cyan-400 text-cyan-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
+                className={`px-2.5 py-1.5 rounded-lg border transition-all ${selectedElement === "cardinality" ? "bg-cyan-100 border-cyan-400 text-cyan-900 font-bold" : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"}`}
               >
                 🔢 Lực lượng (|R| = 4)
               </button>
@@ -203,19 +206,19 @@ export default function RelationalModelHeroBanner() {
 
           {/* Interactive Table Display */}
           <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <table className="w-full text-xs text-left border-collapse font-sans">
+            <table className="w-full text-xs text-left border-collapse font-sans min-w-[550px]">
               <thead>
                 <tr className={`border-b border-slate-200 ${selectedElement === "degree" ? "bg-orange-50 ring-2 ring-orange-400" : "bg-slate-100"}`}>
-                  <th className="p-3.5 text-slate-500 font-mono text-center w-12">#</th>
-                  <th className={`p-3.5 font-bold font-mono ${selectedElement === "pk" ? "bg-amber-100 text-amber-900 ring-2 ring-amber-400" : "text-slate-800"}`}>
+                  <th className="p-3 text-slate-500 font-mono text-center w-12">#</th>
+                  <th className={`p-3 font-bold font-mono ${selectedElement === "pk" ? "bg-amber-100 text-amber-900 ring-2 ring-amber-400" : "text-slate-800"}`}>
                     <u>MaSV</u> (PK)
                   </th>
-                  <th className="p-3.5 font-bold text-slate-800 font-mono">HoTen</th>
-                  <th className="p-3.5 font-bold text-slate-800 font-mono">NgaySinh</th>
-                  <th className={`p-3.5 font-bold font-mono ${selectedElement === "fk" ? "bg-blue-100 text-blue-900 ring-2 ring-blue-400" : "text-slate-800"}`}>
+                  <th className="p-3 font-bold text-slate-800 font-mono">HoTen</th>
+                  <th className="p-3 font-bold text-slate-800 font-mono">NgaySinh</th>
+                  <th className={`p-3 font-bold font-mono ${selectedElement === "fk" ? "bg-blue-100 text-blue-900 ring-2 ring-blue-400" : "text-slate-800"}`}>
                     MaKhoa (FK)
                   </th>
-                  <th className={`p-3.5 font-bold font-mono ${selectedElement === "domain" ? "bg-purple-100 text-purple-900 ring-2 ring-purple-400" : "text-slate-800"}`}>
+                  <th className={`p-3 font-bold font-mono ${selectedElement === "domain" ? "bg-purple-100 text-purple-900 ring-2 ring-purple-400" : "text-slate-800"}`}>
                     DiemTB [0.0..10.0]
                   </th>
                 </tr>
@@ -258,17 +261,19 @@ export default function RelationalModelHeroBanner() {
           </div>
 
           {/* Academic Annotation Card */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2 shadow-sm min-w-0">
             <div className="font-bold text-slate-900 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-orange-600" />
-              {selectedElement === "pk" && "1. Khóa Chính (Primary Key — PK):"}
-              {selectedElement === "fk" && "2. Khóa Ngoại (Foreign Key — FK):"}
-              {selectedElement === "domain" && "3. Miền Giá Trị (Domain — dom(A)): "}
-              {selectedElement === "tuple" && "4. Bộ Giá Trị (Tuple / k-bộ):"}
-              {selectedElement === "degree" && "5. Bậc Của Quan Hệ (Degree — n):"}
-              {selectedElement === "cardinality" && "6. Lực Lượng Quan Hệ (Cardinality — |R|):"}
+              <Sparkles className="w-4 h-4 text-orange-600 flex-shrink-0" />
+              <span>
+                {selectedElement === "pk" && "1. Khóa Chính (Primary Key — PK):"}
+                {selectedElement === "fk" && "2. Khóa Ngoại (Foreign Key — FK):"}
+                {selectedElement === "domain" && "3. Miền Giá Trị (Domain — dom(A)): "}
+                {selectedElement === "tuple" && "4. Bộ Giá Trị (Tuple / k-bộ):"}
+                {selectedElement === "degree" && "5. Bậc Của Quan Hệ (Degree — n):"}
+                {selectedElement === "cardinality" && "6. Lực Lượng Quan Hệ (Cardinality — |R|):"}
+              </span>
             </div>
-            <p className="text-slate-600 leading-relaxed font-sans">
+            <p className="text-slate-600 leading-relaxed font-sans break-words">
               {selectedElement === "pk" && "Thuộc tính MaSV là khóa chính. Đặc điểm: Giá trị không bao giờ được NULL (Entity Integrity) và định danh duy nhất từng bản ghi sinh viên trong toàn bộ trường đại học."}
               {selectedElement === "fk" && "Thuộc tính MaKhoa là khóa ngoại tham chiếu đến bảng KHOA. Giá trị của MaKhoa bắt buộc phải tồn tại trong bảng KHOA hoặc mang giá trị NULL (Referential Integrity)."}
               {selectedElement === "domain" && "Miền giá trị dom(DiemTB) là tập số thực trong khoảng [0.0 .. 10.0]. Mọi phép gán ngoài miền này (như 15 hay chuỗi ký tự) đều bị DBMS từ chối (Domain Integrity)."}
@@ -282,82 +287,80 @@ export default function RelationalModelHeroBanner() {
 
       {/* Tab 2: Integrity Violations Sandbox */}
       {activeTab === "integrity" && (
-        <div className="p-6 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <span className="text-[11px] font-mono text-blue-600 uppercase tracking-wider font-bold">
-                DBMS Security Engine • Tam Trụ Ràng Buộc Toàn Vẹn
-              </span>
-              <h3 className="text-lg font-extrabold text-slate-900">
-                Thử Nghiệm Vi Phạm Các Ràng Buộc Toàn Vẹn Của RDBMS
-              </h3>
-            </div>
+        <div className="p-4 sm:p-6 space-y-5 min-w-0">
+          <div>
+            <span className="text-[11px] font-mono text-blue-600 uppercase tracking-wider font-bold block">
+              DBMS Security Engine • Tam Trụ Ràng Buộc Toàn Vẹn
+            </span>
+            <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
+              Thử Nghiệm Vi Phạm Các Ràng Buộc Toàn Vẹn Của RDBMS
+            </h3>
           </div>
 
           {/* Test Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
             <button
               onClick={() => setViolationScenario("pk_null")}
-              className={`p-3.5 rounded-xl border text-left transition-all space-y-1 shadow-sm ${
+              className={`p-3 rounded-xl border text-left transition-all space-y-1 shadow-sm min-w-0 ${
                 violationScenario === "pk_null"
                   ? "bg-rose-50 border-rose-400 text-rose-950 ring-2 ring-rose-400"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
               }`}
             >
-              <div className="font-bold flex items-center gap-1.5 text-rose-600">
-                <XCircle className="w-4 h-4" /> 1. Chèn PK = NULL
+              <div className="font-bold flex items-center gap-1.5 text-rose-600 truncate">
+                <XCircle className="w-4 h-4 flex-shrink-0" /> 1. Chèn PK = NULL
               </div>
-              <p className="text-[11px] text-slate-500">Vi phạm Toàn vẹn Thực thể (Entity Integrity)</p>
+              <p className="text-[11px] text-slate-500 truncate">Toàn vẹn Thực thể (Entity)</p>
             </button>
 
             <button
               onClick={() => setViolationScenario("fk_invalid")}
-              className={`p-3.5 rounded-xl border text-left transition-all space-y-1 shadow-sm ${
+              className={`p-3 rounded-xl border text-left transition-all space-y-1 shadow-sm min-w-0 ${
                 violationScenario === "fk_invalid"
                   ? "bg-rose-50 border-rose-400 text-rose-950 ring-2 ring-rose-400"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
               }`}
             >
-              <div className="font-bold flex items-center gap-1.5 text-rose-600">
-                <XCircle className="w-4 h-4" /> 2. Chèn FK Lạ ('AI_X')
+              <div className="font-bold flex items-center gap-1.5 text-rose-600 truncate">
+                <XCircle className="w-4 h-4 flex-shrink-0" /> 2. Chèn FK Lạ ('AI_X')
               </div>
-              <p className="text-[11px] text-slate-500">Vi phạm Toàn vẹn Tham chiếu (Referential)</p>
+              <p className="text-[11px] text-slate-500 truncate">Toàn vẹn Tham chiếu (Ref)</p>
             </button>
 
             <button
               onClick={() => setViolationScenario("domain_error")}
-              className={`p-3.5 rounded-xl border text-left transition-all space-y-1 shadow-sm ${
+              className={`p-3 rounded-xl border text-left transition-all space-y-1 shadow-sm min-w-0 ${
                 violationScenario === "domain_error"
                   ? "bg-rose-50 border-rose-400 text-rose-950 ring-2 ring-rose-400"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
               }`}
             >
-              <div className="font-bold flex items-center gap-1.5 text-rose-600">
-                <XCircle className="w-4 h-4" /> 3. Nhập Điểm = 15.0
+              <div className="font-bold flex items-center gap-1.5 text-rose-600 truncate">
+                <XCircle className="w-4 h-4 flex-shrink-0" /> 3. Nhập Điểm = 15.0
               </div>
-              <p className="text-[11px] text-slate-500">Vi phạm Toàn vẹn Miền giá trị (Domain)</p>
+              <p className="text-[11px] text-slate-500 truncate">Toàn vẹn Miền giá trị (Domain)</p>
             </button>
 
             <button
               onClick={() => setViolationScenario("valid")}
-              className={`p-3.5 rounded-xl border text-left transition-all space-y-1 shadow-sm ${
+              className={`p-3 rounded-xl border text-left transition-all space-y-1 shadow-sm min-w-0 ${
                 violationScenario === "valid"
                   ? "bg-emerald-50 border-emerald-400 text-emerald-950 ring-2 ring-emerald-400"
                   : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
               }`}
             >
-              <div className="font-bold flex items-center gap-1.5 text-emerald-600">
-                <CheckCircle2 className="w-4 h-4" /> 4. Chèn Hợp Lệ 100%
+              <div className="font-bold flex items-center gap-1.5 text-emerald-600 truncate">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> 4. Chèn Hợp Lệ 100%
               </div>
-              <p className="text-[11px] text-slate-500">Thỏa mãn cả 3 ràng buộc toàn vẹn</p>
+              <p className="text-[11px] text-slate-500 truncate">Thỏa mãn 3 ràng buộc</p>
             </button>
           </div>
 
           {/* Terminal Feedback Display (Dark Terminal) */}
-          <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 font-mono text-xs shadow-md">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2 text-[11px] text-slate-400">
-              <span>SQL Execution & Constraint Validation Output:</span>
-              <span className="text-orange-400 font-bold">RDBMS Engine: PostgreSQL / Oracle</span>
+          <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 font-mono text-xs shadow-md overflow-hidden min-w-0">
+            <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-2 text-[11px] text-slate-400 gap-2">
+              <span>SQL Execution & Constraint Validation:</span>
+              <span className="text-orange-400 font-bold">RDBMS: PostgreSQL / Oracle</span>
             </div>
 
             {violationScenario === "none" && (
@@ -367,56 +370,68 @@ export default function RelationalModelHeroBanner() {
             )}
 
             {violationScenario === "pk_null" && (
-              <div className="space-y-2 text-red-300">
-                <div className="text-slate-300">
-                  <span className="text-blue-400 font-bold">SQL&gt;</span> INSERT INTO SINH_VIEN VALUES (<span className="bg-red-950 px-1 text-red-300 font-bold">NULL</span>, 'Lê Văn Lỗi', '2004-05-10', 'CNTT', 8.0);
+              <div className="space-y-2 text-red-300 overflow-x-auto">
+                <div className="text-slate-400 font-bold">-- Câu lệnh kiểm thử:</div>
+                <div className="text-amber-300 whitespace-nowrap">
+                  INSERT INTO SINH_VIEN (MaSV, HoTen, NgaySinh, MaKhoa, DiemTB) VALUES (NULL, &apos;Lê Văn Test&apos;, &apos;2004-05-10&apos;, &apos;CNTT&apos;, 7.0);
                 </div>
-                <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 space-y-1">
-                  <div className="font-bold text-red-400">[ERROR ORA-01400] cannot insert NULL into ("SINH_VIEN"."MASV")</div>
-                  <div className="text-[11px] text-red-300 font-sans leading-relaxed">
-                    <strong>Giải thích học thuật:</strong> Toàn vẹn thực thể (Entity Integrity) quy định mọi thành phần của khóa chính (Primary Key) phải mang giá trị xác định và <strong>tuyệt đối không được phép là NULL</strong> để đảm bảo khả năng định danh duy nhất từng thực thể.
+                <div className="p-3 rounded-lg bg-red-950/40 border border-red-800/80 text-red-400 space-y-1 mt-2">
+                  <div className="font-bold text-red-300 flex items-center gap-2">
+                    <XCircle className="w-4 h-4 flex-shrink-0" /> ERROR: null value in column &quot;MaSV&quot; violates not-null constraint
+                  </div>
+                  <div className="text-[11px] text-slate-300 font-sans">
+                    <strong>Giải thích học thuật:</strong> Toàn vẹn thực thể (Entity Integrity) quy định Khóa chính định danh duy nhất từng bản ghi, không được phép rỗng (NULL). RDBMS tự động từ chối giao dịch INSERT này!
                   </div>
                 </div>
               </div>
             )}
 
             {violationScenario === "fk_invalid" && (
-              <div className="space-y-2 text-red-300">
-                <div className="text-slate-300">
-                  <span className="text-blue-400 font-bold">SQL&gt;</span> INSERT INTO SINH_VIEN VALUES ('SV005', 'Phạm Văn Bẫy', '2004-08-12', <span className="bg-red-950 px-1 text-red-300 font-bold">'AI_UNKNOWN'</span>, 7.5);
+              <div className="space-y-2 text-red-300 overflow-x-auto">
+                <div className="text-slate-400 font-bold">-- Câu lệnh kiểm thử:</div>
+                <div className="text-amber-300 whitespace-nowrap">
+                  INSERT INTO SINH_VIEN (MaSV, HoTen, NgaySinh, MaKhoa, DiemTB) VALUES (&apos;SV099&apos;, &apos;Đỗ Nam Trung&apos;, &apos;2004-09-12&apos;, &apos;AI_X&apos;, 8.0);
                 </div>
-                <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 space-y-1">
-                  <div className="font-bold text-red-400">[ERROR ORA-02291] integrity constraint (FK_KHOA) violated - parent key not found</div>
-                  <div className="text-[11px] text-red-300 font-sans leading-relaxed">
-                    <strong>Giải thích học thuật:</strong> Toàn vẹn tham chiếu (Referential Integrity) quy định giá trị của khóa ngoại <code>MaKhoa = 'AI_UNKNOWN'</code> bắt buộc phải tồn tại trong cột khóa chính của bảng cha <code>KHOA</code>, hoặc phải là giá trị NULL.
+                <div className="p-3 rounded-lg bg-red-950/40 border border-red-800/80 text-red-400 space-y-1 mt-2">
+                  <div className="font-bold text-red-300 flex items-center gap-2">
+                    <XCircle className="w-4 h-4 flex-shrink-0" /> ERROR: insert or update on table &quot;SINH_VIEN&quot; violates foreign key constraint &quot;fk_sinhvien_khoa&quot;
+                  </div>
+                  <div className="text-[11px] text-slate-300 font-sans">
+                    <strong>Giải thích học thuật:</strong> Toàn vẹn tham chiếu (Referential Integrity) quy định giá trị khóa ngoại MaKhoa = &apos;AI_X&apos; bắt buộc phải tồn tại trước trong bảng cha KHOA. Do bảng KHOA chỉ có [CNTT, HTTT, KTPM], hệ thống lập tức rollback!
                   </div>
                 </div>
               </div>
             )}
 
             {violationScenario === "domain_error" && (
-              <div className="space-y-2 text-red-300">
-                <div className="text-slate-300">
-                  <span className="text-blue-400 font-bold">SQL&gt;</span> INSERT INTO SINH_VIEN VALUES ('SV005', 'Hoàng Văn Sai', '2004-09-18', 'CNTT', <span className="bg-red-950 px-1 text-red-300 font-bold">15.5</span>);
+              <div className="space-y-2 text-red-300 overflow-x-auto">
+                <div className="text-slate-400 font-bold">-- Câu lệnh kiểm thử:</div>
+                <div className="text-amber-300 whitespace-nowrap">
+                  INSERT INTO SINH_VIEN (MaSV, HoTen, NgaySinh, MaKhoa, DiemTB) VALUES (&apos;SV088&apos;, &apos;Hoàng Văn Genius&apos;, &apos;2004-02-18&apos;, &apos;CNTT&apos;, 15.0);
                 </div>
-                <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-red-200 space-y-1">
-                  <div className="font-bold text-red-400">[ERROR ORA-02290] check constraint (CK_DIEMTB_0_10) violated</div>
-                  <div className="text-[11px] text-red-300 font-sans leading-relaxed">
-                    <strong>Giải thích học thuật:</strong> Toàn vẹn miền giá trị (Domain Integrity) quy định mọi giá trị gán cho thuộc tính <code>DiemTB</code> phải thuộc tập hợp hợp lệ <code>dom(DiemTB) = [0.0 .. 10.0]</code>. Giá trị 15.5 vượt quá ngưỡng cho phép nên bị từ chối!
+                <div className="p-3 rounded-lg bg-red-950/40 border border-red-800/80 text-red-400 space-y-1 mt-2">
+                  <div className="font-bold text-red-300 flex items-center gap-2">
+                    <XCircle className="w-4 h-4 flex-shrink-0" /> ERROR: new row for relation &quot;SINH_VIEN&quot; violates check constraint &quot;chk_diemtb_range&quot;
+                  </div>
+                  <div className="text-[11px] text-slate-300 font-sans">
+                    <strong>Giải thích học thuật:</strong> Toàn vẹn miền giá trị (Domain Integrity) quy định DiemTB phải thuộc [0.0 .. 10.0]. Điểm 15.0 vượt quá miền giá trị cho phép của thuộc tính, RDBMS chặn hoàn toàn.
                   </div>
                 </div>
               </div>
             )}
 
             {violationScenario === "valid" && (
-              <div className="space-y-2 text-emerald-300">
-                <div className="text-slate-300">
-                  <span className="text-blue-400 font-bold">SQL&gt;</span> INSERT INTO SINH_VIEN VALUES ('SV005', 'Lê Quỳnh Nga', '2004-12-05', 'CNTT', 8.8);
+              <div className="space-y-2 text-emerald-300 overflow-x-auto">
+                <div className="text-slate-400 font-bold">-- Câu lệnh kiểm thử:</div>
+                <div className="text-amber-300 whitespace-nowrap">
+                  INSERT INTO SINH_VIEN (MaSV, HoTen, NgaySinh, MaKhoa, DiemTB) VALUES (&apos;SV005&apos;, &apos;Vũ Thu Hà&apos;, &apos;2004-12-05&apos;, &apos;CNTT&apos;, 8.8);
                 </div>
-                <div className="p-3 rounded-xl bg-emerald-950/50 border border-emerald-500/40 text-emerald-200 space-y-1">
-                  <div className="font-bold text-emerald-400">[SUCCESS COMMIT] 1 row inserted. Transaction committed successfully.</div>
-                  <div className="text-[11px] text-emerald-300 font-sans leading-relaxed">
-                    <strong>Tuyệt vời!</strong> Thao tác thỏa mãn đồng thời: Khóa chính không NULL (SV005), Khóa ngoại hợp lệ ('CNTT' có trong bảng KHOA), và ĐiểmTB (8.8) nằm đúng trong miền [0.0 .. 10.0].
+                <div className="p-3 rounded-lg bg-emerald-950/40 border border-emerald-800/80 text-emerald-400 space-y-1 mt-2">
+                  <div className="font-bold text-emerald-300 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" /> INSERT 0 1 — GIAO DỊCH THÀNH CÔNG 100%!
+                  </div>
+                  <div className="text-[11px] text-slate-300 font-sans">
+                    <strong>Kết quả:</strong> Thỏa mãn đồng thời cả 3 ràng buộc toàn vẹn: PK không NULL & không trùng, FK tồn tại trong bảng KHOA, DiemTB hợp lệ trong miền [0.0 .. 10.0].
                   </div>
                 </div>
               </div>
@@ -427,13 +442,13 @@ export default function RelationalModelHeroBanner() {
 
       {/* Tab 3: Live Relational Algebra Engine */}
       {activeTab === "algebra" && (
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-5 min-w-0">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <span className="text-[11px] font-mono text-purple-600 uppercase tracking-wider font-bold">
+              <span className="text-[11px] font-mono text-purple-600 uppercase tracking-wider font-bold block">
                 Relational Algebra Sandbox
               </span>
-              <h3 className="text-lg font-extrabold text-slate-900">
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
                 Mô Phỏng Trực Quan Các Phép Toán Đại Số Quan Hệ
               </h3>
             </div>
@@ -483,10 +498,10 @@ export default function RelationalModelHeroBanner() {
             </div>
           </div>
 
-          {/* Algebra Operation Showcase (Dark Terminal for formulas & result) */}
-          <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-md">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
-              <div className="text-xs font-mono font-bold text-amber-300">
+          {/* Algebra Operation Showcase */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-md min-w-0 overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-2.5 gap-2">
+              <div className="text-xs font-mono font-bold text-amber-300 break-words">
                 {algebraOp === "select" && "Cú pháp toán học: σ (DiemTB >= 8.0) (SINH_VIEN)"}
                 {algebraOp === "project" && "Cú pháp toán học: π (MaSV, HoTen, DiemTB) (SINH_VIEN)"}
                 {algebraOp === "join" && "Cú pháp toán học: SINH_VIEN ⋈ (SINH_VIEN.MaKhoa = KHOA.MaKhoa) KHOA"}
@@ -500,7 +515,7 @@ export default function RelationalModelHeroBanner() {
             {/* Dynamic Results Table */}
             <div className="overflow-x-auto text-xs font-mono">
               {algebraOp === "select" && (
-                <table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-950 text-slate-400 border-b border-slate-800">
                       <th className="p-2.5">MaSV</th>
@@ -530,20 +545,20 @@ export default function RelationalModelHeroBanner() {
               )}
 
               {algebraOp === "project" && (
-                <table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse min-w-[400px]">
                   <thead>
                     <tr className="bg-slate-950 text-slate-400 border-b border-slate-800">
-                      <th className="p-2.5 text-purple-300">MaSV</th>
-                      <th className="p-2.5 text-purple-300">HoTen</th>
+                      <th className="p-2.5">MaSV</th>
+                      <th className="p-2.5">HoTen</th>
                       <th className="p-2.5 text-purple-300">DiemTB</th>
                     </tr>
                   </thead>
                   <tbody>
                     {sampleStudents.map((st) => (
                       <tr key={st.id} className="border-b border-slate-800 text-slate-300">
-                        <td className="p-2.5 font-bold text-purple-400">{st.maSV}</td>
+                        <td className="p-2.5 font-bold">{st.maSV}</td>
                         <td className="p-2.5">{st.hoTen}</td>
-                        <td className="p-2.5 text-amber-300 font-bold">{st.diemTB}</td>
+                        <td className="p-2.5 font-bold text-amber-300">{st.diemTB.toFixed(1)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -551,7 +566,7 @@ export default function RelationalModelHeroBanner() {
               )}
 
               {algebraOp === "join" && (
-                <table className="w-full text-left border-collapse">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-950 text-slate-400 border-b border-slate-800">
                       <th className="p-2.5">MaSV</th>

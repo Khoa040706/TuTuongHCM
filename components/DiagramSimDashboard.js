@@ -925,8 +925,8 @@ export default function DiagramSimDashboard({ onClose }) {
               {/* 📚 RIGHT COLUMN (40%): DEEP CONTENT TABS */}
               <div className="lg:col-span-5 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto space-y-4">
                 <div>
-                  {/* Segmented Modal Tabs */}
-                  <div className="grid grid-cols-4 gap-1 p-1 bg-stone-100 rounded-2xl border border-stone-200 mb-4">
+                  {/* Segmented Modal Tabs (Responsive: 2 cols on narrow width, 4 on sm+) */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-stone-100 rounded-2xl border border-stone-200 mb-4">
                     {[
                       { id: "theory", label: "Lý thuyết" },
                       { id: "notation", label: "Ký hiệu" },

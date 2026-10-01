@@ -169,24 +169,38 @@ export default function FullyDressedTemplateInteractiveStudio() {
       {/* Mode 1: 9 Fields Deep Dive Inspector */}
       {viewMode === "fields" && (
         <div className="mt-6 space-y-6">
-          {/* 9 Field Pills */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-1.5">
+          {/* 9 Field Pills (Responsive 3x3 on Laptop, 9 on Ultra-wide) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-9 gap-2.5">
             {FIELDS.map(f => {
               const isSelected = selectedFieldId === f.id;
               return (
                 <button
                   key={f.id}
                   onClick={() => setSelectedFieldId(f.id)}
-                  className={`p-2 rounded-xl border text-center transition-all ${
+                  className={`p-3 rounded-xl border text-left xl:text-center transition-all ${
                     isSelected
                       ? "bg-emerald-600 text-white border-emerald-600 shadow-md font-bold scale-[1.02]"
                       : "bg-white/80 hover:bg-white text-stone-700 border-stone-200"
                   }`}
                 >
-                  <span className={`block font-mono text-[10px] font-black ${isSelected ? "text-white/80" : "text-stone-400"}`}>
-                    #{f.num}
-                  </span>
-                  <span className="text-[11px] line-clamp-1">{f.name.split(" ")[0]}</span>
+                  <div className="flex items-center justify-between xl:justify-center gap-1.5 mb-1">
+                    <span className={`font-mono text-[10px] font-black px-1.5 py-0.5 rounded ${
+                      isSelected ? "bg-white/20 text-white" : "bg-stone-100 text-stone-600"
+                    }`}>
+                      Trường #{f.num}
+                    </span>
+                    <span className={`text-[9px] font-semibold uppercase px-1.5 py-0.5 rounded hidden sm:inline xl:hidden ${
+                      isSelected ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-800"
+                    }`}>
+                      {f.badge}
+                    </span>
+                  </div>
+                  <div className={`text-xs font-bold leading-snug ${isSelected ? "text-white" : "text-stone-900"}`}>
+                    {f.name}
+                  </div>
+                  <div className={`text-[11px] leading-tight mt-0.5 xl:hidden ${isSelected ? "text-emerald-100" : "text-stone-500"}`}>
+                    {f.title}
+                  </div>
                 </button>
               );
             })}

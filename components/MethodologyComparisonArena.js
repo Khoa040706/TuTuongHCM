@@ -1,127 +1,145 @@
 "use client";
+
 import React, { useState } from "react";
 import { 
+  GitCompare, 
   Workflow, 
   RotateCw, 
-  Zap, 
+  Sparkles, 
   CheckCircle, 
   XCircle, 
-  HelpCircle, 
-  ArrowRight, 
-  Sparkles, 
-  Layers, 
-  Clock, 
-  FileCode, 
-  ShieldCheck 
+  ShieldCheck, 
+  Zap,
+  ArrowRight,
+  TrendingUp,
+  Activity,
+  Award
 } from "lucide-react";
 
 export default function MethodologyComparisonArena() {
-  const [selectedMethod, setSelectedMethod] = useState("waterfall"); // "waterfall" | "up" | "agile"
+  const [selectedMethod, setSelectedMethod] = useState("up"); // "waterfall" | "up" | "agile"
 
   const methodologies = {
     waterfall: {
       id: "waterfall",
-      name: "Structured / Waterfall",
-      tag: "Tuần tự (Sequential, One-Pass)",
-      badgeColor: "bg-blue-500/20 text-blue-300 border-blue-400/40",
-      accentBg: "from-blue-600 to-indigo-700",
+      name: "Traditional SDLC (Waterfall)",
+      tag: "Tuyến tính & Kế hoạch hóa",
       icon: Workflow,
-      philosophy: "Tiếp cận tuyến tính, chặt chẽ từng bước. Giai đoạn sau chỉ bắt đầu khi giai đoạn trước đã được nghiệm thu và đóng băng hoàn toàn (Sign-off & Freeze).",
+      color: "from-blue-600 to-cyan-600",
+      accentBg: "from-blue-500 to-indigo-600",
+      badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/40",
+      accentBorder: "border-blue-400",
+      philosophy: "Tiến trình tuyến tính, tuần tự nghiêm ngặt: Mỗi pha phải hoàn tất 100% và được ký duyệt (Sign-off) mới được chuyển sang pha kế tiếp.",
       flowSteps: [
-        "1. Requirements (Thu thập & Đóng băng yêu cầu)",
-        "2. System Design (Thiết kế kiến trúc toàn diện)",
-        "3. Implementation (Lập trình toàn bộ hệ thống)",
-        "4. Testing & Verification (Kiểm thử hệ thống)",
-        "5. Deployment & Maintenance (Bàn giao & Vận hành)"
+        "1. Yêu cầu (Scope Locked)",
+        "2. Thiết kế (Architecture SDD)",
+        "3. Lập trình (Code Build)",
+        "4. Kiểm thử (Testing QA)",
+        "5. Triển khai (Go-Live)"
       ],
       pros: [
-        "Cấu trúc rõ ràng, dễ quản lý tiến độ và ngân sách cố định.",
-        "Tài liệu hóa (Documentation) vô cùng chi tiết và chuẩn mực.",
-        "Khách hàng biết chính xác chi phí và sản phẩm bàn giao từ đầu."
+        "Quy trình cực kỳ rõ ràng, dễ quản lý tiến độ và chi phí cố định (Fixed-price contracts).",
+        "Tài liệu đặc tả (Documentation) chi tiết, toàn diện và có tính pháp lý cao.",
+        "Phù hợp với các dự án có yêu cầu ổn định ngay từ đầu, ít biến động."
       ],
       cons: [
-        "Rất khó và tốn kém khi cần thay đổi yêu cầu ở giai đoạn muộn.",
-        "Khách hàng chỉ thấy phần mềm chạy được ở giai đoạn cuối dự án.",
-        "Rủi ro thất bại cao nếu khâu phân tích ban đầu có sai sót."
+        "Cực kỳ khó thích ứng khi khách hàng thay đổi yêu cầu giữa chừng.",
+        "Khách hàng chỉ nhìn thấy sản phẩm ở cuối chu kỳ (Sau nhiều tháng hoặc hàng năm).",
+        "Rủi ro phát hiện lỗi kiến trúc muộn ở pha Kiểm thử, dẫn đến chi phí sửa chữa khổng lồ."
       ],
-      bestFor: "Dự án có **Requirements đã hiểu rất rõ, ổn định, phạm vi cố định**, các hệ thống chính phủ, quốc phòng, y tế đòi hỏi tài liệu tuân thủ nghiêm ngặt."
+      bestFor: "Dự án quân sự, y tế, xây dựng cầu đường, hệ thống kiểm soát bay — nơi <strong>sai số là cấm kỵ</strong> và <strong>yêu cầu đã được xác định chắc chắn 100%</strong> từ đầu."
     },
     up: {
       id: "up",
-      name: "Object-Oriented (Unified Process – UP)",
-      tag: "Lặp & Tăng dần (Iterative & Incremental)",
-      badgeColor: "bg-purple-500/20 text-purple-300 border-purple-400/40",
-      accentBg: "from-purple-600 to-violet-700",
+      name: "Unified Process (UP)",
+      tag: "Lặp & Tăng dần theo Kiến trúc",
       icon: RotateCw,
-      philosophy: "Tổ chức xoay quanh mô hình hướng đối tượng (OO), Use Cases và kiến trúc phần mềm. Chia dự án thành các chu kỳ lặp tăng dần và mô hình hóa chặt chẽ bằng UML.",
+      color: "from-purple-600 to-pink-600",
+      accentBg: "from-purple-500 to-pink-600",
+      badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
+      accentBorder: "border-purple-400",
+      philosophy: "Phương pháp luận hướng đối tượng (OO): Lấy kiến trúc làm trọng tâm (Architecture-centric), dẫn dắt bởi Use Cases và chia nhỏ dự án thành các vòng lặp lặp lại (Iterations).",
       flowSteps: [
-        "1. Inception (Khởi tạo: Định hình phạm vi & Use Cases cốt lõi)",
-        "2. Elaboration (Chi tiết hóa: Thiết kế kiến trúc & Giảm thiểu rủi ro)",
-        "3. Construction (Xây dựng: Lập trình tăng dần các tính năng)",
-        "4. Transition (Chuyển giao: Kiểm thử beta, đào tạo & Go-live)"
+        "1. Inception (Khởi tạo phạm vi)",
+        "2. Elaboration (Khung kiến trúc)",
+        "3. Construction (Code tăng dần)",
+        "4. Transition (Chuyển giao)",
+        "5. Release (Working Increment)"
       ],
       pros: [
-        "Giảm thiểu rủi ro kiến trúc sớm ngay từ giai đoạn Elaboration.",
-        "Tận dụng tối đa sức mạnh của lập trình hướng đối tượng và UML.",
-        "Khách hàng có thể trải nghiệm các bản phát hành tăng dần."
+        "Triệt tiêu rủi ro kiến trúc sớm ngay từ pha Elaboration.",
+        "Khách hàng liên tục thấy phần mềm tiến triển qua từng bản tăng dần (Working Increments).",
+        "Cân bằng hoàn hảo giữa tính linh hoạt thích ứng và tính kỷ luật kiến trúc vững chắc."
       ],
       cons: [
-        "Quy trình khá phức tạp, đòi hỏi đội ngũ thành thạo UML sâu sắc.",
-        "Chi phí quản lý và duy trì tài liệu mô hình hóa tương đối cao."
+        "Quy trình tương đối phức tạp và đồ sộ đối với các dự án nhỏ hoặc startup.",
+        "Đòi hỏi đội ngũ kiến trúc sư và BA có trình độ mô hình hóa hướng đối tượng vững vàng.",
+        "Vẫn yêu cầu khối lượng tài liệu thiết kế nhất định so với Agile thuần túy."
       ],
-      bestFor: "Hệ thống quy mô **vừa và lớn, có cấu trúc hướng đối tượng phức tạp**, yêu cầu kiểm soát rủi ro kiến trúc nghiêm ngặt."
+      bestFor: "Dự án phần mềm doanh nghiệp quy mô vừa và lớn (Banking, ERP, E-commerce đa kênh) cần <strong>kiến trúc vững chãi</strong> nhưng <strong>yêu cầu vẫn có thể tinh chỉnh theo thời gian</strong>."
     },
     agile: {
       id: "agile",
       name: "Agile / Scrum",
-      tag: "Linh hoạt & Thích ứng (Adaptive Sprints)",
-      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-400/40",
-      accentBg: "from-emerald-600 to-teal-700",
+      tag: "Thích ứng nhanh & Tinh gọn",
       icon: Zap,
-      philosophy: "Chu kỳ lặp ngắn (Sprints 1-4 tuần). Đặt con người và sự tương tác lên trên quy trình; sẵn sàng chào đón thay đổi yêu cầu để tạo ra giá trị nhanh nhất.",
+      color: "from-emerald-600 to-teal-600",
+      accentBg: "from-emerald-500 to-teal-600",
+      badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+      accentBorder: "border-emerald-400",
+      philosophy: "Ưu tiên con người và sự tương tác hơn quy trình và công cụ; ưu tiên phần mềm chạy tốt hơn tài liệu đồ sộ; thích ứng tức thì với sự thay đổi.",
       flowSteps: [
-        "1. Product Backlog (Danh sách User Stories ưu tiên)",
-        "2. Sprint Planning (Lập kế hoạch Sprint 2 tuần)",
-        "3. Daily Scrum & Development (Phát triển & Họp hàng ngày)",
-        "4. Sprint Review & Demo (Trình diễn phần mềm chạy được)",
-        "5. Retrospective (Rút kinh nghiệm & Lặp lại chu kỳ mới)"
+        "1. Product Backlog Refinement",
+        "2. Sprint Planning (1-4w)",
+        "3. Daily Scrum & Build",
+        "4. Sprint Review & Demo",
+        "5. Retrospective"
       ],
       pros: [
-        "Cực kỳ linh hoạt, đón nhận thay đổi yêu cầu bất kỳ lúc nào.",
-        "Đưa phần mềm chạy được đến tay người dùng cực nhanh (Fast MVP).",
-        "Khách hàng tham gia liên tục, đảm bảo sản phẩm đúng nhu cầu."
+        "Tốc độ đưa tính năng ra thị trường (Time-to-Market) nhanh vượt trội.",
+        "Khách hàng đóng vai trò Product Owner tham gia liên tục vào quá trình phát triển.",
+        "Loại bỏ tối đa lãng phí tài liệu hình thức (Lean & Value-focused)."
       ],
       cons: [
-        "Khó ước tính tổng chi phí và thời hạn bàn giao cuối cùng từ đầu.",
-        "Đòi hỏi khách hàng phải dành nhiều thời gian tương tác liên tục.",
-        "Ít chú trọng tài liệu chi tiết, dễ mất dấu kiến trúc nếu không kỷ luật."
+        "Dễ bị phình to phạm vi (Scope Creep) nếu không kiểm soát tốt Product Backlog.",
+        "Thiếu tài liệu tổng quan gây khó khăn khi bàn giao nhân sự mới.",
+        "Đòi hỏi khách hàng và Product Owner phải túc trực liên tục cùng đội ngũ phát triển."
       ],
-      bestFor: "Dự án **Startup, E-commerce, Ứng dụng di động** có **Requirements biến động liên tục**, cần ra mắt nhanh để thăm dò thị trường."
+      bestFor: "Sản phẩm công nghệ mới, ứng dụng di động, giải pháp AI/Web3 hoặc thị trường cạnh tranh khốc liệt nơi <strong>tốc độ thử nghiệm và học hỏi nhanh là yếu tố quyết định sống còn</strong>."
     }
   };
 
   const current = methodologies[selectedMethod];
 
   return (
-    <div className="w-full my-8 bg-slate-900 border border-slate-700/80 rounded-2xl p-5 sm:p-7 shadow-xl text-slate-100">
+    <div className="w-full my-8 bg-slate-900 border border-slate-700/80 rounded-3xl p-5 sm:p-7 shadow-2xl text-slate-100">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30">
-            <Workflow className="w-6 h-6" />
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
+        <div className="flex items-center gap-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-purple-500/20 text-white font-bold text-xl">
+            <GitCompare className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-              Studio: Methodology Comparison Arena (Đấu Trường 3 Phương Pháp Luận)
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 uppercase tracking-wider">
+                Methodology Duel Arena
+              </span>
+              <span className="text-xs text-slate-400">Đối Chiếu Phương Pháp Luận</span>
+            </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-white mt-0.5">
+              Studio: Đấu Trường So Sánh Waterfall vs Unified Process vs Agile
             </h2>
-            <p className="text-xs text-slate-400">
-              Đối chiếu trực quan bản chất, quy trình các bước, ưu nhược điểm và tiêu chí chọn lựa giữa Waterfall, Unified Process và Agile.
-            </p>
           </div>
+        </div>
+
+        <div className="flex items-center gap-2 bg-slate-950 px-3.5 py-1.5 rounded-xl border border-slate-800 text-xs">
+          <Award className="w-4 h-4 text-purple-400" />
+          <span className="text-slate-400">Tiêu điểm giáo trình: </span>
+          <span className="font-bold text-purple-300">Unified Process (UP)</span>
         </div>
       </div>
 
-      {/* 3 Methodology Selector Buttons */}
+      {/* 3 Methodology Selector Buttons: 3 cols */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
         {Object.entries(methodologies).map(([key, item]) => {
           const isSelected = selectedMethod === key;
@@ -132,20 +150,20 @@ export default function MethodologyComparisonArena() {
               onClick={() => setSelectedMethod(key)}
               className={`p-4 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden ${
                 isSelected
-                  ? `bg-slate-800 border-white/40 ring-2 ring-emerald-400/50 shadow-xl scale-[1.02]`
-                  : `bg-slate-950/70 border-slate-800 hover:bg-slate-800/40 text-slate-400 hover:text-slate-200`
+                  ? `bg-slate-800/90 border-white/40 ring-2 ring-emerald-400/50 shadow-xl scale-[1.02]`
+                  : `bg-slate-950/80 border-slate-800 hover:bg-slate-800/40 text-slate-400 hover:text-slate-200`
               }`}
             >
-              <div className="flex items-center justify-between mb-2">
-                <div className={`p-2 rounded-xl bg-gradient-to-br ${item.accentBg} text-white shadow`}>
+              <div className="flex items-center justify-between mb-2.5">
+                <div className={`p-2.5 rounded-xl bg-gradient-to-br ${item.accentBg} text-white shadow-sm`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${item.badgeColor}`}>
+                <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border ${item.badgeColor}`}>
                   {key.toUpperCase()}
                 </span>
               </div>
               <h3 className="font-extrabold text-sm sm:text-base text-white">{item.name}</h3>
-              <p className="text-xs text-slate-400 mt-0.5">{item.tag}</p>
+              <p className="text-xs text-slate-400 mt-1 font-medium">{item.tag}</p>
             </button>
           );
         })}
@@ -154,29 +172,36 @@ export default function MethodologyComparisonArena() {
       {/* Deep-dive Method Details Arena */}
       <div className="p-5 sm:p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-5">
         {/* Philosophy */}
-        <div className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+        <div className="flex items-start gap-3 p-4 rounded-xl bg-slate-900/80 border border-slate-800">
           <Sparkles className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
           <div>
             <span className="text-xs font-bold uppercase text-amber-400">Triết lý vận hành cốt lõi:</span>
-            <p className="text-xs sm:text-sm text-slate-200 mt-0.5 leading-relaxed font-medium">
+            <p className="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed font-medium">
               {current.philosophy}
             </p>
           </div>
         </div>
 
-        {/* Pipeline Steps Flow */}
+        {/* Pipeline Steps Flow: 3 cols row 1 + 2 cols row 2 on laptop, 5 on xl */}
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5 block">
             Lộ trình các bước thực thi (Roadmap & Phases):
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
             {current.flowSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-200 flex flex-col justify-between font-medium"
+                className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-200 flex flex-col justify-between font-medium shadow-sm hover:border-slate-700 transition-colors"
               >
-                <span>{step}</span>
-                <span className="text-[10px] text-slate-500 font-mono mt-2 self-end">Chặng {idx + 1}</span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-950 text-cyan-400 border border-slate-800">
+                    Chặng {idx + 1}
+                  </span>
+                  {idx < current.flowSteps.length - 1 && (
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
+                  )}
+                </div>
+                <span className="leading-snug font-bold text-white text-xs">{step}</span>
               </div>
             ))}
           </div>
@@ -185,14 +210,14 @@ export default function MethodologyComparisonArena() {
         {/* Pros & Cons Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           {/* Pros */}
-          <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
-            <span className="text-xs font-extrabold uppercase text-emerald-400 flex items-center gap-1.5 mb-2.5">
+          <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+            <span className="text-xs font-extrabold uppercase text-emerald-400 flex items-center gap-1.5 mb-2">
               <CheckCircle className="w-4 h-4" /> Ưu điểm vượt trội (Advantages)
             </span>
             <ul className="space-y-1.5 text-xs text-slate-300">
               {current.pros.map((pro, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
                   <span>{pro}</span>
                 </li>
               ))}
@@ -200,14 +225,14 @@ export default function MethodologyComparisonArena() {
           </div>
 
           {/* Cons */}
-          <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-500/30">
-            <span className="text-xs font-extrabold uppercase text-rose-400 flex items-center gap-1.5 mb-2.5">
+          <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-500/30 space-y-2">
+            <span className="text-xs font-extrabold uppercase text-rose-400 flex items-center gap-1.5 mb-2">
               <XCircle className="w-4 h-4" /> Hạn chế & Thách thức (Disadvantages)
             </span>
             <ul className="space-y-1.5 text-xs text-slate-300">
               {current.cons.map((con, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0" />
                   <span>{con}</span>
                 </li>
               ))}
@@ -216,13 +241,13 @@ export default function MethodologyComparisonArena() {
         </div>
 
         {/* Best For Scenario */}
-        <div className="p-3.5 rounded-xl bg-gradient-to-r from-blue-950/40 via-indigo-950/40 to-slate-950 border border-blue-500/30 text-xs sm:text-sm text-slate-200 flex items-start gap-3">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-blue-950/40 via-indigo-950/40 to-slate-950 border border-blue-500/30 text-xs sm:text-sm text-slate-200 flex items-start gap-3">
           <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
           <div>
-            <span className="text-cyan-400 font-bold uppercase text-xs block mb-0.5">
-              Khi nào nên chọn {current.name}?
+            <span className="text-cyan-400 font-bold uppercase text-xs block mb-1">
+              Khi nào nên lựa chọn {current.name}?
             </span>
-            <p className="text-slate-300 text-xs sm:text-sm" dangerouslySetInnerHTML={{ __html: current.bestFor }} />
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: current.bestFor }} />
           </div>
         </div>
       </div>

@@ -164,43 +164,43 @@ export default function SqlDataTypesVisualizer() {
           </div>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex rounded-xl bg-amber-100/80 p-1 border border-amber-200">
+        {/* Category Tabs: Flex wrap on mobile/laptop */}
+        <div className="flex flex-wrap rounded-2xl bg-amber-100/80 p-1 border border-amber-200 gap-1">
           <button
             onClick={() => setSelectedCategory("exact")}
-            className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${
               selectedCategory === "exact"
                 ? "bg-amber-600 text-white shadow-sm"
                 : "text-amber-900 hover:text-amber-700"
             }`}
           >
-            Exact Numbers (Số chính xác)
+            Số chính xác (Exact)
           </button>
           <button
             onClick={() => setSelectedCategory("approx")}
-            className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${
               selectedCategory === "approx"
                 ? "bg-amber-600 text-white shadow-sm"
                 : "text-amber-900 hover:text-amber-700"
             }`}
           >
-            Approximate (Số gần đúng)
+            Số gần đúng (Approx)
           </button>
           <button
             onClick={() => setSelectedCategory("datetime")}
-            className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-all ${
               selectedCategory === "datetime"
                 ? "bg-amber-600 text-white shadow-sm"
                 : "text-amber-900 hover:text-amber-700"
             }`}
           >
-            Date & Time (Ngày giờ)
+            Ngày giờ (Date & Time)
           </button>
         </div>
       </div>
 
       {/* Grid of Data Types */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {dataTypes[selectedCategory].map((type) => {
           const testRes = checkFit(testNumber, type);
           const isError = !testRes.fits;
@@ -323,8 +323,8 @@ export default function SqlDataTypesVisualizer() {
             <span className="text-xs text-gray-500">10 Triệu dòng</span>
           </div>
 
-          {/* Estimation Cards */}
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center font-mono">
+          {/* Estimation Cards: 2 cols on mobile/laptop, 4 cols on large desktop */}
+          <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-center font-mono">
             <div className="rounded-lg bg-gray-50 p-2.5 border border-gray-200">
               <div className="text-[11px] text-gray-500 font-sans font-medium">tinyint (1B)</div>
               <div className="text-sm font-bold text-emerald-600 mt-1">

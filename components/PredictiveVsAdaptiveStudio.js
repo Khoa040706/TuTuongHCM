@@ -8,9 +8,9 @@ import {
   Users, 
   Sparkles, 
   CheckCircle2, 
-  ArrowRight,
-  TrendingUp,
-  Scale
+  ArrowRight, 
+  TrendingUp, 
+  Scale 
 } from "lucide-react";
 
 export default function PredictiveVsAdaptiveStudio() {
@@ -88,8 +88,8 @@ export default function PredictiveVsAdaptiveStudio() {
         </div>
       </div>
 
-      {/* 6 Dimension Selector Buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
+      {/* 6 Dimension Selector Buttons (3 cols on Laptop, 6 on XL, No truncate) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5 mb-6">
         {Object.entries(dimensions).map(([key, item]) => {
           const isSelected = selectedDimension === key;
           const Icon = item.icon;
@@ -97,14 +97,23 @@ export default function PredictiveVsAdaptiveStudio() {
             <button
               key={key}
               onClick={() => setSelectedDimension(key)}
-              className={`p-3 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${
+              className={`p-3.5 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between ${
                 isSelected
-                  ? `bg-slate-800 border-cyan-400 ring-2 ring-cyan-400/50 shadow-lg scale-105`
+                  ? `bg-slate-800 border-cyan-400 ring-2 ring-cyan-400/50 shadow-lg scale-[1.02]`
                   : `bg-slate-950/70 border-slate-800 hover:bg-slate-800/40 text-slate-400 hover:text-slate-200`
               }`}
             >
-              <Icon className={`w-4 h-4 mb-2 ${isSelected ? "text-cyan-400" : "text-slate-500"}`} />
-              <div className="text-xs font-bold text-white truncate">{item.name.split(". ")[1]}</div>
+              <div className="flex items-center justify-between w-full mb-2">
+                <Icon className={`w-4 h-4 ${isSelected ? "text-cyan-400" : "text-slate-500"}`} />
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                  isSelected ? "bg-cyan-950 text-cyan-300 border border-cyan-800" : "bg-slate-900 text-slate-500"
+                }`}>
+                  #{item.name.split(". ")[0]}
+                </span>
+              </div>
+              <div className="text-xs font-bold text-white leading-snug">
+                {item.name.split(". ")[1]}
+              </div>
             </button>
           );
         })}
@@ -119,32 +128,32 @@ export default function PredictiveVsAdaptiveStudio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Left: Predictive */}
-          <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-500/30 flex flex-col justify-between">
+          <div className="p-4.5 rounded-xl bg-blue-950/20 border border-blue-500/30 flex flex-col justify-between">
             <div>
-              <span className="text-xs font-mono font-extrabold uppercase text-blue-400 block mb-1.5">
+              <span className="text-xs font-mono font-extrabold uppercase text-blue-400 block mb-2">
                 ● Predictive Approach (Dự đoán)
               </span>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
                 {current.predictive}
               </p>
             </div>
-            <div className="mt-3 pt-2 border-t border-slate-800/80 text-[10px] text-blue-300/80 font-mono">
-              Triết lý: Plan the work, then work the plan
+            <div className="mt-3.5 pt-2 border-t border-slate-800/80 text-[11px] text-blue-300/80 font-mono">
+              💡 Triết lý: Plan the work, then work the plan
             </div>
           </div>
 
           {/* Right: Adaptive */}
-          <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+          <div className="p-4.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
             <div>
-              <span className="text-xs font-mono font-extrabold uppercase text-emerald-400 block mb-1.5">
+              <span className="text-xs font-mono font-extrabold uppercase text-emerald-400 block mb-2">
                 ● Adaptive Approach (Thích ứng)
               </span>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
                 {current.adaptive}
               </p>
             </div>
-            <div className="mt-3 pt-2 border-t border-slate-800/80 text-[10px] text-emerald-300/80 font-mono">
-              Triết lý: Embrace change, deliver early and often
+            <div className="mt-3.5 pt-2 border-t border-slate-800/80 text-[11px] text-emerald-300/80 font-mono">
+              💡 Triết lý: Embrace change, deliver early and often
             </div>
           </div>
         </div>

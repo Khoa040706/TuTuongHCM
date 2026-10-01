@@ -15,12 +15,19 @@ import {
   KeyRound,
   ShieldCheck,
   Server,
-  Zap
+  Zap,
+  Play,
+  RotateCcw,
+  Sliders,
+  ChevronRight
 } from "lucide-react";
 
 export default function SqlCyberEngineHeroBanner() {
   const [activePillar, setActivePillar] = useState("DQL"); // 'DQL' | 'DDL' | 'DML' | 'DCL'
   const [activePipelineStep, setActivePipelineStep] = useState(1);
+  const [consoleTab, setConsoleTab] = useState("split"); // 'split' | 'code' | 'result'
+  const [isRunningQuery, setIsRunningQuery] = useState(false);
+  const [queryTimestamp, setQueryTimestamp] = useState("Vừa cập nhật");
 
   const pillars = {
     DQL: {
@@ -50,7 +57,7 @@ ORDER BY DiemTB DESC;`,
         ["SV004", "Nguyễn Mỹ Truyền", "6", "8.75"],
         ["SV012", "Phạm Thu Hoa", "5", "8.40"]
       ],
-      desc: "Phân hệ cốt lõi mạnh mẽ nhất của SQL, cho phép truy xuất và tổng hợp dữ liệu đa bảng theo tư duy tập hợp phi thủ tục (Non-procedural / Declarative)."
+      desc: "Phân hệ cốt lõi mạnh mẽ nhất của SQL, cho phép truy xuất và tổng hợp dữ liệu đa bảng theo tư duy tập hợp phi thủ tục (Declarative / Set-oriented)."
     },
     DDL: {
       name: "DDL — Data Definition Language",
@@ -129,79 +136,93 @@ COMMIT;`,
       step: 1,
       title: "1. Lexical & Syntax Parser",
       badge: "Từ Vựng & Cú Pháp",
+      phase: "Frontend",
       desc: "Phân rã chuỗi ký tự SQL thành các Token từ khóa, kiểm tra tính đúng đắn ngữ pháp ANSI-SQL và sinh Cây cú pháp trừu tượng (AST)."
     },
     {
       step: 2,
       title: "2. Semantic Catalog Check",
       badge: "Ngữ Nghĩa & Danh Mục",
+      phase: "Catalog",
       desc: "Đối chiếu tên Bảng, Cột, Quyền truy cập và Kiểu dữ liệu tương thích với Từ điển dữ liệu hệ thống (System Data Catalog)."
     },
     {
       step: 3,
       title: "3. Logical Query Plan",
       badge: "Cây Đại Số Quan Hệ",
+      phase: "Relational",
       desc: "Chuyển dịch câu lệnh SQL trừu tượng thành Cây biểu thức Đại số quan hệ ban đầu (Relational Algebra Tree gồm σ, π, ⋈)."
     },
     {
       step: 4,
       title: "4. Cost-Based Optimizer (CBO)",
       badge: "Cỗ Máy Tối Ưu",
+      phase: "Optimizer",
       desc: "Áp dụng các quy tắc toán học tương đương: đẩy phép chọn σ xuống sâu nhất, lựa chọn giải thuật Join (Hash Join vs Nested Loop, Index Scan)."
     },
     {
       step: 5,
-      title: "5. Execution Engine & Results",
+      title: "5. Execution Engine & Output",
       badge: "Thực Thi & Xuất Bộ",
+      phase: "Execution",
       desc: "Thực thi kế hoạch vật lý tối ưu (Physical Plan), truy cập trang đĩa/Buffer Pool và trả về tập các dòng kết quả (Result Tuples)."
     }
   ];
 
   const executionOrder = [
-    { order: "1", clause: "FROM & JOIN", desc: "Xác định các bảng nguồn và thực hiện tích/kết nối các bảng" },
-    { order: "2", clause: "WHERE", desc: "Lọc các dòng đơn lẻ trước khi gom nhóm (phép chọn σ ban đầu)" },
-    { order: "3", clause: "GROUP BY", desc: "Chia nhỏ tập dữ liệu thành các nhóm theo thuộc tính gom nhóm" },
-    { order: "4", clause: "HAVING", desc: "Lọc các nhóm thỏa mãn điều kiện hàm tổng hợp (COUNT, SUM, AVG)" },
-    { order: "5", clause: "SELECT", desc: "Tính toán biểu thức và cắt các cột cần hiển thị (phép chiếu π)" },
-    { order: "6", clause: "DISTINCT", desc: "Khử bỏ tất cả các dòng dữ liệu trùng lặp trong kết quả" },
-    { order: "7", clause: "ORDER BY", desc: "Sắp xếp tập kết quả cuối cùng theo thứ tự ASC hoặc DESC" },
-    { order: "8", clause: "TOP / LIMIT", desc: "Cắt lấy N dòng đầu tiên của tập kết quả đã được sắp xếp" }
+    { order: "1", clause: "FROM & JOIN", tag: "Nạp Bảng", desc: "Xác định các bảng nguồn và thực hiện tích Decartes / kết nối các quan hệ." },
+    { order: "2", clause: "WHERE", tag: "Lọc Hàng Thô", desc: "Lọc các dòng đơn lẻ trước khi gom nhóm (phép chọn σ ban đầu theo vị từ)." },
+    { order: "3", clause: "GROUP BY", tag: "Phân Cụm", desc: "Chia nhỏ tập dữ liệu thành các nhóm theo thuộc tính gom nhóm chỉ định." },
+    { order: "4", clause: "HAVING", tag: "Lọc Nhóm", desc: "Lọc các nhóm thỏa mãn điều kiện hàm tổng hợp (COUNT, SUM, AVG, MIN, MAX)." },
+    { order: "5", clause: "SELECT", tag: "Chiếu Cột", desc: "Tính toán biểu thức và cắt các thuộc tính cần hiển thị (phép chiếu π)." },
+    { order: "6", clause: "DISTINCT", tag: "Khử Trùng", desc: "Khử bỏ tất cả các dòng dữ liệu trùng lặp trong tập kết quả trả về." },
+    { order: "7", clause: "ORDER BY", tag: "Sắp Xếp", desc: "Sắp xếp tập kết quả cuối cùng theo thứ tự tăng dần (ASC) hoặc giảm dần (DESC)." },
+    { order: "8", clause: "TOP / LIMIT", tag: "Trích Xuất", desc: "Cắt lấy N dòng đầu tiên hoặc tỉ lệ phần trăm của tập kết quả đã sắp xếp." }
   ];
+
+  const handleSimulateRun = () => {
+    setIsRunningQuery(true);
+    setTimeout(() => {
+      setIsRunningQuery(false);
+      const now = new Date();
+      setQueryTimestamp(`${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}:${now.getSeconds().toString().padStart(2, "0")}`);
+    }, 600);
+  };
 
   const currentPillar = pillars[activePillar];
 
   return (
-    <div className="my-8 rounded-3xl border border-cyan-200/80 bg-gradient-to-br from-cyan-50/40 via-white to-sky-50/20 p-6 sm:p-8 text-slate-800 shadow-xl relative overflow-hidden font-sans">
-      {/* Glow Decorative Orbs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl pointer-events-none" />
+    <div className="my-8 rounded-3xl border border-cyan-200/90 bg-gradient-to-br from-cyan-50/50 via-white to-sky-50/30 p-4 sm:p-7 md:p-8 text-slate-800 shadow-xl relative overflow-hidden font-sans">
+      {/* Decorative Glow Orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-200/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Cyber Hero Title Bar */}
+      {/* Hero Header */}
       <div className="relative z-10 border-b border-cyan-200/80 pb-6 mb-8">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-100 border border-cyan-200 text-cyan-900 text-xs font-mono font-bold tracking-wider uppercase shadow-sm">
-            <Database className="w-4 h-4 text-cyan-600 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-100/90 border border-cyan-300 text-cyan-950 text-xs font-mono font-bold tracking-wider uppercase shadow-sm">
+            <Database className="w-4 h-4 text-cyan-700 animate-pulse" />
             CHƯƠNG III: NGÔN NGỮ SQL (STRUCTURED QUERY LANGUAGE)
           </div>
-          <div className="flex items-center gap-2 text-xs font-mono">
-            <span className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-emerald-700 font-semibold">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-emerald-800 font-semibold shadow-xs">
               ANSI / ISO SQL:2023
             </span>
-            <span className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-cyan-700 font-semibold">
+            <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-cyan-800 font-semibold shadow-xs">
               Declarative Set Engine
             </span>
           </div>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
+        <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug">
           Cỗ Máy Truy Vấn Có Cấu Trúc & Ngôn Ngữ Khai Báo Dữ Liệu
         </h1>
-        <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-4xl leading-relaxed">
+        <p className="mt-2.5 text-xs sm:text-sm text-slate-600 max-w-4xl leading-relaxed">
           Ngôn ngữ SQL là cây cầu thực thi hiện đại kết nối trực tiếp lý thuyết <strong>Đại số quan hệ</strong> với các hệ quản trị CSDL quan hệ (RDBMS). Khám phá 4 phân hệ ngôn ngữ chuẩn mực, kiến trúc bộ tối ưu hóa truy vấn (Query Optimizer) và thứ tự thực thi logic cốt lõi.
         </p>
       </div>
 
-      {/* SECTION 1: THE 4 PILLARS OF SQL (INTERACTIVE PLAYGROUND) */}
+      {/* SECTION 1: THE 4 PILLARS OF SQL PLAYGROUND */}
       <div className="relative z-10 mb-10 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2 font-mono">
@@ -209,12 +230,12 @@ COMMIT;`,
             1. Bốn Phân Hệ Ngôn Ngữ SQL Chuẩn Mực (The 4 Pillars)
           </h3>
           <span className="text-[11px] font-mono text-slate-500">
-            Nhấp chọn phân hệ để mô phỏng cú pháp & kết quả thực thi
+            Bấm chọn phân hệ để mô phỏng cú pháp & kết quả thực thi
           </span>
         </div>
 
-        {/* Pillar Switcher Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        {/* Pillar Switcher: 2 cols on mobile/small laptop, 4 cols on wide desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {Object.keys(pillars).map((key) => {
             const item = pillars[key];
             const isActive = activePillar === key;
@@ -222,87 +243,157 @@ COMMIT;`,
               <button
                 key={key}
                 onClick={() => setActivePillar(key)}
-                className={`p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden ${
+                className={`p-3 sm:p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                   isActive
-                    ? "bg-white border-cyan-400 ring-2 ring-cyan-400/40 shadow-md"
-                    : "bg-slate-50/80 border-slate-200 hover:bg-white text-slate-600 hover:text-slate-900"
+                    ? "bg-white border-cyan-500 ring-2 ring-cyan-400/40 shadow-md text-slate-900"
+                    : "bg-slate-50/80 border-slate-200 hover:bg-white text-slate-600 hover:text-slate-900 hover:border-slate-300"
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className={`text-xs font-mono font-bold ${isActive ? "text-cyan-800" : "text-slate-700"}`}>
-                    {key}
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-semibold">
-                    {item.badge}
-                  </span>
-                </div>
-                <div className="text-[11px] text-slate-500 line-clamp-1 font-mono">
-                  {item.keywords}
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className={`text-xs sm:text-sm font-mono font-bold ${isActive ? "text-cyan-800" : "text-slate-700"}`}>
+                      {key}
+                    </span>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-semibold ${
+                      isActive ? "bg-cyan-100 text-cyan-800" : "bg-slate-100 text-slate-600"
+                    }`}>
+                      {item.badge}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 font-mono line-clamp-1">
+                    {item.keywords}
+                  </div>
                 </div>
               </button>
             );
           })}
         </div>
 
-        {/* Selected Pillar Interactive Screen */}
-        <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-4 shadow-sm">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+        {/* Console Interactive Screen */}
+        <div className="p-4 sm:p-6 rounded-2xl bg-white border border-slate-200/90 space-y-4 shadow-sm">
+          {/* Header Info Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-slate-100 pb-3">
             <div>
-              <span className="text-xs font-mono font-bold text-cyan-800">
+              <span className="text-xs sm:text-sm font-mono font-bold text-cyan-800">
                 {currentPillar.name}
               </span>
-              <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+              <p className="text-xs text-slate-600 mt-0.5 leading-relaxed max-w-2xl">
                 {currentPillar.desc}
               </p>
             </div>
-            <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-800 font-semibold">
-              Cú pháp: {currentPillar.keywords}
-            </span>
+
+            {/* View Mode Switcher for Laptop Viewports */}
+            <div className="flex items-center gap-2">
+              <div className="inline-flex rounded-lg bg-slate-100 p-1 border border-slate-200 text-[11px] font-mono">
+                <button
+                  onClick={() => setConsoleTab("split")}
+                  className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
+                    consoleTab === "split" ? "bg-white text-cyan-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                  title="Hiển thị song song hai bên"
+                >
+                  Song Song
+                </button>
+                <button
+                  onClick={() => setConsoleTab("code")}
+                  className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
+                    consoleTab === "code" ? "bg-white text-cyan-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                  title="Chỉ hiển thị mã SQL"
+                >
+                  Code
+                </button>
+                <button
+                  onClick={() => setConsoleTab("result")}
+                  className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
+                    consoleTab === "result" ? "bg-white text-cyan-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                  title="Chỉ hiển thị Bảng kết quả"
+                >
+                  Data Grid
+                </button>
+              </div>
+
+              <button
+                onClick={handleSimulateRun}
+                disabled={isRunningQuery}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 text-white hover:bg-cyan-700 text-xs font-mono font-bold transition-all shadow-sm active:scale-95 disabled:opacity-60"
+              >
+                {isRunningQuery ? (
+                  <RotateCcw className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                )}
+                <span>{isRunningQuery ? "Executing..." : "F5 Chạy"}</span>
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            {/* Code Box (7 Cols - Dark Terminal) */}
-            <div className="lg:col-span-7 space-y-1.5 font-mono text-xs">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
-                <span className="flex items-center gap-1.5 text-cyan-700 font-bold">
-                  <Code2 className="w-3.5 h-3.5" /> SQL Code Snippet:
-                </span>
-                <span className="text-slate-400">ANSI-SQL 92/99</span>
+          {/* Adaptive Grid: Responsive 1 col or 2 cols based on consoleTab */}
+          <div className={`grid gap-4 ${
+            consoleTab === "split" ? "grid-cols-1 xl:grid-cols-12" : "grid-cols-1"
+          }`}>
+            {/* Code Box: Dark Cyber Terminal */}
+            {(consoleTab === "split" || consoleTab === "code") && (
+              <div className={`${consoleTab === "split" ? "xl:col-span-7" : "w-full"} space-y-1.5 font-mono text-xs`}>
+                <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
+                  <span className="flex items-center gap-1.5 text-cyan-700 font-bold">
+                    <Code2 className="w-3.5 h-3.5" /> T-SQL Query Editor:
+                  </span>
+                  <span className="text-slate-400">ANSI-SQL 92/99</span>
+                </div>
+                <div className="relative rounded-xl bg-slate-950 border border-slate-800 p-4 shadow-md overflow-hidden">
+                  <div className="absolute top-2.5 right-3 flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                  </div>
+                  <pre className="text-cyan-300 font-mono text-xs leading-relaxed overflow-x-auto whitespace-pre max-w-full thin-scrollbar pt-2">
+                    {currentPillar.code}
+                  </pre>
+                </div>
               </div>
-              <pre className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-cyan-300 overflow-x-auto whitespace-pre leading-relaxed shadow-md">
-                {currentPillar.code}
-              </pre>
-            </div>
+            )}
 
-            {/* Simulated Result Table (5 Cols - Light Data Grid) */}
-            <div className="lg:col-span-5 space-y-1.5 text-xs">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 font-mono">
-                <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Result Set Preview:
-                </span>
-                <span className="text-emerald-700 font-mono font-semibold">Query OK</span>
-              </div>
-              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-                <table className="w-full text-[11px] text-left border-collapse font-sans">
-                  <thead>
-                    <tr className="bg-slate-100 border-b border-slate-200 text-cyan-900 font-mono">
-                      {currentPillar.resultHeaders.map((h, idx) => (
-                        <th key={idx} className="p-2.5 whitespace-nowrap">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 font-mono">
-                    {currentPillar.resultRows.map((row, rIdx) => (
-                      <tr key={rIdx} className="bg-white hover:bg-slate-50/80">
-                        {row.map((cell, cIdx) => (
-                          <td key={cIdx} className="p-2.5 text-slate-700 whitespace-nowrap">{cell}</td>
+            {/* Result Table: Data Grid */}
+            {(consoleTab === "split" || consoleTab === "result") && (
+              <div className={`${consoleTab === "split" ? "xl:col-span-5" : "w-full"} space-y-1.5 text-xs`}>
+                <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 font-mono">
+                  <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Output Result Set:
+                  </span>
+                  <span className="text-emerald-700 font-semibold">{queryTimestamp}</span>
+                </div>
+                <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm max-w-full thin-scrollbar">
+                  <table className="w-full text-[11px] text-left border-collapse font-sans min-w-[320px]">
+                    <thead>
+                      <tr className="bg-slate-100 border-b border-slate-200 text-cyan-900 font-mono">
+                        {currentPillar.resultHeaders.map((h, idx) => (
+                          <th key={idx} className="p-2.5 whitespace-nowrap">{h}</th>
                         ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 font-mono">
+                      {currentPillar.resultRows.map((row, rIdx) => (
+                        <tr key={rIdx} className="bg-white hover:bg-cyan-50/40 transition-colors">
+                          {row.map((cell, cIdx) => (
+                            <td key={cIdx} className="p-2.5 text-slate-700 whitespace-nowrap">
+                              {cell === "SUCCESS" ? (
+                                <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">
+                                  {cell}
+                                </span>
+                              ) : (
+                                cell
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -319,30 +410,32 @@ COMMIT;`,
           </span>
         </div>
 
-        {/* 5 Steps Linear Flow Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
+        {/* Stepper Pipeline: Responsive Grid (2 cols mobile, 3 cols tablet/laptop, 5 cols desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2 sm:gap-2.5">
           {pipelineSteps.map((p) => {
             const isSelected = activePipelineStep === p.step;
             return (
               <button
                 key={p.step}
                 onClick={() => setActivePipelineStep(p.step)}
-                className={`p-3 rounded-2xl border text-left transition-all ${
+                className={`p-3 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                   isSelected
-                    ? "bg-emerald-50 border-emerald-400 text-emerald-950 shadow-sm ring-1 ring-emerald-400/30"
-                    : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "bg-emerald-50 border-emerald-400 text-emerald-950 shadow-sm ring-2 ring-emerald-400/30"
+                    : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300"
                 }`}
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-mono font-bold text-emerald-700">
-                    Pha {p.step}
-                  </span>
-                  <span className="text-[9px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 font-medium">
-                    {p.badge}
-                  </span>
-                </div>
-                <div className="text-xs font-bold text-slate-800 line-clamp-1">
-                  {p.title}
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-mono font-bold text-emerald-700">
+                      Pha {p.step}
+                    </span>
+                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold font-mono">
+                      {p.phase}
+                    </span>
+                  </div>
+                  <div className="text-xs font-bold text-slate-800 line-clamp-1">
+                    {p.title}
+                  </div>
                 </div>
               </button>
             );
@@ -350,11 +443,11 @@ COMMIT;`,
         </div>
 
         {/* Active Step Details */}
-        <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-center gap-4 shadow-sm">
-          <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold flex-shrink-0 border border-emerald-200 shadow-sm">
+        <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200/90 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-sm">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold flex-shrink-0 border border-emerald-200 shadow-sm">
             <Zap className="w-6 h-6" />
           </div>
-          <div>
+          <div className="flex-1 min-w-0">
             <div className="text-xs font-mono font-bold text-emerald-900 uppercase tracking-wider">
               {pipelineSteps[activePipelineStep - 1].title} — {pipelineSteps[activePipelineStep - 1].badge}
             </div>
@@ -372,23 +465,26 @@ COMMIT;`,
             <Workflow className="w-5 h-5 text-purple-600" />
             3. Ma Trận Thứ Tự Viết Cú Pháp vs Thứ Tự Thực Thi Logic Thực Tế
           </h3>
-          <span className="text-[11px] font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200 font-semibold">
+          <span className="text-[11px] font-mono text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 font-semibold">
             ⚠️ Chú ý: SQL viết SELECT đầu tiên nhưng nhân RDBMS thực thi FROM đầu tiên!
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {executionOrder.map((item, idx) => (
             <div
               key={idx}
-              className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-purple-300 transition-all space-y-1.5 shadow-sm"
+              className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-purple-300 transition-all space-y-1.5 shadow-sm hover:shadow-md"
             >
-              <div className="flex items-center justify-between">
-                <span className="w-6 h-6 rounded-lg bg-purple-100 text-purple-700 font-mono font-bold text-xs flex items-center justify-center border border-purple-200">
+              <div className="flex items-center justify-between gap-1">
+                <span className="w-6 h-6 rounded-lg bg-purple-100 text-purple-700 font-mono font-bold text-xs flex items-center justify-center border border-purple-200 shrink-0">
                   {item.order}
                 </span>
                 <span className="text-xs font-mono font-extrabold text-cyan-800">
                   {item.clause}
+                </span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-mono">
+                  {item.tag}
                 </span>
               </div>
               <p className="text-[11px] text-slate-600 leading-relaxed font-sans">

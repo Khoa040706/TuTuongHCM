@@ -94,23 +94,26 @@ export default function UseCaseAuthoringPitfallsArena() {
       </div>
 
       {/* 4 Pitfall Selector Ribbon */}
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
         {PITFALLS.map(p => {
           const isSelected = selectedPitfallId === p.id;
           return (
             <button
               key={p.id}
               onClick={() => setSelectedPitfallId(p.id)}
-              className={`p-3 rounded-xl border text-left transition-all ${
+              className={`p-3.5 rounded-xl border text-left transition-all ${
                 isSelected
-                  ? "bg-white border-rose-500 ring-2 ring-rose-500/20 shadow-md font-bold"
+                  ? "bg-white border-rose-500 ring-2 ring-rose-500/20 shadow-md font-bold scale-[1.01]"
                   : "bg-white/70 hover:bg-white border-stone-200 text-stone-700"
               }`}
             >
-              <span className={`block font-mono text-[10px] font-black ${isSelected ? "text-rose-600" : "text-stone-400"}`}>
+              <span className={`inline-block font-mono text-[10px] font-black px-2 py-0.5 rounded ${
+                isSelected ? "bg-rose-100 text-rose-700" : "bg-stone-100 text-stone-500"
+              }`}>
                 LỖI #{p.num}
               </span>
-              <h4 className="text-xs font-bold line-clamp-1 mt-0.5">{p.title.split(" (")[0]}</h4>
+              <h4 className="text-xs font-bold leading-snug mt-1.5 text-stone-900">{p.title}</h4>
+              <p className="text-[11px] text-stone-500 leading-tight mt-0.5">{p.subtitle}</p>
             </button>
           );
         })}

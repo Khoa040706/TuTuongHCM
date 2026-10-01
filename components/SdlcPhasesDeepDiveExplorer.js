@@ -9,9 +9,9 @@ import {
   Wrench, 
   CheckCircle2, 
   FileText, 
-  Sparkles, 
   ArrowRight, 
-  Boxes 
+  Sparkles,
+  Award
 } from "lucide-react";
 
 export default function SdlcPhasesDeepDiveExplorer() {
@@ -19,83 +19,88 @@ export default function SdlcPhasesDeepDiveExplorer() {
 
   const phasesData = {
     planning: {
+      id: "planning",
       name: "Phase 1: Planning (Lập kế hoạch)",
       icon: Clock,
       color: "from-amber-500 to-orange-600",
       accentBorder: "border-amber-400",
-      purpose: "Xác định giá trị kinh doanh của hệ thống & đánh giá tính khả thi để ra quyết định đầu tư.",
+      purpose: "Xác định rõ lý do cần xây dựng hệ thống, khảo sát khả thi và lập phương án nguồn lực dự án.",
       activities: [
-        "Investigate business need/opportunity (Điều tra bài toán hoặc cơ hội mới)",
-        "Define initial scope of the system (Xác định phạm vi ranh giới ban đầu)",
-        "Develop schedule & staffing plan (Lập kế hoạch tiến độ và nhân sự)",
-        "Perform feasibility study (Thẩm định khả thi Kỹ thuật, Kinh tế, Vận hành)"
+        "Identify system problem or opportunity (Nhận diện vấn đề/cơ hội)",
+        "Confirm project feasibility (Thẩm định 3 chiều: Kỹ thuật, Kinh tế, Tổ chức)",
+        "Produce project charter & baseline schedule (Lập hiến chương dự án & tiến độ)",
+        "Staff the project and acquire funding (Bố trí nhân sự và phê duyệt ngân sách)"
       ],
       deliverables: [
-        "System request (Phiếu yêu cầu hệ thống)",
-        "Feasibility study (Báo cáo nghiên cứu tính khả thi)",
-        "Project schedule / Project charter (Kế hoạch tiến độ & Điều lệ dự án)"
+        "Project Charter (Hiến chương dự án được ký duyệt)",
+        "Feasibility Study Report (Báo cáo nghiên cứu khả thi)",
+        "Preliminary Project Workplan & Budget (Kế hoạch làm việc & Ngân sách ban đầu)"
       ]
     },
     analysis: {
+      id: "analysis",
       name: "Phase 2: Analysis (Phân tích yêu cầu)",
       icon: Search,
       color: "from-emerald-500 to-teal-600",
       accentBorder: "border-emerald-400",
-      purpose: "Hiểu & tài liệu hóa những gì nghiệp vụ kinh doanh cần ở hệ thống mới.",
+      purpose: "Thu thập chi tiết yêu cầu, mô hình hóa quy trình hiện tại (AS-IS) và tương lai (TO-BE).",
       activities: [
-        "Gather & analyze business requirements (Thu thập và phân tích yêu cầu)",
-        "Model current/required business processes (Mô hình hóa quy trình AS-IS & TO-BE)",
-        "Build use case model and domain model (Xây dựng Use Case & Domain Model)",
-        "Verify requirements with users (Xác thực yêu cầu với người dùng)"
+        "Gather detailed information (Phỏng vấn, khảo sát, JAD, quan sát)",
+        "Define system requirements (Đặc tả Functional & Non-functional requirements)",
+        "Build business models & UML diagrams (Activity Diagram, Use Case Diagram)",
+        "Prioritize requirements & review with stakeholders (Xác định mức ưu tiên)"
       ],
       deliverables: [
-        "Business requirements document (BRD / SRS)",
-        "Use case model (Sơ đồ & Kịch bản Use Case)",
-        "Business process / Activity models (Mô hình quy trình nghiệp vụ)"
+        "System Requirements Specification - SRS (Tài liệu đặc tả yêu cầu hệ thống)",
+        "Business Process Models (Sơ đồ quy trình AS-IS và TO-BE)",
+        "Use Case Models & Domain Class Diagrams (Mô hình ca sử dụng & lớp khái niệm)"
       ]
     },
     design: {
+      id: "design",
       name: "Phase 3: Design (Thiết kế hệ thống)",
       icon: PenTool,
       color: "from-cyan-500 to-blue-600",
       accentBorder: "border-cyan-400",
-      purpose: "Quyết định cách hệ thống sẽ được xây dựng để thỏa mãn đầy đủ các yêu cầu đã phân tích.",
+      purpose: "Đặc tả chi tiết giải pháp kỹ thuật: phần cứng, mạng, CSDL, kiến trúc và giao diện người dùng.",
       activities: [
-        "Design system architecture (Thiết kế kiến trúc hệ thống tổng thể)",
-        "Design database & user interface (Thiết kế CSDL ERD & Giao diện UI/UX)",
-        "Design classes & program logic (Thiết kế Class Diagram & Giải thuật logic)",
-        "Refine models with technology details (Bổ sung chi tiết công nghệ vào mô hình)"
+        "Design application architecture (Client-Server, Cloud, Microservices)",
+        "Design database & data structures (ERD, Relational Schema chuẩn hóa)",
+        "Design system interfaces & UI/UX (Wireframes, Mockups, APIs)",
+        "Design system security and system controls (Bảo mật, phân quyền, kiểm toán)"
       ],
       deliverables: [
-        "System design specification (Hồ sơ đặc tả thiết kế hệ thống)",
-        "Architecture & database design (Bản vẽ kiến trúc & Lược đồ CSDL)",
-        "Interface & class design documents (Hồ sơ thiết kế giao diện & Lớp đối tượng)"
+        "System Architecture Blueprint (Bản vẽ kiến trúc kỹ thuật hệ thống)",
+        "Database Schema Specification (Lược đồ cơ sở dữ liệu vật lý)",
+        "UI/UX Prototypes & API Specifications (Bản mẫu giao diện & hợp đồng API)"
       ]
     },
     implementation: {
+      id: "implementation",
       name: "Phase 4: Implementation (Xây dựng & Triển khai)",
       icon: Cpu,
       color: "from-purple-500 to-pink-600",
       accentBorder: "border-purple-400",
-      purpose: "Xây dựng, kiểm thử, bàn giao hệ thống hoạt động thực tế cho doanh nghiệp.",
+      purpose: "Hiện thực hóa thiết kế thành phần mềm chạy được, kiểm thử nghiêm ngặt và đưa vào vận hành.",
       activities: [
-        "Program/configure hệ thống (Lập trình mã nguồn và cấu hình môi trường)",
-        "Unit, integration, system testing (Kiểm thử đơn vị, tích hợp và hệ thống)",
-        "Convert data & train users (Chuyển đổi dữ liệu và đào tạo người dùng)",
-        "Deploy hệ thống into production (Triển khai chính thức lên Production)"
+        "Construct software components (Lập trình mã nguồn Frontend, Backend)",
+        "Verify and test (Unit test, Integration test, System test, UAT)",
+        "Convert data & train users (Chuyển đổi dữ liệu cũ, đào tạo người dùng)",
+        "Install and deploy (Đưa hệ thống lên môi trường Production Go-Live)"
       ],
       deliverables: [
-        "Working, tested system (Phần mềm hoàn chỉnh đã qua kiểm thử)",
-        "Test plans and results (Kế hoạch và biên bản kiểm thử)",
-        "User documentation and training materials (Sổ tay hướng dẫn & Tài liệu đào tạo)"
+        "Working, tested software (Phần mềm hoàn chỉnh đã qua kiểm thử)",
+        "Test scripts, test results & bug reports (Kịch bản và báo cáo nghiệm thu)",
+        "User manuals & training materials (Tài liệu hướng dẫn sử dụng & đào tạo)"
       ]
     },
     support: {
+      id: "support",
       name: "Phase 5: Support (Hỗ trợ & Bảo trì)",
       icon: Wrench,
       color: "from-rose-500 to-red-600",
       accentBorder: "border-rose-400",
-      purpose: "Duy trì hệ thống hoạt động hiệu quả & phát triển thêm theo nhu cầu business thay đổi.",
+      purpose: "Duy trì hệ thống hoạt động tin cậy, hỗ trợ vận hành và liên tục cải tiến theo nhu cầu thực tế.",
       activities: [
         "Provide user support & help-desk (Hỗ trợ người dùng và xử lý sự cố)",
         "Monitor performance, fix defects (Giám sát tải và sửa lỗi phát sinh)",
@@ -131,8 +136,8 @@ export default function SdlcPhasesDeepDiveExplorer() {
         </div>
       </div>
 
-      {/* 5 Phase Selector Buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 mb-6">
+      {/* 5 Phase Selector Buttons (Responsive: 3 cols on Laptop, 5 on XL) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 mb-6">
         {Object.entries(phasesData).map(([key, item]) => {
           const isSelected = selectedPhase === key;
           const Icon = item.icon;
@@ -142,16 +147,16 @@ export default function SdlcPhasesDeepDiveExplorer() {
               onClick={() => setSelectedPhase(key)}
               className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${
                 isSelected
-                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-purple-400/50 shadow-xl scale-105`
+                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-purple-400/50 shadow-xl scale-[1.02]`
                   : `bg-slate-950/70 border-slate-800 hover:bg-slate-800/40 text-slate-300`
               }`}
             >
               <div>
-                <div className={`p-2 rounded-xl bg-gradient-to-br ${item.color} text-white shadow mb-2 w-fit`}>
+                <div className={`p-2 rounded-xl bg-gradient-to-br ${item.color} text-white shadow mb-2.5 w-fit`}>
                   <Icon className="w-4 h-4" />
                 </div>
-                <h3 className="font-extrabold text-xs sm:text-sm text-white">{item.name.split(" (")[0]}</h3>
-                <p className="text-[10px] text-slate-400 mt-0.5">{item.name.split(" (")[1]?.replace(")", "")}</p>
+                <h3 className="font-extrabold text-sm text-white">{item.name.split(" (")[0]}</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">{item.name.split(" (")[1]?.replace(")", "")}</p>
               </div>
             </button>
           );
@@ -167,19 +172,19 @@ export default function SdlcPhasesDeepDiveExplorer() {
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-black text-white">{current.name}</h3>
-              <p className="text-xs text-slate-300 mt-0.5">{current.purpose}</p>
+              <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">{current.purpose}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            {/* Key Activities */}
-            <div className="md:col-span-7 p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
-              <span className="text-xs font-extrabold uppercase text-cyan-400 block">
+            {/* Key Activities Bento */}
+            <div className="md:col-span-7 p-4.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2.5">
+              <span className="text-xs font-extrabold uppercase text-cyan-400 block tracking-wider">
                 Các Hoạt Động Chính (Key Activities):
               </span>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-2 text-xs text-slate-300">
                 {current.activities.map((act, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
+                  <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                     <span>{act}</span>
                   </li>
@@ -187,16 +192,17 @@ export default function SdlcPhasesDeepDiveExplorer() {
               </ul>
             </div>
 
-            {/* Key Deliverables */}
-            <div className="md:col-span-5 p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2 flex flex-col justify-between">
+            {/* Key Deliverables Bento */}
+            <div className="md:col-span-5 p-4.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2.5 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-extrabold uppercase text-amber-400 block mb-2">
+                <span className="text-xs font-extrabold uppercase text-amber-400 block mb-2.5 tracking-wider">
                   Sản Phẩm Chuyển Giao (Key Deliverables):
                 </span>
-                <ul className="space-y-2 text-xs text-slate-200 font-mono">
+                <ul className="space-y-2 text-xs text-slate-200">
                   {current.deliverables.map((del, idx) => (
-                    <li key={idx} className="p-2 rounded-lg bg-slate-950 border border-slate-800 text-amber-300">
-                      📄 {del}
+                    <li key={idx} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 text-amber-300/90 font-medium flex items-start gap-2 leading-relaxed">
+                      <span className="shrink-0">📄</span>
+                      <span>{del}</span>
                     </li>
                   ))}
                 </ul>

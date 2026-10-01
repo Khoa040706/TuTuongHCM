@@ -12,6 +12,7 @@ import { db } from "../lib/firebase";
 import { subjects } from "../lib/curriculum";
 import confetti from "canvas-confetti";
 import { getExamQuestions, submitExamScore } from "../app/actions/quiz";
+import { renderLatexFormula } from "../lib/mathRenderer";
 
 const STATE_STORAGE_KEY = "studymaster_active_quiz_state";
 
@@ -114,10 +115,13 @@ const parseInlineTokens = (text, keyPrefix = "") => {
         </em>
       );
     } else if (token.startsWith("$") && token.endsWith("$")) {
+      const mathFormatted = renderLatexFormula(token.slice(1, -1));
       parts.push(
-        <span key={key} className="font-serif italic font-semibold text-stone-850 dark:text-stone-200 px-0.5">
-          {token.slice(1, -1)}
-        </span>
+        <span
+          key={key}
+          className="font-serif italic font-semibold text-stone-850 dark:text-stone-200 px-0.5"
+          dangerouslySetInnerHTML={{ __html: mathFormatted }}
+        />
       );
     }
     lastIndex = match.index + token.length;

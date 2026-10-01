@@ -103,8 +103,8 @@ export default function ExamTrapBusterRadar() {
         </div>
       </div>
 
-      {/* Traps Navigation Selector */}
-      <div className="mt-6 flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+      {/* Traps Navigation Selector (Responsive Multi-Column Grid) */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2.5">
         {EXAM_TRAPS.map((trap) => {
           const isActive = activeTrapId === trap.id;
           const busted = bustedTraps.includes(trap.id);
@@ -112,20 +112,20 @@ export default function ExamTrapBusterRadar() {
             <button
               key={trap.id}
               onClick={() => setActiveTrapId(trap.id)}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold whitespace-nowrap transition-all border ${
+              className={`flex items-center gap-2 rounded-xl p-3 text-xs font-bold transition-all border text-left ${
                 isActive
-                  ? "bg-stone-900 text-white border-stone-900 shadow-md"
+                  ? "bg-stone-900 text-white border-stone-900 shadow-md ring-2 ring-stone-700/50 scale-[1.01]"
                   : busted
                   ? "bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100"
                   : "bg-stone-100 text-stone-700 border-stone-200 hover:bg-stone-200"
               }`}
             >
               {busted ? (
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               ) : (
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0" />
               )}
-              <span>Bẫy #{trap.id}: {trap.category}</span>
+              <span className="leading-snug">Bẫy #{trap.id}: {trap.category}</span>
             </button>
           );
         })}

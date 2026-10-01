@@ -132,8 +132,8 @@ export default function CommonMistakesDiagnosticArena() {
         </div>
       </div>
 
-      {/* 5 Mistake Selector Tabs */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+      {/* 5 Mistake Selector Tabs (Responsive: 3 cols on Laptop, 5 on XL, No line-clamp) */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
         {MISTAKES.map((m) => {
           const isSelected = m.id === selectedMistakeId;
           return (
@@ -154,8 +154,8 @@ export default function CommonMistakesDiagnosticArena() {
                 </span>
                 <span className="text-[10px] text-stone-400 font-mono">Bẫy #{m.id.replace("m", "")}</span>
               </div>
-              <div className="text-xs font-bold text-stone-900 line-clamp-1">{m.title.split(".")[1]}</div>
-              <div className="text-[10px] text-stone-500 line-clamp-1 mt-0.5">{m.ruleKey}</div>
+              <div className="text-xs font-bold text-stone-900 leading-snug">{m.title.split(".")[1]}</div>
+              <div className="text-[10px] text-stone-500 mt-1 leading-snug">{m.ruleKey}</div>
             </button>
           );
         })}

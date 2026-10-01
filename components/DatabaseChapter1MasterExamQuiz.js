@@ -89,35 +89,37 @@ export default function DatabaseChapter1MasterExamQuiz() {
   };
 
   return (
-    <div className="my-8 rounded-2xl border border-slate-200 bg-white p-6 text-slate-800 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4 mb-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold">
+    <div className="my-8 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 text-slate-800 shadow-sm max-w-full overflow-hidden min-w-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4 mb-6 min-w-0">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold flex-shrink-0">
             <Trophy className="w-6 h-6" />
           </div>
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+          <div className="min-w-0">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600 block truncate">
               Final Chapter 1 Master Exam • Kiểm Tra Tổng Hợp Toàn Chương I
             </span>
-            <h3 className="text-lg font-extrabold text-slate-900">
+            <h3 className="text-base sm:text-lg font-extrabold text-slate-900 truncate">
               Đánh Giá Năng Lực Cốt Lõi: Tổng Quan Hệ Cơ Sở Dữ Liệu
             </h3>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 self-start sm:self-auto flex-shrink-0">
           {showResults ? (
             <button
+              type="button"
               onClick={handleReset}
-              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200 transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200 transition-all whitespace-nowrap"
             >
               <RotateCcw className="w-3.5 h-3.5" /> Làm lại
             </button>
           ) : (
             <button
+              type="button"
               onClick={() => setShowResults(true)}
               disabled={Object.keys(selectedAnswers).length === 0}
-              className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-md shadow-orange-500/20 hover:brightness-105 disabled:opacity-50 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-md shadow-orange-500/20 hover:brightness-105 disabled:opacity-50 transition-all whitespace-nowrap"
             >
               <CheckCircle2 className="w-4 h-4" /> Nộp bài & Xem điểm
             </button>
@@ -126,19 +128,19 @@ export default function DatabaseChapter1MasterExamQuiz() {
       </div>
 
       {/* Questions List */}
-      <div className="space-y-6">
+      <div className="space-y-6 min-w-0">
         {questions.map((q, qIdx) => {
           const userAnswer = selectedAnswers[qIdx];
           const isAnswered = userAnswer !== undefined;
           const isCorrect = isAnswered && userAnswer === q.correctAnswer;
 
           return (
-            <div key={q.id} className="p-4 rounded-xl bg-slate-50/70 border border-slate-200 space-y-3 shadow-sm">
+            <div key={q.id} className="p-4 rounded-xl bg-slate-50/70 border border-slate-200 space-y-3 shadow-sm min-w-0">
               <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-relaxed">
                 {q.question}
               </h4>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 min-w-0">
                 {q.options.map((opt, optIdx) => {
                   let optStyle = "bg-white border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300";
 
@@ -155,10 +157,11 @@ export default function DatabaseChapter1MasterExamQuiz() {
                   return (
                     <button
                       key={optIdx}
+                      type="button"
                       onClick={() => handleSelect(qIdx, optIdx)}
-                      className={`p-3 rounded-xl border text-left text-xs font-sans transition-all flex items-center justify-between ${optStyle}`}
+                      className={`p-3 rounded-xl border text-left text-xs font-sans transition-all flex items-center justify-between min-w-0 ${optStyle}`}
                     >
-                      <span>{opt}</span>
+                      <span className="leading-snug">{opt}</span>
                       {showResults && optIdx === q.correctAnswer && (
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 ml-2" />
                       )}
@@ -171,7 +174,7 @@ export default function DatabaseChapter1MasterExamQuiz() {
               </div>
 
               {showResults && (
-                <div className={`p-3 rounded-xl text-xs leading-relaxed ${isCorrect ? "bg-emerald-50 text-emerald-900 border border-emerald-200" : "bg-rose-50 text-rose-900 border border-rose-200"}`}>
+                <div className={`p-3 rounded-xl text-xs leading-relaxed min-w-0 ${isCorrect ? "bg-emerald-50 text-emerald-900 border border-emerald-200" : "bg-rose-50 text-rose-900 border border-rose-200"}`}>
                   <strong>{isCorrect ? "✔ Chính xác!" : "✖ Chưa chính xác!"}</strong> {q.explanation}
                 </div>
               )}
@@ -181,10 +184,10 @@ export default function DatabaseChapter1MasterExamQuiz() {
       </div>
 
       {showResults && (
-        <div className="mt-6 p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-between shadow-sm">
+        <div className="mt-6 p-4 rounded-xl bg-orange-50 border border-orange-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm min-w-0">
           <div className="flex items-center gap-2 text-sm font-bold text-slate-900">
-            <Award className="w-5 h-5 text-orange-600" />
-            Điểm số của bạn: <span className="text-orange-700 font-mono text-base">{calculateScore()} / {questions.length}</span> câu đúng
+            <Award className="w-5 h-5 text-orange-600 flex-shrink-0" />
+            <span>Điểm số của bạn: <strong className="text-orange-700 font-mono">{calculateScore()} / {questions.length}</strong> câu đúng</span>
           </div>
           <span className="text-xs text-amber-800 font-semibold font-mono">
             {calculateScore() === questions.length ? "Tuyệt vời! Bạn đã làm chủ 100% kiến thức Chương I" : "Hãy xem lại giải thích và ôn tập kỹ các câu sai nhé!"}

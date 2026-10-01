@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import { findSubsectionContent, lessonsData } from "../lib/curriculum";
+import { formatMathText, renderLatexFormula } from "../lib/mathRenderer";
+import InlineCheckpointQuiz from "./InlineCheckpointQuiz";
 import CloudChapterHero from "./cloud/CloudChapterHero";
 import CloudConceptMap from "./cloud/CloudConceptMap";
 import CloudComparisonExplorer from "./cloud/CloudComparisonExplorer";
@@ -935,57 +937,6 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-function formatMathText(text) {
-  if (typeof text !== "string") return text;
-  
-  let formatted = text;
-
-  // 1. Format markdown bold **...**
-  formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-stone-900 dark:text-stone-100">$1</strong>');
-
-  // 2. Format markdown italic *...* (tránh nhầm với dấu nhân toán học)
-  formatted = formatted.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em class="italic text-stone-800 dark:text-stone-200">$1</em>');
-
-  // 3. Format inline code `...`
-  formatted = formatted.replace(/`([^`]+)`/g, '<code class="bg-stone-100 dark:bg-stone-800 text-[#569cd6] dark:text-[#4ec9b0] px-1.5 py-0.5 rounded font-mono text-xs font-semibold border border-stone-200 dark:border-stone-700">$1</code>');
-
-  // 4. Replace $...$ blocks with formatted HTML
-  return formatted.replace(/\$(.*?)\$/g, (match, formula) => {
-    // 1. Replace LaTeX-style math symbols
-    let mathFormatted = formula
-      .replace(/\\le/g, "≤")
-      .replace(/\\ge/g, "≥")
-      .replace(/\\dots/g, "…")
-      .replace(/\\Omega/g, "Ω")
-      .replace(/\\theta/g, "θ")
-      .replace(/\\Theta/g, "Θ")
-      .replace(/\\alpha/g, "α")
-      .replace(/\\beta/g, "β")
-      .replace(/\\times/g, "×")
-      .replace(/\\log/g, "log")
-      .replace(/\\ln/g, "ln")
-      .replace(/\\to/g, "→")
-      .replace(/\\infty/g, "∞");
-
-    // 2. Replace subscript notation like x_1 or x_{n-1}
-    mathFormatted = mathFormatted.replace(/([a-zA-Z_0-9])_([0-9a-zA-Z_])/g, "$1<sub>$2</sub>");
-    mathFormatted = mathFormatted.replace(/([a-zA-Z_0-9])_\{([^}]+)\}/g, "$1<sub>$2</sub>");
-
-    // 2.5. Replace superscript notation like x^2 or x^{n-1} or x^(n)
-    mathFormatted = mathFormatted.replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>");
-    mathFormatted = mathFormatted.replace(/\^\(([^)]+)\)/g, "<sup>$1</sup>");
-    mathFormatted = mathFormatted.replace(/\^([a-zA-Z0-9\-+]+)/g, "<sup>$1</sup>");
-
-    // 3. Format variables like A, a, i, j, n, lo, hi, p, key, pivot
-    const variables = ["lo", "hi", "pivot", "arr", "key", "swap", "val", "max", "min", "temp", "p", "A", "a", "i", "j", "n", "k", "T", "O", "log", "x", "y"];
-    variables.forEach(v => {
-      const regex = new RegExp(`\\b${v}\\b`, 'g');
-      mathFormatted = mathFormatted.replace(regex, `<span class="font-serif italic font-semibold text-stone-850">${v}</span>`);
-    });
-
-    return `<span class="inline-flex items-center gap-0.5 font-semibold text-stone-850">${mathFormatted}</span>`;
-  });
-}
 
 function ChapterHeader({ title, subtitle, chapterId, id }) {
   const bannerRef = useRef(null);
@@ -1652,18 +1603,20 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
       );
 
     case "paragraph":
+    case "text":
       return (
-        <p className="text-paragraph text-stone-700 leading-[1.9] mb-4 text-sm md:text-base font-sans" data-hl-path={path} dangerouslySetInnerHTML={{ __html: formatMathText(block.text) }} />
+        <p className="text-paragraph text-stone-700 leading-[1.9] mb-4 text-sm md:text-base font-sans" data-hl-path={path} dangerouslySetInnerHTML={{ __html: formatMathText(block.text || block.value || "") }} />
       );
 
     case "list":
     case "bullets":
+    case "bullet-list":
       return (
         <ul className="bullet-list list-disc list-inside pl-2 mb-4 space-y-2.5">
           {block.items.map((item, idx) => (
             <li
               key={idx}
-              className="bullet-list__item text-stone-700 leading-[1.85] text-sm md:text-base font-sans"
+              className="bullet-list__item text-stone-700 leading-[1.85] text-sm md:text-base font-sans whitespace-pre-line"
               data-hl-path={`${path}-${idx}`}
               dangerouslySetInnerHTML={{ __html: formatMathText(item) }}
             />
@@ -1690,6 +1643,113 @@ function ContentBlock({ block, path, activeLang, setActiveLang }) {
         <div className="highlight-box mb-4" data-hl-path={path}>
           <div className="highlight-box__content text-stone-800 leading-[1.85] text-sm md:text-base font-sans" dangerouslySetInnerHTML={{ __html: formatMathText(block.text) }} />
         </div>
+      );
+
+    case "note":
+      return (
+        <div className="note-box my-4 p-4 rounded-xl border border-amber-200/80 bg-amber-50/60 dark:bg-amber-950/20 dark:border-amber-800/60 text-stone-800 dark:text-stone-200 shadow-xs" data-hl-path={path}>
+          <div className="flex items-start gap-3">
+            <span className="text-lg shrink-0 mt-0.5 select-none">📌</span>
+            <div className="text-sm md:text-base leading-relaxed font-sans flex-1 whitespace-pre-line" dangerouslySetInnerHTML={{ __html: formatMathText(block.text || block.value || "") }} />
+          </div>
+        </div>
+      );
+
+    case "callout": {
+      const variant = block.variant || "info";
+      const config = {
+        warning: {
+          bg: "bg-amber-50/70 dark:bg-amber-950/30",
+          border: "border-amber-300 dark:border-amber-700/80",
+          iconColor: "text-amber-600 dark:text-amber-400",
+          titleColor: "text-amber-900 dark:text-amber-200",
+          icon: "⚠️",
+        },
+        tip: {
+          bg: "bg-emerald-50/70 dark:bg-emerald-950/30",
+          border: "border-emerald-300 dark:border-emerald-700/80",
+          iconColor: "text-emerald-600 dark:text-emerald-400",
+          titleColor: "text-emerald-900 dark:text-emerald-200",
+          icon: "💡",
+        },
+        info: {
+          bg: "bg-blue-50/70 dark:bg-blue-950/30",
+          border: "border-blue-300 dark:border-blue-700/80",
+          iconColor: "text-blue-600 dark:text-blue-400",
+          titleColor: "text-blue-900 dark:text-blue-200",
+          icon: "ℹ️",
+        },
+      }[variant] || {
+        bg: "bg-stone-50 dark:bg-stone-850",
+        border: "border-stone-300 dark:border-stone-700",
+        iconColor: "text-stone-600 dark:text-stone-300",
+        titleColor: "text-stone-900 dark:text-stone-100",
+        icon: "📌",
+      };
+
+      return (
+        <div className={`my-5 p-4 md:p-5 rounded-2xl border ${config.border} ${config.bg} shadow-xs`} data-hl-path={path}>
+          {block.title && (
+            <div className={`font-bold text-sm md:text-base ${config.titleColor} flex items-center gap-2 mb-2`}>
+              <span className="text-base select-none">{config.icon}</span>
+              <span dangerouslySetInnerHTML={{ __html: formatMathText(block.title) }} />
+            </div>
+          )}
+          {block.text && (
+            <div
+              className="text-stone-750 dark:text-stone-300 text-sm md:text-base leading-relaxed font-sans whitespace-pre-line"
+              dangerouslySetInnerHTML={{ __html: formatMathText(block.text) }}
+            />
+          )}
+        </div>
+      );
+    }
+
+    case "cards": {
+      const cols = block.columns || 3;
+      const colClass = cols === 2 ? "grid-cols-1 md:grid-cols-2" : cols === 4 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" : "grid-cols-1 md:grid-cols-3";
+      return (
+        <div className={`grid ${colClass} gap-4 my-6`} data-hl-path={path}>
+          {block.items && block.items.map((card, cIdx) => (
+            <div
+              key={cIdx}
+              className="rounded-2xl border border-stone-200/90 dark:border-stone-800 bg-white/90 dark:bg-stone-900/80 p-4 md:p-5 shadow-xs flex flex-col justify-between hover:border-accent/40 transition-colors"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-2">
+                    {card.number && (
+                      <span className="w-6 h-6 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-black font-mono flex items-center justify-center shrink-0">
+                        {card.number}
+                      </span>
+                    )}
+                    <h4 className="font-bold text-stone-850 dark:text-stone-150 text-sm md:text-base">
+                      {card.title}
+                    </h4>
+                  </div>
+                  {card.tag && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-700 whitespace-nowrap">
+                      {card.tag}
+                    </span>
+                  )}
+                </div>
+                {card.bullets && (
+                  <ul className="space-y-2 text-xs md:text-sm text-stone-650 dark:text-stone-350 list-disc list-inside">
+                    {card.bullets.map((b, bIdx) => (
+                      <li key={bIdx} className="leading-relaxed font-sans" dangerouslySetInnerHTML={{ __html: formatMathText(b) }} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    case "quiz":
+      return (
+        <InlineCheckpointQuiz key={path} block={block} />
       );
 
     case "quote":

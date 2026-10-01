@@ -11,6 +11,7 @@ import {
   HelpCircle,
   Cpu,
   ChevronRight,
+  ChevronLeft,
   RotateCcw
 } from "lucide-react";
 
@@ -56,19 +57,19 @@ export default function RelationalDivisionStepByStepVisualizer() {
   ];
 
   return (
-    <div className="my-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden text-slate-800">
+    <div className="my-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden text-slate-800 w-full min-w-0">
       {/* Header */}
       <div className="px-5 py-4 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center font-bold flex-shrink-0">
             <Divide className="w-5 h-5" />
           </div>
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
+          <div className="min-w-0">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600 block truncate">
               Universal Quantifier Engine • Mục 2.10
             </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
-              Trực Quan Hóa Từng Bước Phép Chia Đại Số Quan Hệ (r ÷ s)
+            <h3 className="text-base sm:text-lg font-extrabold text-slate-900 truncate">
+              Trực Quan Hóa Từng Bước Phép Chia (r ÷ s)
             </h3>
           </div>
         </div>
@@ -78,44 +79,49 @@ export default function RelationalDivisionStepByStepVisualizer() {
           <button
             onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
             disabled={currentStep === 1}
-            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-mono disabled:opacity-40 hover:bg-slate-50 shadow-sm transition-all"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-mono disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 shadow-sm transition-all"
           >
-            ◀ Lùi lại
+            <ChevronLeft className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Lùi lại</span>
           </button>
-          <span className="text-xs font-mono text-orange-800 font-bold px-2">
-            Bước {currentStep} / {steps.length}
+          <span className="text-xs font-mono text-orange-800 font-bold px-2 py-1 rounded bg-orange-50 border border-orange-200">
+            {currentStep} / {steps.length}
           </span>
           <button
             onClick={() => setCurrentStep((prev) => Math.min(steps.length, prev + 1))}
             disabled={currentStep === steps.length}
-            className="px-3 py-1.5 rounded-lg bg-orange-600 text-white text-xs font-mono font-bold disabled:opacity-40 hover:bg-orange-700 shadow-sm transition-all"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-orange-600 text-white text-xs font-mono font-bold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-orange-700 shadow-sm transition-all"
           >
-            Tiếp theo ▶
+            <span className="hidden sm:inline">Tiếp theo</span>
+            <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
       {/* Step Info Banner */}
-      <div className="p-4 bg-slate-50/80 border-b border-slate-200 space-y-1">
+      <div className="p-4 bg-slate-50/80 border-b border-slate-200 space-y-1 min-w-0">
         <div className="text-xs font-bold text-orange-800 flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4 text-orange-600" /> {steps[currentStep - 1].title}
+          <Sparkles className="w-4 h-4 text-orange-600 flex-shrink-0" />
+          <span className="break-words">{steps[currentStep - 1].title}</span>
         </div>
-        <p className="text-slate-700 text-xs font-sans whitespace-pre-line leading-relaxed">
+        <p className="text-slate-700 text-xs font-sans whitespace-pre-line leading-relaxed break-words">
           {steps[currentStep - 1].desc}
         </p>
       </div>
 
       {/* Interactive Visualizer Canvas */}
-      <div className="p-6 space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-5 sm:p-6 space-y-6 min-w-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-0">
           {/* Table r */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 shadow-sm">
-            <div className="text-xs font-bold text-orange-800 font-mono flex items-center justify-between">
-              <span>Quan hệ bị chia r(MaSV, MaMH)</span>
-              <span className="text-slate-500 text-[10px]">6 bộ</span>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 shadow-sm min-w-0">
+            <div className="text-xs font-bold text-orange-800 font-mono flex items-center justify-between gap-2">
+              <span className="truncate">Quan hệ bị chia r(MaSV, MaMH)</span>
+              <span className="text-slate-500 text-[10px] bg-white px-2 py-0.5 rounded border border-slate-200 flex-shrink-0">
+                6 bộ
+              </span>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left border-collapse font-mono bg-white rounded-lg overflow-hidden border border-slate-200">
+            <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-inner">
+              <table className="w-full text-xs text-left border-collapse font-mono min-w-[200px]">
                 <thead>
                   <tr className="bg-slate-100 border-b border-slate-200 text-slate-700">
                     <th className="p-2">MaSV</th>
@@ -151,16 +157,18 @@ export default function RelationalDivisionStepByStepVisualizer() {
           </div>
 
           {/* Table s */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 shadow-sm">
-            <div className="text-xs font-bold text-blue-800 font-mono flex items-center justify-between">
-              <span>Quan hệ chia s(MaMH)</span>
-              <span className="text-slate-500 text-[10px]">Tập điều kiện</span>
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 shadow-sm min-w-0">
+            <div className="text-xs font-bold text-blue-800 font-mono flex items-center justify-between gap-2">
+              <span className="truncate">Quan hệ chia s(MaMH)</span>
+              <span className="text-slate-500 text-[10px] bg-white px-2 py-0.5 rounded border border-slate-200 flex-shrink-0">
+                Tập điều kiện
+              </span>
             </div>
-            <div className="p-3 rounded-lg bg-blue-50/60 border border-blue-200 space-y-2 shadow-sm">
+            <div className="p-3 rounded-lg bg-blue-50/60 border border-blue-200 space-y-2 shadow-sm min-w-0">
               <div className="text-xs text-slate-700 font-sans">
                 Yêu cầu: Sinh viên phải học <strong>TẤT CẢ</strong> các môn sau:
               </div>
-              <div className="flex gap-2 font-mono text-xs">
+              <div className="flex flex-wrap gap-2 font-mono text-xs">
                 <span className="px-3 py-1 rounded bg-blue-100 border border-blue-300 text-blue-900 font-bold shadow-sm">
                   CSDL
                 </span>
@@ -172,20 +180,20 @@ export default function RelationalDivisionStepByStepVisualizer() {
 
             {/* Candidate evaluation on Step >= 3 */}
             {currentStep >= 3 && (
-              <div className="p-3 rounded-lg bg-white border border-slate-200 space-y-2 text-xs shadow-sm">
+              <div className="p-3 rounded-lg bg-white border border-slate-200 space-y-2 text-xs shadow-sm min-w-0 animate-fadeIn">
                 <div className="font-bold text-slate-900">Kết quả kiểm thử từng SV:</div>
                 <div className="space-y-1.5 font-mono text-[11px]">
-                  <div className="flex items-center justify-between p-2 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold">
-                    <span>• SV01: Đủ {`{CSDL, CCT}`}</span>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <div className="flex items-center justify-between p-2 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold gap-2">
+                    <span className="truncate">• SV01: Đủ {`{CSDL, CCT}`}</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-rose-50 text-rose-900 border border-rose-200 font-semibold">
-                    <span>• SV02: Thiếu CCT</span>
-                    <XCircle className="w-4 h-4 text-rose-600" />
+                  <div className="flex items-center justify-between p-2 rounded bg-rose-50 text-rose-900 border border-rose-200 font-semibold gap-2">
+                    <span className="truncate">• SV02: Thiếu CCT</span>
+                    <XCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                   </div>
-                  <div className="flex items-center justify-between p-2 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold">
-                    <span>• SV03: Đủ {`{CSDL, CCT}`}</span>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <div className="flex items-center justify-between p-2 rounded bg-emerald-50 text-emerald-900 border border-emerald-200 font-semibold gap-2">
+                    <span className="truncate">• SV03: Đủ {`{CSDL, CCT}`}</span>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   </div>
                 </div>
               </div>
@@ -195,22 +203,22 @@ export default function RelationalDivisionStepByStepVisualizer() {
 
         {/* Final Result Card */}
         {currentStep === 4 && (
-          <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 flex flex-wrap items-center justify-between gap-3 shadow-sm animate-fadeIn">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold border border-emerald-300">
+          <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 flex flex-wrap items-center justify-between gap-3 shadow-sm animate-fadeIn min-w-0">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold border border-emerald-300 flex-shrink-0">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono">
+              <div className="min-w-0">
+                <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono truncate">
                   Quan hệ thương (r ÷ s):
                 </div>
-                <div className="text-sm font-bold text-emerald-950 font-mono">
+                <div className="text-sm font-bold text-emerald-950 font-mono truncate">
                   r ÷ s = {"{ (SV01), (SV03) }"}
                 </div>
               </div>
             </div>
-            <div className="text-xs text-slate-700 font-sans">
-              💡 Phép chia đại số quan hệ là công cụ toán học tối thượng để xử lý các câu truy vấn mang ý nghĩa <strong>"Toàn thể" (Universal)</strong>.
+            <div className="text-xs text-slate-700 font-sans break-words max-w-md">
+              💡 Phép chia đại số quan hệ là công cụ toán học tối thượng để xử lý các câu truy vấn mang ý nghĩa <strong>&quot;Toàn thể&quot; (Universal)</strong>.
             </div>
           </div>
         )}

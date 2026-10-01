@@ -200,7 +200,8 @@ export default function FourActorTypesRadarStudio() {
         <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
           Không Gian 4 Loại Tác Nhân (Click Để Khảo Sát Đặc Trưng):
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {/* 4-Quadrant Visualizer Buttons (Responsive 2x2 on Laptop, 4 on XL, No line-clamp) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
           {ACTOR_TYPES.map((type) => {
             const Icon = type.icon;
             const isSelected = type.id === selectedTypeId;
@@ -220,8 +221,8 @@ export default function FourActorTypesRadarStudio() {
                     Loại #{type.id.split("-")[0]}
                   </span>
                 </div>
-                <div className="font-bold text-sm text-stone-900 line-clamp-1">{type.name}</div>
-                <div className="text-[11px] text-stone-500 mt-0.5 line-clamp-1">{type.vietnameseName.split("(")[1]?.replace(")", "") || type.vietnameseName}</div>
+                <div className="font-bold text-sm text-stone-900 leading-snug">{type.name}</div>
+                <div className="text-[11px] text-stone-500 mt-0.5 leading-snug">{type.vietnameseName.split("(")[1]?.replace(")", "") || type.vietnameseName}</div>
               </button>
             );
           })}

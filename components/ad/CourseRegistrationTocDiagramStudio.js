@@ -132,10 +132,10 @@ export default function CourseRegistrationTocDiagramStudio() {
           </div>
 
           {/* Diagram Canvas Container */}
-          <div className="relative p-6 sm:p-8 rounded-2xl bg-white border border-stone-200 shadow-sm overflow-x-auto">
-            <div className="min-w-[640px] grid grid-cols-12 gap-4 items-center">
+          <div className="relative p-4 sm:p-6 rounded-2xl bg-white border border-stone-200 shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
               {/* Left Column: Primary Actor (Student) */}
-              <div className="col-span-3 space-y-3">
+              <div className="lg:col-span-3 space-y-3">
                 <button
                   onMouseEnter={() => setHighlightedActor("act-student")}
                   onMouseLeave={() => setHighlightedActor(null)}
@@ -156,12 +156,12 @@ export default function CourseRegistrationTocDiagramStudio() {
               </div>
 
               {/* Middle Column: System Boundary (Rectangle) with Use Case Ovals */}
-              <div className="col-span-6 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50/20 p-5 space-y-3 relative shadow-inner">
-                <div className="absolute top-2 left-3 bg-white px-2.5 py-0.5 rounded-full border border-amber-300 text-[10px] font-black uppercase tracking-wider text-amber-900">
+              <div className="lg:col-span-6 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50/20 p-4 sm:p-5 space-y-3 relative shadow-inner">
+                <div className="sm:absolute sm:top-2 sm:left-3 inline-block bg-white px-2.5 py-0.5 rounded-full border border-amber-300 text-[10px] font-black uppercase tracking-wider text-amber-900 shadow-xs mb-2 sm:mb-0">
                   📦 System Boundary: Online Course Registration System
                 </div>
 
-                <div className="pt-5 space-y-2.5">
+                <div className="sm:pt-5 space-y-2.5">
                   {USE_CASES.map(uc => {
                     const isLinked = !highlightedActor || highlightedActor === uc.actorId;
                     const isSelected = selectedUseCase.id === uc.id;
@@ -186,7 +186,7 @@ export default function CourseRegistrationTocDiagramStudio() {
               </div>
 
               {/* Right Column: Secondary & External System Actors */}
-              <div className="col-span-3 space-y-3">
+              <div className="lg:col-span-3 space-y-3">
                 {/* Registrar */}
                 <button
                   onMouseEnter={() => setHighlightedActor("act-registrar")}

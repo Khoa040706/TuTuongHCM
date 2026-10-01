@@ -158,8 +158,8 @@ export default function UmlNotationInteractiveGuide() {
         </div>
       </div>
 
-      {/* 5 Notation Buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 my-6">
+      {/* 5 Notation Buttons (Responsive: 3 cols on Laptop, 5 on XL) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 my-6">
         {NOTATIONS.map((notation) => {
           const isSelected = notation.id === selectedNotationId;
 

@@ -150,7 +150,7 @@ export default function DiscoveryIterativeEngineRunner() {
       </div>
 
       {/* 5-Step Stepper Ribbon */}
-      <div className="mt-6 grid grid-cols-5 gap-1.5 sm:gap-2">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
         {STEPS.map((s, idx) => {
           const isActive = idx === activeStepIndex;
           const isPassed = idx < activeStepIndex;
@@ -159,22 +159,27 @@ export default function DiscoveryIterativeEngineRunner() {
             <button
               key={s.step}
               onClick={() => { setActiveStepIndex(idx); setShowFeedbackLoop(false); }}
-              className={`p-2.5 rounded-xl border text-left transition-all relative ${
+              className={`p-3 rounded-xl border text-left transition-all relative ${
                 isActive
-                  ? "bg-white border-blue-500 ring-2 ring-blue-500/20 shadow-md"
+                  ? "bg-white border-blue-500 ring-2 ring-blue-500/20 shadow-md scale-[1.01]"
                   : isPassed
                   ? "bg-blue-50/50 border-blue-200 text-stone-700"
                   : "bg-white/60 hover:bg-white border-stone-200 text-stone-400"
               }`}
             >
-              <div className="flex items-center justify-between mb-1">
-                <span className={`text-[10px] font-black font-mono ${isActive ? "text-blue-600" : "text-stone-400"}`}>
-                  0{s.step}
+              <div className="flex items-center justify-between mb-1.5">
+                <span className={`text-[10px] font-black font-mono px-2 py-0.5 rounded ${
+                  isActive ? "bg-blue-600 text-white" : isPassed ? "bg-blue-100 text-blue-700" : "bg-stone-100 text-stone-500"
+                }`}>
+                  Chặng 0{s.step}
                 </span>
                 {isPassed && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
               </div>
-              <div className={`text-[11px] font-bold line-clamp-1 ${isActive ? "text-stone-900" : "text-stone-600"}`}>
-                {s.title.split(". ")[1]}
+              <div className={`text-xs font-bold leading-snug ${isActive ? "text-stone-900" : "text-stone-700"}`}>
+                {s.title.includes(". ") ? s.title.split(". ")[1] : s.title}
+              </div>
+              <div className="text-[11px] text-stone-500 leading-tight mt-0.5">
+                {s.subtitle}
               </div>
             </button>
           );

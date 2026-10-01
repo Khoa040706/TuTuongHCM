@@ -144,7 +144,8 @@ export default function ActorIdentificationWorkbench() {
           <HelpCircle className="w-3.5 h-3.5 text-emerald-700" />
           6 Câu Hỏi Định Vị Actor Của BA (Bấm Từng Câu Hỏi Để Xem Phương Pháp):
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        {/* 6 Questions Grid (Responsive: 3 cols on Laptop, 6 on XL, No line-clamp) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5">
           {GUIDELINE_QUESTIONS.map((q) => {
             const isActive = q.id === activeQuestionId;
             return (
@@ -162,7 +163,7 @@ export default function ActorIdentificationWorkbench() {
                     #{q.num}
                   </span>
                 </div>
-                <div className="text-xs font-bold line-clamp-1">{q.question}</div>
+                <div className="text-xs font-bold leading-snug">{q.question}</div>
               </button>
             );
           })}

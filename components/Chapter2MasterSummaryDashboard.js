@@ -8,9 +8,10 @@ import {
   ShieldCheck, 
   DoorOpen, 
   CheckCircle2, 
-  ArrowRight,
-  Target,
-  FileCheck2
+  ArrowRight, 
+  Target, 
+  FileCheck2,
+  GraduationCap
 } from "lucide-react";
 
 export default function Chapter2MasterSummaryDashboard() {
@@ -28,7 +29,8 @@ export default function Chapter2MasterSummaryDashboard() {
         "SDLC định nghĩa tất cả các giai đoạn (phases) và hoạt động cần thiết để phát triển hệ thống.",
         "Methodology (Phương pháp luận) là bản hướng dẫn cụ thể cách thức thực thi các phase của SDLC.",
         "Mọi Methodology (Waterfall, Agile, UP) đều phải đi qua các pha cốt lõi của SDLC."
-      ]
+      ],
+      examChecklist: "Nhớ kỹ: SDLC là 'Umbrella concept'; Methodology là 'Specific implementation'."
     },
     {
       num: "02",
@@ -41,7 +43,8 @@ export default function Chapter2MasterSummaryDashboard() {
         "Predictive (Thác nước): Lập kế hoạch Up-Front cố định, yêu cầu rõ ràng, kiểm soát thay đổi nghiêm ngặt.",
         "Adaptive (Agile/UP): Chào đón thay đổi, lặp lại qua các Iterations ngắn (1-4 tuần), bàn giao liên tục.",
         "Tiêu chí chọn: Dựa vào Độ rõ ràng yêu cầu (Clarity), Quy mô/Rủi ro dự án và Văn hóa đội ngũ."
-      ]
+      ],
+      examChecklist: "So sánh: Predictive freeze scope sớm; Adaptive lặp cả 5 phase trong mỗi sprint."
     },
     {
       num: "03",
@@ -56,7 +59,8 @@ export default function Chapter2MasterSummaryDashboard() {
         "Phase 3 Design: 'How will it work?' (Thiết kế kiến trúc, CSDL và giao diện UI/UX).",
         "Phase 4 Implementation: 'Build & Deploy' (Lập trình, kiểm thử và bàn giao Go-Live).",
         "Phase 5 Support: 'Keep it running' (Bảo trì, sửa lỗi và nâng cấp tính năng)."
-      ]
+      ],
+      examChecklist: "Bắt buộc thuộc lòng thứ tự 5 phase và câu hỏi cốt lõi tương ứng."
     },
     {
       num: "04",
@@ -69,7 +73,8 @@ export default function Chapter2MasterSummaryDashboard() {
         "Model business TRƯỚC KHI model phần mềm để hiểu rõ ngữ cảnh, phát hiện điểm nghẽn và xác định ranh giới Scope.",
         "Khái niệm vàng: Business Actor [A] ngoài, Business Worker [W] trong, Event [E] kích hoạt, Process [P] chuỗi giá trị.",
         "Initiation Phase đóng vai trò Cổng Gatekeeper (Approve/Reject) thông qua Feasibility Analysis 3 chiều: Kỹ thuật, Kinh tế (ROI), Tổ chức."
-      ]
+      ],
+      examChecklist: "Tác nhân bên ngoài là Business Actor (/); nhân sự nội bộ là Business Worker (W)."
     },
     {
       num: "05",
@@ -82,7 +87,8 @@ export default function Chapter2MasterSummaryDashboard() {
         "Business Use Case (Black-Box): Góc nhìn từ bên ngoài (Actor's-eye view) về dịch vụ nhận được từ doanh nghiệp (ký hiệu gạch chéo /).",
         "Activity Diagram (Swimlanes): Góc nhìn vận hành nội bộ (Internal view) chi tiết hóa trình tự các bước, điểm rẽ nhánh Decision và trách nhiệm phòng ban.",
         "Tài liệu hóa cả AS-IS (Hiện trạng) và TO-BE (Đề xuất) làm cơ sở thiết kế phần mềm."
-      ]
+      ],
+      examChecklist: "Phân biệt: Business Use Case = Góc nhìn ngoài; Activity Diagram Swimlanes = Góc nhìn trong."
     }
   ];
 
@@ -107,8 +113,8 @@ export default function Chapter2MasterSummaryDashboard() {
         </div>
       </div>
 
-      {/* 5 Pillars Selector Tabs */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 mb-6">
+      {/* 5 Pillars Selector Tabs (Responsive: 3 cols on Laptop, 5 on XL, No line-clamp) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 mb-6">
         {pillars.map((item, idx) => {
           const isSelected = activePillar === idx;
           const Icon = item.icon;
@@ -118,7 +124,7 @@ export default function Chapter2MasterSummaryDashboard() {
               onClick={() => setActivePillar(idx)}
               className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between ${
                 isSelected
-                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-amber-400/50 shadow-xl scale-105`
+                  ? `bg-slate-800 ${item.accentBorder} ring-2 ring-amber-400/50 shadow-xl scale-[1.02]`
                   : `bg-slate-950/70 border-slate-800 hover:bg-slate-800/40 text-slate-300`
               }`}
             >
@@ -127,10 +133,12 @@ export default function Chapter2MasterSummaryDashboard() {
                   <div className={`p-2 rounded-xl bg-gradient-to-br ${item.color} text-white shadow`}>
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono font-black text-slate-400">#{item.num}</span>
+                  <span className="text-[10px] font-mono font-black text-amber-400/90 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">
+                    #{item.num}
+                  </span>
                 </div>
-                <h3 className="font-extrabold text-xs sm:text-sm text-white">{item.title}</h3>
-                <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">{item.subtitle}</p>
+                <h3 className="font-extrabold text-xs sm:text-sm text-white leading-snug">{item.title}</h3>
+                <p className="text-[11px] text-slate-400 mt-1 leading-snug">{item.subtitle}</p>
               </div>
             </button>
           );
@@ -152,17 +160,26 @@ export default function Chapter2MasterSummaryDashboard() {
           </div>
 
           <div className="space-y-2.5">
-            <span className="text-xs font-extrabold uppercase text-cyan-400 block">
+            <span className="text-xs font-extrabold uppercase text-cyan-400 block tracking-wider">
               Các Điểm Ghi Nhớ Cốt Tử (Key Takeaways):
             </span>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-200">
               {current.keyPoints.map((pt, i) => (
-                <li key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                <li key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 leading-relaxed">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>{pt}</span>
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Exam Readiness Tip */}
+          <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300 flex items-start gap-2.5">
+            <GraduationCap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+            <div>
+              <span className="font-bold uppercase text-[11px] block mb-0.5">Mẹo Ôn Thi Trắc Nghiệm:</span>
+              <span className="leading-relaxed font-medium">{current.examChecklist}</span>
+            </div>
           </div>
         </div>
       )}

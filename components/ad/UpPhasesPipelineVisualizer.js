@@ -149,8 +149,8 @@ export default function UpPhasesPipelineVisualizer() {
         </div>
       </div>
 
-      {/* 4 Phases Interactive Stepper Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 my-6">
+      {/* 4 Phases Interactive Stepper Bar (Responsive 2x2 on Laptop, 4 on XL, No line-clamp) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 my-6">
         {PHASES.map((phase, idx) => {
           const isSelected = phase.id === selectedPhaseId;
           const IconComponent = phase.icon;
@@ -183,7 +183,7 @@ export default function UpPhasesPipelineVisualizer() {
               <div className="text-xs md:text-sm font-bold text-stone-900 leading-snug">
                 {phase.name.split(". ")[1] || phase.name}
               </div>
-              <div className="text-[11px] text-stone-500 mt-1 line-clamp-1">
+              <div className="text-[11px] text-stone-500 mt-1 leading-snug">
                 {phase.subtitle}
               </div>
             </button>
